@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-alt-lang="fa" data-demo="site" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="فیلدکیت — هر حسگر میدانی در یک کنسول آرام">Fieldkit — every sensor in the field, one quiet console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css">
+<style>@font-face { font-family: "Estedad"; src: url("https://cdn.jsdelivr.net/gh/aminabedi68/Estedad@8.5/fonts/Estedad%5Bwght%5D.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }</style>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .features { padding-block: 0 clamp(64px, 9vw, 120px); }
+  .features .panel { margin-block-start: var(--space-4); }
+  .rollout { display: grid; gap: var(--space-3); }
+  .rollout-row { display: grid; grid-template-columns: 120px 1fr 52px; gap: var(--space-3); align-items: center; font: 13px var(--font-mono); }
+  .bar { block-size: 8px; border-radius: 99px; background: var(--surface-3); overflow: hidden; }
+  .bar i { display: block; block-size: 100%; inline-size: var(--w); background: var(--ink); border-radius: inherit; }
+  .bar.is-accent i { background: var(--brand); }
+  .stats-head { margin-block-end: var(--space-8); text-align: center; }
+  .cta-band { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
+  @media (max-width: 900px) { .cta-band { grid-template-columns: minmax(0, 1fr); } }
+  .cta-band form { display: grid; gap: var(--space-4); grid-template-columns: 1fr 1fr; }
+  .cta-band form .full { grid-column: 1 / -1; }
+  @media (max-width: 560px) { .cta-band form { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="رفتن به محتوا">Skip to content</a>
+<div class="announce">
+  <div class="container">
+    <span><span data-alt="تازه">New</span> · <a href="#features" data-alt="فیلدکیت ۳: همگام‌سازی آفلاین برای سایت‌های دورافتاده ←">Fieldkit 3 brings offline sync to remote sites →</a></span>
+    <span class="end hide-md"><a href="#" data-alt="مستندات">Docs</a><a href="#" data-alt="وضعیت">Status</a><a href="#" data-alt="تغییرات">Changelog</a></span>
+  </div>
+</div>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="#top"><span class="logo-grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span data-alt="فیلدکیت">Fieldkit</span></a>
+    <nav class="nav" id="nav" aria-label="Primary" data-alt-aria-label="اصلی">
+      <div class="nav-item">
+        <button class="nav-btn" type="button" data-toggle="#mega-product" aria-expanded="false"><span data-alt="محصول">Product</span><span class="plus" aria-hidden="true"></span></button>
+        <div class="mega" id="mega-product" data-dismissable>
+          <a href="#features"><i class="ti ti-layout-grid" aria-hidden="true"></i><b data-alt="کنسول ناوگان">Fleet console</b><span data-alt="همهٔ دستگاه‌ها، یک فهرست">Every device, one list</span></a>
+          <a href="#features"><i class="ti ti-terminal-2" aria-hidden="true"></i><b data-alt="دسترسی از راه دور">Remote shell</b><span data-alt="بدون VPN و پورت باز">No VPN, no open ports</span></a>
+          <a href="#features"><i class="ti ti-cloud-upload" aria-hidden="true"></i><b data-alt="به‌روزرسانی بی‌سیم">OTA updates</b><span data-alt="انتشار مرحله‌ای و برگشت">Staged rollouts, rollback</span></a>
+          <a href="#features"><i class="ti ti-bell" aria-hidden="true"></i><b data-alt="هشدارها">Alerts</b><span data-alt="فقط وقتی واقعاً مهم است">Only when it matters</span></a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-btn" type="button" data-toggle="#mega-solutions" aria-expanded="false"><span data-alt="راهکارها">Solutions</span><span class="plus" aria-hidden="true"></span></button>
+        <div class="mega" id="mega-solutions" data-dismissable>
+          <a href="#stats"><i class="ti ti-plant-2" aria-hidden="true"></i><b data-alt="کشاورزی">Agriculture</b><span data-alt="رطوبت خاک، آبیاری">Soil, irrigation, weather</span></a>
+          <a href="#stats"><i class="ti ti-building-factory-2" aria-hidden="true"></i><b data-alt="کارخانه">Manufacturing</b><span data-alt="لرزش، دما، توان">Vibration, heat, power</span></a>
+          <a href="#stats"><i class="ti ti-building-community" aria-hidden="true"></i><b data-alt="شهر هوشمند">Cities</b><span data-alt="هوا، ترافیک، نور">Air, traffic, lighting</span></a>
+          <a href="#stats"><i class="ti ti-bolt" aria-hidden="true"></i><b data-alt="انرژی">Energy</b><span data-alt="پنل، باتری، شبکه">Solar, storage, grid</span></a>
+        </div>
+      </div>
+      <a class="nav-btn" href="#stats" data-alt="مشتریان">Customers</a>
+      <a class="nav-btn" href="#pricing" data-alt="قیمت‌ها">Pricing</a>
+    </nav>
+    <div class="header-end">
+      <button class="btn btn-ghost" type="button" data-lang-toggle data-alt="English">فارسی</button>
+      <a class="btn btn-ghost hide-md" href="dashboard.html" data-alt="ورود">Log in</a>
+      <a class="btn btn-ink" href="#contact" data-alt="شروع رایگان">Start free</a>
+      <button class="btn btn-ghost btn-icon menu-btn" type="button" data-toggle="#nav" aria-expanded="false" aria-label="Menu" data-alt-aria-label="منو"><i class="ti ti-menu-2" aria-hidden="true"></i></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero container" id="top">
+    <p class="label-mono" style="margin-block-end:var(--space-5)" data-alt="مدیریت ناوگان دستگاه‌های اینترنت اشیا">IoT fleet management</p>
+    <h1 class="display" data-alt="هر حسگر میدانی، در یک کنسول آرام.">Every sensor in the field, one quiet console.</h1>
+    <p class="lead" data-alt="فیلدکیت هزاران دستگاه را در مزرعه، کارخانه و شهر وصل، به‌روز و پایش می‌کند — بدون VPN، بدون پورت باز و بدون آخرهفته‌ای که صرف فرم‌ور شود.">Fieldkit connects, updates and watches thousands of devices across farms, plants and cities — without VPNs, open ports, or a weekend lost to firmware.</p>
+    <div class="hero-cta">
+      <a class="btn btn-ink btn-lg" href="#contact" data-alt="شروع پایش دستگاه‌ها">Start monitoring devices</a>
+      <a class="text-link" href="#contact" data-alt="گفتگو با مهندس ما">Talk to an engineer</a>
+    </div>
+  </section>
+
+  <section class="features container" id="features" aria-label="Product" data-alt-aria-label="محصول">
+    <div class="feature-tabs" role="tablist" aria-label="Capabilities" data-alt-aria-label="قابلیت‌ها">
+      <button class="feature-tab" role="tab" id="ft-1" aria-controls="fp-1" aria-selected="true"><i class="ti ti-layout-grid" aria-hidden="true"></i><b data-alt="کنسول ناوگان">Fleet console</b><span data-alt="وضعیت هر دستگاه، به‌روز در هر ثانیه.">Every device's state, live to the second.</span></button>
+      <button class="feature-tab" role="tab" id="ft-2" aria-controls="fp-2" aria-selected="false"><i class="ti ti-terminal-2" aria-hidden="true"></i><b data-alt="دسترسی از راه دور">Remote shell</b><span data-alt="از هر جا وصل شوید، بدون پورت باز.">Reach any device without opening a port.</span></button>
+      <button class="feature-tab" role="tab" id="ft-3" aria-controls="fp-3" aria-selected="false"><i class="ti ti-cloud-upload" aria-hidden="true"></i><b data-alt="به‌روزرسانی بی‌سیم">OTA updates</b><span data-alt="انتشار مرحله‌ای با برگشت خودکار.">Staged rollouts with automatic rollback.</span></button>
+      <button class="feature-tab" role="tab" id="ft-4" aria-controls="fp-4" aria-selected="false"><i class="ti ti-bell" aria-hidden="true"></i><b data-alt="هشدارها">Alerts</b><span data-alt="آستانه‌های هوشمند، نه سیل اعلان.">Smart thresholds, not a flood of pings.</span></button>
+      <button class="feature-tab" role="tab" id="ft-5" aria-controls="fp-5" aria-selected="false"><i class="ti ti-shield-lock" aria-hidden="true"></i><b data-alt="دسترسی و ممیزی">Access &amp; audit</b><span data-alt="هر اتصال ثبت و قابل بازبینی است.">Every connection logged and reviewable.</span></button>
+    </div>
+
+    <div class="panel panel-split" role="tabpanel" id="fp-1" aria-labelledby="ft-1">
+      <div>
+        <p class="label-mono" data-alt="کنسول ناوگان">Fleet console</p>
+        <h2 class="h2" style="margin-block-start:var(--space-3)"><span class="dim" data-alt="یک فهرست.">One list.</span> <span data-alt="هزاران دستگاه.">Thousands of devices.</span></h2>
+        <ul class="dot-list">
+          <li data-alt="هر دستگاه با نشانی ثابت، حتی پشت NAT یا سیم‌کارت.">Every device gets a stable address, even behind NAT or a SIM card.</li>
+          <li data-alt="برچسب‌ها، مالک و نسخهٔ فرم‌ور را در یک نگاه ببینید.">Tags, owner and firmware version at a glance.</li>
+          <li data-alt="برای سایت‌های دورافتاده یا چند ابری.">Works for one remote site or a hundred.</li>
+        </ul>
+        <a class="btn btn-ink" href="dashboard.html" data-alt="دیدن کنسول">See the console</a>
+      </div>
+      <div class="diagram" aria-hidden="true">
+        <svg viewBox="0 0 520 320">
+          <path class="edge is-live" d="M260 160 L96 70"/><path class="edge" d="M260 160 L96 250"/><path class="edge is-live" d="M260 160 L424 70"/><path class="edge" d="M260 160 L424 250"/><path class="edge" d="M260 160 L260 34"/><path class="edge" d="M260 160 L260 290"/>
+          <circle class="pulse" cx="178" cy="115" r="3.5"/><circle class="pulse" cx="342" cy="115" r="3.5"/>
+          <g class="node is-hub"><rect x="196" y="140" width="128" height="40" rx="10"/><text x="212" y="164">relay · ams-2</text></g>
+          <g class="node"><rect x="22" y="48" width="148" height="44" rx="10"/><text x="36" y="67">soil-north-07</text><text class="sub" x="36" y="82">100.64.3.7</text></g>
+          <g class="node"><rect x="22" y="228" width="148" height="44" rx="10"/><text x="36" y="247">pump-ctl-02</text><text class="sub" x="36" y="262">100.64.3.12</text></g>
+          <g class="node"><rect x="350" y="48" width="148" height="44" rx="10"/><text x="364" y="67">weather-mast</text><text class="sub" x="364" y="82">100.64.5.1</text></g>
+          <g class="node"><rect x="350" y="228" width="148" height="44" rx="10"/><text x="364" y="247">gate-cam-03</text><text class="sub" x="364" y="262">100.64.5.9</text></g>
+          <g class="node"><rect x="196" y="10" width="128" height="34" rx="10"/><text x="212" y="31">ops-laptop</text></g>
+          <g class="node"><rect x="196" y="276" width="128" height="34" rx="10"/><text x="212" y="297">ci-runner</text></g>
+        </svg>
+      </div>
+    </div>
+    <div class="panel panel-split" role="tabpanel" id="fp-2" aria-labelledby="ft-2" hidden>
+      <div>
+        <p class="label-mono" data-alt="دسترسی از راه دور">Remote shell</p>
+        <h2 class="h2" style="margin-block-start:var(--space-3)"><span class="dim" data-alt="بدون پورت باز.">No open ports.</span> <span data-alt="بدون VPN.">No VPN.</span></h2>
+        <ul class="dot-list"><li data-alt="ورود با حساب سازمانی؛ کلیدها خودکار می‌چرخند.">Sign in with your company account; keys rotate automatically.</li><li data-alt="جلسه‌ها ضبط و در گزارش ممیزی ثبت می‌شوند.">Sessions are recorded to the audit log.</li></ul>
+      </div>
+<pre class="code"><span class="c">$ </span>fieldkit ssh soil-north-07
+<span class="c">→ authenticated as</span> sara@northwind <span class="c">(sso)</span>
+<span class="c">→ via relay</span> ams-2 <span class="c">· 38 ms</span>
+
+soil-north-07:~$ <span class="k">sensorctl</span> read --all
+moisture   31.4 %
+temp       18.2 °C
+battery    87 %   <span class="c">(solar charging)</span></pre>
+    </div>
+    <div class="panel panel-split" role="tabpanel" id="fp-3" aria-labelledby="ft-3" hidden>
+      <div>
+        <p class="label-mono" data-alt="به‌روزرسانی بی‌سیم">OTA updates</p>
+        <h2 class="h2" style="margin-block-start:var(--space-3)"><span class="dim" data-alt="آهسته منتشر کنید.">Roll out slowly.</span> <span data-alt="سریع برگردید.">Roll back fast.</span></h2>
+        <ul class="dot-list"><li data-alt="انتشار در موج‌های ۱٪، ۱۰٪ و ۱۰۰٪.">Waves of 1%, 10% and 100%.</li><li data-alt="اگر نرخ خطا بالا برود، به‌صورت خودکار برمی‌گردد.">Rolls back automatically if error rates climb.</li></ul>
+      </div>
+      <div class="rollout" aria-label="Rollout v2.4.1" data-alt-aria-label="انتشار نسخهٔ ۲.۴.۱">
+        <div class="rollout-row"><span data-alt="موج ۱ · قناری">wave 1 · canary</span><span class="bar"><i style="--w:100%"></i></span><span data-num="100" data-fmt="pct">100%</span></div>
+        <div class="rollout-row"><span data-alt="موج ۲ · ۱۰٪">wave 2 · 10%</span><span class="bar"><i style="--w:100%"></i></span><span data-num="100" data-fmt="pct">100%</span></div>
+        <div class="rollout-row"><span data-alt="موج ۳ · همه">wave 3 · all</span><span class="bar is-accent"><i style="--w:62%"></i></span><span data-num="62" data-fmt="pct">62%</span></div>
+        <p class="small muted" data-alt="۲٬۸۴۰ از ۴٬۵۸۰ دستگاه به‌روز شده‌اند · ۰ خطا">2,840 of 4,580 devices updated · 0 failures</p>
+      </div>
+    </div>
+    <div class="panel panel-split" role="tabpanel" id="fp-4" aria-labelledby="ft-4" hidden>
+      <div>
+        <p class="label-mono" data-alt="هشدارها">Alerts</p>
+        <h2 class="h2" style="margin-block-start:var(--space-3)"><span class="dim" data-alt="کمتر صدا کنید.">Ping less.</span> <span data-alt="بیشتر بدانید.">Know more.</span></h2>
+        <ul class="dot-list"><li data-alt="هشدارهای تکراری در یک رخداد گروه می‌شوند.">Duplicate alerts are grouped into one incident.</li><li data-alt="ارسال به ایمیل، پیامک یا وب‌هوک.">Route to email, SMS or a webhook.</li></ul>
+      </div>
+      <div class="card">
+        <div class="alert"><span class="sev high"></span><div><b data-alt="باتری کم · pump-ctl-02">Battery low · pump-ctl-02</b><p class="small muted" data-alt="۱۴٪ و در حال کاهش؛ پنل خورشیدی پوشیده است.">14% and dropping; the solar panel looks covered.</p></div><time>06:12</time></div>
+        <div class="alert"><span class="sev med"></span><div><b data-alt="آفلاین · gate-cam-03">Offline · gate-cam-03</b><p class="small muted" data-alt="۲۰ دقیقه بدون سیگنال.">No signal for 20 minutes.</p></div><time>05:48</time></div>
+        <div class="alert"><span class="sev"></span><div><b data-alt="به‌روزرسانی کامل شد · موج ۲">Rollout finished · wave 2</b><p class="small muted" data-alt="۴۵۸ دستگاه، بدون خطا.">458 devices, no failures.</p></div><time>04:30</time></div>
+      </div>
+    </div>
+    <div class="panel panel-split" role="tabpanel" id="fp-5" aria-labelledby="ft-5" hidden>
+      <div>
+        <p class="label-mono" data-alt="دسترسی و ممیزی">Access &amp; audit</p>
+        <h2 class="h2" style="margin-block-start:var(--space-3)"><span class="dim" data-alt="چه کسی، کجا، کِی.">Who, where, when.</span> <span data-alt="همیشه.">Always.</span></h2>
+        <ul class="dot-list"><li data-alt="دسترسی بر اساس برچسب: tag:pumps فقط برای تیم آبیاری.">Tag-based access: tag:pumps only for the irrigation team.</li><li data-alt="گزارش‌ها تا یک سال نگه داشته می‌شوند.">Logs retained for a year.</li></ul>
+      </div>
+<pre class="code"><span class="c">// access policy</span>
+{
+  <span class="k">"grants"</span>: [
+    { "src": ["group:irrigation"], "dst": ["tag:pumps"], "ports": ["22"] },
+    { "src": ["group:ops"],        "dst": ["tag:*"] }
+  ]
+}</pre>
+    </div>
+  </section>
+
+  <section class="section container" id="stats" style="padding-block-start:0">
+    <h2 class="h2 stats-head"><span class="dim" data-alt="۴٬۲۰۰ تیم">4,200 teams</span><br><span data-alt="ناوگانشان را با فیلدکیت اداره می‌کنند">run their fleet on Fieldkit</span></h2>
+    <div class="grid">
+      <article class="stat-card"><span class="stat-big" data-alt="۶ ساعت">6 hrs</span><p data-alt="صرفه‌جویی هفتگی هر تکنسین، چون دیگر به سایت سفر نمی‌کند.">saved per technician each week by skipping site visits.</p></article>
+      <article class="stat-card"><span class="stat-big" data-alt="۹۹٫۹۸٪">99.98%</span><p data-alt="دسترس‌پذیری رله‌ها در ۱۲ ماه گذشته.">relay availability over the last 12 months.</p></article>
+      <article class="stat-card"><span class="stat-big" data-alt="۴ دقیقه">4 min</span><p data-alt="از جعبه تا آنلاین شدن یک دستگاه تازه.">from unboxing to a device reporting online.</p></article>
+    </div>
+    <div class="logo-strip" style="margin-block-start:var(--space-9)" aria-label="Customers" data-alt-aria-label="مشتریان">
+      <span><i class="ti ti-leaf" aria-hidden="true"></i>Northwind Farms</span><span><i class="ti ti-wind" aria-hidden="true"></i>Aerolux</span><span><i class="ti ti-droplet" aria-hidden="true"></i>Clearwater</span><span><i class="ti ti-hexagon" aria-hidden="true"></i>Hexline</span><span><i class="ti ti-sun" aria-hidden="true"></i>Solace Grid</span>
+    </div>
+  </section>
+
+  <section class="section container" id="pricing" style="border-block-start:1px solid var(--line)">
+    <div class="row" style="justify-content:space-between;align-items:flex-end;margin-block-end:var(--space-7)">
+      <h2 class="h2"><span class="dim" data-alt="قیمت‌گذاری ساده.">Simple pricing.</span> <span data-alt="برای هر اندازه ناوگان.">Any fleet size.</span></h2>
+      <p class="muted" data-alt="همهٔ طرح‌ها شامل رله‌های جهانی و رمزگذاری سرتاسری هستند.">Every plan includes global relays and end-to-end encryption.</p>
+    </div>
+    <div class="plans">
+      <article class="plan"><p class="label-mono" data-alt="آزمایشی">Starter</p><p class="plan-price"><span data-num="0" data-fmt="usd">$0</span> <small data-alt="تا ۲۵ دستگاه">up to 25 devices</small></p><ul class="checks"><li><i class="ti ti-check" aria-hidden="true"></i><span data-alt="کنسول ناوگان">Fleet console</span></li><li><i class="ti ti-check" aria-hidden="true"></i><span data-alt="دسترسی از راه دور">Remote shell</span></li><li><i class="ti ti-check" aria-hidden="true"></i><span data-alt="۷ روز گزارش">7-day logs</span></li></ul><a class="btn btn-outline" href="#contact" style="margin-block-start:auto" data-alt="شروع">Get started</a></article>
+      <article class="plan is-featured"><p class="label-mono" data-alt="تیمی">Team</p><p class="plan-price"><span data-num="0.4" data-fmt="usd">$0.40</span> <small data-alt="هر دستگاه در ماه">per device / month</small></p><ul class="checks"><li><i class="ti ti-check" aria-hidden="true"></i><span data-alt="به‌روزرسانی بی‌سیم مرحله‌ای">Staged OTA updates</span></li><li><i class="ti ti-check" aria-hidden="true"></i><span data-alt="هشدار و مسیریابی">Alerts &amp; routing</span></li><li><i class="ti ti-check" aria-hidden="true"></i><span data-alt="دسترسی بر اساس برچسب">Tag-based access</span></li></ul><a class="btn btn-ink" href="#contact" style="margin-block-start:auto" data-alt="شروع دورهٔ آزمایشی">Start a trial</a></article>
+      <article class="plan"><p class="label-mono" data-alt="سازمانی">Enterprise</p><p class="plan-price" data-alt="سفارشی">Custom</p><ul class="checks"><li><i class="ti ti-check" aria-hidden="true"></i><span data-alt="رله اختصاصی">Dedicated relays</span></li><li><i class="ti ti-check" aria-hidden="true"></i><span data-alt="یک سال گزارش ممیزی">1-year audit log</span></li><li><i class="ti ti-check" aria-hidden="true"></i><span data-alt="پشتیبانی ۲۴/۷">24/7 support</span></li></ul><a class="btn btn-outline" href="#contact" style="margin-block-start:auto" data-alt="تماس با فروش">Contact sales</a></article>
+    </div>
+  </section>
+
+  <section class="section container" id="contact" style="border-block-start:1px solid var(--line)">
+    <div class="cta-band">
+      <div class="stack" style="--gap:var(--space-5)">
+        <p class="label-mono" data-alt="تماس">Contact</p>
+        <h2 class="h2"><span class="dim" data-alt="ناوگانتان را بگویید.">Tell us about your fleet.</span> <span data-alt="یک مهندس جواب می‌دهد.">An engineer will reply.</span></h2>
+        <p class="muted" data-alt="معمولاً ظرف یک روز کاری. بدون تماس فروش ناخواسته.">Usually within one business day. No surprise sales calls.</p>
+      </div>
+      <form class="card card-pad" data-validate novalidate data-success="Thanks — we'll be in touch within a day." data-success-alt="ممنون — ظرف یک روز با شما تماس می‌گیریم.">
+        <div class="field"><label class="label" for="c-name" data-alt="نام">Name</label><input class="input" id="c-name" name="name" required autocomplete="name"></div>
+        <div class="field"><label class="label" for="c-email" data-alt="ایمیل کاری">Work email</label><input class="input" id="c-email" name="email" type="email" required autocomplete="email" dir="ltr"></div>
+        <div class="field full"><label class="label" for="c-size" data-alt="اندازهٔ ناوگان">Fleet size</label><select class="select" id="c-size" name="size" required><option value="" data-alt="انتخاب کنید">Choose one</option><option data-alt="کمتر از ۱۰۰">Under 100</option><option data-alt="۱۰۰ تا ۲٬۰۰۰">100 – 2,000</option><option data-alt="بیش از ۲٬۰۰۰">2,000+</option></select></div>
+        <div class="field full"><label class="label" for="c-msg" data-alt="چه چیزی را پایش می‌کنید؟">What are you monitoring?</label><textarea class="textarea" id="c-msg" name="msg" minlength="10" required></textarea></div>
+        <button class="btn btn-ink btn-lg full" type="submit" data-alt="ارسال">Send</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="stack" style="--gap:var(--space-3)"><a class="logo" href="#top"><span class="logo-grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span data-alt="فیلدکیت">Fieldkit</span></a><p class="muted small" data-alt="محصول ساختگی برای نمایش سبک Hearth در تیست‌فولیو.">A fictional product showing the Hearth style by Tastefolio.</p></div>
+    <div><h4 data-alt="محصول">Product</h4><ul><li><a href="#features" data-alt="کنسول">Console</a></li><li><a href="#features" data-alt="به‌روزرسانی">OTA</a></li><li><a href="#pricing" data-alt="قیمت‌ها">Pricing</a></li></ul></div>
+    <div><h4 data-alt="منابع">Resources</h4><ul><li><a href="#" data-alt="مستندات">Docs</a></li><li><a href="#" data-alt="API">API</a></li><li><a href="#" data-alt="وضعیت">Status</a></li></ul></div>
+    <div><h4 data-alt="شرکت">Company</h4><ul><li><a href="#" data-alt="درباره">About</a></li><li><a href="#" data-alt="وبلاگ">Blog</a></li><li><a href="#" data-alt="فرصت‌های شغلی">Careers</a></li></ul></div>
+    <div><h4 data-alt="حقوقی">Legal</h4><ul><li><a href="#" data-alt="حریم خصوصی">Privacy</a></li><li><a href="#" data-alt="شرایط">Terms</a></li></ul></div>
+  </div>
+</footer>
+</body>
+</html>

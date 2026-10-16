@@ -1,0 +1,34 @@
+{
+  "name": "Hearth",
+  "order": 2,
+  "category": "product",
+  "mode": "light",
+  "density": "dense",
+  "persianFirst": false,
+  "tags": ["warm", "technical", "mono labels", "tables", "developer-friendly"],
+  "tagline": {
+    "en": "Warm technical clarity — paper canvas, ink buttons, mono labels, honest tables",
+    "fa": "شفافیت فنی و گرم — زمینهٔ کاغذی، دکمه‌های مشکی، برچسب‌های مونو و جدول‌های صادق"
+  },
+  "summary": {
+    "en": "A friendly infrastructure voice: warm off-white canvas, near-black type and buttons, uppercase monospace labels, two-tone headlines and one warm accent that only fills the active feature card. The console is a dense, sortable device table with status dots, copyable addresses, row menus and a detail drawer.",
+    "fa": "لحنی دوستانه برای زیرساخت: زمینهٔ سفید گرم، متن و دکمه‌های تقریباً مشکی، برچسب‌های مونو با حروف بزرگ، تیترهای دورنگ و یک رنگ گرم که فقط کارت فعال را پر می‌کند. کنسول، جدولی فشرده و مرتب‌شدنی از دستگاه‌هاست با نقطهٔ وضعیت، نشانی قابل‌کپی، منوی هر ردیف و کشوی جزئیات."
+  },
+  "bestFor": {
+    "en": ["Networking, IoT and infrastructure products", "Developer platforms that want to feel human", "Admin consoles built around one big table", "Technical marketing sites with product diagrams"],
+    "fa": ["محصولات شبکه، اینترنت اشیا و زیرساخت", "پلتفرم‌های توسعه‌دهنده‌ای که می‌خواهند انسانی به نظر برسند", "کنسول‌های مدیریتی که حول یک جدول بزرگ ساخته شده‌اند", "سایت‌های معرفی فنی با دیاگرام محصول"]
+  },
+  "avoidFor": {
+    "en": ["Fashion, food or lifestyle brands", "Kids' and playful consumer apps", "Dark, neon or gaming aesthetics"],
+    "fa": ["برندهای مد، غذا یا سبک زندگی", "اپ‌های کودکانه و بازیگوش", "زیبایی‌شناسی تیره، نئونی یا گیمینگ"]
+  },
+  "signature": {
+    "en": ["Black announcement bar with uppercase monospace text", "Two-tone headings: first clause gray, second clause ink", "Feature tab row where only the active card fills with the accent", "Primary buttons are ink, never the accent color", "Dense device table: bold mono name + owner, tag pills, copyable mono address, status dot", "Row ⋯ menus and a side drawer instead of new pages"],
+    "fa": ["نوار اعلان مشکی با متن مونو و حروف بزرگ", "تیتر دورنگ: بخش اول خاکستری، بخش دوم مشکی", "ردیف تب ویژگی‌ها که فقط کارت فعال با رنگ تأکیدی پر می‌شود", "دکمهٔ اصلی همیشه مشکی است، نه رنگ تأکیدی", "جدول فشرده: نام مونو پررنگ + مالک، برچسب کپسولی، نشانی مونوی قابل‌کپی، نقطهٔ وضعیت", "منوی ⋯ هر ردیف و کشوی کناری به‌جای صفحهٔ جدید"]
+  },
+  "swatches": ["#f6f4f1", "#ffffff", "#1c1a17", "#8f877e", "#e5533d"],
+  "fonts": { "latin": "Hanken Grotesk", "persian": "Estedad", "mono": "IBM Plex Mono" },
+  "icons": "Tabler Icons",
+  "brandTrials": ["2f6fed", "0f766e", "7c3aed", "d97706"],
+  "demos": { "site": { "host": "fieldkit.example" }, "dashboard": { "host": "console.fieldkit.example" } }
+}

@@ -622,7 +622,7 @@
   function labelsOf(el, n) {
     if (el.dataset.dates) {
       const [start, count, unit = 'month', fmt] = el.dataset.dates.split(',');
-      const s = new Date(start + 'T12:00:00');
+      const s = new Date(start.includes('T') ? start : start + 'T12:00:00');
       return Array.from({ length: Number(count) || n }, (_, i) => {
         const dt = new Date(s);
         if (unit === 'day') dt.setDate(dt.getDate() + i);

@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-alt-lang="fa" data-demo="dashboard" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="دستگاه‌ها · کنسول فیلدکیت">Devices · Fieldkit console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css">
+<style>@font-face { font-family: "Estedad"; src: url("https://cdn.jsdelivr.net/gh/aminabedi68/Estedad@8.5/fonts/Estedad%5Bwght%5D.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }</style>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  body { background: var(--surface-2); }
+  .app-bar .spacer { flex: 1; }
+  .summary { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); font-size: 13.5px; color: var(--ink-2); margin-block-end: var(--space-4); }
+  .summary b { color: var(--ink); font-weight: 600; }
+  .sites { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-3); }
+  @media (max-width: 900px) { .sites { grid-template-columns: minmax(0, 1fr); } }
+  .site-card { padding: var(--space-5); display: grid; gap: var(--space-3); }
+  .site-card .meter { block-size: 6px; border-radius: 9px; background: var(--surface-3); overflow: hidden; }
+  .site-card .meter i { display: block; block-size: 100%; inline-size: var(--w); background: var(--ink); }
+  .two { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: var(--space-3); margin-block-start: var(--space-3); }
+  @media (max-width: 900px) { .two { grid-template-columns: minmax(0, 1fr); } }
+  .settings { display: grid; gap: var(--space-3); max-inline-size: 760px; padding-block-end: var(--space-9); }
+  .setting { display: flex; justify-content: space-between; gap: var(--space-5); align-items: center; padding: var(--space-4) var(--space-6); border-block-start: 1px solid var(--line); }
+  .setting p { color: var(--ink-2); font-size: 13.5px; }
+  .col-hide { }
+  @media (max-width: 760px) { .col-hide { display: none; } .data-table td, .data-table th { padding-inline: 12px; } }
+  main { padding-block-end: var(--space-9); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="رفتن به محتوا">Skip to content</a>
+<header class="app-bar">
+  <div class="container">
+    <a class="logo" href="site.html" aria-label="Fieldkit" data-alt-aria-label="فیلدکیت"><span class="logo-grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></a>
+    <div class="row-menu">
+      <button class="org" type="button" data-toggle="#org-menu" aria-expanded="false"><b>northwind-farms</b><i class="ti ti-selector" aria-hidden="true"></i></button>
+      <div class="menu" id="org-menu" data-dismissable style="inset-inline-end:auto;inset-inline-start:0">
+        <button type="button"><i class="ti ti-check" aria-hidden="true"></i>northwind-farms</button>
+        <button type="button"><i class="ti ti-point" aria-hidden="true"></i>northwind-lab</button>
+        <hr><button type="button"><i class="ti ti-plus" aria-hidden="true"></i><span data-alt="سازمان تازه">New organization</span></button>
+      </div>
+    </div>
+    <span class="spacer"></span>
+    <button class="btn btn-ghost" type="button" data-lang-toggle data-alt="English">فارسی</button>
+    <button class="btn btn-ghost btn-icon" type="button" data-theme-toggle aria-label="Dark mode" data-alt-aria-label="حالت تیره"><i class="ti ti-moon" aria-hidden="true"></i></button>
+    <a class="btn btn-ghost btn-icon hide-xs" href="#" aria-label="Help" data-alt-aria-label="راهنما"><i class="ti ti-help-circle" aria-hidden="true"></i></a>
+    <button class="avatar" type="button" aria-label="Account" data-alt-aria-label="حساب">SN</button>
+  </div>
+</header>
+<nav class="app-tabs" aria-label="Console" data-alt-aria-label="کنسول">
+  <div class="container">
+    <div role="tablist">
+      <button role="tab" id="t-devices" aria-controls="p-devices" aria-selected="true" data-alt="دستگاه‌ها">Devices</button>
+      <button role="tab" id="t-sites" aria-controls="p-sites" aria-selected="false" data-alt="سایت‌ها">Sites</button>
+      <button role="tab" id="t-alerts" aria-controls="p-alerts" aria-selected="false" data-alt="هشدارها">Alerts</button>
+      <button role="tab" id="t-audit" aria-controls="p-audit" aria-selected="false" data-alt="گزارش ممیزی">Audit log</button>
+      <button role="tab" id="t-settings" aria-controls="p-settings" aria-selected="false" data-alt="تنظیمات">Settings</button>
+    </div>
+  </div>
+</nav>
+
+<main id="main" class="container">
+  <!-- DEVICES -->
+  <section role="tabpanel" id="p-devices" aria-labelledby="t-devices" data-filter-scope>
+    <div class="page-header">
+      <div><h1 data-alt="دستگاه‌ها">Devices</h1><p data-alt="دستگاه‌هایی که به این سازمان متصل‌اند را مدیریت کنید.">Manage the devices connected to this organization.</p></div>
+      <button class="btn btn-ink" type="button" data-dialog="#add-device"><i class="ti ti-plus" aria-hidden="true"></i><span data-alt="افزودن دستگاه">Add device</span></button>
+    </div>
+    <div class="summary"><span><b data-num="14">14</b> <span data-alt="دستگاه">devices</span></span><span><b data-num="11">11</b> <span data-alt="متصل">connected</span></span><span><b data-num="3">3</b> <span data-alt="نیازمند به‌روزرسانی">need an update</span></span></div>
+    <div class="toolbar">
+      <label class="search"><i class="ti ti-search" aria-hidden="true"></i><span class="sr-only" data-alt="جست‌وجوی دستگاه‌ها">Search devices</span><input class="input" type="search" data-filter-search data-hotkey="/" placeholder="Search by name, owner, tag, version…" data-alt-placeholder="جست‌وجو بر اساس نام، مالک، برچسب، نسخه…"></label>
+      <select class="select filter-select" data-filter="status" aria-label="Status" data-alt-aria-label="وضعیت"><option value="all" data-alt="همهٔ وضعیت‌ها">All statuses</option><option value="on" data-alt="متصل">Connected</option><option value="off" data-alt="آفلاین">Offline</option></select>
+      <select class="select filter-select" data-filter="tag" aria-label="Tag" data-alt-aria-label="برچسب"><option value="all" data-alt="همهٔ برچسب‌ها">All tags</option><option value="soil">tag:soil</option><option value="pumps">tag:pumps</option><option value="cams">tag:cams</option><option value="weather">tag:weather</option></select>
+      <button class="btn btn-ghost" type="button" data-filter-reset data-alt="پاک کردن">Clear</button>
+    </div>
+    <div class="table-card">
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead><tr>
+            <th scope="col" aria-sort="none"><button data-sort="text" data-alt="دستگاه">Device</button></th>
+            <th scope="col" class="col-hide" data-alt="برچسب‌ها">Tags</th>
+            <th scope="col" data-alt="نشانی">Address</th>
+            <th scope="col" class="col-hide" aria-sort="none"><button data-sort="text" data-alt="نسخه">Version</button></th>
+            <th scope="col" aria-sort="none"><button data-sort="num" data-alt="آخرین حضور">Last seen</button></th>
+            <th scope="col"><span class="sr-only" data-alt="عملیات">Actions</span></th>
+          </tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <div class="table-foot"><span><span data-alt="نمایش">Showing</span> <b data-filter-count>0</b> <span data-alt="دستگاه">devices</span></span><span class="mono">fieldkit v3.2</span></div>
+      <p class="muted" data-filter-empty hidden style="padding:var(--space-7);text-align:center" data-alt="هیچ دستگاهی با این فیلترها پیدا نشد.">No devices match these filters.</p>
+    </div>
+  </section>
+
+  <!-- SITES -->
+  <section role="tabpanel" id="p-sites" aria-labelledby="t-sites" hidden>
+    <div class="page-header"><div><h1 data-alt="سایت‌ها">Sites</h1><p data-alt="هر سایت یک رلهٔ نزدیک و گروهی از دستگاه‌هاست.">Each site is a nearby relay and a group of devices.</p></div></div>
+    <div class="sites">
+      <article class="card site-card"><div class="row" style="justify-content:space-between"><b data-alt="مزرعهٔ شمالی">North field</b><span class="status is-on" data-alt="سالم">Healthy</span></div><p class="mono small muted">relay · ams-2 · 38 ms</p><div class="meter"><i style="--w:92%"></i></div><p class="small muted"><span data-num="6">6</span>/<span data-num="6">6</span> <span data-alt="دستگاه آنلاین">devices online</span></p></article>
+      <article class="card site-card"><div class="row" style="justify-content:space-between"><b data-alt="ایستگاه پمپ">Pump station</b><span class="status is-warn" data-alt="نیازمند توجه">Needs attention</span></div><p class="mono small muted">relay · fra-1 · 52 ms</p><div class="meter"><i style="--w:66%"></i></div><p class="small muted"><span data-num="2">2</span>/<span data-num="3">3</span> <span data-alt="دستگاه آنلاین">devices online</span></p></article>
+      <article class="card site-card"><div class="row" style="justify-content:space-between"><b data-alt="ورودی و انبار">Gate &amp; barn</b><span class="status is-on" data-alt="سالم">Healthy</span></div><p class="mono small muted">relay · ams-2 · 41 ms</p><div class="meter"><i style="--w:80%"></i></div><p class="small muted"><span data-num="3">3</span>/<span data-num="5">5</span> <span data-alt="دستگاه آنلاین">devices online</span></p></article>
+    </div>
+    <div class="two">
+      <article class="card">
+        <div class="card-head"><h2 data-alt="داده‌های دریافتی در ساعت">Readings ingested per hour</h2><ul class="legend"><li><i style="--c:var(--chart-1)"></i><span data-alt="امروز">Today</span></li><li><i style="--c:var(--chart-2)"></i><span data-alt="دیروز">Yesterday</span></li></ul></div>
+        <div class="card-pad" style="padding-block-start:var(--space-3)"><div data-chart="line" data-height="220" data-dates="2026-10-16T00:00,24,hour" data-dash-second data-series='[{"name":{"en":"Today","fa":"امروز"},"values":[820,790,760,740,760,880,1120,1380,1520,1600,1640,1700,1660,1610,1590,1640,1580,1450,1280,1130,1020,960,900,860]},{"name":{"en":"Yesterday","fa":"دیروز"},"values":[800,780,770,760,790,900,1080,1300,1450,1530,1580,1600,1590,1560,1540,1560,1500,1400,1250,1100,990,930,880,840],"color":"var(--chart-2)"}]' data-label='{"en":"Readings per hour","fa":"داده‌ها در ساعت"}'></div></div>
+      </article>
+      <article class="card">
+        <div class="card-head"><h2 data-alt="نسخه‌های فرم‌ور">Firmware versions</h2></div>
+        <div class="card-pad" style="padding-block-start:var(--space-3)"><div data-chart="bar" data-height="220" data-labels="2.4.1,2.4.0,2.3.7,2.3.2" data-values="9,3,1,1" data-fmt="int" data-label='{"en":"Devices per firmware version","fa":"دستگاه‌ها بر اساس نسخهٔ فرم‌ور"}'></div></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ALERTS -->
+  <section role="tabpanel" id="p-alerts" aria-labelledby="t-alerts" hidden>
+    <div class="page-header"><div><h1 data-alt="هشدارها">Alerts</h1><p data-alt="هشدارهای تکراری در یک رخداد گروه می‌شوند.">Repeated alerts are grouped into one incident.</p></div>
+      <div class="row" data-group style="--gap:4px" role="group" aria-label="Severity" data-alt-aria-label="شدت"><button class="btn btn-ghost" type="button" aria-pressed="true" data-alt="باز">Open</button><button class="btn btn-ghost" type="button" aria-pressed="false" data-alt="حل‌شده">Resolved</button></div>
+    </div>
+    <article class="card">
+      <div class="alert"><span class="sev high"></span><div><b><span data-alt="باتری کم">Battery low</span> · <span class="mono">pump-ctl-02</span></b><p class="small muted" data-alt="۱۴٪ و در حال کاهش. احتمالاً پنل خورشیدی پوشیده است.">14% and dropping. The solar panel is probably covered.</p><div class="row" style="margin-block-start:var(--space-3);--gap:6px"><button class="btn btn-outline" type="button" data-toast="Assigned to you" data-toast-alt="به شما واگذار شد" data-alt="به من بسپار">Assign to me</button><button class="btn btn-ghost" type="button" data-toast="Snoozed for 1 hour" data-toast-alt="یک ساعت به تعویق افتاد" data-alt="تعویق ۱ ساعت">Snooze 1h</button></div></div><time>06:12</time></div>
+      <div class="alert"><span class="sev med"></span><div><b><span data-alt="آفلاین">Offline</span> · <span class="mono">gate-cam-03</span></b><p class="small muted" data-alt="۲۰ دقیقه بدون سیگنال؛ آخرین بار از رلهٔ ams-2 دیده شد.">No signal for 20 minutes; last seen via relay ams-2.</p></div><time>05:48</time></div>
+      <div class="alert"><span class="sev med"></span><div><b><span data-alt="رطوبت خارج از بازه">Moisture out of range</span> · <span class="mono">soil-east-02</span></b><p class="small muted" data-alt="۹٪ — آستانه ۱۵٪.">9% — threshold is 15%.</p></div><time>03:02</time></div>
+      <div class="alert"><span class="sev"></span><div><b data-alt="به‌روزرسانی کامل شد · موج ۲">Rollout finished · wave 2</b><p class="small muted" data-alt="۴۵۸ دستگاه، بدون خطا.">458 devices, no failures.</p></div><time>00:30</time></div>
+    </article>
+  </section>
+
+  <!-- AUDIT -->
+  <section role="tabpanel" id="p-audit" aria-labelledby="t-audit" hidden>
+    <div class="page-header"><div><h1 data-alt="گزارش ممیزی">Audit log</h1><p data-alt="هر تغییر و هر اتصال، با زمان و عامل.">Every change and every connection, with actor and time.</p></div><button class="btn btn-outline" type="button" data-toast="Export started — check your email" data-toast-alt="خروجی در حال آماده‌سازی است — ایمیل‌تان را ببینید"><i class="ti ti-download" aria-hidden="true"></i><span data-alt="خروجی CSV">Export CSV</span></button></div>
+    <div class="table-card"><div class="table-scroll"><table class="data-table">
+      <thead><tr><th scope="col" data-alt="زمان">Time</th><th scope="col" data-alt="عامل">Actor</th><th scope="col" data-alt="رویداد">Event</th><th scope="col" class="col-hide" data-alt="هدف">Target</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">06:14:22</td><td>sara@northwind</td><td data-alt="اتصال SSH">SSH session opened</td><td class="mono col-hide">pump-ctl-02</td></tr>
+        <tr><td class="mono">05:51:09</td><td>ci-runner</td><td data-alt="شروع انتشار موج ۳">Rollout wave 3 started</td><td class="mono col-hide">v2.4.1</td></tr>
+        <tr><td class="mono">04:30:41</td><td>arash@northwind</td><td data-alt="ویرایش سیاست دسترسی">Access policy edited</td><td class="mono col-hide">tag:pumps</td></tr>
+        <tr><td class="mono">02:12:03</td><td>system</td><td data-alt="کلید دستگاه چرخانده شد">Device key rotated</td><td class="mono col-hide">weather-mast</td></tr>
+        <tr><td class="mono">00:02:57</td><td>mina@northwind</td><td data-alt="دستگاه اضافه شد">Device added</td><td class="mono col-hide">soil-north-09</td></tr>
+      </tbody></table></div></div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section role="tabpanel" id="p-settings" aria-labelledby="t-settings" hidden>
+    <div class="page-header"><div><h1 data-alt="تنظیمات">Settings</h1><p data-alt="تنظیمات سازمان northwind-farms">Organization settings for northwind-farms</p></div></div>
+    <div class="settings">
+      <form class="card" data-validate data-keep novalidate data-success="Settings saved" data-success-alt="تنظیمات ذخیره شد">
+        <div class="card-head"><h2 data-alt="سازمان">Organization</h2></div>
+        <div class="card-pad grid" style="--cols:2">
+          <div class="field"><label class="label" for="org-name" data-alt="نام نمایشی">Display name</label><input class="input" id="org-name" value="Northwind Farms" data-alt-value="مزارع نورث‌ویند" required></div>
+          <div class="field"><label class="label" for="expiry" data-alt="انقضای کلید دستگاه">Device key expiry</label><select class="select" id="expiry"><option data-alt="۹۰ روز">90 days</option><option selected data-alt="۱۸۰ روز">180 days</option><option data-alt="هرگز">Never</option></select></div>
+        </div>
+        <div class="setting"><div><b data-alt="تأیید دستی دستگاه‌های تازه">Approve new devices manually</b><p data-alt="دستگاه تا تأیید یک مدیر به شبکه وصل نمی‌شود.">A device can't join until an admin approves it.</p></div><button class="toggle" type="button" role="switch" aria-checked="true" aria-label="Approve new devices manually" data-alt-aria-label="تأیید دستی دستگاه‌های تازه"></button></div>
+        <div class="setting"><div><b data-alt="ضبط جلسه‌های SSH">Record SSH sessions</b><p data-alt="برای ممیزی؛ ۹۰ روز نگه داشته می‌شود.">For audit; kept for 90 days.</p></div><button class="toggle" type="button" role="switch" aria-checked="false" aria-label="Record SSH sessions" data-alt-aria-label="ضبط جلسه‌های SSH"></button></div>
+        <div class="table-foot"><span data-alt="تغییرات فقط با دکمهٔ ذخیره اعمال می‌شوند.">Changes apply when you save.</span><button class="btn btn-ink" type="submit" data-alt="ذخیره">Save</button></div>
+      </form>
+      <article class="card"><div class="setting" style="border:0"><div><b data-alt="حذف سازمان">Delete organization</b><p data-alt="همهٔ دستگاه‌ها قطع و کلیدها باطل می‌شوند.">All devices are disconnected and keys revoked.</p></div><button class="btn btn-outline" type="button" style="color:var(--danger)" data-dialog="#confirm" data-alt="حذف…">Delete…</button></div></article>
+    </div>
+  </section>
+</main>
+
+<!-- device drawer -->
+<dialog class="drawer" id="drawer" aria-labelledby="dr-title">
+  <div class="drawer-head"><div><p class="label-mono" data-alt="دستگاه">Device</p><h2 class="h3 mono" id="dr-title">—</h2></div><button class="btn btn-ghost btn-icon" type="button" data-close aria-label="Close" data-alt-aria-label="بستن"><i class="ti ti-x" aria-hidden="true"></i></button></div>
+  <div class="drawer-body">
+    <dl class="kv" id="dr-kv"></dl>
+    <div><p class="label-mono" style="margin-block-end:var(--space-3)" data-alt="دمای ۲۴ ساعت گذشته">Temperature, last 24h</p><div data-chart="area" data-height="140" data-axis="none" data-values="16,15.5,15,14.8,15.2,16.4,17.8,19.1,20.4,21.2,21.9,22.4,22.1,21.6,21,20.2,19.1,18.4,17.6,17.1,16.8,16.5,16.2,16"></div></div>
+    <div class="row"><button class="btn btn-ink" type="button" data-toast="Opening shell…" data-toast-alt="در حال باز کردن پوسته…"><i class="ti ti-terminal-2" aria-hidden="true"></i><span data-alt="اتصال SSH">Open shell</span></button><button class="btn btn-outline" type="button" data-toast="Reboot scheduled" data-toast-alt="راه‌اندازی مجدد زمان‌بندی شد" data-alt="راه‌اندازی مجدد">Reboot</button></div>
+  </div>
+</dialog>
+
+<dialog class="modal" id="add-device" aria-labelledby="ad-title">
+  <form data-validate novalidate data-success="Device key created" data-success-alt="کلید دستگاه ساخته شد" style="padding:var(--space-6);display:grid;gap:var(--space-4)">
+    <h2 class="h3" id="ad-title" data-alt="افزودن دستگاه">Add a device</h2>
+    <div class="field"><label class="label" for="ad-name" data-alt="نام دستگاه">Device name</label><input class="input" id="ad-name" name="name" required pattern="[a-z0-9-]+" placeholder="soil-north-10" dir="ltr" data-pattern-msg="Lowercase letters, numbers and dashes only."><span class="hint" data-alt="فقط حروف کوچک لاتین، عدد و خط تیره.">Lowercase letters, numbers and dashes.</span></div>
+    <div class="field"><label class="label" for="ad-tag" data-alt="برچسب">Tag</label><select class="select" id="ad-tag" name="tag"><option>tag:soil</option><option>tag:pumps</option><option>tag:cams</option><option>tag:weather</option></select></div>
+    <div class="row" style="justify-content:flex-end"><button class="btn btn-ghost" type="button" data-close data-alt="انصراف">Cancel</button><button class="btn btn-ink" type="submit" data-alt="ساخت کلید">Generate key</button></div>
+  </form>
+</dialog>
+<dialog class="modal" id="confirm" aria-labelledby="cf-title">
+  <form method="dialog" style="padding:var(--space-6);display:grid;gap:var(--space-4)">
+    <h2 class="h3" id="cf-title" data-alt="سازمان حذف شود؟">Delete organization?</h2>
+    <p class="muted" data-alt="این کار قابل بازگشت نیست و ۱۴ دستگاه بلافاصله قطع می‌شوند.">This can't be undone and 14 devices disconnect immediately.</p>
+    <div class="row" style="justify-content:flex-end"><button class="btn btn-ghost" value="cancel" data-alt="انصراف">Cancel</button><button class="btn btn-danger" value="ok" data-alt="حذف">Delete</button></div>
+  </form>
+</dialog>
+
+<script>
+  const DEVICES = [
+    ['soil-north-07', 'sara@northwind', ['soil'], '100.64.3.7', '2.4.1', 0],
+    ['soil-north-08', 'sara@northwind', ['soil'], '100.64.3.8', '2.4.1', 0],
+    ['soil-north-09', 'mina@northwind', ['soil'], '100.64.3.9', '2.4.1', 40],
+    ['soil-east-02', 'mina@northwind', ['soil'], '100.64.3.21', '2.4.0', 120],
+    ['pump-ctl-01', 'arash@northwind', ['pumps'], '100.64.3.11', '2.4.1', 0],
+    ['pump-ctl-02', 'arash@northwind', ['pumps'], '100.64.3.12', '2.3.7', 0],
+    ['pump-ctl-03', 'arash@northwind', ['pumps'], '100.64.3.13', '2.4.1', 9300],
+    ['weather-mast', 'ops@northwind', ['weather'], '100.64.5.1', '2.4.1', 0],
+    ['gate-cam-01', 'ops@northwind', ['cams'], '100.64.5.7', '2.4.1', 0],
+    ['gate-cam-02', 'ops@northwind', ['cams'], '100.64.5.8', '2.4.0', 15],
+    ['gate-cam-03', 'ops@northwind', ['cams'], '100.64.5.9', '2.3.2', 1260],
+    ['barn-env-01', 'mina@northwind', ['weather', 'soil'], '100.64.5.14', '2.4.1', 0],
+    ['ops-laptop', 'sara@northwind', [], '100.64.0.2', '3.2.0', 0],
+    ['ci-runner', 'ops@northwind', [], '100.64.0.9', '3.2.0', 0],
+  ];
+  const L = () => tf.lang();
+  const T = {
+    connected: { en: 'Connected', fa: 'متصل' }, update: { en: 'Update', fa: 'به‌روزرسانی' },
+    edit: { en: 'Edit tags…', fa: 'ویرایش برچسب‌ها…' }, ssh: { en: 'Open shell', fa: 'اتصال SSH' }, expiry: { en: 'Disable key expiry', fa: 'غیرفعال کردن انقضای کلید' }, remove: { en: 'Remove…', fa: 'حذف…' },
+    copy: { en: 'Copy address', fa: 'کپی نشانی' }, more: { en: 'More actions', fa: 'عملیات بیشتر' },
+    owner: { en: 'Owner', fa: 'مالک' }, address: { en: 'Address', fa: 'نشانی' }, version: { en: 'Firmware', fa: 'فرم‌ور' }, tags: { en: 'Tags', fa: 'برچسب‌ها' }, seen: { en: 'Last seen', fa: 'آخرین حضور' }, relay: { en: 'Relay', fa: 'رله' },
+  };
+  const t = (k) => T[k][L()];
+  function row(d, i) {
+    const [name, owner, tags, ip, ver, seen] = d;
+    const on = seen < 60;
+    const tr = document.createElement('tr');
+    tr.dataset.filterItem = '';
+    tr.dataset.status = on ? 'on' : 'off';
+    tr.dataset.tag = tags.join(' ');
+    tr.dataset.href = '';
+    tr.dataset.index = i;
+    tr.innerHTML = `
+      <td><span class="cell-main"><b class="mono">${name}</b><small>${owner}</small></span></td>
+      <td class="col-hide"><span class="tags">${tags.map((x) => `<span class="tag">tag:${x}</span>`).join('') || '<span class="muted small">—</span>'}</span></td>
+      <td><span class="addr">${ip}<button type="button" data-copy="${ip}" aria-label="${t('copy')}"><i class="ti ti-copy"></i></button></span></td>
+      <td class="col-hide"><span class="mono">${ver}</span>${ver < '2.4.1' && !ver.startsWith('3') ? ` <span class="badge badge-accent">${t('update')}</span>` : ''}</td>
+      <td data-value="${seen}">${on ? `<span class="status is-on">${t('connected')}</span>` : `<span class="status is-off">${tf.ago(seen * 60)}</span>`}</td>
+      <td><div class="row-menu"><button class="btn btn-ghost btn-icon" type="button" data-toggle="#m-${i}" aria-expanded="false" aria-label="${t('more')}"><i class="ti ti-dots"></i></button>
+        <div class="menu" id="m-${i}" data-dismissable><button type="button" data-toast="${t('ssh')}"><i class="ti ti-terminal-2"></i>${t('ssh')}</button><button type="button"><i class="ti ti-tag"></i>${t('edit')}</button><button type="button"><i class="ti ti-clock-off"></i>${t('expiry')}</button><hr><button type="button" class="danger"><i class="ti ti-trash"></i>${t('remove')}</button></div></div></td>`;
+    return tr;
+  }
+  function render() {
+    const body = document.getElementById('rows');
+    body.replaceChildren(...DEVICES.map(row));
+    tf.applyFilter(document.getElementById('p-devices'));
+  }
+  document.addEventListener('tf:ready', render);
+  document.addEventListener('tf:lang', render);
+  document.getElementById('rows').addEventListener('click', (e) => {
+    if (e.target.closest('button, a, .menu')) return;
+    const tr = e.target.closest('tr');
+    if (!tr) return;
+    const [name, owner, tags, ip, ver, seen] = DEVICES[tr.dataset.index];
+    document.getElementById('dr-title').textContent = name;
+    document.getElementById('dr-kv').innerHTML = `<dt>${t('owner')}</dt><dd>${owner}</dd><dt>${t('address')}</dt><dd class="mono" dir="ltr">${ip}</dd><dt>${t('version')}</dt><dd class="mono">${ver}</dd><dt>${t('tags')}</dt><dd>${tags.map((x) => `<span class="tag">tag:${x}</span>`).join(' ') || '—'}</dd><dt>${t('seen')}</dt><dd>${seen < 60 ? t('connected') : tf.ago(seen * 60)}</dd><dt>${t('relay')}</dt><dd class="mono">ams-2 · 38 ms</dd>`;
+    document.getElementById('drawer').showModal();
+    requestAnimationFrame(() => tf.drawCharts(document.getElementById('drawer')));
+  });
+  document.getElementById('confirm').addEventListener('close', (e) => { if (e.target.returnValue === 'ok') tf.toast(L() === 'fa' ? 'حذف شد (نمایشی)' : 'Deleted (demo)'); });
+</script>
+</body>
+</html>

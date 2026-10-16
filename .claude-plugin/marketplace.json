@@ -18,12 +18,22 @@
       ]
     },
     {
+      "name": "hearth",
+      "description": "Tastefolio design language — Warm technical clarity — paper canvas, ink buttons, mono labels, honest tables",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/hearth"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
       "strict": false,
       "skills": [
-        "./skills/switchboard"
+        "./skills/switchboard",
+        "./skills/hearth"
       ]
     }
   ]

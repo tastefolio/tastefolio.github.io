@@ -283,7 +283,7 @@ code, .mono { font-family: var(--font-mono); font-size: .92em; }
 .entry-list .remove:hover { color: var(--danger); background: var(--danger-soft); }
 
 /* tables */
-.table-wrap { overflow-x: auto; }
+.table-wrap { position: relative; overflow-x: auto; }
 .table { inline-size: 100%; border-collapse: collapse; font-size: 14px; }
 .table th { text-align: start; font-size: var(--fs-xs); font-weight: 600; color: var(--ink-3); padding: 10px var(--space-6); border-block-end: 1px solid var(--line); white-space: nowrap; }
 .table td { padding: 12px var(--space-6); border-block-end: 1px solid var(--line); }
