@@ -1,0 +1,34 @@
+{
+  "name": "Ultraviolet",
+  "order": 5,
+  "category": "infra",
+  "mode": "dark",
+  "density": "balanced",
+  "persianFirst": true,
+  "tags": ["dark", "glow", "AI", "cloud", "isometric"],
+  "tagline": {
+    "en": "Dark-first infrastructure for AI — indigo space, violet light, glowing edges and isometric hardware",
+    "fa": "زیرساخت تیره‌محور برای هوش مصنوعی — فضای نیلی، نور بنفش، لبه‌های درخشان و سخت‌افزار ایزومتریک"
+  },
+  "summary": {
+    "en": "A night-mode language for compute, AI and developer platforms: near-black indigo canvas, grid-line backdrops that fade into violet auras, tiles whose borders catch light from one corner, a gradient stat tile, an isometric stack of hardware drawn in CSS and monospace numbers. The console is a dark sidebar with glowing active states, telemetry charts with soft light, utilization meters and a launch dialog with selectable hardware cards.",
+    "fa": "زبانی شبانه برای پلتفرم‌های پردازش، هوش مصنوعی و توسعه‌دهنده: زمینهٔ نیلیِ تقریباً سیاه، شبکهٔ خطوطی که در هالهٔ بنفش محو می‌شود، کاشی‌هایی که لبه‌شان از یک گوشه نور می‌گیرد، کاشی آماری گرادیانی، پشتهٔ ایزومتریک سخت‌افزار با CSS و اعداد مونو. کنسول، سایدبار تیره با حالت فعال درخشان، نمودارهای تله‌متری با نور نرم، شاخص‌های مصرف و دیالوگ راه‌اندازی با کارت‌های انتخاب سخت‌افزار است."
+  },
+  "bestFor": {
+    "en": ["GPU, cloud and AI infrastructure products", "Developer platforms and CLIs with a marketing site", "Monitoring and telemetry consoles", "Gaming, Web3 or hardware launches that want a night look"],
+    "fa": ["محصولات GPU، ابر و زیرساخت هوش مصنوعی", "پلتفرم‌های توسعه‌دهنده و CLI با سایت معرفی", "کنسول‌های پایش و تله‌متری", "معرفی بازی، وب۳ یا سخت‌افزار با حال‌وهوای شبانه"]
+  },
+  "avoidFor": {
+    "en": ["Healthcare, finance or government trust sites", "Long reading and documentation-heavy pages", "Audiences that print or work in bright environments"],
+    "fa": ["سایت‌های سلامت، مالی یا دولتی که اعتماد رسمی می‌خواهند", "صفحه‌های طولانی برای مطالعه و مستندات", "مخاطبانی که چاپ می‌کنند یا در محیط پرنور کار می‌کنند"]
+  },
+  "signature": {
+    "en": ["Grid-line backdrop masked into a radial fade plus soft violet auras", "Tiles with a light-catching gradient border from one corner", "One gradient stat tile with a huge monospace number", "Isometric hardware stack built from CSS 3D transforms", "Primary buttons in a violet gradient with an outer glow", "Glowing status dots, meters and chart lines in the console"],
+    "fa": ["پس‌زمینهٔ شبکه‌ای محوشونده همراه با هاله‌های بنفش", "کاشی‌هایی با حاشیهٔ گرادیانی که از یک گوشه نور می‌گیرد", "یک کاشی آماری گرادیانی با عدد مونوی بزرگ", "پشتهٔ ایزومتریک سخت‌افزار با تبدیل‌های سه‌بعدی CSS", "دکمهٔ اصلی گرادیانی بنفش با درخشش بیرونی", "نقطه‌های وضعیت، شاخص‌ها و خطوط نمودار درخشان در کنسول"]
+  },
+  "swatches": ["#07060e", "#141127", "#f4f1ff", "#8b5cf6", "#38bdf8"],
+  "fonts": { "latin": "Sora", "persian": "Noto Kufi Arabic", "mono": "Martian Mono" },
+  "icons": "Phosphor (duotone)",
+  "brandTrials": ["22d3ee", "f43f5e", "10b981", "f59e0b"],
+  "demos": { "site": { "host": "hexa.example" }, "dashboard": { "host": "console.hexa.example" } }
+}

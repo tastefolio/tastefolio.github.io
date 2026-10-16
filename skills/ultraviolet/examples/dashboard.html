@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="dashboard" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Clusters · Hexa console">کلاسترها · کنسول هگزا</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Martian+Mono:wght@400;500;600&family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/duotone/style.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .kpi .label { margin-block-end: 4px; }
+  .util { display: grid; grid-template-columns: 1fr 64px; gap: 10px; align-items: center; min-inline-size: 140px; }
+  .util span { font: 12px var(--font-mono); color: var(--ink-2); text-align: end; }
+  .donut-box { display: grid; place-items: center; gap: var(--space-3); }
+  .donut-box [data-chart] { inline-size: 180px; block-size: 180px; }
+  .region-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; font-size: 13.5px; }
+  .region-list li { display: grid; grid-template-columns: 1fr auto; gap: 6px; }
+  .region-list .meter { grid-column: 1 / -1; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<div class="console">
+  <aside class="side" id="side" data-dismissable aria-label="کنسول" data-alt-aria-label="Console">
+    <a class="logo" href="site.html"><span class="logo-mark" aria-hidden="true"><i class="ph-duotone ph-hexagon"></i></span><span data-alt="Hexa">هگزا</span></a>
+    <nav>
+      <a href="#" aria-current="page"><i class="ph-duotone ph-squares-four" aria-hidden="true"></i><span data-alt="Overview">نمای کلی</span></a>
+      <a href="#"><i class="ph-duotone ph-cpu" aria-hidden="true"></i><span data-alt="Clusters">کلاسترها</span></a>
+      <a href="#"><i class="ph-duotone ph-flow-arrow" aria-hidden="true"></i><span data-alt="Training jobs">کارهای آموزش</span></a>
+      <a href="#"><i class="ph-duotone ph-broadcast" aria-hidden="true"></i><span data-alt="Endpoints">اندپوینت‌ها</span></a>
+      <p class="group" data-alt="Data">داده</p>
+      <a href="#"><i class="ph-duotone ph-database" aria-hidden="true"></i><span data-alt="Datasets">مجموعه‌داده‌ها</span></a>
+      <a href="#"><i class="ph-duotone ph-package" aria-hidden="true"></i><span data-alt="Images">ایمیج‌ها</span></a>
+      <p class="group" data-alt="Account">حساب</p>
+      <a href="#"><i class="ph-duotone ph-wallet" aria-hidden="true"></i><span data-alt="Billing">صورتحساب</span></a>
+      <a href="#"><i class="ph-duotone ph-key" aria-hidden="true"></i><span data-alt="API keys">کلیدهای API</span></a>
+    </nav>
+    <div class="credit">
+      <div class="row" style="justify-content:space-between"><span class="subtle" data-alt="Credit left">اعتبار باقی‌مانده</span><b class="mono" data-num="62" data-fmt="pct">۶۲٪</b></div>
+      <div class="meter"><i style="--w:62%"></i></div>
+      <span class="subtle small"><span data-num="4180000" data-fmt="toman">۴٬۱۸۰٬۰۰۰ تومان</span></span>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="btn btn-ghost btn-icon side-toggle" type="button" data-toggle="#side" aria-expanded="false" aria-label="منو" data-alt-aria-label="Menu" id="side-btn"><i class="ph-duotone ph-list" aria-hidden="true"></i></button>
+      <span class="project-pill"><span class="dot" aria-hidden="true"></span><span data-alt="Project: vision-v3">پروژه: vision-v3</span></span>
+      <span class="spacer"></span>
+      <button class="btn btn-ghost" type="button" data-lang-toggle data-alt="فارسی">English</button>
+      <button class="btn btn-ghost btn-icon" type="button" data-theme-toggle aria-label="تغییر پوسته" data-alt-aria-label="Toggle theme"><i class="ph-duotone ph-sun" aria-hidden="true"></i></button>
+      <div class="rel">
+        <button class="btn btn-outline btn-icon" type="button" data-toggle="#user" aria-expanded="false" aria-label="حساب" data-alt-aria-label="Account"><i class="ph-duotone ph-user" aria-hidden="true"></i></button>
+        <div class="menu" id="user" data-dismissable><a href="#"><i class="ph-duotone ph-gear" aria-hidden="true"></i><span data-alt="Settings">تنظیمات</span></a><a href="site.html"><i class="ph-duotone ph-sign-out flip-rtl" aria-hidden="true"></i><span data-alt="Sign out">خروج</span></a></div>
+      </div>
+    </header>
+
+    <main class="content" id="main">
+      <div class="page-title">
+        <div><span class="label" data-alt="Overview">نمای کلی</span><h1 data-alt="GPU clusters">کلاسترهای GPU</h1></div>
+        <div class="row">
+          <div class="seg" data-group role="group" aria-label="بازه" data-alt-aria-label="Range"><button type="button" aria-pressed="false" data-value="1h" data-alt="1h">۱ ساعت</button><button type="button" aria-pressed="true" data-value="24h" data-alt="24h">۲۴ ساعت</button><button type="button" aria-pressed="false" data-value="7d" data-alt="7d">۷ روز</button></div>
+          <button class="btn btn-primary" type="button" data-dialog="#launch"><i class="ph-duotone ph-plus-circle" aria-hidden="true"></i><span data-alt="New cluster">کلاستر تازه</span></button>
+        </div>
+      </div>
+
+      <div class="kpis">
+        <article class="tile kpi"><span class="label" data-alt="Active GPUs">GPU فعال</span><span class="v"><span data-num="48">۴۸</span><span class="subtle" style="font-size:16px"> / <span data-num="64">۶۴</span></span></span><span class="d" data-alt="+8 since yesterday">۸+ از دیروز</span></article>
+        <article class="tile kpi"><span class="label" data-alt="Avg. utilization">میانگین مصرف</span><span class="v" data-num="87" data-fmt="pct">۸۷٪</span><span class="d" data-alt="healthy range">در محدودهٔ سالم</span></article>
+        <article class="tile kpi"><span class="label" data-alt="Running jobs">کارهای در حال اجرا</span><span class="v" data-num="12">۱۲</span><span class="d bad" data-alt="1 failed in the last hour">۱ خطا در ساعت گذشته</span></article>
+        <article class="tile kpi"><span class="label" data-alt="Spend today">هزینهٔ امروز</span><span class="v" data-num="2340000" data-fmt="compact">۲٫۳ میلیون</span><span class="d" data-alt="Toman · within budget">تومان · زیر سقف بودجه</span></article>
+      </div>
+
+      <div class="two-col">
+        <article class="tile">
+          <div class="tile-head"><h2 class="h3" data-alt="GPU utilization">مصرف GPU</h2><ul class="legend"><li><i style="--c:var(--chart-1)"></i><span data-alt="Training">آموزش</span></li><li><i style="--c:var(--chart-2)"></i><span data-alt="Inference">استنتاج</span></li></ul></div>
+          <div data-chart="area" data-height="250" data-fmt="pct" data-max="100" data-dates="2026-10-15T15:00,24,hour" data-series='[{"name":{"fa":"آموزش","en":"Training"},"values":[62,64,70,74,72,78,81,85,88,90,86,84,87,89,92,94,91,88,90,93,95,92,89,87]},{"name":{"fa":"استنتاج","en":"Inference"},"values":[22,20,18,16,15,14,16,22,30,38,44,48,52,50,47,45,43,46,51,55,52,48,40,34],"color":"var(--chart-2)"}]' data-label='{"fa":"نمودار مصرف GPU","en":"GPU utilization chart"}'></div>
+        </article>
+        <article class="tile">
+          <div class="tile-head"><h2 class="h3" data-alt="Capacity by region">ظرفیت بر اساس منطقه</h2></div>
+          <ul class="region-list">
+            <li><span><span data-alt="Tehran">تهران</span> <span class="mono subtle">thr-1</span></span><b class="mono" data-num="91" data-fmt="pct">۹۱٪</b><span class="meter"><i class="hot" style="--w:91%"></i></span></li>
+            <li><span><span data-alt="Isfahan">اصفهان</span> <span class="mono subtle">ifn-1</span></span><b class="mono" data-num="64" data-fmt="pct">۶۴٪</b><span class="meter"><i style="--w:64%"></i></span></li>
+            <li><span><span data-alt="Tabriz">تبریز</span> <span class="mono subtle">tbz-1</span></span><b class="mono" data-num="38" data-fmt="pct">۳۸٪</b><span class="meter"><i style="--w:38%"></i></span></li>
+          </ul>
+          <div class="donut-box" style="margin-block-start:var(--space-4)"><div data-chart="donut" data-values="48,16" data-labels='{"fa":["در استفاده","آزاد"],"en":["In use","Free"]}' data-center='{"fa":"۴۸ از ۶۴","en":"48 / 64"}'></div></div>
+        </article>
+      </div>
+
+      <div class="two-col">
+        <article class="tile" data-filter-scope style="padding-inline:0">
+          <div class="tile-head" style="padding-inline:var(--space-6)"><h2 class="h3" data-alt="Nodes">نودها</h2>
+            <div class="seg" data-group role="group" aria-label="وضعیت" data-alt-aria-label="State"><button type="button" data-filter="state" data-value="all" aria-pressed="true" data-alt="All">همه</button><button type="button" data-filter="state" data-value="run" aria-pressed="false" data-alt="Running">فعال</button><button type="button" data-filter="state" data-value="queue" aria-pressed="false" data-alt="Queued">در صف</button><button type="button" data-filter="state" data-value="fail" aria-pressed="false" data-alt="Failed">خطا</button></div>
+          </div>
+          <div class="table-scroll">
+            <table class="table">
+              <thead><tr><th scope="col" data-alt="Node">نود</th><th scope="col" data-alt="GPU">GPU</th><th scope="col" data-alt="Utilization">مصرف</th><th scope="col" data-alt="State">وضعیت</th><th scope="col" data-alt="Uptime">زمان کار</th></tr></thead>
+              <tbody>
+                <tr data-filter-item data-state="run"><td class="mono ltr">thr1-node-01</td><td class="mono ltr">8× HX-80</td><td><div class="util"><span class="meter"><i style="--w:94%"></i></span><span data-num="94" data-fmt="pct">۹۴٪</span></div></td><td><span class="state run"><span data-alt="Running">فعال</span></span></td><td class="mono ltr">4d 6h</td></tr>
+                <tr data-filter-item data-state="run"><td class="mono ltr">thr1-node-02</td><td class="mono ltr">8× HX-80</td><td><div class="util"><span class="meter"><i style="--w:89%"></i></span><span data-num="89" data-fmt="pct">۸۹٪</span></div></td><td><span class="state run"><span data-alt="Running">فعال</span></span></td><td class="mono ltr">4d 6h</td></tr>
+                <tr data-filter-item data-state="run"><td class="mono ltr">ifn1-node-07</td><td class="mono ltr">4× HX-16</td><td><div class="util"><span class="meter"><i style="--w:61%"></i></span><span data-num="61" data-fmt="pct">۶۱٪</span></div></td><td><span class="state run"><span data-alt="Running">فعال</span></span></td><td class="mono ltr">19h</td></tr>
+                <tr data-filter-item data-state="queue"><td class="mono ltr">ifn1-node-08</td><td class="mono ltr">4× HX-16</td><td><div class="util"><span class="meter"><i style="--w:0%"></i></span><span data-num="0" data-fmt="pct">۰٪</span></div></td><td><span class="state queue"><span data-alt="Queued">در صف</span></span></td><td class="mono">—</td></tr>
+                <tr data-filter-item data-state="fail"><td class="mono ltr">tbz1-node-03</td><td class="mono ltr">2× HX-16</td><td><div class="util"><span class="meter"><i class="hot" style="--w:12%"></i></span><span data-num="12" data-fmt="pct">۱۲٪</span></div></td><td><span class="state fail"><span data-alt="Driver error">خطای درایور</span></span></td><td class="mono ltr">2m</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="muted" data-filter-empty hidden style="padding:var(--space-6);text-align:center" data-alt="No nodes in this state.">نودی در این وضعیت نیست.</p>
+        </article>
+        <article class="tile">
+          <div class="tile-head"><h2 class="h3" data-alt="Training jobs">کارهای آموزش</h2><button class="btn btn-ghost" type="button" data-toast="Logs streaming in a new tab" data-toast-alt="گزارش‌ها در تب تازه پخش می‌شوند" data-alt="All logs">همهٔ گزارش‌ها</button></div>
+          <ul class="jobs">
+            <li><div class="row"><span class="mono ltr">vision-v3 · epoch 9/12</span><b class="mono" data-num="75" data-fmt="pct">۷۵٪</b></div><span class="meter"><i style="--w:75%"></i></span><span class="subtle small" data-alt="ETA 1h 40m · loss 0.412">زمان باقی‌مانده ۱ ساعت و ۴۰ دقیقه · loss 0.412</span></li>
+            <li><div class="row"><span class="mono ltr">asr-fa · fine-tune</span><b class="mono" data-num="32" data-fmt="pct">۳۲٪</b></div><span class="meter"><i style="--w:32%"></i></span><span class="subtle small" data-alt="ETA 5h 10m">زمان باقی‌مانده ۵ ساعت و ۱۰ دقیقه</span></li>
+            <li><div class="row"><span class="mono ltr">embed-small · eval</span><b class="mono" data-num="100" data-fmt="pct">۱۰۰٪</b></div><span class="meter"><i style="--w:100%"></i></span><span class="subtle small" data-alt="Finished · accuracy 91.3%">تمام شد · دقت ۹۱٫۳٪</span></li>
+          </ul>
+        </article>
+      </div>
+    </main>
+  </div>
+</div>
+
+<dialog class="modal" id="launch" aria-labelledby="ln-title">
+  <form class="modal-body" data-validate novalidate data-success="Cluster is starting — about 40 seconds" data-success-alt="کلاستر در حال راه‌اندازی است — حدود ۴۰ ثانیه">
+    <div class="row" style="justify-content:space-between"><h2 class="h3" id="ln-title" data-alt="Launch a cluster">ساخت کلاستر تازه</h2><button class="btn btn-ghost btn-icon" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><i class="ph-duotone ph-x" aria-hidden="true"></i></button></div>
+    <div class="field"><label class="flabel" for="ln-name" data-alt="Cluster name">نام کلاستر</label><input class="input" id="ln-name" name="name" required pattern="[a-z0-9-]{3,}" dir="ltr" placeholder="train-vision" data-pattern-msg="حداقل ۳ نویسه: حروف کوچک لاتین، عدد و خط تیره." data-pattern-msg-alt="At least 3 characters: lowercase letters, digits and dashes."></div>
+    <fieldset style="border:0;padding:0;margin:0;display:grid;gap:8px"><legend class="flabel" style="margin-block-end:8px" data-alt="GPU type">نوع GPU</legend>
+      <div class="gpu-options">
+        <label class="gpu"><input type="radio" name="gpu" value="hx16"><b>HX-16</b><span data-alt="16 GB · inference">۱۶ گیگ · استنتاج</span></label>
+        <label class="gpu"><input type="radio" name="gpu" value="hx80" checked><b>HX-80</b><span data-alt="80 GB · training">۸۰ گیگ · آموزش</span></label>
+        <label class="gpu"><input type="radio" name="gpu" value="hx80x"><b>HX-80 NVL</b><span data-alt="2× bandwidth">پهنای باند دوبرابر</span></label>
+      </div>
+    </fieldset>
+    <div class="field"><label class="flabel" for="ln-count" data-alt="Number of GPUs">تعداد GPU</label><select class="select" id="ln-count" name="count"><option>1</option><option>2</option><option>4</option><option selected>8</option><option>16</option></select></div>
+    <div class="row" style="justify-content:space-between"><span class="small muted" data-alt="Auto-stop when idle for 30 minutes">توقف خودکار پس از ۳۰ دقیقه بیکاری</span><button class="switch" type="button" role="switch" aria-checked="true" aria-label="توقف خودکار" data-alt-aria-label="Auto-stop"></button></div>
+    <div class="row" style="justify-content:flex-end"><button class="btn btn-ghost" type="button" data-close data-alt="Cancel">انصراف</button><button class="btn btn-primary" type="submit" data-alt="Launch">راه‌اندازی</button></div>
+  </form>
+</dialog>
+</body>
+</html>

@@ -1,0 +1,142 @@
+/* Ultraviolet — design tokens (Tastefolio). Dark-first: indigo-black space, violet light, glowing edges.
+   Default theme is dark (<html data-theme="dark">); a light theme is provided for documents and print. */
+:root, [data-theme="dark"] {
+  --canvas: #07060e;
+  --surface: #0e0c1a;
+  --surface-2: #141127;
+  --surface-3: #1c1834;
+  --surface-ink: #f4f1ff;
+  --overlay: rgba(4, 3, 10, .72);
+
+  --ink: #f4f1ff;
+  --ink-2: #b6aed2;
+  --ink-3: #7d7499;
+  --ink-inverse: #07060e;
+
+  --line: rgba(170, 150, 255, .13);
+  --line-2: rgba(170, 150, 255, .24);
+
+  --brand: #8b5cf6;
+  --brand-ink: #ffffff;
+  --brand-2: color-mix(in oklab, var(--brand) 55%, #3b82f6);   /* gradient partner */
+  --brand-light: color-mix(in oklab, var(--brand) 45%, #fff);  /* highlighted words, links */
+  --brand-soft: color-mix(in oklab, var(--brand) 18%, transparent);
+  --brand-strong: color-mix(in oklab, var(--brand) 80%, #fff);
+  --glow: color-mix(in oklab, var(--brand) 55%, transparent);
+  --focus: color-mix(in oklab, var(--brand) 70%, transparent);
+
+  --success: #34d399;
+  --success-soft: rgba(52, 211, 153, .14);
+  --warning: #fbbf24;
+  --warning-soft: rgba(251, 191, 36, .14);
+  --danger: #f87171;
+  --danger-soft: rgba(248, 113, 113, .14);
+  --info: #60a5fa;
+  --info-soft: rgba(96, 165, 250, .14);
+
+  --chart-1: var(--brand);
+  --chart-2: #38bdf8;
+  --chart-3: #f472b6;
+  --chart-4: #34d399;
+  --chart-5: #fbbf24;
+  --chart-6: #7d7499;
+  --chart-grid: rgba(170, 150, 255, .08);
+  --chart-axis: var(--ink-3);
+  --chart-curve: smooth;
+  --chart-stroke: 2.5;
+  --chart-area: .45;
+  --chart-radius: 6;
+  --chart-bar-gap: .45;
+  --chart-donut: 12;
+
+  --font-sans: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Martian Mono", ui-monospace, Menlo, monospace;
+  --fs-xs: 12px;
+  --fs-sm: 13px;
+  --fs-md: 15px;
+  --fs-lg: 17px;
+  --fs-xl: 21px;
+  --fs-2xl: 30px;
+  --fs-3xl: 44px;
+  --fs-display: clamp(38px, 6vw, 84px);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 600;
+  --fw-display: 700;
+  --lh-tight: 1.06;
+  --lh-snug: 1.3;
+  --lh-body: 1.65;
+  --tracking-display: -.04em;
+  --tracking-caps: .14em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 48px;
+  --space-9: 72px;
+  --space-10: 120px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+  --border-w: 1px;
+  --shadow-1: 0 1px 0 rgba(255, 255, 255, .04) inset, 0 10px 30px -18px rgba(0, 0, 0, .8);
+  --shadow-2: 0 0 0 1px var(--line-2), 0 20px 50px -20px rgba(0, 0, 0, .9);
+  --shadow-3: 0 40px 100px -30px rgba(0, 0, 0, .95);
+  --shadow-glow: 0 0 0 1px color-mix(in oklab, var(--brand) 50%, transparent), 0 10px 40px -8px var(--glow);
+
+  --container: 1240px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --control-h: 40px;
+  --control-h-lg: 50px;
+  --sidebar-w: 248px;
+
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --dur-1: 150ms;
+  --dur-2: 300ms;
+  --dur-3: 600ms;
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --canvas: #f7f6fc;
+  --surface: #ffffff;
+  --surface-2: #f1eefb;
+  --surface-3: #e7e2f8;
+  --surface-ink: #120f24;
+  --overlay: rgba(18, 15, 36, .45);
+  --ink: #120f24;
+  --ink-2: #4f4870;
+  --ink-3: #857da3;
+  --ink-inverse: #ffffff;
+  --line: rgba(80, 60, 160, .12);
+  --line-2: rgba(80, 60, 160, .22);
+  --brand: #7c3aed;
+  --brand-light: color-mix(in oklab, var(--brand) 85%, #000);
+  --glow: color-mix(in oklab, var(--brand) 30%, transparent);
+  --chart-grid: rgba(80, 60, 160, .08);
+  --chart-area: .22;
+  --shadow-1: 0 1px 2px rgba(18, 15, 36, .06);
+  --shadow-2: 0 0 0 1px var(--line), 0 16px 40px -18px rgba(18, 15, 36, .25);
+  color-scheme: light;
+}
+
+/* Persian: geometric Kufi for both display and text keeps the engineered feel. */
+:root:lang(fa) {
+  --font-sans: "Noto Kufi Arabic", "Sora", Tahoma, sans-serif;
+  --font-display: "Noto Kufi Arabic", "Sora", sans-serif;
+  --font-mono: "Martian Mono", "Noto Kufi Arabic", ui-monospace, monospace;
+  --fs-md: 14px;
+  --fs-display: clamp(30px, 4.8vw, 64px);
+  --lh-tight: 1.45;
+  --lh-snug: 1.6;
+  --lh-body: 2;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+}

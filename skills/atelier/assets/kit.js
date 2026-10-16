@@ -7,7 +7,7 @@
  *              [data-alt-placeholder|aria-label|title|alt|content|value|label], [data-lang-toggle], ?lang=en
  *   Theme      <html data-theme="light|dark">, [data-theme-toggle], ?theme=dark
  *   Brand      ?brand=ff5a36  → sets --brand and a readable --brand-ink
- *   Numbers    [data-num="12840" data-fmt="int|dec1|dec2|pct|pct1|compact|usd|eur|toman"], [data-ago="120"], [data-date="2026-10-12" data-fmt="short|long|day|time"]
+ *   Numbers    [data-num="12840" data-fmt="int|dec1|dec2|pct|pct1|pct2|compact|usd|eur|toman|signed|signedpct"], [data-ago="120"], [data-date="2026-10-12" data-fmt="short|long|day|time"]
  *   Toggles    [data-toggle="#id"] → target[data-open]; target[data-dismissable] closes on outside click / Esc
  *   Tabs       [role=tablist] > [role=tab][aria-controls] with [role=tabpanel]
  *   Pressed    [data-group] > button[aria-pressed]   (radio-like button groups, segmented controls)
@@ -146,6 +146,7 @@
       case 'dec2': return nf({ minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v);
       case 'pct': return nf({ style: 'percent', maximumFractionDigits: 0 }).format(v / 100);
       case 'pct1': return nf({ style: 'percent', minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(v / 100);
+      case 'pct2': return nf({ style: 'percent', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v / 100);
       case 'compact': return nf({ notation: 'compact', maximumFractionDigits: 1 }).format(v);
       case 'usd': return nf({ style: 'currency', currency: 'USD', maximumFractionDigits: v % 1 ? 2 : 0 }).format(v);
       case 'eur': return nf({ style: 'currency', currency: 'EUR', maximumFractionDigits: v % 1 ? 2 : 0 }).format(v);

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="site" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Hexa — AI infrastructure, ready in seconds">هگزا — زیرساخت هوش مصنوعی، آماده در چند ثانیه</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Martian+Mono:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/duotone/style.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .hero .aura-1 { inset-block-start: -260px; inset-inline-start: -180px; }
+  .hero .aura-2 { inset-block-start: 120px; inset-inline-end: -260px; background: radial-gradient(circle, color-mix(in oklab, var(--brand-2) 50%, transparent), transparent 65%); }
+  .iso .chip-1 { inset-block-start: 30px; inset-inline-start: calc(50% + 150px); }
+  .iso .chip-2 { inset-block-start: 170px; inset-inline-end: calc(50% + 150px); }
+  @media (max-width: 640px) { .iso .chip-1 { inset-inline-start: auto; inset-inline-end: 0; inset-block-start: 0; } .iso .chip-2 { inset-inline-end: auto; inset-inline-start: 0; inset-block-start: auto; inset-block-end: 0; } }
+  .section-head { text-align: center; display: grid; gap: var(--space-3); justify-items: center; margin-block-end: var(--space-8); }
+  .cta { position: relative; overflow: hidden; border-radius: var(--radius-xl); padding: clamp(32px, 6vw, 72px); text-align: center; display: grid; gap: var(--space-5); justify-items: center; }
+  .cta form { display: flex; gap: var(--space-2); flex-wrap: wrap; justify-content: center; inline-size: min(560px, 100%); }
+  .cta .field { flex: 1 1 220px; text-align: start; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<div class="promo"><span data-alt="100 free GPU hours for early-stage startups">۱۰۰ ساعت GPU رایگان برای استارتاپ‌های نوپا</span><a href="#start" data-alt="Apply">درخواست دهید</a></div>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"><i class="ph-duotone ph-hexagon"></i></span><span data-alt="Hexa">هگزا</span></a>
+    <nav class="nav" id="nav" aria-label="اصلی" data-alt-aria-label="Primary">
+      <a href="#products" data-alt="Products">محصولات</a><a href="#how" data-alt="How it works">روش کار</a><a href="#pricing" data-alt="Pricing">قیمت‌ها</a><a href="#start" data-alt="Docs">مستندات</a>
+    </nav>
+    <div class="header-end">
+      <button class="btn btn-ghost" type="button" data-lang-toggle data-alt="فارسی">English</button>
+      <a class="btn btn-outline hide-md" href="dashboard.html" data-alt="Console">ورود به کنسول</a>
+      <a class="btn btn-primary" href="#start" data-alt="Get started">شروع کنید</a>
+      <button class="btn btn-ghost btn-icon menu-btn" type="button" data-toggle="#nav" aria-expanded="false" aria-label="منو" data-alt-aria-label="Menu"><i class="ph-duotone ph-list" aria-hidden="true"></i></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero grid-bg" id="top">
+    <span class="aura aura-1" aria-hidden="true"></span><span class="aura aura-2" aria-hidden="true"></span>
+    <div class="container">
+      <span class="eyebrow"><b data-alt="New">تازه</b><span data-alt="H-series clusters now in Tehran">کلاسترهای سری H در دیتاسنتر تهران</span></span>
+      <h1 class="display"><span data-alt="AI infrastructure,">زیرساخت هوش مصنوعی،</span> <span class="lit" data-alt="ready in seconds">آماده در چند ثانیه</span></h1>
+      <p class="lead" data-alt="Spin up GPU clusters for training and inference, pay per minute, and watch every node live — on a network built for heavy models.">کلاستر GPU برای آموزش و استنتاج مدل‌ها بسازید، دقیقه‌ای پرداخت کنید و هر نود را زنده ببینید — روی شبکه‌ای که برای مدل‌های سنگین ساخته شده.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary btn-lg" href="#start"><span data-alt="Launch a cluster">ساخت کلاستر</span><i class="ph-duotone ph-rocket-launch" aria-hidden="true"></i></a>
+        <a class="btn btn-outline btn-lg" href="#pricing" data-alt="View pricing">مشاهدهٔ قیمت‌ها</a>
+      </div>
+      <div class="iso" aria-hidden="true">
+        <div class="iso-stack">
+          <div class="iso-layer" style="--z:0"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="iso-layer" style="--z:44"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="iso-layer is-lit" style="--z:88"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="iso-chip chip-1"><span class="subtle small" data-alt="GPUs ready">GPU آماده</span><b data-num="64">۶۴</b></div>
+        <div class="iso-chip chip-2"><span class="subtle small" data-alt="Node latency">تأخیر بین نودها</span><b><span data-num="0.8" data-fmt="dec1">۰٫۸</span> ms</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container" aria-label="مشتریان" data-alt-aria-label="Customers">
+    <p class="small subtle" style="text-align:center;margin-block-end:var(--space-5)" data-alt="Teams training models on Hexa">تیم‌هایی که مدل‌هایشان را روی هگزا آموزش می‌دهند</p>
+    <div class="logo-row"><span>Nima Labs</span><span>Parsec AI</span><span>Darya</span><span>Kavir Vision</span><span>Sahand</span></div>
+  </section>
+
+  <section class="section container" id="products">
+    <div class="section-head"><span class="label" data-alt="Platform">پلتفرم</span><h2 class="h2"><span data-alt="Everything a model needs,">هرچه یک مدل لازم دارد،</span> <span class="lit" data-alt="in one console">در یک کنسول</span></h2></div>
+    <div class="bento">
+      <article class="tile b-4">
+        <span class="icon"><i class="ph-duotone ph-cpu" aria-hidden="true"></i></span>
+        <h3 class="h3" data-alt="Dedicated GPU clusters">کلاستر GPU اختصاصی</h3>
+        <p class="muted small" data-alt="From a single card to 64 interconnected GPUs. Your images, your drivers, no noisy neighbors.">از یک کارت تا ۶۴ GPU متصل به هم. ایمیج و درایور خودتان، بدون همسایهٔ پرسروصدا.</p>
+<pre class="term visual"><span class="c">$</span> <span class="k">hexa</span> cluster create --gpus 8 --region thr-1
+<span class="ok">✓</span> cluster <b>train-7f2</b> ready in 41s
+<span class="c">$</span> <span class="k">hexa</span> run train.py --dataset s3://corpus
+  epoch 1/12  ████████░░░░  loss 1.842</pre>
+      </article>
+      <article class="tile tile-gradient b-2">
+        <span class="label" style="color:#fff" data-alt="Uptime SLA">توافق‌نامهٔ دسترس‌پذیری</span>
+        <p class="big-num visual" data-num="99.95" data-fmt="pct2">۹۹٫۹۵٪</p>
+        <p class="muted small" data-alt="Credits back automatically when we miss it.">اگر به آن نرسیم، اعتبار خودکار برمی‌گردد.</p>
+      </article>
+      <article class="tile b-2">
+        <span class="icon"><i class="ph-duotone ph-globe-hemisphere-east" aria-hidden="true"></i></span>
+        <h3 class="h3" data-alt="3 regions, 1 network">۳ منطقه، یک شبکه</h3>
+        <div class="dots-map visual" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+      </article>
+      <article class="tile b-2">
+        <span class="icon"><i class="ph-duotone ph-chart-line-up" aria-hidden="true"></i></span>
+        <h3 class="h3" data-alt="Live GPU telemetry">پایش لحظه‌ای GPU</h3>
+        <div class="visual" data-chart="spark" data-height="70" data-values="40,52,48,61,70,66,78,84,80,91,88,94"></div>
+      </article>
+      <article class="tile b-2">
+        <span class="icon"><i class="ph-duotone ph-lightning" aria-hidden="true"></i></span>
+        <h3 class="h3" data-alt="Per-minute billing">پرداخت دقیقه‌ای</h3>
+        <p class="muted small visual" data-alt="Stop a cluster and the meter stops. No monthly minimums.">کلاستر را خاموش کنید، شمارنده هم می‌ایستد. بدون حداقل ماهانه.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section container" id="how" style="padding-block-start:0">
+    <div class="section-head"><span class="label" data-alt="How it works">روش کار</span><h2 class="h2" data-alt="From notebook to production in three steps">از نوت‌بوک تا محصول در سه قدم</h2></div>
+    <div class="steps">
+      <div><h3 class="h3" data-alt="Pick your hardware">سخت‌افزار را انتخاب کنید</h3><p class="muted small" style="margin-block-start:8px" data-alt="Choose a GPU type and count, or let Hexa size it from your model.">نوع و تعداد GPU را انتخاب کنید یا بگذارید هگزا بر اساس مدل پیشنهاد دهد.</p></div>
+      <div><h3 class="h3" data-alt="Bring your code">کدتان را بیاورید</h3><p class="muted small" style="margin-block-start:8px" data-alt="Push a container or connect a Git repository; datasets mount automatically.">کانتینر بفرستید یا مخزن گیت را وصل کنید؛ داده‌ها خودکار متصل می‌شوند.</p></div>
+      <div><h3 class="h3" data-alt="Train, then serve">آموزش دهید، سپس سرو کنید</h3><p class="muted small" style="margin-block-start:8px" data-alt="Promote a checkpoint to an autoscaling inference endpoint.">یک چک‌پوینت را به اندپوینت استنتاج با مقیاس خودکار تبدیل کنید.</p></div>
+    </div>
+  </section>
+
+  <section class="section container" id="pricing" style="padding-block-start:0">
+    <div class="section-head"><span class="label" data-alt="Pricing">قیمت‌ها</span><h2 class="h2" data-alt="Pay for the minutes you use">فقط برای دقیقه‌هایی که استفاده می‌کنید</h2></div>
+    <div class="price-grid">
+      <article class="tile"><span class="label">HX-16</span><p class="price"><span data-num="38000" data-fmt="int">۳۸٬۰۰۰</span> <small data-alt="Toman / hour">تومان / ساعت</small></p><ul class="checks"><li><i class="ph-duotone ph-check-circle" aria-hidden="true"></i><span data-alt="16 GB GPU memory">۱۶ گیگابایت حافظهٔ GPU</span></li><li><i class="ph-duotone ph-check-circle" aria-hidden="true"></i><span data-alt="Inference and fine-tuning">استنتاج و تنظیم دقیق</span></li></ul><a class="btn btn-outline" href="#start" data-alt="Choose">انتخاب</a></article>
+      <article class="tile is-featured"><div class="row" style="justify-content:space-between"><span class="label">HX-80</span><span class="eyebrow" style="padding:4px 10px"><span data-alt="Most popular">پرطرفدار</span></span></div><p class="price"><span data-num="142000" data-fmt="int">۱۴۲٬۰۰۰</span> <small data-alt="Toman / hour">تومان / ساعت</small></p><ul class="checks"><li><i class="ph-duotone ph-check-circle" aria-hidden="true"></i><span data-alt="80 GB GPU memory">۸۰ گیگابایت حافظهٔ GPU</span></li><li><i class="ph-duotone ph-check-circle" aria-hidden="true"></i><span data-alt="Multi-node training">آموزش چندنودی</span></li><li><i class="ph-duotone ph-check-circle" aria-hidden="true"></i><span data-alt="400 Gbps interconnect">اتصال داخلی ۴۰۰ گیگابیت</span></li></ul><a class="btn btn-primary" href="#start" data-alt="Choose HX-80">انتخاب HX-80</a></article>
+      <article class="tile"><span class="label" data-alt="Reserved">رزروی</span><p class="price" data-alt="Custom">سفارشی</p><ul class="checks"><li><i class="ph-duotone ph-check-circle" aria-hidden="true"></i><span data-alt="Up to 40% off with a term">تا ۴۰٪ تخفیف با تعهد زمانی</span></li><li><i class="ph-duotone ph-check-circle" aria-hidden="true"></i><span data-alt="Dedicated engineer">مهندس اختصاصی</span></li></ul><a class="btn btn-outline" href="#start" data-alt="Contact sales">تماس با فروش</a></article>
+    </div>
+  </section>
+
+  <section class="section container" id="start" style="padding-block-start:0">
+    <div class="cta tile grid-bg">
+      <span class="aura" style="inset-block-start:-300px;inset-inline-start:calc(50% - 310px)" aria-hidden="true"></span>
+      <h2 class="h2"><span data-alt="Your first 100 GPU hours">۱۰۰ ساعت GPU اول</span> <span class="lit" data-alt="are on us">مهمان ما باشید</span></h2>
+      <p class="muted" data-alt="Leave your work email; we'll send credits and a setup guide.">ایمیل کاری‌تان را بگذارید؛ اعتبار و راهنمای راه‌اندازی را می‌فرستیم.</p>
+      <form data-validate novalidate data-success="Credits are on their way to your inbox." data-success-alt="اعتبار در راه صندوق ایمیل شماست.">
+        <div class="field"><label class="sr-only" for="cta-email" data-alt="Work email">ایمیل کاری</label><input class="input input-lg" id="cta-email" name="email" type="email" required placeholder="you@company.ai" dir="ltr"></div>
+        <button class="btn btn-primary btn-lg" type="submit" data-alt="Get credits">دریافت اعتبار</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="stack" style="--gap:var(--space-3)"><a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"><i class="ph-duotone ph-hexagon"></i></span><span data-alt="Hexa">هگزا</span></a><p class="muted small" data-alt="A fictional cloud demonstrating the Ultraviolet style by Tastefolio.">ابری ساختگی برای نمایش سبک Ultraviolet در تیست‌فولیو.</p></div>
+    <div><h4 data-alt="Product">محصول</h4><ul><li><a href="#products" data-alt="GPU clusters">کلاستر GPU</a></li><li><a href="#products" data-alt="Inference">استنتاج</a></li><li><a href="#pricing" data-alt="Pricing">قیمت‌ها</a></li></ul></div>
+    <div><h4 data-alt="Developers">توسعه‌دهندگان</h4><ul><li><a href="#" data-alt="Docs">مستندات</a></li><li><a href="#" data-alt="CLI">CLI</a></li><li><a href="#" data-alt="Status">وضعیت</a></li></ul></div>
+    <div><h4 data-alt="Company">شرکت</h4><ul><li><a href="#" data-alt="About">درباره</a></li><li><a href="#" data-alt="Careers">فرصت‌های شغلی</a></li><li><a href="#start" data-alt="Contact">تماس</a></li></ul></div>
+  </div>
+</footer>
+</body>
+</html>

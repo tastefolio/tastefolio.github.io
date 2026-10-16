@@ -45,6 +45,15 @@
       ]
     },
     {
+      "name": "ultraviolet",
+      "description": "Tastefolio design language — Dark-first infrastructure for AI — indigo space, violet light, glowing edges and isometric hardware",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/ultraviolet"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -53,7 +62,8 @@
         "./skills/switchboard",
         "./skills/hearth",
         "./skills/atelier",
-        "./skills/stratus"
+        "./skills/stratus",
+        "./skills/ultraviolet"
       ]
     }
   ]

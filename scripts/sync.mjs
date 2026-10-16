@@ -14,7 +14,7 @@ export async function listSkills() {
 
 /** Returns the custom properties declared in the first `:root {…}` block of a tokens file. */
 export function rootTokens(css) {
-  const m = css.match(/:root\s*\{([\s\S]*?)\n\}/);
+  const m = css.match(/:root[^{]*\{([\s\S]*?)\n\}/);
   if (!m) return [];
   return [...m[1].matchAll(/(--[\w-]+)\s*:/g)].map((x) => x[1]);
 }
