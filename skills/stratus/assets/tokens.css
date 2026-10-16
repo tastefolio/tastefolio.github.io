@@ -1,0 +1,140 @@
+/* Stratus — design tokens (Tastefolio). Persian-first enterprise platform: white, cool grays, deep teal.
+   Change --brand (a deep, desaturated hue) and the dark band follows it. */
+:root {
+  --canvas: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f5f7f8;     /* app background, UI mock backdrops */
+  --surface-3: #eceff1;     /* hover, tracks */
+  --overlay: rgba(10, 27, 30, .45);
+
+  --ink: #10181b;
+  --ink-2: #4e5b61;
+  --ink-3: #85939a;
+  --ink-inverse: #ffffff;
+
+  --line: #e3e8eb;
+  --line-2: #cfd7dc;
+
+  --brand: #0f6b66;
+  --brand-ink: #ffffff;
+  --brand-soft: color-mix(in oklab, var(--brand) 9%, #fff);
+  --brand-strong: color-mix(in oklab, var(--brand) 78%, #000);
+  --brand-deep: color-mix(in oklab, var(--brand) 42%, #04191a);   /* dark band, icon rail */
+  --brand-tint: color-mix(in oklab, var(--brand) 55%, #fff);       /* secondary headline line */
+  --focus: color-mix(in oklab, var(--brand) 40%, transparent);
+
+  --success: #17895a;
+  --success-soft: #e5f4ec;
+  --warning: #b8740a;
+  --warning-soft: #fbf1df;
+  --danger: #c4373c;
+  --danger-soft: #fbe8e9;
+  --info: #2a6fb5;
+  --info-soft: #e6f0fa;
+
+  --chart-1: var(--brand);
+  --chart-2: #8bb8b4;
+  --chart-3: #2a6fb5;
+  --chart-4: #b8740a;
+  --chart-5: #c4373c;
+  --chart-6: #85939a;
+  --chart-grid: #edf1f3;
+  --chart-axis: var(--ink-3);
+  --chart-curve: smooth;
+  --chart-stroke: 2.25;
+  --chart-area: .14;
+  --chart-radius: 4;
+  --chart-bar-gap: .4;
+  --chart-donut: 16;
+
+  /* Type: IBM Plex — rational, multilingual; Persian is primary */
+  --font-sans: "IBM Plex Sans", "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-sans);
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --fs-xs: 12px;
+  --fs-sm: 13px;
+  --fs-md: 14px;
+  --fs-lg: 16px;
+  --fs-xl: 20px;
+  --fs-2xl: 26px;
+  --fs-3xl: 36px;
+  --fs-display: clamp(32px, 4.4vw, 54px);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 600;
+  --fw-display: 700;
+  --lh-tight: 1.25;
+  --lh-snug: 1.45;
+  --lh-body: 1.7;
+  --tracking-display: -.015em;
+  --tracking-caps: .04em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 48px;
+  --space-9: 64px;
+  --space-10: 96px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+  --border-w: 1px;
+  --shadow-1: 0 1px 2px rgba(16, 24, 27, .06);
+  --shadow-2: 0 8px 24px -8px rgba(16, 24, 27, .16), 0 0 0 1px rgba(16, 24, 27, .04);
+  --shadow-3: 0 24px 48px -16px rgba(16, 24, 27, .28);
+
+  --container: 1240px;
+  --gutter: clamp(16px, 3.5vw, 32px);
+  --header-h: 64px;
+  --rail-w: 64px;
+  --subnav-w: 232px;
+  --control-h: 38px;
+  --control-h-lg: 46px;
+
+  --ease: cubic-bezier(.2, .7, .3, 1);
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+  --dur-3: 300ms;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --canvas: #0d1416;
+  --surface: #131c1f;
+  --surface-2: #0f171a;
+  --surface-3: #1b2629;
+  --ink: #e9eff1;
+  --ink-2: #a3b1b6;
+  --ink-3: #6f7f85;
+  --line: #22302f;
+  --line-2: #2f3f40;
+  --brand: #2aa198;
+  --brand-ink: #04191a;
+  --brand-soft: color-mix(in oklab, var(--brand) 16%, var(--surface));
+  --brand-strong: color-mix(in oklab, var(--brand) 75%, #fff);
+  --brand-deep: #06201f;
+  --brand-tint: color-mix(in oklab, var(--brand) 80%, #fff);
+  --success-soft: #11291e;
+  --warning-soft: #2c2311;
+  --danger-soft: #311a1b;
+  --info-soft: #132233;
+  --chart-grid: #1c2729;
+  --shadow-2: 0 10px 28px -8px rgba(0, 0, 0, .6);
+  color-scheme: dark;
+}
+
+/* Persian is the primary voice of this style. */
+:root:lang(fa) {
+  --font-sans: "IBM Plex Sans Arabic", "IBM Plex Sans", Tahoma, sans-serif;
+  --lh-tight: 1.5;
+  --lh-snug: 1.65;
+  --lh-body: 1.95;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+  --fs-md: 14.5px;
+}

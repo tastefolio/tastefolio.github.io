@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="site" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Rahvar — the unified logistics platform">رهوار — پلتفرم یکپارچهٔ لجستیک</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@0.460.0/font/lucide.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .mini-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-block-end: 14px; }
+  .mini-stats div { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: 12px; color: var(--ink-3); }
+  .mini-stats b { display: block; font-size: 18px; color: var(--ink); }
+  .route svg { inline-size: 100%; block-size: auto; }
+  .route .road { fill: none; stroke: var(--line-2); stroke-width: 10; stroke-linecap: round; }
+  .route .path { fill: none; stroke: var(--brand); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 2 9; }
+  .route .stop { fill: var(--surface); stroke: var(--brand); stroke-width: 3; }
+  .route .depot { fill: var(--brand); }
+  .route text { font: 600 11px var(--font-sans); fill: var(--ink-2); }
+  .stock { display: grid; gap: 12px; padding: 16px; }
+  .stock div { display: grid; grid-template-columns: 90px 1fr 48px; gap: 10px; align-items: center; font-size: 12.5px; }
+  .stock .bar { block-size: 10px; border-radius: 6px; background: var(--surface-3); overflow: hidden; }
+  .stock .bar i { display: block; block-size: 100%; inline-size: var(--w); background: var(--brand); }
+  .stock .bar i.low { background: var(--warning); }
+  .contact { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(28px, 5vw, 64px); }
+  @media (max-width: 900px) { .contact { grid-template-columns: minmax(0, 1fr); } }
+  .contact form { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+  .contact form .full { grid-column: 1 / -1; }
+  @media (max-width: 560px) { .contact form { grid-template-columns: minmax(0, 1fr); } }
+  .section-head { text-align: center; max-inline-size: 640px; margin: 0 auto var(--space-8); display: grid; justify-items: center; gap: var(--space-3); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<div class="utility">
+  <div class="container">
+    <a href="#" data-alt="News">اخبار</a><a href="#" data-alt="Blog">وبلاگ</a><a href="#" data-alt="Docs">مستندات</a><a href="#contact" data-alt="Contact us">تماس با ما</a>
+    <span class="end"><button class="btn btn-ghost" type="button" data-lang-toggle style="min-block-size:28px;padding-inline:8px;font-size:12.5px" data-alt="فارسی">English</button><a href="dashboard.html" data-alt="Console">کنسول</a></span>
+  </div>
+</div>
+<header class="masthead">
+  <div class="container">
+    <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"><i class="icon-route"></i></span><span data-alt="Rahvar">رهوار</span></a>
+    <nav class="mainnav" id="mainnav" aria-label="اصلی" data-alt-aria-label="Primary">
+      <button type="button" data-toggle="#mega" aria-expanded="false"><span data-alt="Products">محصولات</span><i class="icon-chevron-down" aria-hidden="true"></i></button>
+      <a href="#solutions" data-alt="Solutions">راهکارها</a>
+      <a href="#features" data-alt="Pricing">قیمت‌گذاری</a>
+      <a href="#customers" data-alt="Customers">مشتریان</a>
+      <a href="#contact" data-alt="Enterprise">قرارداد سازمانی</a>
+      <div class="mega" id="mega" data-dismissable>
+        <div class="container mega-in">
+          <div><h3 data-alt="Shipping &amp; delivery">حمل و ارسال</h3>
+            <a class="mega-link" href="#features"><i class="icon-truck" aria-hidden="true"></i><b data-alt="Shipment tracking">رهگیری محموله</b><span data-alt="Live status for every parcel">وضعیت زندهٔ هر بسته</span></a>
+            <a class="mega-link" href="#features"><i class="icon-route" aria-hidden="true"></i><b data-alt="Route planning">مسیریابی هوشمند</b><span data-alt="Fewer kilometers, more stops">کیلومتر کمتر، توقف بیشتر</span></a>
+            <a class="mega-link" href="#features"><i class="icon-package-check" aria-hidden="true"></i><b data-alt="Last-mile delivery">تحویل درب منزل</b><span data-alt="Couriers, proof of delivery">پیک، امضای تحویل</span></a>
+          </div>
+          <div><h3 data-alt="Warehouse &amp; stock">انبار و موجودی</h3>
+            <a class="mega-link" href="#features"><i class="icon-warehouse" aria-hidden="true"></i><b data-alt="Warehouse management">مدیریت انبار</b><span data-alt="Bins, picking, packing">قفسه، برداشت، بسته‌بندی</span></a>
+            <a class="mega-link" href="#features"><i class="icon-boxes" aria-hidden="true"></i><b data-alt="Inventory sync">همگام‌سازی موجودی</b><span data-alt="Across stores and channels">میان فروشگاه‌ها و کانال‌ها</span></a>
+            <a class="mega-link" href="#features"><i class="icon-undo-2" aria-hidden="true"></i><b data-alt="Returns">مرجوعی</b><span data-alt="Pickup and refund flows">جمع‌آوری و بازپرداخت</span></a>
+          </div>
+          <div><h3 data-alt="Data &amp; integration">داده و یکپارچه‌سازی</h3>
+            <a class="mega-link" href="#features"><i class="icon-chart-line" aria-hidden="true"></i><b data-alt="Analytics">تحلیل داده</b><span data-alt="Costs, delays, carriers">هزینه، تأخیر، حمل‌کننده‌ها</span></a>
+            <a class="mega-link" href="#features"><i class="icon-plug" aria-hidden="true"></i><b data-alt="API &amp; webhooks">API و وب‌هوک</b><span data-alt="Connect your store or ERP">اتصال فروشگاه یا ERP</span></a>
+            <a class="mega-link" href="#features"><i class="icon-receipt" aria-hidden="true"></i><b data-alt="Billing">صورتحساب</b><span data-alt="Usage-based invoices">فاکتور بر اساس مصرف</span></a>
+          </div>
+          <aside class="mega-aside"><span class="pill pill-brand" data-alt="New">تازه</span><b data-alt="ETA prediction with machine learning">پیش‌بینی زمان رسیدن با یادگیری ماشین</b><p class="small muted" data-alt="94% of deliveries arrive within the predicted window.">۹۴٪ تحویل‌ها در بازهٔ پیش‌بینی‌شده انجام می‌شود.</p><a class="link-arrow small" href="#features"><span data-alt="Learn more">بیشتر بدانید</span><i class="icon-arrow-right flip-rtl" aria-hidden="true"></i></a></aside>
+        </div>
+      </div>
+    </nav>
+    <div class="actions">
+      <a class="btn btn-outline hide-md" href="dashboard.html" data-alt="Sign in">ورود</a>
+      <a class="btn btn-primary" href="#contact" data-alt="Get started">شروع کنید</a>
+      <button class="btn btn-ghost btn-icon menu-btn" type="button" data-toggle="#mainnav" aria-expanded="false" aria-label="منو" data-alt-aria-label="Menu"><i class="icon-menu" aria-hidden="true"></i></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="container hero" id="top">
+    <div>
+      <span class="kicker" data-alt="The unified logistics platform">پلتفرم یکپارچهٔ لجستیک</span>
+      <h1 class="headline"><span class="l1" data-alt="Your whole supply chain, one platform">زنجیرهٔ تأمین شما، یکپارچه</span><span class="l2" data-alt="faster, more accurate, more reliable">سریع‌تر، دقیق‌تر و قابل‌اعتمادتر</span></h1>
+      <p class="lead" data-alt="Rahvar connects warehouses, fleets and stores in one place. Track every shipment live, plan routes automatically and see costs before they happen.">رهوار انبار، ناوگان و فروشگاه را در یک جا به هم وصل می‌کند. هر محموله را زنده رهگیری کنید، مسیرها را خودکار بچینید و هزینه‌ها را پیش از وقوع ببینید.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary btn-lg" href="#contact" data-alt="Start free">شروع رایگان</a>
+        <a class="btn btn-outline btn-lg" href="#contact" data-alt="Talk to sales">مشاوره با کارشناس فروش</a>
+      </div>
+    </div>
+    <div class="ui-mock" aria-hidden="true">
+      <div class="mini-stats"><div><span data-alt="In transit">در مسیر</span><b data-num="1284">۱٬۲۸۴</b></div><div><span data-alt="Delivered today">تحویل امروز</span><b data-num="3906">۳٬۹۰۶</b></div><div><span data-alt="On time">به‌موقع</span><b data-num="96.4" data-fmt="pct1">۹۶٫۴٪</b></div></div>
+      <div class="ui-window">
+        <div class="ui-window-bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span data-alt="Shipments">محموله‌ها</span></div>
+        <table class="table">
+          <thead><tr><th data-alt="Code">کد</th><th data-alt="Destination">مقصد</th><th data-alt="Status">وضعیت</th></tr></thead>
+          <tbody>
+            <tr><td class="mono ltr">RV-24071</td><td data-alt="Isfahan">اصفهان</td><td><span class="pill pill-info" data-alt="In transit">در مسیر</span></td></tr>
+            <tr><td class="mono ltr">RV-24068</td><td data-alt="Mashhad">مشهد</td><td><span class="pill pill-ok" data-alt="Delivered">تحویل شد</span></td></tr>
+            <tr><td class="mono ltr">RV-24063</td><td data-alt="Tabriz">تبریز</td><td><span class="pill pill-warn" data-alt="Delayed">با تأخیر</span></td></tr>
+            <tr><td class="mono ltr">RV-24059</td><td data-alt="Shiraz">شیراز</td><td><span class="pill pill-ok" data-alt="Delivered">تحویل شد</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="products">
+    <div class="container">
+      <div class="section-head"><span class="kicker" data-alt="Products">محصولات</span><h2 class="h2" data-alt="Everything from the warehouse to the doorstep">همه‌چیز از انبار تا درِ خانه</h2></div>
+      <div class="grid">
+        <a class="card product-card" href="#features"><span class="tile"><i class="icon-truck" aria-hidden="true"></i></span><h3 class="h3" data-alt="Shipment tracking">رهگیری محموله</h3><p class="muted small" data-alt="Live location and status for every parcel, shared with your customers.">موقعیت و وضعیت زندهٔ هر بسته، قابل اشتراک با مشتری.</p></a>
+        <a class="card product-card" href="#features"><span class="tile"><i class="icon-route" aria-hidden="true"></i></span><h3 class="h3" data-alt="Route planning">مسیریابی هوشمند</h3><p class="muted small" data-alt="Daily routes that respect traffic, time windows and vehicle capacity.">مسیر روزانه با در نظر گرفتن ترافیک، بازهٔ زمانی و ظرفیت خودرو.</p></a>
+        <a class="card product-card" href="#features"><span class="tile"><i class="icon-warehouse" aria-hidden="true"></i></span><h3 class="h3" data-alt="Warehouse management">مدیریت انبار</h3><p class="muted small" data-alt="Bins, picking and packing with barcode scanners.">قفسه‌بندی، برداشت و بسته‌بندی با بارکدخوان.</p></a>
+        <a class="card product-card" href="#features"><span class="tile"><i class="icon-boxes" aria-hidden="true"></i></span><h3 class="h3" data-alt="Inventory sync">همگام‌سازی موجودی</h3><p class="muted small" data-alt="One stock number across every store and marketplace.">یک عدد موجودی برای همهٔ فروشگاه‌ها و بازارها.</p></a>
+        <a class="card product-card" href="#features"><span class="tile"><i class="icon-chart-line" aria-hidden="true"></i></span><h3 class="h3" data-alt="Analytics">تحلیل داده</h3><p class="muted small" data-alt="Cost per delivery, delay causes and carrier scorecards.">هزینهٔ هر تحویل، علت تأخیرها و کارنامهٔ حمل‌کننده‌ها.</p></a>
+        <a class="card product-card" href="#features"><span class="tile"><i class="icon-plug" aria-hidden="true"></i></span><h3 class="h3" data-alt="API &amp; webhooks">API و وب‌هوک</h3><p class="muted small" data-alt="Documented REST API and events for your store or ERP.">API مستند و رویدادها برای فروشگاه یا ERP شما.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container" id="features">
+    <div class="feature-row">
+      <div>
+        <span class="kicker" data-alt="Route planning">مسیریابی هوشمند</span>
+        <h2 class="h2" data-alt="Fewer kilometers, more deliveries per shift">کیلومتر کمتر، تحویل بیشتر در هر شیفت</h2>
+        <ul class="checklist">
+          <li><i class="icon-circle-check" aria-hidden="true"></i><span data-alt="Plans hundreds of stops in seconds, honoring delivery time windows.">صدها توقف را در چند ثانیه می‌چیند و بازهٔ زمانی تحویل را رعایت می‌کند.</span></li>
+          <li><i class="icon-circle-check" aria-hidden="true"></i><span data-alt="Re-plans automatically when a driver is delayed.">با تأخیر یک راننده، مسیر را خودکار بازچینی می‌کند.</span></li>
+          <li><i class="icon-circle-check" aria-hidden="true"></i><span data-alt="Average 18% less fuel in the first month.">به‌طور میانگین ۱۸٪ صرفه‌جویی سوخت در ماه اول.</span></li>
+        </ul>
+        <a class="link-arrow" href="#contact"><span data-alt="See a route demo">دیدن نمونهٔ مسیریابی</span><i class="icon-arrow-right flip-rtl" aria-hidden="true"></i></a>
+      </div>
+      <div class="ui-mock route" aria-hidden="true">
+        <div class="ui-window" style="padding:12px">
+          <svg viewBox="0 0 460 260">
+            <path class="road" d="M30 220 C120 220 110 140 200 140 S300 60 420 50"/><path class="road" d="M60 60 L200 140 L330 230"/>
+            <path class="path" d="M30 220 C120 220 110 140 200 140 S300 60 420 50"/>
+            <circle class="depot" cx="30" cy="220" r="9"/><circle class="stop" cx="120" cy="196" r="7"/><circle class="stop" cx="200" cy="140" r="7"/><circle class="stop" cx="300" cy="86" r="7"/><circle class="stop" cx="420" cy="50" r="7"/>
+            <text x="44" y="246" data-alt="Depot">انبار مرکزی</text><text x="186" y="168">۲</text><text x="290" y="114">۳</text><text x="392" y="80">۴</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="feature-row is-flipped">
+      <div>
+        <span class="kicker" data-alt="Warehouse">انبار و موجودی</span>
+        <h2 class="h2" data-alt="Know what's on the shelf before you sell it">پیش از فروش بدانید چه چیزی در قفسه است</h2>
+        <ul class="checklist">
+          <li><i class="icon-circle-check" aria-hidden="true"></i><span data-alt="Low-stock alerts per warehouse and per channel.">هشدار کمبود موجودی برای هر انبار و هر کانال فروش.</span></li>
+          <li><i class="icon-circle-check" aria-hidden="true"></i><span data-alt="Transfer suggestions between warehouses.">پیشنهاد انتقال کالا بین انبارها.</span></li>
+        </ul>
+      </div>
+      <div class="ui-mock" aria-hidden="true">
+        <div class="ui-window">
+          <div class="ui-window-bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span data-alt="Stock by warehouse">موجودی بر اساس انبار</span></div>
+          <div class="stock">
+            <div><span data-alt="Tehran West">تهران غرب</span><span class="bar"><i style="--w:82%"></i></span><span class="mono" data-num="82" data-fmt="pct">۸۲٪</span></div>
+            <div><span data-alt="Isfahan">اصفهان</span><span class="bar"><i style="--w:64%"></i></span><span class="mono" data-num="64" data-fmt="pct">۶۴٪</span></div>
+            <div><span data-alt="Mashhad">مشهد</span><span class="bar"><i class="low" style="--w:18%"></i></span><span class="mono" data-num="18" data-fmt="pct">۱۸٪</span></div>
+            <div><span data-alt="Tabriz">تبریز</span><span class="bar"><i style="--w:47%"></i></span><span class="mono" data-num="47" data-fmt="pct">۴۷٪</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="solutions">
+    <div class="container">
+      <div class="section-head"><span class="kicker" data-alt="Solutions">راهکارها</span><h2 class="h2" data-alt="Built for your industry">متناسب با صنعت شما</h2></div>
+      <div class="vtabs">
+        <div role="tablist" aria-label="صنایع" data-alt-aria-label="Industries" aria-orientation="vertical">
+          <button role="tab" id="st-1" aria-controls="sp-1" aria-selected="true"><span data-alt="Retail &amp; e-commerce">خرده‌فروشی و فروشگاه آنلاین</span><small data-alt="Same-day delivery, returns">تحویل همان روز، مرجوعی</small></button>
+          <button role="tab" id="st-2" aria-controls="sp-2" aria-selected="false"><span data-alt="Manufacturing">تولید و صنعت</span><small data-alt="Inbound parts, B2B freight">قطعات ورودی، بار سازمانی</small></button>
+          <button role="tab" id="st-3" aria-controls="sp-3" aria-selected="false"><span data-alt="Pharma &amp; cold chain">دارو و زنجیرهٔ سرد</span><small data-alt="Temperature logs, compliance">ثبت دما، انطباق با مقررات</small></button>
+          <button role="tab" id="st-4" aria-controls="sp-4" aria-selected="false"><span data-alt="Public sector">بخش دولتی</span><small data-alt="Tenders, audit trails">مناقصه، ردپای ممیزی</small></button>
+        </div>
+        <div>
+          <div class="card card-pad" role="tabpanel" id="sp-1" aria-labelledby="st-1"><h3 class="h3" data-alt="From cart to doorstep in hours">از سبد خرید تا درِ خانه در چند ساعت</h3><p class="muted" style="margin-block:10px 16px" data-alt="Connect your store, print labels in bulk and let customers follow their parcel on a branded tracking page.">فروشگاه را وصل کنید، برچسب‌ها را گروهی چاپ کنید و بگذارید مشتری بسته‌اش را در صفحهٔ رهگیری با برند شما دنبال کند.</p><div class="grid" style="--cols:3"><div class="stat card"><span class="stat-top" data-alt="Same-day share">سهم ارسال همان روز</span><span class="stat-value" data-num="41" data-fmt="pct">۴۱٪</span></div><div class="stat card"><span class="stat-top" data-alt="Return time">زمان مرجوعی</span><span class="stat-value"><span data-num="2.1" data-fmt="dec1">۲٫۱</span> <small class="small" data-alt="days">روز</small></span></div><div class="stat card"><span class="stat-top" data-alt="Support tickets">تیکت‌های پشتیبانی</span><span class="stat-value trend down" data-num="-37" data-fmt="signedpct">−۳۷٪</span></div></div></div>
+          <div class="card card-pad" role="tabpanel" id="sp-2" aria-labelledby="st-2" hidden><h3 class="h3" data-alt="Parts arrive when the line needs them">قطعات درست وقتی خط تولید لازم دارد می‌رسند</h3><p class="muted" style="margin-block-start:10px" data-alt="Schedule inbound freight against production plans and get alerted before a shortage stops a line.">بار ورودی را با برنامهٔ تولید هماهنگ کنید و پیش از آنکه کمبود قطعه خط را متوقف کند، هشدار بگیرید.</p></div>
+          <div class="card card-pad" role="tabpanel" id="sp-3" aria-labelledby="st-3" hidden><h3 class="h3" data-alt="Every degree on record">تک‌تک درجه‌ها ثبت می‌شود</h3><p class="muted" style="margin-block-start:10px" data-alt="Sensors log temperature every minute; excursions open an incident and notify the quality team.">حسگرها هر دقیقه دما را ثبت می‌کنند؛ هر خروج از بازهٔ مجاز یک رخداد می‌سازد و تیم کیفیت را خبر می‌کند.</p></div>
+          <div class="card card-pad" role="tabpanel" id="sp-4" aria-labelledby="st-4" hidden><h3 class="h3" data-alt="Transparent and auditable">شفاف و قابل ممیزی</h3><p class="muted" style="margin-block-start:10px" data-alt="Role-based access, signed delivery receipts and exportable audit trails.">دسترسی بر اساس نقش، رسید تحویل امضاشده و ردپای ممیزی قابل خروجی.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band section" aria-label="آمار" data-alt-aria-label="Numbers">
+    <div class="container band-stats">
+      <div><b><span data-num="12000000" data-fmt="compact">۱۲ میلیون</span></b><span class="muted" data-alt="shipments a year">محموله در سال</span></div>
+      <div><b data-num="31">۳۱</b><span class="muted" data-alt="provinces covered">استان زیر پوشش</span></div>
+      <div><b data-num="99.95" data-fmt="dec2">۹۹٫۹۵</b><span class="muted" data-alt="% platform uptime">٪ دسترس‌پذیری پلتفرم</span></div>
+      <div><b data-num="4800">۴٬۸۰۰</b><span class="muted" data-alt="business customers">مشتری سازمانی</span></div>
+    </div>
+  </section>
+
+  <section class="section container" id="customers">
+    <div class="section-head"><span class="kicker" data-alt="Customers">مشتریان</span><h2 class="h2" data-alt="Trusted by teams that ship every day">مورد اعتماد تیم‌هایی که هر روز ارسال دارند</h2></div>
+    <div class="logos"><span data-alt="Sepid Mart">سپیدمارت</span><span data-alt="Pars Pharma">پارس‌دارو</span><span data-alt="Navid Steel">فولاد نوید</span><span data-alt="Bazarche">بازارچه</span><span data-alt="Golrang Foods">گلرنگ غذا</span><span data-alt="Arian Parts">آرین‌قطعه</span></div>
+  </section>
+
+  <section class="section section-alt" id="contact">
+    <div class="container contact">
+      <div class="stack">
+        <span class="kicker" data-alt="Enterprise">قرارداد سازمانی</span>
+        <h2 class="h2" data-alt="Let's design your logistics together">لجستیک‌تان را با هم طراحی کنیم</h2>
+        <p class="muted" data-alt="Our solution engineers reply within one business day with a tailored proposal.">کارشناسان راهکار ما ظرف یک روز کاری با پیشنهاد اختصاصی پاسخ می‌دهند.</p>
+        <ul class="checklist"><li><i class="icon-shield-check" aria-hidden="true"></i><span data-alt="Data hosted in-country">میزبانی داده در داخل کشور</span></li><li><i class="icon-headset" aria-hidden="true"></i><span data-alt="24/7 dedicated support">پشتیبانی اختصاصی ۲۴ ساعته</span></li></ul>
+      </div>
+      <form class="card card-pad" data-validate novalidate data-success="Request received — we'll call you within one business day." data-success-alt="درخواست ثبت شد — ظرف یک روز کاری با شما تماس می‌گیریم.">
+        <div class="field"><label class="label" for="f-name"><span data-alt="Full name">نام و نام خانوادگی</span> <span class="req">*</span></label><input class="input input-lg" id="f-name" name="name" required minlength="3"></div>
+        <div class="field"><label class="label" for="f-company"><span data-alt="Company">نام شرکت</span> <span class="req">*</span></label><input class="input input-lg" id="f-company" name="company" required></div>
+        <div class="field"><label class="label" for="f-phone"><span data-alt="Mobile number">شمارهٔ همراه</span> <span class="req">*</span></label><input class="input input-lg" id="f-phone" name="phone" type="tel" required pattern="0?9[0-9]{9}" dir="ltr" placeholder="0912 345 6789" data-pattern-msg="۱۱ رقم، با ۰۹ شروع شود." data-pattern-msg-alt="11 digits starting with 09."><span class="help" data-alt="Example: 09123456789">مثال: ۰۹۱۲۳۴۵۶۷۸۹</span></div>
+        <div class="field"><label class="label" for="f-email" data-alt="Work email">ایمیل کاری</label><input class="input input-lg" id="f-email" name="email" type="email" dir="ltr"></div>
+        <div class="field full"><label class="label" for="f-volume"><span data-alt="Monthly shipments">تعداد محمولهٔ ماهانه</span> <span class="req">*</span></label><select class="select input-lg" id="f-volume" name="volume" required><option value="" data-alt="Select">انتخاب کنید</option><option data-alt="Under 1,000">کمتر از ۱٬۰۰۰</option><option data-alt="1,000 to 10,000">۱٬۰۰۰ تا ۱۰٬۰۰۰</option><option data-alt="More than 10,000">بیش از ۱۰٬۰۰۰</option></select></div>
+        <div class="field full"><label class="label" for="f-msg" data-alt="Tell us about your needs">نیازتان را بنویسید</label><textarea class="textarea" id="f-msg" name="msg"></textarea></div>
+        <label class="check full"><input type="checkbox" required name="terms"><span data-alt="I accept the privacy policy.">سیاست حریم خصوصی را می‌پذیرم.</span></label>
+        <div class="full"><button class="btn btn-primary btn-lg" type="submit" data-alt="Request a consultation">درخواست مشاوره</button></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="stack" style="--gap:var(--space-3)"><a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"><i class="icon-route"></i></span><span data-alt="Rahvar">رهوار</span></a><p class="muted" data-alt="A fictional platform demonstrating the Stratus style by Tastefolio.">پلتفرمی ساختگی برای نمایش سبک Stratus در تیست‌فولیو.</p></div>
+      <div><h4 data-alt="Products">محصولات</h4><ul><li><a href="#products" data-alt="Tracking">رهگیری</a></li><li><a href="#products" data-alt="Routing">مسیریابی</a></li><li><a href="#products" data-alt="Warehouse">انبار</a></li></ul></div>
+      <div><h4 data-alt="Solutions">راهکارها</h4><ul><li><a href="#solutions" data-alt="Retail">خرده‌فروشی</a></li><li><a href="#solutions" data-alt="Pharma">دارو</a></li><li><a href="#solutions" data-alt="Manufacturing">صنعت</a></li></ul></div>
+      <div><h4 data-alt="Resources">منابع</h4><ul><li><a href="#" data-alt="Docs">مستندات</a></li><li><a href="#" data-alt="API">API</a></li><li><a href="#" data-alt="Status">وضعیت سرویس</a></li></ul></div>
+      <div><h4 data-alt="Company">شرکت</h4><ul><li><a href="#" data-alt="About">درباره ما</a></li><li><a href="#" data-alt="Careers">فرصت‌های شغلی</a></li><li><a href="#contact" data-alt="Contact">تماس</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span data-alt="© 2026 Rahvar (fictional)">© ۱۴۰۵ رهوار (ساختگی)</span><span data-alt="Tehran · Isfahan · Mashhad">تهران · اصفهان · مشهد</span></div>
+  </div>
+</footer>
+</body>
+</html>

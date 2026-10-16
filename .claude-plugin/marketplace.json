@@ -36,6 +36,15 @@
       ]
     },
     {
+      "name": "stratus",
+      "description": "Tastefolio design language — Persian-first enterprise platform — product mega menu, split headlines, rail + sub-nav consoles",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/stratus"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -43,7 +52,8 @@
       "skills": [
         "./skills/switchboard",
         "./skills/hearth",
-        "./skills/atelier"
+        "./skills/atelier",
+        "./skills/stratus"
       ]
     }
   ]

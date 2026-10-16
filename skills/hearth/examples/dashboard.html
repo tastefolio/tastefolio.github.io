@@ -176,7 +176,7 @@
 <dialog class="modal" id="add-device" aria-labelledby="ad-title">
   <form data-validate novalidate data-success="Device key created" data-success-alt="کلید دستگاه ساخته شد" style="padding:var(--space-6);display:grid;gap:var(--space-4)">
     <h2 class="h3" id="ad-title" data-alt="افزودن دستگاه">Add a device</h2>
-    <div class="field"><label class="label" for="ad-name" data-alt="نام دستگاه">Device name</label><input class="input" id="ad-name" name="name" required pattern="[a-z0-9-]+" placeholder="soil-north-10" dir="ltr" data-pattern-msg="Lowercase letters, numbers and dashes only."><span class="hint" data-alt="فقط حروف کوچک لاتین، عدد و خط تیره.">Lowercase letters, numbers and dashes.</span></div>
+    <div class="field"><label class="label" for="ad-name" data-alt="نام دستگاه">Device name</label><input class="input" id="ad-name" name="name" required pattern="[a-z0-9-]+" placeholder="soil-north-10" dir="ltr" data-pattern-msg="Lowercase letters, numbers and dashes only." data-pattern-msg-alt="فقط حروف کوچک لاتین، عدد و خط تیره."><span class="hint" data-alt="فقط حروف کوچک لاتین، عدد و خط تیره.">Lowercase letters, numbers and dashes.</span></div>
     <div class="field"><label class="label" for="ad-tag" data-alt="برچسب">Tag</label><select class="select" id="ad-tag" name="tag"><option>tag:soil</option><option>tag:pumps</option><option>tag:cams</option><option>tag:weather</option></select></div>
     <div class="row" style="justify-content:flex-end"><button class="btn btn-ghost" type="button" data-close data-alt="انصراف">Cancel</button><button class="btn btn-ink" type="submit" data-alt="ساخت کلید">Generate key</button></div>
   </form>

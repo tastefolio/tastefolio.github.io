@@ -1,0 +1,34 @@
+{
+  "name": "Stratus",
+  "order": 4,
+  "category": "infra",
+  "mode": "light",
+  "density": "balanced",
+  "persianFirst": true,
+  "tags": ["enterprise", "persian-first", "mega menu", "wizard", "teal"],
+  "tagline": {
+    "en": "Persian-first enterprise platform — product mega menu, split headlines, rail + sub-nav consoles",
+    "fa": "پلتفرم سازمانی فارسی‌محور — منوی بزرگ محصولات، تیتر دوخطی و کنسول با ریل و زیرمنو"
+  },
+  "summary": {
+    "en": "Calm, trustworthy enterprise design written right-to-left first: white pages with cool-gray UI mock backdrops, a deep teal brand, a black-then-teal two-line headline, a categorized product mega menu, vertical solution tabs and a dark brand band for numbers. The console pairs a dark icon rail with a contextual sub-navigation, breadcrumbs, status-pill tables and multi-step wizards with a live summary.",
+    "fa": "طراحی سازمانی آرام و قابل‌اعتماد که از ابتدا راست‌به‌چپ نوشته شده: صفحه‌های سفید با زمینهٔ خاکستری سرد برای نمایش رابط، رنگ برند سبزآبی تیره، تیتر دوخطی مشکی و سبزآبی، منوی بزرگ و دسته‌بندی‌شدهٔ محصولات، تب‌های عمودی راهکارها و نوار تیره برای آمار. کنسول، یک ریل آیکن تیره را با زیرمنوی بخش، مسیر صفحه، جدول با برچسب وضعیت و ویزاردهای چندمرحله‌ای با خلاصهٔ زنده ترکیب می‌کند."
+  },
+  "bestFor": {
+    "en": ["Cloud, logistics and B2B platforms with many products", "Persian/Arabic enterprise portals and consoles", "Order, provisioning and onboarding wizards", "Government and banking self-service panels"],
+    "fa": ["پلتفرم‌های ابری، لجستیک و B2B با محصولات متعدد", "پورتال‌ها و کنسول‌های سازمانی فارسی و عربی", "ویزاردهای سفارش، راه‌اندازی و ثبت‌نام", "پنل‌های خدمات دولتی و بانکی"]
+  },
+  "avoidFor": {
+    "en": ["Playful consumer brands", "Editorial or storytelling sites", "Single-product startups that need a bold voice"],
+    "fa": ["برندهای مصرفی بازیگوش", "سایت‌های روایی و رسانه‌ای", "استارتاپ‌های تک‌محصولی که لحن جسورانه می‌خواهند"]
+  },
+  "signature": {
+    "en": ["Two-line headline: bold ink line, lighter brand-colored line beneath", "Kicker labels led by a short brand bar", "Product mega menu: three titled columns plus a highlighted aside", "Light-gray stages holding white UI windows instead of illustrations", "Dark icon rail + white contextual sub-nav with a start-edge active marker", "Stepper wizard with option cards and a sticky live summary"],
+    "fa": ["تیتر دوخطی: خط اول پررنگ مشکی، خط دوم سبک‌تر به رنگ برند", "برچسب بالای بخش با یک خط کوتاه رنگی", "منوی بزرگ محصولات: سه ستون عنوان‌دار به‌علاوهٔ یک کادر ویژه", "صحنه‌های خاکستری روشن با پنجره‌های رابط به‌جای تصویرسازی", "ریل آیکن تیره + زیرمنوی سفید با نشانگر فعال در لبهٔ شروع", "ویزارد مرحله‌ای با کارت‌های گزینه و خلاصهٔ زندهٔ چسبان"]
+  },
+  "swatches": ["#ffffff", "#f5f7f8", "#10181b", "#0f6b66", "#0a2f2d"],
+  "fonts": { "latin": "IBM Plex Sans", "persian": "IBM Plex Sans Arabic", "mono": "IBM Plex Mono" },
+  "icons": "Lucide",
+  "brandTrials": ["1d4ed8", "6d28d9", "b45309", "be123c"],
+  "demos": { "site": { "host": "rahvar.example" }, "dashboard": { "host": "console.rahvar.example" } }
+}

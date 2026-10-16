@@ -113,6 +113,7 @@
     }
     $$('[data-toast-alt]').forEach((el) => { const cur = el.dataset.toast; el.dataset.toast = el.dataset.toastAlt; el.dataset.toastAlt = cur; });
     $$('[data-success-alt]').forEach((el) => { const cur = el.dataset.success; el.dataset.success = el.dataset.successAlt; el.dataset.successAlt = cur; });
+    $$('[data-pattern-msg-alt]').forEach((el) => { const cur = el.dataset.patternMsg; el.dataset.patternMsg = el.dataset.patternMsgAlt; el.dataset.patternMsgAlt = cur; });
     renderValues();
     d.dispatchEvent(new CustomEvent('tf:lang', { detail: { lang: tf.lang() } }));
   }
@@ -232,7 +233,8 @@
 
   // ---------------------------------------------------------------- tabs
   function selectTab(tab, focus) {
-    const list = tab.closest('[role="tablist"]');
+    const list = tab?.closest('[role="tablist"]');
+    if (!list) return;
     $$('[role="tab"]', list).forEach((t) => {
       const sel = t === tab;
       t.setAttribute('aria-selected', String(sel));
@@ -247,6 +249,7 @@
   tf.selectTab = selectTab;
   on('click', '[role="tab"]', (e, tab) => { e.preventDefault(); selectTab(tab); });
   on('keydown', '[role="tab"]', (e, tab) => {
+    if (!tab.closest('[role="tablist"]')) return;
     const tabs = $$('[role="tab"]', tab.closest('[role="tablist"]'));
     const i = tabs.indexOf(tab);
     const vertical = tab.closest('[role="tablist"]').getAttribute('aria-orientation') === 'vertical';

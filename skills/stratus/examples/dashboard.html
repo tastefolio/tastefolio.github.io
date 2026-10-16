@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="dashboard" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Shipments · Rahvar console">محموله‌ها · کنسول رهوار</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@0.460.0/font/lucide.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .stats4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); }
+  @media (max-width: 1100px) { .stats4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .route-cell { display: inline-flex; align-items: center; gap: 6px; }
+  .route-cell i { color: var(--ink-3); font-size: 13px; }
+  .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-4); }
+  @media (max-width: 1000px) { .split { grid-template-columns: minmax(0, 1fr); } }
+  .donut-row { display: grid; grid-template-columns: 170px 1fr; gap: var(--space-5); align-items: center; }
+  .donut-row [data-chart] { block-size: 170px; }
+  @media (max-width: 520px) { .donut-row { grid-template-columns: minmax(0, 1fr); } }
+  .done-panel { text-align: center; padding: var(--space-9) var(--space-6); display: grid; gap: var(--space-3); justify-items: center; }
+  .done-panel i { font-size: 40px; color: var(--success); }
+  .notif { position: relative; }
+  .notif .badge-dot { position: absolute; inset-block-start: 8px; inset-inline-end: 9px; inline-size: 8px; block-size: 8px; border-radius: 50%; background: var(--danger); border: 2px solid var(--surface); }
+  .avatar { inline-size: 34px; block-size: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--brand-soft); color: var(--brand-strong); font-weight: 700; font-size: 13px; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<div class="app">
+  <nav class="rail" aria-label="محصولات" data-alt-aria-label="Products">
+    <a class="logo-mark" href="site.html" aria-label="رهوار" data-alt-aria-label="Rahvar"><i class="icon-route" aria-hidden="true"></i></a>
+    <a href="#" aria-label="داشبورد" data-alt-aria-label="Dashboard"><i class="icon-layout-dashboard" aria-hidden="true"></i><span class="tip" data-alt="Dashboard">داشبورد</span></a>
+    <a href="#" aria-current="true" aria-label="محموله‌ها" data-alt-aria-label="Shipments"><i class="icon-truck" aria-hidden="true"></i><span class="tip" data-alt="Shipments">محموله‌ها</span></a>
+    <a href="#" aria-label="مسیریابی" data-alt-aria-label="Routing"><i class="icon-route" aria-hidden="true"></i><span class="tip" data-alt="Routing">مسیریابی</span></a>
+    <a href="#" aria-label="انبار" data-alt-aria-label="Warehouse"><i class="icon-warehouse" aria-hidden="true"></i><span class="tip" data-alt="Warehouse">انبار</span></a>
+    <a href="#" aria-label="صورتحساب" data-alt-aria-label="Billing"><i class="icon-receipt" aria-hidden="true"></i><span class="tip" data-alt="Billing">صورتحساب</span></a>
+    <div class="bottom">
+      <a href="#" aria-label="تنظیمات" data-alt-aria-label="Settings"><i class="icon-settings" aria-hidden="true"></i><span class="tip" data-alt="Settings">تنظیمات</span></a>
+      <a href="#" aria-label="راهنما" data-alt-aria-label="Help"><i class="icon-life-buoy" aria-hidden="true"></i><span class="tip" data-alt="Help">راهنما</span></a>
+    </div>
+  </nav>
+
+  <aside class="subnav" id="subnav" data-dismissable>
+    <div class="subnav-title"><i class="icon-truck" aria-hidden="true"></i><span data-alt="Shipments">محموله‌ها</span></div>
+    <div role="tablist" aria-orientation="vertical" aria-label="بخش‌ها" data-alt-aria-label="Sections">
+      <p class="subnav-group" data-alt="MANAGE">مدیریت</p>
+      <button class="nav" role="tab" id="t-list" aria-controls="p-list" aria-selected="true"><i class="icon-list" aria-hidden="true"></i><span data-alt="All shipments">همهٔ محموله‌ها</span><span class="count" data-num="1284">۱٬۲۸۴</span></button>
+      <button class="nav" role="tab" id="t-new" aria-controls="p-new" aria-selected="false"><i class="icon-circle-plus" aria-hidden="true"></i><span data-alt="New shipment">ثبت محمولهٔ تازه</span></button>
+      <p class="subnav-group" data-alt="REPORTS">گزارش‌ها</p>
+      <button class="nav" role="tab" id="t-perf" aria-controls="p-perf" aria-selected="false"><i class="icon-chart-line" aria-hidden="true"></i><span data-alt="Delivery performance">عملکرد ارسال</span></button>
+    </div>
+    <p class="subnav-group" data-alt="OTHER">سایر</p>
+    <a href="#"><i class="icon-undo-2" aria-hidden="true"></i><span data-alt="Returns">مرجوعی‌ها</span><span class="count" data-num="36">۳۶</span></a>
+    <a href="#"><i class="icon-file-text" aria-hidden="true"></i><span data-alt="Drafts">پیش‌نویس‌ها</span><span class="count" data-num="4">۴</span></a>
+  </aside>
+
+  <div class="app-main">
+    <header class="topbar">
+      <button class="btn btn-ghost btn-icon app-menu-btn" type="button" data-toggle="#subnav" aria-expanded="false" aria-label="منوی بخش" data-alt-aria-label="Section menu"><i class="icon-panel-right" aria-hidden="true"></i></button>
+      <nav class="crumbs" aria-label="مسیر" data-alt-aria-label="Breadcrumb"><a href="#" data-alt="Rahvar">رهوار</a><i class="icon-chevron-right flip-rtl" aria-hidden="true"></i><a href="#" data-alt="Shipments">محموله‌ها</a><i class="icon-chevron-right flip-rtl" aria-hidden="true"></i><span aria-current="page" id="crumb-current" data-alt="All shipments">همهٔ محموله‌ها</span></nav>
+      <span class="spacer"></span>
+      <label class="topsearch"><i class="icon-search" aria-hidden="true"></i><span class="sr-only" data-alt="Search">جست‌وجو</span><input class="input" type="search" placeholder="جست‌وجوی کد محموله…" data-alt-placeholder="Search shipment code…" data-hotkey="/"></label>
+      <button class="btn btn-ghost" type="button" data-lang-toggle data-alt="فارسی">English</button>
+      <button class="btn btn-ghost btn-icon" type="button" data-theme-toggle aria-label="حالت تیره" data-alt-aria-label="Dark mode"><i class="icon-moon" aria-hidden="true"></i></button>
+      <div class="rel">
+        <button class="btn btn-ghost btn-icon notif" type="button" data-toggle="#notif" aria-expanded="false" aria-label="اعلان‌ها" data-alt-aria-label="Notifications"><i class="icon-bell" aria-hidden="true"></i><span class="badge-dot"></span></button>
+        <div class="menu" id="notif" data-dismissable style="min-inline-size:280px">
+          <a href="#"><i class="icon-triangle-alert" style="color:var(--warning)" aria-hidden="true"></i><span data-alt="RV-24063 to Tabriz is 6 hours late">محمولهٔ RV-24063 به تبریز ۶ ساعت تأخیر دارد</span></a>
+          <a href="#"><i class="icon-circle-check" style="color:var(--success)" aria-hidden="true"></i><span data-alt="Isfahan route plan is ready">برنامهٔ مسیر اصفهان آماده شد</span></a>
+        </div>
+      </div>
+      <span class="avatar" aria-hidden="true">ن‌ک</span>
+    </header>
+
+    <main id="main">
+      <!-- LIST -->
+      <section class="page" role="tabpanel" id="p-list" aria-labelledby="t-list">
+        <div class="page-head">
+          <div><h1 data-alt="All shipments">همهٔ محموله‌ها</h1><p data-alt="Last updated 2 minutes ago">آخرین به‌روزرسانی ۲ دقیقه پیش</p></div>
+          <div class="row"><button class="btn btn-quiet" type="button" data-toast="Excel export is being prepared" data-toast-alt="خروجی اکسل در حال آماده‌سازی است"><i class="icon-download" aria-hidden="true"></i><span data-alt="Export">خروجی</span></button><button class="btn btn-primary" type="button" data-goto="t-new"><i class="icon-plus" aria-hidden="true"></i><span data-alt="New shipment">ثبت محمولهٔ تازه</span></button></div>
+        </div>
+        <div class="stats4">
+          <article class="card stat"><span class="stat-top"><span data-alt="In transit">در مسیر</span><i class="icon-truck" aria-hidden="true"></i></span><span class="stat-value" data-num="1284">۱٬۲۸۴</span><span class="trend up" data-alt="▲ 8% vs last week">▲ ۸٪ نسبت به هفتهٔ قبل</span></article>
+          <article class="card stat"><span class="stat-top"><span data-alt="Delivered today">تحویل امروز</span><i class="icon-package-check" aria-hidden="true"></i></span><span class="stat-value" data-num="3906">۳٬۹۰۶</span><span class="trend up" data-alt="▲ 3% vs yesterday">▲ ۳٪ نسبت به دیروز</span></article>
+          <article class="card stat"><span class="stat-top"><span data-alt="Delayed">با تأخیر</span><i class="icon-clock-alert" aria-hidden="true"></i></span><span class="stat-value" data-num="47">۴۷</span><span class="trend down" data-alt="▲ 12 since morning">▲ ۱۲ مورد از صبح</span></article>
+          <article class="card stat"><span class="stat-top"><span data-alt="On-time rate">نرخ تحویل به‌موقع</span><i class="icon-gauge" aria-hidden="true"></i></span><span class="stat-value" data-num="96.4" data-fmt="pct1">۹۶٫۴٪</span><span class="trend up" data-alt="Target: 95%">هدف: ۹۵٪</span></article>
+        </div>
+        <article class="card" data-filter-scope>
+          <div class="tabs-line" data-group role="group" aria-label="وضعیت" data-alt-aria-label="Status">
+            <button type="button" data-filter="status" data-value="all" aria-pressed="true" data-alt="All">همه</button>
+            <button type="button" data-filter="status" data-value="transit" aria-pressed="false" data-alt="In transit">در مسیر</button>
+            <button type="button" data-filter="status" data-value="delivered" aria-pressed="false" data-alt="Delivered">تحویل شده</button>
+            <button type="button" data-filter="status" data-value="delayed" aria-pressed="false" data-alt="Delayed">با تأخیر</button>
+          </div>
+          <div class="toolbar">
+            <input class="input" type="search" data-filter-search placeholder="کد، گیرنده یا شهر…" data-alt-placeholder="Code, recipient or city…" aria-label="جست‌وجو" data-alt-aria-label="Search" style="max-inline-size:280px">
+            <select class="select" data-filter="carrier" aria-label="حمل‌کننده" data-alt-aria-label="Carrier" style="inline-size:auto"><option value="all" data-alt="All carriers">همهٔ حمل‌کننده‌ها</option><option value="own" data-alt="Own fleet">ناوگان خودی</option><option value="post" data-alt="National post">پست ملی</option><option value="express" data-alt="Express courier">پیک اکسپرس</option></select>
+            <span class="small subtle" style="margin-inline-start:auto"><b data-filter-count>8</b> <span data-alt="results">نتیجه</span></span>
+          </div>
+          <div class="table-scroll">
+            <table class="table">
+              <thead><tr><th scope="col" aria-sort="none"><button data-sort="text" data-alt="Code">کد محموله</button></th><th scope="col" data-alt="Recipient">گیرنده</th><th scope="col" data-alt="Route">مسیر</th><th scope="col" data-alt="Carrier">حمل‌کننده</th><th scope="col" data-alt="Status">وضعیت</th><th scope="col" aria-sort="none"><button data-sort="date" data-alt="ETA">زمان رسیدن</button></th><th scope="col"><span class="sr-only" data-alt="Actions">عملیات</span></th></tr></thead>
+              <tbody id="rows"></tbody>
+            </table>
+          </div>
+          <p class="muted" data-filter-empty hidden style="padding:var(--space-7);text-align:center" data-alt="No shipments match.">محموله‌ای پیدا نشد.</p>
+        </article>
+      </section>
+
+      <!-- NEW SHIPMENT WIZARD -->
+      <section class="page" role="tabpanel" id="p-new" aria-labelledby="t-new" hidden>
+        <div class="page-head"><div><h1 data-alt="New shipment">ثبت محمولهٔ تازه</h1><p data-alt="Four short steps; drafts are saved automatically.">چهار گام کوتاه؛ پیش‌نویس خودکار ذخیره می‌شود.</p></div></div>
+        <form class="wizard" data-validate data-keep novalidate data-success-panel="#wiz-done" id="wiz-form">
+          <div class="card" data-steps id="wiz">
+            <div class="card-body" style="border-block-end:1px solid var(--line)">
+              <ol class="stepper" data-step-indicator>
+                <li><span data-alt="Origin">مبدأ</span></li><li><span data-alt="Destination">مقصد</span></li><li><span data-alt="Package">بسته</span></li><li><span data-alt="Service">سرویس</span></li>
+              </ol>
+            </div>
+            <div class="card-body" data-step>
+              <div class="grid" style="--cols:2">
+                <div class="field"><label class="label" for="w-wh"><span data-alt="Origin warehouse">انبار مبدأ</span> <span class="req">*</span></label><select class="select" id="w-wh" name="origin" required><option value="" data-alt="Select">انتخاب کنید</option><option value="tehran" data-alt="Tehran West">تهران غرب</option><option value="isfahan" data-alt="Isfahan">اصفهان</option><option value="mashhad" data-alt="Mashhad">مشهد</option></select></div>
+                <div class="field"><label class="label" for="w-date"><span data-alt="Pickup date">تاریخ جمع‌آوری</span> <span class="req">*</span></label><input class="input" id="w-date" name="date" type="date" required dir="ltr"></div>
+                <div class="field" style="grid-column:1/-1"><label class="label" for="w-ref" data-alt="Internal reference">شمارهٔ مرجع داخلی</label><input class="input" id="w-ref" name="ref" dir="ltr" placeholder="PO-2026-0412"><span class="help" data-alt="Optional — appears on the invoice.">اختیاری — روی فاکتور درج می‌شود.</span></div>
+              </div>
+            </div>
+            <div class="card-body" data-step hidden>
+              <div class="grid" style="--cols:2">
+                <div class="field"><label class="label" for="w-name"><span data-alt="Recipient name">نام گیرنده</span> <span class="req">*</span></label><input class="input" id="w-name" name="recipient" required minlength="3"></div>
+                <div class="field"><label class="label" for="w-phone"><span data-alt="Recipient mobile">همراه گیرنده</span> <span class="req">*</span></label><input class="input" id="w-phone" name="phone" type="tel" required pattern="0?9[0-9]{9}" dir="ltr" data-pattern-msg="۱۱ رقم، با ۰۹ شروع شود." data-pattern-msg-alt="11 digits starting with 09."></div>
+                <div class="field"><label class="label" for="w-city"><span data-alt="City">شهر</span> <span class="req">*</span></label><select class="select" id="w-city" name="city" required><option value="" data-alt="Select">انتخاب کنید</option><option data-alt="Shiraz">شیراز</option><option data-alt="Tabriz">تبریز</option><option data-alt="Rasht">رشت</option><option data-alt="Yazd">یزد</option></select></div>
+                <div class="field"><label class="label" for="w-zip" data-alt="Postal code">کد پستی</label><input class="input" id="w-zip" name="zip" inputmode="numeric" pattern="[0-9]{10}" dir="ltr" data-pattern-msg="۱۰ رقم." data-pattern-msg-alt="10 digits."></div>
+                <div class="field" style="grid-column:1/-1"><label class="label" for="w-addr"><span data-alt="Address">نشانی</span> <span class="req">*</span></label><textarea class="textarea" id="w-addr" name="address" required minlength="10"></textarea></div>
+              </div>
+            </div>
+            <div class="card-body" data-step hidden>
+              <div class="grid" style="--cols:3">
+                <div class="field"><label class="label" for="w-weight"><span data-alt="Weight">وزن</span> <span class="req">*</span></label><div class="addon"><input class="input" id="w-weight" name="weight" type="number" min="0.1" step="0.1" value="2.5" required dir="ltr"><span data-alt="kg">کیلوگرم</span></div></div>
+                <div class="field"><label class="label" for="w-count" data-alt="Pieces">تعداد قطعه</label><input class="input" id="w-count" name="count" type="number" min="1" value="1" dir="ltr"></div>
+                <div class="field"><label class="label" for="w-value" data-alt="Declared value">ارزش اظهارشده</label><div class="addon"><input class="input" id="w-value" name="value" type="number" min="0" value="4500000" dir="ltr"><span data-alt="Toman">تومان</span></div></div>
+              </div>
+              <label class="check" style="margin-block-start:var(--space-4)"><input type="checkbox" name="fragile"><span data-alt="Fragile — handle with care">شکستنی — با احتیاط جابه‌جا شود</span></label>
+            </div>
+            <div class="card-body" data-step hidden>
+              <p class="label" style="margin-block-end:var(--space-3)" data-alt="Service level">سطح سرویس</p>
+              <div class="options">
+                <label class="option"><input type="radio" name="service" value="express" data-price="185000"><span class="o-icon"><i class="icon-zap" aria-hidden="true"></i></span><b data-alt="Express">اکسپرس</b><span data-alt="Same day in the city">همان روز در شهر</span><span class="o-price"><span data-num="185000" data-fmt="toman">۱۸۵٬۰۰۰ تومان</span></span></label>
+                <label class="option"><input type="radio" name="service" value="standard" data-price="96000" checked><span class="o-icon"><i class="icon-truck" aria-hidden="true"></i></span><b data-alt="Standard">عادی</b><span data-alt="2–3 business days">۲ تا ۳ روز کاری</span><span class="o-price"><span data-num="96000" data-fmt="toman">۹۶٬۰۰۰ تومان</span></span></label>
+                <label class="option"><input type="radio" name="service" value="economy" data-price="61000"><span class="o-icon"><i class="icon-leaf" aria-hidden="true"></i></span><b data-alt="Economy">اقتصادی</b><span data-alt="4–6 business days">۴ تا ۶ روز کاری</span><span class="o-price"><span data-num="61000" data-fmt="toman">۶۱٬۰۰۰ تومان</span></span></label>
+              </div>
+              <label class="check" style="margin-block-start:var(--space-4)"><input type="checkbox" name="insurance" checked><span data-alt="Add insurance (0.5% of declared value)">افزودن بیمه (۰٫۵٪ ارزش اظهارشده)</span></label>
+            </div>
+            <div class="wizard-foot">
+              <button class="btn btn-quiet" type="button" data-prev><i class="icon-arrow-left flip-rtl" aria-hidden="true"></i><span data-alt="Back">قبلی</span></button>
+              <button class="btn btn-primary" type="button" data-next id="wiz-next"><span data-alt="Continue">ادامه</span><i class="icon-arrow-right flip-rtl" aria-hidden="true"></i></button>
+              <button class="btn btn-primary" type="submit" id="wiz-submit" hidden data-alt="Confirm and create">تأیید و ثبت محموله</button>
+            </div>
+          </div>
+          <aside class="card wizard-aside">
+            <div class="card-head"><h2 data-alt="Summary">خلاصهٔ سفارش</h2><span class="pill pill-brand" data-alt="Draft">پیش‌نویس</span></div>
+            <div class="card-body">
+              <ul class="summary">
+                <li><span data-alt="Service">سرویس</span><b id="s-service" data-alt="Standard">عادی</b></li>
+                <li><span data-alt="Shipping">هزینهٔ ارسال</span><b id="s-ship" data-num="96000" data-fmt="toman">۹۶٬۰۰۰ تومان</b></li>
+                <li><span data-alt="Insurance">بیمه</span><b id="s-ins" data-num="22500" data-fmt="toman">۲۲٬۵۰۰ تومان</b></li>
+                <li><span data-alt="VAT (10%)">مالیات (۱۰٪)</span><b id="s-vat" data-num="11850" data-fmt="toman">۱۱٬۸۵۰ تومان</b></li>
+                <li class="total"><span data-alt="Total">جمع کل</span><b id="s-total" data-num="130350" data-fmt="toman">۱۳۰٬۳۵۰ تومان</b></li>
+              </ul>
+            </div>
+          </aside>
+        </form>
+        <div class="card done-panel" id="wiz-done" hidden><i class="icon-circle-check" aria-hidden="true"></i><h2 class="h2" data-alt="Shipment created">محموله ثبت شد</h2><p class="muted"><span data-alt="Tracking code:">کد رهگیری:</span> <b class="mono ltr">RV-24112</b></p><button class="btn btn-primary" type="button" data-goto="t-list" data-alt="Back to shipments">بازگشت به فهرست</button></div>
+      </section>
+
+      <!-- PERFORMANCE -->
+      <section class="page" role="tabpanel" id="p-perf" aria-labelledby="t-perf" hidden>
+        <div class="page-head"><div><h1 data-alt="Delivery performance">عملکرد ارسال</h1><p data-alt="Last 6 months">۶ ماه گذشته</p></div></div>
+        <article class="card"><div class="card-head"><h2 data-alt="On-time delivery rate">نرخ تحویل به‌موقع</h2><ul class="legend"><li><i style="--c:var(--chart-1)"></i><span data-alt="Actual">واقعی</span></li><li><i style="--c:var(--chart-2)"></i><span data-alt="Target">هدف</span></li></ul></div><div class="card-body"><div data-chart="area" data-height="240" data-fmt="pct" data-dates="2026-05-15,6,month,monthyear" data-max="100" data-series='[{"name":{"fa":"واقعی","en":"Actual"},"values":[91.2,92.8,93.1,94.6,95.9,96.4]},{"name":{"fa":"هدف","en":"Target"},"values":[95,95,95,95,95,95],"color":"var(--chart-2)"}]' data-dash-second data-label='{"fa":"نرخ تحویل به‌موقع","en":"On-time delivery rate"}'></div></div></article>
+        <div class="split">
+          <article class="card"><div class="card-head"><h2 data-alt="Shipments by carrier">محموله بر اساس حمل‌کننده</h2></div><div class="card-body"><div data-chart="bar" data-height="220" data-fmt="compact" data-labels='{"fa":["ناوگان خودی","پست ملی","پیک اکسپرس","باربری شریک"],"en":["Own fleet","National post","Express","Partner freight"]}' data-values="5400,3100,2200,1300"></div></div></article>
+          <article class="card"><div class="card-head"><h2 data-alt="Delay causes">علت تأخیرها</h2></div><div class="card-body donut-row"><div data-chart="donut" data-values="38,27,21,14" data-center='{"fa":"۴۷ مورد","en":"47 cases"}' data-labels='{"fa":["ترافیک","آدرس ناقص","کمبود ناوگان","آب‌وهوا"],"en":["Traffic","Bad address","Fleet shortage","Weather"]}'></div><ul class="legend" style="flex-direction:column;gap:10px"><li><i style="--c:var(--chart-1)"></i><span data-alt="Traffic — 38%">ترافیک — ۳۸٪</span></li><li><i style="--c:var(--chart-2)"></i><span data-alt="Bad address — 27%">آدرس ناقص — ۲۷٪</span></li><li><i style="--c:var(--chart-3)"></i><span data-alt="Fleet shortage — 21%">کمبود ناوگان — ۲۱٪</span></li><li><i style="--c:var(--chart-4)"></i><span data-alt="Weather — 14%">آب‌وهوا — ۱۴٪</span></li></ul></div></article>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<dialog class="modal" id="track" aria-labelledby="tr-title">
+  <div class="card-head"><h2 id="tr-title" class="mono ltr">RV-24071</h2><button class="btn btn-ghost btn-icon" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><i class="icon-x" aria-hidden="true"></i></button></div>
+  <div class="card-body"><ol class="track" id="track-list"></ol></div>
+</dialog>
+
+<script>
+  const SHIP = [
+    ['RV-24071', { fa: 'نیلوفر کاظمی', en: 'Niloufar Kazemi' }, { fa: 'تهران', en: 'Tehran' }, { fa: 'اصفهان', en: 'Isfahan' }, 'own', 'transit', '2026-10-17'],
+    ['RV-24068', { fa: 'شرکت آوای سبز', en: 'Avaye Sabz Co.' }, { fa: 'تهران', en: 'Tehran' }, { fa: 'مشهد', en: 'Mashhad' }, 'post', 'delivered', '2026-10-15'],
+    ['RV-24063', { fa: 'حمید رضایی', en: 'Hamid Rezaei' }, { fa: 'اصفهان', en: 'Isfahan' }, { fa: 'تبریز', en: 'Tabriz' }, 'own', 'delayed', '2026-10-16'],
+    ['RV-24059', { fa: 'داروخانهٔ نگین', en: 'Negin Pharmacy' }, { fa: 'تهران', en: 'Tehran' }, { fa: 'شیراز', en: 'Shiraz' }, 'express', 'delivered', '2026-10-14'],
+    ['RV-24052', { fa: 'سارا موسوی', en: 'Sara Mousavi' }, { fa: 'مشهد', en: 'Mashhad' }, { fa: 'یزد', en: 'Yazd' }, 'post', 'transit', '2026-10-19'],
+    ['RV-24047', { fa: 'فروشگاه بازارچه', en: 'Bazarche Store' }, { fa: 'تهران', en: 'Tehran' }, { fa: 'رشت', en: 'Rasht' }, 'express', 'transit', '2026-10-17'],
+    ['RV-24041', { fa: 'کارخانهٔ نوید', en: 'Navid Plant' }, { fa: 'اصفهان', en: 'Isfahan' }, { fa: 'اهواز', en: 'Ahvaz' }, 'own', 'delayed', '2026-10-16'],
+    ['RV-24036', { fa: 'علی نوری', en: 'Ali Nouri' }, { fa: 'تهران', en: 'Tehran' }, { fa: 'کرج', en: 'Karaj' }, 'express', 'delivered', '2026-10-13'],
+  ];
+  const T = {
+    status: { transit: { fa: 'در مسیر', en: 'In transit', c: 'pill-info' }, delivered: { fa: 'تحویل شد', en: 'Delivered', c: 'pill-ok' }, delayed: { fa: 'با تأخیر', en: 'Delayed', c: 'pill-warn' } },
+    carrier: { own: { fa: 'ناوگان خودی', en: 'Own fleet' }, post: { fa: 'پست ملی', en: 'National post' }, express: { fa: 'پیک اکسپرس', en: 'Express courier' } },
+    more: { fa: 'جزئیات و رهگیری', en: 'Details & tracking' },
+    track: { fa: [['ثبت سفارش', 'done'], ['جمع‌آوری از انبار', 'done'], ['خروج از مرکز توزیع', 'done'], ['در مسیر مقصد', 'now'], ['تحویل به گیرنده', '']], en: [['Order created', 'done'], ['Picked up from warehouse', 'done'], ['Left distribution hub', 'done'], ['On the way to destination', 'now'], ['Delivered to recipient', '']] },
+  };
+  const L = () => tf.lang();
+  function render() {
+    const body = document.getElementById('rows');
+    body.innerHTML = SHIP.map(([code, who, from, to, car, st, eta], i) => `<tr data-filter-item data-status="${st}" data-carrier="${car}">
+      <td><span class="mono ltr">${code}</span></td><td>${who[L()]}</td>
+      <td><span class="route-cell">${from[L()]}<i class="icon-arrow-right flip-rtl"></i>${to[L()]}</span></td>
+      <td>${T.carrier[car][L()]}</td><td><span class="pill ${T.status[st].c}">${T.status[st][L()]}</span></td>
+      <td data-value="${eta}">${tf.date(eta, 'short')}</td>
+      <td><button class="btn btn-ghost btn-icon" type="button" data-track="${i}" aria-label="${T.more[L()]}"><i class="icon-ellipsis"></i></button></td></tr>`).join('');
+    tf.applyFilter(body.closest('[data-filter-scope]'));
+  }
+  document.addEventListener('tf:ready', render);
+  document.addEventListener('tf:lang', render);
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-track]');
+    if (b) {
+      const s = SHIP[b.dataset.track];
+      document.getElementById('tr-title').textContent = s[0];
+      document.getElementById('track-list').innerHTML = T.track[L()].map(([t, st], k) => `<li class="${st}"><b>${t}</b><time>${st ? tf.date(new Date(2026, 9, 14 + k, 9 + k * 2), 'datetime') : '—'}</time></li>`).join('');
+      document.getElementById('track').showModal();
+    }
+    const g = e.target.closest('[data-goto]');
+    if (g) { e.preventDefault(); tf.selectTab(document.getElementById(g.dataset.goto), true); document.getElementById('wiz-done').hidden = true; document.getElementById('wiz-form').hidden = false; }
+  });
+  // Breadcrumb follows the selected sub-nav tab.
+  document.addEventListener('tf:tab', (e) => {
+    const tab = document.querySelector(`[aria-controls="${e.detail.id}"]`);
+    const label = tab?.querySelector('span[data-alt]');
+    if (label && tab.closest('.subnav')) { const c = document.getElementById('crumb-current'); c.textContent = label.textContent; c.dataset.alt = label.dataset.alt; }
+  });
+  // Wizard: show submit on the last step; live summary.
+  document.getElementById('wiz').addEventListener('tf:step', (e) => {
+    const last = e.detail.index === 3;
+    document.getElementById('wiz-next').hidden = last;
+    document.getElementById('wiz-submit').hidden = !last;
+  });
+  function updateSummary() {
+    const f = document.getElementById('wiz-form');
+    const svc = f.querySelector('input[name="service"]:checked');
+    const ship = Number(svc.dataset.price);
+    const ins = f.insurance.checked ? Math.round(Number(f.value.value || 0) * 0.005) : 0;
+    const vat = Math.round((ship + ins) * 0.1);
+    const set = (id, v) => { const el = document.getElementById(id); el.dataset.num = v; el.textContent = tf.fmt(v, 'toman'); };
+    set('s-ship', ship); set('s-ins', ins); set('s-vat', vat); set('s-total', ship + ins + vat);
+    const name = svc.closest('.option').querySelector('b');
+    const sv = document.getElementById('s-service'); sv.textContent = name.textContent; sv.dataset.alt = name.dataset.alt;
+  }
+  document.getElementById('wiz-form').addEventListener('change', updateSummary);
+  document.getElementById('wiz-form').addEventListener('input', updateSummary);
+  document.getElementById('wiz-form').addEventListener('tf:submit', () => { document.getElementById('wiz-form').hidden = true; });
+</script>
+</body>
+</html>
