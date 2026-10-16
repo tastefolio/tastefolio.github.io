@@ -1,0 +1,141 @@
+/* Atelier — design tokens (Tastefolio). Gallery-grade monochrome with one highlighter accent.
+   --brand is a LIGHT highlighter tone that always carries black text. */
+:root {
+  --canvas: #f3f1ed;
+  --surface: #ffffff;
+  --surface-2: #f8f7f4;
+  --surface-3: #ebe8e2;
+  --glass: rgba(255, 255, 255, .62);
+  --glass-line: rgba(255, 255, 255, .9);
+  --surface-ink: #0e0e0d;
+  --overlay: rgba(14, 14, 13, .32);
+
+  --ink: #0e0e0d;
+  --ink-2: #57544f;
+  --ink-3: #96928a;
+  --ink-inverse: #f6f5f2;
+
+  --line: rgba(14, 14, 13, .09);
+  --line-2: rgba(14, 14, 13, .16);
+
+  /* Highlighter accent: fills behind black text, chart highlight, live dots. Never text color. */
+  --brand: #d6ff3d;
+  --brand-ink: #0e0e0d;
+  --brand-soft: color-mix(in oklab, var(--brand) 35%, var(--surface));
+  --brand-strong: color-mix(in oklab, var(--brand) 70%, #000);
+  --focus: color-mix(in oklab, var(--ink) 35%, transparent);
+
+  --success: #1f8a4c;
+  --success-soft: #e3f3e9;
+  --warning: #a66a00;
+  --warning-soft: #f7eedb;
+  --danger: #c2372b;
+  --danger-soft: #f8e4e1;
+  --info: #3456d1;
+  --info-soft: #e6ebfa;
+
+  --chart-1: var(--ink);
+  --chart-2: var(--ink-3);
+  --chart-3: var(--brand-strong);
+  --chart-4: #b9b4aa;
+  --chart-5: #3456d1;
+  --chart-6: #c2372b;
+  --chart-grid: rgba(14, 14, 13, .06);
+  --chart-axis: var(--ink-3);
+  --chart-curve: smooth;
+  --chart-stroke: 2;
+  --chart-area: .1;
+  --chart-radius: 8;
+  --chart-bar-gap: .5;
+  --chart-donut: 10;
+
+  /* Type: tight grotesk display + serif italic accents + mono details */
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-accent: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --fs-xs: 12px;
+  --fs-sm: 14px;
+  --fs-md: 16px;
+  --fs-lg: 19px;
+  --fs-xl: 24px;
+  --fs-2xl: 36px;
+  --fs-3xl: 56px;
+  --fs-display: clamp(48px, 8.4vw, 124px);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 600;
+  --fw-display: 600;
+  --lh-tight: .92;
+  --lh-snug: 1.2;
+  --lh-body: 1.6;
+  --tracking-display: -.055em;
+  --tracking-caps: .12em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 72px;
+  --space-9: 112px;
+  --space-10: 168px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  --radius-xl: 40px;
+  --radius-pill: 999px;
+  --border-w: 1px;
+  --shadow-1: 0 1px 1px rgba(14, 14, 13, .04), 0 8px 24px -12px rgba(14, 14, 13, .14);
+  --shadow-2: 0 2px 4px rgba(14, 14, 13, .04), 0 28px 60px -28px rgba(14, 14, 13, .32);
+  --shadow-3: 0 60px 120px -50px rgba(14, 14, 13, .45);
+
+  --container: 1280px;
+  --gutter: clamp(18px, 4.5vw, 56px);
+  --control-h: 40px;
+  --control-h-lg: 52px;
+
+  --ease: cubic-bezier(.16, 1, .3, 1);
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+  --dur-1: 180ms;
+  --dur-2: 420ms;
+  --dur-3: 900ms;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --canvas: #0d0d0c;
+  --surface: #161615;
+  --surface-2: #1b1b19;
+  --surface-3: #242422;
+  --glass: rgba(30, 30, 28, .6);
+  --glass-line: rgba(255, 255, 255, .08);
+  --surface-ink: #f3f1ed;
+  --ink: #f3f1ed;
+  --ink-2: #aeaaa2;
+  --ink-3: #75716a;
+  --ink-inverse: #0e0e0d;
+  --line: rgba(255, 255, 255, .08);
+  --line-2: rgba(255, 255, 255, .15);
+  --chart-grid: rgba(255, 255, 255, .06);
+  --chart-3: var(--brand);
+  --shadow-1: 0 8px 24px -12px rgba(0, 0, 0, .6);
+  --shadow-2: 0 28px 60px -28px rgba(0, 0, 0, .8);
+  color-scheme: dark;
+}
+
+/* Persian: Vazirmatn for UI/display; Markazi Text replaces the serif-italic accent (no italics in Persian). */
+:root:lang(fa) {
+  --font-sans: "Vazirmatn", system-ui, Tahoma, sans-serif;
+  --font-display: "Vazirmatn", system-ui, sans-serif;
+  --font-accent: "Markazi Text", "Vazirmatn", serif;
+  --fs-display: clamp(40px, 6.6vw, 96px);
+  --lh-tight: 1.22;
+  --lh-snug: 1.5;
+  --lh-body: 1.9;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+  --fw-display: 800;
+}

@@ -49,13 +49,14 @@ try {
       const overflow = await page.evaluate((W) => {
         if (document.documentElement.scrollWidth > W + 1) return [`document ${document.documentElement.scrollWidth}px > ${W}px`];
         return [...document.querySelectorAll('body *')].filter((e) => { const r = e.getBoundingClientRect(); return r.width && (r.right > W + 1 || r.left < -1) && getComputedStyle(e).position !== 'fixed'; })
-          .filter((e) => !e.closest('[data-track], .table-wrap, .table-scroll, [role=tablist], .chip-group, .mono-feed, .scroll-x, .feature-tabs'))
+          .filter((e) => !e.closest('[data-track], .table-wrap, .table-scroll, [role=tablist], .chip-group, .mono-feed, .scroll-x, .feature-tabs, .marquee'))
           .slice(0, 5).map((e) => `${e.tagName.toLowerCase()}.${String(e.className).split(' ')[0]}`);
       }, VIEW[vp].viewport.width);
       if (overflow.length) notes.push(`${slug}/${demo} ${lang} ${vp}: overflow → ${overflow.join(', ')}`);
       await save(`${demo}-${lang}-${vp}`);
       if (flag('tabs') && demo === 'dashboard') {
-        const tabs = await page.$$('[role="tablist"]:first-of-type [role="tab"]');
+        const list = await page.$('[role="tablist"]');
+        const tabs = list ? await list.$$('[role="tab"]') : [];
         for (let i = 1; i < tabs.length; i++) {
           await tabs[i].evaluate((el) => el.click());
           await page.waitForTimeout(250);

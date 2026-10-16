@@ -1,0 +1,34 @@
+{
+  "name": "Atelier",
+  "order": 3,
+  "category": "brand",
+  "mode": "light",
+  "density": "airy",
+  "persianFirst": false,
+  "tags": ["premium", "editorial", "motion", "bento", "monochrome"],
+  "tagline": {
+    "en": "Gallery-grade product marketing — huge tight type, serif-italic accents, glass and motion",
+    "fa": "معرفی محصول در حد گالری — تایپ عظیم و فشرده، تأکیدهای سریف، شیشه و حرکت"
+  },
+  "summary": {
+    "en": "A monochrome, expensive-feeling language for products that need to look considered: warm grain canvas, enormous tightly tracked headlines with one serif-italic word, pill buttons with a highlighter dot, bento tiles, choreographed reveal motion and a highlighter-lime accent that only ever sits behind black text. The app side is an airy studio with a floating glass dock, greeting headline and a command palette.",
+    "fa": "زبانی تک‌رنگ و گران‌حس برای محصولاتی که باید سنجیده دیده شوند: زمینهٔ گرم با بافت دانه‌ای، تیترهای عظیم و فشرده با یک واژهٔ سریف، دکمه‌های کپسولی با نقطهٔ ماژیکی، کاشی‌های بنتو، حرکت‌های هماهنگ ظاهرشدن و رنگ تأکیدی لیمویی که فقط پشت متن مشکی می‌نشیند. بخش اپ، استودیویی دلباز است با داک شیشه‌ای شناور، تیتر خوشامد و پالت فرمان."
+  },
+  "bestFor": {
+    "en": ["Launch and landing pages that must feel premium", "Creative tools, studios and agencies", "AI and productivity products avoiding the template look", "Calm, low-density personal or team dashboards"],
+    "fa": ["صفحه‌های معرفی و لانچ که باید پریمیوم باشند", "ابزارهای خلاق، استودیوها و آژانس‌ها", "محصولات هوش مصنوعی و بهره‌وری که نمی‌خواهند قالبی دیده شوند", "داشبوردهای شخصی یا تیمی آرام و کم‌تراکم"]
+  },
+  "avoidFor": {
+    "en": ["Data-dense admin or finance tools", "Catalogs with hundreds of products", "Audiences that need maximum speed on low-end devices"],
+    "fa": ["ابزارهای مدیریتی یا مالی پرداده", "کاتالوگ‌هایی با صدها محصول", "مخاطبانی که روی دستگاه ضعیف بیشترین سرعت را لازم دارند"]
+  },
+  "signature": {
+    "en": ["Display type 90–124px, weight 600, tracking −0.055em, one word in serif italic", "Black pill CTA ending in a lime dot with an arrow that rotates on hover", "Bento grid of white, ink and lime tiles at 28px radius", "Reveal choreography: fade, 28px rise and blur-to-sharp, staggered", "Floating glass pill navigation; giant wordmark in the footer", "Studio dashboard with glass dock, greeting headline and ⌘K palette"],
+    "fa": ["تیتر ۹۰ تا ۱۲۴ پیکسل، وزن ۶۰۰ و فشرده، با یک واژهٔ متمایز", "دکمهٔ کپسولی مشکی با نقطهٔ لیمویی و فلشی که هنگام هاور می‌چرخد", "شبکهٔ بنتو از کاشی‌های سفید، مشکی و لیمویی با گوشهٔ ۲۸ پیکسل", "حرکت ظاهرشدن: محوشدن، بالا آمدن ۲۸ پیکسل و تیزشدن از تاری، پلکانی", "ناوبری کپسولی شیشه‌ای شناور؛ نام بزرگ برند در پانویس", "داشبورد استودیویی با داک شیشه‌ای، تیتر خوشامد و پالت ⌘K"]
+  },
+  "swatches": ["#f3f1ed", "#ffffff", "#0e0e0d", "#96928a", "#d6ff3d"],
+  "fonts": { "latin": "Geist + Instrument Serif", "persian": "Vazirmatn + Markazi Text", "mono": "Geist Mono" },
+  "icons": "Phosphor (light)",
+  "brandTrials": ["ff8a5c", "8fd3ff", "ffb3e6", "c9b8ff"],
+  "demos": { "site": { "host": "halo.example" }, "dashboard": { "host": "app.halo.example" } }
+}

@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-alt-lang="fa" data-demo="dashboard" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="هاله · استودیو">Halo · Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Vazirmatn:wght@300;400;500;700;800&family=Markazi+Text:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/light/style.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .greet-row { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--space-5); flex-wrap: wrap; margin-block-end: var(--space-6); }
+  .greet-row p { margin-block-start: 10px; }
+  .kpi .delta { font-size: 13px; color: var(--ink-2); }
+  .kpi .delta b { background: var(--brand); color: var(--brand-ink); padding: 1px 6px; border-radius: 6px; font-weight: 600; }
+  .upgrade { padding: var(--space-4); border-radius: 22px; background: var(--brand); color: var(--brand-ink); display: grid; gap: 8px; font-size: 14px; }
+  .me { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+  .me .av { inline-size: 36px; block-size: 36px; border-radius: 50%; background: linear-gradient(135deg, #e3ded3, #8d877b); }
+  .projects .project h3 { font-size: 18px; font-weight: 600; letter-spacing: -.02em; }
+  .project-top { display: flex; justify-content: space-between; gap: var(--space-3); align-items: flex-start; }
+  .project-foot { display: flex; justify-content: space-between; align-items: center; }
+  .cap { display: flex; align-items: center; gap: 10px; }
+  .cap .bar { flex: 1; block-size: 8px; border-radius: 99px; background: var(--surface-3); overflow: hidden; min-inline-size: 80px; }
+  .cap .bar i { display: block; block-size: 100%; inline-size: var(--w); background: var(--ink); border-radius: inherit; }
+  .cap .bar i.over { background: var(--danger); }
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-block-end: var(--space-4); }
+  .filters .input { min-block-size: 42px; border-radius: 999px; max-inline-size: 280px; }
+  .modal form { padding: var(--space-6); display: grid; gap: var(--space-4); }
+  .modal .two { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+  @media (max-width: 520px) { .modal .two { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="رفتن به محتوا">Skip to content</a>
+<div class="studio">
+  <aside class="dock glass" id="dock" aria-label="Workspace" data-alt-aria-label="فضای کاری">
+    <a class="wordmark" href="site.html"><span class="wordmark-dot" aria-hidden="true"></span><span data-alt="هاله">Halo</span></a>
+    <nav aria-label="Main" data-alt-aria-label="اصلی">
+      <a href="#" aria-current="page"><i class="ph-light ph-house" aria-hidden="true"></i><span data-alt="خانه">Home</span></a>
+      <a href="#" data-goto="t-projects"><i class="ph-light ph-squares-four" aria-hidden="true"></i><span data-alt="پروژه‌ها">Projects</span></a>
+      <a href="#" data-goto="t-team"><i class="ph-light ph-users-three" aria-hidden="true"></i><span data-alt="تیم">Team</span></a>
+      <a href="#"><i class="ph-light ph-calendar-blank" aria-hidden="true"></i><span data-alt="برنامهٔ هفته">Schedule</span></a>
+      <a href="#"><i class="ph-light ph-receipt" aria-hidden="true"></i><span data-alt="صورتحساب‌ها">Invoices</span></a>
+      <a href="#"><i class="ph-light ph-gear-six" aria-hidden="true"></i><span data-alt="تنظیمات">Settings</span></a>
+    </nav>
+    <div class="dock-foot">
+      <div class="upgrade"><b data-alt="هاله ۲ رسید">Halo 2 is here</b><span data-alt="زمان‌بندی جعبه‌ای را برای تیم روشن کنید.">Turn on time-boxing for the team.</span></div>
+      <div class="me"><span class="av" aria-hidden="true"></span><div><b data-alt="لیلا امینی">Leila Amini</b><div class="small subtle" data-alt="نورث‌لایت">Northlight</div></div></div>
+    </div>
+  </aside>
+
+  <main class="studio-main" id="main">
+    <div class="topline">
+      <button class="btn btn-glass btn-icon menu-btn" type="button" data-toggle="#dock" aria-expanded="false" aria-label="Menu" data-alt-aria-label="منو" style="display:none" id="dock-btn"><i class="ph-light ph-list" aria-hidden="true"></i></button>
+      <button class="search-pill" type="button" data-palette-open><i class="ph-light ph-magnifying-glass" aria-hidden="true"></i><span data-alt="جست‌وجو یا فرمان…">Search or jump to…</span><kbd>⌘K</kbd></button>
+      <span class="spacer"></span>
+      <button class="btn btn-ghost" type="button" data-lang-toggle data-alt="EN">فا</button>
+      <button class="btn btn-ghost btn-icon" type="button" data-theme-toggle aria-label="Dark mode" data-alt-aria-label="حالت تیره"><i class="ph-light ph-moon" aria-hidden="true"></i></button>
+      <button class="btn btn-primary" type="button" data-dialog="#new-project" style="padding-inline-start:16px" aria-label="New project" data-alt-aria-label="پروژهٔ تازه"><span class="hide-sm" data-alt="پروژهٔ تازه">New project</span><span class="btn-dot"><i class="ph-light ph-plus" aria-hidden="true"></i></span></button>
+    </div>
+
+    <div class="greet-row">
+      <div>
+        <h1 class="greeting"><span data-alt="صبح بخیر،">Good morning,</span> <em class="accent" data-alt="لیلا.">Leila.</em></h1>
+        <p class="muted"><span data-date="2026-10-16" data-fmt="long">October 16, 2026</span> · <span data-alt="هفتهٔ آرامی پیش رو دارید.">A calm week ahead.</span></p>
+      </div>
+      <div class="segmented" role="tablist" aria-label="View" data-alt-aria-label="نما">
+        <button role="tab" id="t-overview" aria-controls="p-overview" aria-selected="true" data-alt="نمای کلی">Overview</button>
+        <button role="tab" id="t-projects" aria-controls="p-projects" aria-selected="false" data-alt="پروژه‌ها">Projects</button>
+        <button role="tab" id="t-team" aria-controls="p-team" aria-selected="false" data-alt="تیم">Team</button>
+      </div>
+    </div>
+
+    <section role="tabpanel" id="p-overview" aria-labelledby="t-overview">
+      <div class="kpis">
+        <article class="kpi"><span class="accent" data-alt="ظرفیت رزروشده">booked capacity</span><span class="kpi-value" data-countup="82" data-fmt="pct">82%</span><span class="delta"><b>+6</b> <span data-alt="نسبت به هفتهٔ قبل">vs last week</span></span></article>
+        <article class="kpi"><span class="accent" data-alt="ساعت قابل‌صورتحساب">billable hours</span><span class="kpi-value" data-countup="146">146</span><span class="delta" data-alt="از ۱۷۸ ساعت برنامه‌ریزی‌شده">of 178 planned</span></article>
+        <article class="kpi"><span class="accent" data-alt="درآمد ماه">revenue, month</span><span class="kpi-value" data-countup="38400" data-fmt="compact">38.4K</span><span class="delta"><b>+12%</b> <span data-alt="نسبت به مهر">vs September</span></span></article>
+        <article class="kpi"><span class="accent" data-alt="تحویل به‌موقع">on-time delivery</span><span class="kpi-value" data-countup="94" data-fmt="pct">94%</span><span class="delta" data-alt="۱۶ از ۱۷ تحویل">16 of 17 handoffs</span></article>
+      </div>
+      <div class="grid-main">
+        <article class="panel">
+          <div class="panel-head"><h2 class="h3"><span data-alt="این">This</span> <em data-alt="هفته">week</em></h2><span class="chip chip-hi" data-alt="۸۲٪ رزرو">82% booked</span></div>
+          <div class="week" role="table" aria-label="Weekly schedule" data-alt-aria-label="برنامهٔ هفته">
+            <div class="week-head" role="row"><span role="columnheader"></span><span role="columnheader" data-alt="شنبه">Mon</span><span role="columnheader" data-alt="یکشنبه">Tue</span><span role="columnheader" data-alt="دوشنبه">Wed</span><span role="columnheader" data-alt="سه‌شنبه">Thu</span><span role="columnheader" data-alt="چهارشنبه">Fri</span></div>
+            <div class="week-row" role="row"><b role="rowheader" data-alt="لیلا">Leila</b><span class="slot is-ink" style="--from:2;--to:4" data-alt="بازطراحی صبا">Saba rebrand</span><span class="slot" style="--from:4;--to:5" data-alt="بازبینی">Review</span><span class="slot is-hi" style="--from:5;--to:7" data-alt="کمپین پاییز">Autumn campaign</span></div>
+            <div class="week-row" role="row"><b role="rowheader" data-alt="مانی">Mani</b><span class="slot is-hi" style="--from:2;--to:6" data-alt="وب‌سایت نورث‌لایت">Northlight website</span><span class="slot" style="--from:6;--to:7" data-alt="مرخصی">Off</span></div>
+            <div class="week-row" role="row"><b role="rowheader" data-alt="جانا">Jana</b><span class="slot" style="--from:2;--to:3" data-alt="کارگاه">Workshop</span><span class="slot is-ink" style="--from:3;--to:7" data-alt="فونت سفارشی اطلس">Atlas Type custom font</span></div>
+            <div class="week-row" role="row"><b role="rowheader" data-alt="سام">Sam</b><span class="slot is-ink" style="--from:2;--to:5" data-alt="بستهٔ فرو">Ferro packaging</span><span class="slot" style="--from:5;--to:7" data-alt="آزاد">Open</span></div>
+          </div>
+        </article>
+        <article class="panel">
+          <div class="panel-head"><h2 class="h3"><em data-alt="درآمد">Revenue</em></h2><span class="small subtle" data-alt="۱۲ هفتهٔ اخیر">last 12 weeks</span></div>
+          <div data-chart="area" data-height="230" data-fmt="compact" data-dates="2026-07-27,12,week" data-tip-fmt="eur" data-values="6200,7100,6800,8100,7600,8900,9400,8700,9900,10400,9800,11200" data-label='{"en":"Weekly revenue","fa":"درآمد هفتگی"}'></div>
+        </article>
+      </div>
+      <div class="grid-main">
+        <div class="projects two-up">
+          <article class="project"><div class="project-top"><div><span class="small subtle" data-alt="صبا آتلیه">Saba Atelier</span><h3 data-alt="بازطراحی هویت">Identity rebrand</h3></div><span class="ring" style="--p:72"><span data-num="72" data-fmt="pct">72%</span></span></div><div class="project-foot"><span class="avatars"><span>LA</span><span style="background:var(--brand)">JN</span></span><span class="chip" data-alt="۳ روز مانده">3 days left</span></div></article>
+          <article class="project"><div class="project-top"><div><span class="small subtle" data-alt="نورث‌لایت">Northlight</span><h3 data-alt="وب‌سایت تازه">New website</h3></div><span class="ring" style="--p:45"><span data-num="45" data-fmt="pct">45%</span></span></div><div class="project-foot"><span class="avatars"><span>MK</span><span>SR</span></span><span class="chip" data-alt="۹ روز مانده">9 days left</span></div></article>
+        </div>
+        <article class="panel">
+          <div class="panel-head"><h2 class="h3"><em data-alt="فعالیت">Activity</em></h2></div>
+          <ul class="feed">
+            <li><span class="avatars"><span style="background:var(--brand)">JN</span></span><span data-alt="جانا سه پیش‌نویس فونت را بارگذاری کرد">Jana uploaded three type drafts</span><time data-ago="720">12 min ago</time></li>
+            <li><span class="avatars"><span>SB</span></span><span data-alt="صبا آتلیه طرح را تأیید کرد">Saba Atelier approved the moodboard</span><time data-ago="3600">1 hr ago</time></li>
+            <li><span class="avatars"><span>MK</span></span><span data-alt="مانی ۶ ساعت ثبت کرد">Mani logged 6 hours</span><time data-ago="10800">3 hr ago</time></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section role="tabpanel" id="p-projects" aria-labelledby="t-projects" hidden data-filter-scope>
+      <div class="filters">
+        <input class="input" type="search" data-filter-search placeholder="Filter projects…" data-alt-placeholder="فیلتر پروژه‌ها…" aria-label="Filter projects" data-alt-aria-label="فیلتر پروژه‌ها">
+        <div class="segmented" data-group role="group" aria-label="Status" data-alt-aria-label="وضعیت">
+          <button type="button" data-filter="state" data-value="all" aria-pressed="true" data-alt="همه">All</button>
+          <button type="button" data-filter="state" data-value="active" aria-pressed="false" data-alt="فعال">Active</button>
+          <button type="button" data-filter="state" data-value="review" aria-pressed="false" data-alt="بازبینی">In review</button>
+          <button type="button" data-filter="state" data-value="done" aria-pressed="false" data-alt="تمام‌شده">Done</button>
+        </div>
+        <span class="small subtle"><b data-filter-count>6</b> <span data-alt="پروژه">projects</span></span>
+      </div>
+      <div class="projects">
+        <article class="project" data-filter-item data-state="active"><div class="project-top"><div><span class="small subtle" data-alt="صبا آتلیه">Saba Atelier</span><h3 data-alt="بازطراحی هویت">Identity rebrand</h3></div><span class="ring" style="--p:72"><span data-num="72" data-fmt="pct">72%</span></span></div><div class="project-foot"><span class="avatars"><span>LA</span><span style="background:var(--brand)">JN</span></span><span class="chip" data-alt="۳ روز مانده">3 days left</span></div></article>
+        <article class="project" data-filter-item data-state="active"><div class="project-top"><div><span class="small subtle" data-alt="نورث‌لایت">Northlight</span><h3 data-alt="وب‌سایت تازه">New website</h3></div><span class="ring" style="--p:45"><span data-num="45" data-fmt="pct">45%</span></span></div><div class="project-foot"><span class="avatars"><span>MK</span><span>SR</span></span><span class="chip" data-alt="۹ روز مانده">9 days left</span></div></article>
+        <article class="project" data-filter-item data-state="review"><div class="project-top"><div><span class="small subtle" data-alt="اطلس تایپ">Atlas Type</span><h3 data-alt="فونت سفارشی">Custom typeface</h3></div><span class="ring" style="--p:90"><span data-num="90" data-fmt="pct">90%</span></span></div><div class="project-foot"><span class="avatars"><span style="background:var(--brand)">JN</span></span><span class="chip chip-hi" data-alt="در بازبینی">In review</span></div></article>
+        <article class="project" data-filter-item data-state="active"><div class="project-top"><div><span class="small subtle" data-alt="فرو و شرکا">Ferro &amp; Co</span><h3 data-alt="بسته‌بندی محصول">Packaging system</h3></div><span class="ring" style="--p:30"><span data-num="30" data-fmt="pct">30%</span></span></div><div class="project-foot"><span class="avatars"><span>SR</span></span><span class="chip" data-alt="۱۴ روز مانده">14 days left</span></div></article>
+        <article class="project" data-filter-item data-state="done"><div class="project-top"><div><span class="small subtle" data-alt="کیلن‌ورکس">Kilnworks</span><h3 data-alt="کتاب نمایشگاه">Exhibition book</h3></div><span class="ring" style="--p:100"><span data-num="100" data-fmt="pct">100%</span></span></div><div class="project-foot"><span class="avatars"><span>LA</span><span>MK</span></span><span class="chip chip-ink" data-alt="تحویل شد">Shipped</span></div></article>
+        <article class="project" data-filter-item data-state="review"><div class="project-top"><div><span class="small subtle" data-alt="پیپر مون">Paper Moon</span><h3 data-alt="کمپین پاییز">Autumn campaign</h3></div><span class="ring" style="--p:84"><span data-num="84" data-fmt="pct">84%</span></span></div><div class="project-foot"><span class="avatars"><span>LA</span></span><span class="chip chip-hi" data-alt="در بازبینی">In review</span></div></article>
+      </div>
+      <p class="muted" data-filter-empty hidden data-alt="پروژه‌ای پیدا نشد.">No projects match.</p>
+    </section>
+
+    <section role="tabpanel" id="p-team" aria-labelledby="t-team" hidden>
+      <article class="panel">
+        <div class="panel-head"><h2 class="h3"><span data-alt="ظرفیت">Capacity,</span> <em data-alt="این هفته">this week</em></h2><button class="btn btn-glass" type="button" data-toast="Invite link copied" data-toast-alt="پیوند دعوت کپی شد"><i class="ph-light ph-user-plus" aria-hidden="true"></i><span data-alt="دعوت">Invite</span></button></div>
+        <div class="table-scroll"><table class="table">
+          <thead><tr><th scope="col" data-alt="عضو">Member</th><th scope="col" data-alt="نقش">Role</th><th scope="col" data-alt="رزرو">Booked</th></tr></thead>
+          <tbody>
+            <tr><td><b data-alt="لیلا امینی">Leila Amini</b></td><td class="muted" data-alt="مدیر خلاق">Creative director</td><td><div class="cap"><span class="bar"><i style="--w:88%"></i></span><span class="mono" data-num="88" data-fmt="pct">88%</span></div></td></tr>
+            <tr><td><b data-alt="مانی کیانی">Mani Kiani</b></td><td class="muted" data-alt="طراح وب">Web designer</td><td><div class="cap"><span class="bar"><i style="--w:80%"></i></span><span class="mono" data-num="80" data-fmt="pct">80%</span></div></td></tr>
+            <tr><td><b data-alt="جانا نوواک">Jana Novak</b></td><td class="muted" data-alt="طراح حروف">Type designer</td><td><div class="cap"><span class="bar"><i class="over" style="--w:100%"></i></span><span class="mono" data-num="104" data-fmt="pct">104%</span></div></td></tr>
+            <tr><td><b data-alt="سام رحیمی">Sam Rahimi</b></td><td class="muted" data-alt="طراح بسته‌بندی">Packaging designer</td><td><div class="cap"><span class="bar"><i style="--w:60%"></i></span><span class="mono" data-num="60" data-fmt="pct">60%</span></div></td></tr>
+          </tbody>
+        </table></div>
+      </article>
+    </section>
+  </main>
+</div>
+
+<dialog class="palette" data-palette aria-label="Command palette" data-alt-aria-label="فرمان‌ها">
+  <input type="text" placeholder="Type a command or search…" data-alt-placeholder="فرمان یا جست‌وجو را بنویسید…" aria-label="Command" data-alt-aria-label="فرمان">
+  <ul role="listbox">
+    <li data-palette-item role="option" data-dialog="#new-project"><i class="ph-light ph-plus" aria-hidden="true"></i><span data-alt="پروژهٔ تازه">New project</span><kbd>N</kbd></li>
+    <li data-palette-item role="option" data-goto="t-projects"><i class="ph-light ph-squares-four" aria-hidden="true"></i><span data-alt="رفتن به پروژه‌ها">Go to projects</span><kbd>G P</kbd></li>
+    <li data-palette-item role="option" data-goto="t-team"><i class="ph-light ph-users-three" aria-hidden="true"></i><span data-alt="رفتن به تیم">Go to team</span><kbd>G T</kbd></li>
+    <li data-palette-item role="option" data-toast="Timer started" data-toast-alt="زمان‌سنج شروع شد"><i class="ph-light ph-timer" aria-hidden="true"></i><span data-alt="شروع زمان‌سنج">Start a timer</span><kbd>T</kbd></li>
+    <li data-palette-item role="option" data-theme-toggle><i class="ph-light ph-moon" aria-hidden="true"></i><span data-alt="تغییر حالت تیره">Toggle dark mode</span></li>
+  </ul>
+  <p data-palette-empty hidden style="padding:16px 22px" class="muted" data-alt="نتیجه‌ای نیست.">No results.</p>
+</dialog>
+
+<dialog class="modal" id="new-project" aria-labelledby="np-title">
+  <form data-validate novalidate data-success="Project created" data-success-alt="پروژه ساخته شد">
+    <h2 class="h3" id="np-title"><span data-alt="پروژهٔ">A new</span> <em data-alt="تازه">project</em></h2>
+    <div class="field"><label class="label" for="np-name" data-alt="نام پروژه">Project name</label><input class="input" id="np-name" name="name" required minlength="3"></div>
+    <div class="two">
+      <div class="field"><label class="label" for="np-client" data-alt="مشتری">Client</label><select class="select input" id="np-client" name="client" required><option value="" data-alt="انتخاب">Choose…</option><option>Northlight</option><option>Saba Atelier</option><option>Ferro &amp; Co</option></select></div>
+      <div class="field"><label class="label" for="np-budget" data-alt="بودجه (یورو)">Budget (€)</label><input class="input" id="np-budget" name="budget" type="number" min="500" required dir="ltr"></div>
+    </div>
+    <div class="row" style="justify-content:flex-end"><button class="btn btn-ghost" type="button" data-close data-alt="انصراف">Cancel</button><button class="btn btn-primary" type="submit" style="padding-inline-start:16px"><span data-alt="ساختن">Create</span><span class="btn-dot"><i class="ph-light ph-arrow-right flip-rtl" aria-hidden="true"></i></span></button></div>
+  </form>
+</dialog>
+
+<script>
+  document.addEventListener('click', (e) => {
+    const g = e.target.closest('[data-goto]');
+    if (!g) return;
+    e.preventDefault();
+    tf.selectTab(document.getElementById(g.dataset.goto), true);
+    const dock = document.getElementById('dock');
+    if (dock.hasAttribute('data-open')) tf.setOpen(dock, false);
+  });
+  const mq = matchMedia('(max-width: 900px)');
+  const syncDock = () => { document.getElementById('dock-btn').style.display = mq.matches ? '' : 'none'; };
+  mq.addEventListener('change', syncDock); syncDock();
+</script>
+</body>
+</html>

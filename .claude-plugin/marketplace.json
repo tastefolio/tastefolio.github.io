@@ -27,13 +27,23 @@
       ]
     },
     {
+      "name": "atelier",
+      "description": "Tastefolio design language — Gallery-grade product marketing — huge tight type, serif-italic accents, glass and motion",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/atelier"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
       "strict": false,
       "skills": [
         "./skills/switchboard",
-        "./skills/hearth"
+        "./skills/hearth",
+        "./skills/atelier"
       ]
     }
   ]

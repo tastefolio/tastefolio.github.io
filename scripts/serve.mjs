@@ -14,6 +14,7 @@ const types = {
 };
 
 export function startServer(dir = root, p = port) {
+  dir = resolve(dir);
   const server = createServer(async (req, res) => {
     try {
       const url = new URL(req.url, 'http://localhost');

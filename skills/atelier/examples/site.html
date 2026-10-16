@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-alt-lang="fa" data-demo="site" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="هاله — برنامه‌ریزی استودیو در مداری آرام">Halo — plan the studio in calm orbit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Vazirmatn:wght@300;400;500;700;800&family=Markazi+Text:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/light/style.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .hero-visual { position: relative; }
+  .hero-visual .fc-1 { inset-block-start: 10%; inset-inline-start: -4%; }
+  .hero-visual .fc-2 { inset-block-end: 12%; inset-inline-end: -2%; }
+  .hero-visual .fc-1 .dot { inline-size: 8px; block-size: 8px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 4px color-mix(in oklab, var(--brand) 40%, transparent); display: inline-block; margin-inline-end: 6px; }
+  .tile .visual-bars { display: flex; gap: 8px; align-items: flex-end; block-size: 110px; }
+  .tile .visual-bars i { flex: 1; border-radius: 10px; background: var(--surface-3); block-size: var(--h); }
+  .tile .visual-bars i.is-hi { background: var(--brand); }
+  .mini-week { display: grid; gap: 8px; }
+  .mini-week .slot { block-size: 28px; font-size: 12px; }
+  .mini-week .lane { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+  .notif { display: grid; gap: 8px; }
+  .notif div { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 14px; background: rgba(255,255,255,.08); font-size: 13.5px; }
+  .invoice { display: grid; gap: 10px; font-size: 14px; }
+  .invoice div { display: flex; justify-content: space-between; border-block-end: 1px dashed var(--line-2); padding-block-end: 8px; }
+  .quote-wrap { display: grid; gap: var(--space-6); justify-items: start; }
+  .who { display: flex; gap: var(--space-3); align-items: center; }
+  .who .av { inline-size: 48px; block-size: 48px; border-radius: 50%; background: linear-gradient(135deg, #d9d4c9, #8d877b); }
+  .cta { text-align: center; display: grid; justify-items: center; gap: var(--space-5); }
+  .cta .display { font-size: clamp(44px, 7vw, 104px); }
+  .section-head { display: flex; justify-content: space-between; align-items: end; gap: var(--space-5); flex-wrap: wrap; margin-block-end: var(--space-7); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="رفتن به محتوا">Skip to content</a>
+
+<header class="pill-nav">
+  <div class="pill-nav-in">
+    <a class="wordmark" href="#top"><span class="wordmark-dot" aria-hidden="true"></span><span data-alt="هاله">Halo</span></a>
+    <nav class="pill-links" aria-label="Primary" data-alt-aria-label="اصلی">
+      <a href="#features" data-alt="محصول">Product</a>
+      <a href="#how" data-alt="روش کار">How it works</a>
+      <a href="#pricing" data-alt="قیمت">Pricing</a>
+      <a href="#stories" data-alt="داستان‌ها">Stories</a>
+    </nav>
+    <button class="btn btn-ghost" type="button" data-lang-toggle data-alt="EN">فا</button>
+    <a class="btn btn-primary hide-md" href="#start" style="padding-inline-start:16px"><span data-alt="شروع کنید">Get started</span><span class="btn-dot"><i class="ph-light ph-arrow-right flip-rtl" aria-hidden="true"></i></span></a>
+    <button class="btn btn-glass btn-icon menu-btn" type="button" data-toggle="#sheet" aria-expanded="false" aria-label="Menu" data-alt-aria-label="منو"><i class="ph-light ph-list" aria-hidden="true"></i></button>
+  </div>
+</header>
+<nav class="sheet" id="sheet" aria-label="Mobile" data-alt-aria-label="موبایل">
+  <a href="#features" data-dismiss="#sheet" data-alt="محصول">Product</a><a href="#how" data-dismiss="#sheet" data-alt="روش کار">How it works</a><a href="#pricing" data-dismiss="#sheet" data-alt="قیمت">Pricing</a><a href="#start" data-dismiss="#sheet" data-alt="شروع کنید">Get started</a>
+</nav>
+
+<main id="main">
+  <section class="container hero" id="top">
+    <div>
+      <a class="badge-new" href="#features" data-reveal><b data-alt="تازه">New</b><span data-alt="هاله ۲ با زمان‌بندی جعبه‌ای ←">Halo 2 with time-boxing →</span></a>
+      <h1 class="display" data-reveal style="--i:1"><span data-alt="استودیو را">Plan the studio</span> <span data-alt="در مداری">in</span> <em data-alt="آرام">calm</em> <span data-alt="برنامه‌ریزی کنید.">orbit.</span></h1>
+      <p class="lead" data-reveal style="--i:2" data-alt="هاله پروژه‌ها، ظرفیت تیم و ساعت‌های قابل‌صورتحساب را در یک هفتهٔ آرام کنار هم می‌چیند — تا کار خلاق، فضا برای نفس کشیدن داشته باشد.">Halo lines up projects, people and billable hours in one calm week — so creative work has room to breathe.</p>
+      <div class="hero-actions" data-reveal style="--i:3">
+        <a class="btn btn-primary btn-lg" href="#start" data-magnetic><span data-alt="رایگان شروع کنید">Start for free</span><span class="btn-dot"><i class="ph-light ph-arrow-right flip-rtl" aria-hidden="true"></i></span></a>
+        <a class="btn btn-glass btn-lg" href="dashboard.html" data-alt="دیدن نمونهٔ زنده">See a live studio</a>
+      </div>
+      <div class="proof" data-reveal style="--i:4">
+        <span class="avatars" aria-hidden="true"><span style="background:#e3ded3">LA</span><span style="background:#d6ff3d">MK</span><span style="background:#cfc9bd">JN</span><span style="background:#0e0e0d;color:#fff">+</span></span>
+        <span data-alt="بیش از ۱٬۲۰۰ استودیو هفته‌شان را با هاله می‌چینند">1,200+ studios plan their week with Halo</span>
+      </div>
+    </div>
+    <div class="hero-visual" data-reveal style="--i:2">
+      <div class="orbit" aria-hidden="true">
+        <span class="orbit-ring" style="--inset:0%;--t:60s;--size:16px;--planet:var(--brand);--r:58deg"></span>
+        <span class="orbit-ring" style="--inset:12%;--t:44s;--size:12px;--r:118deg"></span>
+        <span class="orbit-ring" style="--inset:24%;--t:30s;--size:10px;--planet:#b7b2a8;--r:210deg"></span>
+        <span class="core"></span>
+      </div>
+      <div class="float-card fc-1"><span class="subtle small"><span class="dot"></span><span data-alt="این هفته">This week</span></span><b data-alt="۸۲٪ ظرفیت">82% booked</b></div>
+      <div class="float-card fc-2"><span class="subtle small" data-alt="پروژهٔ «دفتر صبا»">Saba Atelier rebrand</span><b data-alt="۳ روز تا تحویل">3 days to handoff</b></div>
+    </div>
+  </section>
+
+  <section class="container" aria-label="Customers" data-alt-aria-label="مشتریان">
+    <div class="marquee">
+      <div class="marquee-track">
+        <span>Northlight</span><span>Studio Ravi</span><span>Ferro &amp; Co</span><span>Kilnworks</span><span>Mono Office</span><span>Atlas Type</span><span>Paper Moon</span>
+        <span aria-hidden="true">Northlight</span><span aria-hidden="true">Studio Ravi</span><span aria-hidden="true">Ferro &amp; Co</span><span aria-hidden="true">Kilnworks</span><span aria-hidden="true">Mono Office</span><span aria-hidden="true">Atlas Type</span><span aria-hidden="true">Paper Moon</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section" id="features">
+    <div class="section-head">
+      <h2 class="h2" data-reveal><span data-alt="همهٔ استودیو،">Everything a studio</span><br><em data-alt="در یک نگاه.">actually needs.</em></h2>
+      <p class="lead" data-reveal style="--i:1" data-alt="بدون تختهٔ شلوغ و صدها ستون. فقط آنچه برای تحویل به‌موقع کار لازم است.">No busy boards or hundred-column sheets. Just what it takes to deliver on time.</p>
+    </div>
+    <div class="bento" data-reveal-stagger>
+      <article class="tile span-4" data-reveal>
+        <span class="eyebrow" data-alt="هفتهٔ جعبه‌ای">Time-boxed weeks</span>
+        <h3 class="h3"><span data-alt="هفته را بچینید،">Shape the week,</span> <em data-alt="نه فهرست کارها را.">not the to-do list.</em></h3>
+        <div class="visual mini-week" aria-hidden="true">
+          <div class="lane"><span class="slot is-ink" style="--from:1;--to:3" data-alt="بازطراحی صبا">Saba rebrand</span><span class="slot" style="--from:3;--to:4" data-alt="بازبینی">Review</span><span class="slot is-hi" style="--from:4;--to:6" data-alt="کمپین آبان">Autumn campaign</span></div>
+          <div class="lane"><span class="slot" style="--from:1;--to:2" data-alt="کارگاه">Workshop</span><span class="slot is-hi" style="--from:2;--to:5" data-alt="وب‌سایت نورث‌لایت">Northlight website</span><span class="slot" style="--from:5;--to:6" data-alt="مرخصی">Off</span></div>
+        </div>
+      </article>
+      <article class="tile span-2 tile-hi" data-reveal>
+        <span class="eyebrow" data-alt="ظرفیت">Capacity</span>
+        <p class="h3" data-alt="۸۲٪ این هفته">82% this week</p>
+        <div class="visual visual-bars" aria-hidden="true"><i style="--h:60%"></i><i style="--h:82%;background:var(--ink)"></i><i style="--h:74%"></i><i style="--h:95%;background:var(--ink)"></i><i style="--h:40%"></i></div>
+      </article>
+      <article class="tile span-2 tile-ink" data-reveal>
+        <span class="eyebrow" style="color:inherit;opacity:.7" data-alt="اعلان‌های آرام">Quiet notifications</span>
+        <p class="h3" data-alt="فقط وقتی تصمیم لازم است.">Only when a decision is needed.</p>
+        <div class="visual notif"><div><i class="ph-light ph-check-circle" aria-hidden="true"></i><span data-alt="مشتری طرح را تأیید کرد">Client approved the moodboard</span></div><div><i class="ph-light ph-clock" aria-hidden="true"></i><span data-alt="تحویل فردا، ۱۷:۰۰">Handoff tomorrow, 17:00</span></div></div>
+      </article>
+      <article class="tile span-2" data-reveal>
+        <span class="eyebrow" data-alt="پورتال مشتری">Client portals</span>
+        <p class="h3"><span data-alt="یک پیوند،">One link,</span> <em data-alt="بدون ایمیل‌بازی.">zero email tennis.</em></p>
+        <p class="muted small visual" data-alt="مشتری پیش‌نویس‌ها را می‌بیند، نظر می‌دهد و تأیید می‌کند.">Clients see drafts, comment and approve in one place.</p>
+      </article>
+      <article class="tile span-2" data-reveal>
+        <span class="eyebrow" data-alt="صورتحساب">Invoices</span>
+        <p class="h3" data-alt="ساعت‌ها خودشان فاکتور می‌شوند.">Hours become invoices.</p>
+        <div class="visual invoice"><div><span data-alt="طراحی هویت">Identity design</span><b class="mono">€4,200</b></div><div><span data-alt="وب‌سایت">Website</span><b class="mono">€7,800</b></div></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="container section" id="how" style="padding-block-start:0">
+    <h2 class="h2" data-reveal style="margin-block-end:var(--space-7)"><span data-alt="سه قدم تا">Three steps to a</span> <em data-alt="هفته‌ای آرام.">quieter week.</em></h2>
+    <div class="steps" data-reveal-stagger>
+      <div data-reveal><span class="n" data-alt="۱">01</span><h3 class="h3" data-alt="پروژه‌ها را بیاورید">Bring your projects</h3><p class="muted" style="margin-block-start:10px" data-alt="از صفحه‌گسترده یا ابزار فعلی‌تان وارد کنید؛ دو دقیقه طول می‌کشد.">Import from a spreadsheet or your current tool in about two minutes.</p></div>
+      <div data-reveal><span class="n" data-alt="۲">02</span><h3 class="h3" data-alt="هفته را شکل دهید">Shape the week</h3><p class="muted" style="margin-block-start:10px" data-alt="بلوک‌ها را روی آدم‌ها بکشید. هاله اضافه‌بار را پیش از وقوع نشان می‌دهد.">Drag blocks onto people. Halo flags overload before it happens.</p></div>
+      <div data-reveal><span class="n" data-alt="۳">03</span><h3 class="h3" data-alt="تحویل دهید و صورتحساب بفرستید">Ship and bill</h3><p class="muted" style="margin-block-start:10px" data-alt="ساعت‌های ثبت‌شده با یک کلیک به فاکتور تبدیل می‌شوند.">Logged hours turn into an invoice with one click.</p></div>
+    </div>
+  </section>
+
+  <section class="container section" id="stories" style="border-block-start:1px solid var(--line)">
+    <div class="quote-wrap" data-reveal>
+      <span class="eyebrow" data-alt="داستان مشتری">Customer story</span>
+      <blockquote class="quote" style="margin:0" data-alt="«هاله اولین ابزاری است که تیم واقعاً دوستش دارد. جمعه‌ها دیگر شب کار نمی‌کنیم.»">“Halo is the first tool the team actually likes. Fridays stopped running late.”</blockquote>
+      <div class="who"><span class="av" aria-hidden="true"></span><div><b data-alt="لیلا امینی">Leila Amini</b><p class="small muted" data-alt="مدیر خلاق، استودیو نورث‌لایت">Creative director, Northlight</p></div></div>
+    </div>
+  </section>
+
+  <section class="container section" id="pricing" style="border-block-start:1px solid var(--line)">
+    <div class="section-head">
+      <h2 class="h2" data-reveal><span data-alt="قیمتی که">Pricing that</span> <em data-alt="منصفانه است.">feels fair.</em></h2>
+      <div class="segmented" data-group="billing" role="group" aria-label="Billing" data-alt-aria-label="دورهٔ پرداخت" data-reveal>
+        <button type="button" aria-pressed="true" data-value="monthly" data-alt="ماهانه">Monthly</button>
+        <button type="button" aria-pressed="false" data-value="yearly" data-alt="سالانه −۲۰٪">Yearly −20%</button>
+      </div>
+    </div>
+    <div class="plans" data-reveal-stagger>
+      <article class="plan" data-reveal>
+        <div class="row" style="justify-content:space-between"><h3 class="h3" data-alt="استودیو">Studio</h3><span class="chip" data-alt="تا ۸ نفر">up to 8 people</span></div>
+        <p class="plan-price"><span data-when="billing:monthly"><span data-num="18" data-fmt="eur">€18</span></span><span data-when="billing:yearly" hidden><span data-num="14" data-fmt="eur">€14</span></span> <small data-alt="/ نفر در ماه">/ seat / mo</small></p>
+        <ul class="ticks"><li><i class="ph-light ph-check" aria-hidden="true"></i><span data-alt="هفتهٔ جعبه‌ای و ظرفیت">Time-boxed weeks &amp; capacity</span></li><li><i class="ph-light ph-check" aria-hidden="true"></i><span data-alt="پورتال مشتری">Client portals</span></li><li><i class="ph-light ph-check" aria-hidden="true"></i><span data-alt="فاکتور از ساعت‌ها">Invoices from hours</span></li></ul>
+        <a class="btn btn-glass btn-lg" href="#start" style="margin-block-start:auto" data-alt="شروع ۱۴ روز رایگان">Start 14-day trial</a>
+      </article>
+      <article class="plan tile-ink" data-reveal>
+        <div class="row" style="justify-content:space-between"><h3 class="h3" data-alt="آژانس">Agency</h3><span class="chip chip-hi" data-alt="محبوب">Most loved</span></div>
+        <p class="plan-price"><span data-when="billing:monthly"><span data-num="32" data-fmt="eur">€32</span></span><span data-when="billing:yearly" hidden><span data-num="26" data-fmt="eur">€26</span></span> <small data-alt="/ نفر در ماه">/ seat / mo</small></p>
+        <ul class="ticks"><li><i class="ph-light ph-check" aria-hidden="true"></i><span data-alt="همهٔ امکانات استودیو">Everything in Studio</span></li><li><i class="ph-light ph-check" aria-hidden="true"></i><span data-alt="چند تیم و چند ارز">Multiple teams &amp; currencies</span></li><li><i class="ph-light ph-check" aria-hidden="true"></i><span data-alt="گزارش سودآوری">Profitability reports</span></li></ul>
+        <a class="btn btn-lg" href="#start" style="margin-block-start:auto;background:var(--brand);color:var(--brand-ink)" data-alt="گفتگو با ما">Talk to us</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="container section cta" id="start">
+    <h2 class="display" data-reveal><span data-alt="هفتهٔ بعد را">Make next week</span> <em data-alt="سبک‌تر بسازید.">lighter.</em></h2>
+    <form class="inline-form" data-validate novalidate data-reveal data-success="You're on the list — check your inbox." data-success-alt="ثبت شد — ایمیل‌تان را ببینید.">
+      <div class="field"><label class="sr-only" for="em" data-alt="ایمیل کاری">Work email</label><input class="input" id="em" type="email" name="email" required placeholder="you@studio.com" dir="ltr"></div>
+      <button class="btn btn-primary btn-lg" type="submit" data-magnetic><span data-alt="شروع">Start</span><span class="btn-dot"><i class="ph-light ph-arrow-right flip-rtl" aria-hidden="true"></i></span></button>
+    </form>
+    <p class="small subtle" data-alt="۱۴ روز رایگان. بدون کارت بانکی.">14 days free. No credit card.</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-cols">
+      <p class="muted" style="max-inline-size:32ch" data-alt="هاله محصولی ساختگی است برای نمایش سبک Atelier در تیست‌فولیو.">Halo is a fictional product demonstrating the Atelier style by Tastefolio.</p>
+      <div><h4 data-alt="محصول">Product</h4><ul><li><a href="#features" data-alt="ویژگی‌ها">Features</a></li><li><a href="#pricing" data-alt="قیمت">Pricing</a></li><li><a href="dashboard.html" data-alt="نمونهٔ زنده">Live demo</a></li></ul></div>
+      <div><h4 data-alt="استودیو">Studio</h4><ul><li><a href="#stories" data-alt="داستان‌ها">Stories</a></li><li><a href="#" data-alt="مجله">Journal</a></li><li><a href="#" data-alt="فرصت‌های شغلی">Careers</a></li></ul></div>
+      <div><h4 data-alt="ارتباط">Contact</h4><ul><li><a href="#">hello@halo.example</a></li><li><a href="#" data-alt="اینستاگرام">Instagram</a></li></ul></div>
+    </div>
+    <p class="giant" aria-hidden="true" data-alt="هاله">Halo</p>
+  </div>
+</footer>
+<script>
+  // Magnetic hover: primary CTAs drift toward the pointer (disabled for reduced motion / touch).
+  document.addEventListener('DOMContentLoaded', () => {
+  if (!tf.reduceMotion && matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('[data-magnetic]').forEach((el) => {
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        el.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.18}px, ${(e.clientY - r.top - r.height / 2) * 0.28}px)`;
+      });
+      el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+    });
+  }
+  });
+</script>
+</body>
+</html>
