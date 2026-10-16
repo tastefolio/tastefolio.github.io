@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="dashboard" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Playbox developer console">کنسول توسعه‌دهندگان پلی‌باکس</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Nunito:wght@500;600;700;800&family=Vazirmatn:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .donut-row { display: grid; grid-template-columns: 170px 1fr; gap: var(--space-5); align-items: center; }
+  .donut-row [data-chart] { block-size: 170px; }
+  .legend { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-size: 14px; font-weight: 600; }
+  .legend li { display: flex; align-items: center; gap: 8px; }
+  .legend i { inline-size: 10px; block-size: 10px; border-radius: 4px; background: var(--c); }
+  .legend b { margin-inline-start: auto; }
+  @media (max-width: 480px) { .donut-row { grid-template-columns: minmax(0, 1fr); } }
+  .listing { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: var(--space-5); align-items: start; }
+  @media (max-width: 1000px) { .listing { grid-template-columns: minmax(0, 1fr); } }
+  .preview-tile { display: grid; gap: 10px; justify-items: center; text-align: center; padding: var(--space-6); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<div class="console">
+  <aside class="side" id="side" data-dismissable>
+    <a class="logo" href="site.html"><span class="logo-mark" aria-hidden="true"><i class="ri-play-fill"></i></span><span data-alt="Console">کنسول</span></a>
+    <button class="app-switch" type="button" data-toast="2 more apps in this account" data-toast-alt="۲ برنامهٔ دیگر در این حساب"><span class="icon" style="--c1:#ff5d6c;--c2:#6d28d9"><i class="ri-sword-fill" aria-hidden="true"></i></span><span><b style="display:block" data-alt="Pixel Raiders">پیکسل‌رِیدرز</b><span class="small subtle ltr">com.hezarto.raiders</span></span><i class="ri-expand-up-down-line subtle" aria-hidden="true" style="margin-inline-start:auto"></i></button>
+    <div role="tablist" aria-orientation="vertical" aria-label="بخش‌ها" data-alt-aria-label="Sections">
+      <button role="tab" id="t-ov" aria-controls="p-ov" aria-selected="true"><i class="ri-dashboard-3-fill" aria-hidden="true"></i><span data-alt="Overview">نمای کلی</span></button>
+      <button role="tab" id="t-rev" aria-controls="p-rev" aria-selected="false"><i class="ri-chat-smile-3-fill" aria-hidden="true"></i><span data-alt="Reviews">نظرها</span><span class="badge badge-brand" data-num="12">۱۲</span></button>
+      <button role="tab" id="t-rel" aria-controls="p-rel" aria-selected="false"><i class="ri-rocket-2-fill" aria-hidden="true"></i><span data-alt="Releases">انتشارها</span></button>
+      <button role="tab" id="t-list" aria-controls="p-list" aria-selected="false"><i class="ri-store-2-fill" aria-hidden="true"></i><span data-alt="Store listing">صفحهٔ فروشگاه</span></button>
+    </div>
+  </aside>
+  <div class="main">
+    <header class="ctop">
+      <button class="btn btn-ghost btn-icon side-toggle" type="button" data-toggle="#side" aria-expanded="false" aria-label="منو" data-alt-aria-label="Menu"><i class="ri-menu-line" aria-hidden="true"></i></button>
+      <h1 class="h2" data-alt="Hi, Hezarto Studio">سلام، استودیو هزارتو</h1>
+      <span class="spacer"></span>
+      <button class="btn btn-ghost" type="button" data-lang-toggle data-alt="فا">EN</button>
+      <button class="btn btn-ghost btn-icon" type="button" data-theme-toggle aria-label="تغییر پوسته" data-alt-aria-label="Toggle theme"><i class="ri-sun-line" aria-hidden="true"></i></button>
+    </header>
+    <main id="main">
+      <section class="cbody" role="tabpanel" id="p-ov" aria-labelledby="t-ov">
+        <div class="kpis">
+          <article class="kpi"><i class="ri-download-cloud-2-fill bg" aria-hidden="true"></i><span class="t" data-alt="Total installs">کل نصب‌ها</span><span class="v" data-num="2100000" data-fmt="compact">۲٫۱ میلیون</span><span class="d" data-alt="+64K this week">۶۴ هزار+ این هفته</span></article>
+          <article class="kpi"><i class="ri-user-heart-fill bg" aria-hidden="true"></i><span class="t" data-alt="Daily active users">کاربر فعال روزانه</span><span class="v" data-num="184000" data-fmt="compact">۱۸۴ هزار</span><span class="d" data-alt="+5.2%">۵٫۲٪+</span></article>
+          <article class="kpi"><i class="ri-star-smile-fill bg" aria-hidden="true"></i><span class="t" data-alt="Average rating">میانگین امتیاز</span><span class="v"><span data-num="4.7" data-fmt="dec1">۴٫۷</span> <span style="color:var(--star)">★</span></span><span class="d" data-alt="from 38K ratings">از ۳۸ هزار رأی</span></article>
+          <article class="kpi"><i class="ri-coins-fill bg" aria-hidden="true"></i><span class="t" data-alt="Revenue (Toman)">درآمد (تومان)</span><span class="v" data-num="412000000" data-fmt="compact">۴۱۲ میلیون</span><span class="d bad" data-alt="−3% vs last month">۳٪− نسبت به ماه قبل</span></article>
+        </div>
+        <div class="grid-2">
+          <article class="card"><div class="card-head"><h2 data-alt="Installs per day">نصب روزانه</h2><div class="chips" data-group role="group" aria-label="بازه" data-alt-aria-label="Range"><button class="chip" type="button" aria-pressed="false" style="padding:5px 12px" data-alt="7d">۷ روز</button><button class="chip" type="button" aria-pressed="true" style="padding:5px 12px" data-alt="30d">۳۰ روز</button></div></div><div class="card-body"><div data-chart="area" data-height="250" data-fmt="compact" data-dates="2026-09-17,30,day" data-values="1800,1900,2100,2050,2300,2900,3400,2600,2400,2500,2700,2900,3600,4100,3300,3000,3100,3300,3700,4400,5200,4100,3800,3900,4200,4600,5900,6400,5100,4700" data-name='{"fa":"نصب","en":"Installs"}' data-label='{"fa":"نصب روزانه","en":"Installs per day"}'></div></div></article>
+          <article class="card"><div class="card-head"><h2 data-alt="Where installs come from">منبع نصب‌ها</h2></div><div class="card-body donut-row"><div data-chart="donut" data-values="44,31,15,10" data-center='{"fa":"۶۴ هزار","en":"64K"}' data-labels='{"fa":["جست‌وجو","ویژه‌ها","تبلیغ","لینک مستقیم"],"en":["Search","Featured","Ads","Direct link"]}'></div><ul class="legend"><li><i style="--c:var(--chart-1)"></i><span data-alt="Search">جست‌وجو</span><b data-num="44" data-fmt="pct">۴۴٪</b></li><li><i style="--c:var(--chart-2)"></i><span data-alt="Featured">ویژه‌ها</span><b data-num="31" data-fmt="pct">۳۱٪</b></li><li><i style="--c:var(--chart-3)"></i><span data-alt="Ads">تبلیغ</span><b data-num="15" data-fmt="pct">۱۵٪</b></li><li><i style="--c:var(--chart-4)"></i><span data-alt="Direct link">لینک مستقیم</span><b data-num="10" data-fmt="pct">۱۰٪</b></li></ul></div></article>
+        </div>
+      </section>
+
+      <section class="cbody" role="tabpanel" id="p-rev" aria-labelledby="t-rev" hidden data-filter-scope>
+        <div class="row" style="justify-content:space-between"><h2 class="h2" data-alt="Latest reviews">آخرین نظرها</h2>
+          <div class="chips" data-group role="group" aria-label="امتیاز" data-alt-aria-label="Stars"><button class="chip" type="button" data-filter="stars" data-value="all" aria-pressed="true" data-alt="All">همه</button><button class="chip" type="button" data-filter="stars" data-value="5" aria-pressed="false">5★</button><button class="chip" type="button" data-filter="stars" data-value="low" aria-pressed="false" data-alt="1–3★">۱ تا ۳★</button></div></div>
+        <article class="card">
+          <div class="review" data-filter-item data-stars="5"><span class="av">آ</span><div><b data-alt="Arman">آرمان</b> <span class="stars">★★★★★</span> <span class="small subtle" data-ago="5400">۲ ساعت پیش</span><p data-alt="The new season is fantastic. The castle boss took me twenty tries!">فصل جدید فوق‌العاده است. غول قلعه را با بیست بار تلاش شکست دادم!</p><button class="btn btn-ghost btn-sm" type="button" data-toggle="#rb1" aria-expanded="false"><i class="ri-reply-fill" aria-hidden="true"></i><span data-alt="Reply">پاسخ</span></button><div class="reply-box" id="rb1"><input class="input" aria-label="پاسخ" data-alt-aria-label="Reply" placeholder="پاسخ شما…" data-alt-placeholder="Your reply…"><button class="btn btn-primary" type="button" data-toast="Reply published" data-toast-alt="پاسخ منتشر شد" data-alt="Send">ارسال</button></div></div></div>
+          <div class="review" data-filter-item data-stars="low"><span class="av">ن</span><div><b data-alt="Nazanin">نازنین</b> <span class="stars">★★☆☆☆</span> <span class="small subtle" data-ago="18000">۵ ساعت پیش</span><p data-alt="Crashes on my older phone after the update.">بعد از به‌روزرسانی روی گوشی قدیمی‌ام بسته می‌شود.</p><span class="badge badge-warn" data-alt="Needs a reply">نیازمند پاسخ</span> <button class="btn btn-ghost btn-sm" type="button" data-toggle="#rb2" aria-expanded="false"><i class="ri-reply-fill" aria-hidden="true"></i><span data-alt="Reply">پاسخ</span></button><div class="reply-box" id="rb2"><input class="input" aria-label="پاسخ" data-alt-aria-label="Reply" placeholder="پاسخ شما…" data-alt-placeholder="Your reply…"><button class="btn btn-primary" type="button" data-toast="Reply published" data-toast-alt="پاسخ منتشر شد" data-alt="Send">ارسال</button></div></div></div>
+          <div class="review" data-filter-item data-stars="5"><span class="av">ک</span><div><b data-alt="Kaveh">کاوه</b> <span class="stars">★★★★★</span> <span class="small subtle" data-ago="86400">دیروز</span><p data-alt="Best pixel art I've seen on mobile.">بهترین پیکسل‌آرتی که روی موبایل دیده‌ام.</p></div></div>
+          <div class="review" data-filter-item data-stars="low"><span class="av">م</span><div><b data-alt="Mina">مینا</b> <span class="stars">★★★☆☆</span> <span class="small subtle" data-ago="172800">پریروز</span><p data-alt="Fun, but the ads between levels are too frequent.">جذاب است، اما تبلیغ بین مرحله‌ها زیاد است.</p></div></div>
+        </article>
+      </section>
+
+      <section class="cbody" role="tabpanel" id="p-rel" aria-labelledby="t-rel" hidden>
+        <div class="row" style="justify-content:space-between"><h2 class="h2" data-alt="Release tracks">مسیرهای انتشار</h2><button class="btn btn-primary" type="button" data-toast="New release draft created" data-toast-alt="پیش‌نویس انتشار تازه ساخته شد"><i class="ri-add-line" aria-hidden="true"></i><span data-alt="New release">انتشار تازه</span></button></div>
+        <article class="card">
+          <div class="release" style="border:0"><span class="icon" style="--c1:#2fd27c;--c2:#0e7490"><i class="ri-earth-fill" aria-hidden="true"></i></span><div><b data-alt="Production">انتشار عمومی</b> <span class="ltr subtle small">v3.4.1</span><div class="meter"><i style="--w:50%"></i></div><span class="small subtle" data-alt="Rolled out to 50% of users · crash-free 99.6%">به ۵۰٪ کاربران رسیده · بدون کرش ۹۹٫۶٪</span></div><button class="btn btn-soft btn-sm" type="button" data-toast="Rollout increased to 100%" data-toast-alt="انتشار به ۱۰۰٪ رسید" data-alt="Roll out to 100%">انتشار به ۱۰۰٪</button></div>
+          <div class="release"><span class="icon" style="--c1:#ffb020;--c2:#ff5d6c"><i class="ri-flask-fill" aria-hidden="true"></i></span><div><b data-alt="Open beta">بتای عمومی</b> <span class="ltr subtle small">v3.5.0-beta2</span><div class="meter"><i style="--w:100%;background:var(--warning)"></i></div><span class="small subtle" data-alt="4,200 testers · 18 feedback reports">۴٬۲۰۰ آزمایش‌کننده · ۱۸ گزارش</span></div><span class="badge badge-warn" data-alt="Testing">در حال آزمایش</span></div>
+          <div class="release"><span class="icon" style="--c1:#7c8496;--c2:#2a2f3a"><i class="ri-lock-2-fill" aria-hidden="true"></i></span><div><b data-alt="Internal">داخلی</b> <span class="ltr subtle small">v3.5.0-rc1</span><div class="meter"><i style="--w:100%;background:var(--ink-3)"></i></div><span class="small subtle" data-alt="12 team devices">۱۲ دستگاه تیم</span></div><span class="badge badge-ok" data-alt="Ready">آماده</span></div>
+        </article>
+      </section>
+
+      <section class="cbody" role="tabpanel" id="p-list" aria-labelledby="t-list" hidden>
+        <h2 class="h2" data-alt="Store listing">صفحهٔ فروشگاه</h2>
+        <div class="listing">
+          <form class="card card-body stack" style="--gap:var(--space-4)" data-validate data-keep novalidate data-success="Listing saved — live within an hour" data-success-alt="ذخیره شد — تا یک ساعت دیگر منتشر می‌شود">
+            <div class="field"><label class="label" for="ls-title" data-alt="App name">نام برنامه</label><input class="input" id="ls-title" name="title" required maxlength="30" value="پیکسل‌رِیدرز" data-alt-value="Pixel Raiders" data-count="#c1"><span class="counter" id="c1"></span></div>
+            <div class="field"><label class="label" for="ls-short" data-alt="Short description">توضیح کوتاه</label><input class="input" id="ls-short" name="short" required maxlength="80" value="ماجراجویی پیکسلی در قلعه‌های یخی" data-alt-value="A pixel adventure through frozen castles" data-count="#c2"><span class="counter" id="c2"></span></div>
+            <div class="field"><label class="label" for="ls-cat" data-alt="Category">دسته</label><select class="select" id="ls-cat"><option data-alt="Action">اکشن</option><option data-alt="Adventure" selected>ماجرایی</option><option data-alt="Puzzle">پازل</option></select></div>
+            <div class="field"><span class="label" data-alt="Screenshots">تصاویر</span><div class="shots-edit"><span style="--c1:#ff5d6c;--c2:#6d28d9"><i class="ri-sword-fill" aria-hidden="true"></i></span><span style="--c1:#3b82ff;--c2:#6d28d9"><i class="ri-trophy-fill" aria-hidden="true"></i></span><span style="--c1:#2fd2c6;--c2:#3b82ff"><i class="ri-map-2-fill" aria-hidden="true"></i></span><span style="--c1:#ffb020;--c2:#ff5d6c"><i class="ri-team-fill" aria-hidden="true"></i></span><button class="add" type="button" aria-label="افزودن تصویر" data-alt-aria-label="Add screenshot" data-toast="Choose an image (demo)" data-toast-alt="یک تصویر انتخاب کنید (نمایشی)"><i class="ri-add-line" aria-hidden="true"></i></button></div></div>
+            <div class="row" style="justify-content:space-between"><span class="small subtle" data-alt="Contains ads">شامل تبلیغات</span><button class="switch" type="button" role="switch" aria-checked="true" aria-label="شامل تبلیغات" data-alt-aria-label="Contains ads"></button></div>
+            <button class="btn btn-primary btn-lg" type="submit" data-alt="Save listing">ذخیرهٔ صفحه</button>
+          </form>
+          <aside class="card preview-tile"><span class="subtle small" data-alt="Preview">پیش‌نمایش</span><span class="icon" style="--s:96px;--c1:#ff5d6c;--c2:#6d28d9"><i class="ri-sword-fill" aria-hidden="true"></i></span><b class="h3" id="pv-title">پیکسل‌رِیدرز</b><span class="stars"><i class="ri-star-fill" aria-hidden="true"></i><span data-num="4.7" data-fmt="dec1">۴٫۷</span></span><button class="btn btn-primary install" type="button" data-alt="Install">نصب</button></aside>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+<script>
+  function counters() {
+    document.querySelectorAll('[data-count]').forEach((inp) => {
+      const out = document.querySelector(inp.dataset.count);
+      out.textContent = `${tf.fmt(inp.value.length)} / ${tf.fmt(inp.maxLength)}`;
+    });
+    document.getElementById('pv-title').textContent = document.getElementById('ls-title').value;
+  }
+  document.addEventListener('tf:ready', counters);
+  document.addEventListener('tf:lang', counters);
+  document.addEventListener('input', (e) => { if (e.target.matches('[data-count]')) counters(); });
+</script>
+</body>
+</html>

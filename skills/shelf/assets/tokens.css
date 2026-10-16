@@ -1,0 +1,139 @@
+/* Shelf — design tokens (Tastefolio). Consumer app-store shelves: charcoal night canvas, bright blue pills,
+   squircle icons and rounded, playful type. Dark is the default; light is provided. Persian-first. */
+:root, [data-theme="dark"] {
+  --canvas: #0f1115;
+  --surface: #181b22;
+  --surface-2: #1f232c;
+  --surface-3: #2a2f3a;
+  --surface-ink: #f4f6fb;
+  --overlay: rgba(5, 6, 9, .7);
+
+  --ink: #f4f6fb;
+  --ink-2: #b2b9c8;
+  --ink-3: #7c8496;
+  --ink-inverse: #0f1115;
+
+  --line: #262b35;
+  --line-2: #343a47;
+
+  --brand: #3b82ff;
+  --brand-ink: #ffffff;
+  --brand-soft: color-mix(in oklab, var(--brand) 18%, transparent);
+  --brand-strong: color-mix(in oklab, var(--brand) 80%, #fff);
+  --star: #ffc53d;
+  --focus: color-mix(in oklab, var(--brand) 60%, transparent);
+
+  --success: #2fd27c;
+  --success-soft: rgba(47, 210, 124, .14);
+  --warning: #ffb020;
+  --warning-soft: rgba(255, 176, 32, .14);
+  --danger: #ff5d6c;
+  --danger-soft: rgba(255, 93, 108, .14);
+  --info: var(--brand);
+  --info-soft: var(--brand-soft);
+
+  --chart-1: var(--brand);
+  --chart-2: #2fd27c;
+  --chart-3: #ffb020;
+  --chart-4: #ff5d6c;
+  --chart-5: #b06cff;
+  --chart-6: #7c8496;
+  --chart-grid: #232833;
+  --chart-axis: var(--ink-3);
+  --chart-curve: smooth;
+  --chart-stroke: 3;
+  --chart-area: .28;
+  --chart-radius: 8;
+  --chart-bar-gap: .45;
+  --chart-donut: 16;
+
+  --font-sans: "Nunito", "Vazirmatn", system-ui, sans-serif;
+  --font-display: "Baloo Bhaijaan 2", "Nunito", sans-serif;
+  --font-mono: ui-monospace, Menlo, monospace;
+  --fs-xs: 12px;
+  --fs-sm: 13.5px;
+  --fs-md: 15px;
+  --fs-lg: 18px;
+  --fs-xl: 22px;
+  --fs-2xl: 28px;
+  --fs-3xl: 38px;
+  --fs-display: clamp(30px, 4.4vw, 52px);
+  --fw-regular: 500;
+  --fw-medium: 600;
+  --fw-bold: 700;
+  --fw-display: 800;
+  --lh-tight: 1.15;
+  --lh-snug: 1.35;
+  --lh-body: 1.6;
+  --tracking-display: -.01em;
+  --tracking-caps: .02em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 44px;
+  --space-9: 60px;
+  --space-10: 84px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 30px;
+  --radius-icon: 24%;
+  --radius-pill: 999px;
+  --border-w: 1px;
+  --shadow-1: 0 1px 0 rgba(255, 255, 255, .03) inset;
+  --shadow-2: 0 16px 40px -18px rgba(0, 0, 0, .8);
+  --shadow-3: 0 30px 80px -24px rgba(0, 0, 0, .9);
+
+  --container: 1240px;
+  --gutter: clamp(14px, 3vw, 28px);
+  --control-h: 40px;
+  --control-h-lg: 50px;
+  --tabbar-h: 64px;
+  --sidebar-w: 248px;
+
+  --ease: cubic-bezier(.34, 1.4, .64, 1);   /* a little bounce: this style is playful */
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
+  --dur-1: 140ms;
+  --dur-2: 260ms;
+  --dur-3: 420ms;
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --canvas: #f3f5fa;
+  --surface: #ffffff;
+  --surface-2: #f1f3f8;
+  --surface-3: #e5e9f2;
+  --surface-ink: #10131a;
+  --overlay: rgba(16, 19, 26, .5);
+  --ink: #10131a;
+  --ink-2: #4c5466;
+  --ink-3: #8a92a5;
+  --ink-inverse: #ffffff;
+  --line: #e3e7ef;
+  --line-2: #d0d6e3;
+  --brand: #1f6bff;
+  --brand-soft: color-mix(in oklab, var(--brand) 12%, #fff);
+  --brand-strong: color-mix(in oklab, var(--brand) 80%, #000);
+  --chart-grid: #e9edf4;
+  --shadow-2: 0 16px 40px -18px rgba(16, 19, 26, .25);
+  --shadow-3: 0 30px 80px -24px rgba(16, 19, 26, .35);
+  color-scheme: light;
+}
+
+:root:lang(fa) {
+  --font-sans: "Vazirmatn", "Nunito", Tahoma, sans-serif;
+  --font-display: "Baloo Bhaijaan 2", "Vazirmatn", sans-serif;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --lh-tight: 1.45;
+  --lh-snug: 1.6;
+  --lh-body: 1.9;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+}

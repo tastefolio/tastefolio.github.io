@@ -1,0 +1,34 @@
+{
+  "name": "Shelf",
+  "order": 9,
+  "category": "commerce",
+  "mode": "dark",
+  "density": "balanced",
+  "persianFirst": true,
+  "tags": ["app store", "consumer", "carousels", "playful", "mobile-first"],
+  "tagline": {
+    "en": "Consumer app-store shelves — squircle icons, snap carousels, bright pills and a playful night canvas",
+    "fa": "قفسه‌های فروشگاه اپ — آیکن‌های گرد، اسلایدرهای افقی، دکمه‌های کپسولی و زمینهٔ شبانهٔ بازیگوش"
+  },
+  "summary": {
+    "en": "A mobile-first storefront language for apps, games, media and other catalogs browsed for fun: charcoal night canvas (light mode included), big rounded hero banners, horizontal snap shelves of squircle icons with ratings, ranked top charts with install buttons, category chips, collection cards, an app sheet with rating bars and a bottom tab bar on phones. The publisher console keeps the same playful voice for installs, reviews with replies, release tracks and listing editing.",
+    "fa": "زبانی موبایل‌محور برای ویترین اپ، بازی، رسانه و کاتالوگ‌هایی که برای سرگرمی مرور می‌شوند: زمینهٔ زغالی شبانه (با حالت روشن)، بنرهای بزرگ گرد، قفسه‌های افقی با آیکن‌های گرد و امتیاز، جدول برترین‌ها با دکمهٔ نصب، چیپ دسته‌ها، کارت مجموعه‌ها، صفحهٔ جزئیات با نمودار امتیاز و نوار تب پایین در موبایل. کنسول ناشر هم با همین لحن، نصب‌ها، پاسخ به نظرها، مسیرهای انتشار و ویرایش صفحه را پوشش می‌دهد."
+  },
+  "bestFor": {
+    "en": ["App, game and media stores", "Consumer catalogs browsed on phones", "Creator and publisher consoles", "Entertainment, streaming and kids' content"],
+    "fa": ["فروشگاه اپ، بازی و رسانه", "کاتالوگ‌های مصرفی که در موبایل مرور می‌شوند", "کنسول سازندگان و ناشران", "سرگرمی، استریم و محتوای کودک"]
+  },
+  "avoidFor": {
+    "en": ["Enterprise and compliance-heavy products", "Long-form reading", "Data-dense finance tools"],
+    "fa": ["محصولات سازمانی و پرمقررات", "مطالعهٔ متن‌های طولانی", "ابزارهای مالی پرداده"]
+  },
+  "signature": {
+    "en": ["Squircle icons (24% radius) with two-color gradients and a lift-and-tilt hover", "Horizontal snap shelves with 'See all' and arrow controls", "Giant rounded hero banners with soft art glyphs and pill CTAs", "Ranked top charts: big numerals, icon, rating, install pill", "Install button that turns into a progress fill, then 'Open'", "Bottom tab bar on phones; bouncy easing on presses and sheets"],
+    "fa": ["آیکن‌های گرد با گرادیان دورنگ و حرکت بالا و کج‌شدن هنگام هاور", "قفسه‌های افقی با «همه» و فلش‌های جابه‌جایی", "بنرهای بزرگ گرد با نماد محو و دکمهٔ کپسولی", "جدول برترین‌ها: عدد بزرگ، آیکن، امتیاز، دکمهٔ نصب", "دکمهٔ نصب که به نوار پیشرفت و سپس «باز کردن» تبدیل می‌شود", "نوار تب پایین در موبایل و حرکت فنری در فشردن و پنجره‌ها"]
+  },
+  "swatches": ["#0f1115", "#181b22", "#f4f6fb", "#3b82ff", "#ffc53d"],
+  "fonts": { "latin": "Baloo Bhaijaan 2 + Nunito", "persian": "Baloo Bhaijaan 2 + Vazirmatn", "mono": "System monospace" },
+  "icons": "Remix Icon (fill)",
+  "brandTrials": ["ff4d6d", "22c55e", "f59e0b", "a855f7"],
+  "demos": { "site": { "host": "playbox.example" }, "dashboard": { "host": "console.playbox.example" } }
+}

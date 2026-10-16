@@ -81,6 +81,15 @@
       ]
     },
     {
+      "name": "shelf",
+      "description": "Tastefolio design language — Consumer app-store shelves — squircle icons, snap carousels, bright pills and a playful night canvas",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/shelf"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -93,7 +102,8 @@
         "./skills/ultraviolet",
         "./skills/tier",
         "./skills/datasheet",
-        "./skills/sideload"
+        "./skills/sideload",
+        "./skills/shelf"
       ]
     }
   ]

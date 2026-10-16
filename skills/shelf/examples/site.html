@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="site" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Playbox — games and apps for every day">پلی‌باکس — بازی و برنامه برای هر روز</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Nunito:wght@500;600;700;800&family=Vazirmatn:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+</head>
+<body class="has-tabbar">
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<header class="topbar">
+  <div class="container">
+    <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"><i class="ri-play-fill"></i></span><span data-alt="Playbox">پلی‌باکس</span></a>
+    <nav class="nav" aria-label="اصلی" data-alt-aria-label="Primary"><a href="#top" aria-current="page" data-alt="Home">خانه</a><a href="#games" data-alt="Games">بازی</a><a href="#apps" data-alt="Apps">برنامه</a><a href="#cats" data-alt="Categories">دسته‌ها</a></nav>
+    <label class="searchbox"><i class="ri-search-2-line" aria-hidden="true"></i><span class="sr-only" data-alt="Search">جست‌وجو</span><input class="input" type="search" placeholder="جست‌وجوی بازی و برنامه" data-alt-placeholder="Search games and apps"></label>
+    <button class="btn btn-ghost btn-icon hide-md" type="button" data-theme-toggle aria-label="تغییر پوسته" data-alt-aria-label="Toggle theme"><i class="ri-sun-line" aria-hidden="true"></i></button>
+    <button class="btn btn-ghost" type="button" data-lang-toggle data-alt="فا">EN</button>
+    <a class="btn btn-primary hide-md" href="dashboard.html"><i class="ri-download-2-fill" aria-hidden="true"></i><span data-alt="Get the app">دریافت اپ</span></a>
+  </div>
+</header>
+
+<main id="main" class="container">
+  <section aria-label="ویژه" data-alt-aria-label="Featured" id="top">
+    <div class="banners" id="banners">
+      <a class="banner" href="#games" data-open-app="0" style="--c1:#ff5d6c;--c2:#6d28d9"><i class="ri-sword-fill art" aria-hidden="true"></i><span class="btn btn-sm" style="justify-self:start;background:rgba(255,255,255,.18);color:#fff" data-alt="New season">فصل تازه</span><h2 data-alt="Pixel Raiders: the frozen castle season is live">پیکسل‌رِیدرز: فصل قلعهٔ یخی آغاز شد</h2><span class="row"><span class="btn btn-primary" data-alt="Play now">همین حالا بازی کن</span><span class="stars"><i class="ri-star-fill" aria-hidden="true"></i><span data-num="4.7" data-fmt="dec1">۴٫۷</span></span></span></a>
+      <a class="banner" href="#apps" data-open-app="11" style="--c1:#2fd27c;--c2:#0e7490"><i class="ri-leaf-fill art" aria-hidden="true"></i><span class="btn btn-sm" style="justify-self:start;background:rgba(255,255,255,.18);color:#fff" data-alt="Editor's choice">انتخاب سردبیر</span><h2 data-alt="Calm Garden: ten minutes of quiet a day">باغ آرام: روزی ده دقیقه آرامش</h2><span class="row"><span class="btn btn-primary" data-alt="Install">نصب</span><span class="stars"><i class="ri-star-fill" aria-hidden="true"></i><span data-num="4.8" data-fmt="dec1">۴٫۸</span></span></span></a>
+      <a class="banner" href="#apps" data-open-app="13" style="--c1:#ffb020;--c2:#e2366b"><i class="ri-translate-2 art" aria-hidden="true"></i><span class="btn btn-sm" style="justify-self:start;background:rgba(255,255,255,.18);color:#fff" data-alt="Trending">داغ</span><h2 data-alt="Lingo Leap: learn English through short stories">لینگولیپ: انگلیسی با داستان‌های کوتاه</h2><span class="row"><span class="btn btn-primary" data-alt="Install">نصب</span><span class="stars"><i class="ri-star-fill" aria-hidden="true"></i><span data-num="4.6" data-fmt="dec1">۴٫۶</span></span></span></a>
+    </div>
+    <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+  </section>
+
+  <section class="shelf" id="cats" aria-label="دسته‌ها" data-alt-aria-label="Categories">
+    <div class="chips" data-group role="group" aria-label="دسته‌ها" data-alt-aria-label="Categories">
+      <button class="chip" type="button" aria-pressed="true" style="--c:#3b82ff"><i class="ri-apps-2-fill" aria-hidden="true"></i><span data-alt="All">همه</span></button>
+      <button class="chip" type="button" aria-pressed="false" style="--c:#ff5d6c"><i class="ri-sword-fill" aria-hidden="true"></i><span data-alt="Action">اکشن</span></button>
+      <button class="chip" type="button" aria-pressed="false" style="--c:#b06cff"><i class="ri-puzzle-2-fill" aria-hidden="true"></i><span data-alt="Puzzle">پازل</span></button>
+      <button class="chip" type="button" aria-pressed="false" style="--c:#2fd27c"><i class="ri-football-fill" aria-hidden="true"></i><span data-alt="Sports">ورزشی</span></button>
+      <button class="chip" type="button" aria-pressed="false" style="--c:#ffb020"><i class="ri-book-open-fill" aria-hidden="true"></i><span data-alt="Education">آموزشی</span></button>
+      <button class="chip" type="button" aria-pressed="false" style="--c:#2fd2c6"><i class="ri-heart-pulse-fill" aria-hidden="true"></i><span data-alt="Health">سلامت</span></button>
+      <button class="chip" type="button" aria-pressed="false" style="--c:#ff8a3d"><i class="ri-camera-3-fill" aria-hidden="true"></i><span data-alt="Photo">عکاسی</span></button>
+    </div>
+  </section>
+
+  <section class="shelf" id="games" data-carousel>
+    <div class="shelf-head"><h2 data-alt="Games we love">بازی‌هایی که دوستشان داریم</h2><span class="ctrl"><a class="see-all" href="#games"><span data-alt="See all">همه</span><i class="ri-arrow-right-s-line flip-rtl" aria-hidden="true"></i></a><button class="btn btn-ghost btn-icon hide-md" type="button" data-prev-slide aria-label="قبلی" data-alt-aria-label="Previous"><i class="ri-arrow-left-s-line flip-rtl" aria-hidden="true"></i></button><button class="btn btn-ghost btn-icon hide-md" type="button" data-next-slide aria-label="بعدی" data-alt-aria-label="Next"><i class="ri-arrow-right-s-line flip-rtl" aria-hidden="true"></i></button></span></div>
+    <div class="track" data-track id="track-games"></div>
+  </section>
+
+  <section class="shelf" id="apps" data-carousel>
+    <div class="shelf-head"><h2 data-alt="Apps for every day">برنامه‌های هر روز</h2><span class="ctrl"><a class="see-all" href="#apps"><span data-alt="See all">همه</span><i class="ri-arrow-right-s-line flip-rtl" aria-hidden="true"></i></a><button class="btn btn-ghost btn-icon hide-md" type="button" data-prev-slide aria-label="قبلی" data-alt-aria-label="Previous"><i class="ri-arrow-left-s-line flip-rtl" aria-hidden="true"></i></button><button class="btn btn-ghost btn-icon hide-md" type="button" data-next-slide aria-label="بعدی" data-alt-aria-label="Next"><i class="ri-arrow-right-s-line flip-rtl" aria-hidden="true"></i></button></span></div>
+    <div class="track" data-track id="track-apps"></div>
+  </section>
+
+  <section class="shelf">
+    <div class="shelf-head"><h2 data-alt="Top this week">برترین‌های هفته</h2><div class="chips" data-group role="group" aria-label="نوع" data-alt-aria-label="Type"><button class="chip" type="button" aria-pressed="true" style="padding:6px 14px" data-alt="Free">رایگان</button><button class="chip" type="button" aria-pressed="false" style="padding:6px 14px" data-alt="Paid">پولی</button></div></div>
+    <div class="ranks" id="ranks"></div>
+  </section>
+
+  <section class="shelf">
+    <div class="shelf-head"><h2 data-alt="Collections">مجموعه‌ها</h2></div>
+    <div class="collections">
+      <article class="collection"><div class="icons"><span class="icon" style="--c1:#b06cff;--c2:#6d28d9"><i class="ri-puzzle-2-fill" aria-hidden="true"></i></span><span class="icon" style="--c1:#3b82ff;--c2:#0e7490"><i class="ri-brain-fill" aria-hidden="true"></i></span><span class="icon" style="--c1:#ffb020;--c2:#ff5d6c"><i class="ri-shapes-fill" aria-hidden="true"></i></span></div><h3 class="h3" data-alt="Brain teasers for the commute">معماهایی برای مسیر رفت‌وآمد</h3><p class="muted small" data-alt="Short levels, no internet needed.">مرحله‌های کوتاه، بدون نیاز به اینترنت.</p></article>
+      <article class="collection"><div class="icons"><span class="icon" style="--c1:#2fd27c;--c2:#0e7490"><i class="ri-leaf-fill" aria-hidden="true"></i></span><span class="icon" style="--c1:#2fd2c6;--c2:#3b82ff"><i class="ri-moon-clear-fill" aria-hidden="true"></i></span><span class="icon" style="--c1:#ff8a3d;--c2:#e2366b"><i class="ri-run-fill" aria-hidden="true"></i></span></div><h3 class="h3" data-alt="A healthier routine">روتینی سالم‌تر</h3><p class="muted small" data-alt="Sleep, steps and calm in one place.">خواب، قدم‌ها و آرامش در یک جا.</p></article>
+      <article class="collection"><div class="icons"><span class="icon" style="--c1:#ff8a3d;--c2:#ffb020"><i class="ri-camera-3-fill" aria-hidden="true"></i></span><span class="icon" style="--c1:#e2366b;--c2:#b06cff"><i class="ri-film-fill" aria-hidden="true"></i></span><span class="icon" style="--c1:#3b82ff;--c2:#b06cff"><i class="ri-palette-fill" aria-hidden="true"></i></span></div><h3 class="h3" data-alt="Make something today">امروز چیزی بسازید</h3><p class="muted small" data-alt="Editors for photos, video and drawings.">ویرایشگر عکس، ویدیو و نقاشی.</p></article>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="container footer-row"><a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"><i class="ri-play-fill"></i></span><span data-alt="Playbox">پلی‌باکس</span></a><span data-alt="A fictional store demonstrating the Shelf style by Tastefolio.">فروشگاه ساختگی برای نمایش سبک Shelf در تیست‌فولیو.</span><nav aria-label="پانویس" data-alt-aria-label="Footer"><a href="dashboard.html" data-alt="Developers">توسعه‌دهندگان</a><a href="#" data-alt="Help">راهنما</a><a href="#" data-alt="Privacy">حریم خصوصی</a></nav></div></footer>
+
+<nav class="tabbar" aria-label="ناوبری پایین" data-alt-aria-label="Bottom navigation">
+  <a href="#top" aria-current="page"><i class="ri-home-5-fill" aria-hidden="true"></i><span data-alt="Home">خانه</span></a>
+  <a href="#games"><i class="ri-gamepad-fill" aria-hidden="true"></i><span data-alt="Games">بازی</span></a>
+  <a href="#apps"><i class="ri-apps-2-fill" aria-hidden="true"></i><span data-alt="Apps">برنامه</span></a>
+  <a href="#cats"><i class="ri-search-2-line" aria-hidden="true"></i><span data-alt="Search">جست‌وجو</span></a>
+  <a href="dashboard.html"><i class="ri-user-3-fill" aria-hidden="true"></i><span data-alt="Profile">پروفایل</span></a>
+</nav>
+
+<dialog class="sheet" id="sheet" aria-labelledby="sh-title">
+  <div class="sheet-body">
+    <div class="row" style="justify-content:flex-end"><button class="btn btn-ghost btn-icon" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><i class="ri-close-line" aria-hidden="true"></i></button></div>
+    <div class="app-head"><span class="icon" id="sh-icon" style="--s:104px"></span><div class="stack" style="--gap:6px"><h2 id="sh-title"></h2><span class="muted" id="sh-dev"></span><span class="row"><button class="btn btn-primary install btn-lg" type="button" data-install><span data-alt="Install">نصب</span></button><button class="btn btn-ghost btn-icon" type="button" aria-label="افزودن به علاقه‌مندی" data-alt-aria-label="Add to wishlist" data-toast="Added to wishlist" data-toast-alt="به علاقه‌مندی‌ها اضافه شد"><i class="ri-heart-3-line" aria-hidden="true"></i></button></span></div></div>
+    <div class="facts"><div><b id="sh-rate"></b><span data-alt="rating">امتیاز</span></div><div><b id="sh-dl"></b><span data-alt="installs">نصب</span></div><div><b id="sh-size"></b><span data-alt="size">حجم</span></div><div><b data-alt="3+">۳+</b><span data-alt="age">سن</span></div></div>
+    <div class="screens" id="sh-screens"></div>
+    <div class="ratings"><span class="big" id="sh-big"></span><div class="bars"><div>5<i style="--w:78%"></i></div><div>4<i style="--w:14%"></i></div><div>3<i style="--w:4%"></i></div><div>2<i style="--w:2%"></i></div><div>1<i style="--w:2%"></i></div></div></div>
+  </div>
+</dialog>
+
+<script>
+  const APPS = [
+    ['Pixel Raiders', 'پیکسل‌رِیدرز', 'ri-sword-fill', '#ff5d6c', '#6d28d9', 4.7, 2100000, 412, 'game'],
+    ['Block Garden', 'باغ بلوکی', 'ri-shapes-fill', '#ffb020', '#ff5d6c', 4.5, 860000, 96, 'game'],
+    ['Tiny Racers', 'مسابقه‌کوچولو', 'ri-steering-2-fill', '#3b82ff', '#0e7490', 4.4, 1300000, 188, 'game'],
+    ['Word Weaver', 'واژه‌باف', 'ri-text', '#b06cff', '#3b82ff', 4.8, 540000, 34, 'game'],
+    ['Penalty King', 'پادشاه پنالتی', 'ri-football-fill', '#2fd27c', '#0e7490', 4.2, 3200000, 230, 'game'],
+    ['Star Hopper', 'ستاره‌پر', 'ri-rocket-2-fill', '#ff8a3d', '#e2366b', 4.6, 720000, 145, 'game'],
+    ['Ocean Tiles', 'کاشی‌های دریا', 'ri-water-flash-fill', '#2fd2c6', '#3b82ff', 4.3, 410000, 62, 'game'],
+    ['Chess Café', 'کافه شطرنج', 'ri-chess-fill', '#7c8496', '#2a2f3a', 4.7, 950000, 51, 'game'],
+    ['Snap Studio', 'اسنپ‌استودیو', 'ri-camera-3-fill', '#ff8a3d', '#ffb020', 4.5, 5100000, 88, 'app'],
+    ['Budgetly', 'باجتلی', 'ri-wallet-3-fill', '#2fd27c', '#0e7490', 4.6, 1200000, 41, 'app'],
+    ['Route Mate', 'هم‌مسیر', 'ri-map-pin-2-fill', '#3b82ff', '#b06cff', 4.4, 2600000, 76, 'app'],
+    ['Calm Garden', 'باغ آرام', 'ri-leaf-fill', '#2fd27c', '#0e7490', 4.8, 980000, 54, 'app'],
+    ['Sleep Tides', 'موج خواب', 'ri-moon-clear-fill', '#2fd2c6', '#3b82ff', 4.5, 640000, 38, 'app'],
+    ['Lingo Leap', 'لینگولیپ', 'ri-translate-2', '#ffb020', '#e2366b', 4.6, 1800000, 112, 'app'],
+    ['Recipe Box', 'جعبهٔ دستور پخت', 'ri-restaurant-2-fill', '#ff5d6c', '#ffb020', 4.3, 760000, 59, 'app'],
+    ['Sketchpad', 'دفتر طراحی', 'ri-palette-fill', '#3b82ff', '#b06cff', 4.7, 430000, 47, 'app'],
+  ];
+  const L = () => tf.lang();
+  const name = (a) => (L() === 'fa' ? a[1] : a[0]);
+  const tile = (a, i) => `<button class="app" type="button" data-open-app="${i}" style="--c1:${a[3]};--c2:${a[4]}"><span class="icon" style="--c1:${a[3]};--c2:${a[4]}"><i class="${a[2]}" aria-hidden="true"></i></span><b>${name(a)}</b><span class="meta"><span class="stars"><i class="ri-star-fill" aria-hidden="true"></i>${tf.fmt(a[5], 'dec1')}</span><span>${tf.fmt(a[7])} ${L() === 'fa' ? 'مگ' : 'MB'}</span></span></button>`;
+  function render() {
+    document.getElementById('track-games').innerHTML = APPS.map((a, i) => (a[8] === 'game' ? tile(a, i) : '')).join('');
+    document.getElementById('track-apps').innerHTML = APPS.map((a, i) => (a[8] === 'app' ? tile(a, i) : '')).join('');
+    const top = APPS.map((a, i) => [a, i]).sort((x, y) => y[0][6] - x[0][6]).slice(0, 9);
+    document.getElementById('ranks').innerHTML = top.map(([a, i], k) => `<div class="rank"><span class="n">${tf.fmt(k + 1)}</span><span class="icon" style="--s:60px;--c1:${a[3]};--c2:${a[4]};border-radius:16px;font-size:26px"><i class="${a[2]}" aria-hidden="true"></i></span><span style="min-inline-size:0"><b>${name(a)}</b><span class="meta"><span class="stars"><i class="ri-star-fill" aria-hidden="true"></i>${tf.fmt(a[5], 'dec1')}</span><span>${tf.fmt(a[6], 'compact')} ${L() === 'fa' ? 'نصب' : 'installs'}</span></span></span><button class="btn btn-soft btn-sm install" type="button" data-install><span>${L() === 'fa' ? 'نصب' : 'Get'}</span></button></div>`).join('');
+  }
+  document.addEventListener('tf:ready', render);
+  document.addEventListener('tf:lang', render);
+  document.addEventListener('click', (e) => {
+    const o = e.target.closest('[data-open-app]');
+    if (o && !e.target.closest('[data-install]')) {
+      e.preventDefault();
+      const a = APPS[o.dataset.openApp];
+      const ic = document.getElementById('sh-icon');
+      ic.style.setProperty('--c1', a[3]); ic.style.setProperty('--c2', a[4]);
+      ic.innerHTML = `<i class="${a[2]}" aria-hidden="true"></i>`;
+      document.getElementById('sh-title').textContent = name(a);
+      document.getElementById('sh-dev').textContent = L() === 'fa' ? 'استودیو هزارتو' : 'Hezarto Studio';
+      document.getElementById('sh-rate').textContent = tf.fmt(a[5], 'dec1') + ' ★';
+      document.getElementById('sh-big').textContent = tf.fmt(a[5], 'dec1');
+      document.getElementById('sh-dl').textContent = tf.fmt(a[6], 'compact');
+      document.getElementById('sh-size').textContent = tf.fmt(a[7]) + (L() === 'fa' ? ' مگ' : ' MB');
+      document.getElementById('sh-screens').innerHTML = [a[2], 'ri-trophy-fill', 'ri-user-smile-fill', 'ri-settings-3-fill'].map((g) => `<span style="--c1:${a[3]};--c2:${a[4]}"><i class="${g}" aria-hidden="true"></i></span>`).join('');
+      const ib = document.querySelector('#sheet [data-install]'); ib.className = 'btn btn-primary install btn-lg'; ib.firstElementChild.textContent = L() === 'fa' ? 'نصب' : 'Install';
+      document.getElementById('sheet').showModal();
+    }
+    const b = e.target.closest('[data-install]');
+    if (b && !b.classList.contains('is-busy')) {
+      if (b.classList.contains('is-done')) { tf.toast(L() === 'fa' ? 'در حال باز کردن…' : 'Opening…'); return; }
+      b.classList.add('is-busy');
+      let p = 0;
+      const step = () => {
+        p += tf.reduceMotion ? 100 : 12;
+        b.style.setProperty('--p', Math.min(p, 100) + '%');
+        b.firstElementChild.textContent = tf.fmt(Math.min(p, 100), 'pct');
+        if (p < 100) setTimeout(step, 90);
+        else { b.classList.remove('is-busy'); b.classList.add('is-done'); b.firstElementChild.textContent = L() === 'fa' ? 'باز کردن' : 'Open'; }
+      };
+      step();
+    }
+  });
+</script>
+</body>
+</html>
