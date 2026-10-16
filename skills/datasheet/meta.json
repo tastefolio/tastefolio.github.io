@@ -1,0 +1,34 @@
+{
+  "name": "Datasheet",
+  "order": 7,
+  "category": "commerce",
+  "mode": "light",
+  "density": "dense",
+  "persianFirst": true,
+  "tags": ["catalog", "parametric", "engineering", "B2B", "tables"],
+  "tagline": {
+    "en": "Engineering catalog — parametric filters, mono part numbers, LED stock dots and seven-segment readouts",
+    "fa": "کاتالوگ مهندسی — فیلتر پارامتری، شمارهٔ قطعهٔ مونو، نقطهٔ LED موجودی و نمایشگر هفت‌قسمتی"
+  },
+  "summary": {
+    "en": "A dense, trustworthy storefront language for technical products: white paper with blueprint grids and schematic traces, graphite ink with one signal red, condensed industrial headings with red index numbers, spec chips in monospace, LED-style stock indicators, price-break tables, a faceted parametric table with compare, and seven-segment instrument readouts. The B2B panel adds BOM upload and matching, order progress and low-stock watchlists.",
+    "fa": "زبانی فشرده و قابل‌اعتماد برای فروش محصولات فنی: کاغذ سفید با شبکهٔ نقشه‌کشی و خطوط مدار، جوهر گرافیتی با یک قرمز هشدار، تیترهای صنعتی فشرده با شمارهٔ قرمز، تراشه‌های مشخصات به خط مونو، نشانگر LED موجودی، جدول قیمت پلکانی، جدول پارامتری با فیلتر و مقایسه، و نمایشگرهای هفت‌قسمتی. پنل سازمانی هم آپلود و تطبیق BOM، پیشرفت سفارش و پایش کمبود موجودی را اضافه می‌کند."
+  },
+  "bestFor": {
+    "en": ["Electronic, industrial and lab-supply stores", "B2B catalogs with thousands of SKUs and specs", "Procurement, inventory and BOM tools", "Spare parts, hardware and tooling shops"],
+    "fa": ["فروشگاه‌های قطعات الکترونیک، صنعتی و تجهیزات آزمایشگاهی", "کاتالوگ‌های B2B با هزاران کالا و مشخصات", "ابزارهای تأمین، انبار و BOM", "فروشگاه قطعات یدکی، سخت‌افزار و ابزار"]
+  },
+  "avoidFor": {
+    "en": ["Fashion and lifestyle shops", "Low-SKU brand storytelling sites", "Consumer apps that need warmth"],
+    "fa": ["فروشگاه‌های مد و سبک زندگی", "سایت‌های برند با کالای کم و روایت‌محور", "اپ‌های مصرفی که حس گرم می‌خواهند"]
+  },
+  "signature": {
+    "en": ["Blueprint grid and schematic traces with one red 'hot' path", "Section bars: red mono index, condensed title, 2px ink rule", "Monospace part numbers and spec chips (10kΩ · 0603 · ±1%)", "LED dots for stock: green in stock, amber low, gray out", "Parametric table with facets, price breaks, quantity steppers and compare", "Seven-segment readouts with ghost segments for key numbers"],
+    "fa": ["شبکهٔ نقشه‌کشی و خطوط مدار با یک مسیر قرمز «داغ»", "نوار بخش: شمارهٔ قرمز مونو، تیتر فشرده، خط مشکی ۲ پیکسلی", "شمارهٔ قطعه و مشخصات به خط مونو (10kΩ · 0603 · ±1%)", "نقطه‌های LED موجودی: سبز موجود، کهربایی کم، خاکستری ناموجود", "جدول پارامتری با فیلتر، قیمت پلکانی، شمارنده و مقایسه", "نمایشگر هفت‌قسمتی با بخش‌های کم‌رنگ برای اعداد کلیدی"]
+  },
+  "swatches": ["#ffffff", "#f6f7f8", "#15171a", "#d7263d", "#1a9f53"],
+  "fonts": { "latin": "Barlow + Barlow Condensed", "persian": "Sahel", "mono": "Roboto Mono · DSEG7" },
+  "icons": "Tabler Icons",
+  "brandTrials": ["0b6bcb", "e07a00", "0f766e", "6d28d9"],
+  "demos": { "site": { "host": "ohmlab.example" }, "dashboard": { "host": "teams.ohmlab.example" } }
+}

@@ -63,6 +63,15 @@
       ]
     },
     {
+      "name": "datasheet",
+      "description": "Tastefolio design language — Engineering catalog — parametric filters, mono part numbers, LED stock dots and seven-segment readouts",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/datasheet"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -73,7 +82,8 @@
         "./skills/atelier",
         "./skills/stratus",
         "./skills/ultraviolet",
-        "./skills/tier"
+        "./skills/tier",
+        "./skills/datasheet"
       ]
     }
   ]

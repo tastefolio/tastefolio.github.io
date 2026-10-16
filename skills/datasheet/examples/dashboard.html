@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="dashboard" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Ohmlab for teams · Procurement">اهم‌لب سازمانی · تأمین قطعات</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=Roboto+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .bom-table { inline-size: 100%; border-collapse: collapse; font-size: 13.5px; min-inline-size: 860px; }
+  .bom-table th { text-align: start; font: 600 11px var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); padding: 10px; border-block-end: 2px solid var(--ink); white-space: nowrap; }
+  :lang(fa) .bom-table th { font: 700 12px var(--font-sans); text-transform: none; letter-spacing: 0; }
+  .bom-table td { padding: 9px 10px; border-block-end: 1px solid var(--line); white-space: nowrap; }
+  .bom-table .select { min-block-size: 30px; font-size: 13px; font-family: var(--font-mono); direction: ltr; max-inline-size: 190px; }
+  .legend-row { display: flex; gap: var(--space-4); flex-wrap: wrap; font-size: 12.5px; color: var(--ink-2); }
+  .legend-row i { display: inline-block; inline-size: 10px; block-size: 10px; border-radius: 2px; margin-inline-end: 6px; vertical-align: -1px; }
+  .saved { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-3); }
+  @media (max-width: 900px) { .saved { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<header class="app-head">
+  <div class="container">
+    <a class="logo" href="site.html"><span class="logo-mark" aria-hidden="true"><i class="ti ti-circuit-resistor"></i></span><span data-alt="Ohmlab Teams">اهم‌لب سازمانی</span></a>
+    <nav class="app-tabs" role="tablist" aria-label="بخش‌ها" data-alt-aria-label="Sections">
+      <button role="tab" id="t-ov" aria-controls="p-ov" aria-selected="true" data-alt="Overview">نمای کلی</button>
+      <button role="tab" id="t-bom" aria-controls="p-bom" aria-selected="false" data-alt="BOM tool">ابزار BOM</button>
+      <button role="tab" id="t-ord" aria-controls="p-ord" aria-selected="false" data-alt="Orders">سفارش‌ها</button>
+      <button role="tab" id="t-sav" aria-controls="p-sav" aria-selected="false" data-alt="Saved lists">فهرست‌های ذخیره</button>
+    </nav>
+    <div class="end">
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فارسی">English</button>
+      <button class="btn btn-ghost btn-icon" type="button" data-theme-toggle aria-label="حالت تیره" data-alt-aria-label="Dark mode"><i class="ti ti-moon" aria-hidden="true"></i></button>
+      <a class="btn btn-ghost btn-icon" href="site.html" aria-label="خروج" data-alt-aria-label="Sign out"><i class="ti ti-logout flip-rtl" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</header>
+
+<main class="container app-body" id="main">
+  <!-- OVERVIEW -->
+  <section role="tabpanel" id="p-ov" aria-labelledby="t-ov" class="app-body" style="padding:0">
+    <div class="section-bar" style="margin:0"><h1 class="index-title"><span class="n">01</span><span data-alt="Procurement overview · Pardis Robotics">نمای کلی تأمین · رباتیک پردیس</span></h1><button class="btn btn-primary" type="button" data-goto="t-bom"><i class="ti ti-upload" aria-hidden="true"></i><span data-alt="Upload BOM">آپلود BOM</span></button></div>
+    <div class="readouts">
+      <div class="instrument"><span class="readout-label" data-alt="Open orders">سفارش باز</span><span class="readout"><s>88</s><b>07</b></span><span class="delta" data-alt="2 shipping today">۲ مورد امروز ارسال می‌شود</span></div>
+      <div class="instrument"><span class="readout-label" data-alt="Parts on order">قطعه در راه</span><span class="readout"><s>88888</s><b>18420</b></span><span class="delta" data-alt="across 214 lines">در ۲۱۴ ردیف</span></div>
+      <div class="instrument"><span class="readout-label" data-alt="Spend this month (M Toman)">هزینهٔ این ماه (میلیون تومان)</span><span class="readout green"><s>88.8</s><b>48.6</b></span><span class="delta" data-alt="62% of monthly budget">۶۲٪ بودجهٔ ماهانه</span></div>
+      <div class="instrument"><span class="readout-label" data-alt="On-time delivery %">تحویل به‌موقع ٪</span><span class="readout green"><s>88.8</s><b>98.2</b></span><span class="delta" data-alt="last 90 days">۹۰ روز اخیر</span></div>
+    </div>
+    <div class="split">
+      <article class="panel"><div class="panel-head"><h2 data-alt="Monthly spend (Toman)">هزینهٔ ماهانه (تومان)</h2><span class="tag" data-alt="2026">۱۴۰۵</span></div><div class="panel-body"><div data-chart="bar" data-height="240" data-fmt="compact" data-dates="2026-04-15,7,month" data-values="31200000,28700000,40100000,36600000,52300000,44900000,48600000" data-tip-fmt="toman" data-series='[{"name":{"fa":"هزینه","en":"Spend"},"values":[31200000,28700000,40100000,36600000,52300000,44900000,48600000]}]' data-label='{"fa":"هزینهٔ ماهانه","en":"Monthly spend"}'></div></div></article>
+      <article class="panel"><div class="panel-head"><h2 data-alt="Low-stock watchlist">پایش کمبود موجودی</h2><span class="tag tag-red" data-num="3">۳</span></div>
+        <div class="order-line"><span class="led low"></span><span><span class="mpn" style="display:block">NV-MCU32-F103C8</span><span class="mfr" data-alt="86 left · you use ~120/mo">۸۶ عدد باقی · مصرف شما حدود ۱۲۰ در ماه</span></span><button class="btn btn-outline btn-sm" type="button" data-toast="Reserved 120 units" data-toast-alt="۱۲۰ عدد رزرو شد" data-alt="Reserve">رزرو</button></div>
+        <div class="order-line"><span class="led out"></span><span><span class="mpn" style="display:block">KV-0805-220R-J</span><span class="mfr" data-alt="Out of stock · back in 5 days">ناموجود · ۵ روز دیگر</span></span><button class="btn btn-outline btn-sm" type="button" data-toast="We'll notify you" data-toast-alt="به شما خبر می‌دهیم" data-alt="Notify me">خبرم کن</button></div>
+        <div class="order-line"><span class="led low"></span><span><span class="mpn" style="display:block">OL-0603-330R-F</span><span class="mfr" data-alt="64 left">۶۴ عدد باقی</span></span><button class="btn btn-outline btn-sm" type="button" data-toast="Reserved 64 units" data-toast-alt="۶۴ عدد رزرو شد" data-alt="Reserve">رزرو</button></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- BOM -->
+  <section role="tabpanel" id="p-bom" aria-labelledby="t-bom" hidden class="app-body" style="padding:0">
+    <div class="section-bar" style="margin:0"><h1 class="index-title"><span class="n">02</span><span data-alt="BOM tool">ابزار BOM</span></h1><span class="small subtle" data-alt="CSV or XLSX · up to 2,000 lines">CSV یا XLSX · تا ۲٬۰۰۰ ردیف</span></div>
+    <button class="dropzone" type="button" id="drop"><i class="ti ti-file-spreadsheet" aria-hidden="true"></i><b data-alt="Drop your BOM here or click to choose a file">فایل BOM را اینجا رها کنید یا برای انتخاب کلیک کنید</b><span class="small subtle" data-alt="Columns we detect: designator, value, package, quantity, part number">ستون‌هایی که تشخیص می‌دهیم: نام قطعه، مقدار، پکیج، تعداد، شمارهٔ قطعه</span></button>
+    <article class="panel" id="bom-result">
+      <div class="panel-head"><h2><span class="mono">motor-driver-v4.csv</span> · <span data-alt="12 lines">۱۲ ردیف</span></h2><div class="row"><button class="btn btn-outline btn-sm" type="button" data-toast="Exported quote PDF" data-toast-alt="پیش‌فاکتور PDF ساخته شد"><i class="ti ti-download" aria-hidden="true"></i><span data-alt="Quote PDF">پیش‌فاکتور</span></button><button class="btn btn-primary btn-sm" type="button" data-toast="10 lines added to cart" data-toast-alt="۱۰ ردیف به سبد اضافه شد"><i class="ti ti-shopping-cart" aria-hidden="true"></i><span data-alt="Add matched to cart">افزودن موارد منطبق به سبد</span></button></div></div>
+      <div class="panel-body stack" style="--gap:10px">
+        <div class="bom-progress" role="img" aria-label="۸ منطبق، ۲ جایگزین، ۲ پیدا نشد" data-alt-aria-label="8 matched, 2 alternatives, 2 not found"><i style="--w:66.6%;background:var(--success)"></i><i style="--w:16.7%;background:var(--warning)"></i><i style="--w:16.7%;background:var(--danger)"></i></div>
+        <div class="legend-row"><span><i style="background:var(--success)"></i><span data-alt="Matched 8">منطبق ۸</span></span><span><i style="background:var(--warning)"></i><span data-alt="Alternative 2">جایگزین ۲</span></span><span><i style="background:var(--danger)"></i><span data-alt="Not found 2">پیدا نشد ۲</span></span></div>
+      </div>
+      <div class="table-scroll" style="border:0;border-block-start:1px solid var(--line)">
+        <table class="bom-table">
+          <thead><tr><th data-alt="Ref">نام</th><th data-alt="Your query">ورودی شما</th><th data-alt="Matched part">قطعهٔ منطبق</th><th data-alt="Qty">تعداد</th><th data-alt="Status">وضعیت</th><th data-alt="Line total">جمع ردیف</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">R1–R8</td><td class="mono ltr">10k 0603 1%</td><td><span class="mpn">OL-0603-10K-F</span></td><td class="mono">800</td><td><span class="tag tag-ok" data-alt="Matched">منطبق</span></td><td data-num="48800" data-fmt="toman">۴۸٬۸۰۰ تومان</td></tr>
+            <tr><td class="mono">C1–C4</td><td class="mono ltr">100n 0402 X7R</td><td><span class="mpn">KV-MLCC-0402-104K</span></td><td class="mono">400</td><td><span class="tag tag-ok" data-alt="Matched">منطبق</span></td><td data-num="26000" data-fmt="toman">۲۶٬۰۰۰ تومان</td></tr>
+            <tr><td class="mono">U1</td><td class="mono ltr">MCU 32bit LQFP48</td><td><select class="select" aria-label="جایگزین" data-alt-aria-label="Alternative"><option>NV-MCU32-F103C8</option><option>NV-MCU32-F103CB</option></select></td><td class="mono">100</td><td><span class="tag tag-warn" data-alt="Alternative">جایگزین</span></td><td data-num="18400000" data-fmt="toman">۱۸٬۴۰۰٬۰۰۰ تومان</td></tr>
+            <tr><td class="mono">Q1–Q4</td><td class="mono ltr">N-MOSFET 30V SOT-23</td><td><span class="mpn">NV-NMOS-30-SOT23</span></td><td class="mono">400</td><td><span class="tag tag-ok" data-alt="Matched">منطبق</span></td><td data-num="560000" data-fmt="toman">۵۶۰٬۰۰۰ تومان</td></tr>
+            <tr><td class="mono">D1</td><td class="mono ltr">LED red 0603</td><td><select class="select" aria-label="جایگزین" data-alt-aria-label="Alternative"><option>OL-LED-0603-RD</option><option>OL-LED-0805-RD</option></select></td><td class="mono">100</td><td><span class="tag tag-warn" data-alt="Alternative">جایگزین</span></td><td data-num="38000" data-fmt="toman">۳۸٬۰۰۰ تومان</td></tr>
+            <tr><td class="mono">J3</td><td class="mono ltr">JST-XH 6p RA</td><td class="subtle">—</td><td class="mono">100</td><td><span class="tag tag-red" data-alt="Not found">پیدا نشد</span></td><td><button class="btn btn-ghost btn-sm" type="button" data-toast="Request sent to sourcing" data-toast-alt="درخواست به واحد تأمین ارسال شد" data-alt="Ask sourcing">درخواست تأمین</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+  </section>
+
+  <!-- ORDERS -->
+  <section role="tabpanel" id="p-ord" aria-labelledby="t-ord" hidden class="app-body" style="padding:0" data-filter-scope>
+    <div class="section-bar" style="margin:0"><h1 class="index-title"><span class="n">03</span><span data-alt="Orders">سفارش‌ها</span></h1>
+      <div class="row" data-group role="group" aria-label="وضعیت" data-alt-aria-label="Status" style="--gap:4px"><button class="btn btn-outline btn-sm" type="button" data-filter="st" data-value="all" aria-pressed="true" data-alt="All">همه</button><button class="btn btn-ghost btn-sm" type="button" data-filter="st" data-value="open" aria-pressed="false" data-alt="Open">باز</button><button class="btn btn-ghost btn-sm" type="button" data-filter="st" data-value="done" aria-pressed="false" data-alt="Delivered">تحویل‌شده</button></div>
+    </div>
+    <article class="panel">
+      <div class="order-line" data-filter-item data-st="open"><span class="steps-mini" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span><b class="mono">SO-26-04412</b> · <span data-alt="Shipped — arrives tomorrow">ارسال شد — فردا می‌رسد</span><br><span class="small subtle" data-alt="38 lines · 12,640,000 Toman">۳۸ ردیف · ۱۲٬۶۴۰٬۰۰۰ تومان</span></span><span class="tag tag-info" data-alt="In transit">در مسیر</span></div>
+      <div class="order-line" data-filter-item data-st="open"><span class="steps-mini" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i></span><span><b class="mono">SO-26-04398</b> · <span data-alt="Picking in warehouse">در حال جمع‌آوری در انبار</span><br><span class="small subtle" data-alt="112 lines · 31,200,000 Toman">۱۱۲ ردیف · ۳۱٬۲۰۰٬۰۰۰ تومان</span></span><span class="tag tag-warn" data-alt="Picking">جمع‌آوری</span></div>
+      <div class="order-line" data-filter-item data-st="done"><span class="steps-mini" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span><b class="mono">SO-26-04310</b> · <span data-alt="Delivered on 12 Oct">۲۰ مهر تحویل شد</span><br><span class="small subtle" data-alt="64 lines · 22,080,000 Toman">۶۴ ردیف · ۲۲٬۰۸۰٬۰۰۰ تومان</span></span><span class="tag tag-ok" data-alt="Delivered">تحویل شد</span></div>
+      <div class="order-line" data-filter-item data-st="done"><span class="steps-mini" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span><b class="mono">SO-26-04277</b> · <span data-alt="Delivered on 3 Oct">۱۱ مهر تحویل شد</span><br><span class="small subtle" data-alt="21 lines · 6,930,000 Toman">۲۱ ردیف · ۶٬۹۳۰٬۰۰۰ تومان</span></span><span class="tag tag-ok" data-alt="Delivered">تحویل شد</span></div>
+    </article>
+  </section>
+
+  <!-- SAVED -->
+  <section role="tabpanel" id="p-sav" aria-labelledby="t-sav" hidden class="app-body" style="padding:0">
+    <div class="section-bar" style="margin:0"><h1 class="index-title"><span class="n">04</span><span data-alt="Saved lists">فهرست‌های ذخیره</span></h1><button class="btn btn-dark btn-sm" type="button" data-toast="New list created" data-toast-alt="فهرست تازه ساخته شد"><i class="ti ti-plus" aria-hidden="true"></i><span data-alt="New list">فهرست تازه</span></button></div>
+    <div class="saved">
+      <article class="panel"><div class="panel-head"><h2 data-alt="Motor driver v4">درایور موتور v4</h2><span class="tag" data-alt="12 parts">۱۲ قطعه</span></div><div class="panel-body stack" style="--gap:8px"><span class="mpn">NV-MCU32-F103C8</span><span class="mpn">NV-NMOS-30-SOT23</span><span class="mpn">OL-0603-10K-F</span><button class="btn btn-outline btn-sm" type="button" data-toast="List added to cart" data-toast-alt="فهرست به سبد اضافه شد" data-alt="Add list to cart">افزودن فهرست به سبد</button></div></article>
+      <article class="panel"><div class="panel-head"><h2 data-alt="Sensor board rev B">بورد سنسور نسخهٔ B</h2><span class="tag" data-alt="8 parts">۸ قطعه</span></div><div class="panel-body stack" style="--gap:8px"><span class="mpn">SP-THS-21</span><span class="mpn">KV-MLCC-0402-104K</span><span class="mpn">OL-LED-0603-RD</span><button class="btn btn-outline btn-sm" type="button" data-toast="List added to cart" data-toast-alt="فهرست به سبد اضافه شد" data-alt="Add list to cart">افزودن فهرست به سبد</button></div></article>
+      <article class="panel"><div class="panel-head"><h2 data-alt="Lab consumables">مصرفی آزمایشگاه</h2><span class="tag" data-alt="5 parts">۵ قطعه</span></div><div class="panel-body stack" style="--gap:8px"><span class="mpn">TL-SOLDER-0.8-SN99</span><span class="mpn">TL-FLUX-PEN-NC</span><span class="mpn">OL-LED5-RED</span><button class="btn btn-outline btn-sm" type="button" data-toast="List added to cart" data-toast-alt="فهرست به سبد اضافه شد" data-alt="Add list to cart">افزودن فهرست به سبد</button></div></article>
+    </div>
+  </section>
+</main>
+<script>
+  document.addEventListener('click', (e) => {
+    const g = e.target.closest('[data-goto]');
+    if (g) { e.preventDefault(); tf.selectTab(document.getElementById(g.dataset.goto), true); }
+    const d = e.target.closest('#drop');
+    if (d) { d.classList.add('is-over'); setTimeout(() => d.classList.remove('is-over'), 600); tf.toast(tf.lang() === 'fa' ? 'فایل نمونه بارگذاری شد — ۱۲ ردیف' : 'Sample file loaded — 12 lines'); document.getElementById('bom-result').scrollIntoView({ behavior: tf.reduceMotion ? 'auto' : 'smooth' }); }
+  });
+  // Orders filter buttons mirror their pressed state in the button style.
+  document.addEventListener('tf:change', (e) => {
+    e.target.querySelectorAll?.('[aria-pressed]').forEach((b) => { b.classList.toggle('btn-outline', b.getAttribute('aria-pressed') === 'true'); b.classList.toggle('btn-ghost', b.getAttribute('aria-pressed') !== 'true'); });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+/* Datasheet — design tokens (Tastefolio). Engineering catalog: white paper, graphite ink, one signal red,
+   hairline grids, mono part numbers and seven-segment readouts. Persian-first. */
+:root {
+  --canvas: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f6f7f8;
+  --surface-3: #eceef0;
+  --surface-ink: #15171a;
+  --overlay: rgba(21, 23, 26, .5);
+
+  --ink: #15171a;
+  --ink-2: #4f555c;
+  --ink-3: #8b9198;
+  --ink-inverse: #ffffff;
+
+  --line: #e3e5e8;
+  --line-2: #cdd1d6;
+  --grid: rgba(21, 23, 26, .045);       /* blueprint grid on hero and empty areas */
+
+  --brand: #d7263d;                     /* signal red: action, active, alerts of attention */
+  --brand-ink: #ffffff;
+  --brand-soft: color-mix(in oklab, var(--brand) 9%, #fff);
+  --brand-strong: color-mix(in oklab, var(--brand) 80%, #000);
+  --focus: color-mix(in oklab, var(--brand) 40%, transparent);
+
+  --success: #1a9f53;                   /* "in stock" LED */
+  --success-soft: #e6f6ec;
+  --warning: #cc8a00;
+  --warning-soft: #fcf3dd;
+  --danger: #c0262d;
+  --danger-soft: #fbe7e8;
+  --info: #2563c9;
+  --info-soft: #e7eefb;
+
+  --chart-1: var(--brand);
+  --chart-2: var(--surface-ink);
+  --chart-3: #8b9198;
+  --chart-4: #2563c9;
+  --chart-5: #1a9f53;
+  --chart-6: #cc8a00;
+  --chart-grid: #eef0f2;
+  --chart-axis: var(--ink-3);
+  --chart-curve: step;
+  --chart-stroke: 2;
+  --chart-area: .08;
+  --chart-radius: 1;
+  --chart-bar-gap: .35;
+  --chart-donut: 14;
+  --chart-dots: 1;
+
+  --font-sans: "Barlow", "Sahel", system-ui, -apple-system, sans-serif;
+  --font-display: "Barlow Condensed", "Barlow", "Sahel", sans-serif;
+  --font-mono: "Roboto Mono", ui-monospace, Menlo, monospace;
+  --font-readout: "DSEG7 Classic", "Roboto Mono", monospace;
+  --fs-xs: 11.5px;
+  --fs-sm: 13px;
+  --fs-md: 14.5px;
+  --fs-lg: 16px;
+  --fs-xl: 20px;
+  --fs-2xl: 28px;
+  --fs-3xl: 40px;
+  --fs-display: clamp(34px, 5vw, 64px);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 600;
+  --fw-display: 700;
+  --lh-tight: 1.05;
+  --lh-snug: 1.3;
+  --lh-body: 1.55;
+  --tracking-display: -.01em;
+  --tracking-caps: .1em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 48px;
+  --space-9: 64px;
+  --space-10: 88px;
+  --radius-sm: 3px;
+  --radius-md: 5px;
+  --radius-lg: 8px;
+  --radius-pill: 999px;
+  --border-w: 1px;
+  --shadow-1: 0 1px 0 rgba(21, 23, 26, .04);
+  --shadow-2: 0 12px 28px -12px rgba(21, 23, 26, .22);
+  --shadow-3: 0 24px 60px -20px rgba(21, 23, 26, .35);
+
+  --container: 1320px;
+  --gutter: clamp(14px, 3vw, 28px);
+  --control-h: 36px;
+  --control-h-lg: 46px;
+  --row-h: 48px;
+  --filters-w: 260px;
+
+  --ease: cubic-bezier(.3, .7, .3, 1);
+  --dur-1: 100ms;
+  --dur-2: 180ms;
+  --dur-3: 280ms;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --canvas: #101214;
+  --surface: #16191c;
+  --surface-2: #1b1f23;
+  --surface-3: #232830;
+  --surface-ink: #e9ecef;
+  --ink: #e9ecef;
+  --ink-2: #a8afb7;
+  --ink-3: #6d757e;
+  --ink-inverse: #101214;
+  --line: #262b31;
+  --line-2: #343a42;
+  --grid: rgba(255, 255, 255, .04);
+  --brand: #ff4d5e;
+  --brand-soft: color-mix(in oklab, var(--brand) 16%, var(--surface));
+  --brand-strong: color-mix(in oklab, var(--brand) 80%, #fff);
+  --success-soft: #11291b; --warning-soft: #2b230f; --danger-soft: #2f1517; --info-soft: #14213a;
+  --chart-grid: #232830;
+  color-scheme: dark;
+}
+
+:root:lang(fa) {
+  --font-sans: "Sahel", "Barlow", Tahoma, sans-serif;
+  --font-display: "Sahel", "Barlow Condensed", sans-serif;
+  --fs-md: 14px;
+  --lh-tight: 1.45;
+  --lh-snug: 1.55;
+  --lh-body: 1.9;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+  --fs-display: clamp(28px, 4vw, 50px);
+}

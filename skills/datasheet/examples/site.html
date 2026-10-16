@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="site" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Ohmlab — electronic components, same day">اهم‌لب — قطعات الکترونیک، همان روز</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=Roboto+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .banner .display { max-inline-size: 14ch; }
+  .banner .row { --gap: var(--space-4); }
+  .promo .ti { position: absolute; inset-block-start: 14px; inset-inline-end: 14px; font-size: 40px; opacity: .25; }
+  .compare-bar[hidden] { display: none; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="sym-res" viewBox="0 0 64 32"><path d="M2 16h14M48 16h14" stroke="currentColor" stroke-width="2.5"/><rect x="16" y="8" width="32" height="16" rx="4" fill="#e8d3b0" stroke="currentColor" stroke-width="2"/><path d="M23 8v16M29 8v16M35 8v16" stroke="#8b4a2b" stroke-width="2.5"/><path d="M41 8v16" stroke="#c9a227" stroke-width="2.5"/></symbol>
+  <symbol id="sym-cap" viewBox="0 0 64 40"><path d="M24 34v4M40 34v4" stroke="currentColor" stroke-width="2.5"/><rect x="14" y="4" width="36" height="30" rx="6" fill="#2b5fa8" stroke="currentColor" stroke-width="2"/><path d="M20 4v30" stroke="#9fc0ec" stroke-width="3"/></symbol>
+  <symbol id="sym-ic" viewBox="0 0 64 40"><rect x="12" y="6" width="40" height="28" rx="3" fill="#1d2126" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="12" r="2.5" fill="#555"/><path d="M18 6V1M26 6V1M34 6V1M42 6V1M18 34v5M26 34v5M34 34v5M42 34v5" stroke="currentColor" stroke-width="2.5"/></symbol>
+  <symbol id="sym-led" viewBox="0 0 40 48"><path d="M8 22a12 12 0 0 1 24 0v12H8z" fill="#ff4d5e" stroke="currentColor" stroke-width="2"/><path d="M6 34h28" stroke="currentColor" stroke-width="2.5"/><path d="M15 34v13M25 34v9" stroke="currentColor" stroke-width="2.5"/></symbol>
+  <symbol id="sym-sensor" viewBox="0 0 64 40"><rect x="6" y="6" width="52" height="28" rx="3" fill="#1a7f4b" stroke="currentColor" stroke-width="2"/><rect x="24" y="12" width="16" height="16" rx="2" fill="#e9ecef" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="2" fill="#e9ecef"/><circle cx="52" cy="12" r="2" fill="#e9ecef"/></symbol>
+  <symbol id="sym-board" viewBox="0 0 64 44"><rect x="3" y="4" width="58" height="36" rx="3" fill="#0f5f73" stroke="currentColor" stroke-width="2"/><rect x="24" y="14" width="16" height="16" rx="2" fill="#1d2126"/><path d="M8 9h48M8 35h48" stroke="#c9a227" stroke-width="2" stroke-dasharray="2 3"/></symbol>
+</svg>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<div class="util">
+  <div class="container">
+    <span data-alt="Free shipping over 2,000,000 Toman">ارسال رایگان برای سفارش‌های بالای ۲ میلیون تومان</span>
+    <span class="ltr">021 4400 0000</span>
+    <span class="end"><a href="#" data-alt="Track order">پیگیری سفارش</a><a href="dashboard.html" data-alt="B2B sign-in">ورود همکاران</a><button class="btn btn-sm" type="button" style="color:inherit;min-block-size:24px;padding-inline:6px" data-lang-toggle data-alt="فارسی">English</button></span>
+  </div>
+</div>
+<header class="masthead">
+  <div class="container main">
+    <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"><i class="ti ti-circuit-resistor"></i></span><span data-alt="Ohmlab">اهم‌لب</span></a>
+    <form class="searchbar" role="search" action="#catalog">
+      <select class="select" aria-label="دسته" data-alt-aria-label="Category"><option data-alt="All categories">همهٔ دسته‌ها</option><option data-alt="Resistors">مقاومت</option><option data-alt="Capacitors">خازن</option><option data-alt="ICs">آی‌سی</option></select>
+      <input class="input" type="search" placeholder="شمارهٔ قطعه، مقدار یا کلیدواژه… مثلاً 10k 0603" data-alt-placeholder="Part number, value or keyword… e.g. 10k 0603" aria-label="جست‌وجو" data-alt-aria-label="Search">
+      <button class="btn btn-dark" type="submit" aria-label="جست‌وجو" data-alt-aria-label="Search"><i class="ti ti-search" aria-hidden="true"></i></button>
+    </form>
+    <div class="head-end">
+      <a class="btn btn-ghost hide-md" href="dashboard.html"><i class="ti ti-user" aria-hidden="true"></i><span data-alt="Account">حساب</span></a>
+      <button class="btn btn-outline btn-icon cart" type="button" aria-label="سبد خرید" data-alt-aria-label="Cart"><i class="ti ti-shopping-cart" aria-hidden="true"></i><span class="count" id="cart-count">3</span></button>
+    </div>
+  </div>
+  <div class="container navrow">
+    <div class="allcats"><button type="button" data-toggle="#cat-menu" aria-expanded="false"><i class="ti ti-category" aria-hidden="true"></i><span data-alt="All categories">همهٔ دسته‌ها</span><i class="ti ti-chevron-down" aria-hidden="true"></i></button>
+      <nav class="cat-menu" id="cat-menu" data-dismissable aria-label="دسته‌ها" data-alt-aria-label="Categories">
+        <a href="#catalog"><i class="ti ti-circuit-resistor" aria-hidden="true"></i><span data-alt="Resistors">مقاومت</span><span class="n">12,480</span></a>
+        <a href="#catalog"><i class="ti ti-circuit-capacitor" aria-hidden="true"></i><span data-alt="Capacitors">خازن</span><span class="n">9,215</span></a>
+        <a href="#catalog"><i class="ti ti-cpu" aria-hidden="true"></i><span data-alt="Integrated circuits">مدار مجتمع (آی‌سی)</span><span class="n">31,902</span></a>
+        <a href="#catalog"><i class="ti ti-temperature" aria-hidden="true"></i><span data-alt="Sensors">سنسور</span><span class="n">2,744</span></a>
+        <a href="#catalog"><i class="ti ti-bulb" aria-hidden="true"></i><span data-alt="LEDs &amp; optics">LED و اپتیک</span><span class="n">4,061</span></a>
+        <a href="#catalog"><i class="ti ti-device-desktop-analytics" aria-hidden="true"></i><span data-alt="Dev boards">بورد توسعه</span><span class="n">688</span></a>
+      </nav>
+    </div>
+    <a href="#best" data-alt="Deals">پیشنهاد ویژه</a><a href="dashboard.html" data-alt="BOM tool">ابزار BOM</a><a href="#cats" data-alt="Brands">برندها</a><a href="#catalog" data-alt="Datasheets">دیتاشیت‌ها</a><a href="#" data-alt="Learn">آموزش</a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="container hero" id="top">
+    <nav class="tree" aria-label="دسته‌های اصلی" data-alt-aria-label="Main categories">
+      <a href="#catalog"><i class="ti ti-circuit-resistor" aria-hidden="true"></i><span data-alt="Resistors">مقاومت</span></a>
+      <a href="#catalog"><i class="ti ti-circuit-capacitor" aria-hidden="true"></i><span data-alt="Capacitors">خازن</span></a>
+      <a href="#catalog"><i class="ti ti-cpu" aria-hidden="true"></i><span data-alt="Integrated circuits">مدار مجتمع</span></a>
+      <a href="#catalog"><i class="ti ti-circuit-diode" aria-hidden="true"></i><span data-alt="Diodes &amp; transistors">دیود و ترانزیستور</span></a>
+      <a href="#catalog"><i class="ti ti-temperature" aria-hidden="true"></i><span data-alt="Sensors">سنسور</span></a>
+      <a href="#catalog"><i class="ti ti-bulb" aria-hidden="true"></i><span data-alt="LEDs &amp; displays">LED و نمایشگر</span></a>
+      <a href="#catalog"><i class="ti ti-plug" aria-hidden="true"></i><span data-alt="Connectors">کانکتور</span></a>
+      <a href="#catalog"><i class="ti ti-battery" aria-hidden="true"></i><span data-alt="Power &amp; batteries">تغذیه و باتری</span></a>
+      <a href="#catalog"><i class="ti ti-tool" aria-hidden="true"></i><span data-alt="Tools &amp; soldering">ابزار و لحیم‌کاری</span></a>
+    </nav>
+    <div class="banner blueprint">
+      <svg class="traces" viewBox="0 0 600 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <path d="M0 300 H140 L180 260 H330"/><path class="hot" d="M600 60 H470 L430 100 H360 L330 130"/><path d="M600 300 H520 L480 340"/><path d="M60 0 V90 L100 130 H200"/>
+        <circle cx="330" cy="260" r="5"/><circle class="hot" cx="330" cy="130" r="5"/><circle cx="200" cy="130" r="5"/><circle cx="480" cy="340" r="5"/>
+      </svg>
+      <span class="tag tag-red" style="justify-self:start" data-alt="Same-day dispatch before 3 pm">ارسال همان روز تا ساعت ۱۵</span>
+      <h1 class="display" data-alt="The right part, the same day">قطعهٔ درست، همان روز</h1>
+      <p class="muted" style="max-inline-size:46ch" data-alt="Search 128,000 components by value, package or part number. Real-time stock, datasheets and price breaks for every line.">میان ۱۲۸ هزار قطعه بر اساس مقدار، پکیج یا شمارهٔ قطعه جست‌وجو کنید. موجودی لحظه‌ای، دیتاشیت و قیمت پلکانی برای هر ردیف.</p>
+      <div class="row">
+        <div class="stack" style="--gap:6px"><span class="readout-label" data-alt="Parts in stock">قطعه در انبار</span><span class="readout"><s>888888</s><b>128450</b></span></div>
+        <div class="stack" style="--gap:6px"><span class="readout-label" data-alt="Orders shipped today">ارسال امروز</span><span class="readout green"><s>8888</s><b>1294</b></span></div>
+      </div>
+      <div class="row"><a class="btn btn-primary btn-lg" href="#catalog"><i class="ti ti-adjustments-horizontal" aria-hidden="true"></i><span data-alt="Parametric search">جست‌وجوی پارامتری</span></a><a class="btn btn-outline btn-lg" href="dashboard.html"><i class="ti ti-file-spreadsheet" aria-hidden="true"></i><span data-alt="Upload a BOM">آپلود BOM</span></a></div>
+    </div>
+    <div class="promo-stack">
+      <a class="promo dark" href="dashboard.html"><i class="ti ti-file-spreadsheet" aria-hidden="true"></i><span class="tiny" style="opacity:.7" data-alt="For engineers">ویژهٔ مهندسان</span><b data-alt="Quote a whole BOM in one minute">قیمت کل BOM در یک دقیقه</b></a>
+      <a class="promo red" href="#best"><i class="ti ti-temperature" aria-hidden="true"></i><span class="tiny" style="opacity:.85" data-alt="This week">این هفته</span><b data-alt="15% off sensors">۱۵٪ تخفیف سنسورها</b></a>
+    </div>
+  </section>
+
+  <section class="container section" id="cats" style="padding-block-start:var(--space-5)">
+    <div class="cats">
+      <a href="#catalog"><i class="ti ti-circuit-resistor" aria-hidden="true"></i><span class="label" data-alt="Resistors">مقاومت</span><span>12,480</span></a>
+      <a href="#catalog"><i class="ti ti-circuit-capacitor" aria-hidden="true"></i><span class="label" data-alt="Capacitors">خازن</span><span>9,215</span></a>
+      <a href="#catalog"><i class="ti ti-cpu" aria-hidden="true"></i><span class="label" data-alt="ICs">آی‌سی</span><span>31,902</span></a>
+      <a href="#catalog"><i class="ti ti-circuit-diode" aria-hidden="true"></i><span class="label" data-alt="Diodes">دیود</span><span>5,330</span></a>
+      <a href="#catalog"><i class="ti ti-temperature" aria-hidden="true"></i><span class="label" data-alt="Sensors">سنسور</span><span>2,744</span></a>
+      <a href="#catalog"><i class="ti ti-bulb" aria-hidden="true"></i><span class="label" data-alt="LEDs">LED</span><span>4,061</span></a>
+      <a href="#catalog"><i class="ti ti-plug" aria-hidden="true"></i><span class="label" data-alt="Connectors">کانکتور</span><span>7,802</span></a>
+      <a href="#catalog"><i class="ti ti-device-desktop-analytics" aria-hidden="true"></i><span class="label" data-alt="Boards">بورد</span><span>688</span></a>
+    </div>
+  </section>
+
+  <section class="container section" id="best" style="padding-block-start:0">
+    <div class="section-bar"><h2 class="index-title"><span class="n">01</span><span data-alt="Best sellers this week">پرفروش‌های این هفته</span></h2><a href="#catalog" data-alt="View all →">مشاهدهٔ همه ←</a></div>
+    <div class="part-grid">
+      <article class="part-card"><div class="part-img"><svg><use href="#sym-res"/></svg></div><span class="mpn">OL-0603-10K-F</span><span class="mfr">Ohmline · 0603</span><div class="specs"><span class="spec">10kΩ</span><span class="spec">±1%</span><span class="spec">0.1W</span></div><span class="led" data-alt="12,400 in stock">۱۲٬۴۰۰ موجود</span><span class="price"><span data-num="120">۱۲۰</span> <small data-alt="Toman / pc">تومان / عدد</small></span></article>
+      <article class="part-card"><div class="part-img"><svg><use href="#sym-cap"/></svg></div><span class="mpn">KV-EC-470U-25V</span><span class="mfr">Kavir Passive · Radial</span><div class="specs"><span class="spec">470µF</span><span class="spec">25V</span><span class="spec">105°C</span></div><span class="led" data-alt="3,150 in stock">۳٬۱۵۰ موجود</span><span class="price"><span data-num="2900">۲٬۹۰۰</span> <small data-alt="Toman / pc">تومان / عدد</small></span></article>
+      <article class="part-card"><div class="part-img"><svg><use href="#sym-ic"/></svg></div><span class="mpn">NV-MCU32-F103C8</span><span class="mfr">NovaComp · LQFP48</span><div class="specs"><span class="spec">32-bit</span><span class="spec">72MHz</span><span class="spec">64KB</span></div><span class="led low" data-alt="86 left">۸۶ عدد باقی‌مانده</span><span class="price"><span data-num="184000">۱۸۴٬۰۰۰</span> <small data-alt="Toman / pc">تومان / عدد</small></span></article>
+      <article class="part-card"><div class="part-img"><svg><use href="#sym-sensor"/></svg></div><span class="mpn">SP-THS-21</span><span class="mfr">Sepid · I²C module</span><div class="specs"><span class="spec">±0.3°C</span><span class="spec">3.3V</span></div><span class="led" data-alt="940 in stock">۹۴۰ موجود</span><span class="price"><span data-num="96500">۹۶٬۵۰۰</span> <small data-alt="Toman / pc">تومان / عدد</small></span></article>
+      <article class="part-card"><div class="part-img"><svg><use href="#sym-led"/></svg></div><span class="mpn">OL-LED5-RED</span><span class="mfr">Ohmline · THT 5mm</span><div class="specs"><span class="spec">620nm</span><span class="spec">20mA</span></div><span class="led out" data-alt="Back in 5 days">موجودی ۵ روز دیگر</span><span class="price"><span data-num="450">۴۵۰</span> <small data-alt="Toman / pc">تومان / عدد</small></span></article>
+    </div>
+  </section>
+
+  <section class="container section" id="catalog" style="padding-block-start:0">
+    <div class="section-bar"><h2 class="index-title"><span class="n">02</span><span data-alt="Parametric search: SMD chip resistors">جست‌وجوی پارامتری: مقاومت‌های SMD</span></h2><span class="small subtle" data-alt="Datasheets for every line">دیتاشیت برای همهٔ ردیف‌ها</span></div>
+    <div class="catalog" data-filter-scope id="scope">
+      <aside class="filters" aria-label="فیلترها" data-alt-aria-label="Filters">
+        <div class="filters-head"><span data-alt="Filters">فیلترها</span><button class="btn btn-ghost btn-sm" type="button" data-filter-reset data-alt="Reset">پاک کردن</button></div>
+        <details class="facet" open><summary data-alt="Resistance (Ω)">مقاومت (Ω)</summary><div class="opts"><div class="range"><input class="input" id="rmin" type="number" min="0" value="0" aria-label="حداقل" data-alt-aria-label="Minimum"><span class="subtle">–</span><input class="input" id="rmax" type="number" min="0" value="1000000" aria-label="حداکثر" data-alt-aria-label="Maximum"></div></div></details>
+        <details class="facet" open><summary data-alt="Package">پکیج</summary><div class="opts">
+          <label class="check"><input type="checkbox" data-filter="pkg" value="0402"><span>0402</span><span class="n">2</span></label>
+          <label class="check"><input type="checkbox" data-filter="pkg" value="0603"><span>0603</span><span class="n">4</span></label>
+          <label class="check"><input type="checkbox" data-filter="pkg" value="0805"><span>0805</span><span class="n">3</span></label>
+          <label class="check"><input type="checkbox" data-filter="pkg" value="1206"><span>1206</span><span class="n">1</span></label>
+        </div></details>
+        <details class="facet" open><summary data-alt="Tolerance">تلورانس</summary><div class="opts">
+          <label class="check"><input type="checkbox" data-filter="tol" value="1"><span class="ltr">±1%</span><span class="n">7</span></label>
+          <label class="check"><input type="checkbox" data-filter="tol" value="5"><span class="ltr">±5%</span><span class="n">3</span></label>
+        </div></details>
+        <details class="facet"><summary data-alt="Manufacturer">سازنده</summary><div class="opts">
+          <label class="check"><input type="checkbox" data-filter="mfr" value="ohmline"><span>Ohmline</span><span class="n">5</span></label>
+          <label class="check"><input type="checkbox" data-filter="mfr" value="kavir"><span>Kavir Passive</span><span class="n">3</span></label>
+          <label class="check"><input type="checkbox" data-filter="mfr" value="nova"><span>NovaComp</span><span class="n">2</span></label>
+        </div></details>
+        <div class="facet" style="display:flex;justify-content:space-between;align-items:center;padding:12px 14px"><span class="small" style="font-weight:600" data-alt="In stock only">فقط موجود</span><button class="toggle" type="button" role="switch" aria-checked="false" id="instock" aria-label="فقط موجود" data-alt-aria-label="In stock only"></button></div>
+      </aside>
+      <div>
+        <div class="results-bar"><span class="count"><b data-filter-count>10</b> <span data-alt="results">نتیجه</span></span><input class="input" type="search" data-filter-search placeholder="فیلتر در نتایج…" data-alt-placeholder="Filter results…" style="max-inline-size:220px;min-block-size:32px" aria-label="فیلتر در نتایج" data-alt-aria-label="Filter results"><span class="spacer"></span><span class="small subtle" data-alt="Prices in Toman, excl. VAT">قیمت‌ها به تومان، بدون مالیات</span></div>
+        <div class="table-scroll">
+          <table class="parts">
+            <thead><tr><th scope="col"><span class="sr-only" data-alt="Compare">مقایسه</span></th><th scope="col"></th><th scope="col" aria-sort="none"><button data-sort="text" data-alt="Part number">شمارهٔ قطعه</button></th><th scope="col" aria-sort="none"><button data-sort="num" data-alt="Resistance">مقاومت</button></th><th scope="col" data-alt="Package">پکیج</th><th scope="col" data-alt="Specs">مشخصات</th><th scope="col" aria-sort="none"><button data-sort="num" data-alt="Stock">موجودی</button></th><th scope="col" data-alt="Price breaks">قیمت پلکانی</th><th scope="col" data-alt="Qty">تعداد</th><th scope="col"></th></tr></thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+        <p class="muted" data-filter-empty hidden style="padding:var(--space-6);text-align:center;border:1px solid var(--line);border-block-start:0" data-alt="No parts match — widen the resistance range or clear a filter.">قطعه‌ای پیدا نشد — بازهٔ مقاومت را بازتر کنید یا یک فیلتر را بردارید.</p>
+        <div class="compare-bar" id="compare-bar" hidden><span data-alt="Compare:">مقایسه:</span><span class="chips" id="compare-chips"></span><span class="spacer"></span><button class="btn btn-primary btn-sm" type="button" id="compare-open"><i class="ti ti-arrows-exchange" aria-hidden="true"></i><span data-alt="Compare">مقایسه</span></button><button class="btn btn-sm" type="button" style="color:#fff" id="compare-clear" data-alt="Clear">پاک کردن</button></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dialog class="modal" id="compare-dlg" aria-labelledby="cmp-title">
+  <div class="panel-head"><h2 id="cmp-title" data-alt="Compare parts">مقایسهٔ قطعات</h2><button class="btn btn-ghost btn-icon" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><i class="ti ti-x" aria-hidden="true"></i></button></div>
+  <div class="panel-body table-scroll" style="border:0"><table class="compare-table" id="compare-table"></table></div>
+</dialog>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="stack"><a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"><i class="ti ti-circuit-resistor"></i></span><span data-alt="Ohmlab">اهم‌لب</span></a><p class="small muted" data-alt="A fictional component distributor demonstrating the Datasheet style by Tastefolio.">توزیع‌کنندهٔ ساختگی قطعات برای نمایش سبک Datasheet در تیست‌فولیو.</p></div>
+    <div><h4 data-alt="Catalog">کاتالوگ</h4><ul><li><a href="#catalog" data-alt="Passives">قطعات پسیو</a></li><li><a href="#catalog" data-alt="Semiconductors">نیمه‌هادی</a></li><li><a href="#catalog" data-alt="Boards">بورد</a></li></ul></div>
+    <div><h4 data-alt="Tools">ابزارها</h4><ul><li><a href="dashboard.html" data-alt="BOM tool">ابزار BOM</a></li><li><a href="#" data-alt="Resistor calculator">ماشین‌حساب مقاومت</a></li></ul></div>
+    <div><h4 data-alt="Business">سازمانی</h4><ul><li><a href="dashboard.html" data-alt="B2B accounts">حساب همکاری</a></li><li><a href="#" data-alt="Volume pricing">قیمت عمده</a></li></ul></div>
+    <div><h4 data-alt="Support">پشتیبانی</h4><ul><li><a href="#" data-alt="Shipping">ارسال</a></li><li><a href="#" data-alt="Returns">مرجوعی</a></li></ul></div>
+  </div>
+</footer>
+
+<script>
+  const PARTS = [
+    ['OL-0603-10K-F', 'Ohmline', 'ohmline', 10000, '0603', 1, '0.1W', 12400, [120, 95, 61]],
+    ['OL-0603-4K7-F', 'Ohmline', 'ohmline', 4700, '0603', 1, '0.1W', 8820, [120, 95, 61]],
+    ['OL-0402-1K-F', 'Ohmline', 'ohmline', 1000, '0402', 1, '0.063W', 21000, [90, 70, 44]],
+    ['KV-0805-100K-J', 'Kavir Passive', 'kavir', 100000, '0805', 5, '0.125W', 5300, [110, 80, 52]],
+    ['KV-0805-220R-J', 'Kavir Passive', 'kavir', 220, '0805', 5, '0.125W', 0, [110, 80, 52]],
+    ['NV-1206-1M-F', 'NovaComp', 'nova', 1000000, '1206', 1, '0.25W', 1640, [210, 160, 118]],
+    ['OL-0603-330R-F', 'Ohmline', 'ohmline', 330, '0603', 1, '0.1W', 64, [120, 95, 61]],
+    ['KV-0805-47K-F', 'Kavir Passive', 'kavir', 47000, '0805', 1, '0.125W', 3900, [130, 98, 66]],
+    ['NV-0402-22K-F', 'NovaComp', 'nova', 22000, '0402', 1, '0.063W', 15500, [95, 72, 46]],
+    ['OL-0603-1K-J', 'Ohmline', 'ohmline', 1000, '0603', 5, '0.1W', 30200, [80, 60, 38]],
+  ];
+  const fmtOhm = (v) => v >= 1e6 ? (v / 1e6) + 'MΩ' : v >= 1e3 ? (v / 1e3) + 'kΩ' : v + 'Ω';
+  const L = () => tf.lang();
+  function render() {
+    const fa = L() === 'fa';
+    document.getElementById('rows').innerHTML = PARTS.map(([mpn, mfr, mk, ohm, pkg, tol, pw, stock, br], i) => `
+      <tr data-filter-item data-pkg="${pkg}" data-tol="${tol}" data-mfr="${mk}" data-ohm="${ohm}" data-stock="${stock}" data-i="${i}">
+        <td><input type="checkbox" class="cmp" aria-label="${fa ? 'افزودن به مقایسه' : 'Add to compare'} ${mpn}" style="accent-color:var(--brand)"></td>
+        <td><span class="thumb"><svg viewBox="0 0 64 32"><use href="#sym-res"/></svg></span></td>
+        <td><span class="mpn" style="display:block">${mpn}</span><span class="mfr">${mfr}</span></td>
+        <td data-value="${ohm}"><span class="spec">${fmtOhm(ohm)}</span></td>
+        <td><span class="spec">${pkg}</span></td>
+        <td><span class="specs"><span class="spec">±${tol}%</span><span class="spec">${pw}</span></span></td>
+        <td data-value="${stock}">${stock === 0 ? `<span class="led out">${fa ? 'ناموجود' : 'Out of stock'}</span>` : `<span class="led ${stock < 100 ? 'low' : ''}">${tf.fmt(stock)}</span>`}</td>
+        <td><table class="breaks"><tr><td>1+</td><td>${tf.fmt(br[0])}</td></tr><tr><td>100+</td><td>${tf.fmt(br[1])}</td></tr><tr><td>1k+</td><td>${tf.fmt(br[2])}</td></tr></table></td>
+        <td><span class="qty" data-qty><button type="button" data-step="-10" aria-label="${fa ? 'کم کردن' : 'Decrease'}">−</button><input type="number" min="10" step="10" value="100" aria-label="${fa ? 'تعداد' : 'Quantity'}"><button type="button" data-step="10" aria-label="${fa ? 'افزودن' : 'Increase'}">+</button></span></td>
+        <td><button class="btn btn-primary btn-sm add" type="button" ${stock === 0 ? 'disabled' : ''}><i class="ti ti-shopping-cart"></i>${fa ? 'افزودن' : 'Add'}</button></td>
+      </tr>`).join('');
+    refine();
+  }
+  function refine() {
+    const scope = document.getElementById('scope');
+    tf.applyFilter(scope);
+    const min = Number(document.getElementById('rmin').value || 0), max = Number(document.getElementById('rmax').value || Infinity);
+    const inStock = document.getElementById('instock').getAttribute('aria-checked') === 'true';
+    let n = 0;
+    scope.querySelectorAll('[data-filter-item]').forEach((tr) => {
+      if (tr.hidden) return;
+      const ohm = Number(tr.dataset.ohm);
+      if (ohm < min || ohm > max || (inStock && Number(tr.dataset.stock) === 0)) tr.hidden = true; else n++;
+    });
+    scope.querySelectorAll('[data-filter-count]').forEach((el) => { el.dataset.num = n; el.textContent = tf.fmt(n); });
+    scope.querySelector('[data-filter-empty]').hidden = n > 0;
+  }
+  document.addEventListener('tf:ready', render);
+  document.addEventListener('tf:lang', render);
+  const scope = document.getElementById('scope');
+  ['input', 'change', 'tf:switch'].forEach((ev) => scope.addEventListener(ev, () => setTimeout(refine)));
+  scope.addEventListener('click', (e) => { if (e.target.closest('[data-filter-reset]')) setTimeout(() => { document.getElementById('rmin').value = 0; document.getElementById('rmax').value = 1000000; document.getElementById('instock').setAttribute('aria-checked', 'false'); refine(); }); });
+  // cart + compare
+  let cart = 3;
+  scope.addEventListener('click', (e) => {
+    const add = e.target.closest('.add');
+    if (add) { cart++; document.getElementById('cart-count').textContent = tf.fmt(cart); tf.toast(L() === 'fa' ? 'به سبد اضافه شد' : 'Added to cart'); }
+  });
+  function selected() { return [...scope.querySelectorAll('.cmp:checked')].map((c) => PARTS[c.closest('tr').dataset.i]); }
+  scope.addEventListener('change', (e) => {
+    if (!e.target.classList.contains('cmp')) return;
+    const sel = selected();
+    document.getElementById('compare-bar').hidden = sel.length === 0;
+    document.getElementById('compare-chips').innerHTML = sel.map((p) => `<span>${p[0]}</span>`).join('');
+  });
+  document.getElementById('compare-clear').addEventListener('click', () => { scope.querySelectorAll('.cmp').forEach((c) => { c.checked = false; }); document.getElementById('compare-bar').hidden = true; });
+  document.getElementById('compare-open').addEventListener('click', () => {
+    const sel = selected(), fa = L() === 'fa';
+    const rows = [[fa ? 'سازنده' : 'Manufacturer', (p) => p[1]], [fa ? 'مقاومت' : 'Resistance', (p) => fmtOhm(p[3])], [fa ? 'پکیج' : 'Package', (p) => p[4]], [fa ? 'تلورانس' : 'Tolerance', (p) => '±' + p[5] + '%'], [fa ? 'توان' : 'Power', (p) => p[6]], [fa ? 'موجودی' : 'Stock', (p) => tf.fmt(p[7])], [fa ? 'قیمت ۱+' : 'Price 1+', (p) => tf.fmt(p[8][0])]];
+    document.getElementById('compare-table').innerHTML = `<thead><tr><th></th>${sel.map((p) => `<th class="mpn">${p[0]}</th>`).join('')}</tr></thead><tbody>${rows.map(([k, f]) => `<tr><th>${k}</th>${sel.map((p) => `<td class="mono">${f(p)}</td>`).join('')}</tr>`).join('')}</tbody>`;
+    document.getElementById('compare-dlg').showModal();
+  });
+</script>
+</body>
+</html>
