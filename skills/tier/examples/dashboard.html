@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="dashboard" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Client area · Ashiane">ناحیهٔ کاربری · آشیانه</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .split { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--space-5); }
+  @media (max-width: 1100px) { .split { grid-template-columns: minmax(0, 1fr); } }
+  .topup { display: grid; gap: var(--space-4); }
+  .ticket-form { display: grid; gap: var(--space-4); }
+  .renew-total { display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); border-radius: var(--radius-md); background: var(--surface-2); font-weight: 800; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<div class="client">
+  <aside class="side" id="side" data-dismissable>
+    <a class="logo" href="site.html"><span class="logo-mark" aria-hidden="true"><i class="ri-home-wifi-line"></i></span><span data-alt="Ashiane">آشیانه</span></a>
+    <div role="tablist" aria-orientation="vertical" aria-label="ناحیهٔ کاربری" data-alt-aria-label="Client area">
+      <button role="tab" id="t-home" aria-controls="p-home" aria-selected="true"><i class="ri-dashboard-line" aria-hidden="true"></i><span data-alt="Dashboard">پیشخوان</span></button>
+      <button role="tab" id="t-svc" aria-controls="p-svc" aria-selected="false"><i class="ri-server-line" aria-hidden="true"></i><span data-alt="My services">سرویس‌های من</span></button>
+      <button role="tab" id="t-inv" aria-controls="p-inv" aria-selected="false"><i class="ri-file-list-3-line" aria-hidden="true"></i><span data-alt="Invoices">صورت‌حساب‌ها</span><span class="count" data-num="2">۲</span></button>
+      <button role="tab" id="t-tix" aria-controls="p-tix" aria-selected="false"><i class="ri-question-answer-line" aria-hidden="true"></i><span data-alt="Support tickets">تیکت‌ها</span></button>
+      <button role="tab" id="t-wal" aria-controls="p-wal" aria-selected="false"><i class="ri-wallet-3-line" aria-hidden="true"></i><span data-alt="Wallet">کیف پول</span></button>
+    </div>
+    <div class="help-card"><b data-alt="Need help?">کمک لازم دارید؟</b><span data-alt="Our support team is online 24/7.">پشتیبانی ۲۴ ساعته آنلاین است.</span><a class="btn btn-sm" href="#" data-goto="t-tix" data-alt="New ticket">ثبت تیکت</a></div>
+  </aside>
+
+  <div class="c-main">
+    <header class="c-top">
+      <button class="btn btn-ghost btn-icon side-toggle" type="button" data-toggle="#side" aria-expanded="false" aria-label="منو" data-alt-aria-label="Menu"><i class="ri-menu-line" aria-hidden="true"></i></button>
+      <span class="wallet-chip"><i class="ri-wallet-3-line" style="color:var(--brand)" aria-hidden="true"></i><span><span class="wallet-label" data-alt="Wallet:">کیف پول:</span> <b data-num="1250000" data-fmt="toman">۱٬۲۵۰٬۰۰۰ تومان</b></span><button class="btn btn-primary btn-sm" type="button" data-goto="t-wal" data-alt="Top up">افزایش</button></span>
+      <span class="spacer"></span>
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فارسی">English</button>
+      <button class="btn btn-ghost btn-icon hide-xs" type="button" data-theme-toggle aria-label="حالت تیره" data-alt-aria-label="Dark mode"><i class="ri-moon-line" aria-hidden="true"></i></button>
+      <button class="btn btn-ghost btn-icon hide-xs" type="button" aria-label="اعلان‌ها" data-alt-aria-label="Notifications" data-toast="No new notifications" data-toast-alt="اعلان تازه‌ای ندارید"><i class="ri-notification-3-line" aria-hidden="true"></i></button>
+      <a class="btn btn-soft btn-icon" href="site.html" aria-label="خروج" data-alt-aria-label="Sign out"><i class="ri-logout-box-r-line flip-rtl" aria-hidden="true"></i></a>
+    </header>
+
+    <main id="main">
+      <!-- DASHBOARD -->
+      <section class="c-body" role="tabpanel" id="p-home" aria-labelledby="t-home">
+        <div class="welcome">
+          <div><h1 class="h2" style="color:#fff" data-alt="Hi Reza, welcome back">سلام رضا، خوش آمدید</h1><p style="opacity:.85" data-alt="2 services expire this month — renew early and save 20%.">۲ سرویس شما این ماه منقضی می‌شود — زودتر تمدید کنید و ۲۰٪ صرفه‌جویی کنید.</p></div>
+          <button class="btn" type="button" data-dialog="#renew"><i class="ri-refresh-line" aria-hidden="true"></i><span data-alt="Renew now">تمدید سریع</span></button>
+        </div>
+        <div class="summary-tiles">
+          <div class="s-tile"><i class="ri-server-line" aria-hidden="true"></i><span><b data-num="4">۴</b><span data-alt="Active services">سرویس فعال</span></span></div>
+          <div class="s-tile"><i class="ri-global-line" aria-hidden="true"></i><span><b data-num="3">۳</b><span data-alt="Domains">دامنه</span></span></div>
+          <div class="s-tile bad"><i class="ri-file-list-3-line" aria-hidden="true"></i><span><b data-num="2">۲</b><span data-alt="Unpaid invoices">صورت‌حساب پرداخت‌نشده</span></span></div>
+          <div class="s-tile warn"><i class="ri-question-answer-line" aria-hidden="true"></i><span><b data-num="1">۱</b><span data-alt="Open ticket">تیکت باز</span></span></div>
+        </div>
+        <div class="svc-cards">
+          <article class="svc"><div class="svc-top"><i class="ri-server-line" aria-hidden="true"></i><span><b data-alt="Pro Linux hosting">هاست لینوکس حرفه‌ای</b><span>shop.negar.ir</span></span></div><div class="expiry"><div class="row" style="justify-content:space-between"><span class="subtle" data-alt="Expires in 12 days">۱۲ روز تا انقضا</span><span class="badge badge-warn" data-alt="Renew soon">تمدید به‌زودی</span></div><span class="bar"><i class="soon" style="--w:88%"></i></span></div><button class="btn btn-accent btn-sm" type="button" data-dialog="#renew" data-alt="Renew">تمدید</button></article>
+          <article class="svc"><div class="svc-top"><i class="ri-hard-drive-3-line" aria-hidden="true"></i><span><b data-alt="VPS · 4 vCPU">سرور مجازی · ۴ هسته</b><span>185.12.40.7</span></span></div><div class="expiry"><div class="row" style="justify-content:space-between"><span class="subtle" data-alt="Expires in 140 days">۱۴۰ روز تا انقضا</span><span class="badge badge-ok" data-alt="Active">فعال</span></div><span class="bar"><i style="--w:38%"></i></span></div><button class="btn btn-soft btn-sm" type="button" data-toast="Opening server console…" data-toast-alt="در حال باز کردن کنسول سرور…" data-alt="Manage">مدیریت</button></article>
+          <article class="svc"><div class="svc-top"><i class="ri-global-line" aria-hidden="true"></i><span><b data-alt="Domain">دامنه</b><span>negar.ir</span></span></div><div class="expiry"><div class="row" style="justify-content:space-between"><span class="subtle" data-alt="Expired 3 days ago">۳ روز از انقضا گذشته</span><span class="badge badge-bad" data-alt="Expired">منقضی</span></div><span class="bar"><i class="late" style="--w:100%"></i></span></div><button class="btn btn-primary btn-sm" type="button" data-dialog="#renew" data-alt="Renew domain">تمدید دامنه</button></article>
+        </div>
+        <div class="split">
+          <article class="box"><div class="box-head"><h2 data-alt="Unpaid invoices">صورت‌حساب‌های پرداخت‌نشده</h2><a href="#" data-goto="t-inv" data-alt="See all">همه</a></div>
+            <div class="table-scroll"><table class="table"><thead><tr><th data-alt="Number">شماره</th><th data-alt="Item">شرح</th><th data-alt="Amount">مبلغ</th><th></th></tr></thead><tbody>
+              <tr class="is-unpaid"><td class="ltr">#40217</td><td data-alt="Domain renewal negar.ir">تمدید دامنهٔ negar.ir</td><td data-num="79000" data-fmt="toman">۷۹٬۰۰۰ تومان</td><td><button class="btn btn-primary btn-sm" type="button" data-toast="Paid from wallet" data-toast-alt="از کیف پول پرداخت شد" data-tone="success" data-alt="Pay">پرداخت</button></td></tr>
+              <tr class="is-unpaid"><td class="ltr">#40209</td><td data-alt="Pro hosting · 1 year">هاست حرفه‌ای · ۱ ساله</td><td data-num="1719000" data-fmt="toman">۱٬۷۱۹٬۰۰۰ تومان</td><td><button class="btn btn-primary btn-sm" type="button" data-toast="Redirecting to the payment gateway…" data-toast-alt="انتقال به درگاه پرداخت…" data-alt="Pay">پرداخت</button></td></tr>
+            </tbody></table></div>
+          </article>
+          <article class="box"><div class="box-head"><h2 data-alt="Recent tickets">آخرین تیکت‌ها</h2></div>
+            <div class="ticket"><span class="dot"></span><span><b data-alt="Email not sending from the store">ایمیل فروشگاه ارسال نمی‌شود</b><br><span class="subtle small" data-alt="Technical · waiting for support">فنی · در انتظار پاسخ</span></span><time class="subtle small" data-ago="3600">۱ ساعت پیش</time></div>
+            <div class="ticket"><span class="dot answered"></span><span><b data-alt="Upgrade to VPS">ارتقا به سرور مجازی</b><br><span class="subtle small" data-alt="Sales · answered">فروش · پاسخ داده شد</span></span><time class="subtle small" data-ago="172800">۲ روز پیش</time></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section class="c-body" role="tabpanel" id="p-svc" aria-labelledby="t-svc" hidden data-filter-scope>
+        <div class="row" style="justify-content:space-between"><h1 class="h2" data-alt="My services">سرویس‌های من</h1><a class="btn btn-primary" href="site.html#pricing"><i class="ri-add-line" aria-hidden="true"></i><span data-alt="Order a service">سفارش سرویس</span></a></div>
+        <div class="chips" data-group role="group" aria-label="فیلتر" data-alt-aria-label="Filter">
+          <button class="chip" type="button" data-filter="kind" data-value="all" aria-pressed="true" data-alt="All">همه</button>
+          <button class="chip" type="button" data-filter="kind" data-value="host" aria-pressed="false" data-alt="Hosting">هاست</button>
+          <button class="chip" type="button" data-filter="kind" data-value="server" aria-pressed="false" data-alt="Servers">سرور</button>
+          <button class="chip" type="button" data-filter="kind" data-value="domain" aria-pressed="false" data-alt="Domains">دامنه</button>
+        </div>
+        <div class="svc-cards">
+          <article class="svc" data-filter-item data-kind="host"><div class="svc-top"><i class="ri-server-line" aria-hidden="true"></i><span><b data-alt="Pro Linux hosting">هاست لینوکس حرفه‌ای</b><span>shop.negar.ir</span></span></div><div class="expiry"><span class="subtle" data-alt="Expires in 12 days">۱۲ روز تا انقضا</span><span class="bar"><i class="soon" style="--w:88%"></i></span></div><button class="btn btn-accent btn-sm" type="button" data-dialog="#renew" data-alt="Renew">تمدید</button></article>
+          <article class="svc" data-filter-item data-kind="host"><div class="svc-top"><i class="ri-wordpress-line" aria-hidden="true"></i><span><b data-alt="WordPress hosting">هاست وردپرس</b><span>blog.negar.ir</span></span></div><div class="expiry"><span class="subtle" data-alt="Expires in 210 days">۲۱۰ روز تا انقضا</span><span class="bar"><i style="--w:22%"></i></span></div><button class="btn btn-soft btn-sm" type="button" data-alt="Manage">مدیریت</button></article>
+          <article class="svc" data-filter-item data-kind="server"><div class="svc-top"><i class="ri-hard-drive-3-line" aria-hidden="true"></i><span><b data-alt="VPS · 4 vCPU">سرور مجازی · ۴ هسته</b><span>185.12.40.7</span></span></div><div class="expiry"><span class="subtle" data-alt="Expires in 140 days">۱۴۰ روز تا انقضا</span><span class="bar"><i style="--w:38%"></i></span></div><button class="btn btn-soft btn-sm" type="button" data-alt="Manage">مدیریت</button></article>
+          <article class="svc" data-filter-item data-kind="domain"><div class="svc-top"><i class="ri-global-line" aria-hidden="true"></i><span><b data-alt="Domain">دامنه</b><span>negar.ir</span></span></div><div class="expiry"><span class="subtle" data-alt="Expired 3 days ago">۳ روز از انقضا گذشته</span><span class="bar"><i class="late" style="--w:100%"></i></span></div><button class="btn btn-primary btn-sm" type="button" data-dialog="#renew" data-alt="Renew">تمدید</button></article>
+          <article class="svc" data-filter-item data-kind="domain"><div class="svc-top"><i class="ri-global-line" aria-hidden="true"></i><span><b data-alt="Domain">دامنه</b><span>negar-shop.com</span></span></div><div class="expiry"><span class="subtle" data-alt="Expires in 300 days">۳۰۰ روز تا انقضا</span><span class="bar"><i style="--w:14%"></i></span></div><button class="btn btn-soft btn-sm" type="button" data-alt="DNS">DNS</button></article>
+        </div>
+        <p class="muted" data-filter-empty hidden data-alt="No services in this category.">سرویسی در این دسته نیست.</p>
+      </section>
+
+      <!-- INVOICES -->
+      <section class="c-body" role="tabpanel" id="p-inv" aria-labelledby="t-inv" hidden>
+        <h1 class="h2" data-alt="Invoices">صورت‌حساب‌ها</h1>
+        <article class="box" data-filter-scope>
+          <div class="box-head"><div class="chips" data-group role="group" aria-label="وضعیت" data-alt-aria-label="Status"><button class="chip" type="button" data-filter="st" data-value="all" aria-pressed="true" data-alt="All">همه</button><button class="chip" type="button" data-filter="st" data-value="unpaid" aria-pressed="false" data-alt="Unpaid">پرداخت‌نشده</button><button class="chip" type="button" data-filter="st" data-value="paid" aria-pressed="false" data-alt="Paid">پرداخت‌شده</button></div><span class="subtle small"><b data-filter-count>5</b> <span data-alt="invoices">صورت‌حساب</span></span></div>
+          <div class="table-scroll"><table class="table"><thead><tr><th data-alt="Number">شماره</th><th data-alt="Date">تاریخ</th><th data-alt="Item">شرح</th><th data-alt="Amount">مبلغ</th><th data-alt="Status">وضعیت</th><th></th></tr></thead><tbody>
+            <tr class="is-unpaid" data-filter-item data-st="unpaid"><td class="ltr">#40217</td><td data-date="2026-10-13" data-fmt="long">۲۱ مهر ۱۴۰۵</td><td data-alt="Domain renewal negar.ir">تمدید دامنهٔ negar.ir</td><td data-num="79000" data-fmt="toman">۷۹٬۰۰۰ تومان</td><td><span class="badge badge-bad" data-alt="Unpaid">پرداخت‌نشده</span></td><td><button class="btn btn-primary btn-sm" type="button" data-toast="Paid from wallet" data-toast-alt="از کیف پول پرداخت شد" data-alt="Pay">پرداخت</button></td></tr>
+            <tr class="is-unpaid" data-filter-item data-st="unpaid"><td class="ltr">#40209</td><td data-date="2026-10-10" data-fmt="long">۱۸ مهر ۱۴۰۵</td><td data-alt="Pro hosting · 1 year">هاست حرفه‌ای · ۱ ساله</td><td data-num="1719000" data-fmt="toman">۱٬۷۱۹٬۰۰۰ تومان</td><td><span class="badge badge-bad" data-alt="Unpaid">پرداخت‌نشده</span></td><td><button class="btn btn-primary btn-sm" type="button" data-toast="Redirecting to the payment gateway…" data-toast-alt="انتقال به درگاه پرداخت…" data-alt="Pay">پرداخت</button></td></tr>
+            <tr data-filter-item data-st="paid"><td class="ltr">#40188</td><td data-date="2026-09-02" data-fmt="long">۱۱ شهریور ۱۴۰۵</td><td data-alt="VPS · 6 months">سرور مجازی · ۶ ماهه</td><td data-num="2340000" data-fmt="toman">۲٬۳۴۰٬۰۰۰ تومان</td><td><span class="badge badge-ok" data-alt="Paid">پرداخت‌شده</span></td><td><button class="btn btn-ghost btn-sm" type="button" aria-label="دانلود PDF" data-alt-aria-label="Download PDF"><i class="ri-download-2-line" aria-hidden="true"></i></button></td></tr>
+            <tr data-filter-item data-st="paid"><td class="ltr">#40102</td><td data-date="2026-06-21" data-fmt="long">۳۱ خرداد ۱۴۰۵</td><td data-alt="WordPress hosting · 1 year">هاست وردپرس · ۱ ساله</td><td data-num="1150000" data-fmt="toman">۱٬۱۵۰٬۰۰۰ تومان</td><td><span class="badge badge-ok" data-alt="Paid">پرداخت‌شده</span></td><td><button class="btn btn-ghost btn-sm" type="button" aria-label="دانلود PDF" data-alt-aria-label="Download PDF"><i class="ri-download-2-line" aria-hidden="true"></i></button></td></tr>
+            <tr data-filter-item data-st="paid"><td class="ltr">#40077</td><td data-date="2026-05-30" data-fmt="long">۹ خرداد ۱۴۰۵</td><td data-alt="Domain negar-shop.com">دامنهٔ negar-shop.com</td><td data-num="990000" data-fmt="toman">۹۹۰٬۰۰۰ تومان</td><td><span class="badge badge-ok" data-alt="Paid">پرداخت‌شده</span></td><td><button class="btn btn-ghost btn-sm" type="button" aria-label="دانلود PDF" data-alt-aria-label="Download PDF"><i class="ri-download-2-line" aria-hidden="true"></i></button></td></tr>
+          </tbody></table></div>
+        </article>
+      </section>
+
+      <!-- TICKETS -->
+      <section class="c-body" role="tabpanel" id="p-tix" aria-labelledby="t-tix" hidden>
+        <h1 class="h2" data-alt="Support tickets">تیکت‌های پشتیبانی</h1>
+        <div class="split">
+          <article class="box"><div class="box-head"><h2 data-alt="Open a ticket">ثبت تیکت تازه</h2></div>
+            <form class="box-body ticket-form" data-validate novalidate data-success="Ticket #8821 created — average reply time 12 minutes." data-success-alt="تیکت ۸۸۲۱ ثبت شد — میانگین زمان پاسخ ۱۲ دقیقه.">
+              <div class="field"><label class="label" for="tk-dep" data-alt="Department">واحد</label><select class="select" id="tk-dep" name="dep" required><option value="" data-alt="Choose">انتخاب کنید</option><option data-alt="Technical">فنی</option><option data-alt="Sales">فروش</option><option data-alt="Billing">مالی</option></select></div>
+              <div class="field"><label class="label" for="tk-svc" data-alt="Related service">سرویس مرتبط</label><select class="select" id="tk-svc" name="svc"><option>shop.negar.ir</option><option>185.12.40.7</option><option>negar.ir</option></select></div>
+              <div class="field"><label class="label" for="tk-sub" data-alt="Subject">موضوع</label><input class="input" id="tk-sub" name="subject" required minlength="5"></div>
+              <div class="field"><label class="label" for="tk-msg" data-alt="Message">متن پیام</label><textarea class="textarea" id="tk-msg" name="msg" required minlength="20"></textarea></div>
+              <button class="btn btn-primary" type="submit" data-alt="Send ticket">ارسال تیکت</button>
+            </form>
+          </article>
+          <article class="box"><div class="box-head"><h2 data-alt="Your tickets">تیکت‌های شما</h2></div>
+            <div class="ticket"><span class="dot"></span><span><b data-alt="Email not sending from the store">ایمیل فروشگاه ارسال نمی‌شود</b><br><span class="subtle small" data-alt="Technical · waiting for support">فنی · در انتظار پاسخ</span></span><time class="subtle small" data-ago="3600">۱ ساعت پیش</time></div>
+            <div class="ticket"><span class="dot answered"></span><span><b data-alt="Upgrade to VPS">ارتقا به سرور مجازی</b><br><span class="subtle small" data-alt="Sales · answered">فروش · پاسخ داده شد</span></span><time class="subtle small" data-ago="172800">۲ روز پیش</time></div>
+            <div class="ticket"><span class="dot closed"></span><span><b data-alt="SSL renewal">تمدید گواهی SSL</b><br><span class="subtle small" data-alt="Technical · closed">فنی · بسته شد</span></span><time class="subtle small" data-ago="1296000">۱۵ روز پیش</time></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- WALLET -->
+      <section class="c-body" role="tabpanel" id="p-wal" aria-labelledby="t-wal" hidden>
+        <h1 class="h2" data-alt="Wallet">کیف پول</h1>
+        <div class="split">
+          <article class="box"><div class="box-head"><h2 data-alt="Top up">افزایش موجودی</h2></div>
+            <form class="box-body topup" data-validate novalidate data-success="Redirecting to the payment gateway…" data-success-alt="انتقال به درگاه پرداخت…">
+              <div><span class="subtle" data-alt="Current balance">موجودی فعلی</span><p class="balance" data-num="1250000" data-fmt="toman">۱٬۲۵۰٬۰۰۰ تومان</p></div>
+              <div class="chips" data-group role="group" aria-label="مبلغ پیشنهادی" data-alt-aria-label="Suggested amounts" id="amt-chips">
+                <button class="chip" type="button" aria-pressed="false" data-value="500000" data-num="500000">۵۰۰٬۰۰۰</button>
+                <button class="chip" type="button" aria-pressed="true" data-value="1000000" data-num="1000000">۱٬۰۰۰٬۰۰۰</button>
+                <button class="chip" type="button" aria-pressed="false" data-value="2000000" data-num="2000000">۲٬۰۰۰٬۰۰۰</button>
+              </div>
+              <div class="field"><label class="label" for="amt" data-alt="Amount (Toman)">مبلغ (تومان)</label><input class="input ltr" id="amt" name="amount" type="number" min="50000" step="10000" value="1000000" required></div>
+              <button class="btn btn-primary btn-lg" type="submit"><i class="ri-bank-card-line" aria-hidden="true"></i><span data-alt="Pay with bank card">پرداخت با کارت بانکی</span></button>
+            </form>
+          </article>
+          <article class="box"><div class="box-head"><h2 data-alt="Monthly spending">هزینهٔ ماهانه</h2></div>
+            <div class="box-body"><div data-chart="bar" data-height="230" data-fmt="compact" data-dates="2026-05-15,6,month" data-values="990000,1150000,0,2340000,0,1798000" data-tip-fmt="toman" data-label='{"fa":"هزینهٔ ماهانه","en":"Monthly spending"}'></div></div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<dialog class="modal" id="renew" aria-labelledby="rn-title">
+  <form class="modal-body" data-validate novalidate data-success="Renewed — paid from your wallet." data-success-alt="تمدید شد — از کیف پول پرداخت شد.">
+    <div class="row" style="justify-content:space-between"><h2 class="h3" id="rn-title" data-alt="Renew Pro hosting">تمدید هاست حرفه‌ای</h2><button class="btn btn-ghost btn-icon" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><i class="ri-close-line" aria-hidden="true"></i></button></div>
+    <div class="period-options" id="periods">
+      <label class="period"><input type="radio" name="period" value="179000" data-label="1"><b data-alt="1 month">۱ ماهه</b><span data-num="179000" data-fmt="toman">۱۷۹٬۰۰۰ تومان</span></label>
+      <label class="period"><input type="radio" name="period" value="499000"><b data-alt="3 months">۳ ماهه</b><span data-num="499000" data-fmt="toman">۴۹۹٬۰۰۰ تومان</span></label>
+      <label class="period"><input type="radio" name="period" value="1719000" checked><span class="save" data-alt="−20%">۲۰٪−</span><b data-alt="1 year">۱ ساله</b><span data-num="1719000" data-fmt="toman">۱٬۷۱۹٬۰۰۰ تومان</span></label>
+    </div>
+    <label class="field"><span class="label" data-alt="Discount code">کد تخفیف</span><span class="row" style="flex-wrap:nowrap"><input class="input ltr" name="code" placeholder="AUTUMN40"><button class="btn btn-soft" type="button" data-toast="Code applied: 40% off" data-toast-alt="کد اعمال شد: ۴۰٪ تخفیف" data-alt="Apply">اعمال</button></span></label>
+    <div class="renew-total"><span data-alt="Total">مبلغ قابل پرداخت</span><span id="rn-total" data-num="1719000" data-fmt="toman">۱٬۷۱۹٬۰۰۰ تومان</span></div>
+    <button class="btn btn-primary btn-lg" type="submit" data-alt="Pay from wallet">پرداخت از کیف پول</button>
+  </form>
+</dialog>
+
+<script>
+  document.addEventListener('click', (e) => {
+    const g = e.target.closest('[data-goto]');
+    if (!g) return;
+    e.preventDefault();
+    tf.selectTab(document.getElementById(g.dataset.goto), true);
+    tf.setOpen(document.getElementById('side'), false);
+  });
+  document.getElementById('periods').addEventListener('change', (e) => {
+    const t = document.getElementById('rn-total');
+    t.dataset.num = e.target.value;
+    t.textContent = tf.fmt(e.target.value, 'toman');
+  });
+  document.getElementById('amt-chips').addEventListener('tf:change', (e) => { document.getElementById('amt').value = e.detail.value; });
+</script>
+</body>
+</html>

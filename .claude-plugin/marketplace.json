@@ -54,6 +54,15 @@
       ]
     },
     {
+      "name": "tier",
+      "description": "Tastefolio design language — Plan-driven commerce — domain search, billing toggles, savings ribbons and a tidy client area",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/tier"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -63,7 +72,8 @@
         "./skills/hearth",
         "./skills/atelier",
         "./skills/stratus",
-        "./skills/ultraviolet"
+        "./skills/ultraviolet",
+        "./skills/tier"
       ]
     }
   ]

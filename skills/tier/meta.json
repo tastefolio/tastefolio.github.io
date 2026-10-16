@@ -1,0 +1,34 @@
+{
+  "name": "Tier",
+  "order": 6,
+  "category": "commerce",
+  "mode": "light",
+  "density": "balanced",
+  "persianFirst": true,
+  "tags": ["pricing", "plans", "conversion", "hosting", "client area"],
+  "tagline": {
+    "en": "Plan-driven commerce — domain search, billing toggles, savings ribbons and a tidy client area",
+    "fa": "فروش پلن‌محور — جست‌وجوی دامنه، انتخاب دورهٔ پرداخت، نوار تخفیف و ناحیهٔ کاربری مرتب"
+  },
+  "summary": {
+    "en": "A bright, conversion-minded style for selling subscriptions and services in tiers: a trustworthy blue for actions, a warm orange reserved for deals, a promo bar with a countdown, a category bar, a hero with an overlapping domain-search card, plan cards with billing toggles and a 'best value' ribbon, comparison tables and FAQ. The client area shows expiring services with renewal meters, unpaid invoices, tickets and a wallet.",
+    "fa": "سبکی روشن و فروش‌محور برای عرضهٔ اشتراک و خدمات در پلن‌های مختلف: آبی قابل‌اعتماد برای اقدام‌ها، نارنجی گرم فقط برای تخفیف‌ها، نوار تبلیغ با شمارش معکوس، نوار دسته‌ها، هیرو با کارت جست‌وجوی دامنه، کارت‌های پلن با انتخاب دورهٔ پرداخت و نوار «به‌صرفه‌ترین»، جدول مقایسه و پرسش‌های پرتکرار. ناحیهٔ کاربری سرویس‌های رو به انقضا با نوار تمدید، صورت‌حساب‌های پرداخت‌نشده، تیکت‌ها و کیف پول را نشان می‌دهد."
+  },
+  "bestFor": {
+    "en": ["Hosting, domains, VPN and SaaS subscriptions", "Telecom, internet and insurance plans", "Any product sold in 3–4 tiers with periods", "Customer portals with renewals, invoices and tickets"],
+    "fa": ["هاست، دامنه، VPN و اشتراک‌های SaaS", "طرح‌های اینترنت، اپراتور و بیمه", "هر محصولی که در ۳ تا ۴ پلن با دوره‌های مختلف فروخته می‌شود", "پورتال مشتری با تمدید، صورت‌حساب و تیکت"]
+  },
+  "avoidFor": {
+    "en": ["Luxury or editorial brands", "Products without pricing tiers", "Minimal developer tools"],
+    "fa": ["برندهای لوکس یا رسانه‌ای", "محصولاتی که پلن قیمتی ندارند", "ابزارهای مینیمال توسعه‌دهنده"]
+  },
+  "signature": {
+    "en": ["Navy promo bar with an orange deal and a live countdown", "Category bar of services with icons under the header", "Domain-search card overlapping the hero with extension prices", "Billing toggle with a savings badge driving every plan price", "Best-value plan with a blue border and an orange ribbon", "Client area: renewal meters, unpaid invoice rows, wallet chip in the top bar"],
+    "fa": ["نوار تبلیغ سرمه‌ای با تخفیف نارنجی و شمارش معکوس زنده", "نوار دسته‌بندی خدمات با آیکن زیر سربرگ", "کارت جست‌وجوی دامنه روی هیرو با قیمت پسوندها", "انتخاب دورهٔ پرداخت با برچسب صرفه‌جویی که همهٔ قیمت‌ها را تغییر می‌دهد", "پلن به‌صرفه با حاشیهٔ آبی و نوار نارنجی", "ناحیهٔ کاربری: نوار تمدید، ردیف صورت‌حساب پرداخت‌نشده و کیف پول در نوار بالا"]
+  },
+  "swatches": ["#ffffff", "#f3f6fd", "#101a33", "#1d5bff", "#ff7a1a"],
+  "fonts": { "latin": "Plus Jakarta Sans", "persian": "Shabnam", "mono": "System monospace" },
+  "icons": "Remix Icon",
+  "brandTrials": ["0e9f6e", "7c3aed", "d9254f", "0f172a"],
+  "demos": { "site": { "host": "ashiane.example" }, "dashboard": { "host": "my.ashiane.example" } }
+}

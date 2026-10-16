@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="site" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Ashiane — fast, reliable hosting">آشیانه — میزبانی سریع و مطمئن</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .cta-band { display: flex; justify-content: space-between; align-items: center; gap: var(--space-5); flex-wrap: wrap; padding: var(--space-7); border-radius: var(--radius-xl); background: var(--brand-deep); color: #fff; }
+  .cta-band .muted { color: rgba(255,255,255,.75); }
+  .compare-toggle { display: flex; justify-content: center; margin-block-start: var(--space-6); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<div class="promo">
+  <div class="container">
+    <span><b data-alt="Autumn sale:">جشنوارهٔ پاییزه:</b> <span data-alt="40% off Linux hosting — ends in">۴۰٪ تخفیف هاست لینوکس — پایان تا</span></span>
+    <span class="countdown" aria-label="زمان باقی‌مانده" data-alt-aria-label="Time left" id="countdown"><span>02</span><span>14</span><span>36</span><span>12</span></span>
+    <a href="#pricing" style="color:#fff;text-decoration:underline" data-alt="See plans">دیدن پلن‌ها</a>
+  </div>
+</div>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"><i class="ri-home-wifi-line"></i></span><span data-alt="Ashiane">آشیانه</span></a>
+    <label class="header-search"><i class="ri-search-line" aria-hidden="true"></i><span class="sr-only" data-alt="Search">جست‌وجو</span><input class="input" type="search" placeholder="جست‌وجو در خدمات و راهنما…" data-alt-placeholder="Search services and guides…"></label>
+    <div class="header-end">
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فارسی">English</button>
+      <a class="btn btn-outline btn-sm hide-md" href="dashboard.html"><i class="ri-user-3-line" aria-hidden="true"></i><span data-alt="Sign in / Register">ورود / ثبت‌نام</span></a>
+      <button class="btn btn-soft btn-icon" type="button" aria-label="سبد خرید" data-alt-aria-label="Cart" data-toast="Your cart is empty" data-toast-alt="سبد خرید خالی است"><i class="ri-shopping-cart-2-line" aria-hidden="true"></i></button>
+    </div>
+  </div>
+  <nav class="cat-bar" aria-label="خدمات" data-alt-aria-label="Services">
+    <div class="container">
+      <a href="#pricing" aria-current="true"><i class="ri-server-line" aria-hidden="true"></i><span data-alt="Linux hosting">هاست لینوکس</span></a>
+      <a href="#services"><i class="ri-wordpress-line" aria-hidden="true"></i><span data-alt="WordPress hosting">هاست وردپرس</span></a>
+      <a href="#services"><i class="ri-hard-drive-3-line" aria-hidden="true"></i><span data-alt="VPS">سرور مجازی</span></a>
+      <a href="#services"><i class="ri-cloud-line" aria-hidden="true"></i><span data-alt="Cloud server">سرور ابری</span><span class="new" data-alt="New">جدید</span></a>
+      <a href="#domain"><i class="ri-global-line" aria-hidden="true"></i><span data-alt="Domains">دامنه</span></a>
+      <a href="#services"><i class="ri-lock-line" aria-hidden="true"></i><span data-alt="SSL certificates">گواهی SSL</span></a>
+      <a href="#services"><i class="ri-mail-line" aria-hidden="true"></i><span data-alt="Business email">ایمیل سازمانی</span></a>
+      <a href="#faq"><i class="ri-customer-service-2-line" aria-hidden="true"></i><span data-alt="Support">پشتیبانی</span></a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="container">
+      <span class="tag-deal"><i class="ri-coupon-3-line" aria-hidden="true"></i><span data-alt="Code AUTUMN40 — 40% off the first year">کد AUTUMN40 — ۴۰٪ تخفیف سال اول</span></span>
+      <h1 class="display" style="margin-block-start:var(--space-4)"><span data-alt="Fast, reliable hosting for your">میزبانی سریع و مطمئن برای</span> <span class="hl" data-alt="online business">کسب‌وکار آنلاین شما</span></h1>
+      <p class="lead" data-alt="NVMe servers, free SSL and 24/7 support in your language. Launch your site in minutes.">سرورهای NVMe، گواهی SSL رایگان و پشتیبانی ۲۴ ساعته به زبان خودتان. سایتتان را در چند دقیقه راه بیندازید.</p>
+    </div>
+  </section>
+  <div class="container" id="domain">
+    <section class="domain-search" aria-label="جست‌وجوی دامنه" data-alt-aria-label="Domain search">
+      <div class="ds-tabs" data-group role="group" aria-label="نوع درخواست" data-alt-aria-label="Request type"><button type="button" aria-pressed="true" data-alt="Register a domain">ثبت دامنه</button><button type="button" aria-pressed="false" data-alt="Transfer a domain">انتقال دامنه</button></div>
+      <form class="ds-form" id="ds-form" novalidate>
+        <label class="sr-only" for="ds-input" data-alt="Domain name">نام دامنه</label>
+        <input class="input" id="ds-input" name="domain" dir="ltr" placeholder="yourbrand.ir" autocomplete="off">
+        <button class="btn btn-primary btn-lg" type="submit"><i class="ri-search-line" aria-hidden="true"></i><span data-alt="Check">بررسی</span></button>
+      </form>
+      <div class="ds-result" id="ds-result" hidden aria-live="polite"></div>
+      <div class="tld-chips" aria-label="قیمت پسوندها" data-alt-aria-label="Extension prices">
+        <span class="tld"><b>.ir</b><span data-num="79000" data-fmt="toman">۷۹٬۰۰۰ تومان</span></span>
+        <span class="tld"><b>.com</b><s data-num="1290000" data-fmt="int">۱٬۲۹۰٬۰۰۰</s><span data-num="990000" data-fmt="toman">۹۹۰٬۰۰۰ تومان</span></span>
+        <span class="tld"><b>.net</b><span data-num="1150000" data-fmt="toman">۱٬۱۵۰٬۰۰۰ تومان</span></span>
+        <span class="tld"><b>.co</b><span data-num="1840000" data-fmt="toman">۱٬۸۴۰٬۰۰۰ تومان</span></span>
+      </div>
+    </section>
+  </div>
+
+  <section class="section container">
+    <div class="trust">
+      <div><i class="ri-flashlight-line" aria-hidden="true"></i><span><b data-alt="99.99% uptime">۹۹٫۹۹٪ آپ‌تایم</b><span data-alt="Backed by an SLA">با تضمین قرارداد</span></span></div>
+      <div><i class="ri-customer-service-2-line" aria-hidden="true"></i><span><b data-alt="24/7 support">پشتیبانی ۲۴/۷</b><span data-alt="Phone, chat and tickets">تلفن، چت و تیکت</span></span></div>
+      <div><i class="ri-refund-2-line" aria-hidden="true"></i><span><b data-alt="30-day refund">۳۰ روز ضمانت بازگشت</b><span data-alt="No questions asked">بدون پرسش</span></span></div>
+      <div><i class="ri-shield-check-line" aria-hidden="true"></i><span><b data-alt="Free SSL &amp; backups">SSL و بکاپ رایگان</b><span data-alt="On every plan">روی همهٔ پلن‌ها</span></span></div>
+    </div>
+  </section>
+
+  <section class="section section-tint" id="services">
+    <div class="container">
+      <div class="section-head"><h2 class="h2" data-alt="Everything to put a business online">هرچه برای آنلاین شدن یک کسب‌وکار لازم است</h2><p data-alt="Pick a service; every plan can be upgraded later without downtime.">یک سرویس انتخاب کنید؛ هر پلن را بعداً بدون قطعی می‌توانید ارتقا دهید.</p></div>
+      <div class="grid">
+        <a class="service" href="#pricing"><span class="ico"><i class="ri-server-line" aria-hidden="true"></i></span><b class="h3" data-alt="Linux hosting">هاست لینوکس</b><span class="muted small" data-alt="cPanel, NVMe storage and free SSL.">سی‌پنل، فضای NVMe و SSL رایگان.</span><span class="from"><span data-alt="from">از</span> <b data-num="89000" data-fmt="int">۸۹٬۰۰۰</b> <span data-alt="Toman / month">تومان / ماه</span></span></a>
+        <a class="service" href="#pricing"><span class="ico"><i class="ri-wordpress-line" aria-hidden="true"></i></span><b class="h3" data-alt="WordPress hosting">هاست وردپرس</b><span class="muted small" data-alt="Tuned caching and one-click staging.">کش بهینه و نسخهٔ آزمایشی با یک کلیک.</span><span class="from"><span data-alt="from">از</span> <b data-num="119000" data-fmt="int">۱۱۹٬۰۰۰</b> <span data-alt="Toman / month">تومان / ماه</span></span></a>
+        <a class="service" href="#pricing"><span class="ico"><i class="ri-hard-drive-3-line" aria-hidden="true"></i></span><b class="h3" data-alt="Virtual servers">سرور مجازی</b><span class="muted small" data-alt="Full root access, ready in 60 seconds.">دسترسی کامل روت، آماده در ۶۰ ثانیه.</span><span class="from"><span data-alt="from">از</span> <b data-num="390000" data-fmt="int">۳۹۰٬۰۰۰</b> <span data-alt="Toman / month">تومان / ماه</span></span></a>
+        <a class="service" href="#pricing"><span class="ico"><i class="ri-cloud-line" aria-hidden="true"></i></span><b class="h3" data-alt="Cloud servers">سرور ابری</b><span class="muted small" data-alt="Hourly billing, scale up any time.">پرداخت ساعتی، ارتقا در هر زمان.</span><span class="from"><span data-alt="from">از</span> <b data-num="720" data-fmt="int">۷۲۰</b> <span data-alt="Toman / hour">تومان / ساعت</span></span></a>
+        <a class="service" href="#domain"><span class="ico"><i class="ri-global-line" aria-hidden="true"></i></span><b class="h3" data-alt="Domains">دامنه</b><span class="muted small" data-alt="Over 300 extensions with free DNS.">بیش از ۳۰۰ پسوند با DNS رایگان.</span><span class="from"><span data-alt="from">از</span> <b data-num="79000" data-fmt="int">۷۹٬۰۰۰</b> <span data-alt="Toman / year">تومان / سال</span></span></a>
+        <a class="service" href="#pricing"><span class="ico"><i class="ri-mail-line" aria-hidden="true"></i></span><b class="h3" data-alt="Business email">ایمیل سازمانی</b><span class="muted small" data-alt="Your domain, spam filtering included.">با دامنهٔ خودتان، همراه فیلتر اسپم.</span><span class="from"><span data-alt="from">از</span> <b data-num="45000" data-fmt="int">۴۵٬۰۰۰</b> <span data-alt="Toman / month">تومان / ماه</span></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container" id="pricing">
+    <div class="section-head">
+      <h2 class="h2"><span data-alt="Plans for">پلن‌های</span> <span class="hl" data-alt="Linux hosting">هاست لینوکس</span></h2>
+      <div class="billing" data-group="period" role="group" aria-label="دورهٔ پرداخت" data-alt-aria-label="Billing period">
+        <button type="button" aria-pressed="false" data-value="m" data-alt="Monthly">ماهانه</button>
+        <button type="button" aria-pressed="false" data-value="q" data-alt="Quarterly">سه‌ماهه</button>
+        <button type="button" aria-pressed="true" data-value="y"><span data-alt="Yearly">سالانه</span><span class="save" data-alt="−20%">۲۰٪−</span></button>
+      </div>
+    </div>
+    <div class="plans">
+      <article class="plan"><div><p class="plan-name" data-alt="Starter">استارتر</p><p class="plan-for" data-alt="For personal sites and portfolios">برای سایت شخصی و نمونه‌کار</p></div>
+        <div class="price-block"><span class="price-old" data-when="period:y"><span data-num="1068000" data-fmt="toman">۱٬۰۶۸٬۰۰۰ تومان</span></span><span class="price" data-when="period:m"><span data-num="89000" data-fmt="int">۸۹٬۰۰۰</span> <small data-alt="Toman / mo">تومان / ماه</small></span><span class="price" data-when="period:q" hidden><span data-num="249000" data-fmt="int">۲۴۹٬۰۰۰</span> <small data-alt="Toman / 3 mo">تومان / ۳ ماه</small></span><span class="price" data-when="period:y" hidden><span data-num="855000" data-fmt="int">۸۵۵٬۰۰۰</span> <small data-alt="Toman / yr">تومان / سال</small></span></div>
+        <ul class="specs"><li><span data-alt="Storage">فضا</span><b data-alt="5 GB NVMe">۵ گیگ NVMe</b></li><li><span data-alt="Sites">تعداد سایت</span><b data-num="1">۱</b></li><li><span data-alt="Bandwidth">پهنای باند</span><b data-alt="Unlimited">نامحدود</b></li><li><span data-alt="Daily backups">بکاپ روزانه</span><b><i class="ri-check-line" style="color:var(--success)" aria-label="دارد" data-alt-aria-label="Included"></i></b></li></ul>
+        <a class="btn btn-outline btn-block" href="dashboard.html" data-alt="Order">سفارش</a></article>
+      <article class="plan is-best"><span class="ribbon" data-alt="Best value">به‌صرفه‌ترین</span><div><p class="plan-name" data-alt="Pro">حرفه‌ای</p><p class="plan-for" data-alt="For stores and growing businesses">برای فروشگاه و کسب‌وکار در حال رشد</p></div>
+        <div class="price-block"><span class="price-old" data-when="period:y"><span data-num="2148000" data-fmt="toman">۲٬۱۴۸٬۰۰۰ تومان</span></span><span class="price" data-when="period:m"><span data-num="179000" data-fmt="int">۱۷۹٬۰۰۰</span> <small data-alt="Toman / mo">تومان / ماه</small></span><span class="price" data-when="period:q" hidden><span data-num="499000" data-fmt="int">۴۹۹٬۰۰۰</span> <small data-alt="Toman / 3 mo">تومان / ۳ ماه</small></span><span class="price" data-when="period:y" hidden><span data-num="1719000" data-fmt="int">۱٬۷۱۹٬۰۰۰</span> <small data-alt="Toman / yr">تومان / سال</small></span></div>
+        <ul class="specs"><li><span data-alt="Storage">فضا</span><b data-alt="25 GB NVMe">۲۵ گیگ NVMe</b></li><li><span data-alt="Sites">تعداد سایت</span><b data-num="5">۵</b></li><li><span data-alt="Bandwidth">پهنای باند</span><b data-alt="Unlimited">نامحدود</b></li><li><span data-alt="Daily backups">بکاپ روزانه</span><b><i class="ri-check-line" style="color:var(--success)" aria-label="دارد" data-alt-aria-label="Included"></i></b></li></ul>
+        <a class="btn btn-primary btn-block" href="dashboard.html" data-alt="Order now">همین حالا سفارش دهید</a></article>
+      <article class="plan"><div><p class="plan-name" data-alt="Business">تجاری</p><p class="plan-for" data-alt="For busy sites and agencies">برای سایت‌های پربازدید و آژانس‌ها</p></div>
+        <div class="price-block"><span class="price-old" data-when="period:y"><span data-num="3948000" data-fmt="toman">۳٬۹۴۸٬۰۰۰ تومان</span></span><span class="price" data-when="period:m"><span data-num="329000" data-fmt="int">۳۲۹٬۰۰۰</span> <small data-alt="Toman / mo">تومان / ماه</small></span><span class="price" data-when="period:q" hidden><span data-num="919000" data-fmt="int">۹۱۹٬۰۰۰</span> <small data-alt="Toman / 3 mo">تومان / ۳ ماه</small></span><span class="price" data-when="period:y" hidden><span data-num="3159000" data-fmt="int">۳٬۱۵۹٬۰۰۰</span> <small data-alt="Toman / yr">تومان / سال</small></span></div>
+        <ul class="specs"><li><span data-alt="Storage">فضا</span><b data-alt="60 GB NVMe">۶۰ گیگ NVMe</b></li><li><span data-alt="Sites">تعداد سایت</span><b data-alt="Unlimited">نامحدود</b></li><li><span data-alt="Dedicated IP">IP اختصاصی</span><b><i class="ri-check-line" style="color:var(--success)" aria-label="دارد" data-alt-aria-label="Included"></i></b></li><li><span data-alt="Daily backups">بکاپ روزانه</span><b><i class="ri-check-line" style="color:var(--success)" aria-label="دارد" data-alt-aria-label="Included"></i></b></li></ul>
+        <a class="btn btn-outline btn-block" href="dashboard.html" data-alt="Order">سفارش</a></article>
+      <article class="plan"><div><p class="plan-name" data-alt="Enterprise">سازمانی</p><p class="plan-for" data-alt="Custom resources and SLA">منابع و قرارداد اختصاصی</p></div>
+        <div class="price-block"><span class="price" style="font-size:28px" data-alt="Custom quote">قیمت توافقی</span><span class="subtle small" data-alt="Talk to our sales team">با فروش تماس بگیرید</span></div>
+        <ul class="specs"><li><span data-alt="Resources">منابع</span><b data-alt="Custom">سفارشی</b></li><li><span data-alt="Account manager">مدیر حساب</span><b><i class="ri-check-line" style="color:var(--success)" aria-label="دارد" data-alt-aria-label="Included"></i></b></li><li><span data-alt="SLA">SLA</span><b data-alt="99.99%">۹۹٫۹۹٪</b></li></ul>
+        <a class="btn btn-soft btn-block" href="#contact" data-alt="Contact sales">تماس با فروش</a></article>
+    </div>
+    <div class="compare-toggle"><button class="btn btn-ghost" type="button" data-toggle="#compare" aria-expanded="false"><i class="ri-arrow-down-s-line" aria-hidden="true"></i><span data-alt="Compare all features">مقایسهٔ کامل امکانات</span></button></div>
+    <div id="compare" class="compare-wrap collapsible" style="margin-block-start:var(--space-5)">
+      <table class="compare">
+        <thead><tr><th scope="col" data-alt="Feature">امکانات</th><th scope="col" data-alt="Starter">استارتر</th><th scope="col" class="col-best" data-alt="Pro">حرفه‌ای</th><th scope="col" data-alt="Business">تجاری</th></tr></thead>
+        <tbody>
+          <tr class="group"><th colspan="4" data-alt="Resources">منابع</th></tr>
+          <tr><th scope="row" data-alt="NVMe storage">فضای NVMe</th><td data-alt="5 GB">۵ گیگ</td><td class="col-best" data-alt="25 GB">۲۵ گیگ</td><td data-alt="60 GB">۶۰ گیگ</td></tr>
+          <tr><th scope="row" data-alt="CPU cores">هستهٔ پردازنده</th><td data-num="1">۱</td><td class="col-best" data-num="2">۲</td><td data-num="4">۴</td></tr>
+          <tr class="group"><th colspan="4" data-alt="Security">امنیت</th></tr>
+          <tr><th scope="row" data-alt="Free SSL">SSL رایگان</th><td><i class="ri-checkbox-circle-fill yes" aria-label="دارد" data-alt-aria-label="Yes"></i></td><td class="col-best"><i class="ri-checkbox-circle-fill yes" aria-label="دارد" data-alt-aria-label="Yes"></i></td><td><i class="ri-checkbox-circle-fill yes" aria-label="دارد" data-alt-aria-label="Yes"></i></td></tr>
+          <tr><th scope="row" data-alt="Malware scanning">اسکن بدافزار</th><td><i class="ri-close-circle-fill no" aria-label="ندارد" data-alt-aria-label="No"></i></td><td class="col-best"><i class="ri-checkbox-circle-fill yes" aria-label="دارد" data-alt-aria-label="Yes"></i></td><td><i class="ri-checkbox-circle-fill yes" aria-label="دارد" data-alt-aria-label="Yes"></i></td></tr>
+          <tr><th scope="row" data-alt="Dedicated IP">IP اختصاصی</th><td><i class="ri-close-circle-fill no" aria-label="ندارد" data-alt-aria-label="No"></i></td><td class="col-best"><i class="ri-close-circle-fill no" aria-label="ندارد" data-alt-aria-label="No"></i></td><td><i class="ri-checkbox-circle-fill yes" aria-label="دارد" data-alt-aria-label="Yes"></i></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="container">
+      <div class="section-head"><h2 class="h2" data-alt="What customers say">مشتریان دربارهٔ ما چه می‌گویند</h2></div>
+      <div class="carousel" data-carousel>
+        <div class="track" data-track>
+          <article class="quote-card"><span class="stars" aria-label="۵ ستاره" data-alt-aria-label="5 stars">★★★★★</span><p data-alt="Moving our store took one evening and the site got noticeably faster.">انتقال فروشگاهمان یک عصر طول کشید و سایت به‌وضوح سریع‌تر شد.</p><div class="who"><span class="av">م</span><span><b data-alt="Maryam R.">مریم ر.</b><br><span class="subtle" data-alt="Online bookstore">کتاب‌فروشی آنلاین</span></span></div></article>
+          <article class="quote-card"><span class="stars" aria-label="۵ ستاره" data-alt-aria-label="5 stars">★★★★★</span><p data-alt="Support answered at 2 a.m. and fixed our DNS in ten minutes.">پشتیبانی ساعت ۲ بامداد جواب داد و DNS ما را در ده دقیقه درست کرد.</p><div class="who"><span class="av">ع</span><span><b data-alt="Ali K.">علی ک.</b><br><span class="subtle" data-alt="Travel agency">آژانس مسافرتی</span></span></div></article>
+          <article class="quote-card"><span class="stars" aria-label="۴ ستاره" data-alt-aria-label="4 stars">★★★★☆</span><p data-alt="Clear pricing and renewals that don't surprise you.">قیمت‌های شفاف و تمدیدی که غافلگیرتان نمی‌کند.</p><div class="who"><span class="av">س</span><span><b data-alt="Sina T.">سینا ت.</b><br><span class="subtle" data-alt="Design studio">استودیو طراحی</span></span></div></article>
+          <article class="quote-card"><span class="stars" aria-label="۵ ستاره" data-alt-aria-label="5 stars">★★★★★</span><p data-alt="The VPS was ready before I finished my tea.">سرور مجازی پیش از تمام شدن چایم آماده بود.</p><div class="who"><span class="av">ن</span><span><b data-alt="Neda H.">ندا ح.</b><br><span class="subtle" data-alt="Developer">برنامه‌نویس</span></span></div></article>
+        </div>
+        <div class="car-nav"><button class="btn btn-soft btn-icon" type="button" data-prev-slide aria-label="قبلی" data-alt-aria-label="Previous"><i class="ri-arrow-left-s-line flip-rtl" aria-hidden="true"></i></button><button class="btn btn-soft btn-icon" type="button" data-next-slide aria-label="بعدی" data-alt-aria-label="Next"><i class="ri-arrow-right-s-line flip-rtl" aria-hidden="true"></i></button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container" id="faq">
+    <div class="section-head"><h2 class="h2" data-alt="Frequently asked questions">پرسش‌های پرتکرار</h2></div>
+    <div class="faq">
+      <details open><summary data-alt="Can I move my current site for free?">می‌توانم سایت فعلی‌ام را رایگان منتقل کنم؟</summary><p data-alt="Yes. Our team migrates up to three sites for free with zero downtime.">بله. تیم ما تا سه سایت را رایگان و بدون قطعی منتقل می‌کند.</p></details>
+      <details><summary data-alt="How does the refund guarantee work?">ضمانت بازگشت وجه چطور کار می‌کند؟</summary><p data-alt="Cancel within 30 days and the full amount returns to your wallet or card.">تا ۳۰ روز لغو کنید تا کل مبلغ به کیف پول یا کارتتان برگردد.</p></details>
+      <details><summary data-alt="Will the renewal price change?">قیمت تمدید تغییر می‌کند؟</summary><p data-alt="The renewal price is shown on the plan card and in your invoice in advance.">قیمت تمدید از قبل روی کارت پلن و در فاکتور شما نمایش داده می‌شود.</p></details>
+    </div>
+  </section>
+
+  <section class="container" id="contact" style="padding-block-end:var(--space-10)">
+    <div class="cta-band">
+      <div class="stack" style="--gap:6px"><h2 class="h2" data-alt="Not sure which plan fits?">نمی‌دانید کدام پلن مناسب است؟</h2><p class="muted" data-alt="Our experts help you choose for free.">کارشناسان ما رایگان کمکتان می‌کنند.</p></div>
+      <a class="btn btn-accent btn-lg" href="tel:+982100000000"><i class="ri-phone-line" aria-hidden="true"></i><span class="ltr">021 0000 0000</span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="stack" style="--gap:var(--space-3)"><a class="logo" href="#top" style="color:#fff"><span class="logo-mark" aria-hidden="true"><i class="ri-home-wifi-line"></i></span><span data-alt="Ashiane">آشیانه</span></a><p data-alt="A fictional hosting brand demonstrating the Tier style by Tastefolio.">برند ساختگی میزبانی برای نمایش سبک Tier در تیست‌فولیو.</p></div>
+      <div><h4 data-alt="Hosting">هاست</h4><ul><li><a href="#pricing" data-alt="Linux">لینوکس</a></li><li><a href="#services" data-alt="WordPress">وردپرس</a></li><li><a href="#services" data-alt="Email">ایمیل</a></li></ul></div>
+      <div><h4 data-alt="Servers">سرور</h4><ul><li><a href="#services" data-alt="VPS">مجازی</a></li><li><a href="#services" data-alt="Cloud">ابری</a></li><li><a href="#services" data-alt="Dedicated">اختصاصی</a></li></ul></div>
+      <div><h4 data-alt="Domains">دامنه</h4><ul><li><a href="#domain" data-alt="Register">ثبت</a></li><li><a href="#domain" data-alt="Transfer">انتقال</a></li><li><a href="#domain">WHOIS</a></li></ul></div>
+      <div><h4 data-alt="Support">پشتیبانی</h4><ul><li><a href="#faq" data-alt="FAQ">سؤالات</a></li><li><a href="dashboard.html" data-alt="Tickets">تیکت</a></li><li><a href="#contact" data-alt="Contact">تماس</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span data-alt="© 2026 Ashiane (fictional)">© ۱۴۰۵ آشیانه (ساختگی)</span><span data-alt="Prices include VAT">قیمت‌ها با احتساب مالیات</span></div>
+  </div>
+</footer>
+<script>
+  // Domain availability (demo rule: names containing "shop" are taken).
+  document.getElementById('ds-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const input = document.getElementById('ds-input');
+    const out = document.getElementById('ds-result');
+    let v = input.value.trim().toLowerCase();
+    if (!/^[a-z0-9-]{2,}(\.[a-z]{2,})?$/.test(v)) { input.setAttribute('aria-invalid', 'true'); input.focus(); out.hidden = false; out.className = 'ds-result is-taken'; out.textContent = tf.lang() === 'fa' ? 'یک نام معتبر بنویسید، مثلاً yourbrand.ir' : 'Enter a valid name, e.g. yourbrand.ir'; return; }
+    input.removeAttribute('aria-invalid');
+    if (!v.includes('.')) v += '.ir';
+    const taken = v.includes('shop');
+    const fa = tf.lang() === 'fa';
+    out.hidden = false;
+    out.className = 'ds-result' + (taken ? ' is-taken' : '');
+    out.innerHTML = taken
+      ? `<span><span class="ltr">${v}</span> ${fa ? 'قبلاً ثبت شده است.' : 'is already registered.'}</span><button class="btn btn-outline btn-sm" type="button">${fa ? 'پیشنهادهای مشابه' : 'Similar names'}</button>`
+      : `<span><span class="ltr">${v}</span> ${fa ? 'آزاد است!' : 'is available!'}</span><button class="btn btn-primary btn-sm" type="button" data-toast="${fa ? 'به سبد خرید اضافه شد' : 'Added to cart'}">${fa ? 'افزودن به سبد' : 'Add to cart'}</button>`;
+  });
+  // Promo countdown (static in screenshots).
+  document.addEventListener('DOMContentLoaded', () => {
+    if (tf.reduceMotion) return;
+    let left = 2 * 86400 + 14 * 3600 + 36 * 60 + 12;
+    const cells = document.querySelectorAll('#countdown span');
+    setInterval(() => {
+      left--;
+      [Math.floor(left / 86400), Math.floor(left / 3600) % 24, Math.floor(left / 60) % 60, left % 60].forEach((n, i) => { cells[i].textContent = String(n).padStart(2, '0'); });
+    }, 1000);
+  });
+</script>
+</body>
+</html>
