@@ -1,0 +1,136 @@
+/* Sideload — design tokens (Tastefolio). Content & downloads hub: fresh green, white cards on a light gray page,
+   amber "hot" marks, friendly rounded type. Persian-first. */
+:root {
+  --canvas: #f2f4f3;
+  --surface: #ffffff;
+  --surface-2: #f7f9f8;
+  --surface-3: #e9eeeb;
+  --surface-ink: #10231b;
+  --overlay: rgba(16, 35, 27, .5);
+
+  --ink: #14211b;
+  --ink-2: #4b5a53;
+  --ink-3: #87958e;
+  --ink-inverse: #ffffff;
+
+  --line: #e2e8e5;
+  --line-2: #cdd7d2;
+
+  --brand: #12a36b;
+  --brand-ink: #ffffff;
+  --brand-soft: color-mix(in oklab, var(--brand) 11%, #fff);
+  --brand-strong: color-mix(in oklab, var(--brand) 78%, #000);
+  --brand-deep: color-mix(in oklab, var(--brand) 35%, #062014);
+  --hot: #f59e0b;                 /* trending / updated / new badges */
+  --hot-soft: #fef3dc;
+  --focus: color-mix(in oklab, var(--brand) 40%, transparent);
+
+  --success: #12a36b;
+  --success-soft: #e3f6ee;
+  --warning: #d48a00;
+  --warning-soft: #fdf1da;
+  --danger: #e0433b;
+  --danger-soft: #fde9e7;
+  --info: #2d7ff9;
+  --info-soft: #e8f1fe;
+
+  --chart-1: var(--brand);
+  --chart-2: var(--hot);
+  --chart-3: #2d7ff9;
+  --chart-4: #87958e;
+  --chart-5: #e0433b;
+  --chart-6: #8b5cf6;
+  --chart-grid: #edf1ef;
+  --chart-axis: var(--ink-3);
+  --chart-curve: smooth;
+  --chart-stroke: 2.5;
+  --chart-area: .2;
+  --chart-radius: 6;
+  --chart-bar-gap: .4;
+  --chart-donut: 18;
+
+  --font-sans: "Rubik", "Samim", system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-sans);
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --fs-xs: 12px;
+  --fs-sm: 13px;
+  --fs-md: 15px;
+  --fs-lg: 17px;
+  --fs-xl: 20px;
+  --fs-2xl: 26px;
+  --fs-3xl: 34px;
+  --fs-display: clamp(26px, 3.4vw, 40px);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --fw-display: 700;
+  --lh-tight: 1.3;
+  --lh-snug: 1.45;
+  --lh-body: 1.75;
+  --tracking-display: -.01em;
+  --tracking-caps: .04em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 44px;
+  --space-9: 60px;
+  --space-10: 84px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --radius-pill: 999px;
+  --border-w: 1px;
+  --shadow-1: 0 1px 2px rgba(16, 35, 27, .06);
+  --shadow-2: 0 10px 26px -12px rgba(16, 35, 27, .22);
+  --shadow-3: 0 24px 54px -18px rgba(16, 35, 27, .32);
+
+  --container: 1240px;
+  --gutter: clamp(14px, 3vw, 28px);
+  --control-h: 40px;
+  --control-h-lg: 50px;
+  --aside-w: 320px;
+  --sidebar-w: 240px;
+
+  --ease: cubic-bezier(.2, .8, .2, 1);
+  --dur-1: 120ms;
+  --dur-2: 220ms;
+  --dur-3: 360ms;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --canvas: #0c1511;
+  --surface: #121d18;
+  --surface-2: #16231d;
+  --surface-3: #1d2d26;
+  --surface-ink: #e8efeb;
+  --ink: #e8efeb;
+  --ink-2: #a5b3ac;
+  --ink-3: #6d7d76;
+  --ink-inverse: #0c1511;
+  --line: #22322b;
+  --line-2: #2f4239;
+  --brand: #2fc787;
+  --brand-ink: #062014;
+  --brand-soft: color-mix(in oklab, var(--brand) 16%, var(--surface));
+  --brand-strong: color-mix(in oklab, var(--brand) 78%, #fff);
+  --hot-soft: #2c2310;
+  --success-soft: #10291e; --warning-soft: #2c2410; --danger-soft: #2f1716; --info-soft: #13233a;
+  --chart-grid: #1d2d26;
+  color-scheme: dark;
+}
+
+:root:lang(fa) {
+  --font-sans: "Samim", "Rubik", Tahoma, sans-serif;
+  --lh-tight: 1.55;
+  --lh-snug: 1.65;
+  --lh-body: 2;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+}

@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="dashboard" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Author panel · Toolstand">پنل نویسنده · ابزارستان</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/samim-font@v4.0.5/dist/font-face.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .split { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: var(--space-5); }
+  @media (max-width: 1100px) { .split { grid-template-columns: minmax(0, 1fr); } }
+  .donut-row { display: grid; grid-template-columns: 160px 1fr; gap: var(--space-5); align-items: center; }
+  .donut-row [data-chart] { block-size: 160px; }
+  @media (max-width: 480px) { .donut-row { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<div class="cms">
+  <aside class="cms-side" id="side" data-dismissable>
+    <a class="logo" href="site.html"><span class="logo-mark" aria-hidden="true"><i class="bi bi-box-seam-fill"></i></span><span data-alt="Toolstand">ابزارستان</span></a>
+    <div role="tablist" aria-orientation="vertical" aria-label="پنل" data-alt-aria-label="Panel">
+      <button role="tab" id="t-home" aria-controls="p-home" aria-selected="true"><i class="bi bi-speedometer2" aria-hidden="true"></i><span data-alt="Overview">نمای کلی</span></button>
+      <button role="tab" id="t-posts" aria-controls="p-posts" aria-selected="false"><i class="bi bi-file-earmark-text" aria-hidden="true"></i><span data-alt="My posts">مطالب من</span></button>
+      <button role="tab" id="t-new" aria-controls="p-new" aria-selected="false"><i class="bi bi-plus-square" aria-hidden="true"></i><span data-alt="New post">مطلب تازه</span></button>
+      <button role="tab" id="t-com" aria-controls="p-com" aria-selected="false"><i class="bi bi-chat-dots" aria-hidden="true"></i><span data-alt="Comments">دیدگاه‌ها</span><span class="count" data-num="4">۴</span></button>
+    </div>
+    <div class="foot"><span class="av">ن</span><span><b style="color:#fff" data-alt="Neda Haghi">ندا حقی</b><br><span data-alt="Author · 38 posts">نویسنده · ۳۸ مطلب</span></span></div>
+  </aside>
+
+  <div class="cms-main">
+    <header class="cms-top">
+      <button class="btn btn-ghost btn-icon side-toggle" type="button" data-toggle="#side" aria-expanded="false" aria-label="منو" data-alt-aria-label="Menu"><i class="bi bi-list" aria-hidden="true"></i></button>
+      <b data-alt="Author panel">پنل نویسنده</b>
+      <span class="spacer"></span>
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فارسی">English</button>
+      <button class="btn btn-ghost btn-icon" type="button" data-theme-toggle aria-label="حالت تیره" data-alt-aria-label="Dark mode"><i class="bi bi-moon-stars" aria-hidden="true"></i></button>
+      <a class="btn btn-soft btn-sm" href="site.html"><i class="bi bi-box-arrow-up-right flip-rtl" aria-hidden="true"></i><span data-alt="View site">مشاهدهٔ سایت</span></a>
+    </header>
+
+    <main id="main">
+      <!-- OVERVIEW -->
+      <section class="cms-body" role="tabpanel" id="p-home" aria-labelledby="t-home">
+        <div class="kpis">
+          <article class="block kpi"><span class="t" data-alt="Downloads this month">دانلود این ماه</span><span class="v" data-num="84200" data-fmt="compact">۸۴٫۲ هزار</span><span class="d" data-alt="▲ 18% vs last month">▲ ۱۸٪ نسبت به ماه قبل</span></article>
+          <article class="block kpi"><span class="t" data-alt="Page views">بازدید صفحه</span><span class="v" data-num="312000" data-fmt="compact">۳۱۲ هزار</span><span class="d" data-alt="▲ 9%">▲ ۹٪</span></article>
+          <article class="block kpi"><span class="t" data-alt="Published posts">مطالب منتشرشده</span><span class="v" data-num="38">۳۸</span><span class="d" style="color:var(--ink-3)" data-alt="2 scheduled">۲ مطلب زمان‌بندی‌شده</span></article>
+          <article class="block kpi"><span class="t" data-alt="Avg. rating">میانگین امتیاز</span><span class="v" data-num="4.6" data-fmt="dec1">۴٫۶</span><span class="d" data-alt="from 2,140 votes">از ۲٬۱۴۰ رأی</span></article>
+        </div>
+        <div class="split">
+          <article class="block"><div class="block-head"><h2 data-alt="Downloads per day">دانلود روزانه</h2><ul class="legend"><li><i style="--c:var(--chart-1)"></i><span data-alt="Downloads">دانلود</span></li><li><i style="--c:var(--chart-2)"></i><span data-alt="Views ÷ 10">بازدید ÷ ۱۰</span></li></ul></div><div class="block-body"><div data-chart="area" data-height="240" data-fmt="compact" data-dates="2026-09-17,30,day" data-series='[{"name":{"fa":"دانلود","en":"Downloads"},"values":[2100,2300,2250,2600,2900,3400,3100,2800,2700,2950,3200,3600,4100,3900,3500,3300,3150,3400,3700,4200,4600,4300,3900,3700,3800,4100,4500,5200,4800,4400]},{"name":{"fa":"بازدید ÷ ۱۰","en":"Views ÷ 10"},"values":[900,950,980,1000,1100,1250,1150,1000,980,1050,1120,1260,1400,1350,1220,1180,1120,1200,1300,1450,1580,1500,1380,1300,1320,1400,1520,1740,1650,1520],"color":"var(--chart-2)"}]' data-label='{"fa":"دانلود روزانه","en":"Downloads per day"}'></div></div></article>
+          <article class="block"><div class="block-head"><h2 data-alt="By category">بر اساس دسته</h2></div><div class="block-body donut-row"><div data-chart="donut" data-values="41,26,19,14" data-center='{"fa":"۸۴ هزار","en":"84K"}' data-labels='{"fa":["نرم‌افزار","پریست","آیکن","فونت"],"en":["Apps","Presets","Icons","Fonts"]}'></div><ul class="legend" style="flex-direction:column;gap:10px"><li><i style="--c:var(--chart-1)"></i><span data-alt="Apps 41%">نرم‌افزار ۴۱٪</span></li><li><i style="--c:var(--chart-2)"></i><span data-alt="Presets 26%">پریست ۲۶٪</span></li><li><i style="--c:var(--chart-3)"></i><span data-alt="Icons 19%">آیکن ۱۹٪</span></li><li><i style="--c:var(--chart-4)"></i><span data-alt="Fonts 14%">فونت ۱۴٪</span></li></ul></div></article>
+        </div>
+        <article class="block"><div class="block-head"><h2 data-alt="Top posts this week">برترین مطالب این هفته</h2><a class="small" href="#" data-goto="t-posts" style="color:var(--brand)" data-alt="All posts">همهٔ مطالب</a></div>
+          <div class="post-row"><span class="app-icon" style="--c1:#0b6b47;--c2:#12a36b"><i class="bi bi-palette2" aria-hidden="true"></i></span><span><h3 data-alt="Palette Maker 3.2">پالت‌ساز ۳.۲</h3><span class="meta"><span><i class="bi bi-download" aria-hidden="true"></i><span data-num="12400">۱۲٬۴۰۰</span></span><span><i class="bi bi-chat" aria-hidden="true"></i><span data-num="58">۵۸</span></span></span></span><span class="badge badge-hot" data-alt="Trending">داغ</span></div>
+          <div class="post-row"><span class="app-icon" style="--c1:#c2410c;--c2:#f59e0b"><i class="bi bi-sliders" aria-hidden="true"></i></span><span><h3 data-alt="Autumn Film presets">پریست فیلم پاییزی</h3><span class="meta"><span><i class="bi bi-download" aria-hidden="true"></i><span data-num="9800">۹٬۸۰۰</span></span><span><i class="bi bi-chat" aria-hidden="true"></i><span data-num="31">۳۱</span></span></span></span><span class="badge badge-brand" data-alt="Rising">در حال رشد</span></div>
+        </article>
+      </section>
+
+      <!-- POSTS -->
+      <section class="cms-body" role="tabpanel" id="p-posts" aria-labelledby="t-posts" hidden data-filter-scope>
+        <div class="row" style="justify-content:space-between"><h1 style="font-size:22px" data-alt="My posts">مطالب من</h1><button class="btn btn-primary" type="button" data-goto="t-new"><i class="bi bi-plus-lg" aria-hidden="true"></i><span data-alt="New post">مطلب تازه</span></button></div>
+        <div class="row">
+          <div class="pills" data-group role="group" aria-label="وضعیت" data-alt-aria-label="Status"><button type="button" data-filter="st" data-value="all" aria-pressed="true" data-alt="All">همه</button><button type="button" data-filter="st" data-value="pub" aria-pressed="false" data-alt="Published">منتشرشده</button><button type="button" data-filter="st" data-value="draft" aria-pressed="false" data-alt="Drafts">پیش‌نویس</button><button type="button" data-filter="st" data-value="sched" aria-pressed="false" data-alt="Scheduled">زمان‌بندی</button></div>
+          <input class="input" type="search" data-filter-search placeholder="جست‌وجو در عنوان‌ها…" data-alt-placeholder="Search titles…" aria-label="جست‌وجو" data-alt-aria-label="Search" style="max-inline-size:260px;margin-inline-start:auto">
+        </div>
+        <article class="block"><div class="table-scroll"><table class="table">
+          <thead><tr><th scope="col" data-alt="Title">عنوان</th><th scope="col" data-alt="Status">وضعیت</th><th scope="col" aria-sort="none"><button data-sort="num" data-alt="Downloads">دانلود</button></th><th scope="col" data-alt="Updated">به‌روزرسانی</th><th scope="col"></th></tr></thead>
+          <tbody>
+            <tr data-filter-item data-st="pub"><td><span class="title-cell"><span class="app-icon" style="--s:40px;--c1:#0b6b47;--c2:#12a36b"><i class="bi bi-palette2" aria-hidden="true"></i></span><span><b data-alt="Palette Maker 3.2">پالت‌ساز ۳.۲</b><span class="cat" data-alt="Apps">نرم‌افزار</span></span></span></td><td><span class="badge badge-brand" data-alt="Published">منتشرشده</span></td><td data-value="48000" data-num="48000">۴۸٬۰۰۰</td><td data-date="2026-10-13" data-fmt="short">۲۱ مهر</td><td><button class="btn btn-ghost btn-sm" type="button" data-goto="t-new" data-alt="Edit">ویرایش</button></td></tr>
+            <tr data-filter-item data-st="pub"><td><span class="title-cell"><span class="app-icon" style="--s:40px;--c1:#c2410c;--c2:#f59e0b"><i class="bi bi-sliders" aria-hidden="true"></i></span><span><b data-alt="Autumn Film presets">پریست فیلم پاییزی</b><span class="cat" data-alt="Presets">پریست</span></span></span></td><td><span class="badge badge-brand" data-alt="Published">منتشرشده</span></td><td data-value="27400" data-num="27400">۲۷٬۴۰۰</td><td data-date="2026-10-14" data-fmt="short">۲۲ مهر</td><td><button class="btn btn-ghost btn-sm" type="button" data-goto="t-new" data-alt="Edit">ویرایش</button></td></tr>
+            <tr data-filter-item data-st="sched"><td><span class="title-cell"><span class="app-icon" style="--s:40px;--c1:#5b3cc4;--c2:#9b7bff"><i class="bi bi-fonts" aria-hidden="true"></i></span><span><b data-alt="Nastaran Variable 1.1">فونت نسترن ۱.۱</b><span class="cat" data-alt="Fonts">فونت</span></span></span></td><td><span class="badge badge-info" data-alt="Sat 9:00">شنبه ۹:۰۰</span></td><td data-value="0">—</td><td data-date="2026-10-16" data-fmt="short">۲۴ مهر</td><td><button class="btn btn-ghost btn-sm" type="button" data-goto="t-new" data-alt="Edit">ویرایش</button></td></tr>
+            <tr data-filter-item data-st="draft"><td><span class="title-cell"><span class="app-icon" style="--s:40px;--c1:#1d4ed8;--c2:#60a5fa"><i class="bi bi-camera-reels-fill" aria-hidden="true"></i></span><span><b data-alt="Clipboard Studio 2.0 (draft)">کلیپ‌استودیو ۲.۰ (پیش‌نویس)</b><span class="cat" data-alt="Apps">نرم‌افزار</span></span></span></td><td><span class="badge" data-alt="Draft">پیش‌نویس</span></td><td data-value="0">—</td><td data-date="2026-10-15" data-fmt="short">۲۳ مهر</td><td><button class="btn btn-ghost btn-sm" type="button" data-goto="t-new" data-alt="Edit">ویرایش</button></td></tr>
+          </tbody></table></div>
+          <p class="muted" data-filter-empty hidden style="padding:var(--space-6);text-align:center" data-alt="No posts here.">مطلبی اینجا نیست.</p>
+        </article>
+      </section>
+
+      <!-- EDITOR -->
+      <section class="cms-body" role="tabpanel" id="p-new" aria-labelledby="t-new" hidden>
+        <h1 style="font-size:22px" data-alt="New post">مطلب تازه</h1>
+        <form class="editor" data-validate data-keep novalidate data-success="Saved — your post is in review." data-success-alt="ذخیره شد — مطلب در صف بررسی است.">
+          <div class="stack" style="--gap:var(--space-5)">
+            <div class="block block-body stack" style="--gap:var(--space-4)">
+              <div class="field"><label class="label" for="ed-title" data-alt="Title">عنوان</label><input class="input" id="ed-title" name="title" required minlength="8" value="پالت‌ساز ۳.۲: ساخت سیستم رنگ از هر عکس" data-alt-value="Palette Maker 3.2: build color systems from any photo"></div>
+              <div class="field"><label class="label" for="ed-slug" data-alt="Slug">نامک (Slug)</label><input class="input ltr" id="ed-slug" name="slug" required pattern="[a-z0-9-]+" value="palette-maker-3-2" data-pattern-msg="فقط حروف کوچک لاتین، عدد و خط تیره." data-pattern-msg-alt="Lowercase letters, numbers and dashes only."></div>
+              <div class="field"><label class="label" for="ed-body" data-alt="Description">توضیحات</label><textarea class="textarea" id="ed-body" name="body" required minlength="40" style="min-block-size:160px" data-alt="Drop in a photo and Palette Maker extracts a balanced 10-step color scale with accessible text pairs.">یک عکس رها کنید تا پالت‌ساز یک طیف رنگ ۱۰ مرحله‌ای متعادل همراه با جفت‌رنگ‌های خوانا برای متن بسازد.</textarea></div>
+            </div>
+            <div class="block"><div class="block-head"><h2 data-alt="Download links">لینک‌های دانلود</h2><button class="btn btn-soft btn-sm" type="button" id="add-link"><i class="bi bi-plus-lg" aria-hidden="true"></i><span data-alt="Add link">افزودن لینک</span></button></div>
+              <div class="block-body links-repeater" id="links">
+                <div class="row"><input class="input" aria-label="عنوان لینک" data-alt-aria-label="Link label" value="نصب‌کنندهٔ ویندوز" data-alt-value="Windows installer"><input class="input ltr" aria-label="نشانی" data-alt-aria-label="URL" value="https://dl.toolstand.example/pm-3.2-win.exe"><button class="btn btn-ghost btn-icon" type="button" aria-label="حذف" data-alt-aria-label="Remove" data-remove><i class="bi bi-trash3" aria-hidden="true"></i></button></div>
+                <div class="row"><input class="input" aria-label="عنوان لینک" data-alt-aria-label="Link label" value="نسخهٔ مک" data-alt-value="macOS build"><input class="input ltr" aria-label="نشانی" data-alt-aria-label="URL" value="https://mirror2.toolstand.example/pm-3.2-mac.dmg"><button class="btn btn-ghost btn-icon" type="button" aria-label="حذف" data-alt-aria-label="Remove" data-remove><i class="bi bi-trash3" aria-hidden="true"></i></button></div>
+              </div>
+            </div>
+          </div>
+          <aside class="stack" style="--gap:var(--space-5)">
+            <div class="block block-body stack" style="--gap:var(--space-4)">
+              <div class="row" style="justify-content:space-between"><b data-alt="Publish">انتشار</b><span class="badge" data-alt="Draft">پیش‌نویس</span></div>
+              <div class="field"><label class="label" for="ed-cat" data-alt="Category">دسته</label><select class="select" id="ed-cat" name="cat" required><option value="" data-alt="Choose">انتخاب کنید</option><option selected data-alt="Apps">نرم‌افزار</option><option data-alt="Fonts">فونت</option><option data-alt="Icons">آیکن</option><option data-alt="Presets">پریست</option></select></div>
+              <div class="row" style="flex-wrap:nowrap"><div class="field" style="flex:1"><label class="label" for="ed-ver" data-alt="Version">نسخه</label><input class="input ltr" id="ed-ver" name="ver" value="3.2.0" required></div><div class="field" style="flex:1"><label class="label" for="ed-size" data-alt="Size">حجم</label><input class="input ltr" id="ed-size" name="size" value="18 MB"></div></div>
+              <div class="row" style="justify-content:space-between"><span class="small" data-alt="Allow comments">اجازهٔ دیدگاه</span><button class="switch" type="button" role="switch" aria-checked="true" aria-label="اجازهٔ دیدگاه" data-alt-aria-label="Allow comments"></button></div>
+              <button class="btn btn-primary" type="submit" data-alt="Send for review">ارسال برای بررسی</button>
+            </div>
+            <div class="upload" role="button" tabindex="0" data-toast="Cover uploaded" data-toast-alt="کاور بارگذاری شد"><i class="bi bi-image" aria-hidden="true"></i><b data-alt="Cover image">تصویر کاور</b><span class="small" data-alt="1600×900, under 1 MB">۱۶۰۰×۹۰۰، کمتر از ۱ مگابایت</span></div>
+          </aside>
+        </form>
+      </section>
+
+      <!-- COMMENTS -->
+      <section class="cms-body" role="tabpanel" id="p-com" aria-labelledby="t-com" hidden>
+        <h1 style="font-size:22px" data-alt="Comments awaiting review">دیدگاه‌های در انتظار بررسی</h1>
+        <article class="block" id="mod">
+          <div class="mod"><span class="app-icon" style="--s:42px;--c1:#87958e;--c2:#4b5a53">ر</span><div><b data-alt="Reza on Palette Maker 3.2">رضا در پالت‌ساز ۳.۲</b><p class="muted small" data-alt="Is there a portable version that doesn't need installing?">نسخهٔ پرتابل که نیاز به نصب نداشته باشد هم دارد؟</p><div class="acts"><button class="btn btn-soft btn-sm" type="button" data-approve data-alt="Approve">تأیید</button><button class="btn btn-outline btn-sm" type="button" data-toast="Reply box opened" data-toast-alt="کادر پاسخ باز شد" data-alt="Reply">پاسخ</button><button class="btn btn-danger btn-sm" type="button" data-approve data-alt="Spam">اسپم</button></div></div></div>
+          <div class="mod"><span class="app-icon" style="--s:42px;--c1:#87958e;--c2:#4b5a53">س</span><div><b data-alt="Sara on Autumn Film presets">سارا در پریست فیلم پاییزی</b><p class="muted small" data-alt="Do these work in the mobile app too?">در نسخهٔ موبایل هم کار می‌کنند؟</p><div class="acts"><button class="btn btn-soft btn-sm" type="button" data-approve data-alt="Approve">تأیید</button><button class="btn btn-outline btn-sm" type="button" data-alt="Reply">پاسخ</button><button class="btn btn-danger btn-sm" type="button" data-approve data-alt="Spam">اسپم</button></div></div></div>
+          <div class="mod"><span class="app-icon" style="--s:42px;--c1:#87958e;--c2:#4b5a53">ک</span><div><b data-alt="Kian on Nastaran Variable">کیان در فونت نسترن</b><p class="muted small" data-alt="The kashida looks great. Will there be a monospace cut?">کشیده‌ها عالی‌اند. نسخهٔ هم‌عرض هم منتشر می‌شود؟</p><div class="acts"><button class="btn btn-soft btn-sm" type="button" data-approve data-alt="Approve">تأیید</button><button class="btn btn-outline btn-sm" type="button" data-alt="Reply">پاسخ</button><button class="btn btn-danger btn-sm" type="button" data-approve data-alt="Spam">اسپم</button></div></div></div>
+        </article>
+      </section>
+    </main>
+  </div>
+</div>
+<script>
+  document.addEventListener('click', (e) => {
+    const g = e.target.closest('[data-goto]');
+    if (g) { e.preventDefault(); tf.selectTab(document.getElementById(g.dataset.goto), true); tf.setOpen(document.getElementById('side'), false); }
+    const r = e.target.closest('[data-remove]');
+    if (r) r.closest('.row').remove();
+    const a = e.target.closest('[data-approve]');
+    if (a) { a.closest('.mod').remove(); tf.toast(tf.lang() === 'fa' ? 'انجام شد' : 'Done'); }
+  });
+  document.getElementById('add-link').addEventListener('click', () => {
+    const fa = tf.lang() === 'fa';
+    const row = document.createElement('div');
+    row.className = 'row';
+    row.innerHTML = `<input class="input" aria-label="${fa ? 'عنوان لینک' : 'Link label'}" placeholder="${fa ? 'مثلاً سرور دوم' : 'e.g. Mirror 2'}"><input class="input ltr" type="url" aria-label="${fa ? 'نشانی' : 'URL'}" placeholder="https://"><button class="btn btn-ghost btn-icon" type="button" aria-label="${fa ? 'حذف' : 'Remove'}" data-remove><i class="bi bi-trash3"></i></button>`;
+    document.getElementById('links').append(row);
+    row.querySelector('input').focus();
+  });
+</script>
+</body>
+</html>

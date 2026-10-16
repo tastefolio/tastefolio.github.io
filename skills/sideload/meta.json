@@ -1,0 +1,34 @@
+{
+  "name": "Sideload",
+  "order": 8,
+  "category": "content",
+  "mode": "light",
+  "density": "dense",
+  "persianFirst": true,
+  "tags": ["portal", "downloads", "blog", "widgets", "community"],
+  "tagline": {
+    "en": "Content & downloads hub — post cards, sidebar widgets, download boxes with mirrors and versions",
+    "fa": "پایگاه محتوا و دانلود — کارت مطلب، ویجت کناری و باکس دانلود با سرورها و نسخه‌ها"
+  },
+  "summary": {
+    "en": "A friendly, information-rich portal language for sites that publish many items people come back to download, read or discuss: fresh green brand on a light gray page, white post cards with gradient covers and app-style icons, meta rows with dates and download counts, a featured mosaic, numbered popular lists and category widgets, and a signature download box with an info grid, mirrors, changelog accordions and comments. The author panel covers posts, an editor with link repeaters and comment moderation.",
+    "fa": "زبانی دوستانه و پرمحتوا برای سایت‌هایی که آیتم‌های زیادی منتشر می‌کنند و کاربر برای دانلود، خواندن یا گفتگو برمی‌گردد: سبز تازه روی صفحهٔ خاکستری روشن، کارت‌های سفید با کاور گرادیانی و آیکن اپ‌مانند، ردیف اطلاعات با تاریخ و تعداد دانلود، چیدمان ویژه، فهرست شماره‌دار پربازدیدها و ویجت دسته‌ها، و باکس دانلود شاخص با جدول اطلاعات، سرورهای دانلود، آکاردئون تغییرات و دیدگاه‌ها. پنل نویسنده شامل مطالب، ویرایشگر با لینک‌های تکرارشونده و مدیریت دیدگاه است."
+  },
+  "bestFor": {
+    "en": ["Software, font, template and asset download sites", "Tutorial blogs and knowledge bases with sidebars", "Community content portals with comments", "Author and moderator back offices"],
+    "fa": ["سایت‌های دانلود نرم‌افزار، فونت، قالب و منابع", "وبلاگ‌های آموزشی و پایگاه دانش با ستون کناری", "پورتال‌های محتوایی و انجمنی با دیدگاه", "پنل‌های نویسنده و مدیر محتوا"]
+  },
+  "avoidFor": {
+    "en": ["Luxury or minimal brand sites", "Single-product SaaS landing pages", "Data-heavy financial dashboards"],
+    "fa": ["سایت‌های لوکس یا مینیمال برند", "صفحهٔ فرود SaaS تک‌محصولی", "داشبوردهای مالی پرداده"]
+  },
+  "signature": {
+    "en": ["Post cards: gradient cover with glyph, green category dot, two-line title, meta row with icons", "Green start-edge bar on every block and section title", "Numbered popular list with oversized counters and app icons", "Download box: icon + rating, 4-cell info grid, mirror rows, changelog accordion", "Featured mosaic: one big tile and two stacked tiles with dark gradient overlays", "Author CMS on a deep green sidebar with moderation queue counts in amber"],
+    "fa": ["کارت مطلب: کاور گرادیانی با نماد، نقطهٔ سبز دسته، عنوان دوخطی و ردیف اطلاعات با آیکن", "نوار سبز در ابتدای هر بلوک و تیتر بخش", "فهرست شماره‌دار پربازدیدها با شماره‌های بزرگ و آیکن اپ", "باکس دانلود: آیکن و امتیاز، جدول اطلاعات چهارخانه، ردیف سرورها، آکاردئون تغییرات", "چیدمان ویژه: یک کاشی بزرگ و دو کاشی کوچک با پوشش گرادیان تیره", "پنل نویسنده با سایدبار سبز تیره و شمارندهٔ کهربایی صف بررسی"]
+  },
+  "swatches": ["#f2f4f3", "#ffffff", "#14211b", "#12a36b", "#f59e0b"],
+  "fonts": { "latin": "Rubik", "persian": "Samim", "mono": "System monospace" },
+  "icons": "Bootstrap Icons (fill)",
+  "brandTrials": ["2563eb", "dc2626", "7c3aed", "0891b2"],
+  "demos": { "site": { "host": "toolstand.example" }, "dashboard": { "host": "author.toolstand.example" } }
+}

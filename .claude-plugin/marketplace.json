@@ -72,6 +72,15 @@
       ]
     },
     {
+      "name": "sideload",
+      "description": "Tastefolio design language — Content & downloads hub — post cards, sidebar widgets, download boxes with mirrors and versions",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/sideload"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -83,7 +92,8 @@
         "./skills/stratus",
         "./skills/ultraviolet",
         "./skills/tier",
-        "./skills/datasheet"
+        "./skills/datasheet",
+        "./skills/sideload"
       ]
     }
   ]
