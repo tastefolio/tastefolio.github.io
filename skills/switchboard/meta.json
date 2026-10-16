@@ -1,0 +1,37 @@
+{
+  "name": "Switchboard",
+  "order": 1,
+  "category": "product",
+  "mode": "light",
+  "density": "balanced",
+  "persianFirst": false,
+  "tags": ["calm", "utility", "settings", "instant-save", "trust"],
+  "tagline": {
+    "en": "Calm, settings-first utility UI where every option is one clear switch",
+    "fa": "رابط کاربردی و آرام که هر گزینه در آن یک کلید روشن و ساده است"
+  },
+  "summary": {
+    "en": "White cards on a cool gray canvas, one saturated brand color for action and state, and native system type. Marketing pages lead with a huge plain-language promise; the product is a top bar plus a tab strip over a centered column of setting cards that save instantly.",
+    "fa": "کارت‌های سفید روی زمینهٔ خاکستری سرد، یک رنگ برند پررنگ فقط برای عمل و وضعیت، و فونت سیستمی. سایت با یک وعدهٔ بزرگ و صریح شروع می‌شود؛ محصول یک نوار بالا و ردیف تب است روی ستونی مرکزی از کارت‌های تنظیمات که فوراً ذخیره می‌شوند."
+  },
+  "bestFor": {
+    "en": ["Privacy, security and filtering tools", "Settings-heavy SaaS and admin consoles", "Notification and preference centers", "Developer utilities with a public landing page"],
+    "fa": ["ابزارهای حریم خصوصی، امنیت و فیلترینگ", "SaaS و کنسول‌هایی با تنظیمات زیاد", "مراکز اعلان و تنظیمات کاربر", "ابزارهای توسعه‌دهنده با صفحهٔ معرفی عمومی"]
+  },
+  "avoidFor": {
+    "en": ["Brands that need emotional, image-led storytelling", "Dense trading or analytics desks", "Playful consumer apps"],
+    "fa": ["برندهایی که روایت احساسی و تصویری می‌خواهند", "میزهای معاملاتی یا تحلیلی خیلی فشرده", "اپ‌های مصرفی بازیگوش"]
+  },
+  "signature": {
+    "en": ["Headline in black with one or two phrases in the brand color", "Small uppercase brand-colored eyebrow above every section", "Setting rows: title, one-line plain description, switch at the end", "Instant save with a quiet toast — no Save buttons for toggles", "Top bar plus horizontal tab strip; no sidebar", "Live log rows marked by a colored start edge"],
+    "fa": ["تیتر مشکی با یک یا دو عبارت به رنگ برند", "برچسب کوچک رنگی بالای هر بخش", "ردیف تنظیمات: عنوان، یک خط توضیح ساده، کلید در انتها", "ذخیرهٔ فوری با یک اعلان آرام — بدون دکمهٔ ذخیره برای کلیدها", "نوار بالا و ردیف تب افقی؛ بدون سایدبار", "ردیف‌های گزارش زنده با لبهٔ رنگی در ابتدا"]
+  },
+  "swatches": ["#f4f6f9", "#ffffff", "#0e1116", "#1f6bff", "#dc3545"],
+  "fonts": { "latin": "System UI stack", "persian": "Vazirmatn", "mono": "System monospace" },
+  "icons": "Bootstrap Icons",
+  "brandTrials": ["0f9d58", "7c3aed", "e8590c", "111827"],
+  "demos": {
+    "site": { "host": "kestrel.example" },
+    "dashboard": { "host": "console.kestrel.example" }
+  }
+}

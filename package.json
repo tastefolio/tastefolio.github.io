@@ -1,0 +1,24 @@
+{
+  "name": "tastefolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tastefolio — a portfolio of distinct, production-ready design-language skills for AI coding agents.",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "sync": "node scripts/sync.mjs",
+    "check": "node scripts/check.mjs",
+    "build": "node scripts/build.mjs",
+    "shots": "node scripts/shots.mjs",
+    "linkcheck": "node scripts/linkcheck.mjs",
+    "serve": "node scripts/serve.mjs dist 4174",
+    "dev": "node scripts/serve.mjs . 4173",
+    "ci": "npm run sync && npm run check && npm run shots && npm run build && npm run linkcheck"
+  },
+  "devDependencies": {
+    "fflate": "0.8.3",
+    "playwright": "1.56.1",
+    "sharp": "0.35.5"
+  }
+}

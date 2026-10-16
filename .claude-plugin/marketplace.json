@@ -1,0 +1,30 @@
+{
+  "name": "tastefolio",
+  "owner": {
+    "name": "Tastefolio"
+  },
+  "metadata": {
+    "description": "Distinct, production-ready design-language skills for websites and dashboards (RTL + LTR).",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "switchboard",
+      "description": "Tastefolio design language — Calm, settings-first utility UI where every option is one clear switch",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/switchboard"
+      ]
+    },
+    {
+      "name": "tastefolio-all",
+      "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/switchboard"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+/* Switchboard — design tokens (Tastefolio). Light is default; dark via [data-theme="dark"]; Persian via :lang(fa).
+   Change --brand only. Everything brand-derived is computed from it. */
+:root {
+  /* Canvas & surfaces: cool, quiet, almost colorless */
+  --canvas: #f4f6f9;
+  --surface: #ffffff;
+  --surface-2: #f8f9fb;
+  --surface-3: #eef1f5;
+  --overlay: rgba(14, 17, 22, .42);
+
+  /* Ink */
+  --ink: #0e1116;
+  --ink-2: #4a5462;
+  --ink-3: #8691a1;
+  --ink-inverse: #ffffff;
+
+  /* Lines */
+  --line: #e3e7ee;
+  --line-2: #cdd4df;
+
+  /* Brand: one saturated mid-tone blue (or your hue). Used for action, state and highlighted words — nothing else. */
+  --brand: #1f6bff;
+  --brand-ink: #ffffff;
+  --brand-soft: color-mix(in oklab, var(--brand) 10%, var(--surface));
+  --brand-strong: color-mix(in oklab, var(--brand) 82%, #000);
+  --brand-2: color-mix(in oklab, var(--brand) 55%, #2fc7ff);
+  --focus: color-mix(in oklab, var(--brand) 55%, transparent);
+
+  /* Status */
+  --success: #15924a;
+  --success-soft: #e7f6ed;
+  --warning: #c27806;
+  --warning-soft: #fdf3e1;
+  --danger: #dc3545;
+  --danger-soft: #fdecee;
+  --info: var(--brand);
+  --info-soft: var(--brand-soft);
+
+  /* Charts: brand first, then neutrals and status hues */
+  --chart-1: var(--brand);
+  --chart-2: #9aa6b8;
+  --chart-3: var(--danger);
+  --chart-4: #12a8a0;
+  --chart-5: #f0a12b;
+  --chart-6: #7c5cff;
+  --chart-grid: #edf0f4;
+  --chart-axis: var(--ink-3);
+  --chart-curve: linear;
+  --chart-stroke: 2;
+  --chart-area: .16;
+  --chart-radius: 3;
+
+  /* Type: native system stack, unbranded and fast */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Vazirmatn", sans-serif;
+  --font-display: var(--font-sans);
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --fs-xs: 12px;
+  --fs-sm: 13px;
+  --fs-md: 15px;
+  --fs-lg: 17px;
+  --fs-xl: 20px;
+  --fs-2xl: 28px;
+  --fs-3xl: 40px;
+  --fs-display: clamp(40px, 6.2vw, 76px);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 650;
+  --fw-display: 800;
+  --lh-tight: 1.08;
+  --lh-snug: 1.3;
+  --lh-body: 1.55;
+  --tracking-display: -.035em;
+  --tracking-caps: .08em;
+
+  /* Space (4px base) & shape */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 48px;
+  --space-9: 64px;
+  --space-10: 96px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+  --border-w: 1px;
+  --shadow-1: 0 1px 2px rgba(16, 24, 40, .05);
+  --shadow-2: 0 10px 28px -10px rgba(16, 24, 40, .22), 0 1px 2px rgba(16, 24, 40, .06);
+  --shadow-3: 0 24px 60px -18px rgba(16, 24, 40, .35);
+
+  /* Layout */
+  --container: 1120px;
+  --column: 960px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --header-h: 56px;
+  --tabs-h: 46px;
+  --control-h: 36px;
+  --control-h-lg: 48px;
+  --row-min: 64px;
+
+  /* Motion: quick, functional */
+  --ease: cubic-bezier(.2, .8, .2, 1);
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+  --dur-3: 320ms;
+
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --canvas: #0b0e13;
+  --surface: #12171f;
+  --surface-2: #171d27;
+  --surface-3: #1e2531;
+  --overlay: rgba(0, 0, 0, .6);
+  --ink: #eef2f7;
+  --ink-2: #a5afbe;
+  --ink-3: #6f7a8b;
+  --ink-inverse: #0b0e13;
+  --line: #232a36;
+  --line-2: #323b4a;
+  --brand: #4b8bff;
+  --brand-soft: color-mix(in oklab, var(--brand) 16%, var(--surface));
+  --brand-strong: color-mix(in oklab, var(--brand) 80%, #fff);
+  --success: #3fbf74;
+  --success-soft: #11291b;
+  --warning: #f0a12b;
+  --warning-soft: #2c2210;
+  --danger: #ff5c6a;
+  --danger-soft: #34161b;
+  --chart-2: #5b6779;
+  --chart-grid: #1c232e;
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, .4);
+  --shadow-2: 0 12px 32px -10px rgba(0, 0, 0, .7);
+  color-scheme: dark;
+}
+
+/* Persian: Vazirmatn first, roomier lines, never letter-spaced */
+:root:lang(fa) {
+  --font-sans: "Vazirmatn", -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, sans-serif;
+  --lh-tight: 1.35;
+  --lh-snug: 1.55;
+  --lh-body: 1.85;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+  --fs-display: clamp(34px, 5.2vw, 64px);
+}

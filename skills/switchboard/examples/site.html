@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-alt-lang="fa" data-demo="site" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="کسترل — فیلتری آرام برای هر صندوق ایمیل">Kestrel — the quiet filter for every inbox</title>
+<meta name="description" content="Kestrel blocks phishing, tracking pixels and spam before they reach any mailbox." data-alt-content="کسترل فیشینگ، پیکسل‌های ردیاب و اسپم را پیش از رسیدن به صندوق ایمیل متوقف می‌کند.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .hero .headline { max-inline-size: 15ch; }
+  .preview-card .card-header { padding-block-end: var(--space-3); }
+  .preview-card .setting-row { padding-block: 12px; min-block-size: 0; }
+  .stat-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); }
+  .stat-strip .stat + .stat { border-inline-start: 1px solid var(--line); }
+  @media (max-width: 760px) { .stat-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stat-strip .stat-value { font-size: 24px; } .stat-strip .stat:nth-child(3) { border-inline-start: 0; } .stat-strip .stat:nth-child(n+3) { border-block-start: 1px solid var(--line); } }
+  .setup-tabs [role="tablist"] { display: inline-flex; margin-block: var(--space-6) var(--space-5); }
+  .steps { counter-reset: s; list-style: none; padding: 0; margin: 0; display: grid; gap: var(--space-4); }
+  .steps li { counter-increment: s; display: grid; grid-template-columns: 32px 1fr; gap: var(--space-3); color: var(--ink-2); }
+  .steps li::before { content: counter(s); inline-size: 28px; block-size: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--brand-soft); color: var(--brand-strong); font-weight: 700; font-size: var(--fs-sm); }
+  :lang(fa) .steps li::before { content: counter(s, persian); }
+  .steps b { color: var(--ink); display: block; }
+  .code { background: #0e1116; color: #e7ecf3; border-radius: var(--radius-lg); padding: var(--space-5); font: 13px/1.8 var(--font-mono); overflow-x: auto; direction: ltr; text-align: left; }
+  .code .c { color: #7d8899; } .code .k { color: #7fb0ff; } .code .s { color: #8fd6a0; }
+  .billing { display: flex; justify-content: center; margin-block: var(--space-6) var(--space-7); }
+  .signup { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
+  @media (max-width: 860px) { .signup { grid-template-columns: 1fr; } }
+  .signup form { padding: var(--space-6); display: grid; gap: var(--space-4); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="رفتن به محتوا">Skip to content</a>
+
+<div class="ribbon">
+  <div class="container">
+    <a href="dashboard.html"><span data-alt="ورود به کنسول کسترل">Open the Kestrel console</span> <i class="bi bi-arrow-right flip-rtl" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand-mark" href="#top" aria-label="Kestrel" data-alt-aria-label="کسترل"><span class="logo" aria-hidden="true"><i class="bi bi-feather"></i></span><span data-alt="کسترل">Kestrel</span></a>
+    <nav class="site-nav" id="site-nav" aria-label="Primary" data-alt-aria-label="اصلی">
+      <a href="#security" data-alt="امنیت">Security</a>
+      <a href="#privacy" data-alt="حریم خصوصی">Privacy</a>
+      <a href="#setup" data-alt="راه‌اندازی">Setup</a>
+      <a href="#pricing" data-alt="قیمت‌ها">Pricing</a>
+      <a href="#faq" data-alt="پرسش‌ها">FAQ</a>
+    </nav>
+    <div class="actions">
+      <button class="btn btn-ghost" type="button" data-lang-toggle data-alt="English">فارسی</button>
+      <a class="btn btn-secondary hide-sm" href="dashboard.html" data-alt="ورود">Sign in</a>
+      <button class="btn btn-ghost btn-icon menu-btn" type="button" data-toggle="#site-nav" aria-expanded="false" aria-controls="site-nav" aria-label="Menu" data-alt-aria-label="منو"><i class="bi bi-list" aria-hidden="true"></i></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero container" id="top">
+    <h1 class="headline"><span data-alt="فیلتری">The</span> <span class="hl" data-alt="آرام">quiet filter</span> <span data-alt="برای">for</span> <span class="hl" data-alt="هر صندوق ایمیل.">every inbox.</span></h1>
+    <p class="lead" data-alt="کسترل فیشینگ، پیکسل‌های ردیاب و اسپم را پیش از رسیدن متوقف می‌کند — روی همهٔ صندوق‌ها و همهٔ دستگاه‌ها، بی‌آنکه افزونه‌ای نصب کنید.">Kestrel stops phishing, tracking pixels and spam before they land — on every mailbox and every device, with no plugin to install.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary btn-lg btn-pill" href="#signup"><span data-alt="رایگان امتحان کنید">Try it free</span> <i class="bi bi-arrow-right flip-rtl" aria-hidden="true"></i></a>
+      <p class="hero-note"><span data-alt="بدون کارت بانکی.">No card required.</span><span data-alt="بعداً ثبت‌نام کنید تا تنظیمات ذخیره شود.">Create an account later to keep your settings.</span></p>
+    </div>
+    <div class="hero-shot" aria-hidden="true">
+      <div class="hero-shot-bar"><span class="brand-mark"><span class="logo"><i class="bi bi-feather"></i></span></span><span class="tab is-on" data-alt="محافظت">Protection</span><span class="tab" data-alt="قوانین">Rules</span><span class="tab" data-alt="گزارش‌ها">Logs</span><span class="tab" data-alt="تنظیمات">Settings</span></div>
+      <ul class="setting-list">
+        <li class="setting-row"><div><p class="setting-title" data-alt="فهرست‌های تهدید">Threat intelligence feeds</p><p class="setting-desc" data-alt="فرستنده‌ها و پیوندهای کارزارهای فعال را مسدود می‌کند.">Blocks senders and links seen in active campaigns.</p></div><span class="switch" aria-checked="true"></span></li>
+        <li class="setting-row"><div><p class="setting-title" data-alt="مسدودکردن دامنه‌های مشابه">Block lookalike domains</p><p class="setting-desc" data-alt="نشانی‌هایی که خود را جای فرستندهٔ آشنا جا می‌زنند.">Addresses posing as someone you know.</p></div><span class="switch" aria-checked="true"></span></li>
+        <li class="setting-row"><div><p class="setting-title" data-alt="دامنه‌های تازه ثبت‌شده">Newly registered domains</p><p class="setting-desc" data-alt="دامنه‌های کمتر از ۳۰ روز اغلب برای حمله ساخته شده‌اند.">Domains younger than 30 days are often built for an attack.</p></div><span class="switch" aria-checked="false"></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section container" id="security">
+    <div class="feature">
+      <div>
+        <span class="eyebrow" data-alt="امنیت">Security</span>
+        <h2 class="h2" data-alt="فیشینگ را در همان ثانیهٔ اول بگیرید.">Catch phishing in the first second.</h2>
+        <p data-alt="هر پیام پیش از تحویل با ده‌ها نشانه بررسی می‌شود: دامنه‌های تازه ثبت‌شده، نشانی‌های شبیه‌سازی‌شده، پیوندهای تغییرمسیر و پیوست‌های رمزدار.">Every message is checked against dozens of signals before delivery: newly registered domains, lookalike addresses, redirect chains and password-protected attachments.</p>
+        <p data-alt="فهرست تهدیدها هر دقیقه به‌روز می‌شود، پس حمله‌ای که امروز صبح شروع شده هم دیده می‌شود.">Threat lists refresh every minute, so an attack that started this morning is already on the list.</p>
+        <ul class="chips" aria-label="Protections" data-alt-aria-label="محافظت‌ها">
+          <li data-alt="دامنه‌های مشابه">Lookalike domains</li>
+          <li data-alt="پیوندهای مخرب">Malicious links</li>
+          <li data-alt="ربودن رشتهٔ پاسخ">Reply-chain hijack</li>
+          <li data-alt="فیشینگ با QR">QR phishing</li>
+          <li data-alt="کلاهبرداری فاکتور">Invoice fraud</li>
+          <li data-alt="فرستنده‌های تازه">New senders</li>
+          <li data-alt="پیوست رمزدار">Locked archives</li>
+        </ul>
+      </div>
+      <div class="mono-feed" aria-hidden="true">
+        <ul>
+          <li><span>paypa1-billing.co</span><b>blocked</b></li><li><span>docs-share.link/a8f</span><b>blocked</b></li><li><span>invoice@vendor-pay.net</span><b>held</b></li><li><span>login-micros0ft.app</span><b>blocked</b></li><li><span>track.mailpix.io</span><b>stripped</b></li><li><span>qr.secure-verify.top</span><b>blocked</b></li><li><span>hr-updates.example.org</span><b>held</b></li><li><span>pixel.opens.news</span><b>stripped</b></li><li><span>wallet-sync.click</span><b>blocked</b></li><li><span>dropbox-files.cfd</span><b>blocked</b></li><li><span>beacon.adtrk.net</span><b>stripped</b></li><li><span>bank-notice.support</span><b>blocked</b></li>
+          <li><span>paypa1-billing.co</span><b>blocked</b></li><li><span>docs-share.link/a8f</span><b>blocked</b></li><li><span>invoice@vendor-pay.net</span><b>held</b></li><li><span>login-micros0ft.app</span><b>blocked</b></li><li><span>track.mailpix.io</span><b>stripped</b></li><li><span>qr.secure-verify.top</span><b>blocked</b></li><li><span>hr-updates.example.org</span><b>held</b></li><li><span>pixel.opens.news</span><b>stripped</b></li><li><span>wallet-sync.click</span><b>blocked</b></li><li><span>dropbox-files.cfd</span><b>blocked</b></li><li><span>beacon.adtrk.net</span><b>stripped</b></li><li><span>bank-notice.support</span><b>blocked</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container" id="privacy">
+    <div class="feature is-reversed">
+      <div>
+        <span class="eyebrow" data-alt="حریم خصوصی">Privacy</span>
+        <h2 class="h2" data-alt="بازکردن ایمیل دیگر یعنی گزارش دادن نیست.">Opening an email no longer reports back.</h2>
+        <p data-alt="پیکسل‌های ردیاب حذف می‌شوند، تصاویر از طریق پراکسی بارگذاری می‌شوند و پارامترهای ردیابی از پیوندها پاک می‌شوند. فرستنده نمی‌فهمد کِی و کجا پیام را خواندید.">Tracking pixels are removed, images load through a proxy and tracking parameters are stripped from links. Senders can't tell when or where you read.</p>
+        <p data-alt="هر محافظت یک کلید دارد. روشنش کنید؛ همین.">Every protection is a single switch. Turn it on — that's it.</p>
+      </div>
+      <div class="preview-card" aria-label="Privacy settings preview" data-alt-aria-label="پیش‌نمایش تنظیمات حریم خصوصی">
+        <div class="card-header">
+          <h3 class="card-title" data-alt="حریم خصوصی">Privacy</h3>
+          <p class="card-desc" data-alt="تغییرات فوراً ذخیره می‌شوند.">Changes are saved instantly.</p>
+        </div>
+        <ul class="setting-list">
+          <li class="setting-row"><div><p class="setting-title" data-alt="حذف پیکسل‌های ردیاب">Strip tracking pixels</p><p class="setting-desc" data-alt="تصاویر یک‌پیکسلی و بیکن‌های بازشدن را حذف می‌کند.">Removes 1×1 images and open beacons.</p></div><button class="switch" role="switch" aria-checked="true" aria-label="Strip tracking pixels" data-alt-aria-label="حذف پیکسل‌های ردیاب" data-toast="Saved" data-toast-alt="ذخیره شد"></button></li>
+          <li class="setting-row"><div><p class="setting-title" data-alt="پراکسی تصاویر">Proxy remote images</p><p class="setting-desc" data-alt="نشانی IP و موقعیت شما پنهان می‌ماند.">Hides your IP address and location.</p></div><button class="switch" role="switch" aria-checked="true" aria-label="Proxy remote images" data-alt-aria-label="پراکسی تصاویر" data-toast="Saved" data-toast-alt="ذخیره شد"></button></li>
+          <li class="setting-row"><div><p class="setting-title" data-alt="پاک‌سازی پیوندها">Clean links</p><p class="setting-desc" data-alt="پارامترهای utm و شناسه‌های کلیک را حذف می‌کند.">Removes utm parameters and click IDs.</p></div><button class="switch" role="switch" aria-checked="false" aria-label="Clean links" data-alt-aria-label="پاک‌سازی پیوندها" data-toast="Saved" data-toast-alt="ذخیره شد"></button></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container" aria-label="By the numbers" data-alt-aria-label="به زبان عدد">
+    <div class="stat-strip">
+      <div class="stat"><span class="stat-label" data-alt="پیام بررسی‌شده در روز">Messages checked / day</span><span class="stat-value" data-num="48200000" data-fmt="compact">48M</span></div>
+      <div class="stat"><span class="stat-label" data-alt="میانگین زمان بررسی">Median check time</span><span class="stat-value"><span data-num="38">38</span> <small class="tiny" data-alt="میلی‌ثانیه">ms</small></span></div>
+      <div class="stat"><span class="stat-label" data-alt="فیشینگ شناسایی‌شده">Phishing caught</span><span class="stat-value" data-num="99.4" data-fmt="pct1">99.4%</span></div>
+      <div class="stat"><span class="stat-label" data-alt="صندوق‌های محافظت‌شده">Mailboxes protected</span><span class="stat-value" data-num="310000" data-fmt="compact">310K</span></div>
+    </div>
+  </section>
+
+  <section class="section container" id="setup">
+    <span class="eyebrow" data-alt="راه‌اندازی">Setup</span>
+    <h2 class="h2" data-alt="سه دقیقه، بدون نصب نرم‌افزار.">Three minutes. Nothing to install.</h2>
+    <div class="setup-tabs">
+      <div class="segmented" role="tablist" aria-label="Setup type" data-alt-aria-label="نوع راه‌اندازی">
+        <button role="tab" aria-selected="true" aria-controls="tab-personal" id="t-personal" data-alt="شخصی">Personal</button>
+        <button role="tab" aria-selected="false" aria-controls="tab-team" id="t-team" data-alt="تیمی">Team</button>
+        <button role="tab" aria-selected="false" aria-controls="tab-api" id="t-api">API</button>
+      </div>
+      <div role="tabpanel" id="tab-personal" aria-labelledby="t-personal">
+        <ol class="steps">
+          <li><div><b data-alt="ایمیل خود را وارد کنید">Add your address</b><span data-alt="کسترل یک نشانی بازارسال اختصاصی می‌سازد.">Kestrel creates a private forwarding address.</span></div></li>
+          <li><div><b data-alt="بازارسال را روشن کنید">Turn on forwarding</b><span data-alt="یک تنظیم در سرویس ایمیل فعلی‌تان؛ راهنمای تصویری داریم.">One setting in your current mail provider — we show you where.</span></div></li>
+          <li><div><b data-alt="کلیدها را انتخاب کنید">Choose your switches</b><span data-alt="پیش‌فرض‌ها برای بیشتر افراد مناسب‌اند.">The defaults suit most people.</span></div></li>
+        </ol>
+      </div>
+      <div role="tabpanel" id="tab-team" aria-labelledby="t-team" hidden>
+        <ol class="steps">
+          <li><div><b data-alt="دامنه را تأیید کنید">Verify your domain</b><span data-alt="یک رکورد TXT اضافه کنید.">Add a single TXT record.</span></div></li>
+          <li><div><b data-alt="رکورد MX را عوض کنید">Point MX to Kestrel</b><span data-alt="پیام‌ها پس از بررسی به سرور فعلی تحویل می‌شوند.">Mail is delivered to your current server after inspection.</span></div></li>
+          <li><div><b data-alt="سیاست‌ها را تعیین کنید">Set team policies</b><span data-alt="قوانین مشترک، استثناهای هر نفر.">Shared rules, per-person exceptions.</span></div></li>
+        </ol>
+      </div>
+      <div role="tabpanel" id="tab-api" aria-labelledby="t-api" hidden>
+<pre class="code"><span class="c"># Score a message before delivery</span>
+<span class="k">curl</span> https://api.kestrel.example/v1/score \
+  -H <span class="s">"Authorization: Bearer $KESTREL_KEY"</span> \
+  -d <span class="s">'{"from":"billing@vendor-pay.net","links":3}'</span>
+
+<span class="c"># → {"verdict":"quarantine","signals":["new_domain","lookalike"]}</span></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container" id="pricing">
+    <div style="text-align:center">
+      <span class="eyebrow" data-alt="قیمت‌ها">Pricing</span>
+      <h2 class="h2" data-alt="رایگان شروع کنید. وقتی لازم شد ارتقا دهید.">Start free. Upgrade when it matters.</h2>
+    </div>
+    <div class="billing">
+      <div class="segmented" data-group="billing" role="group" aria-label="Billing period" data-alt-aria-label="دورهٔ پرداخت">
+        <button type="button" aria-pressed="true" data-value="monthly" data-alt="ماهانه">Monthly</button>
+        <button type="button" aria-pressed="false" data-value="yearly" data-alt="سالانه (۲ ماه رایگان)">Yearly (2 months free)</button>
+      </div>
+    </div>
+    <div class="pricing">
+      <article class="card price-card">
+        <h3 class="h3" data-alt="رایگان">Free</h3>
+        <p class="price"><span data-num="0" data-fmt="usd">$0</span> <small data-alt="/ ماه">/ month</small></p>
+        <p class="muted small" data-alt="برای یک صندوق و ۳۰۰ پیام در روز.">One mailbox, up to 300 messages a day.</p>
+        <ul class="ticks">
+          <li><i class="bi bi-check2" aria-hidden="true"></i><span data-alt="محافظت در برابر فیشینگ">Phishing protection</span></li>
+          <li><i class="bi bi-check2" aria-hidden="true"></i><span data-alt="حذف ردیاب‌ها">Tracker stripping</span></li>
+          <li><i class="bi bi-check2" aria-hidden="true"></i><span data-alt="گزارش ۷ روز اخیر">7-day logs</span></li>
+        </ul>
+        <a class="btn btn-secondary" href="#signup" style="margin-block-start:auto" data-alt="شروع رایگان">Start free</a>
+      </article>
+      <article class="card price-card is-featured">
+        <div class="row spread"><h3 class="h3">Pro</h3><span class="badge badge-brand" data-alt="محبوب">Popular</span></div>
+        <p class="price"><span data-when="billing:monthly"><span data-num="4" data-fmt="usd">$4</span> <small data-alt="/ ماه">/ month</small></span><span data-when="billing:yearly" hidden><span data-num="40" data-fmt="usd">$40</span> <small data-alt="/ سال">/ year</small></span></p>
+        <p class="muted small" data-alt="برای ۵ صندوق، بدون محدودیت پیام.">Five mailboxes, unlimited messages.</p>
+        <ul class="ticks">
+          <li><i class="bi bi-check2" aria-hidden="true"></i><span data-alt="همهٔ امکانات نسخهٔ رایگان">Everything in Free</span></li>
+          <li><i class="bi bi-check2" aria-hidden="true"></i><span data-alt="قرنطینه و بازبینی">Quarantine &amp; review</span></li>
+          <li><i class="bi bi-check2" aria-hidden="true"></i><span data-alt="قوانین سفارشی">Custom rules</span></li>
+          <li><i class="bi bi-check2" aria-hidden="true"></i><span data-alt="گزارش ۹۰ روز اخیر">90-day logs</span></li>
+        </ul>
+        <a class="btn btn-primary" href="#signup" style="margin-block-start:auto" data-alt="انتخاب Pro">Choose Pro</a>
+      </article>
+      <article class="card price-card">
+        <h3 class="h3" data-alt="تیم">Team</h3>
+        <p class="price"><span data-when="billing:monthly"><span data-num="3" data-fmt="usd">$3</span> <small data-alt="/ نفر در ماه">/ seat / month</small></span><span data-when="billing:yearly" hidden><span data-num="30" data-fmt="usd">$30</span> <small data-alt="/ نفر در سال">/ seat / year</small></span></p>
+        <p class="muted small" data-alt="برای دامنهٔ شرکت و مدیریت متمرکز.">For company domains and central policy.</p>
+        <ul class="ticks">
+          <li><i class="bi bi-check2" aria-hidden="true"></i><span data-alt="همهٔ امکانات Pro">Everything in Pro</span></li>
+          <li><i class="bi bi-check2" aria-hidden="true"></i><span data-alt="ورود یکپارچه (SSO)">Single sign-on</span></li>
+          <li><i class="bi bi-check2" aria-hidden="true"></i><span data-alt="گزارش یک‌ساله و خروجی">1-year logs &amp; export</span></li>
+        </ul>
+        <a class="btn btn-secondary" href="#signup" style="margin-block-start:auto" data-alt="تماس با فروش">Talk to sales</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section container" id="faq">
+    <h2 class="h2" data-alt="پرسش‌های رایج" style="margin-block-end:var(--space-6)">Questions</h2>
+    <div class="faq">
+      <details open><summary data-alt="آیا کسترل ایمیل‌های من را می‌خواند؟">Does Kestrel read my email?</summary><p data-alt="پیام‌ها به‌صورت خودکار و در حافظه بررسی می‌شوند و متن آن‌ها ذخیره نمی‌شود. گزارش‌ها فقط فرستنده، زمان و نتیجه را نگه می‌دارند.">Messages are scanned automatically in memory and their content is never stored. Logs keep only the sender, time and verdict.</p></details>
+      <details><summary data-alt="اگر پیام مهمی اشتباهی مسدود شود چه؟">What if an important message is blocked?</summary><p data-alt="پیام‌های مشکوک قرنطینه می‌شوند، نه حذف. با یک کلیک آزادشان کنید و فرستنده را به فهرست مجاز اضافه کنید.">Suspicious mail is quarantined, never deleted. Release it in one click and add the sender to your allowlist.</p></details>
+      <details><summary data-alt="با کدام سرویس‌های ایمیل کار می‌کند؟">Which mail providers does it work with?</summary><p data-alt="هر سرویسی که بازارسال یا تغییر رکورد MX را پشتیبانی کند.">Any provider that supports forwarding or custom MX records.</p></details>
+    </div>
+  </section>
+
+  <section class="section container" id="signup">
+    <div class="signup">
+      <div>
+        <span class="eyebrow" data-alt="شروع">Get started</span>
+        <h2 class="h2" data-alt="صندوقتان را همین امروز آرام کنید.">Quiet your inbox today.</h2>
+        <p class="lead" style="margin-block-start:var(--space-4)" data-alt="نشانی را وارد کنید تا پیکربندی بسازیم. می‌توانید بعداً حساب بسازید.">Enter an address and we'll build a configuration. You can create an account later.</p>
+      </div>
+      <form class="card" data-validate novalidate data-success="You're in — check your inbox for the setup link." data-success-alt="انجام شد — پیوند راه‌اندازی به ایمیلتان ارسال شد.">
+        <div class="field">
+          <label class="label" for="email" data-alt="ایمیل">Email</label>
+          <input class="input input-lg" id="email" name="email" type="email" required placeholder="you@example.com" autocomplete="email" dir="ltr">
+        </div>
+        <div class="field">
+          <label class="label" for="plan" data-alt="طرح">Plan</label>
+          <select class="select input-lg" id="plan" name="plan">
+            <option value="free" data-alt="رایگان">Free</option>
+            <option value="pro" selected>Pro</option>
+            <option value="team" data-alt="تیم">Team</option>
+          </select>
+        </div>
+        <label class="check"><input type="checkbox" name="terms" required> <span data-alt="با شرایط استفاده و سیاست حریم خصوصی موافقم.">I agree to the terms and privacy policy.</span></label>
+        <button class="btn btn-primary btn-lg" type="submit" data-alt="ساخت پیکربندی">Create configuration</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="stack" style="--gap:var(--space-3)">
+      <a class="brand-mark" href="#top"><span class="logo" aria-hidden="true"><i class="bi bi-feather"></i></span><span data-alt="کسترل">Kestrel</span></a>
+      <p data-alt="نمونهٔ ساختگی برای نمایش سبک Switchboard در تیست‌فولیو.">A fictional product demonstrating the Switchboard style by Tastefolio.</p>
+    </div>
+    <div><h4 data-alt="محصول">Product</h4><ul><li><a href="#security" data-alt="امنیت">Security</a></li><li><a href="#privacy" data-alt="حریم خصوصی">Privacy</a></li><li><a href="#pricing" data-alt="قیمت‌ها">Pricing</a></li></ul></div>
+    <div><h4 data-alt="منابع">Resources</h4><ul><li><a href="#setup" data-alt="راهنما">Docs</a></li><li><a href="#setup">API</a></li><li><a href="#faq" data-alt="پرسش‌ها">FAQ</a></li></ul></div>
+    <div><h4 data-alt="شرکت">Company</h4><ul><li><a href="#top" data-alt="درباره">About</a></li><li><a href="#top" data-alt="وضعیت سرویس">Status</a></li><li><a href="#top" data-alt="تماس">Contact</a></li></ul></div>
+  </div>
+</footer>
+<script>
+  // Hairline under the header once the page scrolls.
+  const h = document.querySelector('.site-header');
+  addEventListener('scroll', () => h.toggleAttribute('data-scrolled', scrollY > 8), { passive: true });
+</script>
+</body>
+</html>

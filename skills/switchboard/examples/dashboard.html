@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-alt-lang="fa" data-demo="dashboard" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="کنسول کسترل">Kestrel Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .app-header .spacer { flex: 1; }
+  .chart-card .card-body { padding-block-start: var(--space-2); }
+  .donut-wrap { display: grid; grid-template-columns: 150px 1fr; gap: var(--space-6); align-items: center; }
+  .donut-wrap [data-chart] { block-size: 150px; }
+  .donut-wrap .legend { flex-direction: column; gap: var(--space-3); }
+  .donut-wrap .legend li { justify-content: space-between; inline-size: 100%; }
+  .donut-wrap .legend b { font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+  @media (max-width: 480px) { .donut-wrap { grid-template-columns: 1fr; } }
+  .log-toolbar { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; padding: var(--space-4) var(--space-5); border-block-end: 1px solid var(--line); }
+  .log-toolbar .input { max-inline-size: 260px; }
+  .log-toolbar .select { inline-size: auto; }
+  .log-toolbar .live { margin-inline-start: auto; display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--fs-sm); color: var(--ink-2); }
+  .ws-name { display: grid; line-height: 1.2; text-align: start; }
+  .ws-name small { font-weight: 500; color: var(--ink-3); font-size: 11px; }
+  @media (max-width: 640px) { .ws-name small, .hide-xs { display: none; } .log-toolbar .input { max-inline-size: none; } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="رفتن به محتوا">Skip to content</a>
+
+<header class="app-header">
+  <div class="container">
+    <a class="brand-mark" href="site.html" aria-label="Kestrel" data-alt-aria-label="کسترل"><span class="logo" aria-hidden="true"><i class="bi bi-feather"></i></span><span class="hide-xs" data-alt="کسترل">Kestrel</span></a>
+    <div class="menu-wrap">
+      <button class="workspace" type="button" data-toggle="#ws-menu" aria-expanded="false" aria-haspopup="true">
+        <span class="ws-name"><span data-alt="شخصی">Personal</span><small dir="ltr">sara@lumen.example</small></span>
+        <i class="bi bi-chevron-expand" aria-hidden="true"></i>
+      </button>
+      <div class="menu" id="ws-menu" data-dismissable style="inset-inline-end:auto;inset-inline-start:0">
+        <p class="menu-label" data-alt="فضاهای کاری">Workspaces</p>
+        <button type="button"><i class="bi bi-check2" aria-hidden="true"></i><span data-alt="شخصی">Personal</span></button>
+        <button type="button"><i class="bi bi-people" aria-hidden="true"></i><span data-alt="استودیو لومن">Lumen Studio</span></button>
+        <hr>
+        <button type="button"><i class="bi bi-plus-lg" aria-hidden="true"></i><span data-alt="فضای کاری تازه">New workspace</span></button>
+      </div>
+    </div>
+    <span class="spacer"></span>
+    <button class="btn btn-ghost" type="button" data-lang-toggle data-alt="English">فارسی</button>
+    <button class="btn btn-ghost btn-icon" type="button" data-theme-toggle aria-label="Dark mode" data-alt-aria-label="حالت تیره"><i class="bi bi-moon" aria-hidden="true"></i></button>
+    <div class="menu-wrap">
+      <button class="avatar" type="button" data-toggle="#user-menu" aria-expanded="false" aria-label="Account menu" data-alt-aria-label="منوی حساب">SR</button>
+      <div class="menu" id="user-menu" data-dismissable>
+        <a href="#settings" data-goto="settings"><i class="bi bi-person" aria-hidden="true"></i><span data-alt="حساب کاربری">Account</span></a>
+        <a href="#settings" data-goto="settings"><i class="bi bi-credit-card" aria-hidden="true"></i><span data-alt="صورتحساب">Billing</span></a>
+        <hr>
+        <a href="site.html"><i class="bi bi-box-arrow-right flip-rtl" aria-hidden="true"></i><span data-alt="خروج">Sign out</span></a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="tab-strip" aria-label="Sections" data-alt-aria-label="بخش‌ها">
+  <div class="container">
+    <div role="tablist" aria-label="Console" data-alt-aria-label="کنسول">
+      <button role="tab" id="t-overview" aria-controls="overview" aria-selected="true" data-alt="نمای کلی">Overview</button>
+      <button role="tab" id="t-protection" aria-controls="protection" aria-selected="false" data-alt="محافظت">Protection</button>
+      <button role="tab" id="t-rules" aria-controls="rules" aria-selected="false" data-alt="قوانین">Rules</button>
+      <button role="tab" id="t-logs" aria-controls="logs" aria-selected="false" data-alt="گزارش‌ها">Logs</button>
+      <button role="tab" id="t-settings" aria-controls="settings" aria-selected="false" data-alt="تنظیمات">Settings</button>
+    </div>
+  </div>
+</nav>
+
+<main id="main" class="container">
+  <!-- ============================================ OVERVIEW -->
+  <section role="tabpanel" id="overview" aria-labelledby="t-overview">
+    <div class="page-head">
+      <div>
+        <h1 class="page-title" data-alt="نمای کلی">Overview</h1>
+        <p class="page-desc" data-alt="۳۰ روز گذشته · همهٔ صندوق‌ها">Last 30 days · all mailboxes</p>
+      </div>
+      <div class="segmented" data-group="range" role="group" aria-label="Range" data-alt-aria-label="بازه">
+        <button type="button" aria-pressed="false" data-value="7" data-alt="۷ روز">7 days</button>
+        <button type="button" aria-pressed="true" data-value="30" data-alt="۳۰ روز">30 days</button>
+        <button type="button" aria-pressed="false" data-value="90" data-alt="۹۰ روز">90 days</button>
+      </div>
+    </div>
+    <div class="panel-stack">
+      <div class="grid grid-4">
+        <article class="card stat"><span class="stat-label" data-alt="پیام‌های بررسی‌شده">Messages scanned</span><span class="stat-value" data-num="18452">18,452</span><span class="stat-delta up">▲ <span data-num="6.2" data-fmt="pct1">6.2%</span></span><div data-chart="spark" data-height="36" data-values="40,42,41,48,52,50,55,61,58,64,66,70"></div></article>
+        <article class="card stat"><span class="stat-label" data-alt="تهدیدهای مسدودشده">Threats blocked</span><span class="stat-value" data-num="1284">1,284</span><span class="stat-delta down">▲ <span data-num="14" data-fmt="pct">14%</span></span><div data-chart="spark" data-height="36" data-values="12,14,13,18,22,19,25,28,24,31,30,36" style="--chart-1: var(--danger)"></div></article>
+        <article class="card stat"><span class="stat-label" data-alt="ردیاب‌های حذف‌شده">Trackers stripped</span><span class="stat-value" data-num="6930">6,930</span><span class="stat-delta up">▼ <span data-num="3.1" data-fmt="pct1">3.1%</span></span><div data-chart="spark" data-height="36" data-values="30,28,31,27,26,25,27,24,22,23,21,20" style="--chart-1: var(--chart-4)"></div></article>
+        <article class="card stat"><span class="stat-label" data-alt="در قرنطینه">In quarantine</span><span class="stat-value" data-num="23">23</span><span class="stat-delta" style="color:var(--ink-3)" data-alt="۴ مورد منتظر بازبینی">4 awaiting review</span><div data-chart="spark" data-height="36" data-values="3,4,2,5,4,3,6,4,5,3,4,4" style="--chart-1: var(--warning)"></div></article>
+      </div>
+
+      <article class="card chart-card">
+        <div class="card-header row spread">
+          <div><h2 class="card-title" data-alt="ترافیک پیام‌ها">Mail traffic</h2><p class="card-desc" data-alt="بررسی‌شده در برابر مسدودشده، روزانه">Scanned vs. blocked, per day</p></div>
+          <ul class="legend"><li><i style="--c:var(--chart-1)"></i><span data-alt="بررسی‌شده">Scanned</span></li><li><i style="--c:var(--chart-3)"></i><span data-alt="مسدودشده">Blocked</span></li></ul>
+        </div>
+        <div class="card-body">
+          <div data-chart="area" data-height="240" data-dates="2026-09-16,30,day" data-fmt="compact"
+               data-series='[{"name":{"en":"Scanned","fa":"بررسی‌شده"},"values":[520,580,610,590,640,700,520,480,610,650,690,720,700,560,540,630,680,710,760,740,580,560,650,700,730,780,800,620,600,690]},{"name":{"en":"Blocked","fa":"مسدودشده"},"values":[30,36,41,38,44,52,33,29,40,46,48,55,51,36,34,45,49,53,61,58,40,38,47,52,57,64,66,45,42,51],"color":"var(--chart-3)"}]'
+               data-label='{"en":"Mail traffic chart","fa":"نمودار ترافیک پیام‌ها"}'></div>
+        </div>
+      </article>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <div class="card-header"><h2 class="card-title" data-alt="فرستنده‌های پرتکرار مسدودشده">Top blocked senders</h2></div>
+          <ul class="toplist">
+            <li><span class="bar" style="--w:92%"></span><span class="favicon" style="--fav:#dc3545">p</span><span class="mono">paypa1-billing.co</span><span class="count" data-num="214">214</span></li>
+            <li><span class="bar" style="--w:71%"></span><span class="favicon" style="--fav:#7c5cff">d</span><span class="mono">docs-share.link</span><span class="count" data-num="166">166</span></li>
+            <li><span class="bar" style="--w:54%"></span><span class="favicon" style="--fav:#12a8a0">w</span><span class="mono">wallet-sync.click</span><span class="count" data-num="127">127</span></li>
+            <li><span class="bar" style="--w:38%"></span><span class="favicon" style="--fav:#f0a12b">q</span><span class="mono">qr.secure-verify.top</span><span class="count" data-num="89">89</span></li>
+            <li><span class="bar" style="--w:21%"></span><span class="favicon" style="--fav:#1f6bff">b</span><span class="mono">bank-notice.support</span><span class="count" data-num="48">48</span></li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-header"><h2 class="card-title" data-alt="نوع تهدیدها">Threat types</h2></div>
+          <div class="card-body donut-wrap">
+            <div data-chart="donut" data-values="46,24,17,13" data-thickness="18" data-center="1,284" data-labels='{"en":["Phishing","Malware links","Impersonation","Spam waves"],"fa":["فیشینگ","پیوند بدافزار","جعل هویت","موج اسپم"]}'></div>
+            <ul class="legend">
+              <li><span class="row" style="--gap:6px"><i style="--c:var(--chart-1)"></i><span data-alt="فیشینگ">Phishing</span></span><b data-num="46" data-fmt="pct">46%</b></li>
+              <li><span class="row" style="--gap:6px"><i style="--c:var(--chart-2)"></i><span data-alt="پیوند بدافزار">Malware links</span></span><b data-num="24" data-fmt="pct">24%</b></li>
+              <li><span class="row" style="--gap:6px"><i style="--c:var(--chart-3)"></i><span data-alt="جعل هویت">Impersonation</span></span><b data-num="17" data-fmt="pct">17%</b></li>
+              <li><span class="row" style="--gap:6px"><i style="--c:var(--chart-4)"></i><span data-alt="موج اسپم">Spam waves</span></span><b data-num="13" data-fmt="pct">13%</b></li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <article class="card card-flush">
+        <div class="card-header"><h2 class="card-title" data-alt="صندوق‌ها">Mailboxes</h2><p class="card-desc" data-alt="روی عنوان ستون بزنید تا مرتب شود.">Click a column header to sort.</p></div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr>
+              <th scope="col" aria-sort="none"><button data-sort="text" data-alt="صندوق">Mailbox</button></th>
+              <th scope="col" aria-sort="none"><button data-sort="num" data-alt="پیام‌ها">Messages</button></th>
+              <th scope="col" aria-sort="none"><button data-sort="num" data-alt="مسدود">Blocked</button></th>
+              <th scope="col" data-alt="وضعیت">Status</th>
+            </tr></thead>
+            <tbody>
+              <tr><td><span class="mono" dir="ltr">sara@lumen.example</span></td><td data-value="9120"><span data-num="9120">9,120</span></td><td data-value="702"><span data-num="702">702</span></td><td><span class="badge badge-success"><span class="dot"></span><span data-alt="محافظت‌شده">Protected</span></span></td></tr>
+              <tr><td><span class="mono" dir="ltr">hello@lumen.example</span></td><td data-value="6544"><span data-num="6544">6,544</span></td><td data-value="489"><span data-num="489">489</span></td><td><span class="badge badge-success"><span class="dot"></span><span data-alt="محافظت‌شده">Protected</span></span></td></tr>
+              <tr><td><span class="mono" dir="ltr">billing@lumen.example</span></td><td data-value="2788"><span data-num="2788">2,788</span></td><td data-value="93"><span data-num="93">93</span></td><td><span class="badge badge-warning"><span class="dot"></span><span data-alt="بازارسال قطع است">Forwarding paused</span></span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================ PROTECTION -->
+  <section role="tabpanel" id="protection" aria-labelledby="t-protection" hidden>
+    <div class="page-head"><div><h1 class="page-title" data-alt="محافظت">Protection</h1><p class="page-desc" data-alt="هر تغییر بلافاصله اعمال و ذخیره می‌شود.">Every change applies and saves instantly.</p></div></div>
+    <div class="panel-stack">
+      <article class="card">
+        <div class="card-header"><h2 class="card-title" data-alt="هوش تهدید">Threat intelligence</h2><p class="card-desc" data-alt="فهرست‌ها هر دقیقه به‌روز می‌شوند و روی همهٔ صندوق‌های این فضای کاری اعمال می‌شوند.">Lists refresh every minute and apply to every mailbox in this workspace.</p></div>
+        <ul class="setting-list">
+          <li class="setting-row"><div><p class="setting-title"><span data-alt="فهرست‌های تهدید">Threat intelligence feeds</span> <span class="badge badge-brand" data-alt="پیشنهادی">Recommended</span></p><p class="setting-desc" data-alt="فرستنده‌ها و پیوندهای شناخته‌شده در کارزارهای فعال را مسدود می‌کند.">Blocks senders and links seen in active campaigns.</p></div><button class="switch" role="switch" aria-checked="true" aria-label="Threat intelligence feeds" data-alt-aria-label="فهرست‌های تهدید" data-toast="Saved" data-toast-alt="ذخیره شد"></button></li>
+          <li class="setting-row"><div><p class="setting-title" data-alt="تحلیل پیوندها هنگام کلیک">Check links at click time</p><p class="setting-desc" data-alt="پیوندها هنگام بازشدن دوباره بررسی می‌شوند، نه فقط هنگام تحویل.">Links are re-checked when opened, not only at delivery.</p></div><button class="switch" role="switch" aria-checked="true" aria-label="Check links at click time" data-alt-aria-label="تحلیل پیوندها" data-toast="Saved" data-toast-alt="ذخیره شد"></button></li>
+          <li class="setting-row"><div><p class="setting-title" data-alt="مسدودکردن دامنه‌های مشابه">Block lookalike domains</p><p class="setting-desc" data-alt="نشانی‌هایی مثل lurnen.example به‌جای lumen.example.">Addresses like lurnen.example posing as lumen.example.</p></div><button class="switch" role="switch" aria-checked="true" aria-label="Block lookalike domains" data-alt-aria-label="مسدودکردن دامنه‌های مشابه" data-toast="Saved" data-toast-alt="ذخیره شد"></button></li>
+          <li class="setting-row"><div><p class="setting-title" data-alt="دامنه‌های تازه ثبت‌شده">Newly registered domains</p><p class="setting-desc" data-alt="دامنه‌های کمتر از ۳۰ روز اغلب برای حمله ساخته شده‌اند.">Domains younger than 30 days are often built for an attack.</p></div><button class="switch" role="switch" aria-checked="false" aria-label="Newly registered domains" data-alt-aria-label="دامنه‌های تازه ثبت‌شده" data-toast="Saved" data-toast-alt="ذخیره شد"></button></li>
+          <li class="setting-row"><div><p class="setting-title" data-alt="قرنطینهٔ پیوست‌های رمزدار">Quarantine locked archives</p><p class="setting-desc" data-alt="فایل‌های فشرده‌ای که قابل بررسی نیستند نگه داشته می‌شوند.">Archives that can't be scanned are held for review.</p></div><button class="switch" role="switch" aria-checked="true" aria-label="Quarantine locked archives" data-alt-aria-label="قرنطینهٔ پیوست‌های رمزدار" data-toast="Saved" data-toast-alt="ذخیره شد"></button></li>
+        </ul>
+      </article>
+      <article class="card">
+        <div class="card-header"><h2 class="card-title" data-alt="حریم خصوصی">Privacy</h2><p class="card-desc" data-alt="مانع می‌شود فرستنده بفهمد کِی و کجا پیام را خواندید.">Stops senders from learning when and where you read.</p></div>
+        <ul class="setting-list">
+          <li class="setting-row"><div><p class="setting-title" data-alt="حذف پیکسل‌های ردیاب">Strip tracking pixels</p><p class="setting-desc" data-alt="تصاویر یک‌پیکسلی و بیکن‌های بازشدن.">1×1 images and open beacons.</p></div><button class="switch" role="switch" aria-checked="true" aria-label="Strip tracking pixels" data-alt-aria-label="حذف پیکسل‌های ردیاب" data-toast="Saved" data-toast-alt="ذخیره شد"></button></li>
+          <li class="setting-row"><div><p class="setting-title" data-alt="پراکسی تصاویر">Proxy remote images</p><p class="setting-desc" data-alt="نشانی IP شما پنهان می‌ماند.">Your IP address stays private.</p></div><button class="switch" role="switch" aria-checked="true" aria-label="Proxy remote images" data-alt-aria-label="پراکسی تصاویر" data-toast="Saved" data-toast-alt="ذخیره شد"></button></li>
+          <li class="setting-row"><div><p class="setting-title" data-alt="پاک‌سازی پیوندها">Clean links</p><p class="setting-desc" data-alt="پارامترهای ردیابی را از پیوندها حذف می‌کند.">Removes tracking parameters from links.</p></div><button class="switch" role="switch" aria-checked="false" aria-label="Clean links" data-alt-aria-label="پاک‌سازی پیوندها" data-toast="Saved" data-toast-alt="ذخیره شد"></button></li>
+        </ul>
+      </article>
+      <article class="card">
+        <div class="card-header"><h2 class="card-title" data-alt="قرنطینه">Quarantine</h2></div>
+        <ul class="setting-list">
+          <li class="setting-row"><div><p class="setting-title" data-alt="مدت نگهداری">Retention</p><p class="setting-desc" data-alt="پس از این مدت، پیام‌های قرنطینه حذف می‌شوند.">Held messages are deleted after this period.</p></div>
+            <div class="segmented" data-group="retention" role="group" aria-label="Retention" data-alt-aria-label="مدت نگهداری">
+              <button type="button" aria-pressed="false" data-value="7" data-toast="Saved" data-toast-alt="ذخیره شد"><span data-num="7">7</span>&nbsp;<span data-alt="روز">d</span></button>
+              <button type="button" aria-pressed="true" data-value="14" data-toast="Saved" data-toast-alt="ذخیره شد"><span data-num="14">14</span>&nbsp;<span data-alt="روز">d</span></button>
+              <button type="button" aria-pressed="false" data-value="30" data-toast="Saved" data-toast-alt="ذخیره شد"><span data-num="30">30</span>&nbsp;<span data-alt="روز">d</span></button>
+            </div>
+          </li>
+          <li class="setting-row"><div><p class="setting-title" data-alt="خلاصهٔ روزانه">Daily digest</p><p class="setting-desc" data-alt="هر صبح فهرست پیام‌های نگه‌داشته‌شده را بفرست.">Email a list of held messages every morning.</p></div><button class="switch" role="switch" aria-checked="true" aria-label="Daily digest" data-alt-aria-label="خلاصهٔ روزانه" data-toast="Saved" data-toast-alt="ذخیره شد"></button></li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================ RULES -->
+  <section role="tabpanel" id="rules" aria-labelledby="t-rules" hidden>
+    <div class="page-head"><div><h1 class="page-title" data-alt="قوانین">Rules</h1><p class="page-desc" data-alt="فهرست مجاز همیشه بر فهرست مسدود مقدم است.">The allowlist always wins over the denylist.</p></div></div>
+    <div class="panel-stack grid grid-2" style="align-items:start">
+      <article class="card" data-list="deny">
+        <div class="card-header"><h2 class="card-title" data-alt="فهرست مسدود">Denylist</h2><p class="card-desc" data-alt="پیام از این فرستنده‌ها یا دامنه‌ها هرگز تحویل نمی‌شود.">Mail from these senders or domains is never delivered.</p></div>
+        <div class="card-body" style="padding-block-start:0">
+          <form class="input-group" data-add novalidate>
+            <input class="input" name="entry" placeholder="e.g. promo.example.com" data-alt-placeholder="مثلاً promo.example.com" aria-label="Add a domain" data-alt-aria-label="افزودن دامنه" dir="ltr" required>
+            <button class="btn btn-primary" type="submit" data-alt="افزودن">Add</button>
+          </form>
+        </div>
+        <ul class="entry-list"><li><span class="mono">deals.shopflash.example</span><button class="remove" type="button" aria-label="Remove" data-alt-aria-label="حذف"><i class="bi bi-x-lg"></i></button></li><li><span class="mono">*.newsletter-blast.io</span><button class="remove" type="button" aria-label="Remove" data-alt-aria-label="حذف"><i class="bi bi-x-lg"></i></button></li><li><span class="mono">noreply@coupons.example</span><button class="remove" type="button" aria-label="Remove" data-alt-aria-label="حذف"><i class="bi bi-x-lg"></i></button></li></ul>
+      </article>
+      <article class="card" data-list="allow">
+        <div class="card-header"><h2 class="card-title" data-alt="فهرست مجاز">Allowlist</h2><p class="card-desc" data-alt="این فرستنده‌ها هیچ‌وقت قرنطینه نمی‌شوند.">These senders are never quarantined.</p></div>
+        <div class="card-body" style="padding-block-start:0">
+          <form class="input-group" data-add novalidate>
+            <input class="input" name="entry" placeholder="e.g. accounting@partner.com" data-alt-placeholder="مثلاً accounting@partner.com" aria-label="Add a sender" data-alt-aria-label="افزودن فرستنده" dir="ltr" required>
+            <button class="btn btn-primary" type="submit" data-alt="افزودن">Add</button>
+          </form>
+        </div>
+        <ul class="entry-list"><li><span class="mono">*.lumen.example</span><button class="remove" type="button" aria-label="Remove" data-alt-aria-label="حذف"><i class="bi bi-x-lg"></i></button></li><li><span class="mono">invoices@northwind.example</span><button class="remove" type="button" aria-label="Remove" data-alt-aria-label="حذف"><i class="bi bi-x-lg"></i></button></li></ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================ LOGS -->
+  <section role="tabpanel" id="logs" aria-labelledby="t-logs" hidden>
+    <div class="page-head"><div><h1 class="page-title" data-alt="گزارش‌ها">Logs</h1><p class="page-desc" data-alt="جریان زندهٔ تصمیم‌ها؛ فقط فرستنده، زمان و نتیجه ثبت می‌شود.">A live stream of decisions — only sender, time and verdict are kept.</p></div></div>
+    <article class="card card-flush" data-filter-scope style="margin-block-end:var(--space-9)">
+      <div class="log-toolbar">
+        <input class="input" type="search" data-filter-search placeholder="Search domains…" data-alt-placeholder="جست‌وجوی دامنه…" aria-label="Search logs" data-alt-aria-label="جست‌وجو در گزارش‌ها" data-hotkey="/">
+        <div class="row" data-group style="--gap:6px" role="group" aria-label="Status" data-alt-aria-label="وضعیت">
+          <button class="filter-chip" type="button" data-filter="status" data-value="all" aria-pressed="true" data-alt="همه">All</button>
+          <button class="filter-chip" type="button" data-filter="status" data-value="blocked" aria-pressed="false" data-alt="مسدود">Blocked</button>
+          <button class="filter-chip" type="button" data-filter="status" data-value="quarantined" aria-pressed="false" data-alt="قرنطینه">Quarantined</button>
+          <button class="filter-chip" type="button" data-filter="status" data-value="allowed" aria-pressed="false" data-alt="مجاز">Allowed</button>
+        </div>
+        <label class="live"><span class="dot dot-live" aria-hidden="true"></span><span data-alt="زنده">Live</span><button class="switch" role="switch" aria-checked="true" id="live-switch" aria-label="Live stream" data-alt-aria-label="جریان زنده"></button></label>
+      </div>
+      <ul class="log" id="log" aria-live="off"></ul>
+      <div class="empty-state" data-filter-empty hidden><i class="bi bi-search" aria-hidden="true"></i><span data-alt="چیزی با این فیلترها پیدا نشد.">Nothing matches these filters.</span></div>
+      <div class="card-footer"><span data-alt="نمایش">Showing</span> <b data-filter-count>0</b> <span data-alt="رویداد اخیر">recent events</span></div>
+    </article>
+  </section>
+
+  <!-- ============================================ SETTINGS -->
+  <section role="tabpanel" id="settings" aria-labelledby="t-settings" hidden>
+    <div class="page-head"><div><h1 class="page-title" data-alt="تنظیمات">Settings</h1><p class="page-desc" data-alt="جزئیات فضای کاری و اعلان‌ها.">Workspace details and notifications.</p></div></div>
+    <div class="panel-stack">
+      <form class="card" data-validate data-keep novalidate data-success="Settings saved" data-success-alt="تنظیمات ذخیره شد">
+        <div class="card-header"><h2 class="card-title" data-alt="فضای کاری">Workspace</h2></div>
+        <div class="card-body grid grid-2">
+          <div class="field"><label class="label" for="ws" data-alt="نام فضای کاری">Workspace name</label><input class="input" id="ws" name="ws" value="Personal" data-alt-value="شخصی" required minlength="2"></div>
+          <div class="field"><label class="label" for="notify" data-alt="ایمیل اعلان‌ها">Notification email</label><input class="input" id="notify" name="notify" type="email" value="sara@lumen.example" required dir="ltr"></div>
+          <div class="field"><label class="label" for="tz" data-alt="منطقهٔ زمانی">Time zone</label><select class="select" id="tz" name="tz"><option>UTC</option><option selected>Asia/Tehran</option><option>Europe/Berlin</option><option>America/New_York</option></select></div>
+          <div class="field"><span class="label" data-alt="گزارش خلاصه">Summary report</span>
+            <div class="radio-cards">
+              <label class="radio-card"><input type="radio" name="digest" value="weekly" checked><span><b data-alt="هفتگی">Weekly</b><br><span class="small muted" data-alt="دوشنبه‌ها، ساعت ۹">Mondays at 9:00</span></span></label>
+              <label class="radio-card"><input type="radio" name="digest" value="never"><span><b data-alt="هرگز">Never</b><br><span class="small muted" data-alt="فقط هشدارهای فوری">Only urgent alerts</span></span></label>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer row spread"><span data-alt="آخرین تغییر: امروز">Last changed today</span><button class="btn btn-primary" type="submit" data-alt="ذخیرهٔ تغییرات">Save changes</button></div>
+      </form>
+      <article class="card" style="border-color:color-mix(in oklab,var(--danger) 30%,var(--line))">
+        <ul class="setting-list"><li class="setting-row" style="border:0"><div><p class="setting-title" data-alt="حذف فضای کاری">Delete workspace</p><p class="setting-desc" data-alt="همهٔ قوانین و گزارش‌ها برای همیشه پاک می‌شوند.">All rules and logs are permanently erased.</p></div><button class="btn btn-danger-ghost" type="button" data-dialog="#confirm-delete" data-alt="حذف…">Delete…</button></li></ul>
+      </article>
+    </div>
+  </section>
+</main>
+
+<dialog class="modal" id="confirm-delete" aria-labelledby="del-title">
+  <form method="dialog">
+    <div class="modal-body">
+      <h2 class="h3" id="del-title" data-alt="فضای کاری «شخصی» حذف شود؟">Delete “Personal” workspace?</h2>
+      <p class="muted" data-alt="این کار برگشت‌پذیر نیست. برای تأیید، نام فضای کاری را بنویسید.">This can't be undone. Type the workspace name to confirm.</p>
+      <input class="input" id="confirm-name" aria-label="Workspace name" data-alt-aria-label="نام فضای کاری" autocomplete="off">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" value="cancel" data-alt="انصراف">Cancel</button>
+      <button class="btn btn-danger" id="confirm-btn" value="ok" disabled data-alt="حذف برای همیشه">Delete forever</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+  const $ = (s, c = document) => c.querySelector(s);
+  // ---- Live log stream (sample data, rendered per language)
+  const DEVICES = { en: ['MacBook', 'iPhone', 'Pixel', 'Web'], fa: ['مک‌بوک', 'آیفون', 'پیکسل', 'وب'] };
+  const REASONS = {
+    blocked: { en: ['Known phishing kit', 'Lookalike domain', 'Malicious redirect'], fa: ['کیت فیشینگ شناخته‌شده', 'دامنهٔ مشابه', 'تغییرمسیر مخرب'] },
+    quarantined: { en: ['Locked archive', 'New sender, invoice keywords'], fa: ['پیوست رمزدار', 'فرستندهٔ تازه با واژه‌های فاکتور'] },
+    allowed: { en: ['Allowlisted', 'Clean'], fa: ['در فهرست مجاز', 'سالم'] },
+  };
+  const VERDICT = { blocked: { en: 'Blocked', fa: 'مسدود' }, quarantined: { en: 'Quarantined', fa: 'قرنطینه' }, allowed: { en: 'Allowed', fa: 'مجاز' } };
+  const TONE = { blocked: 'badge-danger', quarantined: 'badge-warning', allowed: 'badge-success' };
+  const DOMAINS = ['paypa1-billing.co', 'news.lumen.example', 'docs-share.link', 'invoices@northwind.example', 'wallet-sync.click', 'calendar.partner.example', 'hr-updates.example.org', 'qr.secure-verify.top', 'team@figma-like.example', 'bank-notice.support', 'receipts.cafe.example', 'archive@vendor-pay.net'];
+  const COLORS = ['#dc3545', '#1f6bff', '#7c5cff', '#12a8a0', '#f0a12b', '#6b7280'];
+  let seed = 7;
+  const rnd = (n) => { seed = (seed * 9301 + 49297) % 233280; return Math.floor((seed / 233280) * n); };
+  const events = [];
+  function makeEvent(t) {
+    const status = ['blocked', 'blocked', 'allowed', 'allowed', 'allowed', 'quarantined'][rnd(6)];
+    const domain = status === 'allowed' ? DOMAINS[[1, 3, 5, 8, 10][rnd(5)]] : DOMAINS[[0, 2, 4, 6, 7, 9, 11][rnd(7)]];
+    return { t, status, domain, device: rnd(4), reason: rnd(REASONS[status].en.length), color: COLORS[rnd(COLORS.length)] };
+  }
+  let clock = new Date('2026-10-16T14:32:05').getTime();
+  for (let i = 0; i < 14; i++) { events.push(makeEvent(clock)); clock -= 47000 + rnd(90000); }
+  clock = new Date('2026-10-16T14:32:05').getTime();
+  function row(e, isNew) {
+    const L = tf.lang();
+    const li = document.createElement('li');
+    li.className = 'log-row' + (isNew ? ' is-new' : '');
+    li.dataset.status = e.status;
+    li.dataset.filterItem = '';
+    li.innerHTML = `<span class="log-time">${tf.date(e.t, 'time')}</span><span class="favicon" style="--fav:${e.color}">${e.domain.replace(/^[^a-z]*/, '')[0]}</span>
+      <span class="log-main"><span class="log-domain">${e.domain}</span><span class="log-sub">${REASONS[e.status][L][e.reason]}</span></span>
+      <span class="log-device">${DEVICES[L][e.device]}</span><span class="badge ${TONE[e.status]}">${VERDICT[e.status][L]}</span>`;
+    return li;
+  }
+  function renderLog() {
+    const ul = $('#log');
+    ul.replaceChildren(...events.map((e) => row(e)));
+    tf.applyFilter(ul.closest('[data-filter-scope]'));
+  }
+  document.addEventListener('tf:ready', renderLog);
+  document.addEventListener('tf:lang', renderLog);
+  setInterval(() => {
+    if ($('#live-switch').getAttribute('aria-checked') !== 'true' || $('#logs').hidden || tf.reduceMotion) return;
+    clock += 9000 + rnd(20000);
+    const e = makeEvent(clock);
+    events.unshift(e);
+    events.length = Math.min(events.length, 40);
+    $('#log').prepend(row(e, true));
+    tf.applyFilter($('#log').closest('[data-filter-scope]'));
+  }, 2600);
+
+  // ---- Allow/deny list editing
+  document.addEventListener('submit', (ev) => {
+    const form = ev.target.closest('[data-add]');
+    if (!form) return;
+    ev.preventDefault();
+    const input = form.entry;
+    const v = input.value.trim();
+    if (!v) { input.setAttribute('aria-invalid', 'true'); input.focus(); return; }
+    input.removeAttribute('aria-invalid');
+    const li = document.createElement('li');
+    li.innerHTML = `<span class="mono"></span><button class="remove" type="button" aria-label="${tf.lang() === 'fa' ? 'حذف' : 'Remove'}"><i class="bi bi-x-lg"></i></button>`;
+    li.querySelector('.mono').textContent = v;
+    form.closest('.card').querySelector('.entry-list').prepend(li);
+    input.value = '';
+    tf.toast(tf.lang() === 'fa' ? 'به فهرست اضافه شد' : 'Added to list', { tone: 'success' });
+  });
+  document.addEventListener('click', (ev) => {
+    const b = ev.target.closest('.remove');
+    if (!b) return;
+    b.closest('li').remove();
+    tf.toast(tf.lang() === 'fa' ? 'از فهرست حذف شد' : 'Removed from list');
+  });
+
+  // ---- Menu shortcuts to tabs, delete confirmation
+  document.addEventListener('click', (ev) => {
+    const a = ev.target.closest('[data-goto]');
+    if (!a) return;
+    ev.preventDefault();
+    tf.selectTab(document.getElementById('t-' + a.dataset.goto), true);
+    tf.setOpen($('#user-menu'), false);
+  });
+  $('#confirm-name').addEventListener('input', (e) => { $('#confirm-btn').disabled = e.target.value.trim() !== $('#ws').value.trim(); });
+  $('#confirm-delete').addEventListener('close', (e) => {
+    if (e.target.returnValue === 'ok') tf.toast(tf.lang() === 'fa' ? 'فضای کاری حذف شد (نمایشی)' : 'Workspace deleted (demo)', { tone: 'danger' });
+    $('#confirm-name').value = ''; $('#confirm-btn').disabled = true;
+  });
+</script>
+</body>
+</html>
