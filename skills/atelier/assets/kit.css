@@ -90,6 +90,8 @@ h1, h2, h3, h4, p { margin: 0; }
 
 /* ------------------------------------------------------------ hero */
 .hero { min-block-size: min(100vh, 980px); display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: var(--space-6); align-items: center; padding-block: 140px var(--space-8); }
+.hero > * { min-inline-size: 0; }
+.hero { overflow-x: clip; }
 .hero .display { margin-block: var(--space-5) var(--space-5); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; margin-block-start: var(--space-6); }
 .proof { display: flex; align-items: center; gap: var(--space-3); margin-block-start: var(--space-6); font-size: 14px; color: var(--ink-2); }

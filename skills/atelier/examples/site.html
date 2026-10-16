@@ -15,6 +15,7 @@
   .hero-visual { position: relative; }
   .hero-visual .fc-1 { inset-block-start: 10%; inset-inline-start: -4%; }
   .hero-visual .fc-2 { inset-block-end: 12%; inset-inline-end: -2%; }
+  @media (max-width: 960px) { .hero-visual .fc-1 { inset-inline-start: 0; } .hero-visual .fc-2 { inset-inline-end: 0; } }
   .hero-visual .fc-1 .dot { inline-size: 8px; block-size: 8px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 4px color-mix(in oklab, var(--brand) 40%, transparent); display: inline-block; margin-inline-end: 6px; }
   .tile .visual-bars { display: flex; gap: 8px; align-items: flex-end; block-size: 110px; }
   .tile .visual-bars i { flex: 1; border-radius: 10px; background: var(--surface-3); block-size: var(--h); }
