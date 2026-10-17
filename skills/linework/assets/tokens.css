@@ -1,0 +1,148 @@
+/* Linework — design tokens (Tastefolio). Hairline technical: white paper ruled by 1px lines, crosshair marks where
+   lines meet, black ink as the only "brand", status colours only for state, Inter Tight for words and Azeret Mono for
+   labels, numbers and code. No shadows, almost no radius. */
+:root {
+  --canvas: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #fafafa;
+  --surface-3: #f1f1f1;
+  --surface-ink: #0a0a0a;
+  --overlay: rgba(0, 0, 0, .35);
+
+  --ink: #0a0a0a;
+  --ink-2: #525252;
+  --ink-3: #8f8f8f;
+  --ink-inverse: #ffffff;
+
+  --line: #e8e8e8;            /* the hairline */
+  --line-2: #d4d4d4;
+  --cross: #a3a3a3;           /* crosshair marks */
+
+  --brand: #0a0a0a;           /* ink is the brand; ?brand= swaps it for an accent */
+  --brand-ink: #ffffff;
+  --brand-soft: color-mix(in oklab, var(--brand) 6%, #fff);
+  --brand-strong: color-mix(in oklab, var(--brand) 80%, #000);
+  --focus: #2b6cff;
+
+  --success: #12a150;         /* ready */
+  --success-soft: #e9f8ef;
+  --warning: #c27c0e;         /* building */
+  --warning-soft: #fdf4e3;
+  --danger: #e5383b;          /* error */
+  --danger-soft: #fdecec;
+  --info: #2b6cff;            /* links, preview */
+  --info-soft: #eaf0ff;
+
+  --chart-1: var(--ink);
+  --chart-2: #2b6cff;
+  --chart-3: #12a150;
+  --chart-4: #c27c0e;
+  --chart-5: #e5383b;
+  --chart-6: #a3a3a3;
+  --chart-grid: #efefef;
+  --chart-axis: var(--ink-3);
+  --chart-curve: linear;
+  --chart-stroke: 1.5;
+  --chart-area: .06;
+  --chart-radius: 0;
+  --chart-bar-gap: .3;
+  --chart-donut: 10;
+  --chart-gap: 2;
+  --chart-dots: 0;
+
+  --font-sans: "Inter Tight", "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Inter Tight", "Vazirmatn", system-ui, sans-serif;
+  --font-mono: "Azeret Mono", ui-monospace, "SF Mono", Menlo, "Vazirmatn", monospace;
+  --fs-xs: 11.5px;
+  --fs-sm: 13px;
+  --fs-md: 15px;
+  --fs-lg: 17px;
+  --fs-xl: 21px;
+  --fs-2xl: 28px;
+  --fs-3xl: 40px;
+  --fs-display: clamp(40px, 6vw, 84px);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 600;
+  --fw-display: 600;
+  --lh-tight: 1;
+  --lh-snug: 1.25;
+  --lh-body: 1.6;
+  --tracking-display: -.045em;
+  --tracking-caps: .08em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 72px;
+  --space-9: 104px;
+  --space-10: 144px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-pill: 999px;
+  --border-w: 1px;
+  --shadow-1: none;
+  --shadow-2: 0 0 0 1px var(--line);
+  --shadow-3: 0 16px 40px -12px rgba(0, 0, 0, .18), 0 0 0 1px var(--line-2);
+
+  --container: 1200px;
+  --gutter: clamp(16px, 3vw, 32px);
+  --control-h: 38px;
+  --control-h-lg: 46px;
+
+  --ease: cubic-bezier(.2, 0, 0, 1);
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+  --dur-3: 360ms;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --canvas: #0a0a0a;
+  --surface: #0a0a0a;
+  --surface-2: #111111;
+  --surface-3: #1a1a1a;
+  --surface-ink: #ededed;
+  --overlay: rgba(0, 0, 0, .6);
+  --ink: #ededed;
+  --ink-2: #a1a1a1;
+  --ink-3: #6e6e6e;
+  --ink-inverse: #0a0a0a;
+  --line: #222222;
+  --line-2: #333333;
+  --cross: #555555;
+  --brand: #ededed;
+  --brand-ink: #0a0a0a;
+  --brand-soft: color-mix(in oklab, var(--brand) 8%, transparent);
+  --brand-strong: #ffffff;
+  --focus: #5c8dff;
+  --success: #3ccf7a;
+  --success-soft: rgba(60, 207, 122, .12);
+  --warning: #f0b143;
+  --warning-soft: rgba(240, 177, 67, .12);
+  --danger: #ff5f61;
+  --danger-soft: rgba(255, 95, 97, .12);
+  --info: #5c8dff;
+  --info-soft: rgba(92, 141, 255, .12);
+  --chart-2: #5c8dff;
+  --chart-grid: #1c1c1c;
+  --shadow-3: 0 16px 40px -12px rgba(0, 0, 0, .8), 0 0 0 1px var(--line-2);
+  color-scheme: dark;
+}
+
+:root:lang(fa) {
+  --font-sans: "Vazirmatn", "Inter Tight", Tahoma, sans-serif;
+  --font-display: "Vazirmatn", "Inter Tight", sans-serif;
+  --fs-display: clamp(34px, 5vw, 70px);
+  --fw-display: 700;
+  --lh-tight: 1.35;
+  --lh-snug: 1.5;
+  --lh-body: 1.9;
+  --tracking-display: -.01em;
+  --tracking-caps: 0;
+}

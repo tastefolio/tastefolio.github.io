@@ -1,0 +1,34 @@
+{
+  "name": "Linework",
+  "order": 24,
+  "category": "devdata",
+  "mode": "light",
+  "density": "dense",
+  "persianFirst": false,
+  "tags": ["developer", "platform", "hairline", "monochrome", "console", "docs", "api"],
+  "tagline": {
+    "en": "Hairline technical — a page ruled by 1px lines with crosshairs, ink as the only brand, mono labels and a developer console",
+    "fa": "خط‌کشی فنی — صفحه‌ای با خطوط یک‌پیکسلی و علامت‌های تقاطع، جوهر سیاه به‌عنوان تنها رنگ برند، برچسب‌های تک‌فاصله و کنسول توسعه‌دهنده"
+  },
+  "summary": {
+    "en": "A precise, monochrome language for developer platforms, APIs, infrastructure and docs. The page is a frame of 1px lines: sections are ruled across it and every intersection gets a crosshair mark, cells share hairline borders, and a millimetre ruler sits under the header. Ink is the only brand colour; green, amber and red appear only for ready, building and error. Inter Tight sets words at tight tracking, Azeret Mono sets labels, numbers and code. Includes a command snippet with copy, a request waterfall, a line diagram, code tabs with line numbers, a hairline pricing table and changelog, and a console with deployments, live logs, usage charts and quotas, environment variables, API keys, a danger zone and a command palette.",
+    "fa": "زبانی دقیق و تک‌رنگ برای پلتفرم‌های توسعه‌دهنده، API، زیرساخت و مستندات. صفحه قابی از خطوط یک‌پیکسلی است: بخش‌ها با خط از هم جدا می‌شوند و هر تقاطع علامت به‌علاوه می‌گیرد، خانه‌ها مرزهای مویی مشترک دارند و یک خط‌کش میلی‌متری زیر سرصفحه می‌نشیند. جوهر سیاه تنها رنگ برند است؛ سبز، کهربایی و قرمز فقط برای آماده، در حال ساخت و خطا. Inter Tight برای واژه‌ها با فاصلهٔ فشرده و Azeret Mono برای برچسب‌ها، عددها و کد. شامل قطعهٔ فرمان با کپی، آبشار درخواست، نمودار خطی معماری، زبانه‌های کد با شمارهٔ خط، جدول قیمت و فهرست تغییرات مویی، و کنسولی با انتشارها، لاگ زنده، نمودار مصرف و سهمیه، متغیرهای محیطی، کلیدهای API، منطقهٔ خطر و پالت فرمان."
+  },
+  "bestFor": {
+    "en": ["Developer platforms, APIs and SDKs", "Infrastructure, hosting and observability consoles", "Technical documentation and changelogs", "Status pages and engineering-led products"],
+    "fa": ["پلتفرم‌های توسعه‌دهنده، API و SDK", "کنسول زیرساخت، میزبانی و مشاهده‌پذیری", "مستندات فنی و فهرست تغییرات", "صفحهٔ وضعیت و محصولات مهندسی‌محور"]
+  },
+  "avoidFor": {
+    "en": ["Warm consumer and lifestyle brands", "Children’s and playful products", "Image-led fashion and food"],
+    "fa": ["برندهای گرم مصرفی و سبک زندگی", "محصولات کودک و بازیگوش", "مد و غذا با محوریت تصویر"]
+  },
+  "signature": {
+    "en": ["A framed page ruled by 1px lines with crosshair marks", "Ink as the only brand; colour only for state", "Inter Tight words, Azeret Mono labels and numbers", "Command snippet, request waterfall and line diagram", "Hairline cells for stats, features, pricing and logos", "Console: deployments, live logs, quotas, env vars, ⌘K"],
+    "fa": ["قاب صفحه با خطوط یک‌پیکسلی و علامت تقاطع", "جوهر تنها رنگ برند؛ رنگ فقط برای وضعیت", "واژه با Inter Tight، برچسب و عدد با Azeret Mono", "قطعهٔ فرمان، آبشار درخواست و نمودار خطی", "خانه‌های مویی برای آمار، ویژگی، قیمت و لوگو", "کنسول: انتشار، لاگ زنده، سهمیه، متغیرها، ⌘K"]
+  },
+  "swatches": ["#ffffff", "#fafafa", "#0a0a0a", "#e8e8e8", "#12a150"],
+  "fonts": { "latin": "Inter Tight + Azeret Mono", "persian": "Vazirmatn", "mono": "Azeret Mono" },
+  "icons": "Radix Icons (inline SVG sprite, MIT)",
+  "brandTrials": ["2b6cff", "e5383b", "7c3aed", "0f9d76"],
+  "demos": { "site": { "host": "khat.example" }, "dashboard": { "host": "khat.example/acme/payments-api" } }
+}

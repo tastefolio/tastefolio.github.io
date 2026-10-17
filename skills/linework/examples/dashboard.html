@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-alt-lang="fa" data-demo="dashboard">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="payments-api · کنسول خط">payments-api · khat console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400..700&family=Azeret+Mono:wght@400..600&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 10px var(--space-4); border-block-end: 1px solid var(--line); }
+  .tools .input { inline-size: 220px; min-block-size: 30px; font-size: var(--fs-xs); }
+  .tools .select { inline-size: auto; min-block-size: 30px; font-size: var(--fs-xs); }
+  .two-col { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--space-5); align-items: start; }
+  @media (max-width: 1000px) { .two-col { grid-template-columns: minmax(0, 1fr); } }
+  .quota { display: grid; gap: 6px; padding-block: 12px; border-block-start: 1px solid var(--line); }
+  .quota:first-child { border-block-start: 0; padding-block-start: 0; }
+  .env-form { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; gap: 8px; align-items: start; padding: var(--space-4); border-block-start: 1px solid var(--line); background: var(--surface-2); }
+  @media (max-width: 760px) { .env-form { grid-template-columns: minmax(0, 1fr); } }
+  .key-out { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border: 1px dashed var(--line-2); border-radius: var(--radius-md); background: var(--surface-2); font: 400 12px/1.5 var(--font-mono); direction: ltr; word-break: break-all; }
+  .domain { display: flex; align-items: center; gap: 10px; padding: 10px var(--space-4); border-block-start: 1px solid var(--line); font-size: var(--fs-sm); }
+  .domain:first-child { border-block-start: 0; }
+</style>
+</head>
+<body>
+<svg class="sprite" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Icons: Radix Icons (MIT License) — radix-ui.com/icons --><!--ICONS-->
+<symbol id="i-activity-log" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 1.5C0 1.22386 0.223858 1 0.5 1H2.5C2.77614 1 3 1.22386 3 1.5C3 1.77614 2.77614 2 2.5 2H0.5C0.223858 2 0 1.77614 0 1.5ZM4 1.5C4 1.22386 4.22386 1 4.5 1H14.5C14.7761 1 15 1.22386 15 1.5C15 1.77614 14.7761 2 14.5 2H4.5C4.22386 2 4 1.77614 4 1.5ZM4 4.5C4 4.22386 4.22386 4 4.5 4H11.5C11.7761 4 12 4.22386 12 4.5C12 4.77614 11.7761 5 11.5 5H4.5C4.22386 5 4 4.77614 4 4.5ZM0 7.5C0 7.22386 0.223858 7 0.5 7H2.5C2.77614 7 3 7.22386 3 7.5C3 7.77614 2.77614 8 2.5 8H0.5C0.223858 8 0 7.77614 0 7.5ZM4 7.5C4 7.22386 4.22386 7 4.5 7H14.5C14.7761 7 15 7.22386 15 7.5C15 7.77614 14.7761 8 14.5 8H4.5C4.22386 8 4 7.77614 4 7.5ZM4 10.5C4 10.2239 4.22386 10 4.5 10H11.5C11.7761 10 12 10.2239 12 10.5C12 10.7761 11.7761 11 11.5 11H4.5C4.22386 11 4 10.7761 4 10.5ZM0 13.5C0 13.2239 0.223858 13 0.5 13H2.5C2.77614 13 3 13.2239 3 13.5C3 13.7761 2.77614 14 2.5 14H0.5C0.223858 14 0 13.7761 0 13.5ZM4 13.5C4 13.2239 4.22386 13 4.5 13H14.5C14.7761 13 15 13.2239 15 13.5C15 13.7761 14.7761 14 14.5 14H4.5C4.22386 14 4 13.7761 4 13.5Z" fill="currentColor" /></symbol>
+<symbol id="i-arrow-right" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" /></symbol>
+<symbol id="i-bar-chart" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.5 1C11.7761 1 12 1.22386 12 1.5V13.5C12 13.7761 11.7761 14 11.5 14C11.2239 14 11 13.7761 11 13.5V1.5C11 1.22386 11.2239 1 11.5 1ZM9.5 3C9.77614 3 10 3.22386 10 3.5V13.5C10 13.7761 9.77614 14 9.5 14C9.22386 14 9 13.7761 9 13.5V3.5C9 3.22386 9.22386 3 9.5 3ZM13.5 3C13.7761 3 14 3.22386 14 3.5V13.5C14 13.7761 13.7761 14 13.5 14C13.2239 14 13 13.7761 13 13.5V3.5C13 3.22386 13.2239 3 13.5 3ZM5.5 4C5.77614 4 6 4.22386 6 4.5V13.5C6 13.7761 5.77614 14 5.5 14C5.22386 14 5 13.7761 5 13.5V4.5C5 4.22386 5.22386 4 5.5 4ZM1.5 5C1.77614 5 2 5.22386 2 5.5V13.5C2 13.7761 1.77614 14 1.5 14C1.22386 14 1 13.7761 1 13.5V5.5C1 5.22386 1.22386 5 1.5 5ZM7.5 5C7.77614 5 8 5.22386 8 5.5V13.5C8 13.7761 7.77614 14 7.5 14C7.22386 14 7 13.7761 7 13.5V5.5C7 5.22386 7.22386 5 7.5 5ZM3.5 7C3.77614 7 4 7.22386 4 7.5V13.5C4 13.7761 3.77614 14 3.5 14C3.22386 14 3 13.7761 3 13.5V7.5C3 7.22386 3.22386 7 3.5 7Z" fill="currentColor" /></symbol>
+<symbol id="i-caret-sort" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.93179 5.43179C4.75605 5.60753 4.75605 5.89245 4.93179 6.06819C5.10753 6.24392 5.39245 6.24392 5.56819 6.06819L7.49999 4.13638L9.43179 6.06819C9.60753 6.24392 9.89245 6.24392 10.0682 6.06819C10.2439 5.89245 10.2439 5.60753 10.0682 5.43179L7.81819 3.18179C7.73379 3.0974 7.61933 3.04999 7.49999 3.04999C7.38064 3.04999 7.26618 3.0974 7.18179 3.18179L4.93179 5.43179ZM10.0682 9.56819C10.2439 9.39245 10.2439 9.10753 10.0682 8.93179C9.89245 8.75606 9.60753 8.75606 9.43179 8.93179L7.49999 10.8636L5.56819 8.93179C5.39245 8.75606 5.10753 8.75606 4.93179 8.93179C4.75605 9.10753 4.75605 9.39245 4.93179 9.56819L7.18179 11.8182C7.35753 11.9939 7.64245 11.9939 7.81819 11.8182L10.0682 9.56819Z" fill="currentColor" /></symbol>
+<symbol id="i-commit" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.94969 7.49989C9.94969 8.85288 8.85288 9.94969 7.49989 9.94969C6.14691 9.94969 5.0501 8.85288 5.0501 7.49989C5.0501 6.14691 6.14691 5.0501 7.49989 5.0501C8.85288 5.0501 9.94969 6.14691 9.94969 7.49989ZM10.8632 8C10.6213 9.64055 9.20764 10.8997 7.49989 10.8997C5.79214 10.8997 4.37847 9.64055 4.13662 8H0.5C0.223858 8 0 7.77614 0 7.5C0 7.22386 0.223858 7 0.5 7H4.13659C4.37835 5.35935 5.79206 4.1001 7.49989 4.1001C9.20772 4.1001 10.6214 5.35935 10.8632 7H14.5C14.7761 7 15 7.22386 15 7.5C15 7.77614 14.7761 8 14.5 8H10.8632Z" fill="currentColor" /></symbol>
+<symbol id="i-copy" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M1 9.50006C1 10.3285 1.67157 11.0001 2.5 11.0001H4L4 10.0001H2.5C2.22386 10.0001 2 9.7762 2 9.50006L2 2.50006C2 2.22392 2.22386 2.00006 2.5 2.00006L9.5 2.00006C9.77614 2.00006 10 2.22392 10 2.50006V4.00002H5.5C4.67158 4.00002 4 4.67159 4 5.50002V12.5C4 13.3284 4.67158 14 5.5 14H12.5C13.3284 14 14 13.3284 14 12.5V5.50002C14 4.67159 13.3284 4.00002 12.5 4.00002H11V2.50006C11 1.67163 10.3284 1.00006 9.5 1.00006H2.5C1.67157 1.00006 1 1.67163 1 2.50006V9.50006ZM5 5.50002C5 5.22388 5.22386 5.00002 5.5 5.00002H12.5C12.7761 5.00002 13 5.22388 13 5.50002V12.5C13 12.7762 12.7761 13 12.5 13H5.5C5.22386 13 5 12.7762 5 12.5V5.50002Z" fill="currentColor" /></symbol>
+<symbol id="i-counter-clockwise-clock" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.15 7.49998C13.15 4.66458 10.9402 1.84998 7.50002 1.84998C4.72167 1.84998 3.34849 3.9064 2.76335 5H4.5C4.77614 5 5 5.22386 5 5.5C5 5.77614 4.77614 6 4.5 6H1.5C1.22386 6 1 5.77614 1 5.5V2.5C1 2.22386 1.22386 2 1.5 2C1.77614 2 2 2.22386 2 2.5V4.31318C2.70453 3.07126 4.33406 0.849976 7.50002 0.849976C11.5628 0.849976 14.15 4.18537 14.15 7.49998C14.15 10.8146 11.5628 14.15 7.50002 14.15C5.55618 14.15 3.93778 13.3808 2.78548 12.2084C2.16852 11.5806 1.68668 10.839 1.35816 10.0407C1.25306 9.78536 1.37488 9.49315 1.63024 9.38806C1.8856 9.28296 2.17781 9.40478 2.2829 9.66014C2.56374 10.3425 2.97495 10.9745 3.4987 11.5074C4.47052 12.4963 5.83496 13.15 7.50002 13.15C10.9402 13.15 13.15 10.3354 13.15 7.49998ZM7.5 4.00001C7.77614 4.00001 8 4.22387 8 4.50001V7.29291L9.85355 9.14646C10.0488 9.34172 10.0488 9.65831 9.85355 9.85357C9.65829 10.0488 9.34171 10.0488 9.14645 9.85357L7.14645 7.85357C7.05268 7.7598 7 7.63262 7 7.50001V4.50001C7 4.22387 7.22386 4.00001 7.5 4.00001Z" fill="currentColor" /></symbol>
+<symbol id="i-exclamation-triangle" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.4449 0.608765C8.0183 -0.107015 6.9817 -0.107015 6.55509 0.608766L0.161178 11.3368C-0.275824 12.07 0.252503 13 1.10608 13H13.8939C14.7475 13 15.2758 12.07 14.8388 11.3368L8.4449 0.608765ZM7.4141 1.12073C7.45288 1.05566 7.54712 1.05566 7.5859 1.12073L13.9798 11.8488C14.0196 11.9154 13.9715 12 13.8939 12H1.10608C1.02849 12 0.980454 11.9154 1.02018 11.8488L7.4141 1.12073ZM6.8269 4.48611C6.81221 4.10423 7.11783 3.78663 7.5 3.78663C7.88217 3.78663 8.18778 4.10423 8.1731 4.48612L8.01921 8.48701C8.00848 8.766 7.7792 8.98664 7.5 8.98664C7.2208 8.98664 6.99151 8.766 6.98078 8.48701L6.8269 4.48611ZM8.24989 10.476C8.24989 10.8902 7.9141 11.226 7.49989 11.226C7.08567 11.226 6.74989 10.8902 6.74989 10.476C6.74989 10.0618 7.08567 9.72599 7.49989 9.72599C7.9141 9.72599 8.24989 10.0618 8.24989 10.476Z" fill="currentColor" /></symbol>
+<symbol id="i-external-link" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M3 2C2.44772 2 2 2.44772 2 3V12C2 12.5523 2.44772 13 3 13H12C12.5523 13 13 12.5523 13 12V8.5C13 8.22386 12.7761 8 12.5 8C12.2239 8 12 8.22386 12 8.5V12H3V3L6.5 3C6.77614 3 7 2.77614 7 2.5C7 2.22386 6.77614 2 6.5 2H3ZM12.8536 2.14645C12.9015 2.19439 12.9377 2.24964 12.9621 2.30861C12.9861 2.36669 12.9996 2.4303 13 2.497L13 2.5V2.50049V5.5C13 5.77614 12.7761 6 12.5 6C12.2239 6 12 5.77614 12 5.5V3.70711L6.85355 8.85355C6.65829 9.04882 6.34171 9.04882 6.14645 8.85355C5.95118 8.65829 5.95118 8.34171 6.14645 8.14645L11.2929 3H9.5C9.22386 3 9 2.77614 9 2.5C9 2.22386 9.22386 2 9.5 2H12.4999H12.5C12.5678 2 12.6324 2.01349 12.6914 2.03794C12.7504 2.06234 12.8056 2.09851 12.8536 2.14645Z" fill="currentColor" /></symbol>
+<symbol id="i-eye-closed" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.7649 6.07596C14.9991 6.22231 15.0703 6.53079 14.9239 6.76495C14.4849 7.46743 13.9632 8.10645 13.3702 8.66305L14.5712 9.86406C14.7664 10.0593 14.7664 10.3759 14.5712 10.5712C14.3759 10.7664 14.0593 10.7664 13.8641 10.5712L12.6011 9.30817C11.805 9.90283 10.9089 10.3621 9.93375 10.651L10.383 12.3277C10.4544 12.5944 10.2961 12.8685 10.0294 12.94C9.76267 13.0115 9.4885 12.8532 9.41704 12.5865L8.95917 10.8775C8.48743 10.958 8.00036 10.9999 7.50001 10.9999C6.99965 10.9999 6.51257 10.958 6.04082 10.8775L5.58299 12.5864C5.51153 12.8532 5.23737 13.0115 4.97064 12.94C4.7039 12.8686 4.5456 12.5944 4.61706 12.3277L5.06625 10.651C4.09111 10.3621 3.19503 9.90282 2.3989 9.30815L1.1359 10.5712C0.940638 10.7664 0.624058 10.7664 0.428798 10.5712C0.233537 10.3759 0.233537 10.0593 0.428798 9.86405L1.62982 8.66303C1.03682 8.10643 0.515113 7.46742 0.0760677 6.76495C-0.0702867 6.53079 0.000898544 6.22231 0.235065 6.07596C0.469231 5.9296 0.777703 6.00079 0.924058 6.23496C1.40354 7.00213 1.989 7.68057 2.66233 8.2427C2.67315 8.25096 2.6837 8.25972 2.69397 8.26898C4.00897 9.35527 5.65537 9.99991 7.50001 9.99991C10.3078 9.99991 12.6564 8.5063 14.076 6.23495C14.2223 6.00079 14.5308 5.9296 14.7649 6.07596Z" fill="currentColor" /></symbol>
+<symbol id="i-eye-open" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 11C4.80285 11 2.52952 9.62184 1.09622 7.50001C2.52952 5.37816 4.80285 4 7.5 4C10.1971 4 12.4705 5.37816 13.9038 7.50001C12.4705 9.62183 10.1971 11 7.5 11ZM7.5 3C4.30786 3 1.65639 4.70638 0.0760002 7.23501C-0.0253338 7.39715 -0.0253334 7.60288 0.0760014 7.76501C1.65639 10.2936 4.30786 12 7.5 12C10.6921 12 13.3436 10.2936 14.924 7.76501C15.0253 7.60288 15.0253 7.39715 14.924 7.23501C13.3436 4.70638 10.6921 3 7.5 3ZM7.5 9.5C8.60457 9.5 9.5 8.60457 9.5 7.5C9.5 6.39543 8.60457 5.5 7.5 5.5C6.39543 5.5 5.5 6.39543 5.5 7.5C5.5 8.60457 6.39543 9.5 7.5 9.5Z" fill="currentColor" /></symbol>
+<symbol id="i-link-2" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.51194 3.00541C9.18829 2.54594 10.0435 2.53694 10.6788 2.95419C10.8231 3.04893 10.9771 3.1993 11.389 3.61119C11.8009 4.02307 11.9513 4.17714 12.046 4.32141C12.4633 4.95675 12.4543 5.81192 11.9948 6.48827C11.8899 6.64264 11.7276 6.80811 11.3006 7.23511L10.6819 7.85383C10.4867 8.04909 10.4867 8.36567 10.6819 8.56093C10.8772 8.7562 11.1938 8.7562 11.389 8.56093L12.0077 7.94221L12.0507 7.89929C12.4203 7.52976 12.6568 7.2933 12.822 7.0502C13.4972 6.05623 13.5321 4.76252 12.8819 3.77248C12.7233 3.53102 12.4922 3.30001 12.1408 2.94871L12.0961 2.90408L12.0515 2.85942C11.7002 2.508 11.4692 2.27689 11.2277 2.11832C10.2377 1.46813 8.94398 1.50299 7.95001 2.17822C7.70691 2.34336 7.47044 2.57991 7.1009 2.94955L7.058 2.99247L6.43928 3.61119C6.24401 3.80645 6.24401 4.12303 6.43928 4.31829C6.63454 4.51355 6.95112 4.51355 7.14638 4.31829L7.7651 3.69957C8.1921 3.27257 8.35757 3.11027 8.51194 3.00541ZM4.31796 7.14672C4.51322 6.95146 4.51322 6.63487 4.31796 6.43961C4.12269 6.24435 3.80611 6.24435 3.61085 6.43961L2.99213 7.05833L2.94922 7.10124C2.57957 7.47077 2.34303 7.70724 2.17788 7.95035C1.50265 8.94432 1.4678 10.238 2.11799 11.2281C2.27656 11.4695 2.50766 11.7005 2.8591 12.0518L2.90374 12.0965L2.94837 12.1411C3.29967 12.4925 3.53068 12.7237 3.77214 12.8822C4.76219 13.5324 6.05589 13.4976 7.04986 12.8223C7.29296 12.6572 7.52943 12.4206 7.89896 12.051L7.89897 12.051L7.94188 12.0081L8.5606 11.3894C8.75586 11.1941 8.75586 10.8775 8.5606 10.6823C8.36533 10.487 8.04875 10.487 7.85349 10.6823L7.23477 11.301C6.80777 11.728 6.6423 11.8903 6.48794 11.9951C5.81158 12.4546 4.95642 12.4636 4.32107 12.0464C4.17681 11.9516 4.02274 11.8012 3.61085 11.3894C3.19896 10.9775 3.0486 10.8234 2.95385 10.6791C2.53661 10.0438 2.54561 9.18863 3.00507 8.51227C3.10993 8.35791 3.27224 8.19244 3.69924 7.76544L4.31796 7.14672ZM9.62172 6.08558C9.81698 5.89032 9.81698 5.57373 9.62172 5.37847C9.42646 5.18321 9.10988 5.18321 8.91461 5.37847L5.37908 8.91401C5.18382 9.10927 5.18382 9.42585 5.37908 9.62111C5.57434 9.81637 5.89092 9.81637 6.08619 9.62111L9.62172 6.08558Z" fill="currentColor" /></symbol>
+<symbol id="i-lock-closed" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.63601C5 3.76031 5.24219 3.1054 5.64323 2.67357C6.03934 2.24705 6.64582 1.9783 7.5014 1.9783C8.35745 1.9783 8.96306 2.24652 9.35823 2.67208C9.75838 3.10299 10 3.75708 10 4.63325V5.99999H5V4.63601ZM4 5.99999V4.63601C4 3.58148 4.29339 2.65754 4.91049 1.99307C5.53252 1.32329 6.42675 0.978302 7.5014 0.978302C8.57583 0.978302 9.46952 1.32233 10.091 1.99162C10.7076 2.65557 11 3.57896 11 4.63325V5.99999H12C12.5523 5.99999 13 6.44771 13 6.99999V13C13 13.5523 12.5523 14 12 14H3C2.44772 14 2 13.5523 2 13V6.99999C2 6.44771 2.44772 5.99999 3 5.99999H4ZM3 6.99999H12V13H3V6.99999Z" fill="currentColor" /></symbol>
+<symbol id="i-magnifying-glass" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 6.5C10 8.433 8.433 10 6.5 10C4.567 10 3 8.433 3 6.5C3 4.567 4.567 3 6.5 3C8.433 3 10 4.567 10 6.5ZM9.30884 10.0159C8.53901 10.6318 7.56251 11 6.5 11C4.01472 11 2 8.98528 2 6.5C2 4.01472 4.01472 2 6.5 2C8.98528 2 11 4.01472 11 6.5C11 7.56251 10.6318 8.53901 10.0159 9.30884L12.8536 12.1464C13.0488 12.3417 13.0488 12.6583 12.8536 12.8536C12.6583 13.0488 12.3417 13.0488 12.1464 12.8536L9.30884 10.0159Z" fill="currentColor" /></symbol>
+<symbol id="i-moon" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.89998 0.499976C2.89998 0.279062 2.72089 0.0999756 2.49998 0.0999756C2.27906 0.0999756 2.09998 0.279062 2.09998 0.499976V1.09998H1.49998C1.27906 1.09998 1.09998 1.27906 1.09998 1.49998C1.09998 1.72089 1.27906 1.89998 1.49998 1.89998H2.09998V2.49998C2.09998 2.72089 2.27906 2.89998 2.49998 2.89998C2.72089 2.89998 2.89998 2.72089 2.89998 2.49998V1.89998H3.49998C3.72089 1.89998 3.89998 1.72089 3.89998 1.49998C3.89998 1.27906 3.72089 1.09998 3.49998 1.09998H2.89998V0.499976ZM5.89998 3.49998C5.89998 3.27906 5.72089 3.09998 5.49998 3.09998C5.27906 3.09998 5.09998 3.27906 5.09998 3.49998V4.09998H4.49998C4.27906 4.09998 4.09998 4.27906 4.09998 4.49998C4.09998 4.72089 4.27906 4.89998 4.49998 4.89998H5.09998V5.49998C5.09998 5.72089 5.27906 5.89998 5.49998 5.89998C5.72089 5.89998 5.89998 5.72089 5.89998 5.49998V4.89998H6.49998C6.72089 4.89998 6.89998 4.72089 6.89998 4.49998C6.89998 4.27906 6.72089 4.09998 6.49998 4.09998H5.89998V3.49998ZM1.89998 6.49998C1.89998 6.27906 1.72089 6.09998 1.49998 6.09998C1.27906 6.09998 1.09998 6.27906 1.09998 6.49998V7.09998H0.499976C0.279062 7.09998 0.0999756 7.27906 0.0999756 7.49998C0.0999756 7.72089 0.279062 7.89998 0.499976 7.89998H1.09998V8.49998C1.09998 8.72089 1.27906 8.89997 1.49998 8.89997C1.72089 8.89997 1.89998 8.72089 1.89998 8.49998V7.89998H2.49998C2.72089 7.89998 2.89998 7.72089 2.89998 7.49998C2.89998 7.27906 2.72089 7.09998 2.49998 7.09998H1.89998V6.49998ZM8.54406 0.98184L8.24618 0.941586C8.03275 0.917676 7.90692 1.1655 8.02936 1.34194C8.17013 1.54479 8.29981 1.75592 8.41754 1.97445C8.91878 2.90485 9.20322 3.96932 9.20322 5.10022C9.20322 8.37201 6.82247 11.0878 3.69887 11.6097C3.45736 11.65 3.20988 11.6772 2.96008 11.6906C2.74563 11.702 2.62729 11.9535 2.77721 12.1072C2.84551 12.1773 2.91535 12.2458 2.98667 12.3128L3.05883 12.3795L3.31883 12.6045L3.50684 12.7532L3.62796 12.8433L3.81491 12.9742L3.99079 13.089C4.11175 13.1651 4.23536 13.2375 4.36157 13.3059L4.62496 13.4412L4.88553 13.5607L5.18837 13.6828L5.43169 13.7686C5.56564 13.8128 5.70149 13.8529 5.83857 13.8885C5.94262 13.9155 6.04767 13.9401 6.15405 13.9622C6.27993 13.9883 6.40713 14.0109 6.53544 14.0298L6.85241 14.0685L7.11934 14.0892C7.24637 14.0965 7.37436 14.1002 7.50322 14.1002C11.1483 14.1002 14.1032 11.1453 14.1032 7.50023C14.1032 7.25044 14.0893 7.00389 14.0623 6.76131L14.0255 6.48407C13.991 6.26083 13.9453 6.04129 13.8891 5.82642C13.8213 5.56709 13.7382 5.31398 13.6409 5.06881L13.5279 4.80132L13.4507 4.63542L13.3766 4.48666C13.2178 4.17773 13.0353 3.88295 12.8312 3.60423L12.6782 3.40352L12.4793 3.16432L12.3157 2.98361L12.1961 2.85951L12.0355 2.70246L11.8134 2.50184L11.4925 2.24191L11.2483 2.06498L10.9562 1.87446L10.6346 1.68894L10.3073 1.52378L10.1938 1.47176L9.95488 1.3706L9.67791 1.2669L9.42566 1.1846L9.10075 1.09489L8.83599 1.03486L8.54406 0.98184ZM10.4032 5.30023C10.4032 4.27588 10.2002 3.29829 9.83244 2.40604C11.7623 3.28995 13.1032 5.23862 13.1032 7.50023C13.1032 10.593 10.596 13.1002 7.50322 13.1002C6.63646 13.1002 5.81597 12.9036 5.08355 12.5522C6.5419 12.0941 7.81081 11.2082 8.74322 10.0416C8.87963 10.2284 9.10028 10.3497 9.34928 10.3497C9.76349 10.3497 10.0993 10.0139 10.0993 9.59971C10.0993 9.24256 9.84965 8.94373 9.51535 8.86816C9.57741 8.75165 9.63653 8.63334 9.6926 8.51332C9.88358 8.63163 10.1088 8.69993 10.35 8.69993C11.0403 8.69993 11.6 8.14028 11.6 7.44993C11.6 6.75976 11.0406 6.20024 10.3505 6.19993C10.3853 5.90487 10.4032 5.60464 10.4032 5.30023Z" fill="currentColor" /></symbol>
+<symbol id="i-plus" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 2.75C8 2.47386 7.77614 2.25 7.5 2.25C7.22386 2.25 7 2.47386 7 2.75V7H2.75C2.47386 7 2.25 7.22386 2.25 7.5C2.25 7.77614 2.47386 8 2.75 8H7V12.25C7 12.5261 7.22386 12.75 7.5 12.75C7.77614 12.75 8 12.5261 8 12.25V8H12.25C12.5261 8 12.75 7.77614 12.75 7.5C12.75 7.22386 12.5261 7 12.25 7H8V2.75Z" fill="currentColor" /></symbol>
+<symbol id="i-reload" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.84998 7.49998C1.84998 4.66458 4.05979 1.84998 7.49998 1.84998C10.2783 1.84998 11.6515 3.9064 12.2367 5H10.5C10.2239 5 10 5.22386 10 5.5C10 5.77614 10.2239 6 10.5 6H13.5C13.7761 6 14 5.77614 14 5.5V2.5C14 2.22386 13.7761 2 13.5 2C13.2239 2 13 2.22386 13 2.5V4.31318C12.2955 3.07126 10.6659 0.849976 7.49998 0.849976C3.43716 0.849976 0.849976 4.18537 0.849976 7.49998C0.849976 10.8146 3.43716 14.15 7.49998 14.15C9.44382 14.15 11.0622 13.3808 12.2145 12.2084C12.8315 11.5806 13.3133 10.839 13.6418 10.0407C13.7469 9.78536 13.6251 9.49315 13.3698 9.38806C13.1144 9.28296 12.8222 9.40478 12.7171 9.66014C12.4363 10.3425 12.0251 10.9745 11.5013 11.5074C10.5295 12.4963 9.16504 13.15 7.49998 13.15C4.05979 13.15 1.84998 10.3354 1.84998 7.49998Z" fill="currentColor" /></symbol>
+<symbol id="i-rocket" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.85357 3.85355L7.65355 3.05353C8.2981 2.40901 9.42858 1.96172 10.552 1.80125C11.1056 1.72217 11.6291 1.71725 12.0564 1.78124C12.4987 1.84748 12.7698 1.97696 12.8965 2.10357C13.0231 2.23018 13.1526 2.50125 13.2188 2.94357C13.2828 3.37086 13.2779 3.89439 13.1988 4.44801C13.0383 5.57139 12.591 6.70188 11.9464 7.34645L7.49999 11.7929L6.35354 10.6465C6.15827 10.4512 5.84169 10.4512 5.64643 10.6465C5.45117 10.8417 5.45117 11.1583 5.64643 11.3536L7.14644 12.8536C7.34171 13.0488 7.65829 13.0488 7.85355 12.8536L8.40073 12.3064L9.57124 14.2572C9.65046 14.3893 9.78608 14.4774 9.9389 14.4963C10.0917 14.5151 10.2447 14.4624 10.3535 14.3536L12.3535 12.3536C12.4648 12.2423 12.5172 12.0851 12.495 11.9293L12.0303 8.67679L12.6536 8.05355C13.509 7.19808 14.0117 5.82855 14.1887 4.58943C14.2784 3.9618 14.2891 3.33847 14.2078 2.79546C14.1287 2.26748 13.9519 1.74482 13.6035 1.39645C13.2552 1.04809 12.7325 0.871332 12.2045 0.792264C11.6615 0.710945 11.0382 0.721644 10.4105 0.8113C9.17143 0.988306 7.80189 1.491 6.94644 2.34642L6.32322 2.96968L3.07071 2.50504C2.91492 2.48278 2.75773 2.53517 2.64645 2.64646L0.646451 4.64645C0.537579 4.75533 0.484938 4.90829 0.50375 5.0611C0.522563 5.21391 0.61073 5.34954 0.742757 5.42876L2.69364 6.59928L2.14646 7.14645C2.0527 7.24022 2.00002 7.3674 2.00002 7.50001C2.00002 7.63261 2.0527 7.75979 2.14646 7.85356L3.64647 9.35356C3.84173 9.54883 4.15831 9.54883 4.35357 9.35356C4.54884 9.1583 4.54884 8.84172 4.35357 8.64646L3.20712 7.50001L3.85357 6.85356L6.85357 3.85355ZM10.0993 13.1936L9.12959 11.5775L11.1464 9.56067L11.4697 11.8232L10.0993 13.1936ZM3.42251 5.87041L5.43935 3.85356L3.17678 3.53034L1.80638 4.90074L3.42251 5.87041ZM2.35356 10.3535C2.54882 10.1583 2.54882 9.8417 2.35356 9.64644C2.1583 9.45118 1.84171 9.45118 1.64645 9.64644L0.646451 10.6464C0.451188 10.8417 0.451188 11.1583 0.646451 11.3535C0.841713 11.5488 1.1583 11.5488 1.35356 11.3535L2.35356 10.3535ZM3.85358 11.8536C4.04884 11.6583 4.04885 11.3417 3.85359 11.1465C3.65833 10.9512 3.34175 10.9512 3.14648 11.1465L1.14645 13.1464C0.95119 13.3417 0.951187 13.6583 1.14645 13.8535C1.34171 14.0488 1.65829 14.0488 1.85355 13.8536L3.85358 11.8536ZM5.35356 13.3535C5.54882 13.1583 5.54882 12.8417 5.35356 12.6464C5.1583 12.4512 4.84171 12.4512 4.64645 12.6464L3.64645 13.6464C3.45119 13.8417 3.45119 14.1583 3.64645 14.3535C3.84171 14.5488 4.1583 14.5488 4.35356 14.3535L5.35356 13.3535ZM9.49997 6.74881C10.1897 6.74881 10.7488 6.1897 10.7488 5.5C10.7488 4.8103 10.1897 4.25118 9.49997 4.25118C8.81026 4.25118 8.25115 4.8103 8.25115 5.5C8.25115 6.1897 8.81026 6.74881 9.49997 6.74881Z" fill="currentColor" /></symbol>
+<symbol id="i-trash" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.5 1C5.22386 1 5 1.22386 5 1.5C5 1.77614 5.22386 2 5.5 2H9.5C9.77614 2 10 1.77614 10 1.5C10 1.22386 9.77614 1 9.5 1H5.5ZM3 3.5C3 3.22386 3.22386 3 3.5 3H5H10H11.5C11.7761 3 12 3.22386 12 3.5C12 3.77614 11.7761 4 11.5 4H11V12C11 12.5523 10.5523 13 10 13H5C4.44772 13 4 12.5523 4 12V4L3.5 4C3.22386 4 3 3.77614 3 3.5ZM5 4H10V12H5V4Z" fill="currentColor" /></symbol>
+<!--/ICONS--></svg>
+<a class="skip-link" href="#main" data-alt="رفتن به محتوا">Skip to content</a>
+
+<header class="topbar">
+  <div class="in">
+    <a class="wordmark" href="site.html" aria-label="khat home" data-alt-aria-label="صفحهٔ اصلی خط"><span class="mark" aria-hidden="true"></span></a>
+    <nav class="crumbs" aria-label="Breadcrumb" data-alt-aria-label="مسیر">
+      <span class="sep" aria-hidden="true">/</span><span class="avatar" style="--c:#e8e8e8">A</span><span class="hide-sm">acme</span>
+      <span class="sep" aria-hidden="true">/</span><b>payments-api</b><span class="badge hide-sm" data-alt="پرو">Pro</span>
+    </nav>
+    <span class="spacer"></span>
+    <button class="search-btn" type="button" data-palette-open><svg class="ic" aria-hidden="true"><use href="#i-magnifying-glass"/></svg><span class="txt" data-alt="جست‌وجو یا رفتن به…">Search or jump to…</span><kbd>⌘K</kbd></button>
+    <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="EN">فا</button>
+    <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="Toggle dark mode" data-alt-aria-label="تغییر حالت تیره"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg></button>
+    <span class="avatar" style="--c:#dbe7ff" data-alt="س">S</span>
+  </div>
+  <div class="tabs subnav" role="tablist" aria-label="Project" data-alt-aria-label="پروژه">
+    <button type="button" role="tab" id="t-over" aria-controls="p-over" aria-selected="true" data-alt="نمای کلی">Overview</button>
+    <button type="button" role="tab" id="t-dep" aria-controls="p-dep" aria-selected="false" data-alt="انتشارها">Deployments</button>
+    <button type="button" role="tab" id="t-logs" aria-controls="p-logs" aria-selected="false" data-alt="لاگ‌ها">Logs</button>
+    <button type="button" role="tab" id="t-use" aria-controls="p-use" aria-selected="false" data-alt="مصرف">Usage</button>
+    <button type="button" role="tab" id="t-set" aria-controls="p-set" aria-selected="false" data-alt="تنظیمات">Settings</button>
+  </div>
+</header>
+
+<main id="main" class="console">
+  <!-- ================================================ overview -->
+  <section role="tabpanel" id="p-over" aria-labelledby="t-over" class="stack" style="gap: var(--space-5)">
+    <div class="box">
+      <div class="box-head"><h2 data-alt="انتشار اصلی">Production deployment</h2><span class="status small"><span class="dot ready" aria-hidden="true"></span><span data-alt="آماده">Ready</span></span><button class="btn btn-outline btn-sm" type="button" data-dialog="#rollback"><svg class="ic" aria-hidden="true"><use href="#i-counter-clockwise-clock"/></svg><span data-alt="بازگشت">Rollback</span></button><a class="btn btn-sm" href="#main" data-toast="api.acme.example opened in a new tab" data-toast-alt="api.acme.example در زبانهٔ تازه باز شد"><span data-alt="بازدید">Visit</span><svg class="ic" aria-hidden="true"><use href="#i-external-link"/></svg></a></div>
+      <div class="prod">
+        <div class="preview-shot" aria-hidden="true"></div>
+        <dl class="kv">
+          <dt data-alt="دامنه‌ها">Domains</dt><dd class="mono"><a class="link" href="#main">api.acme.example</a><br><span class="subtle">payments-api.khat.app</span></dd>
+          <dt data-alt="کامیت">Commit</dt><dd><span class="commit"><svg class="ic" aria-hidden="true"><use href="#i-commit"/></svg>a3f9c2e</span><br><span class="small" data-alt="افزودن کلید idempotency به POST /orders">Add idempotency keys to POST /orders</span></dd>
+          <dt data-alt="شاخه">Branch</dt><dd class="mono">main</dd>
+          <dt data-alt="مناطق">Regions</dt><dd><span data-num="38">38</span> <span class="subtle mono">· primary fra1</span></dd>
+          <dt data-alt="ساخته شد">Created</dt><dd><span data-ago="7200">2h ago</span> <span class="subtle" data-alt="توسط سارا · ۴۱ ثانیه">by Sara · 41s</span></dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="mcells">
+      <div><span class="label" data-alt="درخواست · ۲۴ ساعت">Requests · 24h</span><b data-num="1840000" data-fmt="compact">1.8M</b><span class="delta up">+12.4%</span><div data-chart="spark" data-height="36" data-values="40,42,38,45,52,48,55,61,58,66,63,70" data-label='{"en":"Requests, last 24 hours","fa":"درخواست‌ها، ۲۴ ساعت اخیر"}'></div></div>
+      <div><span class="label" data-alt="تأخیر p95">p95 latency</span><b><span data-num="86">86</span> <span class="small subtle">ms</span></b><span class="delta up">−8 ms</span><div data-chart="spark" data-height="36" data-values="96,94,95,92,90,91,89,88,90,87,86,86" data-label='{"en":"p95 latency","fa":"تأخیر p95"}'></div></div>
+      <div><span class="label" data-alt="نرخ خطا">Error rate</span><b data-num="0.12" data-fmt="pct2">0.12%</b><span class="delta down">+0.03</span><div data-chart="spark" data-height="36" data-values="8,9,7,9,10,8,11,9,12,10,13,12" data-label='{"en":"Error rate","fa":"نرخ خطا"}'></div></div>
+      <div><span class="label" data-alt="پهنای باند">Bandwidth</span><b><span data-num="42.6" data-fmt="dec1">42.6</span> <span class="small subtle">GB</span></b><span class="delta subtle mono">30d</span><div data-chart="spark" data-height="36" data-values="20,22,25,24,28,30,29,33,35,38,40,43" data-label='{"en":"Bandwidth","fa":"پهنای باند"}'></div></div>
+    </div>
+
+    <div class="two-col">
+      <div class="box">
+        <div class="box-head"><h2 data-alt="انتشارهای اخیر">Recent deployments</h2><button class="btn btn-ghost btn-sm" type="button" data-goto="t-dep"><span data-alt="همه">View all</span><svg class="ic flip-rtl" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></div>
+        <div class="table-wrap">
+          <table class="table">
+            <tbody>
+              <tr><td><span class="status"><span class="dot ready"></span><span class="badge ink">prod</span></span></td><td class="msg"><span class="commit">a3f9c2e</span> <span data-alt="افزودن کلید idempotency">Add idempotency keys</span></td><td class="mono subtle">main</td><td class="subtle" data-ago="7200">2h ago</td></tr>
+              <tr><td><span class="status"><span class="dot building"></span><span class="badge warn" data-alt="در حال ساخت">building</span></span></td><td class="msg"><span class="commit">e81d07b</span> <span data-alt="صفحهٔ بازپرداخت">Refund webhooks</span></td><td class="mono subtle">feat/refunds</td><td class="subtle" data-ago="120">2m ago</td></tr>
+              <tr><td><span class="status"><span class="dot ready"></span><span class="badge" data-alt="پیش‌نمایش">preview</span></span></td><td class="msg"><span class="commit">91be004</span> <span data-alt="افزایش محدودیت نرخ">Raise rate limit to 120/min</span></td><td class="mono subtle">main</td><td class="subtle" data-ago="18000">5h ago</td></tr>
+              <tr><td><span class="status"><span class="dot error"></span><span class="badge bad" data-alt="خطا">error</span></span></td><td class="msg"><span class="commit">4c7d1aa</span> <span data-alt="ارتقای کتابخانهٔ کریپتو">Bump crypto library</span></td><td class="mono subtle">deps/crypto</td><td class="subtle" data-ago="21600">6h ago</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="box">
+        <div class="box-head"><h2 data-alt="دامنه‌ها">Domains</h2><button class="btn btn-outline btn-sm" type="button" data-toast="Add a CNAME to cname.khat.app to finish" data-toast-alt="برای تکمیل، یک CNAME به cname.khat.app اضافه کنید"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg><span data-alt="افزودن">Add</span></button></div>
+        <div>
+          <div class="domain"><span class="dot ready" aria-hidden="true"></span><span class="mono" style="flex: 1">api.acme.example</span><span class="badge ok" data-alt="SSL معتبر">SSL valid</span></div>
+          <div class="domain"><span class="dot ready" aria-hidden="true"></span><span class="mono" style="flex: 1">payments-api.khat.app</span><span class="badge" data-alt="پیش‌فرض">default</span></div>
+          <div class="domain"><span class="dot queued" aria-hidden="true"></span><span class="mono" style="flex: 1">pay.acme.example</span><span class="badge warn" data-alt="در انتظار DNS">pending DNS</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================ deployments -->
+  <section role="tabpanel" id="p-dep" aria-labelledby="t-dep" hidden data-filter-scope>
+    <div class="box">
+      <div class="box-head"><h2 data-alt="انتشارها">Deployments</h2><span class="small subtle"><span data-filter-count data-num="8">8</span> <span data-alt="مورد">shown</span></span></div>
+      <div class="tools">
+        <div class="chips" data-group role="group" aria-label="Status" data-alt-aria-label="وضعیت">
+          <button type="button" data-filter="st" data-value="all" aria-pressed="true" data-alt="همه">all</button>
+          <button type="button" data-filter="st" data-value="ready" aria-pressed="false" data-alt="آماده">ready</button>
+          <button type="button" data-filter="st" data-value="building" aria-pressed="false" data-alt="در حال ساخت">building</button>
+          <button type="button" data-filter="st" data-value="error" aria-pressed="false" data-alt="خطا">error</button>
+        </div>
+        <span class="spacer"></span>
+        <select class="select" data-filter="br" aria-label="Branch" data-alt-aria-label="شاخه"><option value="all" data-alt="همهٔ شاخه‌ها">all branches</option><option value="main">main</option><option value="feat">feat/*</option><option value="deps">deps/*</option></select>
+        <input class="input" type="search" data-filter-search aria-label="Search commits" data-alt-aria-label="جست‌وجوی کامیت" placeholder="Search commit…" data-alt-placeholder="جست‌وجوی کامیت…">
+      </div>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th scope="col" data-alt="وضعیت">Status</th><th scope="col" data-alt="کامیت">Commit</th><th scope="col" data-alt="شاخه">Branch</th><th scope="col" data-alt="نویسنده">Author</th><th scope="col"><button type="button" data-sort="num"><span data-alt="مدت">Duration</span><svg class="ic" aria-hidden="true"><use href="#i-caret-sort"/></svg></button></th><th scope="col" data-alt="زمان">Created</th><th scope="col"><span class="sr-only" data-alt="اقدام">Actions</span></th></tr></thead>
+          <tbody>
+            <tr data-filter-item data-st="ready" data-br="main"><td><span class="status"><span class="dot ready"></span><span class="badge ink">prod</span></span></td><td class="msg"><span class="commit">a3f9c2e</span> <span data-alt="افزودن کلید idempotency به POST /orders">Add idempotency keys to POST /orders</span></td><td class="mono">main</td><td><span class="avatar" style="--c:#dbe7ff" data-alt="س">S</span></td><td data-value="41" class="mono">41s</td><td class="subtle" data-ago="7200">2h ago</td><td><button class="btn btn-outline btn-sm" type="button" data-dialog="#rollback" data-alt="بازگشت">Rollback</button></td></tr>
+            <tr data-filter-item data-st="building" data-br="feat"><td><span class="status"><span class="dot building"></span><span class="badge warn" data-alt="در حال ساخت">building</span></span></td><td class="msg"><span class="commit">e81d07b</span> <span data-alt="وب‌هوک‌های بازپرداخت">Refund webhooks</span></td><td class="mono">feat/refunds</td><td><span class="avatar" style="--c:#ffe3c2" data-alt="ع">A</span></td><td data-value="999" class="mono subtle">—</td><td class="subtle" data-ago="120">2m ago</td><td><button class="btn btn-ghost btn-sm" type="button" data-toast="Build cancelled" data-toast-alt="ساخت لغو شد" data-alt="لغو">Cancel</button></td></tr>
+            <tr data-filter-item data-st="ready" data-br="main"><td><span class="status"><span class="dot ready"></span><span class="badge" data-alt="پیش‌نمایش">preview</span></span></td><td class="msg"><span class="commit">91be004</span> <span data-alt="افزایش محدودیت نرخ به ۱۲۰ در دقیقه">Raise rate limit to 120/min</span></td><td class="mono">main</td><td><span class="avatar" style="--c:#dbe7ff" data-alt="س">S</span></td><td data-value="38" class="mono">38s</td><td class="subtle" data-ago="18000">5h ago</td><td><button class="btn btn-outline btn-sm" type="button" data-toast="Promoted 91be004 to production" data-toast-alt="91be004 به محیط اصلی منتقل شد" data-tone="success" data-alt="انتقال به اصلی">Promote</button></td></tr>
+            <tr data-filter-item data-st="error" data-br="deps"><td><span class="status"><span class="dot error"></span><span class="badge bad" data-alt="خطا">error</span></span></td><td class="msg"><span class="commit">4c7d1aa</span> <span data-alt="ارتقای کتابخانهٔ کریپتو به ۳٫۰">Bump crypto library to 3.0</span></td><td class="mono">deps/crypto</td><td><span class="avatar" style="--c:#e9f8ef" data-alt="ب">B</span></td><td data-value="12" class="mono">12s</td><td class="subtle" data-ago="21600">6h ago</td><td><button class="btn btn-ghost btn-sm" type="button" data-goto="t-logs" data-alt="لاگ">Logs</button></td></tr>
+            <tr data-filter-item data-st="ready" data-br="feat"><td><span class="status"><span class="dot ready"></span><span class="badge" data-alt="پیش‌نمایش">preview</span></span></td><td class="msg"><span class="commit">2d5ac91</span> <span data-alt="صفحه‌بندی مبتنی بر cursor">Cursor-based pagination</span></td><td class="mono">feat/pagination</td><td><span class="avatar" style="--c:#ffe3c2" data-alt="ع">A</span></td><td data-value="44" class="mono">44s</td><td class="subtle" data-ago="86400">1d ago</td><td><button class="btn btn-outline btn-sm" type="button" data-toast="Promoted 2d5ac91 to production" data-toast-alt="2d5ac91 به محیط اصلی منتقل شد" data-tone="success" data-alt="انتقال به اصلی">Promote</button></td></tr>
+            <tr data-filter-item data-st="ready" data-br="main"><td><span class="status"><span class="dot ready"></span><span class="badge" data-alt="قبلی">previous</span></span></td><td class="msg"><span class="commit">7f13e2c</span> <span data-alt="ثبت زمان پاسخ در لاگ">Log response timings</span></td><td class="mono">main</td><td><span class="avatar" style="--c:#dbe7ff" data-alt="س">S</span></td><td data-value="40" class="mono">40s</td><td class="subtle" data-ago="172800">2d ago</td><td><button class="btn btn-outline btn-sm" type="button" data-dialog="#rollback" data-alt="بازگشت">Rollback</button></td></tr>
+            <tr data-filter-item data-st="ready" data-br="main"><td><span class="status"><span class="dot ready"></span><span class="badge" data-alt="قبلی">previous</span></span></td><td class="msg"><span class="commit">0b9e6d4</span> <span data-alt="سلامت‌سنج /healthz">Health check at /healthz</span></td><td class="mono">main</td><td><span class="avatar" style="--c:#e9f8ef" data-alt="ب">B</span></td><td data-value="36" class="mono">36s</td><td class="subtle" data-ago="259200">3d ago</td><td><button class="btn btn-outline btn-sm" type="button" data-dialog="#rollback" data-alt="بازگشت">Rollback</button></td></tr>
+            <tr data-filter-item data-st="error" data-br="feat"><td><span class="status"><span class="dot error"></span><span class="badge bad" data-alt="خطا">error</span></span></td><td class="msg"><span class="commit">c4a00f1</span> <span data-alt="آزمایش کش لبه">Edge cache experiment</span></td><td class="mono">feat/cache</td><td><span class="avatar" style="--c:#ffe3c2" data-alt="ع">A</span></td><td data-value="9" class="mono">9s</td><td class="subtle" data-ago="345600">4d ago</td><td><button class="btn btn-ghost btn-sm" type="button" data-goto="t-logs" data-alt="لاگ">Logs</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="empty" data-filter-empty hidden data-alt="انتشاری با این فیلتر نیست.">No deployments match.</p>
+    </div>
+  </section>
+
+  <!-- ================================================ logs -->
+  <section role="tabpanel" id="p-logs" aria-labelledby="t-logs" hidden data-filter-scope>
+    <div class="box">
+      <div class="box-head"><h2 data-alt="لاگ‌های زمان اجرا">Runtime logs</h2><span class="status small"><span class="label" id="live-l" data-alt="زنده">Live</span><button class="switch" type="button" role="switch" aria-checked="false" aria-labelledby="live-l" id="live"></button></span></div>
+      <div class="tools">
+        <div class="chips" data-group role="group" aria-label="Level" data-alt-aria-label="سطح">
+          <button type="button" data-filter="lv" data-value="all" aria-pressed="true" data-alt="همه">all</button>
+          <button type="button" data-filter="lv" data-value="info" aria-pressed="false">info</button>
+          <button type="button" data-filter="lv" data-value="warn" aria-pressed="false">warn</button>
+          <button type="button" data-filter="lv" data-value="error" aria-pressed="false">error</button>
+        </div>
+        <span class="spacer"></span>
+        <input class="input mono" type="search" data-filter-search aria-label="Filter logs" data-alt-aria-label="فیلتر لاگ" placeholder="path, status, message…" data-alt-placeholder="مسیر، وضعیت، پیام…">
+      </div>
+      <div class="logs" id="logs" role="log" aria-label="Log lines" data-alt-aria-label="خطوط لاگ"></div>
+      <p class="empty" data-filter-empty hidden data-alt="لاگی با این فیلتر نیست.">No log lines match.</p>
+    </div>
+  </section>
+
+  <!-- ================================================ usage -->
+  <section role="tabpanel" id="p-use" aria-labelledby="t-use" hidden class="stack" style="gap: var(--space-5)">
+    <div class="box">
+      <div class="box-head"><h2 data-alt="درخواست‌ها">Requests</h2><div class="seg" data-group="range" role="group" aria-label="Range" data-alt-aria-label="بازه"><button type="button" data-value="7" aria-pressed="false">7d</button><button type="button" data-value="30" aria-pressed="true">30d</button></div></div>
+      <div class="box-body">
+        <div data-when="range:30"><div data-chart="area" data-height="220" data-fmt="compact" data-dates="2026-09-15,30,day,short" data-values="1210000,1280000,1190000,1350000,1420000,1380000,1100000,1050000,1460000,1520000,1490000,1560000,1610000,1300000,1250000,1640000,1700000,1680000,1720000,1790000,1500000,1420000,1810000,1850000,1830000,1880000,1920000,1610000,1580000,1840000" data-name='{"en":"Requests","fa":"درخواست"}' data-label='{"en":"Requests per day, last 30 days","fa":"درخواست در روز، ۳۰ روز اخیر"}'></div></div>
+        <div data-when="range:7" hidden><div data-chart="bar" data-height="220" data-fmt="compact" data-dates="2026-10-08,7,day,day" data-values="1920000,1610000,1580000,1700000,1760000,1810000,1840000" data-name='{"en":"Requests","fa":"درخواست"}' data-label='{"en":"Requests per day, last 7 days","fa":"درخواست در روز، ۷ روز اخیر"}'></div></div>
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="box">
+        <div class="box-head"><h2 data-alt="مدت اجرای تابع">Function duration</h2><span class="label">p50 · p95 · ms</span></div>
+        <div class="box-body"><div data-chart="line" data-height="200" data-fmt="int" data-dates="2026-10-01,14,day,short" data-series='[{"name":"p50","values":[24,23,25,22,21,22,20,21,22,19,20,21,20,19]},{"name":"p95","values":[98,95,99,92,90,93,88,90,91,86,88,87,86,86]}]' data-label='{"en":"Function duration p50 and p95","fa":"مدت اجرای تابع p50 و p95"}'></div></div>
+      </div>
+      <div class="box">
+        <div class="box-head"><h2 data-alt="سهمیهٔ این ماه">This month’s quota</h2><span class="badge" data-alt="پرو">Pro</span></div>
+        <div class="box-body">
+          <div class="quota"><div class="split small"><span data-alt="درخواست‌ها">Requests</span><span class="mono">6.2M / 10M</span></div><div class="meter"><i style="--v: 62%"></i></div></div>
+          <div class="quota"><div class="split small"><span data-alt="گیگابایت-ساعت تابع">Function GB-hours</span><span class="mono">410 / 1,000</span></div><div class="meter"><i style="--v: 41%"></i></div></div>
+          <div class="quota"><div class="split small"><span data-alt="پهنای باند">Bandwidth</span><span class="mono">85 / 100 GB</span></div><div class="meter warn"><i style="--v: 85%"></i></div><span class="tiny" style="color: var(--warning)" data-alt="در ۴ روز به سقف می‌رسید.">You’ll reach the limit in about 4 days.</span></div>
+          <div class="quota"><div class="split small"><span data-alt="خواندن KV">KV reads</span><span class="mono">18M / 50M</span></div><div class="meter"><i style="--v: 36%"></i></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================ settings -->
+  <section role="tabpanel" id="p-set" aria-labelledby="t-set" hidden class="stack" style="gap: var(--space-5)">
+    <div class="box">
+      <div class="box-head"><h2 data-alt="متغیرهای محیطی">Environment variables</h2><span class="small subtle" data-alt="مقادیر رمزنگاری‌شده ذخیره می‌شوند.">Values are stored encrypted.</span></div>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th scope="col" data-alt="کلید">Key</th><th scope="col" data-alt="مقدار">Value</th><th scope="col" data-alt="محیط">Environments</th><th scope="col"><span class="sr-only" data-alt="اقدام">Actions</span></th></tr></thead>
+          <tbody id="env">
+            <tr><td class="mono">DATABASE_URL</td><td><span class="secret"><span class="v" data-secret="postgres://payments:••••@db.internal:5432/pay">••••••••••••••••</span><button class="btn btn-ghost btn-icon btn-sm" type="button" data-reveal aria-pressed="false" aria-label="Reveal value" data-alt-aria-label="نمایش مقدار"><svg class="ic" aria-hidden="true"><use href="#i-eye-open"/></svg></button></span></td><td><span class="badge">prod</span> <span class="badge">preview</span></td><td><button class="btn btn-ghost btn-icon btn-sm" type="button" data-remove aria-label="Delete variable" data-alt-aria-label="حذف متغیر"><svg class="ic" aria-hidden="true"><use href="#i-trash"/></svg></button></td></tr>
+            <tr><td class="mono">GATEWAY_SECRET</td><td><span class="secret"><span class="v" data-secret="gw_test_51Hx••••••••••">••••••••••••••••</span><button class="btn btn-ghost btn-icon btn-sm" type="button" data-reveal aria-pressed="false" aria-label="Reveal value" data-alt-aria-label="نمایش مقدار"><svg class="ic" aria-hidden="true"><use href="#i-eye-open"/></svg></button></span></td><td><span class="badge">prod</span></td><td><button class="btn btn-ghost btn-icon btn-sm" type="button" data-remove aria-label="Delete variable" data-alt-aria-label="حذف متغیر"><svg class="ic" aria-hidden="true"><use href="#i-trash"/></svg></button></td></tr>
+            <tr><td class="mono">RATE_LIMIT_PER_MIN</td><td><span class="secret"><span class="v" data-secret="120">••••••••••••••••</span><button class="btn btn-ghost btn-icon btn-sm" type="button" data-reveal aria-pressed="false" aria-label="Reveal value" data-alt-aria-label="نمایش مقدار"><svg class="ic" aria-hidden="true"><use href="#i-eye-open"/></svg></button></span></td><td><span class="badge">prod</span> <span class="badge">preview</span> <span class="badge">dev</span></td><td><button class="btn btn-ghost btn-icon btn-sm" type="button" data-remove aria-label="Delete variable" data-alt-aria-label="حذف متغیر"><svg class="ic" aria-hidden="true"><use href="#i-trash"/></svg></button></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <form class="env-form" id="env-form" data-validate data-success="Variable added — redeploy to apply" data-success-alt="متغیر افزوده شد — برای اعمال دوباره منتشر کنید">
+        <div class="field"><label class="sr-only" for="ek" data-alt="کلید">Key</label><input class="input mono" id="ek" name="key" required pattern="[A-Z_][A-Z0-9_]*" placeholder="KEY_NAME" dir="ltr" data-pattern-msg="Use CAPITALS, digits and _" data-pattern-msg-alt="فقط حروف بزرگ، عدد و _"></div>
+        <div class="field"><label class="sr-only" for="ev" data-alt="مقدار">Value</label><input class="input mono" id="ev" name="value" required placeholder="value" dir="ltr" data-alt-placeholder="مقدار"></div>
+        <button class="btn" type="submit"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg><span data-alt="افزودن">Add</span></button>
+      </form>
+    </div>
+
+    <div class="two-col">
+      <div class="box">
+        <div class="box-head"><h2 data-alt="کلیدهای API">API keys</h2><button class="btn btn-sm" type="button" data-dialog="#newkey"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg><span data-alt="کلید تازه">New key</span></button></div>
+        <div class="table-wrap">
+          <table class="table">
+            <tbody id="keys">
+              <tr><td><b class="small">ci-deploy</b><br><span class="mono subtle tiny">khat_live_••••3f9a</span></td><td class="subtle small"><span data-alt="آخرین استفاده">used</span> <span data-ago="600">10m ago</span></td><td><span class="badge" data-alt="انتشار">deploy</span></td></tr>
+              <tr><td><b class="small">grafana-read</b><br><span class="mono subtle tiny">khat_live_••••c21e</span></td><td class="subtle small"><span data-alt="آخرین استفاده">used</span> <span data-ago="86400">1d ago</span></td><td><span class="badge" data-alt="فقط خواندن">read-only</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="box danger-zone">
+        <div class="box-head"><h2 data-alt="منطقهٔ خطر">Danger zone</h2></div>
+        <div class="box-body stack" style="gap: var(--space-3)">
+          <p class="small muted" data-alt="حذف پروژه همهٔ انتشارها، دامنه‌ها و متغیرها را برای همیشه پاک می‌کند.">Deleting the project removes every deployment, domain and variable for good.</p>
+          <button class="btn btn-danger btn-sm" type="button" data-dialog="#delete" style="justify-self: start" data-alt="حذف payments-api">Delete payments-api</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dialog class="modal" id="rollback" aria-labelledby="rb-title">
+  <form data-validate data-success="Rolled back production to 91be004" data-success-alt="محیط اصلی به 91be004 برگشت">
+    <div class="modal-head"><svg class="ic" aria-hidden="true"><use href="#i-counter-clockwise-clock"/></svg><b id="rb-title" data-alt="بازگشت محیط اصلی">Roll back production</b></div>
+    <div class="modal-body">
+      <p class="small muted" data-alt="ترافیک در کمتر از یک ثانیه به نسخهٔ انتخاب‌شده می‌رود. ساخت دوباره لازم نیست.">Traffic moves to the chosen version in under a second. Nothing is rebuilt.</p>
+      <div class="field"><label class="flabel" for="rb-to" data-alt="بازگشت به">Roll back to</label><select class="select mono" id="rb-to" name="to"><option>91be004 — Raise rate limit (5h)</option><option>7f13e2c — Log response timings (2d)</option><option>0b9e6d4 — Health check (3d)</option></select></div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost btn-sm" type="button" data-close data-alt="انصراف">Cancel</button><button class="btn btn-sm" type="submit" data-alt="بازگشت">Roll back</button></div>
+  </form>
+</dialog>
+
+<dialog class="modal" id="newkey" aria-labelledby="nk-title">
+  <form id="key-form" data-validate data-keep data-stay data-success="Key created — copy it now, it won’t be shown again" data-success-alt="کلید ساخته شد — همین حالا کپی کنید، دوباره نمایش داده نمی‌شود">
+    <div class="modal-head"><svg class="ic" aria-hidden="true"><use href="#i-lock-closed"/></svg><b id="nk-title" data-alt="کلید API تازه">New API key</b></div>
+    <div class="modal-body">
+      <div class="field"><label class="flabel" for="nk-name" data-alt="نام">Name</label><input class="input mono" id="nk-name" name="name" required minlength="3" pattern="[a-z0-9-]+" placeholder="backup-job" dir="ltr" data-pattern-msg="lowercase, digits and -" data-pattern-msg-alt="حروف کوچک، عدد و -"></div>
+      <div class="field"><span class="flabel" data-alt="دسترسی">Scope</span><div class="seg" data-group="scope" role="group" aria-label="Scope" data-alt-aria-label="دسترسی" style="justify-self: start"><button type="button" data-value="read" aria-pressed="true" data-alt="فقط خواندن">read-only</button><button type="button" data-value="deploy" aria-pressed="false" data-alt="انتشار">deploy</button><button type="button" data-value="admin" aria-pressed="false" data-alt="مدیر">admin</button></div></div>
+      <div class="key-out" id="key-out" hidden><code id="key-val"></code><button class="btn btn-outline btn-icon btn-sm" type="button" data-copy="#key-val" aria-label="Copy key" data-alt-aria-label="کپی کلید"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost btn-sm" type="button" data-close data-alt="بستن">Close</button><button class="btn btn-sm" type="submit" data-alt="ساخت کلید">Create key</button></div>
+  </form>
+</dialog>
+
+<dialog class="modal" id="delete" aria-labelledby="del-title">
+  <form data-validate data-success="Deletion scheduled (demo — nothing was deleted)" data-success-alt="حذف زمان‌بندی شد (نمایشی — چیزی حذف نشد)">
+    <div class="modal-head"><svg class="ic" aria-hidden="true" style="color: var(--danger)"><use href="#i-exclamation-triangle"/></svg><b id="del-title" data-alt="حذف پروژه">Delete project</b></div>
+    <div class="modal-body">
+      <p class="small muted" data-alt="برای تأیید، نام پروژه را بنویسید: payments-api">To confirm, type the project name: payments-api</p>
+      <div class="field"><label class="sr-only" for="del-name" data-alt="نام پروژه">Project name</label><input class="input mono" id="del-name" name="confirm" required pattern="payments-api" placeholder="payments-api" dir="ltr" autocomplete="off" data-pattern-msg="Type payments-api exactly" data-pattern-msg-alt="دقیقاً payments-api را بنویسید"></div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost btn-sm" type="button" data-close data-alt="انصراف">Cancel</button><button class="btn btn-danger btn-sm" type="submit" data-alt="حذف همیشگی">Delete forever</button></div>
+  </form>
+</dialog>
+
+<dialog class="palette" data-palette aria-label="Command palette" data-alt-aria-label="فرمان‌ها">
+  <input type="text" placeholder="Type a command or search…" data-alt-placeholder="فرمان یا جست‌وجو را بنویسید…" aria-label="Command" data-alt-aria-label="فرمان">
+  <ul role="listbox">
+    <li class="palette-label" aria-hidden="true" data-alt="رفتن به">Go to</li>
+    <li data-palette-item role="option" data-goto="t-dep"><svg class="ic" aria-hidden="true"><use href="#i-rocket"/></svg><span data-alt="انتشارها">Deployments</span><kbd>G D</kbd></li>
+    <li data-palette-item role="option" data-goto="t-logs"><svg class="ic" aria-hidden="true"><use href="#i-activity-log"/></svg><span data-alt="لاگ‌ها">Logs</span><kbd>G L</kbd></li>
+    <li data-palette-item role="option" data-goto="t-use"><svg class="ic" aria-hidden="true"><use href="#i-bar-chart"/></svg><span data-alt="مصرف">Usage</span><kbd>G U</kbd></li>
+    <li class="palette-label" aria-hidden="true" data-alt="فرمان‌ها">Actions</li>
+    <li data-palette-item role="option" data-dialog="#newkey"><svg class="ic" aria-hidden="true"><use href="#i-lock-closed"/></svg><span data-alt="ساخت کلید API">Create API key</span></li>
+    <li data-palette-item role="option" data-toast="Redeploying a3f9c2e…" data-toast-alt="در حال انتشار دوبارهٔ a3f9c2e…"><svg class="ic" aria-hidden="true"><use href="#i-reload"/></svg><span data-alt="انتشار دوبارهٔ محیط اصلی">Redeploy production</span></li>
+    <li data-palette-item role="option" data-copy="https://api.acme.example"><svg class="ic" aria-hidden="true"><use href="#i-link-2"/></svg><span data-alt="کپی نشانی اصلی">Copy production URL</span></li>
+    <li data-palette-item role="option" data-theme-toggle><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg><span data-alt="تغییر حالت تیره">Toggle dark mode</span></li>
+  </ul>
+  <p data-palette-empty hidden class="empty" data-alt="نتیجه‌ای نیست.">No results.</p>
+</dialog>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+    const fa = () => tf.lang() === 'fa';
+    document.addEventListener('click', (e) => {
+      const g = e.target.closest('[data-goto]');
+      if (g) { tf.selectTab(document.getElementById(g.dataset.goto)); return; }
+      const rv = e.target.closest('[data-reveal]');
+      if (rv) {
+        const v = $('.v', rv.closest('.secret')), on = rv.getAttribute('aria-pressed') !== 'true';
+        rv.setAttribute('aria-pressed', String(on));
+        if (on) { v.dataset.mask = v.textContent; v.textContent = v.dataset.secret; } else v.textContent = v.dataset.mask;
+        $('use', rv).setAttribute('href', on ? '#i-eye-closed' : '#i-eye-open');
+        return;
+      }
+      const rm = e.target.closest('[data-remove]');
+      if (rm) { rm.closest('tr').remove(); tf.toast(fa() ? 'متغیر حذف شد' : 'Variable deleted'); }
+    });
+    // logs: seeded lines + an optional live tail
+    const paths = ['/v1/orders', '/v1/orders/:id', '/v1/refunds', '/healthz', '/v1/customers', '/v1/webhooks/bank'];
+    const regions = ['fra1', 'ist1', 'dxb1', 'thr1', 'ams1'];
+    let seed = 7;
+    const rnd = () => { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; };
+    const t0 = new Date('2026-10-14T09:41:00Z').getTime();
+    const logs = $('#logs');
+    const line = (k) => {
+      const r = rnd(), lv = r > .93 ? 'error' : r > .82 ? 'warn' : 'info';
+      const st = lv === 'error' ? 500 : lv === 'warn' ? (rnd() > .5 ? 429 : 404) : (rnd() > .7 ? 201 : 200);
+      const p = paths[Math.floor(rnd() * paths.length)], me = p.includes('webhooks') || p.endsWith('orders') && rnd() > .5 ? 'POST' : 'GET';
+      const ms = lv === 'error' ? 900 + Math.floor(rnd() * 400) : 8 + Math.floor(rnd() * 120);
+      const ts = new Date(t0 + k * 1300).toISOString().slice(11, 23);
+      const el = document.createElement('div');
+      el.className = 'ln' + (lv === 'error' ? ' error' : '');
+      el.dataset.filterItem = ''; el.dataset.lv = lv;
+      el.innerHTML = `<span class="tm">${ts}</span><span class="lv ${lv}">${lv}</span><span class="me">${me}</span><span>${p} <span class="subtle">${regions[k % regions.length]}${lv === 'error' ? ' · upstream timeout (db.internal)' : ''}</span></span><span class="st s${String(st)[0]}">${st}</span><span class="du">${ms}ms</span>`;
+      return el;
+    };
+    let k = 0;
+    for (; k < 22; k++) logs.append(line(k));
+    tf.applyFilter($('#p-logs'));
+    let tail = null;
+    $('#live').addEventListener('tf:switch', (e) => {
+      clearInterval(tail);
+      if (e.detail.checked && !tf.reduceMotion) tail = setInterval(() => { logs.append(line(k++)); tf.applyFilter($('#p-logs')); logs.scrollTop = logs.scrollHeight; }, 1500);
+    });
+    // env vars
+    $('#env-form').addEventListener('tf:submit', (e) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td class="mono"></td><td><span class="secret"><span class="v">••••••••••••••••</span></span></td><td><span class="badge">prod</span></td><td><button class="btn btn-ghost btn-icon btn-sm" type="button" data-remove aria-label="Delete variable"><svg class="ic" aria-hidden="true"><use href="#i-trash"/></svg></button></td>`;
+      $('td', tr).textContent = e.detail.key;
+      $('.v', tr).dataset.secret = e.detail.value;
+      $('#env').append(tr);
+    });
+    // api keys: show the new key once
+    $('#key-form').addEventListener('tf:submit', (e) => {
+      const chars = 'abcdef0123456789';
+      let s = ''; for (let i = 0; i < 32; i++) s += chars[Math.floor(Math.random() * chars.length)];
+      const key = 'khat_live_' + s;
+      $('#key-val').textContent = key; $('#key-out').hidden = false;
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td><b class="small"></b><br><span class="mono subtle tiny"></span></td><td class="subtle small"></td><td><span class="badge"></span></td>`;
+      $('b', tr).textContent = e.detail.name; $('.mono', tr).textContent = 'khat_live_••••' + s.slice(-4);
+      $('td:nth-child(2)', tr).textContent = fa() ? 'هنوز استفاده نشده' : 'never used';
+      $('.badge', tr).textContent = $('[data-group="scope"] [aria-pressed="true"]').textContent;
+      $('#keys').prepend(tr);
+    });
+    $('#newkey').addEventListener('tf:dialog', () => { $('#key-out').hidden = true; $('#key-form').reset(); });
+  });
+</script>
+</body>
+</html>

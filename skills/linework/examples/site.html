@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-alt-lang="fa" data-demo="site">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="خط — API را با یک فرمان روی لبه منتشر کنید">khat — ship APIs to the edge in one command</title>
+<meta name="description" content="khat, a sample edge platform: deploy functions and APIs to 38 regions, with previews, rollbacks and logs." data-alt-content="خط، یک پلتفرم نمونهٔ لبه: انتشار تابع و API در ۳۸ منطقه، با پیش‌نمایش، بازگشت و لاگ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400..700&family=Azeret+Mono:wght@400..600&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .center { display: grid; justify-items: center; text-align: center; gap: var(--space-5); }
+  .two { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
+  .two > * { padding: var(--space-8) var(--space-6); min-inline-size: 0; }
+  .two > :last-child { border-inline-start: 1px solid var(--line); }
+  @media (max-width: 900px) { .two { grid-template-columns: minmax(0, 1fr); } .two > :last-child { border-inline-start: 0; border-block-start: 1px solid var(--line); } }
+  @media (max-width: 700px) { .two > * { padding: var(--space-7) var(--space-4); } }
+  .sec-title { display: grid; gap: 10px; padding: var(--space-7) var(--space-6) var(--space-6); max-inline-size: 760px; }
+  @media (max-width: 700px) { .sec-title { padding-inline: var(--space-4); } }
+  .compare-wrap { position: relative; overflow-x: auto; }
+  .compare { min-inline-size: 620px; }
+  .viz .row-l { display: flex; justify-content: space-between; gap: 8px; }
+</style>
+</head>
+<body>
+<svg class="sprite" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Icons: Radix Icons (MIT License) — radix-ui.com/icons --><!--ICONS-->
+<symbol id="i-arrow-right" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" /></symbol>
+<symbol id="i-check" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor" /></symbol>
+<symbol id="i-copy" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M1 9.50006C1 10.3285 1.67157 11.0001 2.5 11.0001H4L4 10.0001H2.5C2.22386 10.0001 2 9.7762 2 9.50006L2 2.50006C2 2.22392 2.22386 2.00006 2.5 2.00006L9.5 2.00006C9.77614 2.00006 10 2.22392 10 2.50006V4.00002H5.5C4.67158 4.00002 4 4.67159 4 5.50002V12.5C4 13.3284 4.67158 14 5.5 14H12.5C13.3284 14 14 13.3284 14 12.5V5.50002C14 4.67159 13.3284 4.00002 12.5 4.00002H11V2.50006C11 1.67163 10.3284 1.00006 9.5 1.00006H2.5C1.67157 1.00006 1 1.67163 1 2.50006V9.50006ZM5 5.50002C5 5.22388 5.22386 5.00002 5.5 5.00002H12.5C12.7761 5.00002 13 5.22388 13 5.50002V12.5C13 12.7762 12.7761 13 12.5 13H5.5C5.22386 13 5 12.7762 5 12.5V5.50002Z" fill="currentColor" /></symbol>
+<symbol id="i-desktop" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M1 3.25C1 3.11193 1.11193 3 1.25 3H13.75C13.8881 3 14 3.11193 14 3.25V10.75C14 10.8881 13.8881 11 13.75 11H1.25C1.11193 11 1 10.8881 1 10.75V3.25ZM1.25 2C0.559643 2 0 2.55964 0 3.25V10.75C0 11.4404 0.559644 12 1.25 12H5.07341L4.82991 13.2986C4.76645 13.6371 5.02612 13.95 5.37049 13.95H9.62951C9.97389 13.95 10.2336 13.6371 10.1701 13.2986L9.92659 12H13.75C14.4404 12 15 11.4404 15 10.75V3.25C15 2.55964 14.4404 2 13.75 2H1.25ZM9.01091 12H5.98909L5.79222 13.05H9.20778L9.01091 12Z" fill="currentColor" /></symbol>
+<symbol id="i-globe" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.49996 1.80002C4.35194 1.80002 1.79996 4.352 1.79996 7.50002C1.79996 10.648 4.35194 13.2 7.49996 13.2C10.648 13.2 13.2 10.648 13.2 7.50002C13.2 4.352 10.648 1.80002 7.49996 1.80002ZM0.899963 7.50002C0.899963 3.85494 3.85488 0.900024 7.49996 0.900024C11.145 0.900024 14.1 3.85494 14.1 7.50002C14.1 11.1451 11.145 14.1 7.49996 14.1C3.85488 14.1 0.899963 11.1451 0.899963 7.50002Z" fill="currentColor" /> <path fill-rule="evenodd" clip-rule="evenodd" d="M13.4999 7.89998H1.49994V7.09998H13.4999V7.89998Z" fill="currentColor" /> <path fill-rule="evenodd" clip-rule="evenodd" d="M7.09991 13.5V1.5H7.89991V13.5H7.09991zM10.375 7.49998C10.375 5.32724 9.59364 3.17778 8.06183 1.75656L8.53793 1.24341C10.2396 2.82218 11.075 5.17273 11.075 7.49998 11.075 9.82724 10.2396 12.1778 8.53793 13.7566L8.06183 13.2434C9.59364 11.8222 10.375 9.67273 10.375 7.49998zM3.99969 7.5C3.99969 5.17611 4.80786 2.82678 6.45768 1.24719L6.94177 1.75281C5.4582 3.17323 4.69969 5.32389 4.69969 7.5 4.6997 9.67611 5.45822 11.8268 6.94179 13.2472L6.45769 13.7528C4.80788 12.1732 3.9997 9.8239 3.99969 7.5z" fill="currentColor" /> <path fill-rule="evenodd" clip-rule="evenodd" d="M7.49996 3.95801C9.66928 3.95801 11.8753 4.35915 13.3706 5.19448 13.5394 5.28875 13.5998 5.50197 13.5055 5.67073 13.4113 5.83948 13.198 5.89987 13.0293 5.8056 11.6794 5.05155 9.60799 4.65801 7.49996 4.65801 5.39192 4.65801 3.32052 5.05155 1.97064 5.8056 1.80188 5.89987 1.58866 5.83948 1.49439 5.67073 1.40013 5.50197 1.46051 5.28875 1.62927 5.19448 3.12466 4.35915 5.33063 3.95801 7.49996 3.95801zM7.49996 10.85C9.66928 10.85 11.8753 10.4488 13.3706 9.6135 13.5394 9.51924 13.5998 9.30601 13.5055 9.13726 13.4113 8.9685 13.198 8.90812 13.0293 9.00238 11.6794 9.75643 9.60799 10.15 7.49996 10.15 5.39192 10.15 3.32052 9.75643 1.97064 9.00239 1.80188 8.90812 1.58866 8.9685 1.49439 9.13726 1.40013 9.30601 1.46051 9.51924 1.62927 9.6135 3.12466 10.4488 5.33063 10.85 7.49996 10.85z" fill="currentColor" /></symbol>
+<symbol id="i-hamburger-menu" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 3C1.22386 3 1 3.22386 1 3.5C1 3.77614 1.22386 4 1.5 4H13.5C13.7761 4 14 3.77614 14 3.5C14 3.22386 13.7761 3 13.5 3H1.5ZM1 7.5C1 7.22386 1.22386 7 1.5 7H13.5C13.7761 7 14 7.22386 14 7.5C14 7.77614 13.7761 8 13.5 8H1.5C1.22386 8 1 7.77614 1 7.5ZM1 11.5C1 11.2239 1.22386 11 1.5 11H13.5C13.7761 11 14 11.2239 14 11.5C14 11.7761 13.7761 12 13.5 12H1.5C1.22386 12 1 11.7761 1 11.5Z" fill="currentColor" /></symbol>
+<symbol id="i-lightning-bolt" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.69667 0.0403541C8.90859 0.131038 9.03106 0.354857 8.99316 0.582235L8.0902 6.00001H12.5C12.6893 6.00001 12.8625 6.10701 12.9472 6.27641C13.0319 6.4458 13.0136 6.6485 12.8999 6.80001L6.89997 14.8C6.76167 14.9844 6.51521 15.0503 6.30328 14.9597C6.09135 14.869 5.96888 14.6452 6.00678 14.4178L6.90974 9H2.49999C2.31061 9 2.13748 8.893 2.05278 8.72361C1.96809 8.55422 1.98636 8.35151 2.09999 8.2L8.09997 0.200038C8.23828 0.0156255 8.48474 -0.0503301 8.69667 0.0403541ZM3.49999 8.00001H7.49997C7.64695 8.00001 7.78648 8.06467 7.88148 8.17682C7.97648 8.28896 8.01733 8.43723 7.99317 8.5822L7.33027 12.5596L11.5 7.00001H7.49997C7.353 7.00001 7.21347 6.93534 7.11846 6.8232C7.02346 6.71105 6.98261 6.56279 7.00678 6.41781L7.66968 2.44042L3.49999 8.00001Z" fill="currentColor" /></symbol>
+<symbol id="i-moon" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.89998 0.499976C2.89998 0.279062 2.72089 0.0999756 2.49998 0.0999756C2.27906 0.0999756 2.09998 0.279062 2.09998 0.499976V1.09998H1.49998C1.27906 1.09998 1.09998 1.27906 1.09998 1.49998C1.09998 1.72089 1.27906 1.89998 1.49998 1.89998H2.09998V2.49998C2.09998 2.72089 2.27906 2.89998 2.49998 2.89998C2.72089 2.89998 2.89998 2.72089 2.89998 2.49998V1.89998H3.49998C3.72089 1.89998 3.89998 1.72089 3.89998 1.49998C3.89998 1.27906 3.72089 1.09998 3.49998 1.09998H2.89998V0.499976ZM5.89998 3.49998C5.89998 3.27906 5.72089 3.09998 5.49998 3.09998C5.27906 3.09998 5.09998 3.27906 5.09998 3.49998V4.09998H4.49998C4.27906 4.09998 4.09998 4.27906 4.09998 4.49998C4.09998 4.72089 4.27906 4.89998 4.49998 4.89998H5.09998V5.49998C5.09998 5.72089 5.27906 5.89998 5.49998 5.89998C5.72089 5.89998 5.89998 5.72089 5.89998 5.49998V4.89998H6.49998C6.72089 4.89998 6.89998 4.72089 6.89998 4.49998C6.89998 4.27906 6.72089 4.09998 6.49998 4.09998H5.89998V3.49998ZM1.89998 6.49998C1.89998 6.27906 1.72089 6.09998 1.49998 6.09998C1.27906 6.09998 1.09998 6.27906 1.09998 6.49998V7.09998H0.499976C0.279062 7.09998 0.0999756 7.27906 0.0999756 7.49998C0.0999756 7.72089 0.279062 7.89998 0.499976 7.89998H1.09998V8.49998C1.09998 8.72089 1.27906 8.89997 1.49998 8.89997C1.72089 8.89997 1.89998 8.72089 1.89998 8.49998V7.89998H2.49998C2.72089 7.89998 2.89998 7.72089 2.89998 7.49998C2.89998 7.27906 2.72089 7.09998 2.49998 7.09998H1.89998V6.49998ZM8.54406 0.98184L8.24618 0.941586C8.03275 0.917676 7.90692 1.1655 8.02936 1.34194C8.17013 1.54479 8.29981 1.75592 8.41754 1.97445C8.91878 2.90485 9.20322 3.96932 9.20322 5.10022C9.20322 8.37201 6.82247 11.0878 3.69887 11.6097C3.45736 11.65 3.20988 11.6772 2.96008 11.6906C2.74563 11.702 2.62729 11.9535 2.77721 12.1072C2.84551 12.1773 2.91535 12.2458 2.98667 12.3128L3.05883 12.3795L3.31883 12.6045L3.50684 12.7532L3.62796 12.8433L3.81491 12.9742L3.99079 13.089C4.11175 13.1651 4.23536 13.2375 4.36157 13.3059L4.62496 13.4412L4.88553 13.5607L5.18837 13.6828L5.43169 13.7686C5.56564 13.8128 5.70149 13.8529 5.83857 13.8885C5.94262 13.9155 6.04767 13.9401 6.15405 13.9622C6.27993 13.9883 6.40713 14.0109 6.53544 14.0298L6.85241 14.0685L7.11934 14.0892C7.24637 14.0965 7.37436 14.1002 7.50322 14.1002C11.1483 14.1002 14.1032 11.1453 14.1032 7.50023C14.1032 7.25044 14.0893 7.00389 14.0623 6.76131L14.0255 6.48407C13.991 6.26083 13.9453 6.04129 13.8891 5.82642C13.8213 5.56709 13.7382 5.31398 13.6409 5.06881L13.5279 4.80132L13.4507 4.63542L13.3766 4.48666C13.2178 4.17773 13.0353 3.88295 12.8312 3.60423L12.6782 3.40352L12.4793 3.16432L12.3157 2.98361L12.1961 2.85951L12.0355 2.70246L11.8134 2.50184L11.4925 2.24191L11.2483 2.06498L10.9562 1.87446L10.6346 1.68894L10.3073 1.52378L10.1938 1.47176L9.95488 1.3706L9.67791 1.2669L9.42566 1.1846L9.10075 1.09489L8.83599 1.03486L8.54406 0.98184ZM10.4032 5.30023C10.4032 4.27588 10.2002 3.29829 9.83244 2.40604C11.7623 3.28995 13.1032 5.23862 13.1032 7.50023C13.1032 10.593 10.596 13.1002 7.50322 13.1002C6.63646 13.1002 5.81597 12.9036 5.08355 12.5522C6.5419 12.0941 7.81081 11.2082 8.74322 10.0416C8.87963 10.2284 9.10028 10.3497 9.34928 10.3497C9.76349 10.3497 10.0993 10.0139 10.0993 9.59971C10.0993 9.24256 9.84965 8.94373 9.51535 8.86816C9.57741 8.75165 9.63653 8.63334 9.6926 8.51332C9.88358 8.63163 10.1088 8.69993 10.35 8.69993C11.0403 8.69993 11.6 8.14028 11.6 7.44993C11.6 6.75976 11.0406 6.20024 10.3505 6.19993C10.3853 5.90487 10.4032 5.60464 10.4032 5.30023Z" fill="currentColor" /></symbol>
+<symbol id="i-stack" viewBox="0 0 15 15" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.75432 1.81954C7.59742 1.72682 7.4025 1.72682 7.24559 1.81954L1.74559 5.06954C1.59336 5.15949 1.49996 5.32317 1.49996 5.5C1.49996 5.67683 1.59336 5.84051 1.74559 5.93046L7.24559 9.18046C7.4025 9.27318 7.59742 9.27318 7.75432 9.18046L13.2543 5.93046C13.4066 5.84051 13.5 5.67683 13.5 5.5C13.5 5.32317 13.4066 5.15949 13.2543 5.06954L7.75432 1.81954ZM7.49996 8.16923L2.9828 5.5L7.49996 2.83077L12.0171 5.5L7.49996 8.16923ZM2.25432 8.31954C2.01658 8.17906 1.70998 8.2579 1.56949 8.49564C1.42901 8.73337 1.50785 9.03998 1.74559 9.18046L7.24559 12.4305C7.4025 12.5232 7.59742 12.5232 7.75432 12.4305L13.2543 9.18046C13.4921 9.03998 13.5709 8.73337 13.4304 8.49564C13.2899 8.2579 12.9833 8.17906 12.7456 8.31954L7.49996 11.4192L2.25432 8.31954Z" fill="currentColor" /></symbol>
+<!--/ICONS--></svg>
+<a class="skip-link" href="#main" data-alt="رفتن به محتوا">Skip to content</a>
+<header class="site-head">
+  <div class="frame">
+    <a class="wordmark" href="#top"><span class="mark" aria-hidden="true"></span><span data-alt="خط">khat</span></a>
+    <nav class="nav" id="nav" data-dismissable aria-label="Main" data-alt-aria-label="اصلی">
+      <a href="#product" data-alt="محصول">Product</a>
+      <a href="#code" data-alt="مستندات">Docs</a>
+      <a href="#pricing" data-alt="قیمت‌ها">Pricing</a>
+      <a href="#changelog" data-alt="تغییرات">Changelog</a>
+      <a href="#customers" data-alt="مشتریان">Customers</a>
+    </nav>
+    <div class="head-end">
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="EN">فا</button>
+      <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="Toggle dark mode" data-alt-aria-label="تغییر حالت تیره"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg></button>
+      <a class="btn btn-ghost btn-sm hide-sm" href="dashboard.html" data-alt="ورود">Log in</a>
+      <a class="btn btn-sm" href="#start" data-alt="انتشار">Deploy</a>
+      <button class="btn btn-outline btn-icon btn-sm menu-btn" type="button" data-toggle="#nav" aria-controls="nav" aria-expanded="false" aria-label="Menu" data-alt-aria-label="منو"><svg class="ic" aria-hidden="true"><use href="#i-hamburger-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="frame">
+  <div class="ruler" aria-hidden="true"></div>
+  <section class="hero" id="top">
+    <div class="hero-copy">
+      <span class="label"><span class="dot ready" aria-hidden="true"></span><span data-alt="پلتفرم لبه · نسخهٔ ۴٫۲">Edge platform · v4.2</span></span>
+      <h1 class="display" data-alt="API را با یک فرمان روی لبهٔ شبکه منتشر کنید.">Ship APIs to the edge in one command.</h1>
+      <p class="lead" data-alt="تابع‌ها و API های شما در ۳۸ منطقه، نزدیک کاربر اجرا می‌شوند — با نشانی پیش‌نمایش برای هر شاخه، بازگشت فوری و لاگی که واقعاً خوانده می‌شود.">Your functions and APIs run in 38 regions, next to your users — with a preview URL for every branch, instant rollbacks and logs you can actually read.</p>
+      <div class="cmd"><span class="p">$</span><code>npx khat deploy --prod</code><button class="btn btn-ghost btn-icon btn-sm" type="button" data-copy="npx khat deploy --prod" aria-label="Copy command" data-alt-aria-label="کپی فرمان"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
+      <div class="row" style="gap: 8px"><a class="btn btn-lg" href="#start"><span data-alt="شروع انتشار">Start deploying</span><svg class="ic flip-rtl" aria-hidden="true"><use href="#i-arrow-right"/></svg></a><a class="btn btn-outline btn-lg" href="#code" data-alt="خواندن مستندات">Read the docs</a></div>
+    </div>
+    <div>
+      <span class="label" data-alt="یک درخواست، مرحله‌به‌مرحله">One request, step by step</span>
+      <div class="trace" role="img" aria-label="Request waterfall: total 38 milliseconds" data-alt-aria-label="آبشار درخواست: مجموع ۳۸ میلی‌ثانیه">
+        <div class="head"><span class="badge ok">200</span><span>GET /v1/orders</span><span class="spacer"></span><span class="subtle">fra1 · 38 ms</span></div>
+        <div class="scale"><span></span><div><span>0</span><span>10</span><span>20</span><span>30</span><span>40ms</span></div><span></span></div>
+        <div class="r"><span>dns</span><span class="bar"><i style="--s: 0%; --w: 5%"></i></span><span class="t">2 ms</span></div>
+        <div class="r"><span>tls</span><span class="bar"><i style="--s: 5%; --w: 12%"></i></span><span class="t">5 ms</span></div>
+        <div class="r"><span>edge</span><span class="bar"><i style="--s: 17%; --w: 8%"></i></span><span class="t">3 ms</span></div>
+        <div class="r fn"><span>function</span><span class="bar"><i style="--s: 25%; --w: 55%"></i></span><span class="t">22 ms</span></div>
+        <div class="r db"><span>kv.get</span><span class="bar"><i style="--s: 40%; --w: 20%"></i></span><span class="t">8 ms</span></div>
+        <div class="r"><span>response</span><span class="bar"><i style="--s: 80%; --w: 15%"></i></span><span class="t">6 ms</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec cells" style="--n: 4" aria-label="Platform numbers" data-alt-aria-label="اعداد پلتفرم">
+    <div class="stat"><span class="label" data-alt="مناطق">Regions</span><b data-num="38">38</b></div>
+    <div class="stat"><span class="label" data-alt="میانهٔ تأخیر جهانی">Global p50</span><b><span data-num="14">14</span> <span class="small subtle">ms</span></b></div>
+    <div class="stat"><span class="label" data-alt="دسترس‌پذیری">Uptime</span><b data-num="99.99" data-fmt="pct2">99.99%</b></div>
+    <div class="stat"><span class="label" data-alt="درخواست در روز">Requests / day</span><b data-num="1200000000" data-fmt="compact">1.2B</b></div>
+  </section>
+
+  <section class="sec logos" id="customers" aria-label="Customers" data-alt-aria-label="مشتریان">
+    <span>northwind</span><span class="mono">PARSEC</span><span class="serif">Halcyon</span><span data-alt="نشان">nashan</span><span class="mono">ORBITAL</span><span>tidepool</span>
+  </section>
+
+  <section class="sec" id="product">
+    <div class="sec-title"><span class="label" data-alt="۰۱ — محصول">01 — Product</span><h2 class="h1" data-alt="همهٔ آنچه یک API در محیط واقعی لازم دارد.">Everything an API needs in production.</h2></div>
+    <div class="cells" style="--n: 3; border-block-start: 1px solid var(--line)">
+      <div class="feat"><span class="idx">01</span><b class="h3" data-alt="تابع‌های لبه">Edge functions</b><p class="small muted" data-alt="TypeScript، Python یا Go بنویسید؛ ما در نزدیک‌ترین منطقه اجرا می‌کنیم.">Write TypeScript, Python or Go; we run it in the closest region.</p><div class="viz"><div>export default async (req) =&gt; {</div><div>&nbsp;&nbsp;return Response.json({ ok: true })</div><div>}</div></div></div>
+      <div class="feat"><span class="idx">02</span><b class="h3" data-alt="بازگشت فوری">Instant rollbacks</b><p class="small muted" data-alt="هر انتشار تغییرناپذیر است؛ با یک کلیک به هر نسخهٔ قبلی برگردید.">Every deploy is immutable — go back to any version in one click.</p><div class="viz"><div class="row-l"><span><span class="dot ready"></span> a3f9c2e</span><span>prod</span></div><div class="row-l"><span><span class="dot ready"></span> 91be004</span><span>2h</span></div><div class="row-l"><span><span class="dot error"></span> 4c7d1aa</span><span>5h</span></div></div></div>
+      <div class="feat"><span class="idx">03</span><b class="h3" data-alt="نشانی پیش‌نمایش">Preview URLs</b><p class="small muted" data-alt="هر شاخه نشانی خودش را دارد؛ پیش از ادغام بررسی کنید.">Each branch gets its own URL to review before merging.</p><div class="viz"><div>feat/checkout</div><div>→ payments-git-feat-checkout.khat.app</div></div></div>
+      <div class="feat"><span class="idx">04</span><b class="h3" data-alt="مشاهده‌پذیری">Observability</b><p class="small muted" data-alt="لاگ، ردگیری و معیارها بدون پیکربندی.">Logs, traces and metrics with zero configuration.</p><div class="viz" style="padding: 8px 10px"><div data-chart="spark" data-height="44" data-values="12,14,13,18,16,22,19,25,21,28,24,30" data-label='{"en":"Requests per minute","fa":"درخواست در دقیقه"}'></div></div></div>
+      <div class="feat"><span class="idx">05</span><b class="h3" data-alt="KV جهانی">Global KV</b><p class="small muted" data-alt="ذخیره‌ساز کلید-مقدار که در کمتر از ۱۰ میلی‌ثانیه همه‌جا تکثیر می‌شود.">A key–value store replicated everywhere in under 10 ms.</p><div class="viz"><div class="row-l"><span>session:9f2</span><span>{ uid: 41 }</span></div><div class="row-l"><span>rate:ip:5.2</span><span>17</span></div></div></div>
+      <div class="feat"><span class="idx">06</span><b class="h3" data-alt="ایمن به‌طور پیش‌فرض">Secure by default</b><p class="small muted" data-alt="TLS 1.3، دیوار آتش وب و رمزهای رمزنگاری‌شده، بدون کار اضافه.">TLS 1.3, a web firewall and encrypted secrets — no extra work.</p><div class="viz"><div>✓ tls 1.3 · auto-renew</div><div>✓ waf · owasp ruleset</div><div>✓ secrets · aes-256</div></div></div>
+    </div>
+  </section>
+
+  <section class="sec two" id="code">
+    <div class="stack" style="gap: var(--space-4)">
+      <span class="label" data-alt="۰۲ — توسعه">02 — Develop</span>
+      <h2 class="h1" data-alt="کد شما، لبهٔ ما.">Your code, our edge.</h2>
+      <p class="muted" data-alt="یک فایل، یک فرمان. نشانی نهایی را در کمتر از یک دقیقه می‌گیرید و هر push یک نشانی پیش‌نمایش می‌سازد.">One file, one command. You get a production URL in under a minute, and every push builds a preview.</p>
+      <div class="term"><div class="bar"><i></i><i></i><i></i><span style="margin-inline-start: 6px">~/payments-api</span></div><pre><span class="dim">$</span> npx khat deploy --prod
+<span class="dim">› building 3 functions…</span>
+<span class="ok">✓</span> built in 6.2s
+<span class="ok">✓</span> deployed to 38 regions
+<span class="acc">→</span> https://api.acme.example</pre></div>
+    </div>
+    <div class="code-card" style="align-self: start">
+      <div class="tabs" role="tablist" aria-label="Language" data-alt-aria-label="زبان">
+        <button type="button" role="tab" id="lt-js" aria-controls="lp-js" aria-selected="true">TypeScript</button>
+        <button type="button" role="tab" id="lt-py" aria-controls="lp-py" aria-selected="false">Python</button>
+        <button type="button" role="tab" id="lt-go" aria-controls="lp-go" aria-selected="false">Go</button>
+        <button type="button" role="tab" id="lt-sh" aria-controls="lp-sh" aria-selected="false">cURL</button>
+      </div>
+      <div style="position: relative">
+        <button class="btn btn-outline btn-sm copy-btn" type="button" data-copy="#lp-js" aria-label="Copy code" data-alt-aria-label="کپی کد"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg></button>
+        <pre class="code" role="tabpanel" id="lp-js" aria-labelledby="lt-js"><span class="l"><span class="c">// api/orders.ts — runs in every region</span></span><span class="l"><span class="k">import</span> { kv } <span class="k">from</span> <span class="s">"khat:kv"</span></span><span class="l"></span><span class="l"><span class="k">export default async function</span> <span class="f">handler</span>(req: Request) {</span><span class="l hl">  <span class="k">const</span> id = req.headers.get(<span class="s">"idempotency-key"</span>)</span><span class="l">  <span class="k">const</span> seen = <span class="k">await</span> kv.get(id)</span><span class="l">  <span class="k">if</span> (seen) <span class="k">return</span> Response.json(seen)</span><span class="l">  <span class="k">const</span> order = { id, total: <span class="n">420</span> }</span><span class="l">  <span class="k">await</span> kv.set(id, order, { ttl: <span class="n">86400</span> })</span><span class="l">  <span class="k">return</span> Response.json(order, { status: <span class="n">201</span> })</span><span class="l">}</span></pre>
+        <pre class="code" role="tabpanel" id="lp-py" aria-labelledby="lt-py" hidden><span class="l"><span class="c"># api/orders.py</span></span><span class="l"><span class="k">from</span> khat <span class="k">import</span> kv, json_response</span><span class="l"></span><span class="l"><span class="k">async def</span> <span class="f">handler</span>(req):</span><span class="l hl">    key = req.headers.get(<span class="s">"idempotency-key"</span>)</span><span class="l">    <span class="k">if</span> seen := <span class="k">await</span> kv.get(key):</span><span class="l">        <span class="k">return</span> json_response(seen)</span><span class="l">    order = {<span class="s">"id"</span>: key, <span class="s">"total"</span>: <span class="n">420</span>}</span><span class="l">    <span class="k">await</span> kv.set(key, order, ttl=<span class="n">86400</span>)</span><span class="l">    <span class="k">return</span> json_response(order, status=<span class="n">201</span>)</span></pre>
+        <pre class="code" role="tabpanel" id="lp-go" aria-labelledby="lt-go" hidden><span class="l"><span class="c">// api/orders.go</span></span><span class="l"><span class="k">package</span> api</span><span class="l"></span><span class="l"><span class="k">func</span> <span class="f">Handler</span>(w http.ResponseWriter, r *http.Request) {</span><span class="l hl">    id := r.Header.Get(<span class="s">"Idempotency-Key"</span>)</span><span class="l">    <span class="k">if</span> v, ok := kv.Get(id); ok { json.NewEncoder(w).Encode(v); <span class="k">return</span> }</span><span class="l">    order := Order{ID: id, Total: <span class="n">420</span>}</span><span class="l">    kv.Set(id, order, <span class="n">24</span>*time.Hour)</span><span class="l">    w.WriteHeader(<span class="n">201</span>)</span><span class="l">    json.NewEncoder(w).Encode(order)</span><span class="l">}</span></pre>
+        <pre class="code" role="tabpanel" id="lp-sh" aria-labelledby="lt-sh" hidden><span class="l"><span class="c"># create an order (safe to retry)</span></span><span class="l">curl -X POST https://api.acme.example/v1/orders \</span><span class="l hl">  -H <span class="s">"Idempotency-Key: 7c1e-42"</span> \</span><span class="l">  -H <span class="s">"Content-Type: application/json"</span> \</span><span class="l">  -d <span class="s">'{"total": 420}'</span></span></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-title"><span class="label" data-alt="۰۳ — معماری">03 — Architecture</span><h2 class="h1" data-alt="کوتاه‌ترین مسیر از کاربر تا داده.">The shortest path from user to data.</h2></div>
+    <div class="dots-bg" style="padding: var(--space-7) var(--space-5); border-block-start: 1px solid var(--line)">
+      <div class="diagram">
+        <div class="node"><svg class="ic" aria-hidden="true"><use href="#i-desktop"/></svg><b data-alt="کاربر">Client</b><small>tehran · 4g</small></div>
+        <div class="node accent"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg><b data-alt="لبه">Edge</b><small>38 regions · anycast</small></div>
+        <div class="node"><svg class="ic" aria-hidden="true"><use href="#i-lightning-bolt"/></svg><b data-alt="تابع">Function</b><small>v8 isolate · 0 ms cold</small></div>
+        <div class="node"><svg class="ic" aria-hidden="true"><use href="#i-stack"/></svg><b data-alt="داده">Data</b><small>kv · postgres · blob</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="pricing">
+    <div class="sec-title"><span class="label" data-alt="۰۴ — قیمت‌ها">04 — Pricing</span><h2 class="h1" data-alt="برای مصرف بپردازید، نه برای سرور بیکار.">Pay for traffic, not idle servers.</h2></div>
+    <div class="cells" style="--n: 3; border-block-start: 1px solid var(--line)">
+      <div class="price-cell"><span class="label" data-alt="سرگرمی">Hobby</span><span class="amt ltr" style="justify-self: start">$0</span><ul><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span data-alt="۱۰۰ هزار درخواست در ماه">100K requests / month</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span data-alt="نشانی پیش‌نمایش">Preview URLs</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span data-alt="لاگ یک‌روزه">1-day logs</span></li></ul><a class="btn btn-outline" href="#start" data-alt="شروع رایگان">Start free</a></div>
+      <div class="price-cell featured"><div class="split"><span class="label" data-alt="حرفه‌ای">Pro</span><span class="badge ink" data-alt="رایج‌ترین">Most teams</span></div><span class="amt"><span class="ltr">$20</span> <span class="small subtle" style="letter-spacing: 0" data-alt="/ کاربر / ماه">/ seat / mo</span></span><ul><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span data-alt="۱۰ میلیون درخواست">10M requests</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span data-alt="بازگشت و ترافیک تدریجی">Rollbacks &amp; gradual rollouts</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span data-alt="لاگ ۳۰ روزه">30-day logs</span></li></ul><a class="btn" href="dashboard.html" data-alt="شروع دورهٔ آزمایشی">Start a trial</a></div>
+      <div class="price-cell"><span class="label" data-alt="سازمانی">Enterprise</span><span class="amt" data-alt="توافقی">Custom</span><ul><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span data-alt="SLA ۹۹٫۹۹٪">99.99% SLA</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span data-alt="ورود یکپارچه و لاگ ممیزی">SSO &amp; audit logs</span></li><li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span data-alt="مناطق اختصاصی">Dedicated regions</span></li></ul><a class="btn btn-outline" href="#start" data-alt="گفت‌وگو با فروش">Talk to sales</a></div>
+    </div>
+    <div class="compare-wrap" style="border-block-start: 1px solid var(--line)">
+      <table class="compare">
+        <thead><tr><th scope="col" data-alt="امکان">Feature</th><th scope="col" data-alt="سرگرمی">Hobby</th><th scope="col" data-alt="حرفه‌ای">Pro</th><th scope="col" data-alt="سازمانی">Enterprise</th></tr></thead>
+        <tbody>
+          <tr><td data-alt="مناطق">Regions</td><td class="mono">12</td><td class="mono">38</td><td class="mono">38 + private</td></tr>
+          <tr><td data-alt="زمان اجرای تابع">Function timeout</td><td class="mono">10s</td><td class="mono">60s</td><td class="mono">900s</td></tr>
+          <tr><td data-alt="دامنهٔ اختصاصی">Custom domains</td><td class="mono">1</td><td class="mono">50</td><td class="mono">∞</td></tr>
+          <tr><td data-alt="پشتیبانی">Support</td><td data-alt="انجمن">Community</td><td data-alt="ایمیل · ۲۴ ساعت">Email · 24h</td><td data-alt="اختصاصی · ۱ ساعت">Dedicated · 1h</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="sec" id="changelog">
+    <div class="sec-title"><span class="label" data-alt="۰۵ — تغییرات">05 — Changelog</span><h2 class="h1" data-alt="هر هفته کمی بهتر.">A little better every week.</h2></div>
+    <div class="log-list" style="border-block-start: 1px solid var(--line)">
+      <article class="log-item"><span class="mono subtle" data-date="2026-10-13" data-fmt="long">October 13, 2026</span><div class="stack" style="gap: 6px"><div class="row"><span class="badge ok" data-alt="تازه">New</span><b class="h3" data-alt="ترافیک تدریجی">Gradual rollouts</b></div><p class="small muted" data-alt="انتشار تازه را اول برای ۵٪ کاربران روشن کنید و با خطای کمتر از آستانه، خودکار بالا ببرید.">Send a new deploy to 5% of users first and ramp up automatically while errors stay under your threshold.</p></div></article>
+      <article class="log-item"><span class="mono subtle" data-date="2026-10-06" data-fmt="long">October 6, 2026</span><div class="stack" style="gap: 6px"><div class="row"><span class="badge info" data-alt="بهبود">Improved</span><b class="h3" data-alt="لاگ‌ها ۳ برابر سریع‌تر">Logs are 3× faster</b></div><p class="small muted" data-alt="جست‌وجو در یک میلیون خط لاگ حالا کمتر از یک ثانیه طول می‌کشد.">Searching a million log lines now takes under a second.</p></div></article>
+      <article class="log-item"><span class="mono subtle" data-date="2026-09-29" data-fmt="long">September 29, 2026</span><div class="stack" style="gap: 6px"><div class="row"><span class="badge" data-alt="رفع">Fixed</span><b class="h3" data-alt="منطقه‌های خاورمیانه">Middle East regions</b></div><p class="small muted" data-alt="مسیریابی کاربران تهران و دبی به نزدیک‌ترین منطقه اصلاح شد.">Users in Tehran and Dubai now route to the closest region.</p></div></article>
+    </div>
+  </section>
+
+  <section class="sec" id="start">
+    <div class="center pad">
+      <span class="label" data-alt="۰۶ — شروع">06 — Start</span>
+      <h2 class="display" style="font-size: clamp(32px, 4.6vw, 60px)" data-alt="اولین API را در ۶۰ ثانیه منتشر کنید.">Deploy your first API in 60 seconds.</h2>
+      <div class="cmd"><span class="p">$</span><code>npx khat init payments-api</code><button class="btn btn-ghost btn-icon btn-sm" type="button" data-copy="npx khat init payments-api" aria-label="Copy command" data-alt-aria-label="کپی فرمان"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
+      <div class="row" style="justify-content: center; gap: 8px"><a class="btn btn-lg" href="dashboard.html" data-alt="بازکردن کنسول">Open the console</a><a class="btn btn-outline btn-lg" href="#code" data-alt="خواندن راهنما">Read the guide</a></div>
+    </div>
+  </section>
+
+  <footer class="sec site-foot">
+    <div class="foot-cells">
+      <div><a class="wordmark" href="#top"><span class="mark" aria-hidden="true"></span><span data-alt="خط">khat</span></a><p class="small muted" style="max-inline-size: 32ch" data-alt="یک پلتفرم نمونه برای گالری تیست‌فولیو. شرکت‌ها و اعداد خیالی‌اند.">A sample platform for the Tastefolio gallery. Companies and numbers are fictional.</p><span class="status small"><span class="dot ready" aria-hidden="true"></span><span data-alt="همهٔ سامانه‌ها عادی‌اند">All systems normal</span></span></div>
+      <div><span class="label" data-alt="محصول">Product</span><ul><li><a href="#product" data-alt="تابع‌ها">Functions</a></li><li><a href="#product" data-alt="KV">KV</a></li><li><a href="#pricing" data-alt="قیمت‌ها">Pricing</a></li></ul></div>
+      <div><span class="label" data-alt="منابع">Resources</span><ul><li><a href="#code" data-alt="مستندات">Docs</a></li><li><a href="#changelog" data-alt="تغییرات">Changelog</a></li><li><a href="dashboard.html" data-alt="کنسول">Console</a></li></ul></div>
+      <div><span class="label" data-alt="شرکت">Company</span><ul><li><a href="#customers" data-alt="مشتریان">Customers</a></li><li><a href="#top" data-alt="امنیت">Security</a></li><li><a href="#top" data-alt="حریم خصوصی">Privacy</a></li></ul></div>
+    </div>
+  </footer>
+</main>
+<script>
+  // the copy button follows the selected code tab
+  document.querySelector('.code-card').addEventListener('tf:tab', (e) => {
+    document.querySelector('.code-card .copy-btn').dataset.copy = '#' + e.detail.id;
+  });
+</script>
+</body>
+</html>

@@ -17,7 +17,7 @@
  *   Filters    [data-filter-scope] with [data-filter-search], [data-filter="key"] (buttons/select/checkbox),
  *              [data-filter-item data-key="a b"], [data-filter-count], [data-filter-empty]
  *   Sorting    th > button[data-sort="text|num|date"]
- *   Forms      form[data-validate data-success="…" data-success-alt="…"]
+ *   Forms      form[data-validate data-success="…" data-success-alt="…"] (+ data-keep: don't reset, data-stay: keep its dialog open)
  *   Steps      [data-steps] > [data-step], [data-next], [data-prev], [data-step-indicator] > *
  *   When       [data-when="fieldName:value"] shown only while that field has that value
  *   Carousel   [data-carousel] > [data-track], [data-prev-slide], [data-next-slide]
@@ -475,7 +475,7 @@
       delete form.dataset.touched;
       $$('[aria-invalid]', form).forEach((f) => f.removeAttribute('aria-invalid'));
     }
-    form.closest('dialog')?.close();
+    if (!form.hasAttribute('data-stay')) form.closest('dialog')?.close(); // data-stay: keep the dialog open to show a result
   }, true);
   d.addEventListener('input', (e) => {
     const f = e.target;
@@ -546,7 +546,7 @@
   // ---------------------------------------------------------------- copy
   on('click', '[data-copy]', async (e, b) => {
     const src = b.dataset.copy;
-    const text = src.startsWith('#') ? d.querySelector(src)?.textContent.trim() : src;
+    const text = src.startsWith('#') ? d.querySelector(src)?.innerText.trim() : src; // innerText keeps line breaks of block lines (code)
     try { await navigator.clipboard.writeText(text); } catch { /* clipboard blocked */ }
     tf.toast(b.dataset.copied || tf.t('copied'), { tone: 'success' });
   });

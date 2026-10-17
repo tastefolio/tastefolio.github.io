@@ -216,6 +216,15 @@
       ]
     },
     {
+      "name": "linework",
+      "description": "Tastefolio design language — Hairline technical — a page ruled by 1px lines with crosshairs, ink as the only brand, mono labels and a developer console",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/linework"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -243,7 +252,8 @@
         "./skills/syllabus",
         "./skills/brief",
         "./skills/lucent",
-        "./skills/clinic"
+        "./skills/clinic",
+        "./skills/linework"
       ]
     }
   ]
