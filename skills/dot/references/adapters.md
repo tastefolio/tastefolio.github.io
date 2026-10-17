@@ -35,11 +35,16 @@ Set `<html lang="en" dir="ltr">` or `<html lang="fa" dir="rtl">`; dark mode is `
   --color-ink-inverse: var(--ink-inverse);
   --color-line: var(--line);
   --color-line-2: var(--line-2);
+  --color-dot: var(--dot);
   --color-brand: var(--brand);
   --color-brand-ink: var(--brand-ink);
   --color-brand-soft: var(--brand-soft);
   --color-brand-strong: var(--brand-strong);
   --color-focus: var(--focus);
+  --color-led: var(--led);
+  --color-led-white: var(--led-white);
+  --color-led-off: var(--led-off);
+  --color-led-glow: var(--led-glow);
   --color-success: var(--success);
   --color-success-soft: var(--success-soft);
   --color-warning: var(--warning);
@@ -119,11 +124,16 @@ export default {
         'ink-inverse': 'var(--ink-inverse)',
         'line': 'var(--line)',
         'line-2': 'var(--line-2)',
+        'dot': 'var(--dot)',
         'brand': 'var(--brand)',
         'brand-ink': 'var(--brand-ink)',
         'brand-soft': 'var(--brand-soft)',
         'brand-strong': 'var(--brand-strong)',
         'focus': 'var(--focus)',
+        'led': 'var(--led)',
+        'led-white': 'var(--led-white)',
+        'led-off': 'var(--led-off)',
+        'led-glow': 'var(--led-glow)',
         'success': 'var(--success)',
         'success-soft': 'var(--success-soft)',
         'warning': 'var(--warning)',
@@ -202,7 +212,7 @@ Spacing, radius and type values are plain px/rem and translate 1:1 to dp/pt.
 
 ## Token inventory
 
-- **color**: `--canvas`, `--surface`, `--surface-2`, `--surface-3`, `--surface-ink`, `--overlay`, `--ink`, `--ink-2`, `--ink-3`, `--ink-inverse`, `--line`, `--line-2`, `--brand`, `--brand-ink`, `--brand-soft`, `--brand-strong`, `--focus`, `--success`, `--success-soft`, `--warning`, `--warning-soft`, `--danger`, `--danger-soft`, `--info`, `--info-soft`, `--chart-1`, `--chart-2`, `--chart-3`, `--chart-4`, `--chart-5`, `--chart-6`, `--chart-grid`, `--chart-axis`, `--chart-curve`, `--chart-stroke`, `--chart-area`, `--chart-radius`, `--chart-bar-gap`, `--chart-donut`, `--chart-gap`, `--chart-dots`
+- **color**: `--canvas`, `--surface`, `--surface-2`, `--surface-3`, `--surface-ink`, `--overlay`, `--ink`, `--ink-2`, `--ink-3`, `--ink-inverse`, `--line`, `--line-2`, `--dot`, `--brand`, `--brand-ink`, `--brand-soft`, `--brand-strong`, `--focus`, `--led`, `--led-white`, `--led-off`, `--led-glow`, `--success`, `--success-soft`, `--warning`, `--warning-soft`, `--danger`, `--danger-soft`, `--info`, `--info-soft`, `--chart-1`, `--chart-2`, `--chart-3`, `--chart-4`, `--chart-5`, `--chart-6`, `--chart-grid`, `--chart-axis`, `--chart-curve`, `--chart-stroke`, `--chart-area`, `--chart-radius`, `--chart-bar-gap`, `--chart-donut`, `--chart-gap`, `--chart-dots`
 - **font**: `--font-sans`, `--font-display`, `--font-mono`
 - **text**: `--fs-xs`, `--fs-sm`, `--fs-md`, `--fs-lg`, `--fs-xl`, `--fs-2xl`, `--fs-3xl`, `--fs-display`
 - **radius**: `--radius-sm`, `--radius-md`, `--radius-lg`, `--radius-pill`

@@ -20,7 +20,7 @@ export function rootTokens(css) {
 }
 
 const groups = [
-  ['color', (t) => /^--(canvas|surface|ink|line|brand|accent|focus|success|warning|danger|info|overlay|highlight|chart)/.test(t)],
+  ['color', (t) => /^--(canvas|surface|ink|line|brand|accent|focus|success|warning|danger|info|overlay|highlight|chart|led|dot$)/.test(t)],
   ['font', (t) => t.startsWith('--font-')],
   ['text', (t) => t.startsWith('--fs-')],
   ['radius', (t) => t.startsWith('--radius')],
