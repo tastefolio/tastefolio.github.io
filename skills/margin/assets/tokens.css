@@ -1,0 +1,164 @@
+/* Margin — design tokens (Tastefolio). Long-form reading: warm paper, soft black ink, one plum ink for notes and
+   links, a pale highlighter, Literata for reading (optical sizes) and Inter for the quiet interface around it.
+   The column is narrow; the margins are wide and they hold the notes. */
+:root {
+  --canvas: #fbf9f4;
+  --surface: #ffffff;
+  --surface-2: #f3f0e8;
+  --surface-3: #e7e3d8;
+  --surface-ink: #1c1b19;
+  --overlay: rgba(28, 27, 25, .45);
+
+  --ink: #1c1b19;
+  --ink-2: #57544e;
+  --ink-3: #6e6a62;
+  --ink-inverse: #fbf9f4;
+
+  --line: #e6e1d6;
+  --line-2: #d3cdbf;
+
+  --brand: #7a3b69;           /* plum ink — note numbers, links, the one action */
+  --brand-ink: #ffffff;
+  --brand-soft: color-mix(in oklab, var(--brand) 10%, #fff);
+  --brand-strong: color-mix(in oklab, var(--brand) 80%, #000);
+  --highlight: #fbefa4;       /* the reader's highlighter */
+  --focus: color-mix(in oklab, var(--brand) 55%, transparent);
+
+  --success: #356f42;
+  --success-soft: #e6f2e7;
+  --warning: #86590c;
+  --warning-soft: #f8eed8;
+  --danger: #b23b3b;
+  --danger-soft: #f8e5e3;
+  --info: #3c5f9a;
+  --info-soft: #e7edf7;
+
+  --chart-1: var(--brand);
+  --chart-2: var(--ink);
+  --chart-3: #c08a2e;
+  --chart-4: #3c7d4a;
+  --chart-5: #3c5f9a;
+  --chart-6: #b9b3a6;
+  --chart-grid: #ece7dc;
+  --chart-axis: var(--ink-3);
+  --chart-curve: smooth;
+  --chart-stroke: 1.75;
+  --chart-area: .08;
+  --chart-radius: 2;
+  --chart-bar-gap: .45;
+  --chart-donut: 10;
+  --chart-gap: 2;
+  --chart-dots: 0;
+
+  --font-sans: "Inter", "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Literata", "Vazirmatn", Georgia, serif;
+  --font-serif: "Literata", "Vazirmatn", Georgia, serif;   /* the reading face */
+  --font-mono: ui-monospace, "SF Mono", Menlo, "Vazirmatn", monospace;
+  --fs-xs: 12px;
+  --fs-sm: 13.5px;
+  --fs-md: 15px;
+  --fs-lg: 19px;               /* body text of an article */
+  --fs-xl: 24px;
+  --fs-2xl: 32px;
+  --fs-3xl: 44px;
+  --fs-display: clamp(36px, 5vw, 64px);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 600;
+  --fw-display: 500;
+  --lh-tight: 1.1;
+  --lh-snug: 1.3;
+  --lh-body: 1.6;
+  --lh-read: 1.72;
+  --measure: 40rem;            /* reading column ≈ 66 characters */
+  --tracking-display: -.02em;
+  --tracking-caps: .14em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 72px;
+  --space-9: 104px;
+  --space-10: 144px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+  --border-w: 1px;
+  --shadow-1: 0 1px 2px rgba(28, 27, 25, .06);
+  --shadow-2: 0 10px 30px -14px rgba(28, 27, 25, .22);
+  --shadow-3: 0 24px 60px -24px rgba(28, 27, 25, .32);
+
+  --container: 1180px;
+  --gutter: clamp(16px, 3vw, 32px);
+  --control-h: 40px;
+  --control-h-lg: 48px;
+
+  --ease: cubic-bezier(.3, .7, .3, 1);
+  --dur-1: 150ms;
+  --dur-2: 260ms;
+  --dur-3: 480ms;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --canvas: #161513;
+  --surface: #1d1c19;
+  --surface-2: #24221f;
+  --surface-3: #302d29;
+  --surface-ink: #0e0d0c;
+  --overlay: rgba(0, 0, 0, .6);
+  --ink: #ece7dd;
+  --ink-2: #b4ada1;
+  --ink-3: #918a7e;
+  --ink-inverse: #161513;
+  --line: #2c2a26;
+  --line-2: #3b3833;
+  --brand: #d79bc4;
+  --brand-ink: #24101e;
+  --brand-soft: color-mix(in oklab, var(--brand) 14%, transparent);
+  --brand-strong: color-mix(in oklab, var(--brand) 78%, #fff);
+  --highlight: rgba(240, 214, 90, .3);
+  --success: #7fc28c;
+  --success-soft: rgba(127, 194, 140, .14);
+  --warning: #e3b45a;
+  --warning-soft: rgba(227, 180, 90, .14);
+  --danger: #ef8a8a;
+  --danger-soft: rgba(239, 138, 138, .14);
+  --info: #8fb0e6;
+  --info-soft: rgba(143, 176, 230, .14);
+  --chart-2: #ece7dd;
+  --chart-grid: #2a2825;
+  --shadow-2: 0 10px 30px -14px rgba(0, 0, 0, .7);
+  --shadow-3: 0 24px 60px -24px rgba(0, 0, 0, .8);
+  color-scheme: dark;
+}
+
+[data-paper="sepia"] {
+  --canvas: #f4ecd8;
+  --surface: #f9f3e3;
+  --surface-2: #ece2c8;
+  --line: #e0d4b6;
+  --ink: #3a2f20;
+  --ink-2: #6b5c45;
+}
+
+:root:lang(fa) {
+  --font-sans: "Vazirmatn", "Inter", Tahoma, sans-serif;
+  --font-display: "Vazirmatn", "Literata", serif;
+  --font-serif: "Vazirmatn", "Literata", serif;
+  --fs-lg: 18.5px;
+  --fs-display: clamp(32px, 4.4vw, 54px);
+  --fw-display: 800;
+  --lh-tight: 1.5;
+  --lh-snug: 1.6;
+  --lh-body: 1.9;
+  --lh-read: 2.05;
+  --measure: 42rem;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+}

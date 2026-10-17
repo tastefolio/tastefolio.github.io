@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="dashboard">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Writer studio · Margin">میز نویسنده · حاشیه</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300..800;1,7..72,300..800&family=Inter:wght@400..700&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .masthead .tabs { border: 0; gap: var(--space-4); }
+  @media (max-width: 760px) { .masthead .container { flex-wrap: wrap; padding-block: 8px; } .masthead .tabs { order: 3; inline-size: 100%; } }
+  .save-state { display: inline-flex; align-items: center; gap: 6px; font-size: var(--fs-xs); color: var(--ink-3); }
+  .save-state::before { content: ""; inline-size: 6px; block-size: 6px; border-radius: 50%; background: var(--success); transition: background var(--dur-2); }
+  .save-state[data-state="saving"]::before { background: var(--warning); }
+  .best li { display: grid; grid-template-columns: minmax(0, 1fr) 160px auto; gap: var(--space-4); align-items: center; padding-block: 12px; border-block-start: 1px solid var(--line); }
+  .best .t { font: 500 var(--fs-md)/1.4 var(--font-serif); }
+  .best .bar { block-size: 4px; background: var(--surface-3); }
+  .panel-page > .split { flex-wrap: wrap; }
+  .best .bar i { display: block; block-size: 100%; inline-size: var(--v); background: var(--brand); }
+  @media (max-width: 640px) { .best li { grid-template-columns: minmax(0, 1fr) auto; } .best .bar { display: none; } }
+  .two { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--space-6); align-items: start; }
+  @media (max-width: 900px) { .two { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body>
+<svg class="sprite" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Icons: Heroicons (MIT License) — heroicons.com --><!--ICONS-->
+<symbol id="i-arrow-down-tray" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></symbol>
+<symbol id="i-chat-bubble-bottom-center-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"/></symbol>
+<symbol id="i-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></symbol>
+<symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"/></symbol>
+<symbol id="i-minus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></symbol>
+<symbol id="i-plus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></symbol>
+<!--/ICONS--></svg>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<header class="masthead">
+  <div class="container">
+    <a class="wordmark" href="site.html"><span data-alt="Margin">حاشیه</span><small data-alt="Studio">میز نویسنده</small></a>
+    <div class="tabs" role="tablist" aria-label="بخش‌ها" data-alt-aria-label="Sections">
+      <button type="button" role="tab" id="t-write" aria-controls="p-write" aria-selected="true" data-alt="Write">نوشتن</button>
+      <button type="button" role="tab" id="t-lib" aria-controls="p-lib" aria-selected="false" data-alt="Library">نوشته‌ها</button>
+      <button type="button" role="tab" id="t-stats" aria-controls="p-stats" aria-selected="false" data-alt="Stats">آمار</button>
+      <button type="button" role="tab" id="t-readers" aria-controls="p-readers" aria-selected="false" data-alt="Readers">خوانندگان</button>
+    </div>
+    <div class="head-end">
+      <span class="save-state hide-sm" data-alt="Saved">ذخیره شد</span>
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+      <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="تغییر حالت تیره" data-alt-aria-label="Toggle dark mode"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg></button>
+      <span class="avatar" style="--c:#ead9e3" data-alt="N">ن</span>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <!-- ============================================ write -->
+  <section role="tabpanel" id="p-write" aria-labelledby="t-write" class="studio">
+    <nav class="drafts" aria-label="پیش‌نویس‌ها" data-alt-aria-label="Drafts">
+      <div class="split" style="padding: 4px 12px 8px"><span class="caps" data-alt="Drafts">پیش‌نویس‌ها</span><button class="btn btn-ghost btn-icon btn-sm" type="button" data-toast="پیش‌نویس تازه ساخته شد" data-toast-alt="New draft created" aria-label="پیش‌نویس تازه" data-alt-aria-label="New draft"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></div>
+      <button type="button" aria-current="true"><b data-alt="On Writing Slowly">نوشتن آهسته</b><span class="tiny"><span data-alt="Edited">ویرایش</span> <span data-ago="300">۵ دقیقه پیش</span></span></button>
+      <button type="button"><b data-alt="Bookmarks, a defence">در دفاع از نشانک</b><span class="tiny"><span data-alt="Edited">ویرایش</span> <span data-ago="172800">۲ روز پیش</span></span></button>
+      <button type="button"><b data-alt="Letters to a young editor">نامه به ویراستاری جوان</b><span class="tiny"><span data-alt="Edited">ویرایش</span> <span data-ago="1209600">۲ هفته پیش</span></span></button>
+    </nav>
+    <div class="editor">
+      <div class="row tiny subtle"><span class="badge plum" data-alt="Draft">پیش‌نویس</span><span data-alt="For No. 43 · due 25 Aban">برای شمارهٔ ۴۳ · مهلت ۲۵ آبان</span></div>
+      <input class="title-in" id="title" value="نوشتن آهسته" data-alt-value="On Writing Slowly" aria-label="عنوان" data-alt-aria-label="Title">
+      <textarea class="dek-in" id="dek" rows="2" aria-label="زیرعنوان" data-alt-aria-label="Subtitle" data-alt-placeholder="A one-sentence subtitle…" placeholder="زیرعنوانی در یک جمله…" data-alt="Why the best sentences often arrive late.">چرا بهترین جمله‌ها اغلب دیر می‌رسند.</textarea>
+      <div class="toolbar" role="toolbar" aria-label="قالب‌بندی" data-alt-aria-label="Formatting">
+        <button type="button" data-cmd="bold" aria-label="پررنگ" data-alt-aria-label="Bold"><b>B</b></button>
+        <button type="button" data-cmd="italic" aria-label="مورب" data-alt-aria-label="Italic"><i>I</i></button>
+        <span class="sep" aria-hidden="true"></span>
+        <button type="button" data-block="h2" aria-label="میان‌تیتر" data-alt-aria-label="Heading">H2</button>
+        <button type="button" data-block="blockquote" aria-label="نقل‌قول" data-alt-aria-label="Quote"><svg class="ic" aria-hidden="true"><use href="#i-chat-bubble-bottom-center-text"/></svg></button>
+        <span class="sep" aria-hidden="true"></span>
+        <button type="button" id="add-note" aria-label="افزودن یادداشت کناری" data-alt-aria-label="Add a sidenote"><svg class="ic" aria-hidden="true"><use href="#i-plus-circle"/></svg></button>
+        <button type="button" data-toast="پیوند افزوده شد" data-toast-alt="Link added" aria-label="پیوند" data-alt-aria-label="Link"><svg class="ic" aria-hidden="true"><use href="#i-link"/></svg></button>
+      </div>
+      <div class="doc" id="doc" contenteditable="true" spellcheck="true" aria-label="متن نوشته" data-alt-aria-label="Document" role="textbox" aria-multiline="true">
+        <p data-alt="I used to think good writers were fast. Then I read the drafts of a writer I admired and found the same paragraph rewritten eleven times, each version a little shorter than the last.">فکر می‌کردم نویسنده‌های خوب سریع می‌نویسند. بعد پیش‌نویس‌های نویسنده‌ای را که دوستش داشتم خواندم و دیدم یک بند را یازده بار بازنوشته، هر بار کمی کوتاه‌تر.</p>
+        <p data-alt="Slowness is not the same as delay. A slow sentence has been looked at from both sides, the way you check a coin before you hand it over.">آهستگی با تأخیر یکی نیست. جملهٔ آهسته از دو طرف نگاه شده، مثل سکه‌ای که پیش از دادنش هر دو رویش را نگاه می‌کنی.</p>
+        <h2 data-alt="Three drafts">سه پیش‌نویس</h2>
+        <p data-alt="The first draft is for finding out what you think. The second is for the reader. The third is for the sentence itself — its rhythm, its last word.">پیش‌نویس اول برای این است که بفهمی چه فکر می‌کنی. دومی برای خواننده است. سومی برای خود جمله — ریتمش، کلمهٔ آخرش.</p>
+      </div>
+    </div>
+    <aside class="aside" aria-label="دربارهٔ این نوشته" data-alt-aria-label="About this piece">
+      <div class="counts"><div><span class="tiny subtle" data-alt="Words">کلمه</span><b id="words" data-num="0">۰</b></div><div><span class="tiny subtle" data-alt="Minutes">دقیقه</span><b id="mins" data-num="0">۰</b></div><div><span class="tiny subtle" data-alt="Notes">یادداشت</span><b id="notes-n" data-num="0">۰</b></div></div>
+      <div class="stack" style="gap: 8px"><p class="caps" data-alt="Outline">طرح کلی</p><nav class="outline" id="outline"></nav></div>
+      <div class="stack" style="gap: 8px"><p class="caps" data-alt="Sidenotes">یادداشت‌های کناری</p><ol class="note-list" id="notes"><li class="empty" style="padding: 0; text-align: start" data-alt="Put the cursor in the text and press ⊕.">نشانگر را در متن بگذارید و ⊕ را بزنید.</li></ol></div>
+      <div class="stack" style="gap: 8px"><p class="caps" data-alt="Before publishing">پیش از انتشار</p>
+        <ul class="checklist" id="checks">
+          <li data-check="title"><svg class="ic ok" aria-hidden="true"><use href="#i-check-circle"/></svg><span data-alt="Title and subtitle">عنوان و زیرعنوان</span></li>
+          <li data-check="heads"><svg class="ic ok" aria-hidden="true"><use href="#i-check-circle"/></svg><span data-alt="Sections with headings">بخش‌ها با میان‌تیتر</span></li>
+          <li data-check="words"><svg class="ic todo" aria-hidden="true"><use href="#i-minus-circle"/></svg><span data-alt="At least 800 words">دست‌کم ۸۰۰ کلمه</span></li>
+          <li data-check="cover"><svg class="ic todo" aria-hidden="true"><use href="#i-minus-circle"/></svg><span data-alt="Cover drawing">طرح جلد</span></li>
+        </ul>
+      </div>
+      <div class="stack" style="gap: 8px"><button class="btn btn-plum" type="button" data-dialog="#publish" data-alt="Schedule…">زمان‌بندی انتشار…</button><button class="btn btn-outline" type="button" data-toast="لینک پیش‌نمایش برای ویراستار فرستاده شد" data-toast-alt="Preview link sent to your editor" data-alt="Send to editor">فرستادن برای ویراستار</button></div>
+    </aside>
+  </section>
+
+  <!-- ============================================ library -->
+  <section role="tabpanel" id="p-lib" aria-labelledby="t-lib" hidden data-filter-scope>
+    <div class="panel-page">
+      <div class="split"><h1 class="h1" data-alt="Your writing">نوشته‌های شما</h1><input class="input" type="search" data-filter-search aria-label="جست‌وجو" data-alt-aria-label="Search" placeholder="جست‌وجو…" data-alt-placeholder="Search…" style="inline-size: 220px"></div>
+      <div class="chips" data-group role="group" aria-label="وضعیت" data-alt-aria-label="Status">
+        <button type="button" data-filter="st" data-value="all" aria-pressed="true" data-alt="All">همه</button>
+        <button type="button" data-filter="st" data-value="draft" aria-pressed="false" data-alt="Drafts">پیش‌نویس</button>
+        <button type="button" data-filter="st" data-value="sched" aria-pressed="false" data-alt="Scheduled">زمان‌بندی‌شده</button>
+        <button type="button" data-filter="st" data-value="pub" aria-pressed="false" data-alt="Published">منتشرشده</button>
+      </div>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th scope="col" data-alt="Title">عنوان</th><th scope="col" data-alt="Status">وضعیت</th><th scope="col"><button type="button" data-sort="num"><span data-alt="Words">کلمه</span></button></th><th scope="col"><button type="button" data-sort="num"><span data-alt="Reads">خواندن</span></button></th><th scope="col" data-alt="Updated">به‌روزرسانی</th></tr></thead>
+          <tbody>
+            <tr data-filter-item data-st="pub"><td><span class="t" data-alt="In Praise of the Margin">در ستایش حاشیه</span></td><td><span class="badge ok" data-alt="Published">منتشرشده</span></td><td data-value="2140" data-num="2140">۲٬۱۴۰</td><td data-value="18400" data-num="18400" data-fmt="compact">۱۸٫۴ هزار</td><td class="subtle small" data-date="2026-10-12" data-fmt="short">۲۰ مهر</td></tr>
+            <tr data-filter-item data-st="draft"><td><span class="t" data-alt="On Writing Slowly">نوشتن آهسته</span></td><td><span class="badge plum" data-alt="Draft">پیش‌نویس</span></td><td data-value="940" data-num="940">۹۴۰</td><td data-value="0" class="subtle">—</td><td class="subtle small" data-ago="300">۵ دقیقه پیش</td></tr>
+            <tr data-filter-item data-st="sched"><td><span class="t" data-alt="The Quiet Hour (with Kian)">ساعت آرام (با کیان)</span></td><td><span class="badge warn" data-alt="Scheduled · Fri">زمان‌بندی · جمعه</span></td><td data-value="1780" data-num="1780">۱٬۷۸۰</td><td data-value="0" class="subtle">—</td><td class="subtle small" data-ago="86400">دیروز</td></tr>
+            <tr data-filter-item data-st="pub"><td><span class="t" data-alt="A Short History of Bookmarks">تاریخچهٔ کوتاه نشانک</span></td><td><span class="badge ok" data-alt="Published">منتشرشده</span></td><td data-value="1620" data-num="1620">۱٬۶۲۰</td><td data-value="9700" data-num="9700" data-fmt="compact">۹٫۷ هزار</td><td class="subtle small" data-date="2026-08-21" data-fmt="short">۳۰ مرداد</td></tr>
+            <tr data-filter-item data-st="draft"><td><span class="t" data-alt="Bookmarks, a defence">در دفاع از نشانک</span></td><td><span class="badge plum" data-alt="Draft">پیش‌نویس</span></td><td data-value="410" data-num="410">۴۱۰</td><td data-value="0" class="subtle">—</td><td class="subtle small" data-ago="172800">۲ روز پیش</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="empty" data-filter-empty hidden data-alt="Nothing here yet.">هنوز چیزی اینجا نیست.</p>
+    </div>
+  </section>
+
+  <!-- ============================================ stats -->
+  <section role="tabpanel" id="p-stats" aria-labelledby="t-stats" hidden>
+    <div class="panel-page">
+      <div class="split"><h1 class="h1" data-alt="How your essays are read">نوشته‌هایتان چطور خوانده می‌شوند</h1><span class="caps" data-alt="Last 30 days">۳۰ روز اخیر</span></div>
+      <div class="stat-cells">
+        <div><span class="caps" data-alt="Reads">خواندن</span><b data-num="28100" data-fmt="compact">۲۸٫۱ هزار</b></div>
+        <div><span class="caps" data-alt="Read to the end">تا آخر خوانده</span><b data-num="64" data-fmt="pct">۶۴٪</b></div>
+        <div><span class="caps" data-alt="Average time">میانگین زمان</span><b data-num="460" data-fmt="clock">۷:۴۰</b></div>
+        <div><span class="caps" data-alt="New subscribers">مشترک تازه</span><b data-num="312">۳۱۲</b></div>
+      </div>
+      <div data-chart="line" data-height="220" data-fmt="compact" data-dates="2026-09-15,30,day,short" data-values="620,580,640,700,690,1210,2850,3400,2100,1500,1180,980,900,860,820,790,760,940,880,850,800,780,820,1500,1300,1050,960,900,880,860" data-name='{"en":"Reads","fa":"خواندن"}' data-label='{"en":"Reads per day, last 30 days","fa":"خواندن در روز، ۳۰ روز اخیر"}'></div>
+      <div class="stack" style="gap: 0">
+        <div class="split" style="padding-block-end: 8px"><h2 class="h2" data-alt="Read to the end">تا آخر خوانده‌شده‌ها</h2><span class="caps" data-alt="share of readers">سهم خوانندگان</span></div>
+        <ol class="best">
+          <li><span class="t" data-alt="Against Speed Reading">علیه تندخوانی</span><span class="bar"><i style="--v: 83%"></i></span><b data-num="83" data-fmt="pct">۸۳٪</b></li>
+          <li><span class="t" data-alt="In Praise of the Margin">در ستایش حاشیه</span><span class="bar"><i style="--v: 71%"></i></span><b data-num="71" data-fmt="pct">۷۱٪</b></li>
+          <li><span class="t" data-alt="A Short History of Bookmarks">تاریخچهٔ کوتاه نشانک</span><span class="bar"><i style="--v: 58%"></i></span><b data-num="58" data-fmt="pct">۵۸٪</b></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ readers -->
+  <section role="tabpanel" id="p-readers" aria-labelledby="t-readers" hidden>
+    <div class="panel-page">
+      <div class="split"><h1 class="h1" data-alt="Readers">خوانندگان</h1><button class="btn btn-outline btn-sm" type="button" data-toast="فهرست مشترکان آمادهٔ دانلود شد (CSV)" data-toast-alt="Subscriber list ready (CSV)"><svg class="ic" aria-hidden="true"><use href="#i-arrow-down-tray"/></svg><span data-alt="Export">خروجی</span></button></div>
+      <div class="two">
+        <div class="stack"><p class="caps" data-alt="Subscribers">مشترکان</p><div data-chart="area" data-height="200" data-fmt="int" data-dates="2026-04-01,7,month" data-values="1820,2010,2190,2420,2580,2930,3242" data-name='{"en":"Subscribers","fa":"مشترک"}' data-label='{"en":"Subscribers, last 7 months","fa":"مشترکان، ۷ ماه اخیر"}'></div></div>
+        <div class="stack"><p class="caps" data-alt="Where they read">کجا می‌خوانند</p><div data-chart="donut" data-height="200" data-fmt="pct" data-values="58,31,11" data-labels='{"en":["Email","Web","App"],"fa":["ایمیل","وب","اپ"]}' data-center='{"en":"3,242","fa":"۳٬۲۴۲"}' data-label='{"en":"Where readers read: email, web, app","fa":"محل خواندن: ایمیل، وب، اپ"}' style="--chart-2: var(--ink-3); --chart-3: var(--line-2)"></div></div>
+      </div>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th scope="col" data-alt="Reader">خواننده</th><th scope="col" data-alt="Joined">عضویت</th><th scope="col" data-alt="Opens">بازکردن</th><th scope="col" data-alt="Status">وضعیت</th></tr></thead>
+          <tbody>
+            <tr><td><span class="ltr small">pa•••@mail.example</span></td><td class="small subtle" data-date="2026-10-13" data-fmt="short">۲۱ مهر</td><td><b data-num="100" data-fmt="pct">۱۰۰٪</b></td><td><span class="badge ok" data-alt="Active">فعال</span></td></tr>
+            <tr><td><span class="ltr small">be•••@mail.example</span></td><td class="small subtle" data-date="2026-09-02" data-fmt="short">۱۱ شهریور</td><td><b data-num="86" data-fmt="pct">۸۶٪</b></td><td><span class="badge ok" data-alt="Active">فعال</span></td></tr>
+            <tr><td><span class="ltr small">ro•••@mail.example</span></td><td class="small subtle" data-date="2026-05-19" data-fmt="short">۲۹ اردیبهشت</td><td><b data-num="12" data-fmt="pct">۱۲٪</b></td><td><span class="badge warn" data-alt="Quiet">کم‌فعال</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dialog class="modal" id="publish" aria-labelledby="pub-title">
+  <form data-validate data-success="برای جمعه ساعت ۸ صبح زمان‌بندی شد" data-success-alt="Scheduled for Friday, 8:00">
+    <div class="modal-body">
+      <h2 class="h2" id="pub-title" data-alt="Schedule this essay">زمان‌بندی این جستار</h2>
+      <div class="field"><label class="label" for="pub-day" data-alt="Day">روز</label><select class="select" id="pub-day" name="day"><option data-alt="Friday, 25 Oct">جمعه، ۳ آبان</option><option data-alt="Friday, 8 Nov">جمعه، ۱۷ آبان</option></select></div>
+      <div class="field"><label class="label" for="pub-time" data-alt="Time">ساعت</label><select class="select" id="pub-time" name="time"><option>08:00</option><option>12:00</option><option>20:00</option></select></div>
+      <div class="split"><span class="label" id="send-l" data-alt="Email it to 3,242 subscribers">برای ۳٬۲۴۲ مشترک ایمیل شود</span><button class="switch" type="button" role="switch" aria-checked="true" aria-labelledby="send-l"></button></div>
+      <p class="hint" data-alt="You can change the date until an hour before.">تا یک ساعت قبل می‌توانید زمان را عوض کنید.</p>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" type="button" data-close data-alt="Cancel">انصراف</button><button class="btn btn-plum" type="submit" data-alt="Schedule">زمان‌بندی</button></div>
+  </form>
+</dialog>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+    const fa = () => tf.lang() === 'fa';
+    const doc = $('#doc');
+    const setNum = (el, n) => { el.dataset.num = n; el.textContent = tf.fmt(n); };
+    let t;
+    // counts and outline follow the text
+    const refresh = () => {
+      const words = (doc.innerText.trim().match(/\S+/g) || []).length;
+      setNum($('#words'), words);
+      setNum($('#mins'), Math.max(1, Math.round(words / 230)));
+      setNum($('#notes-n'), $$('.note-chip', doc).length);
+      const out = $('#outline'); out.innerHTML = '';
+      $$('h2', doc).forEach((h, i) => { h.id = h.id || 'h' + i; const a = document.createElement('a'); a.href = '#' + h.id; a.textContent = h.textContent; out.append(a); });
+      // the checklist checks itself
+      const ok = { title: $('#title').value.trim() && $('#dek').value.trim(), heads: $$('h2', doc).length > 0, words: words >= 800 };
+      $$('#checks [data-check]').forEach((li) => {
+        const v = !!ok[li.dataset.check], ic = li.querySelector('svg');
+        ic.setAttribute('class', 'ic ' + (v ? 'ok' : 'todo'));
+        ic.firstElementChild.setAttribute('href', v ? '#i-check-circle' : '#i-minus-circle');
+      });
+      delete $('.save-state').dataset.state;
+    };
+    ['#title', '#dek'].forEach((id) => $(id).addEventListener('input', () => { clearTimeout(t); t = setTimeout(refresh, 300); }));
+    // once writing starts the document is the writer's own text: stop translating it
+    const own = () => $$('[data-alt]', doc).forEach((el) => el.removeAttribute('data-alt'));
+    doc.addEventListener('beforeinput', own, { once: true });
+    doc.addEventListener('input', () => { $('.save-state').dataset.state = 'saving'; clearTimeout(t); t = setTimeout(refresh, 600); });
+    document.addEventListener('tf:lang', refresh);
+    refresh();
+    // formatting
+    $$('[data-cmd]').forEach((b) => b.addEventListener('click', () => { doc.focus(); document.execCommand(b.dataset.cmd); }));
+    $$('[data-block]').forEach((b) => b.addEventListener('click', () => { doc.focus(); document.execCommand('formatBlock', false, b.dataset.block); refresh(); }));
+    // sidenotes: insert a numbered chip at the caret and list it in the margin
+    $('#add-note').addEventListener('click', () => {
+      const sel = getSelection();
+      if (!sel.rangeCount || !doc.contains(sel.anchorNode)) { tf.toast(fa() ? 'اول نشانگر را در متن بگذارید' : 'Put the cursor in the text first'); return; }
+      own();
+      const n = $$('.note-chip', doc).length + 1;
+      const chip = document.createElement('span');
+      chip.className = 'note-chip'; chip.contentEditable = 'false'; chip.textContent = tf.fmt(n);
+      const r = sel.getRangeAt(0); r.collapse(false); r.insertNode(chip);
+      const list = $('#notes'); list.querySelector('.empty')?.remove();
+      const li = document.createElement('li');
+      li.innerHTML = '<span class="n"></span><span contenteditable="true"></span>';
+      li.firstChild.textContent = tf.fmt(n);
+      li.lastChild.textContent = fa() ? 'یادداشت را اینجا بنویسید…' : 'Write the note here…';
+      list.append(li); li.lastChild.focus(); refresh();
+    });
+  });
+</script>
+</body>
+</html>

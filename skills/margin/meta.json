@@ -1,0 +1,34 @@
+{
+  "name": "Margin",
+  "order": 26,
+  "category": "content",
+  "mode": "light",
+  "density": "airy",
+  "persianFirst": true,
+  "tags": ["editorial", "long-form", "essays", "newsletter", "sidenotes", "reading", "writing", "persian"],
+  "tagline": {
+    "en": "Long-form reading — warm paper, a narrow serif column, numbered sidenotes in a wide margin, a reader's highlighter and a quiet writer studio",
+    "fa": "خواندن طولانی — کاغذ گرم، ستون باریک متن، یادداشت‌های شماره‌دار در حاشیهٔ پهن، ماژیک خواننده و میز آرام نویسنده"
+  },
+  "summary": {
+    "en": "A literary language for essays, magazines, newsletters and long reports, Persian-first. Warm paper and soft black ink, one plum ink for note numbers, links and the single action, and a pale highlighter that belongs to the reader. Literata (optical sizes) sets the reading column at about 66 characters with Inter for the interface; Persian runs in Vazirmatn with a looser line. The page is a grid: contents on the start side, the text in the middle, numbered sidenotes, margin notes and figure captions in the end margin — and on phones each note number opens its note inline. Reader controls change size and paper (white, sepia, night), a progress hairline tracks the read, and selecting text offers highlight, copy-quote and note. The writer studio has drafts, a calm editor with sidenote chips, live word count, outline and a pre-publish checklist, scheduling, a library, read-through stats and readers.",
+    "fa": "زبانی ادبی برای جستار، مجله، خبرنامه و گزارش‌های بلند، فارسی‌محور. کاغذ گرم و جوهر سیاه نرم، یک جوهر آلویی برای شمارهٔ یادداشت، پیوند و تنها اقدام صفحه، و ماژیکی کم‌رنگ که مال خواننده است. حروف Literata با اندازه‌های اپتیکی ستون متن را حدود ۶۶ نویسه نگه می‌دارد و Inter رابط را؛ فارسی با وزیرمتن و سطرهای بازتر. صفحه یک شبکه است: فهرست در سمت آغاز، متن در میانه، یادداشت‌های شماره‌دار، یادداشت حاشیه و زیرنویس تصویر در حاشیهٔ پایانی — و در موبایل هر شمارهٔ یادداشت آن را درون متن باز می‌کند. کنترل‌های خواننده اندازه و کاغذ (سفید، کرم، شب) را عوض می‌کنند، خط باریکی پیشرفت خواندن را نشان می‌دهد و انتخاب متن گزینهٔ ماژیک، کپی نقل‌قول و یادداشت را می‌آورد. میز نویسنده پیش‌نویس‌ها، ویرایشگری آرام با نشانهٔ یادداشت کناری، شمارش زندهٔ کلمه، طرح کلی و فهرست پیش از انتشار، زمان‌بندی، فهرست نوشته‌ها، آمار تا-آخر-خواندن و خوانندگان را دارد."
+  },
+  "bestFor": {
+    "en": ["Essays, magazines and literary journals", "Newsletters and paid writing", "Long reports, research and documentation", "Writer and editor studios"],
+    "fa": ["جستار، مجله و نشریهٔ ادبی", "خبرنامه و نوشتهٔ اشتراکی", "گزارش بلند، پژوهش و مستندات", "میز نویسنده و ویراستار"]
+  },
+  "avoidFor": {
+    "en": ["Dense dashboards and trading tools", "Loud retail and promotions", "Products that need many colours to signal state"],
+    "fa": ["داشبوردهای پرتراکم و ابزار معامله", "فروشگاه‌ها و تبلیغات پرسروصدا", "محصولاتی که برای نشان دادن وضعیت رنگ زیاد لازم دارند"]
+  },
+  "signature": {
+    "en": ["A narrow Literata column (~66 characters) on warm paper", "Numbered sidenotes, margin notes and captions in the end margin", "Note numbers open notes inline on phones", "Reader controls: size, paper (white, sepia, night), progress hairline", "Selection toolbar: highlight, copy quote, note", "Writer studio: sidenote chips, live counts, outline, checklist, schedule"],
+    "fa": ["ستون باریک متن (حدود ۶۶ نویسه) روی کاغذ گرم", "یادداشت شماره‌دار، یادداشت حاشیه و زیرنویس در حاشیهٔ پایانی", "شمارهٔ یادداشت در موبایل آن را درون متن باز می‌کند", "کنترل خواننده: اندازه، کاغذ (سفید، کرم، شب)، خط پیشرفت", "نوار انتخاب: ماژیک، کپی نقل‌قول، یادداشت", "میز نویسنده: نشانهٔ یادداشت، شمارش زنده، طرح کلی، فهرست انتشار، زمان‌بندی"]
+  },
+  "swatches": ["#fbf9f4", "#ffffff", "#7a3b69", "#fbefa4", "#1c1b19"],
+  "fonts": { "latin": "Literata + Inter", "persian": "Vazirmatn", "mono": "system mono" },
+  "icons": "Heroicons (inline SVG sprite, MIT)",
+  "brandTrials": ["8a2c2c", "27467a", "2f5d46", "5b4a8a"],
+  "demos": { "site": { "host": "hashiyeh.example" }, "dashboard": { "host": "hashiyeh.example/studio" } }
+}

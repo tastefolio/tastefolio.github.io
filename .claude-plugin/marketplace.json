@@ -234,6 +234,15 @@
       ]
     },
     {
+      "name": "margin",
+      "description": "Tastefolio design language — Long-form reading — warm paper, a narrow serif column, numbered sidenotes in a wide margin, a reader's highlighter and a quiet writer studio",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/margin"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -263,7 +272,8 @@
         "./skills/lucent",
         "./skills/clinic",
         "./skills/linework",
-        "./skills/estate"
+        "./skills/estate",
+        "./skills/margin"
       ]
     }
   ]

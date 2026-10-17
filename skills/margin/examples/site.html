@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="site">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="In Praise of the Margin — Margin, No. 42">در ستایش حاشیه — حاشیه، شمارهٔ ۴۲</title>
+<meta name="description" content="حاشیه، یک نشریهٔ نمونهٔ جستار: متن باریک، یادداشت‌های کناری و جایی برای فکر کردن." data-alt-content="Margin, a sample essay publication: a narrow column, sidenotes and room to think.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300..800;1,7..72,300..800&family=Inter:wght@400..700&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .plate-ms { --bg: radial-gradient(120% 90% at 50% 40%, #efe3c8, #d8c39c); }
+  .plate-ms::before { content: ""; position: absolute; inset: 18% 30%; background: repeating-linear-gradient(0deg, rgba(60, 40, 20, .55) 0 2px, transparent 2px 13px); border: 1px solid rgba(60, 40, 20, .25); }
+  .plate-ms::after { content: ""; position: absolute; inset: 8% 6%; background: repeating-linear-gradient(-28deg, rgba(122, 59, 105, .5) 0 1.5px, transparent 1.5px 10px); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 12%, 27% 12%, 27% 88%, 73% 88%, 73% 12%, 0 12%); }
+  [data-theme="dark"] .plate-ms { --bg: radial-gradient(120% 90% at 50% 40%, #4a4030, #2f281e); }
+  .issue-list { padding-block: var(--space-7); }
+</style>
+</head>
+<body>
+<svg class="sprite" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Icons: Heroicons (MIT License) — heroicons.com --><!--ICONS-->
+<symbol id="i-bars-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></symbol>
+<symbol id="i-bookmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"/></symbol>
+<symbol id="i-chat-bubble-bottom-center-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"/></symbol>
+<symbol id="i-pencil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"/></symbol>
+<!--/ICONS--></svg>
+<div class="progress-line" id="progress" aria-hidden="true"></div>
+<a class="skip-link" href="#essay" data-alt="Skip to the essay">رفتن به متن</a>
+
+<header class="masthead">
+  <div class="container">
+    <a class="wordmark" href="#top"><span data-alt="Margin">حاشیه</span><small data-alt="No. 42">شمارهٔ ۴۲</small></a>
+    <nav class="nav" id="nav" data-dismissable aria-label="اصلی" data-alt-aria-label="Main">
+      <a href="#top" aria-current="page" data-alt="Essays">جستارها</a>
+      <a href="#issue" data-alt="This issue">این شماره</a>
+      <a href="#letters" data-alt="Letters">نامه‌ها</a>
+      <a href="dashboard.html" data-alt="Write for us">برای ما بنویسید</a>
+    </nav>
+    <div class="head-end">
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+      <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="تغییر حالت تیره" data-alt-aria-label="Toggle dark mode"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg></button>
+      <a class="btn btn-plum btn-sm" href="#subscribe" data-alt="Subscribe">اشتراک</a>
+      <button class="btn btn-outline btn-icon btn-sm menu-btn" type="button" data-toggle="#nav" aria-controls="nav" aria-expanded="false" aria-label="منو" data-alt-aria-label="Menu"><svg class="ic" aria-hidden="true"><use href="#i-bars-3"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <article class="read" id="essay">
+    <aside class="toc-col" aria-label="فهرست" data-alt-aria-label="Contents">
+      <p class="caps" style="margin-block-end: 10px" data-alt="Contents">فهرست</p>
+      <nav class="toc" id="toc">
+        <a href="#s0" aria-current="true" data-alt="A used book">کتابی دست‌دوم</a>
+        <a href="#s1" data-alt="A notebook beside the page">دفترچهٔ کنار صفحه</a>
+        <a href="#s2" data-alt="A page with room">صفحه‌ای که جا دارد</a>
+      </nav>
+    </aside>
+
+    <header class="article-head">
+      <span class="kicker" data-alt="Essay · Reading">جستار · خواندن</span>
+      <h1 class="display" data-alt="In Praise of the Margin">در ستایش حاشیه</h1>
+      <p class="dek" data-alt="Why the best thoughts get written beside the text — and why today’s pages leave no room for them.">چرا بهترین فکرها کنار متن نوشته می‌شوند — و چرا صفحه‌های امروز جایی برایشان ندارند.</p>
+      <div class="byline"><span class="avatar" style="--c:#ead9e3" data-alt="N">ن</span><span><span data-alt="By">نوشتهٔ</span> <b data-alt="Nasim Farahmand">نسیم فرهمند</b></span><span class="dot" aria-hidden="true"></span><span data-date="2026-10-12" data-fmt="long">۲۰ مهر ۱۴۰۵</span><span class="dot" aria-hidden="true"></span><span><span data-num="9">۹</span> <span data-alt="min read">دقیقه مطالعه</span></span></div>
+    </header>
+
+    <div class="reader-bar" role="toolbar" aria-label="تنظیمات خواندن" data-alt-aria-label="Reading settings">
+      <span data-alt="Text">متن</span>
+      <button class="btn btn-outline btn-sm" type="button" data-size="-1" aria-label="کوچک‌تر" data-alt-aria-label="Smaller">A−</button>
+      <button class="btn btn-outline btn-sm" type="button" data-size="1" aria-label="بزرگ‌تر" data-alt-aria-label="Larger">A+</button>
+      <span class="spacer"></span>
+      <span data-alt="Paper">کاغذ</span>
+      <div class="seg" data-group="paper" role="group" aria-label="رنگ کاغذ" data-alt-aria-label="Paper"><button type="button" data-value="white" aria-pressed="true" data-alt="White">سفید</button><button type="button" data-value="sepia" aria-pressed="false" data-alt="Sepia">کاهی</button><button type="button" data-value="night" aria-pressed="false" data-alt="Night">شب</button></div>
+    </div>
+
+    <div class="prose" id="prose">
+      <p class="dropcap" id="s0"><span data-alt="The book cost less than a cup of tea. Its spine was broken in two places and someone had underlined almost every page in pencil">کتاب از یک فنجان چای ارزان‌تر بود. عطفش دو جا شکسته بود و کسی تقریباً همهٔ صفحه‌ها را با مداد خط کشیده بود</span><label class="sn-ref" for="sn1" aria-label="یادداشت ۱" data-alt-aria-label="Note 1"></label><input class="sn-toggle" type="checkbox" id="sn1"><span class="sn" data-alt="I bought it from a sidewalk bookseller; the previous owner’s name had been rubbed out of the first page.">از یک دست‌فروش کتاب خریدمش؛ نام صاحب قبلی از صفحهٔ اول پاک شده بود.</span><span data-alt=". But it was not the lines that kept me reading. It was the small, slanted handwriting in the margins — questions, objections, a date, once just the word “no”.">. اما خط‌ها نبود که مرا نگه داشت؛ دست‌خط کوچک و کج کنار صفحه‌ها بود — پرسش، مخالفت، یک تاریخ، و یک بار فقط کلمهٔ «نه».</span></p>
+      <p data-alt="I read the book twice in one week: once for the author and once for the stranger who had argued with him. The second reading was better. The margin had turned a monologue into a conversation.">کتاب را در یک هفته دو بار خواندم: یک بار برای نویسنده و یک بار برای غریبه‌ای که با او بحث کرده بود. خواندن دوم بهتر بود. حاشیه، یک تک‌گویی را به گفت‌وگو بدل کرده بود.</p>
+
+      <h2 id="s1" data-alt="A notebook beside the page">دفترچهٔ کنار صفحه</h2>
+      <p><span data-alt="Writing beside a text is older than the printed book. In many manuscripts the commentary does not sit below the main text but wraps around it, sometimes turning at an angle when it runs out of room">نوشتن کنار متن از کتاب چاپی قدیمی‌تر است. در بسیاری از نسخه‌های خطی، شرح زیر متن اصلی نمی‌نشیند بلکه دورش می‌پیچد و وقتی جا کم می‌آید، گاهی مایل می‌شود</span><label class="sn-ref" for="sn2" aria-label="یادداشت ۲" data-alt-aria-label="Note 2"></label><input class="sn-toggle" type="checkbox" id="sn2"><span class="sn" data-alt="The angle is not decoration: slanted lines fit more words into the narrow space between the text and the edge.">شیب تزیین نیست: سطرهای مایل، کلمه‌های بیشتری را در فضای باریک میان متن و لبهٔ کاغذ جا می‌دهند.</span><span data-alt=". The page becomes two voices at once: what was said, and what someone thought about it.">. صفحه هم‌زمان دو صدا می‌شود: آنچه گفته شده، و آنچه کسی درباره‌اش فکر کرده.</span></p>
+      <figure class="fig">
+        <div class="plate plate-ms" role="img" aria-label="طرحی از صفحه‌ای که شرح دور متن اصلی آن نوشته شده" data-alt-aria-label="A drawing of a page with commentary written around the main text"></div>
+        <figcaption data-alt="A page laid out with commentary around the main text. Drawing for this essay.">صفحه‌ای که شرح دور متن اصلی‌اش چیده شده. طرح برای همین جستار.</figcaption>
+      </figure>
+      <p data-alt="We kept the habit and lost the space. Screens give us comment threads under the text, highlights stored on someone else’s server, notes in another app. Everything except the margin itself — the place where a thought can sit next to the sentence that caused it.">عادت را نگه داشتیم و فضا را از دست دادیم. صفحه‌های امروز رشتهٔ نظر زیر متن می‌دهند، هایلایتی که روی سرور دیگری ذخیره می‌شود، یادداشتی در اپی دیگر. همه‌چیز جز خود حاشیه — جایی که یک فکر بتواند کنار جمله‌ای بنشیند که آن را به وجود آورده.</p>
+      <blockquote class="pull"><span data-alt="The margin is where the reader answers back.">حاشیه جایی است که خواننده جواب می‌دهد.</span><cite data-alt="— a note found in a used book">— یادداشتی در یک کتاب دست‌دوم</cite></blockquote>
+
+      <h2 id="s2" data-alt="A page with room">صفحه‌ای که جا دارد</h2>
+      <p><span data-alt="A footnote asks you to leave the sentence, find a number at the bottom of the page, and come back. A sidenote asks nothing; it is already there, at the height of the line it belongs to">پانویس از شما می‌خواهد جمله را رها کنید، شماره‌ای را پایین صفحه پیدا کنید و برگردید. یادداشت کناری چیزی نمی‌خواهد؛ همان‌جاست، هم‌تراز سطری که به آن تعلق دارد</span><label class="sn-ref" for="sn3" aria-label="یادداشت ۳" data-alt-aria-label="Note 3"></label><input class="sn-toggle" type="checkbox" id="sn3"><span class="sn" data-alt="On a phone there is no margin, so each note folds open under its line when you tap the number.">روی گوشی حاشیه‌ای نیست؛ برای همین هر یادداشت با لمس شماره، زیر سطر خودش باز می‌شود.</span><span data-alt=". This page is built that way: a narrow column, about sixty-six characters to a line, with the notes beside it.">. این صفحه همین‌طور ساخته شده: ستونی باریک، حدود شصت‌وشش حرف در هر سطر، و یادداشت‌ها کنارش.</span><label class="mn-ref" for="mn1" aria-label="یادداشت کوتاه" data-alt-aria-label="Aside">⊕</label><input class="sn-toggle" type="checkbox" id="mn1"><span class="mn" data-alt="Unnumbered notes are for short asides that don’t need a reference.">یادداشت‌های بی‌شماره برای حرف‌های کوتاهی‌اند که ارجاع لازم ندارند.</span></p>
+      <p data-alt="Room is not emptiness. White space around a paragraph tells you that it matters; space between paragraphs lets you stop. A page with room trusts its reader to take a breath — and, sometimes, to pick up a pencil.">جا داشتن یعنی خالی بودن نیست. فضای سفید دور یک بند می‌گوید که مهم است؛ فاصلهٔ میان بندها اجازه می‌دهد بایستید. صفحه‌ای که جا دارد به خواننده‌اش اعتماد می‌کند که نفسی بکشد — و گاهی مدادی بردارد.</p>
+      <p class="orn" aria-hidden="true">⁂</p>
+      <p><span data-alt="Select any sentence on this page and you can highlight it, keep it as a quote or leave yourself a note. They stay in your library, beside the text, where they belong">هر جملهٔ این صفحه را انتخاب کنید؛ می‌توانید هایلایتش کنید، به‌عنوان نقل‌قول نگهش دارید یا برای خودتان یادداشتی بگذارید. همه در کتابخانهٔ شما و کنار متن می‌مانند، همان‌جا که جایشان است</span><label class="sn-ref" for="sn4" aria-label="یادداشت ۴" data-alt-aria-label="Note 4"></label><input class="sn-toggle" type="checkbox" id="sn4"><span class="sn" data-alt="Highlights in this demo live only in this page; nothing is sent anywhere.">در این نسخهٔ نمایشی، هایلایت‌ها فقط در همین صفحه می‌مانند و به جایی فرستاده نمی‌شوند.</span><span data-alt=". The stranger with the pencil would approve.">. آن غریبهٔ مداد به‌دست، احتمالاً موافق است.</span></p>
+    </div>
+
+    <section class="author-box">
+      <span class="avatar lg" style="--c:#ead9e3" data-alt="N">ن</span>
+      <div class="stack" style="gap: 6px"><b class="h3" data-alt="Nasim Farahmand">نسیم فرهمند</b><p class="small muted" data-alt="Writes about books and the places we read them. Her last essay for Margin was about bookmarks.">دربارهٔ کتاب‌ها و جاهایی که در آن می‌خوانیم می‌نویسد. جستار قبلی‌اش برای حاشیه دربارهٔ نشانک‌ها بود.</p><div class="row"><a class="link small" href="#issue" data-alt="All essays by Nasim">همهٔ جستارهای نسیم</a></div></div>
+    </section>
+
+    <section class="issue-list" id="issue" aria-labelledby="issue-title">
+      <div class="split" style="margin-block-end: var(--space-4)"><h2 class="h2" id="issue-title" data-alt="Also in No. 42">در همین شماره</h2><span class="caps" data-alt="Autumn 2026">پاییز ۱۴۰۵</span></div>
+      <ol class="essays">
+        <li class="essay"><span class="n">۰۱</span><a href="#top"><span class="t" data-alt="The Quiet Hour">ساعت آرام</span><br><span class="small subtle" data-alt="Kian Moradi · on reading before sleep">کیان مرادی · دربارهٔ خواندن پیش از خواب</span></a><span class="small subtle"><span data-num="7">۷</span> <span data-alt="min">دقیقه</span></span></li>
+        <li class="essay"><span class="n">۰۲</span><a href="#top"><span class="t" data-alt="Libraries We Carry">کتابخانه‌هایی که با خود می‌بریم</span><br><span class="small subtle" data-alt="Leila Ghaffari · on moving house with books">لیلا غفاری · دربارهٔ اسباب‌کشی با کتاب</span></a><span class="small subtle"><span data-num="12">۱۲</span> <span data-alt="min">دقیقه</span></span></li>
+        <li class="essay"><span class="n">۰۳</span><a href="#top"><span class="t" data-alt="Against Speed Reading">علیه تندخوانی</span><br><span class="small subtle" data-alt="Omid Shams · a short polemic">امید شمس · جدلی کوتاه</span></a><span class="small subtle"><span data-num="5">۵</span> <span data-alt="min">دقیقه</span></span></li>
+      </ol>
+    </section>
+
+    <section class="subscribe" id="subscribe">
+      <h2 class="h2" data-alt="One essay, every other Friday.">یک جستار، هر دو جمعه یک بار.</h2>
+      <p class="muted" data-alt="No news, no noise. Unsubscribe whenever you like.">بدون خبر، بدون شلوغی. هر وقت خواستید لغو کنید.</p>
+      <form data-validate data-success="به فهرست حاشیه خوش آمدید" data-success-alt="Welcome to Margin">
+        <div class="field"><label class="sr-only" for="sub-mail" data-alt="Email">ایمیل</label><input class="input" id="sub-mail" name="email" type="email" required dir="ltr" placeholder="you@example.com" autocomplete="email"></div>
+        <button class="btn btn-plum" type="submit" data-alt="Subscribe">اشتراک</button>
+      </form>
+    </section>
+
+    <section id="letters" style="padding-block: var(--space-7)" aria-labelledby="letters-title">
+      <h2 class="h2" id="letters-title" style="margin-block-end: var(--space-4)" data-alt="Letters">نامه‌ها</h2>
+      <div class="letters">
+        <div class="letter"><p data-alt="I still have my grandfather’s copy of a poetry book, full of his notes. I read his margins more often than the poems.">نسخهٔ دیوان پدربزرگم هنوز پیش من است، پر از یادداشت‌های او. حاشیه‌هایش را بیشتر از خود شعرها می‌خوانم.</p><span class="small subtle"><span data-alt="Mahtab, Shiraz">مهتاب، شیراز</span> · <span data-ago="86400">دیروز</span></span></div>
+        <div class="letter"><p data-alt="A good essay. But some of us write in the margins of library books — please don’t encourage us.">جستار خوبی بود. ولی بعضی از ما توی کتاب‌های کتابخانه هم حاشیه می‌نویسیم — لطفاً تشویقمان نکنید.</p><span class="small subtle"><span data-alt="Behrouz, Tabriz">بهروز، تبریز</span> · <span data-ago="172800">۲ روز پیش</span></span></div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<footer class="site-foot">
+  <div class="container foot-grid">
+    <div class="stack" style="gap: 8px"><span class="wordmark"><span data-alt="Margin">حاشیه</span></span><p class="small" style="max-inline-size: 32ch" data-alt="A sample publication for the Tastefolio gallery. The essay and its author are fictional.">یک نشریهٔ نمونه برای گالری تیست‌فولیو. جستار و نویسنده‌اش خیالی‌اند.</p></div>
+    <div><p class="caps" data-alt="Read">خواندن</p><ul><li><a href="#top" data-alt="Essays">جستارها</a></li><li><a href="#issue" data-alt="Issues">شماره‌ها</a></li></ul></div>
+    <div><p class="caps" data-alt="Write">نوشتن</p><ul><li><a href="dashboard.html" data-alt="Writer studio">میز نویسنده</a></li><li><a href="#letters" data-alt="Send a letter">نامه بفرستید</a></li></ul></div>
+    <div><p class="caps" data-alt="About">دربارهٔ ما</p><ul><li><a href="#subscribe" data-alt="Subscribe">اشتراک</a></li><li><a href="#top" data-alt="Colophon">شناسنامه</a></li></ul></div>
+  </div>
+</footer>
+
+<div class="sel-bar" id="selbar" hidden role="toolbar" aria-label="ابزار انتخاب" data-alt-aria-label="Selection tools">
+  <button type="button" data-act="mark"><svg class="ic" aria-hidden="true"><use href="#i-pencil"/></svg><span data-alt="Highlight">هایلایت</span></button>
+  <button type="button" data-act="quote"><svg class="ic" aria-hidden="true"><use href="#i-chat-bubble-bottom-center-text"/></svg><span data-alt="Quote">نقل‌قول</span></button>
+  <button type="button" data-act="note"><svg class="ic" aria-hidden="true"><use href="#i-bookmark"/></svg><span data-alt="Note">یادداشت</span></button>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+    const fa = () => tf.lang() === 'fa';
+    const prose = $('#prose'), essay = $('#essay');
+    // reading progress
+    const onScroll = () => {
+      const r = prose.getBoundingClientRect(), h = r.height - innerHeight * .6;
+      const p = Math.max(0, Math.min(1, -r.top / Math.max(1, h)));
+      $('#progress').style.setProperty('--p', (p * 100).toFixed(1) + '%');
+    };
+    addEventListener('scroll', onScroll, { passive: true }); onScroll();
+    // contents follows the reader
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) $$('#toc a').forEach((a) => a.setAttribute('aria-current', String(a.getAttribute('href') === '#' + e.target.id))); }), { rootMargin: '0px 0px -70% 0px' });
+      ['s0', 's1', 's2'].forEach((id) => io.observe(document.getElementById(id)));
+    }
+    // a sidenote number lights its note in the margin
+    prose.addEventListener('click', (e) => {
+      const ref = e.target.closest('.sn-ref, .mn-ref');
+      if (!ref || innerWidth < 1100) return;
+      const note = document.getElementById(ref.htmlFor)?.nextElementSibling;
+      $$('.sn.active, .mn.active', prose).forEach((n) => n.classList.remove('active'));
+      note?.classList.add('active');
+    });
+    // reader settings
+    let scale = 1;
+    $$('[data-size]').forEach((b) => b.addEventListener('click', () => { scale = Math.max(.85, Math.min(1.3, scale + Number(b.dataset.size) * .075)); prose.style.fontSize = `calc(var(--fs-lg) * ${scale})`; }));
+    document.addEventListener('tf:change', (e) => {
+      if (!e.target.closest?.('[data-group="paper"]')) return;
+      const v = e.detail.value, root = document.documentElement;
+      if (v === 'sepia') { root.dataset.paper = 'sepia'; root.dataset.theme = 'light'; }
+      else { delete root.dataset.paper; root.dataset.theme = v === 'night' ? 'dark' : 'light'; }
+    });
+    // selection toolbar: highlight, quote, note
+    const bar = $('#selbar');
+    let range = null;
+    const place = () => setTimeout(() => {
+      const sel = getSelection();
+      if (!sel.rangeCount || sel.isCollapsed || !prose.contains(sel.anchorNode)) { bar.hidden = true; return; }
+      range = sel.getRangeAt(0);
+      const r = range.getBoundingClientRect();
+      bar.style.left = Math.max(110, Math.min(innerWidth - 110, r.left + r.width / 2)) + scrollX + 'px';
+      bar.style.top = (r.top + scrollY) + 'px';
+      bar.hidden = false;
+    });
+    document.addEventListener('mouseup', place);
+    document.addEventListener('touchend', place);
+    document.addEventListener('keyup', (e) => { if (e.shiftKey || e.key === 'Escape') place(); });
+    bar.addEventListener('mousedown', (e) => e.preventDefault());
+    bar.addEventListener('click', (e) => {
+      const act = e.target.closest('[data-act]')?.dataset.act;
+      if (!act || !range) return;
+      const text = range.toString().trim();
+      if (act === 'mark') {
+        try { const m = document.createElement('mark'); range.surroundContents(m); tf.toast(fa() ? 'هایلایت شد' : 'Highlighted'); }
+        catch { tf.toast(fa() ? 'بخش کوتاه‌تری را انتخاب کنید' : 'Select a shorter passage'); }
+      } else if (act === 'quote') {
+        navigator.clipboard?.writeText(`«${text}» — ${fa() ? 'نسیم فرهمند، حاشیه' : 'Nasim Farahmand, Margin'}`).catch(() => {});
+        tf.toast(fa() ? 'نقل‌قول کپی شد' : 'Quote copied');
+      } else tf.toast(fa() ? 'یادداشت در کتابخانهٔ شما ذخیره شد' : 'Note saved to your library');
+      getSelection().removeAllRanges(); bar.hidden = true;
+    });
+  });
+</script>
+</body>
+</html>
