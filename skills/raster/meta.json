@@ -1,0 +1,34 @@
+{
+  "name": "Raster",
+  "order": 12,
+  "category": "content",
+  "mode": "light",
+  "density": "balanced",
+  "persianFirst": false,
+  "tags": ["swiss", "grid", "typographic", "minimal", "cultural"],
+  "tagline": {
+    "en": "Swiss grid system — black, white, one red, giant grotesk numerals and a visible 12-column grid",
+    "fa": "نظام شبکهٔ سوئیسی — سیاه، سفید، یک قرمز، اعداد عظیم گروتسک و شبکهٔ ۱۲ستونه که دیده می‌شود"
+  },
+  "summary": {
+    "en": "The International Typographic Style rebuilt for the web: pure white, black rules, one signal red, a strict 12-column grid you can reveal with a keystroke, flush-left headlines set huge and tight, label/content splits, geometric poster compositions and square controls. Everything aligns; nothing is decorated. The operations dashboard uses the same discipline: giant numerals, timed-entry slot grids, ruled tables and straight-line charts.",
+    "fa": "سبک بین‌المللی تایپوگرافیک، بازسازی‌شده برای وب: سفید خالص، خطوط سیاه، یک قرمز سیگنال، شبکهٔ ۱۲ستونهٔ دقیق که با یک کلید دیده می‌شود، تیترهای عظیم و فشرده با چینش از ابتدا، تقسیم برچسب/محتوا، پوسترهای هندسی و کنترل‌های مربعی. همه‌چیز هم‌تراز است و هیچ تزئینی ندارد. داشبورد عملیات هم با همین انضباط ساخته شده: اعداد عظیم، شبکهٔ بازه‌های ورود، جدول‌های خط‌دار و نمودار خطی ساده."
+  },
+  "bestFor": {
+    "en": ["Museums, galleries, festivals and cultural programs", "Architecture, design and type studios", "Schedules, timetables and transit information", "Operations dashboards that must read at a glance"],
+    "fa": ["موزه، گالری، جشنواره و برنامه‌های فرهنگی", "استودیوهای معماری، طراحی و تایپ", "برنامهٔ زمانی، جدول حرکت و اطلاعات حمل‌ونقل", "داشبوردهای عملیاتی که باید با یک نگاه خوانده شوند"]
+  },
+  "avoidFor": {
+    "en": ["Warm, emotional consumer brands", "Playful products for kids", "Products that need lots of imagery and color"],
+    "fa": ["برندهای مصرفی گرم و احساسی", "محصولات بازیگوش کودکان", "محصولاتی که تصویر و رنگ زیاد لازم دارند"]
+  },
+  "signature": {
+    "en": ["A visible 12-column grid overlay toggled with G", "Display type 56–168px, weight 700, tracking −0.045em, flush-left", "Label column (3) beside content column (9) under a 2px black rule", "Giant red numerals for dates and key figures", "Geometric posters: discs and bars in red, black and white", "Square, rule-based controls; red underline tabs; no radius, no shadow"],
+    "fa": ["شبکهٔ ۱۲ستونه که با کلید G نمایان می‌شود", "تیتر ۵۶ تا ۱۶۸ پیکسل، وزن ۷۰۰، فشرده و از ابتدا چیده‌شده", "ستون برچسب (۳) کنار ستون محتوا (۹) زیر خط سیاه ۲ پیکسلی", "اعداد قرمز عظیم برای تاریخ‌ها و ارقام کلیدی", "پوسترهای هندسی: دایره و نوار در قرمز، سیاه و سفید", "کنترل‌های مربعی و خطی؛ تب با زیرخط قرمز؛ بدون گردی و سایه"]
+  },
+  "swatches": ["#ffffff", "#f2f2f0", "#0a0a0a", "#7a7a76", "#e4002b"],
+  "fonts": { "latin": "Archivo", "persian": "Noto Sans Arabic", "mono": "Archivo (tabular figures)" },
+  "icons": "None (typographic arrows)",
+  "brandTrials": ["0047bb", "007a3d", "ff6a00", "0a0a0a"],
+  "demos": { "site": { "host": "kunsthalle-nord.example" }, "dashboard": { "host": "ops.kunsthalle-nord.example" } }
+}

@@ -108,6 +108,15 @@
       ]
     },
     {
+      "name": "raster",
+      "description": "Tastefolio design language — Swiss grid system — black, white, one red, giant grotesk numerals and a visible 12-column grid",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/raster"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -123,7 +132,8 @@
         "./skills/sideload",
         "./skills/shelf",
         "./skills/broadsheet",
-        "./skills/stamp"
+        "./skills/stamp",
+        "./skills/raster"
       ]
     }
   ]

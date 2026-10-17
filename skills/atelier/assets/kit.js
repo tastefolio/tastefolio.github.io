@@ -26,6 +26,7 @@
  *   Hotkeys    [data-hotkey="/"] focuses/clicks the element
  *   Reveal     [data-reveal] gets .is-in when visible; [data-countup] animates numbers
  *   Copy       [data-copy="text" | "#selector"]
+ *   Grid       [data-grid-toggle] toggles <html data-grid> (for visible layout-grid overlays)
  *   Quantity   [data-qty] > button[data-step="-1|1"] + input
  */
 (() => {
@@ -198,6 +199,13 @@
     const L = 0.2126 * r + 0.7152 * g + 0.0722 * b;
     root.style.setProperty('--brand-ink', (1.05 / (L + 0.05)) >= ((L + 0.05) / 0.05) ? '#ffffff' : '#111111');
   }
+
+  // ---------------------------------------------------------------- layout grid overlay ([data-grid-toggle] → <html data-grid>)
+  on('click', '[data-grid-toggle]', (e, btn) => {
+    const onNow = !root.hasAttribute('data-grid');
+    root.toggleAttribute('data-grid', onNow);
+    btn.setAttribute('aria-pressed', String(onNow));
+  });
 
   // ---------------------------------------------------------------- toggles (menus, drawers, mobile nav)
   const openToggles = new Set();
@@ -488,6 +496,7 @@
   function updateWhen() {
     $$('[data-when]').forEach((el) => {
       const [name, want] = el.dataset.when.split(':');
+      if (!want) return; // not a conditional-visibility rule
       const field = d.querySelector(`[name="${name}"]:checked`) || d.querySelector(`select[name="${name}"], input[name="${name}"]:not([type="radio"]):not([type="checkbox"])`);
       const group = d.querySelector(`[data-group="${name}"] [aria-pressed="true"]`);
       let val = group?.dataset.value ?? (field ? (field.type === 'checkbox' ? String(field.checked) : field.value) : '');

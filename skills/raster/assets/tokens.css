@@ -1,0 +1,132 @@
+/* Raster — design tokens (Tastefolio). International Typographic Style: white, black, one signal red,
+   a strict 12-column grid, big grotesk type, square everything. */
+:root {
+  --canvas: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f2f2f0;
+  --surface-3: #e4e4e1;
+  --surface-ink: #0a0a0a;
+  --overlay: rgba(10, 10, 10, .6);
+
+  --ink: #0a0a0a;
+  --ink-2: #3d3d3b;
+  --ink-3: #7a7a76;
+  --ink-inverse: #ffffff;
+
+  --line: #0a0a0a;          /* rules are black, not gray */
+  --line-2: #c9c9c5;        /* the only light line: table rows, grid overlay */
+
+  --brand: #e4002b;          /* signal red */
+  --brand-ink: #ffffff;
+  --brand-soft: color-mix(in oklab, var(--brand) 10%, #fff);
+  --brand-strong: color-mix(in oklab, var(--brand) 82%, #000);
+  --focus: var(--brand);
+
+  --success: #007a3d;
+  --success-soft: #e0f2e8;
+  --warning: #c77700;
+  --warning-soft: #faecd6;
+  --danger: var(--brand);
+  --danger-soft: var(--brand-soft);
+  --info: #0047bb;
+  --info-soft: #e1e9f8;
+
+  --chart-1: var(--ink);
+  --chart-2: var(--brand);
+  --chart-3: var(--ink-3);
+  --chart-4: #0047bb;
+  --chart-5: #c9c9c5;
+  --chart-6: #007a3d;
+  --chart-grid: #e4e4e1;
+  --chart-axis: var(--ink);
+  --chart-curve: linear;
+  --chart-stroke: 2;
+  --chart-area: 0;
+  --chart-radius: 0;
+  --chart-bar-gap: .2;
+  --chart-donut: 40;
+  --chart-gap: 0;
+  --chart-dots: 1;
+
+  --font-sans: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "Archivo", "Helvetica Neue", Arial, sans-serif;   /* numbers use tabular figures, not a mono face */
+  --fs-xs: 11px;
+  --fs-sm: 13px;
+  --fs-md: 16px;
+  --fs-lg: 21px;
+  --fs-xl: 28px;
+  --fs-2xl: 40px;
+  --fs-3xl: 64px;
+  --fs-display: clamp(56px, 10vw, 168px);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --fw-display: 700;
+  --lh-tight: .88;
+  --lh-snug: 1.1;
+  --lh-body: 1.45;
+  --tracking-display: -.045em;
+  --tracking-caps: .02em;
+
+  /* 8-point spacing, multiples of the baseline */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 144px;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-pill: 0;
+  --border-w: 2px;
+  --shadow-1: none;
+  --shadow-2: none;
+  --shadow-3: 0 0 0 2px var(--ink);
+
+  --container: 1360px;
+  --gutter: clamp(16px, 2.5vw, 32px);
+  --cols: 12;
+  --col-gap: 24px;
+  --control-h: 40px;
+  --control-h-lg: 52px;
+
+  --ease: cubic-bezier(.2, 0, 0, 1);
+  --dur-1: 100ms;
+  --dur-2: 180ms;
+  --dur-3: 280ms;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --canvas: #0a0a0a;
+  --surface: #0a0a0a;
+  --surface-2: #161616;
+  --surface-3: #242424;
+  --surface-ink: #ffffff;
+  --ink: #ffffff;
+  --ink-2: #d0d0cc;
+  --ink-3: #8f8f8a;
+  --ink-inverse: #0a0a0a;
+  --line: #ffffff;
+  --line-2: #3a3a38;
+  --brand: #ff2945;
+  --chart-grid: #242424;
+  color-scheme: dark;
+}
+
+:root:lang(fa) {
+  --font-sans: "Noto Sans Arabic", "Archivo", Tahoma, sans-serif;
+  --font-display: "Noto Sans Arabic", "Archivo", sans-serif;
+  --fs-display: clamp(48px, 8.4vw, 140px);
+  --lh-tight: 1.2;
+  --lh-snug: 1.4;
+  --lh-body: 1.85;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+}

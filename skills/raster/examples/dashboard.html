@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-alt-lang="fa" data-demo="dashboard" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="عملیات · تالار هنر شمال">Operations · Kunsthalle Nord</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .head-date { display: flex; align-items: flex-end; gap: var(--space-4); }
+  .head-date .numeral { color: var(--brand); }
+  .tools { display: flex; gap: var(--space-5); font-weight: 700; font-size: var(--fs-sm); }
+  .tools button { background: none; border: 0; padding: 0; cursor: pointer; font-weight: 700; }
+  .tools button:hover { color: var(--brand); }
+  main { padding-block: var(--space-6) var(--space-9); display: grid; gap: var(--space-6); }
+</style>
+</head>
+<body>
+<div class="grid-overlay" aria-hidden="true"><div class="container"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+<a class="skip-link" href="#main" data-alt="رفتن به محتوا">Skip to content</a>
+<header class="app-head">
+  <div class="container">
+    <a class="wordmark" href="site.html" style="grid-column:auto"><span class="sq" aria-hidden="true"></span><span data-alt="عملیات">Operations</span></a>
+    <div class="head-date"><span class="numeral" data-num="16">16</span><div><p class="label" data-date="2026-10-16" data-fmt="long">October 16, 2026</p><p class="meta" data-alt="باز تا ۱۸:۰۰ · ۳ نمایشگاه">Open until 18:00 · 3 exhibitions</p></div></div>
+    <span class="spacer"></span>
+    <div class="tools"><button type="button" data-grid-toggle data-hotkey="g" aria-pressed="false" data-alt="شبکه (G)">Grid (G)</button><button type="button" data-lang-toggle data-alt="English">فارسی</button><button type="button" data-theme-toggle data-alt="تیره">Dark</button></div>
+  </div>
+  <div class="container"><div class="tabs" role="tablist" aria-label="Views" data-alt-aria-label="نماها" style="border:0">
+    <button role="tab" id="t-today" aria-controls="p-today" aria-selected="true" data-alt="امروز">Today</button>
+    <button role="tab" id="t-tix" aria-controls="p-tix" aria-selected="false" data-alt="بلیت‌ها">Tickets</button>
+    <button role="tab" id="t-exh" aria-controls="p-exh" aria-selected="false" data-alt="نمایشگاه‌ها">Exhibitions</button>
+  </div></div>
+</header>
+
+<main id="main" class="container">
+  <section role="tabpanel" id="p-today" aria-labelledby="t-today" class="stack" style="display:grid;gap:var(--space-6)">
+    <div class="kpis">
+      <div><span class="label" data-alt="بازدیدکننده تا این لحظه">Visitors so far</span><span class="numeral" data-num="2481">2,481</span><span class="meta" data-alt="+۱۲٪ نسبت به جمعهٔ گذشته">+12% vs last Friday</span></div>
+      <div><span class="label" data-alt="ظرفیت استفاده‌شده">Capacity used</span><span class="numeral red" data-num="74" data-fmt="pct">74%</span><span class="meta" data-alt="اوج ساعت ۱۵">peak at 15:00</span></div>
+      <div><span class="label" data-alt="فروش آنلاین">Sold online</span><span class="numeral" data-num="1904">1,904</span><span class="meta" data-alt="۷۷٪ کل بلیت‌ها">77% of all tickets</span></div>
+      <div><span class="label" data-alt="میانگین ماندن (دقیقه)">Avg. stay (min)</span><span class="numeral" data-num="96">96</span><span class="meta" data-alt="تالار ۱ و ۲ طولانی‌تر">longest in Halls 1–2</span></div>
+    </div>
+    <div class="split" style="padding-block-end:var(--space-6)">
+      <div><h2 class="h3" data-alt="بازدیدکننده در ساعت">Visitors per hour</h2><p class="meta" style="margin-block-start:6px" data-alt="امروز (سیاه) در برابر میانگین جمعه‌ها (قرمز)">Today (black) vs. Friday average (red)</p></div>
+      <div data-chart="line" data-height="260" data-fmt="int" data-dates="2026-10-16T10:00,9,hour" data-series='[{"name":{"en":"Today","fa":"امروز"},"values":[180,260,310,290,340,420,380,201,0]},{"name":{"en":"Friday average","fa":"میانگین جمعه"},"values":[150,230,280,300,310,350,330,260,140],"color":"var(--chart-2)"}]' data-label='{"en":"Visitors per hour","fa":"بازدیدکننده در ساعت"}'></div>
+    </div>
+    <div class="split">
+      <div><h2 class="h3" data-alt="ورود زمان‌بندی‌شده">Timed entry</h2><p class="meta" style="margin-block-start:6px" data-alt="هر مربع یک بازهٔ نیم‌ساعته؛ پرشدگی از پایین. قرمز = پر.">Each square is a 30-minute slot, filled from the bottom. Red = full.</p></div>
+      <div class="stack" style="display:grid;gap:4px">
+        <div class="slots" style="--n:8"><span></span><span class="h">10</span><span class="h">11</span><span class="h">12</span><span class="h">13</span><span class="h">14</span><span class="h">15</span><span class="h">16</span><span class="h">17</span></div>
+        <div class="slots" style="--n:8"><span data-alt="تالار ۱–۲">Halls 1–2</span><i class="slot" style="--f:60%"></i><i class="slot" style="--f:80%"></i><i class="slot full" style="--f:100%"></i><i class="slot full" style="--f:100%"></i><i class="slot" style="--f:90%"></i><i class="slot full" style="--f:100%"></i><i class="slot" style="--f:55%"></i><i class="slot" style="--f:20%"></i></div>
+        <div class="slots" style="--n:8"><span data-alt="تالار ۳">Hall 3</span><i class="slot" style="--f:30%"></i><i class="slot" style="--f:45%"></i><i class="slot" style="--f:60%"></i><i class="slot" style="--f:50%"></i><i class="slot" style="--f:70%"></i><i class="slot" style="--f:85%"></i><i class="slot" style="--f:40%"></i><i class="slot" style="--f:10%"></i></div>
+        <div class="slots" style="--n:8"><span data-alt="تالار ۴">Hall 4</span><i class="slot" style="--f:10%"></i><i class="slot" style="--f:25%"></i><i class="slot" style="--f:35%"></i><i class="slot" style="--f:40%"></i><i class="slot" style="--f:50%"></i><i class="slot" style="--f:45%"></i><i class="slot" style="--f:30%"></i><i class="slot" style="--f:5%"></i></div>
+      </div>
+    </div>
+    <div class="split">
+      <div><h2 class="h3" data-alt="اتاق‌ها اکنون">Rooms now</h2></div>
+      <div style="display:grid;gap:var(--space-4)">
+        <div><p class="label" data-alt="تالار ۱–۲ · ۳۲۰ از ۴۰۰">Halls 1–2 · 320 of 400</p><div class="meter"><span><i class="hot" style="--w:80%"></i></span><b data-num="80" data-fmt="pct">80%</b></div></div>
+        <div><p class="label" data-alt="تالار ۳ · ۹۰ از ۱۵۰">Hall 3 · 90 of 150</p><div class="meter"><span><i style="--w:60%"></i></span><b data-num="60" data-fmt="pct">60%</b></div></div>
+        <div><p class="label" data-alt="کافه · ۴۴ از ۸۰">Café · 44 of 80</p><div class="meter"><span><i style="--w:55%"></i></span><b data-num="55" data-fmt="pct">55%</b></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section role="tabpanel" id="p-tix" aria-labelledby="t-tix" hidden style="display:grid;gap:var(--space-6)">
+    <div class="split">
+      <div><h2 class="h3" data-alt="فروش بر اساس نوع">Sales by type</h2><p class="meta" style="margin-block-start:6px" data-alt="هفت روز گذشته">Last seven days</p></div>
+      <div data-chart="bar" data-height="240" data-fmt="int" data-labels='{"en":["Adult","Student","Member","Under 18","Group"],"fa":["بزرگسال","دانشجو","عضو","زیر ۱۸","گروهی"]}' data-values="6420,2310,1840,1590,720" data-label='{"en":"Tickets by type","fa":"بلیت بر اساس نوع"}'></div>
+    </div>
+    <div class="table-scroll">
+      <table class="table">
+        <thead><tr><th scope="col" aria-sort="none"><button data-sort="text" data-alt="نوع">Type</button></th><th scope="col" aria-sort="none"><button data-sort="num" data-alt="فروش">Sold</button></th><th scope="col" aria-sort="none"><button data-sort="num" data-alt="درآمد">Revenue</button></th><th scope="col" data-alt="سهم">Share</th></tr></thead>
+        <tbody>
+          <tr><td data-alt="بزرگسال">Adult</td><td data-value="6420" data-num="6420">6,420</td><td data-value="115560" data-num="115560" data-fmt="eur">€115,560</td><td><div class="meter"><span><i style="--w:50%"></i></span><b data-num="50" data-fmt="pct">50%</b></div></td></tr>
+          <tr><td data-alt="دانشجو">Student</td><td data-value="2310" data-num="2310">2,310</td><td data-value="20790" data-num="20790" data-fmt="eur">€20,790</td><td><div class="meter"><span><i style="--w:18%"></i></span><b data-num="18" data-fmt="pct">18%</b></div></td></tr>
+          <tr><td data-alt="عضو">Member</td><td data-value="1840" data-num="1840">1,840</td><td data-value="0" data-num="0" data-fmt="eur">€0</td><td><div class="meter"><span><i style="--w:14%"></i></span><b data-num="14" data-fmt="pct">14%</b></div></td></tr>
+          <tr><td data-alt="زیر ۱۸">Under 18</td><td data-value="1590" data-num="1590">1,590</td><td data-value="0" data-num="0" data-fmt="eur">€0</td><td><div class="meter"><span><i style="--w:12%"></i></span><b data-num="12" data-fmt="pct">12%</b></div></td></tr>
+          <tr><td data-alt="گروهی">Group</td><td data-value="720" data-num="720">720</td><td data-value="10080" data-num="10080" data-fmt="eur">€10,080</td><td><div class="meter"><span><i class="hot" style="--w:6%"></i></span><b data-num="6" data-fmt="pct">6%</b></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section role="tabpanel" id="p-exh" aria-labelledby="t-exh" hidden data-filter-scope style="display:grid;gap:var(--space-5)">
+    <div class="tabs" data-group role="group" aria-label="Status" data-alt-aria-label="وضعیت">
+      <button type="button" data-filter="st" data-value="all" aria-pressed="true" data-alt="همه">All</button>
+      <button type="button" data-filter="st" data-value="on" aria-pressed="false" data-alt="در حال برگزاری">On view</button>
+      <button type="button" data-filter="st" data-value="soon" aria-pressed="false" data-alt="در حال نصب">Installing</button>
+      <button type="button" data-filter="st" data-value="done" aria-pressed="false" data-alt="تمام‌شده">Closed</button>
+    </div>
+    <div class="table-scroll"><table class="table">
+      <thead><tr><th scope="col" data-alt="نمایشگاه">Exhibition</th><th scope="col" data-alt="مکان">Room</th><th scope="col" data-alt="بازه">Dates</th><th scope="col" data-alt="وضعیت">Status</th><th scope="col"></th></tr></thead>
+      <tbody>
+        <tr data-filter-item data-st="on"><td class="h3" data-alt="فرم پیرو هوا">Form follows weather</td><td data-alt="تالار ۱–۲">Halls 1–2</td><td data-alt="۲۶ مهر – ۹ بهمن">Oct 18 – Jan 29</td><td><span class="flag on" data-alt="برگزار می‌شود">On view</span></td><td><button class="btn" type="button" data-dialog="#edit" data-alt="ویرایش">Edit</button></td></tr>
+        <tr data-filter-item data-st="on"><td class="h3" data-alt="حروف در حرکت">Letters in motion</td><td data-alt="تالار ۳">Hall 3</td><td data-alt="۲ شهریور – ۲۷ آبان">Aug 24 – Nov 17</td><td><span class="flag on" data-alt="برگزار می‌شود">On view</span></td><td><button class="btn" type="button" data-dialog="#edit" data-alt="ویرایش">Edit</button></td></tr>
+        <tr data-filter-item data-st="soon"><td class="h3" data-alt="شبکه‌ها: پوسترهای ۱۹۶۰">Grids: posters of the 1960s</td><td data-alt="تالار ۴">Hall 4</td><td data-alt="از ۲۲ آذر">From Dec 13</td><td><span class="flag soon" data-alt="در حال نصب">Installing</span></td><td><button class="btn" type="button" data-dialog="#edit" data-alt="ویرایش">Edit</button></td></tr>
+        <tr data-filter-item data-st="done"><td class="h3" data-alt="نور شمال">Northern light</td><td data-alt="تالار ۴">Hall 4</td><td data-alt="۱ تیر – ۳۰ شهریور">Jun 22 – Sep 21</td><td><span class="flag done" data-alt="تمام شد">Closed</span></td><td><button class="btn" type="button" data-dialog="#edit" data-alt="ویرایش">Edit</button></td></tr>
+      </tbody>
+    </table></div>
+    <p class="meta" data-filter-empty hidden data-alt="نمایشگاهی با این وضعیت نیست.">No exhibitions with this status.</p>
+  </section>
+</main>
+
+<dialog class="modal" id="edit" aria-labelledby="ed-title">
+  <form class="modal-body" data-validate novalidate data-success="Saved" data-success-alt="ذخیره شد">
+    <h2 class="h2" id="ed-title" data-alt="ویرایش نمایشگاه">Edit exhibition</h2>
+    <div class="field"><label class="flabel" for="ed-name" data-alt="عنوان">Title</label><input class="input" id="ed-name" required value="Form follows weather" data-alt-value="فرم پیرو هوا"></div>
+    <div class="field"><label class="flabel" for="ed-cap" data-alt="ظرفیت هر بازه">Capacity per slot</label><input class="input" id="ed-cap" type="number" min="20" max="500" value="200" required dir="ltr"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center"><span class="label" data-alt="ورود فقط با زمان‌بندی">Timed entry only</span><button class="switch" type="button" role="switch" aria-checked="true" aria-label="Timed entry only" data-alt-aria-label="ورود فقط با زمان‌بندی"></button></div>
+    <div style="display:flex;gap:var(--space-3);justify-content:flex-end"><button class="btn" type="button" data-close data-alt="انصراف">Cancel</button><button class="btn btn-primary" type="submit" data-alt="ذخیره">Save</button></div>
+  </form>
+</dialog>
+</body>
+</html>

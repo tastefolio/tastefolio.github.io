@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-alt-lang="fa" data-demo="site" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="تالار هنر شمال — فرم پیرو هوا">Kunsthalle Nord — Form Follows Weather</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .hero { padding-block: var(--space-7) var(--space-8); align-items: end; }
+  .hero .dates { display: flex; gap: var(--space-6); align-items: baseline; flex-wrap: wrap; margin-block-start: var(--space-6); }
+  .hero .dates .numeral { color: var(--brand); }
+  .ticket-total { display: flex; justify-content: space-between; align-items: baseline; border-block-start: 2px solid var(--line); padding-block-start: var(--space-3); }
+  .ticket-total b { font: 700 40px/1 var(--font-display); letter-spacing: -.03em; }
+  .visit .row-line { display: grid; grid-template-columns: 1fr auto; padding-block: 8px; border-block-end: 1px solid var(--line-2); }
+</style>
+</head>
+<body>
+<div class="grid-overlay" aria-hidden="true"><div class="container"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+<a class="skip-link" href="#main" data-alt="رفتن به محتوا">Skip to content</a>
+<header class="site-header">
+  <div class="container">
+    <a class="wordmark" href="#top"><span class="sq" aria-hidden="true"></span><span data-alt="تالار هنر شمال">Kunsthalle Nord</span></a>
+    <nav class="nav" id="nav" aria-label="Primary" data-alt-aria-label="اصلی"><a href="#now" aria-current="page" data-alt="نمایشگاه‌ها">Exhibitions</a><a href="#program" data-alt="برنامه‌ها">Program</a><a href="#visit" data-alt="بازدید">Visit</a><a href="#posters" data-alt="مجموعه">Collection</a></nav>
+    <div class="header-tools">
+      <button type="button" class="hide-md" data-grid-toggle data-hotkey="g" aria-pressed="false" data-alt="شبکه (G)">Grid (G)</button>
+      <button type="button" data-lang-toggle data-alt="English">فارسی</button>
+      <a class="red" href="#visit" data-alt="بلیت">Tickets</a>
+      <button type="button" class="menu-btn" data-toggle="#nav" aria-expanded="false" data-alt="منو">Menu</button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="container">
+  <section class="grid hero" id="top">
+    <div class="c-8">
+      <p class="label" style="margin-block-end:var(--space-4)"><span class="red" data-alt="نمایشگاه اصلی">Main exhibition</span> <span data-alt="— تالار ۱ و ۲">— Halls 1 and 2</span></p>
+      <h1 class="display"><span data-alt="فرم">Form</span><br><span data-alt="پیرو">follows</span><br><span data-alt="هوا">weather</span></h1>
+      <div class="dates"><span class="numeral" data-num="18">18</span><span class="h3" data-alt="مهر — ۲۹ دی ۱۴۰۵">Oct 2026 — Jan 2027</span></div>
+    </div>
+    <div class="c-4">
+      <div class="poster" style="--bg:var(--surface-2)" role="img" aria-label="Exhibition poster: a red disc above a black bar" data-alt-aria-label="پوستر نمایشگاه: دایرهٔ قرمز بالای نوار سیاه">
+        <span class="disc" style="inline-size:70%;aspect-ratio:1;inset-block-start:8%;inset-inline-start:15%"></span>
+        <span class="bar" style="inline-size:100%;block-size:9%;inset-block-start:58%"></span>
+        <span class="bar" style="inline-size:9%;block-size:40%;inset-block-start:30%;inset-inline-start:72%;--fg2:var(--brand)"></span>
+        <span class="poster-text"><b data-alt="فرم پیرو هوا">Form follows weather</b><span data-alt="معماری و اقلیم، ۱۹۵۰ تا امروز">Architecture and climate, 1950–now</span></span>
+      </div>
+      <p class="lead" style="margin-block-start:var(--space-5)" data-alt="چگونه معماران با باد، باران و آفتاب طراحی کردند — ۲۴۰ طرح، ماکت و عکس.">How architects designed with wind, rain and sun — 240 drawings, models and photographs.</p>
+      <a class="btn btn-primary btn-lg" style="margin-block-start:var(--space-5)" href="#visit"><span data-alt="خرید بلیت">Book tickets</span><span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <section class="split" id="now" data-filter-scope>
+    <div><h2 class="h3" data-alt="نمایشگاه‌ها">Exhibitions</h2><p class="meta" style="margin-block-start:6px" data-alt="هر نمایشگاه با بلیت ورودی قابل بازدید است.">All exhibitions are included in admission.</p></div>
+    <div>
+      <div class="tabs" data-group role="group" aria-label="When" data-alt-aria-label="زمان" style="margin-block-end:var(--space-4)">
+        <button type="button" data-filter="period" data-value="all" aria-pressed="true" data-alt="همه">All</button>
+        <button type="button" data-filter="period" data-value="now" aria-pressed="false" data-alt="اکنون">Now</button>
+        <button type="button" data-filter="period" data-value="next" aria-pressed="false" data-alt="به‌زودی">Upcoming</button>
+      </div>
+      <ul class="list">
+        <li data-filter-item data-period="now"><span class="label" data-alt="تالار ۱–۲">Halls 1–2</span><a class="h2" href="#top" data-alt="فرم پیرو هوا">Form follows weather</a><span class="meta" data-alt="۲۶ مهر – ۹ بهمن">Oct 18 – Jan 29</span></li>
+        <li data-filter-item data-period="now"><span class="label" data-alt="تالار ۳">Hall 3</span><a class="h2" href="#top" data-alt="حروف در حرکت">Letters in motion</a><span class="meta" data-alt="۲ شهریور – ۲۷ آبان">Aug 24 – Nov 17</span></li>
+        <li data-filter-item data-period="next"><span class="label" data-alt="تالار ۴">Hall 4</span><a class="h2" href="#top" data-alt="شبکه‌ها: پوسترهای ۱۹۶۰">Grids: posters of the 1960s</a><span class="meta" data-alt="از ۲۲ آذر">From Dec 13</span></li>
+        <li data-filter-item data-period="next"><span class="label" data-alt="حیاط">Courtyard</span><a class="h2" href="#top" data-alt="سایهٔ زمستان">Winter shade</a><span class="meta" data-alt="از ۱۲ دی">From Jan 2</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="split" id="program" data-filter-scope>
+    <div><h2 class="h3" data-alt="برنامه‌ها">Program</h2><select class="select" data-filter="type" aria-label="Type" data-alt-aria-label="نوع" style="margin-block-start:var(--space-4);max-inline-size:220px"><option value="all" data-alt="همهٔ رویدادها">All events</option><option value="talk" data-alt="گفتگو">Talks</option><option value="tour" data-alt="تور">Tours</option><option value="workshop" data-alt="کارگاه">Workshops</option></select></div>
+    <div class="table-scroll">
+      <table class="table">
+        <thead><tr><th scope="col" data-alt="تاریخ">Date</th><th scope="col" data-alt="رویداد">Event</th><th scope="col" data-alt="ساعت">Time</th><th scope="col" data-alt="نوع">Type</th></tr></thead>
+        <tbody>
+          <tr data-filter-item data-type="talk"><td><span class="h2 red" data-num="21">21</span> <span class="meta" data-alt="مهر">Oct</span></td><td class="h3" data-alt="معمار و باد: گفتگو با کیوان رستمی">The architect and the wind: in conversation with K. Rostami</td><td data-alt="۱۸:۳۰">18:30</td><td><span class="flag on" data-alt="گفتگو">Talk</span></td></tr>
+          <tr data-filter-item data-type="tour"><td><span class="h2" data-num="24">24</span> <span class="meta" data-alt="مهر">Oct</span></td><td class="h3" data-alt="تور خانوادگی: ساختن سایه">Family tour: making shade</td><td data-alt="۱۱:۰۰">11:00</td><td><span class="flag" data-alt="تور">Tour</span></td></tr>
+          <tr data-filter-item data-type="workshop"><td><span class="h2" data-num="02">02</span> <span class="meta" data-alt="آبان">Nov</span></td><td class="h3" data-alt="کارگاه پوستر سوئیسی">Swiss poster workshop</td><td data-alt="۱۴:۰۰">14:00</td><td><span class="flag soon" data-alt="کارگاه — ۴ جا مانده">Workshop — 4 left</span></td></tr>
+          <tr data-filter-item data-type="talk"><td><span class="h2" data-num="09">09</span> <span class="meta" data-alt="آبان">Nov</span></td><td class="h3" data-alt="اقلیم و شهر: میزگرد">Climate and the city: a panel</td><td data-alt="۱۹:۰۰">19:00</td><td><span class="flag on" data-alt="گفتگو">Talk</span></td></tr>
+        </tbody>
+      </table>
+      <p class="meta" data-filter-empty hidden data-alt="رویدادی از این نوع نیست.">No events of this type.</p>
+    </div>
+  </section>
+
+  <section class="split" id="posters">
+    <div><h2 class="h3" data-alt="از مجموعه">From the collection</h2></div>
+    <div class="grid g4">
+      <div class="poster" style="--bg:var(--brand);--pt:#fff" role="img" aria-label="Poster" data-alt-aria-label="پوستر"><span class="disc" style="inline-size:60%;aspect-ratio:1;inset-block-start:10%;inset-inline-start:20%;--fg:#fff"></span><span class="poster-text"><b>1962</b><span data-alt="جاز در بندر">Jazz am Hafen</span></span></div>
+      <div class="poster" style="--bg:var(--ink);--pt:#fff" role="img" aria-label="Poster" data-alt-aria-label="پوستر"><span class="bar" style="inline-size:70%;block-size:12%;inset-block-start:16%;--fg2:var(--brand)"></span><span class="bar" style="inline-size:50%;block-size:12%;inset-block-start:34%;--fg2:#fff"></span><span class="poster-text"><b>1964</b><span data-alt="نمایشگاه صنعتی">Industrie</span></span></div>
+      <div class="poster" style="--bg:var(--surface-2)" role="img" aria-label="Poster" data-alt-aria-label="پوستر"><span class="disc" style="inline-size:40%;aspect-ratio:1;inset-block-start:12%;inset-inline-start:10%;--fg:var(--ink)"></span><span class="disc" style="inline-size:40%;aspect-ratio:1;inset-block-start:30%;inset-inline-start:45%"></span><span class="poster-text"><b>1967</b><span data-alt="فصل موسیقی">Konzerte</span></span></div>
+      <div class="poster" style="--bg:#fff;outline:2px solid var(--ink);outline-offset:-2px" role="img" aria-label="Poster" data-alt-aria-label="پوستر"><span class="bar" style="inline-size:12%;block-size:70%;inset-block-start:0;inset-inline-start:20%"></span><span class="bar" style="inline-size:12%;block-size:50%;inset-block-start:0;inset-inline-start:44%;--fg2:var(--brand)"></span><span class="poster-text"><b>1969</b><span data-alt="تئاتر شهر">Stadttheater</span></span></div>
+    </div>
+  </section>
+
+  <section class="split visit" id="visit">
+    <div><h2 class="h3" data-alt="بازدید">Visit</h2><div style="margin-block-start:var(--space-4)"><div class="row-line"><span data-alt="سه‌شنبه تا یکشنبه">Tue – Sun</span><b>10–18</b></div><div class="row-line"><span data-alt="پنجشنبه">Thursday</span><b>10–21</b></div><div class="row-line"><span data-alt="دوشنبه">Monday</span><b data-alt="تعطیل">Closed</b></div></div><p class="meta" style="margin-block-start:var(--space-4)" data-alt="خیابان بندر ۱۲ — ایستگاه مترو تالار">Hafenstrasse 12 — Kunsthalle metro stop</p></div>
+    <form class="grid g9" data-validate novalidate data-success="Booked. Your tickets are in your inbox." data-success-alt="رزرو شد. بلیت‌ها به ایمیل شما ارسال شد.">
+      <div class="c-4 field"><label class="flabel" for="t-date" data-alt="روز بازدید">Date of visit</label><select class="select" id="t-date" name="date" required><option value="" data-alt="انتخاب کنید">Choose a day</option><option data-alt="سه‌شنبه ۲۷ مهر">Tue, Oct 19</option><option data-alt="پنجشنبه ۲۹ مهر">Thu, Oct 21</option><option data-alt="شنبه ۱ آبان">Sat, Oct 23</option></select></div>
+      <div class="c-5 field"><label class="flabel" for="t-email" data-alt="ایمیل">Email</label><input class="input" id="t-email" name="email" type="email" required dir="ltr"></div>
+      <div class="c-3 field"><span class="flabel" data-alt="بزرگسال · ۱۸ یورو">Adult · €18</span><span class="qty" data-qty><button type="button" data-step="-1" aria-label="Fewer adults" data-alt-aria-label="کم کردن">−</button><input type="number" id="q-adult" min="0" max="10" value="2" aria-label="Adults" data-alt-aria-label="بزرگسال"><button type="button" data-step="1" aria-label="More adults" data-alt-aria-label="افزودن">+</button></span></div>
+      <div class="c-3 field"><span class="flabel" data-alt="دانشجو · ۹ یورو">Student · €9</span><span class="qty" data-qty><button type="button" data-step="-1" aria-label="Fewer students" data-alt-aria-label="کم کردن">−</button><input type="number" id="q-student" min="0" max="10" value="1" aria-label="Students" data-alt-aria-label="دانشجو"><button type="button" data-step="1" aria-label="More students" data-alt-aria-label="افزودن">+</button></span></div>
+      <div class="c-3 field"><span class="flabel" data-alt="زیر ۱۸ سال">Under 18</span><span class="meta" style="padding-block:14px" data-alt="رایگان">Free</span></div>
+      <div class="c-12 ticket-total"><span class="label" data-alt="جمع">Total</span><b id="total" data-num="45" data-fmt="eur">€45</b></div>
+      <div class="c-12"><button class="btn btn-ink btn-lg" type="submit"><span data-alt="پرداخت و رزرو">Pay and book</span><span class="arrow" aria-hidden="true">→</span></button></div>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container grid">
+    <div class="c-3"><span class="wordmark" style="font-size:18px"><span class="sq" aria-hidden="true"></span><span data-alt="تالار هنر شمال">Kunsthalle Nord</span></span></div>
+    <div class="c-3"><p class="label" data-alt="درباره">About</p><p class="meta" data-alt="نهادی ساختگی برای نمایش سبک Raster در تیست‌فولیو.">A fictional institution demonstrating the Raster style by Tastefolio.</p></div>
+    <ul class="c-3"><li><a href="#now" data-alt="نمایشگاه‌ها">Exhibitions</a></li><li><a href="#program" data-alt="برنامه‌ها">Program</a></li><li><a href="dashboard.html" data-alt="دفتر عملیات">Operations</a></li></ul>
+    <ul class="c-3"><li><a href="#visit" data-alt="ساعت‌ها">Hours</a></li><li><a href="#visit" data-alt="بلیت">Tickets</a></li></ul>
+  </div>
+</footer>
+<script>
+  document.addEventListener('input', (e) => {
+    if (!e.target.closest('[data-qty]')) return;
+    const total = Number(document.getElementById('q-adult').value) * 18 + Number(document.getElementById('q-student').value) * 9;
+    const t = document.getElementById('total');
+    t.dataset.num = total; t.textContent = tf.fmt(total, 'eur');
+  });
+</script>
+</body>
+</html>
