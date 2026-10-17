@@ -90,6 +90,15 @@
       ]
     },
     {
+      "name": "broadsheet",
+      "description": "Tastefolio design language — Newspaper editorial — nameplate, column rules, kickers and decks, a newsroom built from typography",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/broadsheet"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -103,7 +112,8 @@
         "./skills/tier",
         "./skills/datasheet",
         "./skills/sideload",
-        "./skills/shelf"
+        "./skills/shelf",
+        "./skills/broadsheet"
       ]
     }
   ]

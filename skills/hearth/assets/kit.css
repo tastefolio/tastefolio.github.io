@@ -293,3 +293,6 @@ dialog.modal::backdrop { background: var(--overlay); }
 .footer-grid a { text-decoration: none; color: var(--ink-2); }
 .footer-grid a:hover { color: var(--ink); }
 @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+
+.tf-chart .c-track { stroke: var(--surface-3); }
+.tf-chart .c-center { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; font: 600 20px var(--font-display); }

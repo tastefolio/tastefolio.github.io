@@ -1,0 +1,34 @@
+{
+  "name": "Broadsheet",
+  "order": 10,
+  "category": "content",
+  "mode": "light",
+  "density": "dense",
+  "persianFirst": false,
+  "tags": ["editorial", "newspaper", "serif", "rules", "typographic"],
+  "tagline": {
+    "en": "Newspaper editorial — nameplate, column rules, kickers and decks, a newsroom built from typography",
+    "fa": "سبک روزنامه — نام‌نشان، خطوط ستون، روتیتر و لید، و اتاق خبری که با تایپوگرافی ساخته شده"
+  },
+  "summary": {
+    "en": "A print-inspired language for publishers and anything that reads like journalism: newsprint paper, black ink and hairline column rules, a centered serif nameplate with dateline, red kickers above tight serif headlines, italic decks, small-caps bylines, halftone image plates, numbered most-read lists and pull quotes. No cards, no shadows — hierarchy comes from size, weight and rules. The newsroom desk turns the same vocabulary into a story budget ledger, an editorial calendar and readership charts.",
+    "fa": "زبانی برگرفته از چاپ برای ناشران و هر محتوایی که حال‌وهوای روزنامه‌نگاری دارد: کاغذ روزنامه، جوهر سیاه و خطوط نازک ستون، نام‌نشان سریف در وسط با سطر تاریخ، روتیتر قرمز بالای تیترهای سریف فشرده، لید ایتالیک (در فارسی ساده)، نام نویسنده با حروف کوچک، تصاویر رستری، فهرست شماره‌دار پرخواننده‌ها و نقل‌قول برجسته. بدون کارت و سایه — سلسله‌مراتب با اندازه، وزن و خط ساخته می‌شود. میز تحریریه هم با همین واژگان، فهرست خبرها، تقویم تحریریه و نمودار مخاطب را می‌سازد."
+  },
+  "bestFor": {
+    "en": ["News sites, magazines and long-form publishers", "Reports, research portals and annual reviews", "Newsletters and editorial landing pages", "Editorial tools: CMS, story budgets, calendars"],
+    "fa": ["سایت‌های خبری، مجله‌ها و ناشران متن بلند", "گزارش‌ها، پرتال‌های پژوهشی و گزارش سالانه", "خبرنامه‌ها و صفحه‌های معرفی تحریریه‌ای", "ابزارهای تحریریه: CMS، فهرست خبر، تقویم"]
+  },
+  "avoidFor": {
+    "en": ["Playful consumer apps", "Image-led lifestyle commerce", "Dark, techy developer products"],
+    "fa": ["اپ‌های مصرفی بازیگوش", "فروشگاه‌های تصویرمحور سبک زندگی", "محصولات تیره و فنی توسعه‌دهنده"]
+  },
+  "signature": {
+    "en": ["Centered serif nameplate with a ruled dateline beneath", "12-column front page with hairline rules between columns", "Red uppercase kicker → serif headline → italic deck → small-caps byline", "Halftone 'printed photo' plates made with CSS dot screens", "Heavy 3px rules for section heads, double rules for boxes", "Newsroom ledger: mono slugs, square status marks, typeset tables"],
+    "fa": ["نام‌نشان سریف در وسط با سطر تاریخ خط‌دار", "صفحهٔ اول ۱۲ستونه با خطوط نازک بین ستون‌ها", "روتیتر قرمز ← تیتر سریف ← لید ← نام نویسنده", "تصاویر رستری «چاپی» با الگوی نقطه‌ای CSS", "خط ۳ پیکسلی برای سرتیتر بخش و خط دوتایی برای کادرها", "دفتر تحریریه: شناسهٔ مونو، نشانگر مربعی وضعیت، جدول حروف‌چینی‌شده"]
+  },
+  "swatches": ["#faf8f3", "#f1eee6", "#121110", "#78736b", "#a3211c"],
+  "fonts": { "latin": "Newsreader + Libre Franklin", "persian": "Markazi Text + Noto Naskh Arabic", "mono": "IBM Plex Mono" },
+  "icons": "None (typographic)",
+  "brandTrials": ["1f4e79", "2e6b3f", "7a3e9d", "c2410c"],
+  "demos": { "site": { "host": "themeridian.example" }, "dashboard": { "host": "desk.themeridian.example" } }
+}

@@ -1,0 +1,134 @@
+/* Broadsheet — design tokens (Tastefolio). Newspaper editorial: newsprint paper, black ink, hairline rules,
+   serif headlines, a single dark red for kickers. Light-first. */
+:root {
+  --canvas: #faf8f3;
+  --surface: #faf8f3;        /* the page IS the surface — no cards */
+  --surface-2: #f1eee6;
+  --surface-3: #e6e1d6;
+  --surface-ink: #121110;
+  --overlay: rgba(18, 17, 16, .5);
+
+  --ink: #121110;
+  --ink-2: #3f3c37;
+  --ink-3: #78736b;
+  --ink-inverse: #faf8f3;
+
+  --line: #d9d3c7;           /* hairline column rules */
+  --line-2: #121110;         /* heavy rules: masthead, section heads */
+
+  --brand: #a3211c;          /* kicker red: labels, live marks, links on hover */
+  --brand-ink: #ffffff;
+  --brand-soft: color-mix(in oklab, var(--brand) 8%, var(--canvas));
+  --brand-strong: color-mix(in oklab, var(--brand) 80%, #000);
+  --focus: color-mix(in oklab, var(--ink) 60%, transparent);
+
+  --success: #2e6b3f;
+  --success-soft: #e6efe5;
+  --warning: #8a6100;
+  --warning-soft: #f4ecd7;
+  --danger: #a3211c;
+  --danger-soft: #f5e3df;
+  --info: #24496b;
+  --info-soft: #e3eaf1;
+
+  --chart-1: var(--ink);
+  --chart-2: var(--brand);
+  --chart-3: #78736b;
+  --chart-4: #24496b;
+  --chart-5: #2e6b3f;
+  --chart-6: #b9b2a4;
+  --chart-grid: #e6e1d6;
+  --chart-axis: var(--ink-3);
+  --chart-curve: linear;
+  --chart-stroke: 1.5;
+  --chart-area: 0;
+  --chart-radius: 0;
+  --chart-bar-gap: .3;
+  --chart-donut: 10;
+  --chart-dots: 1;
+
+  --font-sans: "Libre Franklin", "Franklin Gothic", "Helvetica Neue", Arial, sans-serif;   /* labels, UI */
+  --font-serif: "Newsreader", "Georgia", "Times New Roman", serif;                         /* body text */
+  --font-display: "Newsreader", "Georgia", serif;                                          /* headlines */
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --fs-xs: 11px;
+  --fs-sm: 13px;
+  --fs-md: 17px;            /* reading size */
+  --fs-lg: 20px;
+  --fs-xl: 26px;
+  --fs-2xl: 34px;
+  --fs-3xl: 46px;
+  --fs-display: clamp(38px, 4.9vw, 70px);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 600;
+  --fw-display: 600;
+  --lh-tight: 1.04;
+  --lh-snug: 1.22;
+  --lh-body: 1.55;
+  --tracking-display: -.015em;
+  --tracking-caps: .12em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 44px;
+  --space-9: 60px;
+  --space-10: 84px;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 2px;
+  --radius-pill: 999px;
+  --border-w: 1px;
+  --shadow-1: none;
+  --shadow-2: 0 10px 30px -14px rgba(18, 17, 16, .35);
+  --shadow-3: 0 30px 70px -26px rgba(18, 17, 16, .45);
+
+  --container: 1280px;
+  --gutter: clamp(14px, 3vw, 28px);
+  --col-gap: 28px;
+  --control-h: 36px;
+  --control-h-lg: 44px;
+
+  --ease: cubic-bezier(.25, .7, .3, 1);
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+  --dur-3: 320ms;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --canvas: #161513;
+  --surface: #161513;
+  --surface-2: #1e1c19;
+  --surface-3: #2a2723;
+  --surface-ink: #ece8e0;
+  --ink: #ece8e0;
+  --ink-2: #c3bdb2;
+  --ink-3: #8c867c;
+  --ink-inverse: #161513;
+  --line: #3a3631;
+  --line-2: #ece8e0;
+  --brand: #e2574f;
+  --brand-soft: color-mix(in oklab, var(--brand) 12%, var(--canvas));
+  --chart-grid: #2a2723;
+  color-scheme: dark;
+}
+
+/* Persian: editorial Naskh for headlines and text, Vazirmatn for labels. Never letter-spaced. */
+:root:lang(fa) {
+  --font-display: "Markazi Text", "Noto Naskh Arabic", serif;
+  --font-serif: "Noto Naskh Arabic", "Markazi Text", serif;
+  --font-sans: "Vazirmatn", Tahoma, sans-serif;
+  --fs-md: 17px;
+  --fs-display: clamp(36px, 4.6vw, 66px);
+  --lh-tight: 1.3;
+  --lh-snug: 1.45;
+  --lh-body: 2;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+}

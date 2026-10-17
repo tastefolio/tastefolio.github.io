@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-alt-lang="fa" data-demo="dashboard" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="میز تحریریه · نصف‌النهار">The Desk · The Meridian</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=Libre+Franklin:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Markazi+Text:wght@500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="رفتن به محتوا">Skip to content</a>
+<header class="desk-head">
+  <div class="container">
+    <a class="name" href="site.html" data-alt="نصف‌النهار">The Meridian</a>
+    <span class="label" data-alt="میز تحریریه · ویرایش صبح">The Desk · morning edition</span>
+    <span class="spacer"></span>
+    <span class="small subtle" data-date="2026-10-16" data-fmt="long">October 16, 2026</span>
+    <button class="btn btn-text" type="button" data-lang-toggle data-alt="English">فارسی</button>
+    <button class="btn btn-text" type="button" data-theme-toggle data-alt="شب" aria-label="Dark mode" data-alt-aria-label="حالت تیره">Night</button>
+    <button class="btn btn-solid" type="button" data-dialog="#assign" data-alt="سفارش گزارش">New assignment</button>
+  </div>
+</header>
+<nav class="container desk-tabs" role="tablist" aria-label="Desk" data-alt-aria-label="میز">
+  <button role="tab" id="t-budget" aria-controls="p-budget" aria-selected="true" data-alt="فهرست خبرها">Story budget</button>
+  <button role="tab" id="t-cal" aria-controls="p-cal" aria-selected="false" data-alt="تقویم تحریریه">Calendar</button>
+  <button role="tab" id="t-read" aria-controls="p-read" aria-selected="false" data-alt="مخاطبان">Readership</button>
+</nav>
+
+<main class="container" id="main">
+  <section class="desk" role="tabpanel" id="p-budget" aria-labelledby="t-budget">
+    <div class="figures">
+      <div><span class="label" data-alt="خبرهای امروز">Stories today</span><b data-num="42">42</b><span class="small subtle" data-alt="۶ صفحهٔ اول">6 on the front</span></div>
+      <div><span class="label" data-alt="ارسال‌شده">Filed</span><b data-num="31">31</b><span class="small subtle" data-alt="۷۴٪ برنامه">74% of plan</span></div>
+      <div><span class="label" data-alt="در حال ویرایش">In editing</span><b data-num="8">8</b><span class="small subtle" data-alt="۲ با دبیر ارشد">2 with the chief</span></div>
+      <div><span class="label" data-alt="با تأخیر">Late</span><b style="color:var(--brand)" data-num="3">3</b><span class="small subtle" data-alt="مهلت ۲۲:۳۰">deadline 22:30</span></div>
+    </div>
+    <div data-filter-scope>
+      <div class="section-head"><h2 data-alt="فهرست خبرهای امشب">Tonight's budget</h2>
+        <div class="filters" data-group role="group" aria-label="Desk" data-alt-aria-label="بخش">
+          <button type="button" data-filter="desk" data-value="all" aria-pressed="true" data-alt="همه">All desks</button>
+          <button type="button" data-filter="desk" data-value="world" aria-pressed="false" data-alt="جهان">World</button>
+          <button type="button" data-filter="desk" data-value="business" aria-pressed="false" data-alt="اقتصاد">Business</button>
+          <button type="button" data-filter="desk" data-value="culture" aria-pressed="false" data-alt="فرهنگ">Culture</button>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table class="ledger">
+          <thead><tr><th scope="col" data-alt="شناسه">Slug</th><th scope="col" data-alt="تیتر">Headline</th><th scope="col" data-alt="خبرنگار">Writer</th><th scope="col" aria-sort="none"><button data-sort="num" data-alt="کلمه">Words</button></th><th scope="col" data-alt="وضعیت">Status</th><th scope="col" aria-sort="none"><button data-sort="num" data-alt="مهلت">Due</button></th></tr></thead>
+          <tbody>
+            <tr data-filter-item data-desk="world"><td><span class="slug">HEAT-STREETS</span></td><td data-alt="شهرها برای خنک کردن خیابان‌ها مسابقه می‌دهند">Cities race to cool their streets</td><td data-alt="سارا محمدی">Sara Mohammadi</td><td data-value="2400" data-num="2400">2,400</td><td><span class="status published" data-alt="منتشرشده">Published</span></td><td data-value="1800" class="num">18:00</td></tr>
+            <tr data-filter-item data-desk="world"><td><span class="slug">PORT-TALKS</span></td><td data-alt="مذاکرات تجاری بندرها از سر گرفته شد">Port trade talks resume</td><td data-alt="امیر کرمانی">Amir Kermani</td><td data-value="900" data-num="900">900</td><td><span class="status filed" data-alt="ارسال‌شده">Filed</span></td><td data-value="2030" class="num">20:30</td></tr>
+            <tr data-filter-item data-desk="business"><td><span class="slug">SOLAR-MILLS</span></td><td data-alt="کارخانه‌های کوچک و برق خورشیدی">Small factories go solar</td><td data-alt="لیلا امینی">Leila Amini</td><td data-value="1200" data-num="1200">1,200</td><td><span class="status editing" data-alt="در ویرایش">Editing</span></td><td data-value="2100" class="num">21:00</td></tr>
+            <tr data-filter-item data-desk="business"><td><span class="slug">BAKERY-APPS</span></td><td data-alt="نسل تازهٔ نانوایی‌ها">A new generation of bakeries</td><td data-alt="مهسا نوری">Mahsa Nouri</td><td data-value="800" data-num="800">800</td><td><span class="status late" data-alt="با تأخیر">Late</span></td><td data-value="2000" class="num">20:00</td></tr>
+            <tr data-filter-item data-desk="culture"><td><span class="slug">LIBRARY-REOPEN</span></td><td data-alt="کتابخانهٔ مرکزی دوباره باز شد">Central library reopens</td><td data-alt="کاوه رضایی">Kaveh Rezaei</td><td data-value="1000" data-num="1000">1,000</td><td><span class="status filed" data-alt="ارسال‌شده">Filed</span></td><td data-value="1930" class="num">19:30</td></tr>
+            <tr data-filter-item data-desk="culture"><td><span class="slug">AUTUMN-NOVELS</span></td><td data-alt="ده رمان برای این پاییز">Ten novels for autumn</td><td data-alt="نیلوفر صادقی">Niloufar Sadeghi</td><td data-value="1600" data-num="1600">1,600</td><td><span class="status" data-alt="برنامه‌ریزی‌شده">Planned</span></td><td data-value="2230" class="num">22:30</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted" data-filter-empty hidden data-alt="خبری در این بخش نیست.">No stories on this desk.</p>
+    </div>
+  </section>
+
+  <section class="desk" role="tabpanel" id="p-cal" aria-labelledby="t-cal" hidden>
+    <div class="section-head" style="margin:0"><h2 data-alt="هفتهٔ پیش رو">The week ahead</h2><span class="label" data-alt="۲۶ تا ۳۰ مهر">Oct 18 – 22</span></div>
+    <div class="week">
+      <div><h3 data-alt="شنبه">Mon</h3><span class="item"><span data-alt="بودجهٔ شهری — جلسهٔ شورا">City budget — council vote</span><small data-alt="جهان · امیر">World · Amir</small></span><span class="item" style="border-color:var(--ink-3)"><span data-alt="نقد نمایشگاه">Exhibition review</span><small data-alt="فرهنگ · کاوه">Culture · Kaveh</small></span></div>
+      <div><h3 data-alt="یکشنبه">Tue</h3><span class="item red"><span data-alt="گزارش ویژه: آب">Special report: water</span><small data-alt="اقلیم · سارا">Climate · Sara</small></span></div>
+      <div><h3 data-alt="دوشنبه">Wed</h3><span class="item"><span data-alt="نرخ بیکاری فصلی">Quarterly jobs figures</span><small data-alt="اقتصاد · لیلا">Business · Leila</small></span><span class="item"><span data-alt="مصاحبه با معمار بندر">Interview: port architect</span><small data-alt="جهان · مهسا">World · Mahsa</small></span></div>
+      <div><h3 data-alt="سه‌شنبه">Thu</h3><span class="item"><span data-alt="نیمه‌نهایی جوانان">Youth semifinal</span><small data-alt="ورزش · بهرام">Sports · Bahram</small></span></div>
+      <div><h3 data-alt="چهارشنبه">Fri</h3><span class="item red"><span data-alt="ویژه‌نامهٔ آخر هفته">Weekend magazine close</span><small data-alt="همهٔ بخش‌ها">All desks</small></span></div>
+    </div>
+  </section>
+
+  <section class="desk" role="tabpanel" id="p-read" aria-labelledby="t-read" hidden>
+    <div class="split">
+      <div>
+        <div class="section-head"><h2 data-alt="خوانندگان در ساعت">Readers by hour</h2><span class="label" data-alt="امروز در برابر دیروز">Today vs. yesterday</span></div>
+        <div data-chart="line" data-height="260" data-fmt="compact" data-dates="2026-10-16T05:00,18,hour" data-dash-second data-series='[{"name":{"en":"Today","fa":"امروز"},"values":[4200,9800,18400,22100,19800,16200,14400,15100,16800,17900,16100,14800,15600,19900,24800,26100,21900,16400]},{"name":{"en":"Yesterday","fa":"دیروز"},"values":[3900,8800,16900,20400,18900,15800,13900,14200,15900,16100,15400,14100,14800,18100,22300,23600,20100,15200],"color":"var(--chart-2)"}]' data-label='{"en":"Readers by hour","fa":"خوانندگان در ساعت"}'></div>
+      </div>
+      <div>
+        <div class="section-head"><h2 data-alt="پرخواننده‌ترین‌ها">Top stories</h2></div>
+        <ul class="spark-list">
+          <li><span class="hed hed-s" data-alt="شهرها و خنک کردن خیابان‌ها">Cities cool their streets</span><span data-chart="spark" data-height="28" data-values="4,9,18,26,30,33,35,36" data-fill="none"></span><span class="n" data-num="48200" data-fmt="compact">48K</span></li>
+          <li><span class="hed hed-s" data-alt="چرا قیمت نان بالا رفت">Why bread prices rose</span><span data-chart="spark" data-height="28" data-values="12,14,15,16,18,17,19,20" data-fill="none"></span><span class="n" data-num="31900" data-fmt="compact">32K</span></li>
+          <li><span class="hed hed-s" data-alt="گوشی هوشمند در مدارس">Smartphones in schools</span><span data-chart="spark" data-height="28" data-values="20,18,16,15,13,12,11,10" data-fill="none"></span><span class="n" data-num="22400" data-fmt="compact">22K</span></li>
+          <li><span class="hed hed-s" data-alt="قطار سریع‌السیر شمال">The northern express line</span><span data-chart="spark" data-height="28" data-values="2,3,3,5,8,12,15,19" data-fill="none"></span><span class="n" data-num="19100" data-fmt="compact">19K</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dialog class="modal" id="assign" aria-labelledby="as-title">
+  <form class="modal-body" data-validate novalidate data-success="Assignment added to tonight's budget." data-success-alt="سفارش به فهرست امشب اضافه شد.">
+    <span class="kicker" data-alt="سفارش تازه">New assignment</span>
+    <h2 class="hed hed-l" id="as-title" data-alt="چه چیزی را پوشش می‌دهیم؟">What are we covering?</h2>
+    <div class="field"><label class="flabel" for="as-slug" data-alt="شناسه">Slug</label><input class="input" id="as-slug" name="slug" required pattern="[A-Za-z0-9-]+" dir="ltr" style="font-family:var(--font-mono);text-transform:uppercase" data-pattern-msg="Letters, numbers and dashes." data-pattern-msg-alt="حروف لاتین، عدد و خط تیره."></div>
+    <div class="field"><label class="flabel" for="as-hed" data-alt="تیتر کاری">Working headline</label><input class="input" id="as-hed" name="hed" required minlength="8"></div>
+    <div class="field"><label class="flabel" for="as-desk" data-alt="بخش">Desk</label><select class="select" id="as-desk" name="desk" required><option value="" data-alt="انتخاب">Choose</option><option data-alt="جهان">World</option><option data-alt="اقتصاد">Business</option><option data-alt="فرهنگ">Culture</option></select></div>
+    <div class="field"><label class="flabel" for="as-words" data-alt="تعداد کلمه">Length (words)</label><input class="input" id="as-words" name="words" type="number" min="200" max="5000" value="900" dir="ltr"></div>
+    <div style="display:flex;gap:10px;justify-content:flex-end"><button class="btn" type="button" data-close data-alt="انصراف">Cancel</button><button class="btn btn-solid" type="submit" data-alt="افزودن به فهرست">Add to budget</button></div>
+  </form>
+</dialog>
+</body>
+</html>
