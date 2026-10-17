@@ -11,6 +11,7 @@
   };
   const lang = root.lang;
   const nf = new Intl.NumberFormat(lang === 'fa' ? 'fa-IR' : 'en-US');
+  const COPY = lang === 'fa' ? { copy: 'کپی', copied: 'کپی شد' } : { copy: 'Copy', copied: 'Copied' };
 
   // Language preference: remember explicit choices, honor them on the English home page.
   $$('[data-set-lang]').forEach((a) => a.addEventListener('click', () => store.set('lang', a.dataset.setLang)));
@@ -30,16 +31,41 @@
     });
   });
 
-  // Copy buttons
+  // Phone menu: the top nav folds under the bar
+  const menuBtn = $('[data-menu]'), topnav = $('#topnav');
+  if (menuBtn && topnav) {
+    const setMenu = (open) => { menuBtn.setAttribute('aria-expanded', String(open)); topnav.toggleAttribute('data-open', open); };
+    menuBtn.addEventListener('click', () => setMenu(menuBtn.getAttribute('aria-expanded') !== 'true'));
+    topnav.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
+    d.addEventListener('click', (e) => { if (!e.target.closest('#topnav, [data-menu]')) setMenu(false); });
+    d.addEventListener('keydown', (e) => { if (e.key === 'Escape' && topnav.hasAttribute('data-open')) { setMenu(false); menuBtn.focus(); } });
+    matchMedia('(min-width: 641px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
+  }
+
+  // Copy buttons (labels follow the page language)
+  $$('[data-copy]').forEach((b) => b.setAttribute('aria-label', COPY.copy));
   d.addEventListener('click', async (e) => {
     const b = e.target.closest('[data-copy]');
     if (!b) return;
     const text = $(b.dataset.copy)?.innerText.trim() || '';
     try { await navigator.clipboard.writeText(text); } catch { /* blocked */ }
     b.classList.add('is-done');
-    b.setAttribute('aria-label', lang === 'fa' ? 'کپی شد' : 'Copied');
-    setTimeout(() => { b.classList.remove('is-done'); b.setAttribute('aria-label', 'Copy'); }, 1400);
+    b.setAttribute('aria-label', COPY.copied);
+    setTimeout(() => { b.classList.remove('is-done'); b.setAttribute('aria-label', COPY.copy); }, 1400);
   });
+
+  // Rows that scroll sideways (chip groups, tab lists) fade at the far edge until you reach it
+  const scrollers = $$('.chip-group, .tablist');
+  const markScroll = (el) => {
+    const max = el.scrollWidth - el.clientWidth;
+    if (max <= 1) { delete el.dataset.scroll; return; }
+    el.dataset.scroll = Math.abs(el.scrollLeft) >= max - 1 ? 'end' : 'more';
+  };
+  scrollers.forEach((el) => el.addEventListener('scroll', () => markScroll(el), { passive: true }));
+  const markAll = () => scrollers.forEach(markScroll);
+  markAll();
+  addEventListener('resize', markAll);
+  addEventListener('load', markAll);
 
   // Tabs (install methods)
   $$('[role="tablist"]').forEach((list) => {
@@ -97,6 +123,7 @@
   const empty = $('[data-empty]');
   const dens = { airy: 0, balanced: 1, dense: 2 };
   const norm = (s) => (s || '').toLowerCase().replace(/ي/g, 'ی').replace(/ك/g, 'ک').replace(/‌/g, ' ');
+  cards.forEach((c) => { c._hay = norm(c.dataset.keywords); });
 
   function readUrl() {
     const p = new URLSearchParams(location.search);
@@ -124,14 +151,28 @@
     const q = norm(search.value.trim());
     const terms = q.split(/\s+/).filter(Boolean);
     const want = Object.fromEntries(groups.map((g) => [g.dataset.key, segValue(g)]));
+    // a card matches when it passes the search, the Persian-first box and every facet (optionally ignoring one)
+    const match = (c, skip) => {
+      if (!terms.every((t) => c._hay.includes(t))) return false;
+      if (persian.checked && c.dataset.persian !== 'yes') return false;
+      for (const [k, v] of Object.entries(want)) if (k !== skip && v && v !== 'all' && c.dataset[k] !== v) return false;
+      return true;
+    };
     let n = 0;
     for (const c of cards) {
-      const hay = norm(c.dataset.keywords);
-      let ok = terms.every((t) => hay.includes(t));
-      for (const [k, v] of Object.entries(want)) if (v && v !== 'all' && c.dataset[k] !== v) ok = false;
-      if (persian.checked && c.dataset.persian !== 'yes') ok = false;
+      const ok = match(c);
       c.hidden = !ok;
       if (ok) n++;
+    }
+    // facet counts answer "how many would I see if I picked this?", given everything else that is set
+    for (const g of groups) {
+      const key = g.dataset.key, pool = cards.filter((c) => match(c, key));
+      for (const b of $$('button[data-value]', g)) {
+        const v = b.dataset.value, cnt = v === 'all' ? pool.length : pool.filter((c) => c.dataset[key] === v).length;
+        const out = $('.chip-n', b);
+        if (out) out.textContent = nf.format(cnt);
+        b.toggleAttribute('data-zero', cnt === 0);
+      }
     }
     const by = {
       curated: (a, b) => a.dataset.order - b.dataset.order,
@@ -140,7 +181,7 @@
       airy: (a, b) => dens[a.dataset.density] - dens[b.dataset.density] || a.dataset.order - b.dataset.order,
     }[sort.value];
     cardsEl.append(...cards.slice().sort(by));
-    results.textContent = results.dataset.tpl.replace('{n}', nf.format(n));
+    results.textContent = (n === 1 && results.dataset.tplOne ? results.dataset.tplOne : results.dataset.tpl).replace('{n}', nf.format(n));
     empty.hidden = n > 0;
     const dirty = !!q || persian.checked || Object.values(want).some((v) => v && v !== 'all');
     clears.forEach((b) => { if (b.closest('.results-bar')) b.hidden = !dirty; });

@@ -94,6 +94,7 @@ export function layout(ctx, { lang, title, desc, path, body, ogImage, bodyClass 
     <div class="topbar-tools">
       <a class="lang-switch" href="${altPath}" hreflang="${L.other}" lang="${L.other}" data-set-lang="${L.other}">${L.otherLabel}</a>
       <button class="icon-btn" type="button" data-theme-toggle aria-label="${t.theme}">${ICON.moon}</button>
+      <button class="icon-btn menu-btn" type="button" data-menu aria-controls="topnav" aria-expanded="false" aria-label="${t.menu}">${ICON.menu}</button>
     </div>
   </div>
 </header>
@@ -201,10 +202,10 @@ export function home(ctx, lang) {
       </label>
       ${chipGroup('category', t.category, catCounts, lang)}
       <div class="toolbar-row">
-        ${chipGroup('mode', t.mode, Object.entries(MODES).map(([k, v]) => [k, v[lang]]), lang)}
-        ${chipGroup('density', t.density, Object.entries(DENSITY).map(([k, v]) => [k, v[lang]]), lang)}
+        ${chipGroup('mode', t.mode, Object.entries(MODES).map(([k, v]) => [k, v[lang], skills.filter((s) => s.meta.mode === k).length]), lang)}
+        ${chipGroup('density', t.density, Object.entries(DENSITY).map(([k, v]) => [k, v[lang], skills.filter((s) => s.meta.density === k).length]), lang)}
         <label class="check"><input type="checkbox" data-persian> <span>${t.persianFirst}</span></label>
-        <span class="toolbar-spacer"></span>
+        <div class="toolbar-end">
         <div class="seg" role="group" aria-label="${t.preview}" data-preview>
           <button type="button" aria-pressed="true" data-value="site">${t.site}</button>
           <button type="button" aria-pressed="false" data-value="dashboard">${t.dashboard}</button>
@@ -219,11 +220,12 @@ export function home(ctx, lang) {
           <button type="button" aria-pressed="true" data-value="grid" aria-label="${t.grid}">${ICON.grid}</button>
           <button type="button" aria-pressed="false" data-value="list" aria-label="${t.list}">${ICON.list}</button>
         </div>
+        </div>
       </div>
     </div>
   </div>
   <div class="wrap">
-    <div class="results-bar"><p class="results" aria-live="polite" data-results data-tpl="${esc(t.results)}">${esc(fill(t.results, { n: digits(lang, n) }))}</p><button type="button" class="link-btn" data-clear hidden>${t.clear}</button></div>
+    <div class="results-bar"><p class="results" aria-live="polite" data-results data-tpl="${esc(t.results)}" data-tpl-one="${esc(t.resultsOne)}">${esc(fill(t.results, { n: digits(lang, n) }))}</p><button type="button" class="link-btn" data-clear hidden>${t.clear}</button></div>
     <div class="cards" data-cards data-preview-mode="site" data-view-mode="grid">
       ${skills.map((s, i) => card(ctx, s, lang, i)).join('\n')}
     </div>
@@ -235,7 +237,7 @@ export function home(ctx, lang) {
   <div class="wrap">
     <h2 id="how-title" class="h2">${t.howTitle}</h2>
     <ol class="steps">
-      <li><span class="step-no">${digits(lang, 1)}</span><h3>${t.how1t}</h3><p>${t.how1}</p>${codeBlock(`/plugin marketplace add ${REPO}\n/plugin install ${skills[0]?.slug || 'switchboard'}@tastefolio`)}</li>
+      <li><span class="step-no">${digits(lang, 1)}</span><h3>${t.how1t}</h3><p>${t.how1}</p>${codeBlock(`/plugin marketplace add ${REPO}\n/plugin install ${skills[0]?.slug || 'switchboard'}@tastefolio`, lang)}</li>
       <li><span class="step-no">${digits(lang, 2)}</span><h3>${t.how2t}</h3><p>${t.how2}</p>${codeBlock(fill(t.how2code, { s: pick }), lang)}</li>
       <li><span class="step-no">${digits(lang, 3)}</span><h3>${t.how3t}</h3><p>${t.how3}</p>${codeBlock(fill(t.how3code, { s: pick }), lang)}</li>
     </ol>
@@ -251,7 +253,7 @@ export function home(ctx, lang) {
 
 export function codeBlock(code, lang = 'en') {
   const id = 'c' + Math.random().toString(36).slice(2, 8);
-  return `<div class="code"><pre id="${id}" dir="${/[؀-ۿ]/.test(code) ? 'auto' : 'ltr'}"><code>${esc(code)}</code></pre><button type="button" class="copy" data-copy="#${id}" aria-label="Copy">${ICON.copy}</button></div>`;
+  return `<div class="code"><pre id="${id}" dir="${/[؀-ۿ]/.test(code) ? 'auto' : 'ltr'}"><code>${esc(code)}</code></pre><button type="button" class="copy" data-copy="#${id}" aria-label="${esc((T[lang] || T.en).copy)}">${ICON.copy}</button></div>`;
 }
 
 // ------------------------------------------------------------------ detail
@@ -366,7 +368,7 @@ export function installTabs(slug, lang) {
 // ------------------------------------------------------------------ guide & 404
 export function guide(ctx, lang) {
   const t = T[lang];
-  const body = `<article class="guide"><div class="wrap guide-in">${guideBody(ctx, lang, { codeBlock, installTabs, href, esc, digits })}</div></article>`;
+  const body = `<article class="guide"><div class="wrap guide-in">${guideBody(ctx, lang, { codeBlock: (code, l = lang) => codeBlock(code, l), installTabs, href, esc, digits })}</div></article>`;
   return layout(ctx, { lang, title: `${t.guideTitle} · ${t.siteName}`, desc: t.metaDesc, path: '/guide/', body, bodyClass: 'page-guide' });
 }
 
