@@ -1,0 +1,137 @@
+/* Stamp — design tokens (Tastefolio). Playful neo-brutalism: cream paper, 3px ink outlines, hard offset shadows,
+   flat sticker colors. --brand is the main sticker color (always paired with ink text). */
+:root {
+  --canvas: #fff5e1;
+  --surface: #ffffff;
+  --surface-2: #fffaf0;
+  --surface-3: #f3e8d2;
+  --surface-ink: #121212;
+  --overlay: rgba(18, 18, 18, .55);
+
+  --ink: #121212;
+  --ink-2: #3b3833;
+  --ink-3: #6e6a62;
+  --ink-inverse: #ffffff;
+
+  --line: #121212;          /* every outline is ink */
+  --line-2: #121212;
+
+  --brand: #ffd23f;         /* sticker yellow — primary buttons, highlights */
+  --brand-ink: #121212;
+  --brand-soft: color-mix(in oklab, var(--brand) 35%, #fff);
+  --brand-strong: color-mix(in oklab, var(--brand) 85%, #000);
+  --pop-pink: #ff6fb5;
+  --pop-mint: #3ddc97;
+  --pop-blue: #5b8cff;
+  --pop-lilac: #b892ff;
+  --pop-orange: #ff8a3d;
+  --focus: #5b8cff;
+
+  --success: #1fbf75;
+  --success-soft: #c9f5df;
+  --warning: #ff8a3d;
+  --warning-soft: #ffe0c7;
+  --danger: #ff4d4d;
+  --danger-soft: #ffd5d5;
+  --info: #5b8cff;
+  --info-soft: #d9e4ff;
+
+  --chart-1: var(--pop-blue);
+  --chart-2: var(--pop-pink);
+  --chart-3: var(--pop-mint);
+  --chart-4: var(--brand);
+  --chart-5: var(--pop-lilac);
+  --chart-6: var(--pop-orange);
+  --chart-grid: rgba(18, 18, 18, .12);
+  --chart-axis: var(--ink-2);
+  --chart-curve: linear;
+  --chart-stroke: 4;
+  --chart-area: .0;
+  --chart-radius: 0;
+  --chart-bar-gap: .3;
+  --chart-donut: 26;
+  --chart-gap: 0;
+  --chart-dots: 1;
+
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", "Space Grotesk", sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+  --fs-xs: 12px;
+  --fs-sm: 14px;
+  --fs-md: 16px;
+  --fs-lg: 19px;
+  --fs-xl: 24px;
+  --fs-2xl: 34px;
+  --fs-3xl: 48px;
+  --fs-display: clamp(44px, 8vw, 116px);
+  --fw-regular: 500;
+  --fw-medium: 600;
+  --fw-bold: 700;
+  --fw-display: 800;
+  --lh-tight: .95;
+  --lh-snug: 1.15;
+  --lh-body: 1.55;
+  --tracking-display: -.03em;
+  --tracking-caps: .06em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 28px;
+  --space-7: 36px;
+  --space-8: 52px;
+  --space-9: 72px;
+  --space-10: 104px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+  --border-w: 3px;
+  --shadow-1: 3px 3px 0 var(--ink);
+  --shadow-2: 6px 6px 0 var(--ink);
+  --shadow-3: 10px 10px 0 var(--ink);
+
+  --container: 1200px;
+  --gutter: clamp(16px, 4vw, 36px);
+  --control-h: 44px;
+  --control-h-lg: 56px;
+
+  --ease: cubic-bezier(.3, 1.6, .5, 1);     /* springy */
+  --dur-1: 90ms;
+  --dur-2: 180ms;
+  --dur-3: 320ms;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --canvas: #17140f;
+  --surface: #221e17;
+  --surface-2: #2a251c;
+  --surface-3: #352f24;
+  --surface-ink: #fff5e1;
+  --ink: #fff5e1;
+  --ink-2: #e6dcc6;
+  --ink-3: #b4aa95;
+  --ink-inverse: #121212;
+  --line: #fff5e1;
+  --line-2: #fff5e1;
+  --chart-grid: rgba(255, 245, 225, .14);
+  --shadow-1: 3px 3px 0 #000;
+  --shadow-2: 6px 6px 0 #000;
+  --shadow-3: 10px 10px 0 #000;
+  color-scheme: dark;
+}
+
+:root:lang(fa) {
+  --font-sans: "Vazirmatn", Tahoma, sans-serif;
+  --font-display: "Lalezar", "Vazirmatn", sans-serif;
+  --fw-display: 400;          /* Lalezar has one heavy weight */
+  --fs-display: clamp(42px, 7vw, 104px);
+  --lh-tight: 1.25;
+  --lh-snug: 1.4;
+  --lh-body: 1.9;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+}

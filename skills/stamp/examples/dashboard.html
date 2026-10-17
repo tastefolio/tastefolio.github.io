@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-alt-lang="fa" data-demo="dashboard" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="کمپ من · کمپ خط‌خطی">My camp · Doodle Camp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@700&family=Lalezar&family=Vazirmatn:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .prompt { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: var(--space-6); align-items: center; }
+  @media (max-width: 800px) { .prompt { grid-template-columns: minmax(0, 1fr); } }
+  .drop { display: grid; place-items: center; gap: 6px; min-block-size: 170px; border: var(--border-w) dashed var(--ink); border-radius: var(--radius-lg); background: var(--surface-2); text-align: center; font-weight: 700; cursor: pointer; }
+  .drop i { font-size: 32px; }
+  .lesson { display: grid; grid-template-columns: auto 1fr auto; gap: var(--space-4); align-items: center; padding: 14px 18px; border-block-start: var(--border-w) solid var(--ink); }
+  .lesson:first-of-type { border: 0; }
+  .lesson .icon { inline-size: 48px; block-size: 48px; display: grid; place-items: center; border: var(--border-w) solid var(--ink); border-radius: 12px; font-size: 24px; background: var(--bg); }
+  .donut-wrap { display: grid; grid-template-columns: 180px 1fr; gap: var(--space-5); align-items: center; }
+  .donut-wrap [data-chart] { block-size: 180px; }
+  @media (max-width: 520px) { .donut-wrap { grid-template-columns: minmax(0, 1fr); } }
+  .legend { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-weight: 700; }
+  .legend li { display: flex; gap: 10px; align-items: center; }
+  .legend i { inline-size: 18px; block-size: 18px; border: 2px solid var(--ink); border-radius: 5px; background: var(--c); }
+  .add-card { display: flex; gap: 8px; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="رفتن به محتوا">Skip to content</a>
+<div class="app">
+  <aside class="side" id="side" data-dismissable>
+    <a class="logo" href="site.html"><span class="logo-mark" aria-hidden="true"><i class="ph-bold ph-pencil-simple"></i></span><span data-alt="کمپ خط‌خطی">Doodle Camp</span></a>
+    <div role="tablist" aria-orientation="vertical" aria-label="My camp" data-alt-aria-label="کمپ من">
+      <button role="tab" id="t-today" aria-controls="p-today" aria-selected="true"><i class="ph-bold ph-sun" aria-hidden="true"></i><span data-alt="امروز">Today</span></button>
+      <button role="tab" id="t-board" aria-controls="p-board" aria-selected="false"><i class="ph-bold ph-kanban" aria-hidden="true"></i><span data-alt="تختهٔ من">My board</span></button>
+      <button role="tab" id="t-prog" aria-controls="p-prog" aria-selected="false"><i class="ph-bold ph-chart-bar" aria-hidden="true"></i><span data-alt="پیشرفت">Progress</span></button>
+      <button role="tab" id="t-prof" aria-controls="p-prof" aria-selected="false"><i class="ph-bold ph-smiley" aria-hidden="true"></i><span data-alt="پروفایل">Profile</span></button>
+    </div>
+    <div class="streak"><span class="small" style="font-weight:800" data-alt="زنجیرهٔ روزانه">Daily streak</span><b><span data-num="23">23</span> <span data-alt="روز">days</span></b><span class="small" data-alt="فردا را از دست نده!">Don't break it tomorrow!</span></div>
+  </aside>
+  <main class="main" id="main">
+    <div class="topline">
+      <button class="btn btn-icon btn-sm side-toggle" type="button" data-toggle="#side" aria-expanded="false" aria-label="Menu" data-alt-aria-label="منو"><i class="ph-bold ph-list" aria-hidden="true"></i></button>
+      <h1 class="h2"><span data-alt="سلام">Hey</span> <span class="hilite" data-alt="مینا!">Mina!</span></h1>
+      <span class="spacer"></span>
+      <button class="btn btn-flat btn-sm" type="button" data-lang-toggle data-alt="English">فارسی</button>
+      <button class="btn btn-sm btn-icon" type="button" data-theme-toggle aria-label="Dark mode" data-alt-aria-label="حالت تیره"><i class="ph-bold ph-moon" aria-hidden="true"></i></button>
+      <span class="avatar" style="--bg:var(--pop-mint)" aria-hidden="true">ML</span>
+    </div>
+
+    <section role="tabpanel" id="p-today" aria-labelledby="t-today" class="stack" style="--gap:var(--space-7)">
+      <div class="stats">
+        <div class="stat" style="--bg:var(--brand)"><span class="small" style="font-weight:800" data-alt="زنجیره">Streak</span><b data-num="23">23</b><span class="small" data-alt="بهترین: ۳۱">best: 31</span></div>
+        <div class="stat" style="--bg:var(--pop-mint)"><span class="small" style="font-weight:800" data-alt="صفحه‌های کشیده‌شده">Pages drawn</span><b data-num="148">148</b><span class="small" data-alt="+۹ این هفته">+9 this week</span></div>
+        <div class="stat" style="--bg:var(--pop-pink)"><span class="small" style="font-weight:800" data-alt="استیکرهای دریافتی">Stickers received</span><b data-num="612">612</b><span class="small" data-alt="۴۲ تا از دیروز">42 since yesterday</span></div>
+        <div class="stat" style="--bg:var(--pop-lilac)"><span class="small" style="font-weight:800" data-alt="کلاس‌های تمام‌شده">Classes finished</span><b data-num="7">7</b><span class="small" data-alt="از ۱۲ کلاس شروع‌شده">of 12 started</span></div>
+      </div>
+      <div class="box">
+        <div class="box-head" style="--bg:var(--pop-orange)"><h2 data-alt="چالش امروز">Today's prompt</h2><span class="tag" style="--bg:#fff" data-alt="۸ ساعت مانده">8 hours left</span></div>
+        <div class="box-pad prompt">
+          <div class="stack"><p class="h2" data-alt="«فنجان قهوه‌ات، از نمای بالا»">“Your coffee cup, from above”</p><p class="lead" data-alt="دو دایره، یک سایه و هر چیزی که روی میز است. ده دقیقه وقت داری.">Two circles, one shadow and whatever else is on the table. Ten minutes, go.</p><div class="row"><span class="avatars" aria-hidden="true"><span class="avatar" style="--bg:var(--brand)">A</span><span class="avatar" style="--bg:var(--pop-blue)">R</span><span class="avatar" style="--bg:var(--pop-pink)">S</span></span><span class="small" style="font-weight:700" data-alt="۸۴۰ نفر کشیده‌اند">840 campers already drew it</span></div></div>
+          <button class="drop" type="button" data-toast="Uploaded! +10 camp points" data-toast-alt="آپلود شد! ۱۰ امتیاز گرفتی"><i class="ph-bold ph-camera-plus" aria-hidden="true"></i><span data-alt="عکس صفحه‌ات را آپلود کن">Upload your page</span><span class="small" data-alt="JPG یا PNG">JPG or PNG</span></button>
+        </div>
+      </div>
+      <div class="box">
+        <div class="box-head" style="--bg:var(--pop-mint)"><h2 data-alt="ادامهٔ کلاس‌ها">Keep going</h2></div>
+        <div class="lesson"><span class="icon" style="--bg:var(--pop-pink)"><i class="ph-bold ph-chat-circle-dots" aria-hidden="true"></i></span><div class="stack" style="--gap:6px"><b data-alt="کمیک ۱۰۱ · درس ۵: قاب‌بندی">Comics 101 · Lesson 5: Panels</b><div class="progress" style="--bg:var(--pop-pink)"><i style="--w:42%"></i></div></div><a class="btn btn-primary btn-sm" href="#" data-alt="ادامه">Resume</a></div>
+        <div class="lesson"><span class="icon" style="--bg:var(--pop-mint)"><i class="ph-bold ph-pen-nib" aria-hidden="true"></i></span><div class="stack" style="--gap:6px"><b data-alt="حروف‌نگاری · درس ۲: ضخامت خط">Lettering · Lesson 2: Thick &amp; thin</b><div class="progress" style="--bg:var(--pop-mint)"><i style="--w:18%"></i></div></div><a class="btn btn-sm" href="#" data-alt="ادامه">Resume</a></div>
+      </div>
+    </section>
+
+    <section role="tabpanel" id="p-board" aria-labelledby="t-board" hidden class="stack" style="--gap:var(--space-6)">
+      <form class="add-card" id="add-card" novalidate><input class="input" name="title" placeholder="New drawing idea…" data-alt-placeholder="ایدهٔ نقاشی تازه…" aria-label="New drawing idea" data-alt-aria-label="ایدهٔ تازه" style="max-inline-size:420px"><button class="btn btn-primary" type="submit"><i class="ph-bold ph-plus" aria-hidden="true"></i><span data-alt="افزودن">Add</span></button></form>
+      <div class="board">
+        <div class="col"><div class="col-head"><span data-alt="برای کشیدن">To draw</span><span class="tag" style="--bg:#fff" data-num="3">3</span></div><div class="stack" style="--gap:12px" id="col-todo">
+          <div class="card"><b data-alt="گربه‌ای با کلاه">A cat wearing a hat</b><div class="meta"><span class="tag" style="--bg:var(--pop-pink)" data-alt="چالش">Prompt</span><span data-alt="امروز">today</span></div></div>
+          <div class="card" style="--bg:var(--brand-soft)"><b data-alt="پوستر برای کافهٔ محل">Poster for the corner café</b><div class="meta"><span class="tag" style="--bg:var(--pop-mint)" data-alt="حروف‌نگاری">Lettering</span><span data-alt="جمعه">Fri</span></div></div>
+          <div class="card"><b data-alt="۵ درخت در ۵ دقیقه">5 trees in 5 minutes</b><div class="meta"><span class="tag" style="--bg:var(--pop-blue);color:#fff" data-alt="سرعت">Speed</span><span data-alt="شنبه">Sat</span></div></div>
+        </div></div>
+        <div class="col"><div class="col-head"><span data-alt="در حال کشیدن">Drawing</span><span class="tag" style="--bg:#fff" data-num="1">1</span></div><div class="stack" style="--gap:12px">
+          <div class="card" style="--bg:var(--pop-mint)"><b data-alt="کمیک سه‌خانه‌ای: صبح دوشنبه">3-panel comic: Monday morning</b><div class="progress" style="--bg:var(--brand)"><i style="--w:60%"></i></div><div class="meta"><span class="avatars"><span class="avatar" style="--bg:var(--brand);inline-size:26px;block-size:26px;font-size:11px">ML</span></span><span>2/3</span></div></div>
+        </div></div>
+        <div class="col"><div class="col-head"><span data-alt="به اشتراک گذاشته">Shared</span><span class="tag" style="--bg:#fff" data-num="2">2</span></div><div class="stack" style="--gap:12px">
+          <div class="card" style="--bg:var(--pop-lilac)"><b data-alt="صبحانهٔ امروز">Today's breakfast</b><div class="meta"><span>⭐ <span data-num="48">48</span></span><span data-alt="دیروز">yesterday</span></div></div>
+          <div class="card"><b data-alt="کفش‌هایم">My sneakers</b><div class="meta"><span>⭐ <span data-num="112">112</span></span><span data-alt="سه‌شنبه">Tue</span></div></div>
+        </div></div>
+      </div>
+    </section>
+
+    <section role="tabpanel" id="p-prog" aria-labelledby="t-prog" hidden class="grid-2">
+      <div class="box chart-box"><div class="box-head"><h2 data-alt="صفحه‌ها در هر هفته">Pages per week</h2></div><div class="box-pad"><div data-chart="bar" data-height="240" data-fmt="int" data-dates="2026-08-24,8,week" data-values="4,6,5,9,7,11,8,9" data-name='{"en":"Pages","fa":"صفحه"}' data-label='{"en":"Pages per week","fa":"صفحه در هفته"}'></div></div></div>
+      <div class="box"><div class="box-head" style="--bg:var(--pop-pink)"><h2 data-alt="تکنیک‌ها">Techniques</h2></div><div class="box-pad donut-wrap"><div data-chart="donut" data-values="38,24,22,16" data-center='{"en":"148","fa":"۱۴۸"}' data-labels='{"en":["Pencil","Ink","Color","Lettering"],"fa":["مداد","مرکب","رنگ","حروف‌نگاری"]}'></div><ul class="legend"><li><i style="--c:var(--chart-1)"></i><span data-alt="مداد ۳۸٪">Pencil 38%</span></li><li><i style="--c:var(--chart-2)"></i><span data-alt="مرکب ۲۴٪">Ink 24%</span></li><li><i style="--c:var(--chart-3)"></i><span data-alt="رنگ ۲۲٪">Color 22%</span></li><li><i style="--c:var(--chart-4)"></i><span data-alt="حروف‌نگاری ۱۶٪">Lettering 16%</span></li></ul></div></div>
+    </section>
+
+    <section role="tabpanel" id="p-prof" aria-labelledby="t-prof" hidden>
+      <form class="box" data-validate data-keep novalidate data-success="Profile saved!" data-success-alt="پروفایل ذخیره شد!" style="max-inline-size:640px">
+        <div class="box-head" style="--bg:var(--pop-lilac)"><h2 data-alt="پروفایل تو">Your profile</h2></div>
+        <div class="box-pad stack">
+          <div class="field"><label class="label" for="pf-name" data-alt="نام نمایشی">Display name</label><input class="input" id="pf-name" name="name" value="Mina L." data-alt-value="مینا ل." required></div>
+          <div class="field"><label class="label" for="pf-handle" data-alt="نام کاربری">Handle</label><input class="input" id="pf-handle" name="handle" value="mina.doodles" dir="ltr" required pattern="[a-z0-9._]{3,}" data-pattern-msg="3+ lowercase letters, numbers, dots or underscores." data-pattern-msg-alt="دست‌کم ۳ حرف کوچک لاتین، عدد، نقطه یا زیرخط."></div>
+          <div class="row" style="justify-content:space-between"><span style="font-weight:700" data-alt="یادآوری روزانه ساعت ۸ شب">Daily reminder at 8 pm</span><button class="toggle" type="button" role="switch" aria-checked="true" aria-label="Daily reminder" data-alt-aria-label="یادآوری روزانه"></button></div>
+          <div class="row" style="justify-content:space-between"><span style="font-weight:700" data-alt="گالری عمومی">Public gallery</span><button class="toggle" type="button" role="switch" aria-checked="false" aria-label="Public gallery" data-alt-aria-label="گالری عمومی"></button></div>
+          <button class="btn btn-primary" type="submit" data-alt="ذخیره">Save</button>
+        </div>
+      </form>
+    </section>
+  </main>
+</div>
+<script>
+  document.getElementById('add-card').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const v = e.target.title.value.trim();
+    if (!v) { e.target.title.setAttribute('aria-invalid', 'true'); e.target.title.focus(); return; }
+    e.target.title.removeAttribute('aria-invalid');
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.setProperty('--bg', 'var(--brand)');
+    card.innerHTML = `<b></b><div class="meta"><span class="tag" style="--bg:#fff">${tf.lang() === 'fa' ? 'تازه' : 'New'}</span></div>`;
+    card.querySelector('b').textContent = v;
+    document.getElementById('col-todo').prepend(card);
+    e.target.reset();
+    tf.toast(tf.lang() === 'fa' ? 'به تخته اضافه شد!' : 'Added to your board!');
+  });
+</script>
+</body>
+</html>

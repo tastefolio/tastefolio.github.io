@@ -1,0 +1,34 @@
+{
+  "name": "Stamp",
+  "order": 11,
+  "category": "product",
+  "mode": "light",
+  "density": "airy",
+  "persianFirst": false,
+  "tags": ["neo-brutalism", "playful", "bold", "stickers", "education"],
+  "tagline": {
+    "en": "Playful neo-brutalism — thick ink outlines, hard shadows that press, flat sticker colors",
+    "fa": "نئوبروتالیسم بازیگوش — خط دور ضخیم، سایه‌های سختی که فشرده می‌شوند، رنگ‌های تخت برچسبی"
+  },
+  "summary": {
+    "en": "A loud, friendly language for products that want personality: cream paper, 3px ink outlines on everything, hard offset shadows that collapse when pressed, flat sticker colors (yellow, pink, mint, blue, lilac), chunky display type, rotated stickers, black tape marquees, folder tabs and highlighted words. The app side keeps the energy with colored stat blocks, a kanban board of chunky cards, striped progress bars and outlined charts.",
+    "fa": "زبانی پرسروصدا و صمیمی برای محصولاتی که شخصیت می‌خواهند: کاغذ کرم، خط دور ۳ پیکسلی مشکی روی همه‌چیز، سایه‌های سختی که با فشردن جمع می‌شوند، رنگ‌های تخت برچسبی (زرد، صورتی، نعنایی، آبی، یاسی)، تیترهای چاق، برچسب‌های کج، نوار چسب مشکی متحرک، تب‌های پوشه‌ای و کلمه‌های هایلایت‌شده. بخش اپ هم با بلوک‌های رنگی آمار، تختهٔ کانبان، نوار پیشرفت راه‌راه و نمودارهای خط‌دار همین انرژی را حفظ می‌کند."
+  },
+  "bestFor": {
+    "en": ["Education, creative and hobby platforms", "Indie SaaS and tools for young audiences", "Event, community and campaign sites", "Habit trackers, to-do and planning apps"],
+    "fa": ["پلتفرم‌های آموزشی، خلاقانه و سرگرمی", "SaaS مستقل و ابزارهای مخاطب جوان", "سایت رویداد، جامعه و کمپین", "اپ‌های عادت، کارها و برنامه‌ریزی"]
+  },
+  "avoidFor": {
+    "en": ["Banks, healthcare and legal services", "Luxury or premium positioning", "Data-dense enterprise consoles"],
+    "fa": ["بانک، سلامت و خدمات حقوقی", "جایگاه لوکس یا پریمیوم", "کنسول‌های سازمانی پرداده"]
+  },
+  "signature": {
+    "en": ["3px ink outline on every surface, control and chart bar", "Hard offset shadows that collapse to zero on press", "Flat sticker palette with ink text; one yellow primary", "Rotated stickers and round badges; black tape marquee", "Folder tabs whose active tab merges into its panel", "Highlighter backgrounds and wavy underlines on key words"],
+    "fa": ["خط دور ۳ پیکسلی مشکی روی هر سطح، کنترل و ستون نمودار", "سایهٔ سخت که با فشردن صفر می‌شود", "پالت برچسبی تخت با متن مشکی؛ زرد برای اقدام اصلی", "برچسب‌های کج و نشان گرد؛ نوار چسب مشکی متحرک", "تب‌های پوشه‌ای که تب فعال در پنلش ادغام می‌شود", "هایلایت و زیرخط موج‌دار روی کلمه‌های کلیدی"]
+  },
+  "swatches": ["#fff5e1", "#ffd23f", "#ff6fb5", "#3ddc97", "#121212"],
+  "fonts": { "latin": "Bricolage Grotesque + Space Grotesk", "persian": "Lalezar + Vazirmatn", "mono": "Space Mono" },
+  "icons": "Phosphor (bold)",
+  "brandTrials": ["ff6fb5", "3ddc97", "5b8cff", "ff8a3d"],
+  "demos": { "site": { "host": "doodlecamp.example" }, "dashboard": { "host": "my.doodlecamp.example" } }
+}

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-alt-lang="fa" data-demo="site" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="کمپ خط‌خطی — هر روز چیزی بکش">Doodle Camp — draw something every day</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@700&family=Lalezar&family=Vazirmatn:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .hero-art .card-a { inset-block-start: 10px; inset-inline-start: 6%; inline-size: 72%; transform: rotate(-5deg); }
+  .hero-art .card-b { inset-block-end: 20px; inset-inline-end: 0; inline-size: 62%; transform: rotate(4deg); }
+  .hero-art .card-c { inset-block-start: -6px; inset-inline-end: 4%; --rot: 10deg; }
+  .doodle { aspect-ratio: 16 / 10; border-block-end: var(--border-w) solid var(--ink); background: radial-gradient(circle at 30% 40%, var(--pop-pink) 0 14%, transparent 15%), radial-gradient(circle at 68% 58%, var(--pop-blue) 0 18%, transparent 19%), repeating-linear-gradient(45deg, transparent 0 14px, rgba(18,18,18,.06) 14px 16px), var(--brand); }
+  .section-head { display: flex; justify-content: space-between; align-items: end; gap: var(--space-5); flex-wrap: wrap; margin-block-end: var(--space-8); }
+  .signup { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-8); align-items: center; }
+  @media (max-width: 900px) { .signup { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="رفتن به محتوا">Skip to content</a>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"><i class="ph-bold ph-pencil-simple"></i></span><span data-alt="کمپ خط‌خطی">Doodle Camp</span></a>
+    <nav class="nav" id="nav" aria-label="Primary" data-alt-aria-label="اصلی"><a href="#classes" aria-current="page" data-alt="کلاس‌ها">Classes</a><a href="#how" data-alt="روش کار">How it works</a><a href="#pricing" data-alt="قیمت">Pricing</a><a href="#faq" data-alt="سؤال‌ها">FAQ</a></nav>
+    <div class="header-end">
+      <button class="btn btn-flat btn-sm" type="button" data-lang-toggle data-alt="English">فارسی</button>
+      <a class="btn btn-sm hide-md" href="dashboard.html" data-alt="ورود">Log in</a>
+      <a class="btn btn-primary btn-sm" href="#join" data-alt="بیا به کمپ">Join camp</a>
+      <button class="btn btn-icon btn-sm menu-btn" type="button" data-toggle="#nav" aria-expanded="false" aria-label="Menu" data-alt-aria-label="منو"><i class="ph-bold ph-list" aria-hidden="true"></i></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="container hero" id="top">
+    <div>
+      <span class="eyebrow"><i class="ph-bold ph-sparkle" aria-hidden="true"></i><span data-alt="تازه: چالش ۳۰ روزهٔ دفتر طراحی">New: 30-day sketchbook challenge</span></span>
+      <h1 class="display"><span data-alt="هر روز">Draw</span> <span class="hilite" data-alt="یک چیزی">something</span> <span data-alt="بکش.">every single day.</span></h1>
+      <p class="lead" data-alt="کلاس‌های ده‌دقیقه‌ای، تمرین‌های بامزه و دوستانی که هر روز کارهایت را می‌بینند. استعداد لازم نیست؛ فقط یک مداد.">Ten-minute lessons, silly prompts and a crew that cheers for every page. No talent required — just a pencil.</p>
+      <div class="hero-actions"><a class="btn btn-primary btn-lg" href="#join"><span data-alt="رایگان شروع کن">Start drawing free</span><i class="ph-bold ph-arrow-right flip-rtl" aria-hidden="true"></i></a><a class="btn btn-pink btn-lg" href="#classes" data-alt="کلاس‌ها را ببین">See the classes</a></div>
+      <div class="row" style="margin-block-start:var(--space-6);--gap:12px"><span class="avatars" aria-hidden="true"><span class="avatar" style="--bg:var(--pop-mint)">AK</span><span class="avatar" style="--bg:var(--brand)">ML</span><span class="avatar" style="--bg:var(--pop-blue)">RS</span><span class="avatar" style="--bg:var(--pop-orange)">+</span></span><b data-alt="۱۲٬۴۰۰ خط‌خطی‌کن این هفته کشیدند">12,400 doodlers drew this week</b></div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="box card-a"><div class="box-head" style="--bg:var(--pop-mint)"><span data-alt="درس ۳ از ۱۲">Lesson 3 of 12</span><span class="tag" style="--bg:#fff" data-alt="۱۰ دقیقه">10 min</span></div><div class="doodle"></div><div class="box-pad" style="padding:14px 18px"><b data-alt="کشیدن حیوانات با سه شکل">Animals from three shapes</b></div></div>
+      <div class="box card-b box-pad" style="padding:16px 18px;display:grid;gap:10px"><b data-alt="چالش امروز: فنجان قهوه‌ات">Today's prompt: your coffee cup</b><div class="progress" style="--bg:var(--pop-pink)"><i style="--w:68%"></i></div><span class="small" data-alt="۶۸٪ از کمپ امروز کشیده‌اند">68% of camp has drawn today</span></div>
+      <span class="sticker round card-c" style="--bg:var(--brand)" data-alt="استعداد لازم نیست!">No talent required!</span>
+    </div>
+  </section>
+
+  <div class="tape-zone" aria-hidden="true"><div class="tape"><div class="tape-track"><span data-alt="طراحی">Sketch</span><span data-alt="مرکب">Ink</span><span data-alt="رنگ">Color</span><span data-alt="کمیک">Comics</span><span data-alt="خوشنویسی">Lettering</span><span data-alt="انیمیشن">Animation</span><span data-alt="طراحی">Sketch</span><span data-alt="مرکب">Ink</span><span data-alt="رنگ">Color</span><span data-alt="کمیک">Comics</span><span data-alt="خوشنویسی">Lettering</span><span data-alt="انیمیشن">Animation</span></div></div></div>
+
+  <section class="container section" id="classes">
+    <div class="section-head"><h2 class="h2"><span data-alt="کلاس‌هایی که">Classes you'll</span> <span class="squiggle" data-alt="تمامشان می‌کنی">actually finish</span></h2><a class="btn" href="#classes"><span data-alt="همهٔ ۴۸ کلاس">All 48 classes</span><i class="ph-bold ph-arrow-right flip-rtl" aria-hidden="true"></i></a></div>
+    <div class="grid-3">
+      <article class="tile" style="--bg:var(--pop-pink)"><span class="icon" aria-hidden="true"><i class="ph-bold ph-chat-circle-dots"></i></span><h3 class="h3" data-alt="کمیک ۱۰۱">Comics 101</h3><p data-alt="شخصیت بساز، قاب بچین و اولین کمیک سه‌خانه‌ای‌ات را تمام کن.">Build a character, plan panels and finish your first three-panel strip.</p><div class="row" style="--gap:6px"><span class="tag" data-alt="مبتدی">Beginner</span><span class="tag" data-alt="۴ هفته">4 weeks</span></div></article>
+      <article class="tile" style="--bg:var(--pop-mint)"><span class="icon" aria-hidden="true"><i class="ph-bold ph-pen-nib"></i></span><h3 class="h3" data-alt="حروف‌نگاری با دست">Hand lettering</h3><p data-alt="از خط ساده تا تیترهای پرجزئیات برای پوستر و کارت.">From simple strokes to bouncy headlines for posters and cards.</p><div class="row" style="--gap:6px"><span class="tag" data-alt="همه سطوح">All levels</span><span class="tag" data-alt="۳ هفته">3 weeks</span></div></article>
+      <article class="tile" style="--bg:var(--pop-blue)"><span class="icon" aria-hidden="true"><i class="ph-bold ph-paint-brush-broad"></i></span><h3 class="h3" style="color:#fff" data-alt="آبرنگ برای بی‌حوصله‌ها">Watercolor for the impatient</h3><p style="color:#fff" data-alt="ده تکنیک سریع که در یک قهوه تمام می‌شوند.">Ten quick techniques that fit in one coffee break.</p><div class="row" style="--gap:6px"><span class="tag" style="--bg:#fff" data-alt="مبتدی">Beginner</span><span class="tag" style="--bg:#fff" data-alt="۲ هفته">2 weeks</span></div></article>
+    </div>
+  </section>
+
+  <section class="container section folder" id="how" style="padding-block-start:0">
+    <h2 class="h2" style="margin-block-end:var(--space-7)" data-alt="روش کار خیلی ساده است">How it works (it's simple)</h2>
+    <div role="tablist" aria-label="Steps" data-alt-aria-label="مراحل">
+      <button role="tab" id="ht-1" aria-controls="hp-1" aria-selected="true" data-alt="۱. تماشا کن">1. Watch</button>
+      <button role="tab" id="ht-2" aria-controls="hp-2" aria-selected="false" data-alt="۲. بکش">2. Draw</button>
+      <button role="tab" id="ht-3" aria-controls="hp-3" aria-selected="false" data-alt="۳. به اشتراک بگذار">3. Share</button>
+    </div>
+    <div role="tabpanel" id="hp-1" aria-labelledby="ht-1"><div class="grid-2" style="align-items:center"><p class="lead" data-alt="هر درس ده دقیقه است و با یک تمرین کوچک تمام می‌شود. وسط کار متوقفش کن، کنارش بکش، دوباره ادامه بده.">Each lesson is ten minutes and ends with a tiny exercise. Pause, draw along, rewind — nobody's watching.</p><span class="sticker" style="--bg:var(--pop-pink);justify-self:center" data-alt="ویدیوهای ۱۰ دقیقه‌ای">10-minute videos</span></div></div>
+    <div role="tabpanel" id="hp-2" aria-labelledby="ht-2" hidden style="--tab-bg:var(--pop-mint)"><p class="lead" data-alt="هر روز یک موضوع بامزه می‌رسد: «یک گربه با کلاه»، «صبحانهٔ امروز». با هر ابزاری که داری بکش.">A silly daily prompt arrives each morning — "a cat in a hat", "today's breakfast". Use whatever you have.</p></div>
+    <div role="tabpanel" id="hp-3" aria-labelledby="ht-3" hidden style="--tab-bg:var(--pop-lilac)"><p class="lead" data-alt="عکس صفحه‌ات را بفرست. هم‌کمپی‌ها با استیکر تشویقت می‌کنند — نقد تند ممنوع است.">Snap your page. Campmates react with stickers — harsh critiques are against camp rules.</p></div>
+  </section>
+
+  <section class="container section" id="pricing" style="padding-block-start:0">
+    <div class="section-head"><h2 class="h2" data-alt="قیمت‌های دوستانه">Friendly prices</h2><div class="seg" data-group="billing" role="group" aria-label="Billing" data-alt-aria-label="پرداخت"><button type="button" aria-pressed="true" data-value="m" data-alt="ماهانه">Monthly</button><button type="button" aria-pressed="false" data-value="y" data-alt="سالانه −۳۰٪">Yearly −30%</button></div></div>
+    <div class="plans">
+      <article class="tile plan"><h3 class="h3" data-alt="کمپر">Camper</h3><p class="price" data-alt="رایگان">Free</p><ul class="checks"><li data-alt="۳ کلاس آغازین">3 starter classes</li><li data-alt="چالش روزانه">Daily prompts</li><li data-alt="گالری عمومی">Public gallery</li></ul><a class="btn" href="#join" data-alt="شروع کن">Start</a></article>
+      <article class="tile plan is-hot"><span class="sticker" style="--bg:var(--pop-pink);align-self:flex-start" data-alt="محبوب‌ترین">Most popular</span><h3 class="h3" data-alt="مشاور">Counselor</h3><p class="price"><span data-when="billing:m"><span data-num="9" data-fmt="usd">$9</span></span><span data-when="billing:y" hidden><span data-num="76" data-fmt="usd">$76</span></span> <small><span data-when="billing:m" data-alt="/ ماه">/ month</span><span data-when="billing:y" hidden data-alt="/ سال">/ year</span></small></p><ul class="checks"><li data-alt="همهٔ ۴۸ کلاس">All 48 classes</li><li data-alt="بازخورد مربی">Coach feedback</li><li data-alt="دانلود برگه‌های تمرین">Printable worksheets</li></ul><a class="btn btn-ink" href="#join" data-alt="عضو شو">Join now</a></article>
+      <article class="tile plan" style="--bg:var(--pop-lilac)"><h3 class="h3" data-alt="کمپ مدرسه">Camp for schools</h3><p class="price" style="font-size:40px" data-alt="تماس">Let's talk</p><ul class="checks"><li data-alt="کلاس‌های گروهی">Group classrooms</li><li data-alt="داشبورد معلم">Teacher dashboard</li><li data-alt="برگه‌های فارسی و انگلیسی">Persian &amp; English sheets</li></ul><a class="btn" href="#join" data-alt="درخواست دمو">Request a demo</a></article>
+    </div>
+  </section>
+
+  <section class="container section" id="faq" style="padding-block-start:0">
+    <h2 class="h2" style="margin-block-end:var(--space-7)" data-alt="سؤال‌های رایج">Questions, answered</h2>
+    <div class="faq">
+      <details open><summary data-alt="من اصلاً بلد نیستم بکشم. مناسب من است؟">I can't draw at all. Is this for me?</summary><p data-alt="دقیقاً برای تو ساخته شده. درس اول با یک خط صاف شروع می‌شود.">That's exactly who it's for. Lesson one starts with a single straight line.</p></details>
+      <details><summary data-alt="چه وسایلی لازم دارم؟">What supplies do I need?</summary><p data-alt="یک مداد و هر کاغذی. برای آبرنگ بعداً فهرست ساده‌ای می‌دهیم.">A pencil and any paper. We'll send a short list for watercolor later.</p></details>
+      <details><summary data-alt="بچه‌ها هم می‌توانند استفاده کنند؟">Can kids join?</summary><p data-alt="بله، از ۱۰ سال به بالا با حساب والدین.">Yes — ages 10 and up, with a parent account.</p></details>
+    </div>
+  </section>
+
+  <section class="container section" id="join" style="padding-block-start:0">
+    <div class="signup">
+      <div class="stack"><h2 class="h2"><span data-alt="اولین صفحه‌ات را">Your first page</span> <span class="hilite" style="--hl:var(--pop-mint)" data-alt="همین امروز بکش">starts today</span></h2><p class="lead" data-alt="ثبت‌نام بیست ثانیه طول می‌کشد. قول می‌دهیم ایمیل‌هایمان هم بامزه باشند.">Sign-up takes twenty seconds. Our emails are fun too, promise.</p></div>
+      <form class="box" data-validate novalidate data-success="Welcome to camp! Check your inbox for lesson one." data-success-alt="به کمپ خوش آمدی! درس اول در ایمیلت است.">
+        <div class="box-head" style="--bg:var(--pop-pink)"><h3 data-alt="عضویت در کمپ">Join the camp</h3><i class="ph-bold ph-pencil-simple-line" aria-hidden="true"></i></div>
+        <div class="box-pad stack">
+          <div class="field"><label class="label" for="j-name" data-alt="اسمت">Your name</label><input class="input" id="j-name" name="name" required minlength="2"></div>
+          <div class="field"><label class="label" for="j-email" data-alt="ایمیل">Email</label><input class="input" id="j-email" name="email" type="email" required dir="ltr"></div>
+          <div class="field"><label class="label" for="j-level" data-alt="سطح فعلی">Your level</label><select class="select" id="j-level" name="level"><option data-alt="هیچ‌وقت نکشیده‌ام">Never drawn</option><option data-alt="گاهی خط‌خطی می‌کنم">I doodle sometimes</option><option data-alt="کمی تجربه دارم">Some experience</option></select></div>
+          <label class="check"><input type="checkbox" name="prompts" checked><span data-alt="چالش‌های روزانه را برایم بفرست">Send me daily prompts</span></label>
+          <button class="btn btn-primary btn-lg" type="submit"><span data-alt="بزن بریم">Let's draw</span><i class="ph-bold ph-arrow-right flip-rtl" aria-hidden="true"></i></button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <p data-alt="کمپ خط‌خطی برندی ساختگی برای نمایش سبک Stamp در تیست‌فولیو است.">Doodle Camp is a fictional brand demonstrating the Stamp style by Tastefolio.</p>
+      <div><h4 data-alt="کمپ">Camp</h4><ul><li><a href="#classes" data-alt="کلاس‌ها">Classes</a></li><li><a href="#pricing" data-alt="قیمت">Pricing</a></li></ul></div>
+      <div><h4 data-alt="جامعه">Community</h4><ul><li><a href="#how" data-alt="گالری">Gallery</a></li><li><a href="#how" data-alt="قوانین کمپ">Camp rules</a></li></ul></div>
+      <div><h4 data-alt="کمک">Help</h4><ul><li><a href="#faq" data-alt="سؤال‌ها">FAQ</a></li><li><a href="dashboard.html" data-alt="داشبورد">Dashboard</a></li></ul></div>
+    </div>
+    <p class="giant-word" aria-hidden="true" data-alt="بکش!">draw!</p>
+  </div>
+</footer>
+</body>
+</html>

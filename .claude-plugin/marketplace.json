@@ -99,6 +99,15 @@
       ]
     },
     {
+      "name": "stamp",
+      "description": "Tastefolio design language — Playful neo-brutalism — thick ink outlines, hard shadows that press, flat sticker colors",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/stamp"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -113,7 +122,8 @@
         "./skills/datasheet",
         "./skills/sideload",
         "./skills/shelf",
-        "./skills/broadsheet"
+        "./skills/broadsheet",
+        "./skills/stamp"
       ]
     }
   ]
