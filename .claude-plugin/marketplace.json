@@ -198,6 +198,15 @@
       ]
     },
     {
+      "name": "lucent",
+      "description": "Tastefolio design language — Liquid glass — refracting capsules over an aurora that takes its colours from what is playing",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/lucent"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -223,7 +232,8 @@
         "./skills/bento",
         "./skills/aisle",
         "./skills/syllabus",
-        "./skills/brief"
+        "./skills/brief",
+        "./skills/lucent"
       ]
     }
   ]

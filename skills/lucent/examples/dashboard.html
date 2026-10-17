@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="dashboard" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Aria — web player">آریا — پخش‌کنندهٔ وب</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@200..800&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  body { overflow: hidden; }
+  .main-top { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-block-end: var(--space-5); }
+  .main-top h1 { margin-inline-end: auto; }
+  .search { position: relative; inline-size: min(100%, 280px); }
+  .search .ic { position: absolute; inset-inline-start: 14px; inset-block-start: 50%; transform: translateY(-50%); color: var(--ink-3); }
+  .search .input { min-block-size: 40px; border-radius: var(--radius-pill); padding-inline-start: 42px; font-size: var(--fs-sm); }
+  @media (max-width: 820px) { .main-top .search { order: 3; inline-size: 100%; } }
+  .block { display: grid; gap: var(--space-4); }
+  .block-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .lib-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-5) var(--space-4); }
+  .lib-grid .tile .art[data-round] { --r: 50%; }
+  .liked { background: linear-gradient(135deg, var(--a2), var(--a1)) !important; display: grid; place-items: center; color: #fff; font-size: 44px; }
+  .liked::after { display: none; }
+  .stats { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--space-4); }
+  .stats > * { padding: var(--space-5); display: grid; gap: 10px; align-content: start; min-inline-size: 0; }
+  .s4 { grid-column: span 4; } .s2 { grid-column: span 2; } .s3 { grid-column: span 3; }
+  @media (max-width: 1280px) { .s4, .s2, .s3 { grid-column: 1 / -1; } }
+  .settings { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+  @media (max-width: 1100px) { .settings { grid-template-columns: minmax(0, 1fr); } }
+  .settings > * { padding: var(--space-5); display: grid; gap: var(--space-4); align-content: start; }
+  .set-row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
+  .set-row .stack { gap: 2px; }
+  .plan-card { background: linear-gradient(135deg, color-mix(in oklab, var(--a2) 40%, transparent), color-mix(in oklab, var(--a1) 30%, transparent)) !important; }
+  .np-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .np-title .t { font: 600 var(--fs-xl)/1.25 var(--font-display); letter-spacing: -.02em; }
+  :lang(fa) .np-title .t { font-weight: 700; letter-spacing: 0; }
+  .np-title .a { color: var(--ink-2); }
+  .np-lyrics { display: grid; gap: 14px; padding-block: 6px 30px; }
+  .np-lyrics .line { font-size: var(--fs-xl); cursor: pointer; }
+  .queue { display: grid; gap: 2px; }
+  .queue .track { grid-template-columns: 44px minmax(0, 1fr) auto; }
+  .queue .track .art { inline-size: 44px; }
+  .np-close { display: none !important; }
+  @media (max-width: 1180px) {
+    .app-np[data-open] { display: grid; position: fixed; inset: 10px 10px 100px; z-index: 60; }
+    .app-np[data-open] .np-close { display: inline-grid !important; }
+    .app-np[data-open] .art { inline-size: min(100%, 300px); justify-self: center; }
+  }
+  .compact-only { display: none !important; }
+  @media (max-width: 1180px) { .compact-only { display: inline-grid !important; } }
+  @media (max-width: 820px) { .app-np[data-open] { inset: 10px 10px 156px; } }
+</style>
+</head>
+<body>
+<svg class="sprite" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Icons: Ionicons (MIT License) — ionic.io/ionicons --><!--ICONS-->
+<symbol id="i-car-outline" viewBox="0 0 512 512" fill="currentColor"><path d="M80 224l37.78-88.15C123.93 121.5 139.6 112 157.11 112h197.78c17.51 0 33.18 9.5 39.33 23.85L432 224M80 224h352v144H80zM112 368v32H80v-32M432 368v32h-32v-32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="144" cy="288" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="368" cy="288" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></symbol>
+<symbol id="i-chatbox-ellipses-outline" viewBox="0 0 512 512" fill="currentColor"><path d="M408 64H104a56.16 56.16 0 00-56 56v192a56.16 56.16 0 0056 56h40v80l93.72-78.14a8 8 0 015.13-1.86H408a56.16 56.16 0 0056-56V120a56.16 56.16 0 00-56-56z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><circle cx="160" cy="216" r="32"/><circle cx="256" cy="216" r="32"/><circle cx="352" cy="216" r="32"/></symbol>
+<symbol id="i-chevron-down" viewBox="0 0 512 512" fill="currentColor"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144"/></symbol>
+<symbol id="i-chevron-forward" viewBox="0 0 512 512" fill="currentColor"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M184 112l144 144-144 144"/></symbol>
+<symbol id="i-cloud-download-outline" viewBox="0 0 512 512" fill="currentColor"><path d="M320 336h76c55 0 100-21.21 100-75.6s-53-73.47-96-75.6C391.11 99.74 329 48 256 48c-69 0-113.44 45.79-128 91.2-60 5.7-112 35.88-112 98.4S70 336 136 336h56M192 400.1l64 63.9 64-63.9M256 224v224.03" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></symbol>
+<symbol id="i-contrast-outline" viewBox="0 0 512 512" fill="currentColor"><circle cx="256" cy="256" r="208" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><path d="M256 464c-114.88 0-208-93.12-208-208S141.12 48 256 48z"/></symbol>
+<symbol id="i-heart" viewBox="0 0 512 512" fill="currentColor"><path d="M256 448a32 32 0 01-18-5.57c-78.59-53.35-112.62-89.93-131.39-112.8-40-48.75-59.15-98.8-58.61-153C48.63 114.52 98.46 64 159.08 64c44.08 0 74.61 24.83 92.39 45.51a6 6 0 009.06 0C278.31 88.81 308.84 64 352.92 64c60.62 0 110.45 50.52 111.08 112.64.54 54.21-18.63 104.26-58.61 153-18.77 22.87-52.8 59.45-131.39 112.8a32 32 0 01-18 5.56z"/></symbol>
+<symbol id="i-heart-outline" viewBox="0 0 512 512" fill="currentColor"><path d="M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0018 0c96.26-65.34 184.09-143.09 183-252.42-.54-52.67-42.32-96.81-95.08-96.81z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></symbol>
+<symbol id="i-home-outline" viewBox="0 0 512 512" fill="currentColor"><path d="M80 212v236a16 16 0 0016 16h96V328a24 24 0 0124-24h80a24 24 0 0124 24v136h96a16 16 0 0016-16V212" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M480 256L266.89 52c-5-5.28-16.69-5.34-21.78 0L32 256M400 179V64h-48v69" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></symbol>
+<symbol id="i-laptop-outline" viewBox="0 0 512 512" fill="currentColor"><rect x="48" y="96" width="416" height="304" rx="32.14" ry="32.14" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M16 416h480"/></symbol>
+<symbol id="i-library-outline" viewBox="0 0 512 512" fill="currentColor"><rect x="32" y="96" width="64" height="368" rx="16" ry="16" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M112 224h128M112 400h128"/><rect x="112" y="160" width="128" height="304" rx="16" ry="16" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><rect x="256" y="48" width="96" height="416" rx="16" ry="16" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><path d="M422.46 96.11l-40.4 4.25c-11.12 1.17-19.18 11.57-17.93 23.1l34.92 321.59c1.26 11.53 11.37 20 22.49 18.84l40.4-4.25c11.12-1.17 19.18-11.57 17.93-23.1L445 115c-1.31-11.58-11.42-20.06-22.54-18.89z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/></symbol>
+<symbol id="i-pause" viewBox="0 0 512 512" fill="currentColor"><path d="M208 432h-48a16 16 0 01-16-16V96a16 16 0 0116-16h48a16 16 0 0116 16v320a16 16 0 01-16 16zM352 432h-48a16 16 0 01-16-16V96a16 16 0 0116-16h48a16 16 0 0116 16v320a16 16 0 01-16 16z"/></symbol>
+<symbol id="i-person-circle-outline" viewBox="0 0 512 512" fill="currentColor"><path d="M258.9 48C141.92 46.42 46.42 141.92 48 258.9c1.56 112.19 92.91 203.54 205.1 205.1 117 1.6 212.48-93.9 210.88-210.88C462.44 140.91 371.09 49.56 258.9 48zm126.42 327.25a4 4 0 01-6.14-.32 124.27 124.27 0 00-32.35-29.59C321.37 329 289.11 320 256 320s-65.37 9-90.83 25.34a124.24 124.24 0 00-32.35 29.58 4 4 0 01-6.14.32A175.32 175.32 0 0180 259c-1.63-97.31 78.22-178.76 175.57-179S432 158.81 432 256a175.32 175.32 0 01-46.68 119.25z"/><path d="M256 144c-19.72 0-37.55 7.39-50.22 20.82s-19 32-17.57 51.93C191.11 256 221.52 288 256 288s64.83-32 67.79-71.24c1.48-19.74-4.8-38.14-17.68-51.82C293.39 151.44 275.59 144 256 144z"/></symbol>
+<symbol id="i-phone-portrait-outline" viewBox="0 0 512 512" fill="currentColor"><rect x="128" y="16" width="256" height="480" rx="48" ry="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M176 16h24a8 8 0 018 8h0a16 16 0 0016 16h64a16 16 0 0016-16h0a8 8 0 018-8h24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></symbol>
+<symbol id="i-play" viewBox="0 0 512 512" fill="currentColor"><path d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></symbol>
+<symbol id="i-play-skip-back" viewBox="0 0 512 512" fill="currentColor"><path d="M112 64a16 16 0 0116 16v136.43L360.77 77.11a35.13 35.13 0 0135.77-.44c12 6.8 19.46 20 19.46 34.33v290c0 14.37-7.46 27.53-19.46 34.33a35.14 35.14 0 01-35.77-.45L128 295.57V432a16 16 0 01-32 0V80a16 16 0 0116-16z"/></symbol>
+<symbol id="i-play-skip-forward" viewBox="0 0 512 512" fill="currentColor"><path d="M400 64a16 16 0 00-16 16v136.43L151.23 77.11a35.13 35.13 0 00-35.77-.44C103.46 83.47 96 96.63 96 111v290c0 14.37 7.46 27.53 19.46 34.33a35.14 35.14 0 0035.77-.45L384 295.57V432a16 16 0 0032 0V80a16 16 0 00-16-16z"/></symbol>
+<symbol id="i-repeat" viewBox="0 0 512 512" fill="currentColor"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M320 120l48 48-48 48"/><path d="M352 168H144a80.24 80.24 0 00-80 80v16M192 392l-48-48 48-48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M160 344h208a80.24 80.24 0 0080-80v-16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></symbol>
+<symbol id="i-search-outline" viewBox="0 0 512 512" fill="currentColor"><path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"/></symbol>
+<symbol id="i-shuffle" viewBox="0 0 512 512" fill="currentColor"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M400 304l48 48-48 48M400 112l48 48-48 48M64 352h85.19a80 80 0 0066.56-35.62L256 256"/><path d="M64 160h85.19a80 80 0 0166.56 35.62l80.5 120.76A80 80 0 00362.81 352H416M416 160h-53.19a80 80 0 00-66.56 35.62L288 208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></symbol>
+<symbol id="i-stats-chart-outline" viewBox="0 0 512 512" fill="currentColor"><rect x="64" y="320" width="48" height="160" rx="8" ry="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><rect x="288" y="224" width="48" height="256" rx="8" ry="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><rect x="400" y="112" width="48" height="368" rx="8" ry="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><rect x="176" y="32" width="48" height="448" rx="8" ry="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></symbol>
+<symbol id="i-volume-medium-outline" viewBox="0 0 512 512" fill="currentColor"><path d="M157.65 192H88a8 8 0 00-8 8v112a8 8 0 008 8h69.65a16 16 0 0110.14 3.63l91.47 75a8 8 0 0012.74-6.46V119.83a8 8 0 00-12.74-6.44l-91.47 75a16 16 0 01-10.14 3.61zM352 320c9.74-19.41 16-40.81 16-64 0-23.51-6-44.4-16-64M400 368c19.48-34 32-64 32-112s-12-77.7-32-112" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></symbol>
+<!--/ICONS--></svg>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<div class="aurora fixed" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+<div class="app">
+  <aside class="app-side glass" aria-label="کتابخانه" data-alt-aria-label="Library">
+    <a class="logo" href="site.html"><span class="logo-mark" aria-hidden="true"></span><span data-alt="aria">آریا</span></a>
+    <nav class="side-nav" role="tablist" aria-orientation="vertical" aria-label="بخش‌ها" data-alt-aria-label="Sections">
+      <button type="button" role="tab" id="t-home" aria-controls="p-home" aria-selected="true"><svg class="ic" aria-hidden="true"><use href="#i-home-outline"/></svg><span data-alt="Listen now">اکنون بشنوید</span></button>
+      <button type="button" role="tab" id="t-lib" aria-controls="p-lib" aria-selected="false"><svg class="ic" aria-hidden="true"><use href="#i-library-outline"/></svg><span data-alt="Library">کتابخانه</span></button>
+      <button type="button" role="tab" id="t-stats" aria-controls="p-stats" aria-selected="false"><svg class="ic" aria-hidden="true"><use href="#i-stats-chart-outline"/></svg><span data-alt="Your stats">آمار من</span></button>
+      <button type="button" role="tab" id="t-acc" aria-controls="p-acc" aria-selected="false"><svg class="ic" aria-hidden="true"><use href="#i-person-circle-outline"/></svg><span data-alt="Account">حساب کاربری</span></button>
+    </nav>
+    <span class="side-label" data-alt="Playlists">فهرست‌های پخش</span>
+    <div class="pl-list">
+      <button type="button" data-track="0"><span class="art liked" style="--r: 8px; font-size: 16px"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg></span><span data-alt="Liked songs">آهنگ‌های پسندیده</span></button>
+      <button type="button" data-track="4"><span class="art" data-shape="grid" style="--c1:#ff3b3b; --c2:#ff7ab6; --c3:#4d0b1e; --c4:#14040a"></span><span data-alt="Night drive">رانندگی شبانه</span></button>
+      <button type="button" data-track="1"><span class="art" data-shape="rings" style="--c1:#22c3ff; --c2:#3b5bff; --c3:#0e2a5c; --c4:#06101f"></span><span data-alt="Rainy focus">تمرکز بارانی</span></button>
+      <button type="button" data-track="2"><span class="art" data-shape="dunes" style="--c1:#ffb547; --c2:#ff6a3d; --c3:#5a2410; --c4:#1d0b06"></span><span data-alt="Persian classics">کلاسیک‌های ایرانی</span></button>
+      <button type="button" data-track="5"><span class="art" data-shape="moon" style="--c1:#c8b6ff; --c2:#6c5cff; --c3:#2d2a6e; --c4:#0b0a1f"></span><span data-alt="Sleep">خواب</span></button>
+    </div>
+    <div class="glass" style="margin-block-start: auto; padding: 14px; border-radius: 18px; display: grid; gap: 8px; box-shadow: var(--edge)">
+      <span class="small" style="display: flex; align-items: center; gap: 8px"><svg class="ic" aria-hidden="true"><use href="#i-cloud-download-outline"/></svg><span data-alt="Downloads">دانلودها</span></span>
+      <div class="progress brand"><i style="--v: 32%"></i></div>
+      <span class="tiny subtle"><span class="ltr">3.2 GB</span> <span data-alt="of">از</span> <span class="ltr">10 GB</span></span>
+    </div>
+  </aside>
+
+  <main class="app-main glass" id="main">
+    <div class="main-top">
+      <h1 class="h2" data-alt="Good evening, Maryam">عصر بخیر، مریم</h1>
+      <div class="search"><svg class="ic" aria-hidden="true"><use href="#i-search-outline"/></svg><label class="sr-only" for="q" data-alt="Search">جست‌وجو</label><input class="input" id="q" type="search" placeholder="آهنگ، هنرمند، پادکست…" data-alt-placeholder="Songs, artists, podcasts…" data-hotkey="/"></div>
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="تغییر حالت روشن" data-alt-aria-label="Toggle light mode"><svg class="ic" aria-hidden="true"><use href="#i-contrast-outline"/></svg></button>
+      <span class="avatar hide-sm" style="--c:#ffd1e0" data-alt="M">م</span>
+    </div>
+
+    <!-- ================================================== listen now -->
+    <section role="tabpanel" id="p-home" aria-labelledby="t-home">
+      <div class="chips" data-group role="group" aria-label="نوع" data-alt-aria-label="Kind"><button type="button" aria-pressed="true" data-alt="All">همه</button><button type="button" aria-pressed="false" data-alt="Music">موسیقی</button><button type="button" aria-pressed="false" data-alt="Podcasts">پادکست</button><button type="button" aria-pressed="false" data-alt="Lossless">بدون افت</button></div>
+      <div class="block">
+        <div class="block-head"><h2 class="h2" data-alt="Recently played">اخیراً شنیده‌شده</h2><button class="btn btn-ghost btn-sm" type="button" data-goto="t-lib"><span data-alt="Show all">همه</span><svg class="ic flip-rtl" aria-hidden="true"><use href="#i-chevron-forward"/></svg></button></div>
+        <div class="rail">
+          <button class="tile" type="button" data-track="0"><span class="art" data-shape="sun" style="--c1:#ff4d8d; --c2:#7b5cff; --c3:#3a1d5c; --c4:#120b24"></span><b data-alt="Tehran Midnight">نیمه‌شب تهران</b><span data-alt="Ava">آوا</span></button>
+          <button class="tile" type="button" data-track="1"><span class="art" data-shape="rings" style="--c1:#22c3ff; --c2:#3b5bff; --c3:#0e2a5c; --c4:#06101f"></span><b data-alt="Rain on Glass">باران روی شیشه</b><span data-alt="Sepehr">سپهر</span></button>
+          <button class="tile" type="button" data-track="2"><span class="art" data-shape="dunes" style="--c1:#ffb547; --c2:#ff6a3d; --c3:#5a2410; --c4:#1d0b06"></span><b data-alt="Desert Stars">ستاره‌های کویر</b><span data-alt="Darya">دریا</span></button>
+          <button class="tile" type="button" data-track="3"><span class="art" data-shape="wave" style="--c1:#2ee6a6; --c2:#1aa3ff; --c3:#0b3b3a; --c4:#04141a"></span><b data-alt="Calm Wave">موج آرام</b><span data-alt="Noor Ensemble">گروه نور</span></button>
+          <button class="tile" type="button" data-track="4"><span class="art" data-shape="grid" style="--c1:#ff3b3b; --c2:#ff7ab6; --c3:#4d0b1e; --c4:#14040a"></span><b data-alt="Restless">بی‌قرار</b><span data-alt="Nika">نیکا</span></button>
+          <button class="tile" type="button" data-track="5"><span class="art" data-shape="moon" style="--c1:#c8b6ff; --c2:#6c5cff; --c3:#2d2a6e; --c4:#0b0a1f"></span><b data-alt="New Moon">ماه نو</b><span data-alt="Ava">آوا</span></button>
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-head"><h2 class="h2" data-alt="Top songs this week">پرشنونده‌های این هفته</h2><span class="badge" data-alt="Updated today">امروز به‌روز شد</span></div>
+        <ol class="tracks" id="top-list">
+          <li class="track on" data-track="0" tabindex="0"><span class="idx">1</span><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="art" data-shape="sun" style="--c1:#ff4d8d; --c2:#7b5cff; --c3:#3a1d5c; --c4:#120b24"></span><span class="stack" style="gap: 0"><span class="t" data-alt="Tehran Midnight">نیمه‌شب تهران</span><span class="a" data-alt="Ava · Midnight Letters">آوا · نامه‌های نیمه‌شب</span></span><span class="badge hq hide-sm" data-alt="Lossless">بدون افت</span><span class="d" data-num="222" data-fmt="clock">۳:۴۲</span><button class="icon-btn like hide-sm" type="button" aria-pressed="true" aria-label="پسندیدن" data-alt-aria-label="Like"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg></button></li>
+          <li class="track" data-track="1" tabindex="0"><span class="idx">2</span><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="art" data-shape="rings" style="--c1:#22c3ff; --c2:#3b5bff; --c3:#0e2a5c; --c4:#06101f"></span><span class="stack" style="gap: 0"><span class="t" data-alt="Rain on Glass">باران روی شیشه</span><span class="a" data-alt="Sepehr · Glass Rain">سپهر · باران شیشه‌ای</span></span><span class="badge hq hide-sm" data-alt="Lossless">بدون افت</span><span class="d" data-num="245" data-fmt="clock">۴:۰۵</span><button class="icon-btn like hide-sm" type="button" aria-pressed="false" aria-label="پسندیدن" data-alt-aria-label="Like"><svg class="ic" aria-hidden="true"><use href="#i-heart-outline"/></svg></button></li>
+          <li class="track" data-track="2" tabindex="0"><span class="idx">3</span><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="art" data-shape="dunes" style="--c1:#ffb547; --c2:#ff6a3d; --c3:#5a2410; --c4:#1d0b06"></span><span class="stack" style="gap: 0"><span class="t" data-alt="Desert Stars">ستاره‌های کویر</span><span class="a" data-alt="Darya · Salt Roads">دریا · جاده‌های نمک</span></span><span class="badge hide-sm" data-alt="Spatial">فضایی</span><span class="d" data-num="238" data-fmt="clock">۳:۵۸</span><button class="icon-btn like hide-sm" type="button" aria-pressed="false" aria-label="پسندیدن" data-alt-aria-label="Like"><svg class="ic" aria-hidden="true"><use href="#i-heart-outline"/></svg></button></li>
+          <li class="track" data-track="4" tabindex="0"><span class="idx">4</span><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="art" data-shape="grid" style="--c1:#ff3b3b; --c2:#ff7ab6; --c3:#4d0b1e; --c4:#14040a"></span><span class="stack" style="gap: 0"><span class="t" data-alt="Restless">بی‌قرار</span><span class="a" data-alt="Nika · Single">نیکا · تک‌آهنگ</span></span><span class="badge hq hide-sm" data-alt="Lossless">بدون افت</span><span class="d" data-num="195" data-fmt="clock">۳:۱۵</span><button class="icon-btn like hide-sm" type="button" aria-pressed="false" aria-label="پسندیدن" data-alt-aria-label="Like"><svg class="ic" aria-hidden="true"><use href="#i-heart-outline"/></svg></button></li>
+          <li class="track" data-track="5" tabindex="0"><span class="idx">5</span><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="art" data-shape="moon" style="--c1:#c8b6ff; --c2:#6c5cff; --c3:#2d2a6e; --c4:#0b0a1f"></span><span class="stack" style="gap: 0"><span class="t" data-alt="New Moon">ماه نو</span><span class="a" data-alt="Ava · Midnight Letters">آوا · نامه‌های نیمه‌شب</span></span><span class="badge hide-sm" data-alt="Spatial">فضایی</span><span class="d" data-num="270" data-fmt="clock">۴:۳۰</span><button class="icon-btn like hide-sm" type="button" aria-pressed="false" aria-label="پسندیدن" data-alt-aria-label="Like"><svg class="ic" aria-hidden="true"><use href="#i-heart-outline"/></svg></button></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================================================== library -->
+    <section role="tabpanel" id="p-lib" aria-labelledby="t-lib" hidden data-filter-scope>
+      <div class="block-head" style="flex-wrap: wrap">
+        <h2 class="h1" data-alt="Your library">کتابخانهٔ شما</h2>
+        <div class="row" style="gap: 8px">
+          <div class="search" style="inline-size: 220px"><svg class="ic" aria-hidden="true"><use href="#i-search-outline"/></svg><input class="input" type="search" data-filter-search aria-label="جست‌وجو در کتابخانه" data-alt-aria-label="Search the library" placeholder="جست‌وجو…" data-alt-placeholder="Search…"></div>
+          <select class="select" id="lib-sort" aria-label="مرتب‌سازی" data-alt-aria-label="Sort" style="inline-size: auto; min-block-size: 40px; border-radius: var(--radius-pill); font-size: var(--fs-sm)"><option value="recent" data-alt="Recently added">تازه‌ترین</option><option value="az" data-alt="A–Z">الفبایی</option></select>
+        </div>
+      </div>
+      <div class="chips" data-group role="group" aria-label="نوع" data-alt-aria-label="Kind">
+        <button type="button" data-filter="kind" data-value="all" aria-pressed="true" data-alt="All">همه</button>
+        <button type="button" data-filter="kind" data-value="playlist" aria-pressed="false" data-alt="Playlists">فهرست‌ها</button>
+        <button type="button" data-filter="kind" data-value="album" aria-pressed="false" data-alt="Albums">آلبوم‌ها</button>
+        <button type="button" data-filter="kind" data-value="artist" aria-pressed="false" data-alt="Artists">هنرمندان</button>
+        <button type="button" data-filter="kind" data-value="download" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-cloud-download-outline"/></svg><span data-alt="Downloaded">دانلودشده</span></button>
+      </div>
+      <div class="lib-grid" id="lib">
+        <button class="tile" type="button" data-filter-item data-kind="playlist download" data-track="0" data-keywords="liked"><span class="art liked"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg></span><b data-alt="Liked songs">آهنگ‌های پسندیده</b><span data-alt="Playlist · 248 songs">فهرست · ۲۴۸ آهنگ</span></button>
+        <button class="tile" type="button" data-filter-item data-kind="playlist" data-track="4" data-keywords="night drive"><span class="art" data-shape="grid" style="--c1:#ff3b3b; --c2:#ff7ab6; --c3:#4d0b1e; --c4:#14040a"></span><b data-alt="Night drive">رانندگی شبانه</b><span data-alt="Playlist · 42 songs">فهرست · ۴۲ آهنگ</span></button>
+        <button class="tile" type="button" data-filter-item data-kind="playlist download" data-track="1" data-keywords="rain focus"><span class="art" data-shape="rings" style="--c1:#22c3ff; --c2:#3b5bff; --c3:#0e2a5c; --c4:#06101f"></span><b data-alt="Rainy focus">تمرکز بارانی</b><span data-alt="Playlist · 61 songs">فهرست · ۶۱ آهنگ</span></button>
+        <button class="tile" type="button" data-filter-item data-kind="playlist" data-track="2" data-keywords="persian classics"><span class="art" data-shape="dunes" style="--c1:#ffb547; --c2:#ff6a3d; --c3:#5a2410; --c4:#1d0b06"></span><b data-alt="Persian classics">کلاسیک‌های ایرانی</b><span data-alt="Playlist · 120 songs">فهرست · ۱۲۰ آهنگ</span></button>
+        <button class="tile" type="button" data-filter-item data-kind="album download" data-track="0" data-keywords="ava midnight letters"><span class="art" data-shape="sun" style="--c1:#ff4d8d; --c2:#7b5cff; --c3:#3a1d5c; --c4:#120b24"></span><b data-alt="Midnight Letters">نامه‌های نیمه‌شب</b><span data-alt="Album · Ava">آلبوم · آوا</span></button>
+        <button class="tile" type="button" data-filter-item data-kind="album" data-track="1" data-keywords="sepehr glass rain"><span class="art" data-shape="wave" style="--c1:#7cf0ff; --c2:#3b5bff; --c3:#0e2a5c; --c4:#06101f"></span><b data-alt="Glass Rain">باران شیشه‌ای</b><span data-alt="Album · Sepehr">آلبوم · سپهر</span></button>
+        <button class="tile" type="button" data-filter-item data-kind="artist" data-track="5" data-keywords="ava"><span class="art" data-round data-shape="moon" style="--c1:#ffd1e0; --c2:#c86bea; --c3:#3a1d5c; --c4:#120b24"></span><b data-alt="Ava">آوا</b><span data-alt="Artist">هنرمند</span></button>
+        <button class="tile" type="button" data-filter-item data-kind="artist" data-track="2" data-keywords="darya"><span class="art" data-round data-shape="dunes" style="--c1:#ffd36e; --c2:#ff6a3d; --c3:#5a2410; --c4:#1d0b06"></span><b data-alt="Darya">دریا</b><span data-alt="Artist">هنرمند</span></button>
+        <button class="tile" type="button" data-filter-item data-kind="artist" data-track="4" data-keywords="nika"><span class="art" data-round data-shape="rings" style="--c1:#ff7ab6; --c2:#ff3b3b; --c3:#4d0b1e; --c4:#14040a"></span><b data-alt="Nika">نیکا</b><span data-alt="Artist">هنرمند</span></button>
+        <button class="tile" type="button" data-filter-item data-kind="playlist download" data-track="3" data-keywords="calm sleep"><span class="art" data-shape="wave" style="--c1:#2ee6a6; --c2:#1aa3ff; --c3:#0b3b3a; --c4:#04141a"></span><b data-alt="Calm waters">آب‌های آرام</b><span data-alt="Playlist · 33 songs">فهرست · ۳۳ آهنگ</span></button>
+      </div>
+      <p class="empty" data-filter-empty hidden data-alt="Nothing matches — try another word.">چیزی پیدا نشد — کلمهٔ دیگری امتحان کنید.</p>
+    </section>
+
+    <!-- ================================================== stats -->
+    <section role="tabpanel" id="p-stats" aria-labelledby="t-stats" hidden>
+      <div class="block-head"><h2 class="h1" data-alt="Your year in music">سال شما در موسیقی</h2><span class="badge brand" data-alt="1404 so far">تا امروز</span></div>
+      <div class="stats">
+        <div class="glass s4"><span class="small subtle" data-alt="Minutes listened">دقیقهٔ شنیده‌شده</span><span class="stat-big" data-num="28410">۲۸٬۴۱۰</span><div data-chart="area" data-height="190" data-fmt="int" data-dates="2025-11-01,12,month" data-values="1620,1840,2210,1980,2450,2310,2620,2780,2390,2540,2860,2740" data-name='{"en":"Minutes","fa":"دقیقه"}' data-label='{"en":"Minutes listened per month","fa":"دقیقهٔ شنیده‌شده در هر ماه"}'></div></div>
+        <div class="glass s2"><span class="small subtle" data-alt="Top genres">ژانرهای محبوب</span><div data-chart="donut" data-height="190" data-fmt="pct" data-values="34,22,16,14,8,6" data-labels='{"en":["Pop","Persian classical","Rock","Lo-fi","Jazz","Podcasts"],"fa":["پاپ","سنتی","راک","لوفای","جاز","پادکست"]}' data-center='{"en":"Pop 34%","fa":"پاپ ۳۴٪"}' data-label='{"en":"Top genres this year","fa":"ژانرهای محبوب امسال"}'></div></div>
+        <div class="glass s3"><span class="small subtle" data-alt="Top artists">هنرمندان محبوب</span>
+          <ol class="rank">
+            <li><span class="subtle">1</span><span class="art" data-shape="moon" style="--c1:#ffd1e0; --c2:#c86bea; --c3:#3a1d5c; --c4:#120b24"></span><div><b data-alt="Ava">آوا</b><div class="meter"><i style="--v:100%"></i></div></div><span class="small subtle"><span data-num="412">۴۱۲</span> <span data-alt="plays">بار</span></span></li>
+            <li><span class="subtle">2</span><span class="art" data-shape="rings" style="--c1:#7cf0ff; --c2:#3b5bff; --c3:#0e2a5c; --c4:#06101f"></span><div><b data-alt="Sepehr">سپهر</b><div class="meter"><i style="--v:78%"></i></div></div><span class="small subtle"><span data-num="321">۳۲۱</span> <span data-alt="plays">بار</span></span></li>
+            <li><span class="subtle">3</span><span class="art" data-shape="dunes" style="--c1:#ffd36e; --c2:#ff6a3d; --c3:#5a2410; --c4:#1d0b06"></span><div><b data-alt="Darya">دریا</b><div class="meter"><i style="--v:64%"></i></div></div><span class="small subtle"><span data-num="264">۲۶۴</span> <span data-alt="plays">بار</span></span></li>
+            <li><span class="subtle">4</span><span class="art" data-shape="grid" style="--c1:#ff7ab6; --c2:#ff3b3b; --c3:#4d0b1e; --c4:#14040a"></span><div><b data-alt="Nika">نیکا</b><div class="meter"><i style="--v:51%"></i></div></div><span class="small subtle"><span data-num="210">۲۱۰</span> <span data-alt="plays">بار</span></span></li>
+          </ol>
+        </div>
+        <div class="glass s3"><span class="small subtle" data-alt="Listening streak">زنجیرهٔ گوش دادن</span><span class="stat-big"><span data-num="24">۲۴</span> <span class="h2" data-alt="days">روز</span></span><p class="muted small" data-alt="Your longest run this year. Most of it happened after 10 pm — you are a night listener.">طولانی‌ترین زنجیرهٔ امسال شما. بیشترش بعد از ساعت ۱۰ شب بوده — شما شنوندهٔ شب هستید.</p><div class="bars" aria-hidden="true" style="block-size: 54px"><i style="--h:30%"></i><i style="--h:20%"></i><i style="--h:15%"></i><i style="--h:25%"></i><i style="--h:40%"></i><i style="--h:35%"></i><i style="--h:55%"></i><i style="--h:70%"></i><i style="--h:95%"></i><i style="--h:100%"></i><i style="--h:80%"></i><i style="--h:60%"></i></div></div>
+      </div>
+    </section>
+
+    <!-- ================================================== account -->
+    <section role="tabpanel" id="p-acc" aria-labelledby="t-acc" hidden>
+      <h2 class="h1" data-alt="Account">حساب کاربری</h2>
+      <div class="settings">
+        <div class="glass plan-card">
+          <div class="split"><b class="h2" data-alt="Individual">فردی</b><span class="badge hq" data-alt="Lossless">بدون افت</span></div>
+          <span class="muted small"><span data-alt="Renews on">تمدید در</span> <span data-date="2027-01-20" data-fmt="long">۳۰ دی ۱۴۰۵</span> · <span data-num="79000" data-fmt="toman">۷۹٬۰۰۰ تومان</span></span>
+          <div class="row" style="gap: 8px"><a class="btn btn-primary btn-sm" href="site.html#plans" data-alt="Change plan">تغییر اشتراک</a><button class="btn btn-sm" type="button" data-dialog="#cancel" data-alt="Cancel plan">لغو اشتراک</button></div>
+        </div>
+        <div class="glass">
+          <b class="h3" data-alt="Audio quality">کیفیت صدا</b>
+          <div class="seg" data-group="quality" role="group" aria-label="کیفیت پخش" data-alt-aria-label="Streaming quality" style="justify-self: start"><button type="button" data-value="normal" aria-pressed="false" data-alt="Normal">معمولی</button><button type="button" data-value="high" aria-pressed="false" data-alt="High">بالا</button><button type="button" data-value="lossless" aria-pressed="true" data-alt="Lossless">بدون افت</button></div>
+          <p class="hint" data-when="quality:normal" hidden data-alt="About 40 MB per hour.">حدود ۴۰ مگابایت در ساعت.</p>
+          <p class="hint" data-when="quality:high" hidden data-alt="About 150 MB per hour.">حدود ۱۵۰ مگابایت در ساعت.</p>
+          <p class="hint" data-when="quality:lossless" data-alt="Up to 1 GB per hour — best on Wi-Fi and wired headphones.">تا ۱ گیگابایت در ساعت — بهترین با وای‌فای و هدفون سیمی.</p>
+          <div class="set-row"><div class="stack"><span class="label" id="wifi-l" data-alt="Download on Wi-Fi only">دانلود فقط با وای‌فای</span><span class="hint" data-alt="Saves your mobile data">اینترنت همراه را حفظ می‌کند</span></div><button class="switch" type="button" role="switch" aria-checked="true" aria-labelledby="wifi-l"></button></div>
+          <div class="set-row"><div class="stack"><span class="label" id="norm-l" data-alt="Normalise volume">یکسان‌سازی بلندی صدا</span></div><button class="switch" type="button" role="switch" aria-checked="false" aria-labelledby="norm-l"></button></div>
+          <div class="field"><div class="split"><label class="label" for="xfade" data-alt="Crossfade">هم‌پوشانی آهنگ‌ها</label><span class="small subtle"><span id="xfade-v" data-num="6">۶</span> <span data-alt="s">ثانیه</span></span></div><input class="range" id="xfade" type="range" min="0" max="12" value="6" style="--v: 50%"></div>
+        </div>
+        <div class="glass">
+          <b class="h3" data-alt="Devices">دستگاه‌ها</b>
+          <div class="stack" style="gap: 8px" id="devices">
+            <div class="device"><svg class="ic" aria-hidden="true"><use href="#i-phone-portrait-outline"/></svg><div class="stack" style="gap: 0"><b class="small" data-alt="Maryam’s phone">گوشی مریم</b><span class="tiny subtle" data-alt="This device · Tehran">همین دستگاه · تهران</span></div><span class="badge ok" data-alt="Active">فعال</span></div>
+            <div class="device"><svg class="ic" aria-hidden="true"><use href="#i-laptop-outline"/></svg><div class="stack" style="gap: 0"><b class="small" data-alt="Work laptop">لپ‌تاپ کار</b><span class="tiny subtle"><span data-alt="Last used">آخرین استفاده</span> <span data-ago="7200">۲ ساعت پیش</span></span></div><button class="btn btn-ghost btn-sm" type="button" data-remove data-alt="Sign out">خروج</button></div>
+            <div class="device"><svg class="ic" aria-hidden="true"><use href="#i-car-outline"/></svg><div class="stack" style="gap: 0"><b class="small" data-alt="Car">ماشین</b><span class="tiny subtle"><span data-alt="Last used">آخرین استفاده</span> <span data-ago="259200">۳ روز پیش</span></span></div><button class="btn btn-ghost btn-sm" type="button" data-remove data-alt="Sign out">خروج</button></div>
+          </div>
+        </div>
+        <form class="glass" data-validate data-keep data-success="تغییرات ذخیره شد" data-success-alt="Changes saved">
+          <b class="h3" data-alt="Profile">نمایه</b>
+          <div class="field"><label class="label" for="pname" data-alt="Display name">نام نمایشی</label><input class="input" id="pname" name="name" required minlength="2" value="مریم" data-alt-value="Maryam"></div>
+          <div class="field"><label class="label" for="pmail" data-alt="Email">ایمیل</label><input class="input" id="pmail" name="email" type="email" required dir="ltr" value="maryam@aria.example"></div>
+          <label class="check"><input type="checkbox" checked><span data-alt="Show my listening to friends">نمایش آنچه گوش می‌دهم به دوستان</span></label>
+          <button class="btn btn-primary" type="submit" style="justify-self: start" data-alt="Save">ذخیره</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <aside class="app-np glass strong" id="np-panel" aria-label="در حال پخش" data-alt-aria-label="Now playing" data-dismissable>
+    <div class="np-head"><span class="small subtle" data-alt="Now playing">در حال پخش</span><button class="icon-btn np-close" type="button" data-toggle="#np-panel" aria-label="بستن" data-alt-aria-label="Close"><svg class="ic" aria-hidden="true"><use href="#i-chevron-down"/></svg></button></div>
+    <div class="art" id="np-art" data-shape="sun" style="--c1:#ff4d8d; --c2:#7b5cff; --c3:#3a1d5c; --c4:#120b24"></div>
+    <div class="split np-title"><div class="stack" style="gap: 0; min-inline-size: 0"><b class="t" data-np-t data-alt="Tehran Midnight">نیمه‌شب تهران</b><span class="a" data-np-a data-alt="Ava">آوا</span></div><button class="icon-btn like" type="button" data-np-like aria-pressed="true" aria-label="پسندیدن" data-alt-aria-label="Like"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg></button></div>
+    <div class="stack" style="gap: 12px; min-block-size: 0">
+      <div class="tabs" role="tablist" aria-label="جزئیات آهنگ" data-alt-aria-label="Song details" style="justify-self: start"><button type="button" role="tab" id="nt-ly" aria-controls="np-ly" aria-selected="true" data-alt="Lyrics">متن ترانه</button><button type="button" role="tab" id="nt-q" aria-controls="np-q" aria-selected="false" data-alt="Up next">بعدی‌ها</button></div>
+      <div class="np-tabs-body" role="tabpanel" id="np-ly" aria-labelledby="nt-ly"><div class="lyrics np-lyrics" id="lyrics"></div></div>
+      <div class="np-tabs-body" role="tabpanel" id="np-q" aria-labelledby="nt-q" hidden><ol class="queue tracks" id="queue"></ol></div>
+    </div>
+  </aside>
+</div>
+
+<div class="player glass strong" role="region" aria-label="پخش‌کننده" data-alt-aria-label="Player">
+  <div class="now">
+    <div class="art" data-np-art data-shape="sun" style="--c1:#ff4d8d; --c2:#7b5cff; --c3:#3a1d5c; --c4:#120b24"></div>
+    <div class="stack" style="gap: 0; min-inline-size: 0"><span class="t" data-np-t data-alt="Tehran Midnight">نیمه‌شب تهران</span><span class="a" data-np-a data-alt="Ava">آوا</span></div>
+    <button class="icon-btn compact-only" type="button" data-toggle="#np-panel" aria-controls="np-panel" aria-expanded="false" aria-label="متن ترانه" data-alt-aria-label="Lyrics"><svg class="ic" aria-hidden="true"><use href="#i-chatbox-ellipses-outline"/></svg></button>
+  </div>
+  <div class="mid">
+    <div class="controls">
+      <button class="icon-btn hide-sm" type="button" data-press aria-pressed="false" aria-label="پخش تصادفی" data-alt-aria-label="Shuffle"><svg class="ic" aria-hidden="true"><use href="#i-shuffle"/></svg></button>
+      <button class="icon-btn hide-sm" type="button" data-skip="-1" aria-label="قبلی" data-alt-aria-label="Previous"><svg class="ic" aria-hidden="true"><use href="#i-play-skip-back"/></svg></button>
+      <button class="btn btn-play" type="button" id="play" aria-pressed="false" aria-label="پخش" data-alt-aria-label="Play"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></button>
+      <button class="icon-btn" type="button" data-skip="1" aria-label="بعدی" data-alt-aria-label="Next"><svg class="ic" aria-hidden="true"><use href="#i-play-skip-forward"/></svg></button>
+      <button class="icon-btn hide-sm" type="button" data-press aria-pressed="true" aria-label="تکرار" data-alt-aria-label="Repeat"><svg class="ic" aria-hidden="true"><use href="#i-repeat"/></svg></button>
+    </div>
+    <div class="seek"><span id="pos">۱:۱۸</span><input class="range" id="seek" type="range" min="0" max="222" value="78" aria-label="زمان آهنگ" data-alt-aria-label="Song position" style="--v: 35%"><span id="dur">۳:۴۲</span></div>
+  </div>
+  <div class="end">
+    <button class="icon-btn" type="button" data-toast="در حال پخش روی: گوشی مریم" data-toast-alt="Playing on: Maryam’s phone" aria-label="دستگاه‌ها" data-alt-aria-label="Devices"><svg class="ic" aria-hidden="true"><use href="#i-phone-portrait-outline"/></svg></button>
+    <svg class="ic subtle" aria-hidden="true" style="font-size: 20px"><use href="#i-volume-medium-outline"/></svg>
+    <input class="range vol" id="vol" type="range" min="0" max="100" value="70" aria-label="بلندی صدا" data-alt-aria-label="Volume" style="--v: 70%">
+  </div>
+</div>
+
+<nav class="mtabs glass strong" aria-label="بخش‌ها" data-alt-aria-label="Sections">
+  <button type="button" data-goto="t-home" aria-current="page"><svg class="ic" aria-hidden="true"><use href="#i-home-outline"/></svg><span data-alt="Listen">بشنوید</span></button>
+  <button type="button" data-goto="t-lib"><svg class="ic" aria-hidden="true"><use href="#i-library-outline"/></svg><span data-alt="Library">کتابخانه</span></button>
+  <button type="button" data-goto="t-stats"><svg class="ic" aria-hidden="true"><use href="#i-stats-chart-outline"/></svg><span data-alt="Stats">آمار</span></button>
+  <button type="button" data-goto="t-acc"><svg class="ic" aria-hidden="true"><use href="#i-person-circle-outline"/></svg><span data-alt="Account">حساب</span></button>
+</nav>
+
+<dialog class="modal" id="cancel" aria-labelledby="cancel-title">
+  <form data-validate data-success="اشتراک شما تا پایان دوره فعال می‌ماند" data-success-alt="Your plan stays active until the end of the period">
+    <div class="modal-body">
+      <h2 class="h2" id="cancel-title" data-alt="Cancel your plan?">اشتراک را لغو می‌کنید؟</h2>
+      <p class="muted small" data-alt="You keep Lossless and downloads until the renewal date. Tell us why — it helps.">تا تاریخ تمدید، کیفیت بدون افت و دانلودها را دارید. دلیلش را بگویید — کمکمان می‌کند.</p>
+      <div class="field"><label class="label" for="why" data-alt="Reason">دلیل</label><select class="select" id="why" name="why" required><option value="" data-alt="Choose…">انتخاب کنید…</option><option value="price" data-alt="Too expensive">گران است</option><option value="music" data-alt="Missing music I like">موسیقی دلخواهم نیست</option><option value="break" data-alt="Just taking a break">فقط کمی استراحت</option></select></div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" type="button" data-close data-alt="Keep my plan">اشتراک بماند</button><button class="btn btn-brand" type="submit" data-alt="Cancel plan">لغو اشتراک</button></div>
+  </form>
+</dialog>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+    const fa = () => tf.lang() === 'fa';
+    const both = (el, f, e) => { el.textContent = fa() ? f : e; el.dataset.alt = fa() ? e : f; };
+    const TRACKS = [
+      { t: ['نیمه‌شب تهران', 'Tehran Midnight'], a: ['آوا', 'Ava'], dur: 222, c: ['#ff4d8d', '#7b5cff', '#ff9f43', '#22c3ff'], art: ['#3a1d5c', '#120b24'], shape: 'sun',
+        ly: [['چراغ‌های شهر هنوز بیدارند', 'The city lights are still awake'], ['و من با صدای تو راه می‌روم', 'and I walk along with your voice'], ['نیمه‌شب، خیابان مال ماست', 'at midnight the street is ours'], ['تا صبح، آهسته‌تر بخوان', 'sing softer, until the morning'], ['چراغ‌ها یکی‌یکی خاموش می‌شوند', 'the lights go out one by one'], ['و ما هنوز اینجاییم', 'and we are still here']] },
+      { t: ['باران روی شیشه', 'Rain on Glass'], a: ['سپهر', 'Sepehr'], dur: 245, c: ['#22c3ff', '#3b5bff', '#8b7bff', '#00e0b8'], art: ['#0e2a5c', '#06101f'], shape: 'rings',
+        ly: [['قطره‌ها نام تو را می‌نویسند', 'the drops keep writing your name'], ['روی شیشه‌ای که بخار گرفته', 'on a window fogged with breath'], ['و من پاکش نمی‌کنم', 'and I leave it there'], ['تا باران بند بیاید', 'until the rain is done']] },
+      { t: ['ستاره‌های کویر', 'Desert Stars'], a: ['دریا', 'Darya'], dur: 238, c: ['#ffb547', '#ff6a3d', '#9b4dff', '#ffd36e'], art: ['#5a2410', '#1d0b06'], shape: 'dunes',
+        ly: [['شب کویر بی‌انتهاست', 'the desert night goes on forever'], ['و ستاره‌ها آن‌قدر نزدیک‌اند', 'and the stars are close enough'], ['که می‌شود صدایشان را شنید', 'to hear them hum'], ['آهسته، تا سپیده', 'slowly, until dawn']] },
+      { t: ['موج آرام', 'Calm Wave'], a: ['گروه نور', 'Noor Ensemble'], dur: 310, c: ['#2ee6a6', '#1aa3ff', '#7cf0ff', '#5b8cff'], art: ['#0b3b3a', '#04141a'], shape: 'wave',
+        ly: [['(بی‌کلام)', '(instrumental)']] },
+      { t: ['بی‌قرار', 'Restless'], a: ['نیکا', 'Nika'], dur: 195, c: ['#ff3b3b', '#ff7ab6', '#ffb547', '#b23cff'], art: ['#4d0b1e', '#14040a'], shape: 'grid',
+        ly: [['قلبم تند می‌زند', 'my heart is racing'], ['و شهر هنوز نخوابیده', 'and the city has not slept'], ['بیا تا انتهای خیابان بدویم', 'let’s run to the end of the street'], ['بی‌قرار، بی‌قرار', 'restless, restless']] },
+      { t: ['ماه نو', 'New Moon'], a: ['آوا', 'Ava'], dur: 270, c: ['#c8b6ff', '#6c5cff', '#ff8fd1', '#22c3ff'], art: ['#2d2a6e', '#0b0a1f'], shape: 'moon',
+        ly: [['ماه نو باریک است', 'the new moon is a thin line'], ['مثل لبخندی که پنهان کردی', 'like the smile you tried to hide'], ['امشب کوتاه است', 'tonight is short'], ['بمان', 'stay']] },
+    ];
+    let cur = 0, pos = 78, timer = null;
+    const play = $('#play'), seek = $('#seek'), lyrics = $('#lyrics'), queue = $('#queue');
+    const playing = () => play.getAttribute('aria-pressed') === 'true';
+    const artStyle = (tr) => `--c1:${tr.c[0]}; --c2:${tr.c[1]}; --c3:${tr.art[0]}; --c4:${tr.art[1]}`;
+
+    const renderLyrics = () => {
+      lyrics.innerHTML = '';
+      TRACKS[cur].ly.forEach((l, i) => { const p = document.createElement('p'); p.className = 'line'; p.dataset.i = i; both(p, l[0], l[1]); lyrics.append(p); });
+    };
+    const renderQueue = () => {
+      queue.innerHTML = '';
+      for (let k = 1; k < TRACKS.length; k++) {
+        const i = (cur + k) % TRACKS.length, tr = TRACKS[i];
+        const li = document.createElement('li');
+        li.className = 'track'; li.dataset.track = i; li.tabIndex = 0;
+        li.innerHTML = `<span class="art" data-shape="${tr.shape}" style="${artStyle(tr)}"></span><span class="stack" style="gap: 0"><span class="t"></span><span class="a"></span></span><span class="d"></span>`;
+        both($('.t', li), tr.t[0], tr.t[1]); both($('.a', li), tr.a[0], tr.a[1]);
+        $('.d', li).dataset.num = tr.dur; $('.d', li).dataset.fmt = 'clock'; $('.d', li).textContent = tf.fmt(tr.dur, 'clock');
+        queue.append(li);
+      }
+    };
+    const paint = () => {
+      const tr = TRACKS[cur];
+      seek.max = tr.dur; seek.value = Math.floor(pos);
+      seek.style.setProperty('--v', (pos / tr.dur * 100).toFixed(1) + '%');
+      $('#pos').textContent = tf.fmt(pos, 'clock');
+      $('#dur').textContent = tf.fmt(tr.dur, 'clock');
+      const n = Math.min(tr.ly.length - 1, Math.floor(pos / (tr.dur / tr.ly.length)));
+      $$('.line', lyrics).forEach((l, i) => { l.classList.toggle('now', i === n); l.classList.toggle('past', i < n); });
+    };
+    const setPlaying = (on) => {
+      clearInterval(timer);
+      play.setAttribute('aria-pressed', String(on));
+      $('use', play).setAttribute('href', on ? '#i-pause' : '#i-play');
+      $$('.track').forEach((r) => r.classList.toggle('paused', !on));
+      if (on && !tf.reduceMotion) timer = setInterval(() => { pos += 1; if (pos >= TRACKS[cur].dur) load((cur + 1) % TRACKS.length, true); paint(); }, 1000);
+    };
+    const load = (i, autoplay) => {
+      cur = i; pos = 0;
+      const tr = TRACKS[i], root = document.documentElement;
+      tr.c.forEach((c, k) => root.style.setProperty('--a' + (k + 1), c));
+      [$('#np-art'), ...$$('[data-np-art]')].forEach((a) => { a.dataset.shape = tr.shape; a.style.cssText = artStyle(tr); });
+      $$('[data-np-t]').forEach((el) => both(el, tr.t[0], tr.t[1]));
+      $$('[data-np-a]').forEach((el) => both(el, tr.a[0], tr.a[1]));
+      $$('#top-list .track').forEach((r) => r.classList.toggle('on', Number(r.dataset.track) === i));
+      renderLyrics(); renderQueue(); paint();
+      setPlaying(autoplay ? true : playing());
+    };
+
+    play.addEventListener('click', () => setPlaying(!playing()));
+    $$('[data-skip]').forEach((b) => b.addEventListener('click', () => load((cur + Number(b.dataset.skip) + TRACKS.length) % TRACKS.length, playing())));
+    seek.addEventListener('input', () => { pos = Number(seek.value); paint(); });
+    $('#vol').addEventListener('input', (e) => e.target.style.setProperty('--v', e.target.value + '%'));
+    $('#xfade').addEventListener('input', (e) => { e.target.style.setProperty('--v', (e.target.value / 12 * 100) + '%'); const v = $('#xfade-v'); v.dataset.num = e.target.value; v.textContent = tf.fmt(e.target.value); });
+    lyrics.addEventListener('click', (e) => { const l = e.target.closest('.line'); if (l) { pos = Math.ceil(Number(l.dataset.i) * TRACKS[cur].dur / TRACKS[cur].ly.length); paint(); } });
+
+    document.addEventListener('click', (e) => {
+      const g = e.target.closest('[data-goto]');
+      if (g) { tf.selectTab(document.getElementById(g.dataset.goto)); return; }
+      const p = e.target.closest('[data-press]');
+      if (p) { p.setAttribute('aria-pressed', String(p.getAttribute('aria-pressed') !== 'true')); return; }
+      const like = e.target.closest('.like');
+      if (like) { const on = like.getAttribute('aria-pressed') !== 'true'; like.setAttribute('aria-pressed', String(on)); $('use', like).setAttribute('href', on ? '#i-heart' : '#i-heart-outline'); return; }
+      const rm = e.target.closest('[data-remove]');
+      if (rm) { rm.closest('.device').remove(); tf.toast(fa() ? 'از آن دستگاه خارج شدید' : 'Signed out of that device'); return; }
+      const t = e.target.closest('[data-track]');
+      if (t) load(Number(t.dataset.track), true);
+    });
+    document.addEventListener('keydown', (e) => {
+      const t = e.target.closest?.('li[data-track]');
+      if (t && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); load(Number(t.dataset.track), true); }
+    });
+    // keep the mobile tab bar in sync with the sidebar tabs
+    document.querySelector('.side-nav').addEventListener('tf:tab', (e) => {
+      $$('.mtabs [data-goto]').forEach((b) => { if (b.dataset.goto === e.target.id) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
+      $('#main').scrollTo({ top: 0 });
+    });
+    // library sort (A–Z by the visible title)
+    $('#lib-sort').addEventListener('change', (e) => {
+      const lib = $('#lib'), items = $$('.tile', lib);
+      if (e.target.value === 'az') items.sort((a, b) => $('b', a).textContent.localeCompare($('b', b).textContent, tf.locale()));
+      else items.sort((a, b) => a.dataset.order - b.dataset.order);
+      items.forEach((x) => lib.append(x));
+    });
+    $$('#lib .tile').forEach((x, i) => { x.dataset.order = i; });
+    document.addEventListener('tf:lang', () => { paint(); });
+    renderLyrics(); renderQueue(); paint(); setPlaying(false);
+  });
+</script>
+</body>
+</html>

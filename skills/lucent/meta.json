@@ -1,0 +1,34 @@
+{
+  "name": "Lucent",
+  "order": 22,
+  "category": "product",
+  "mode": "dark",
+  "density": "balanced",
+  "persianFirst": true,
+  "tags": ["liquid glass", "glassmorphism", "music", "streaming", "media player", "persian", "app"],
+  "tagline": {
+    "en": "Liquid glass — refracting capsules over an aurora that takes its colours from what is playing",
+    "fa": "شیشهٔ مایع — کپسول‌های شیشه‌ای شکست‌دهندهٔ نور روی شفقی که رنگش را از آهنگ در حال پخش می‌گیرد"
+  },
+  "summary": {
+    "en": "A luminous, tactile language built on liquid glass, Persian-first. Translucent cards and capsules with a refracting rim, a top sheen and a tint that keeps text readable float over an aurora of four colours that changes with the current track. Floating capsule toolbars, concentric corners, light big numbers in Outfit, generative album art, synced lyrics that brighten line by line, an equaliser that only moves while music plays, and a web player with a library, listening stats, account settings and a floating player bar. Includes a frosted-white light theme and a solid fallback for reduced transparency.",
+    "fa": "زبانی درخشان و لمس‌پذیر بر پایهٔ شیشهٔ مایع، فارسی‌محور. کارت‌ها و کپسول‌های نیمه‌شفاف با لبهٔ شکست‌دهندهٔ نور، درخشش بالا و ته‌رنگی که متن را خوانا نگه می‌دارد، روی شفقی چهاررنگ شناورند که با آهنگ فعلی عوض می‌شود. نوار ابزار کپسولی شناور، گوشه‌های هم‌مرکز، عددهای بزرگ و سبک، کاور آلبوم تولیدی، متن ترانهٔ هم‌زمان که خط‌به‌خط روشن می‌شود، اکولایزری که فقط هنگام پخش تکان می‌خورد و پخش‌کنندهٔ وب با کتابخانه، آمار شنیدن، تنظیمات حساب و نوار پخش شناور. تم روشن مات و جایگزین کدر برای کاهش شفافیت هم دارد."
+  },
+  "bestFor": {
+    "en": ["Music, podcast and audiobook apps", "Media players and creative tools", "Consumer apps with a premium, playful feel", "Smart-home and car dashboards"],
+    "fa": ["اپ‌های موسیقی، پادکست و کتاب صوتی", "پخش‌کننده‌ها و ابزارهای خلاقانه", "اپ‌های مصرفی با حس لوکس و بازیگوش", "داشبورد خانهٔ هوشمند و ماشین"]
+  },
+  "avoidFor": {
+    "en": ["Dense data tables and finance", "Long-form reading", "Government and enterprise forms"],
+    "fa": ["جدول‌های پرتراکم داده و امور مالی", "متن‌های طولانی برای خواندن", "فرم‌های دولتی و سازمانی"]
+  },
+  "signature": {
+    "en": ["Glass with a refracting rim, top sheen and readability tint", "An aurora that takes its colours from the current track", "Floating capsule nav, player bar and tab bar", "Generative album art and light, large numbers", "Synced lyrics that brighten line by line", "Web player: library, stats, account, now-playing panel"],
+    "fa": ["شیشه با لبهٔ شکست نور، درخشش بالا و ته‌رنگ خوانایی", "شفقی که رنگش را از آهنگ فعلی می‌گیرد", "منو، نوار پخش و نوار زبانه‌های کپسولی شناور", "کاور آلبوم تولیدی و عددهای بزرگ و سبک", "متن ترانهٔ هم‌زمان که خط‌به‌خط روشن می‌شود", "پخش‌کنندهٔ وب: کتابخانه، آمار، حساب، پنل در حال پخش"]
+  },
+  "swatches": ["#07070c", "#ff4d8d", "#7b5cff", "#22c3ff", "#f5f5f8"],
+  "fonts": { "latin": "Outfit", "persian": "Vazirmatn", "mono": "system mono" },
+  "icons": "Ionicons (inline SVG sprite, MIT)",
+  "brandTrials": ["2ec5ff", "ffb547", "3ddc97", "b388ff"],
+  "demos": { "site": { "host": "aria.example" }, "dashboard": { "host": "aria.example/player" } }
+}
