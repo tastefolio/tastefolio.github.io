@@ -144,6 +144,15 @@
       ]
     },
     {
+      "name": "clay",
+      "description": "Tastefolio design language — Soft, tactile wellness — puffy clay surfaces, pastel tiles, controls pressed into the page",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/clay"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -163,7 +172,8 @@
         "./skills/raster",
         "./skills/teletype",
         "./skills/kashi",
-        "./skills/ticker"
+        "./skills/ticker",
+        "./skills/clay"
       ]
     }
   ]

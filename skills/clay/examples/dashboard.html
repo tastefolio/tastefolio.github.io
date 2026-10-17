@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-alt-lang="fa" data-demo="dashboard">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="فضای من · نَفَس">My space · Nafas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..700,100&family=Lemonada:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&family=Readex+Pro:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .ring { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: var(--space-4); align-items: center; }
+  @media (max-width: 420px) { .ring { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; } }
+  .continue { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: var(--space-5); align-items: center; }
+  .continue .art { aspect-ratio: 1; border-radius: var(--radius-md); display: grid; place-items: center; position: relative; overflow: hidden; }
+  @media (max-width: 560px) { .continue { grid-template-columns: minmax(0, 1fr); } .continue .art { aspect-ratio: 16 / 9; } }
+  .split { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--space-5); }
+  @media (max-width: 1100px) { .split { grid-template-columns: minmax(0, 1fr); } }
+  .entry { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: start; }
+  .entry .pebble { inline-size: 42px; block-size: 42px; font-size: 22px; }
+  .badges { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: var(--space-4); }
+  .badges > div { display: grid; justify-items: center; gap: 8px; text-align: center; font-size: var(--fs-sm); font-weight: 700; }
+  .badges .pebble { inline-size: 64px; block-size: 64px; }
+  .badges .pebble i { font-size: 28px; }
+  .badges .locked { opacity: .45; }
+  .badges .locked .pebble { box-shadow: var(--press); background: var(--surface-2); }
+  .vol { display: grid; grid-template-columns: auto minmax(0, 1fr) 3ch; gap: 14px; align-items: center; }
+  .vol i { font-size: 22px; color: var(--ink-2); }
+  .set-row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding-block: 12px; }
+  .set-row + .set-row { border-block-start: 2px dashed var(--line); }
+  .stats4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-5); }
+  @media (max-width: 900px) { .stats4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .set-row small { display: block; color: var(--ink-3); font-size: var(--fs-xs); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="رفتن به محتوا">Skip to content</a>
+<div class="shell">
+  <aside class="side" aria-label="Navigation" data-alt-aria-label="ناوبری">
+    <a class="logo" href="site.html"><span class="logo-mark" aria-hidden="true"></span><span data-alt="نَفَس">nafas</span></a>
+    <div class="side-nav" role="tablist" aria-orientation="vertical" aria-label="Sections" data-alt-aria-label="بخش‌ها">
+      <button role="tab" id="t-today" aria-controls="p-today" aria-selected="true"><i class="ph ph-sun-horizon" aria-hidden="true"></i><span data-alt="امروز">Today</span></button>
+      <button role="tab" id="t-journal" aria-controls="p-journal" aria-selected="false"><i class="ph ph-notebook" aria-hidden="true"></i><span data-alt="دفترچه">Journal</span></button>
+      <button role="tab" id="t-progress" aria-controls="p-progress" aria-selected="false"><i class="ph ph-plant" aria-hidden="true"></i><span data-alt="پیشرفت">Progress</span></button>
+      <button role="tab" id="t-settings" aria-controls="p-settings" aria-selected="false"><i class="ph ph-sliders-horizontal" aria-hidden="true"></i><span data-alt="تنظیمات">Settings</span></button>
+    </div>
+    <div class="side-card lavender">
+      <span class="tiny subtle" data-alt="برای امشب">For tonight</span>
+      <b data-alt="آرام‌شدن ۴-۷-۸">4·7·8 wind-down</b>
+      <button class="btn btn-primary btn-sm" type="button" data-toast="Playing “4·7·8 wind-down”" data-toast-alt="در حال پخش «آرام‌شدن ۴-۷-۸»"><i class="ph ph-play" aria-hidden="true"></i><span><span data-num="20">20</span> <span data-alt="دقیقه">min</span></span></button>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="app-head">
+      <div>
+        <p class="small subtle" data-date="2026-10-16" data-fmt="long">October 16, 2026</p>
+        <h1 class="h1" data-alt="عصر بخیر، لیلا">Good evening, Leila</h1>
+      </div>
+      <div class="tools">
+        <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="EN">فا</button>
+        <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="Toggle evening theme" data-alt-aria-label="تغییر پوستهٔ شب"><i class="ph ph-moon" aria-hidden="true"></i></button>
+        <span class="avatar" aria-hidden="true">LS</span>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ============================================================ today -->
+      <section role="tabpanel" id="p-today" aria-labelledby="t-today" class="stack" style="gap: var(--space-5)">
+        <div class="grid-a">
+          <div class="tile peach">
+            <div class="tile-head"><h2 class="h3" data-alt="تمرین امروز">Today’s practice</h2><span class="badge" style="background: var(--surface)" data-alt="هدف ۱۵ دقیقه">Goal 15 min</span></div>
+            <div class="ring">
+              <div data-chart="donut" data-height="150" data-fmt="int" data-values="9,6" data-labels='{"en":["Done","Left"],"fa":["انجام‌شده","مانده"]}' data-center='{"en":"9 / 15","fa":"۹ از ۱۵"}' data-label='{"en":"9 of 15 minutes done today","fa":"۹ از ۱۵ دقیقهٔ امروز انجام شد"}' style="--chart-2: color-mix(in oklab, var(--brand) 18%, transparent)"></div>
+              <div class="stack" style="gap: 6px"><p class="muted small" data-alt="شش دقیقهٔ دیگر تا هدف. یک جلسهٔ کوتاه کافی است.">Six more minutes to your goal. One short session will do.</p><button class="btn btn-primary btn-sm" type="button" data-toast="Playing “Soft belly”" data-toast-alt="در حال پخش «شکم نرم»" data-alt="ادامه با «شکم نرم»">Finish with “Soft belly”</button></div>
+            </div>
+          </div>
+          <div class="tile">
+            <div class="tile-head"><h2 class="h3" data-alt="این هفته">This week</h2><span class="badge sage"><span data-num="5">5</span>&nbsp;<span data-alt="روز پشت‌سرهم">days in a row</span></span></div>
+            <div class="week" role="list">
+              <span role="listitem"><i class="on" aria-hidden="true"></i><span data-alt="ش">Sa</span></span>
+              <span role="listitem"><i aria-hidden="true"></i><span data-alt="ی">Su</span></span>
+              <span role="listitem"><i class="on" aria-hidden="true"></i><span data-alt="د">Mo</span></span>
+              <span role="listitem"><i class="on" aria-hidden="true"></i><span data-alt="س">Tu</span></span>
+              <span role="listitem"><i class="on" aria-hidden="true"></i><span data-alt="چ">We</span></span>
+              <span role="listitem"><i class="on" aria-hidden="true"></i><span data-alt="پ">Th</span></span>
+              <span role="listitem"><i class="on today" aria-hidden="true"></i><span data-alt="ج">Fr</span></span>
+            </div>
+            <p class="small muted" data-alt="بدون فشار: یک روز جاافتاده چیزی را خراب نمی‌کند.">No pressure — a missed day never breaks anything.</p>
+          </div>
+          <div class="tile lavender">
+            <div class="tile-head"><h2 class="h3" data-alt="الان چه حسی داری؟">How do you feel right now?</h2></div>
+            <div class="moods" data-group="mood" role="group" aria-label="Mood" data-alt-aria-label="حال">
+              <button type="button" data-value="1" aria-pressed="false" aria-label="Low" data-alt-aria-label="بی‌حال"><i class="ph ph-smiley-sad" aria-hidden="true"></i></button>
+              <button type="button" data-value="2" aria-pressed="false" aria-label="Tense" data-alt-aria-label="تنش"><i class="ph ph-smiley-nervous" aria-hidden="true"></i></button>
+              <button type="button" data-value="3" aria-pressed="false" aria-label="Okay" data-alt-aria-label="معمولی"><i class="ph ph-smiley-meh" aria-hidden="true"></i></button>
+              <button type="button" data-value="4" aria-pressed="true" aria-label="Good" data-alt-aria-label="خوب"><i class="ph ph-smiley" aria-hidden="true"></i></button>
+              <button type="button" data-value="5" aria-pressed="false" aria-label="Bright" data-alt-aria-label="سرحال"><i class="ph ph-smiley-wink" aria-hidden="true"></i></button>
+            </div>
+            <p class="small muted" data-alt="بر اساس حالت، پیشنهاد امشب تغییر می‌کند.">Tonight’s suggestion changes with your answer.</p>
+          </div>
+        </div>
+
+        <div class="split">
+          <div class="tile">
+            <div class="tile-head"><h2 class="h3" data-alt="ادامه بده">Pick up where you left off</h2></div>
+            <div class="continue">
+              <div class="art sky" aria-hidden="true"><span class="blob sage" style="position:absolute; inline-size:60%; aspect-ratio:1; inset-inline-end:-18%; inset-block-end:-22%"></span><span class="pebble" style="position:relative; inline-size:60px; block-size:60px"><i class="ph ph-waves"></i></span></div>
+              <div class="stack" style="gap: 10px">
+                <b class="h2" data-alt="شمارش موج">Ocean count</b>
+                <div class="meta row" style="gap: 6px"><span class="badge sky" data-alt="آرامش">Calm</span><span class="badge"><span data-num="12">12</span> / <span data-num="20">20</span>&nbsp;<span data-alt="دقیقه">min</span></span></div>
+                <div class="progress" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="60% listened" data-alt-aria-label="۶۰٪ شنیده شده"><i style="--v:60%"></i></div>
+                <div class="row"><button class="btn btn-primary" type="button" data-toast="Resuming “Ocean count”" data-toast-alt="ادامهٔ «شمارش موج»"><i class="ph ph-play" aria-hidden="true"></i><span data-alt="ادامه">Resume</span></button><button class="btn btn-ghost" type="button" data-toast="Restarted from the beginning" data-toast-alt="از ابتدا شروع شد" data-alt="از اول">Start over</button></div>
+              </div>
+            </div>
+          </div>
+          <div class="tile">
+            <div class="tile-head"><h2 class="h3" data-alt="پیشنهادها">Suggested for you</h2></div>
+            <ul class="list">
+              <li><span class="pebble butter" aria-hidden="true"><i class="ph ph-sun"></i></span><div style="flex:1"><b data-alt="جرقهٔ صبح">Morning spark</b><p class="tiny subtle"><span data-num="5">5</span> <span data-alt="دقیقه · انرژی">min · energy</span></p></div><button class="btn btn-icon btn-sm" type="button" aria-label="Play Morning spark" data-alt-aria-label="پخش جرقهٔ صبح" data-toast="Playing “Morning spark”" data-toast-alt="در حال پخش «جرقهٔ صبح»"><i class="ph ph-play" aria-hidden="true"></i></button></li>
+              <li><span class="pebble lavender" aria-hidden="true"><i class="ph ph-moon-stars"></i></span><div style="flex:1"><b data-alt="بازدم آرام برای خواب">Slow exhale for sleep</b><p class="tiny subtle"><span data-num="10">10</span> <span data-alt="دقیقه · خواب">min · sleep</span></p></div><button class="btn btn-icon btn-sm" type="button" aria-label="Play Slow exhale" data-alt-aria-label="پخش بازدم آرام" data-toast="Playing “Slow exhale for sleep”" data-toast-alt="در حال پخش «بازدم آرام برای خواب»"><i class="ph ph-play" aria-hidden="true"></i></button></li>
+              <li><span class="pebble peach" aria-hidden="true"><i class="ph ph-desktop"></i></span><div style="flex:1"><b data-alt="ریست پشت میز">Desk reset</b><p class="tiny subtle"><span data-num="3">3</span> <span data-alt="دقیقه · تمرکز">min · focus</span></p></div><button class="btn btn-icon btn-sm" type="button" aria-label="Play Desk reset" data-alt-aria-label="پخش ریست پشت میز" data-toast="Playing “Desk reset”" data-toast-alt="در حال پخش «ریست پشت میز»"><i class="ph ph-play" aria-hidden="true"></i></button></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="split">
+          <div class="tile">
+            <div class="tile-head"><h2 class="h3" data-alt="آرامش و خواب، ۱۴ روز">Calm &amp; sleep, 14 days</h2><div class="legend"><span style="--c: var(--chart-1)" data-alt="امتیاز آرامش">Calm score</span><span style="--c: var(--chart-2)" data-alt="کیفیت خواب">Sleep quality</span></div></div>
+            <div data-chart="area" data-height="220" data-fmt="int" data-max="100" data-dates="2026-10-03,14,day,short" data-series='[{"name":{"en":"Calm score","fa":"امتیاز آرامش"},"values":[52,55,51,58,60,57,63,66,64,69,71,68,74,77]},{"name":{"en":"Sleep quality","fa":"کیفیت خواب"},"values":[61,58,63,62,66,64,65,70,72,70,74,76,75,79],"color":"var(--chart-2)"}]' data-label='{"en":"Calm score and sleep quality over 14 days","fa":"امتیاز آرامش و کیفیت خواب در ۱۴ روز"}'></div>
+          </div>
+          <div class="tile">
+            <div class="tile-head"><h2 class="h3" data-alt="تنفس در حال استراحت">Resting breath rate</h2><span class="badge sage"><span data-alt="−۲ در دقیقه">−2 / min</span></span></div>
+            <div data-chart="bar" data-height="220" data-fmt="int" data-max="20" data-dates="2026-09-01,7,week" data-values="16,15.5,15,15,14.5,14,14" data-name='{"en":"Breaths per minute","fa":"نفس در دقیقه"}' style="--chart-1: var(--chart-3)"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ journal -->
+      <section role="tabpanel" id="p-journal" aria-labelledby="t-journal" hidden>
+        <div class="split">
+          <form class="tile" data-validate data-success="Saved to your journal" data-success-alt="در دفترچه ذخیره شد">
+            <div class="tile-head"><h2 class="h2" data-alt="امروز چطور گذشت؟">How was today?</h2></div>
+            <div class="moods" data-group="jmood" role="group" aria-label="Mood" data-alt-aria-label="حال">
+              <button type="button" data-value="1" aria-pressed="false" aria-label="Low" data-alt-aria-label="بی‌حال"><i class="ph ph-smiley-sad" aria-hidden="true"></i></button>
+              <button type="button" data-value="2" aria-pressed="false" aria-label="Tense" data-alt-aria-label="تنش"><i class="ph ph-smiley-nervous" aria-hidden="true"></i></button>
+              <button type="button" data-value="3" aria-pressed="true" aria-label="Okay" data-alt-aria-label="معمولی"><i class="ph ph-smiley-meh" aria-hidden="true"></i></button>
+              <button type="button" data-value="4" aria-pressed="false" aria-label="Good" data-alt-aria-label="خوب"><i class="ph ph-smiley" aria-hidden="true"></i></button>
+              <button type="button" data-value="5" aria-pressed="false" aria-label="Bright" data-alt-aria-label="سرحال"><i class="ph ph-smiley-wink" aria-hidden="true"></i></button>
+            </div>
+            <div class="field"><label class="label" for="j-text" data-alt="دو خط کافی است">Two lines are enough</label><textarea class="textarea" id="j-text" name="note" required minlength="10" placeholder="What did you notice in your body?" data-alt-placeholder="در بدنت چه چیزی را حس کردی؟"></textarea></div>
+            <div class="field"><span class="label" data-alt="برچسب‌ها">Tags</span>
+              <div class="chips" data-group data-multi role="group" aria-label="Tags" data-alt-aria-label="برچسب‌ها">
+                <button type="button" aria-pressed="true" data-alt="کار">work</button><button type="button" aria-pressed="false" data-alt="خانواده">family</button><button type="button" aria-pressed="false" data-alt="خواب">sleep</button><button type="button" aria-pressed="true" data-alt="ورزش">movement</button><button type="button" aria-pressed="false" data-alt="طبیعت">outdoors</button>
+              </div></div>
+            <div class="row"><button class="btn btn-primary" type="submit" data-alt="ذخیره در دفترچه">Save entry</button><span class="tiny subtle" data-alt="فقط شما آن را می‌بینید.">Only you can see it.</span></div>
+          </form>
+          <div class="tile">
+            <div class="tile-head"><h2 class="h3" data-alt="یادداشت‌های اخیر">Recent entries</h2></div>
+            <ul class="list">
+              <li class="entry"><span class="pebble butter" aria-hidden="true"><i class="ph ph-smiley"></i></span><div><p class="tiny subtle" data-date="2026-10-15" data-fmt="long">October 15, 2026</p><p data-alt="شانه‌ها بعد از تنفس مربعی پایین آمدند. قبل از جلسه دیگر قلبم تند نمی‌زد.">Shoulders dropped after box breathing. My heart didn’t race before the review.</p></div></li>
+              <li class="entry"><span class="pebble lavender" aria-hidden="true"><i class="ph ph-smiley-meh"></i></span><div><p class="tiny subtle" data-date="2026-10-14" data-fmt="long">October 14, 2026</p><p data-alt="دیر خوابیدم، ولی ۴-۷-۸ کمک کرد دوباره بخوابم.">Slept late, but 4·7·8 helped me fall back asleep.</p></div></li>
+              <li class="entry"><span class="pebble sage" aria-hidden="true"><i class="ph ph-smiley-wink"></i></span><div><p class="tiny subtle" data-date="2026-10-12" data-fmt="long">October 12, 2026</p><p data-alt="پیاده‌روی و بعد شکم نرم در پارک. بهترین ترکیب هفته.">A walk, then soft belly in the park. Best combo of the week.</p></div></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ progress -->
+      <section role="tabpanel" id="p-progress" aria-labelledby="t-progress" class="stack" style="gap: var(--space-5)" hidden>
+        <div class="stats4">
+          <div class="tile peach"><span class="small muted" data-alt="دقیقهٔ تمرین">Minutes practised</span><span class="big-num" data-num="412">412</span></div>
+          <div class="tile sage"><span class="small muted" data-alt="جلسه">Sessions</span><span class="big-num" data-num="58">58</span></div>
+          <div class="tile lavender"><span class="small muted" data-alt="طولانی‌ترین زنجیره">Longest streak</span><span class="big-num"><span data-num="12">12</span> <small class="small" data-alt="روز">days</small></span></div>
+          <div class="tile butter"><span class="small muted" data-alt="تغییر امتیاز آرامش">Calm score change</span><span class="big-num" data-num="18" data-fmt="signedpct">+18%</span></div>
+        </div>
+        <div class="split">
+          <div class="tile">
+            <div class="tile-head"><h2 class="h3" data-alt="۳۵ روز اخیر">Last 35 days</h2><div class="legend"><span style="--c: var(--peach)" data-alt="کم">a little</span><span style="--c: color-mix(in oklab, var(--brand) 45%, var(--peach))" data-alt="متوسط">some</span><span style="--c: var(--brand)" data-alt="زیاد">a lot</span></div></div>
+            <div class="cal" role="img" aria-label="Practice minutes for each of the last 35 days" data-alt-aria-label="دقیقه‌های تمرین در هر یک از ۳۵ روز اخیر">
+              <span class="l1"></span><span></span><span class="l2"></span><span class="l1"></span><span></span><span class="l2"></span><span class="l1"></span>
+              <span class="l2"></span><span class="l3"></span><span></span><span class="l1"></span><span class="l2"></span><span class="l2"></span><span></span>
+              <span class="l1"></span><span class="l2"></span><span class="l3"></span><span class="l2"></span><span></span><span class="l1"></span><span class="l3"></span>
+              <span class="l2"></span><span class="l2"></span><span class="l3"></span><span class="l1"></span><span class="l2"></span><span class="l3"></span><span class="l2"></span>
+              <span class="l3"></span><span class="l2"></span><span class="l3"></span><span class="l3"></span><span class="l2"></span><span class="l3"></span><span class="l2"></span>
+            </div>
+          </div>
+          <div class="tile">
+            <div class="tile-head"><h2 class="h3" data-alt="سنگ‌ریزه‌های جمع‌شده">Pebbles collected</h2></div>
+            <div class="badges">
+              <div><span class="pebble peach"><i class="ph ph-sunrise" aria-hidden="true"></i></span><span data-alt="سحرخیز">Early riser</span></div>
+              <div><span class="pebble lavender"><i class="ph ph-moon-stars" aria-hidden="true"></i></span><span data-alt="خواب آرام">Night owl, tamed</span></div>
+              <div><span class="pebble sage"><i class="ph ph-plant" aria-hidden="true"></i></span><span data-alt="۷ روز">7 days</span></div>
+              <div class="locked"><span class="pebble"><i class="ph ph-mountains" aria-hidden="true"></i></span><span data-alt="۳۰ روز">30 days</span></div>
+              <div class="locked"><span class="pebble"><i class="ph ph-users-three" aria-hidden="true"></i></span><span data-alt="تمرین با خانواده">Breathe together</span></div>
+              <div class="locked"><span class="pebble"><i class="ph ph-medal" aria-hidden="true"></i></span><span data-alt="۱۰۰ جلسه">100 sessions</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ settings -->
+      <section role="tabpanel" id="p-settings" aria-labelledby="t-settings" hidden>
+        <form class="split" data-validate data-keep data-success="Settings saved" data-success-alt="تنظیمات ذخیره شد">
+          <div class="tile">
+            <div class="tile-head"><h2 class="h2" data-alt="یادآوری‌ها">Reminders</h2></div>
+            <div>
+              <div class="set-row"><span id="l-am"><span data-alt="یادآوری صبح">Morning reminder</span><small data-alt="یک جلسهٔ کوتاه انرژی">A short energy session</small></span><div class="row"><input class="input" type="time" name="am" value="07:30" aria-labelledby="l-am" style="inline-size: 130px"><button class="switch" type="button" role="switch" aria-checked="false" aria-labelledby="l-am"></button></div></div>
+              <div class="set-row"><span id="l-pm"><span data-alt="یادآوری شب">Evening reminder</span><small data-alt="پیش از خواب">Before bed</small></span><div class="row"><input class="input" type="time" name="pm" value="21:30" aria-labelledby="l-pm" style="inline-size: 130px"><button class="switch" type="button" role="switch" aria-checked="true" aria-labelledby="l-pm"></button></div></div>
+            </div>
+            <div class="field"><span class="label" data-alt="روزها">Days</span>
+              <div class="chips" data-group data-multi role="group" aria-label="Days" data-alt-aria-label="روزها">
+                <button type="button" aria-pressed="true" data-alt="ش">Sa</button><button type="button" aria-pressed="true" data-alt="ی">Su</button><button type="button" aria-pressed="true" data-alt="د">Mo</button><button type="button" aria-pressed="true" data-alt="س">Tu</button><button type="button" aria-pressed="true" data-alt="چ">We</button><button type="button" aria-pressed="false" data-alt="پ">Th</button><button type="button" aria-pressed="false" data-alt="ج">Fr</button>
+              </div></div>
+          </div>
+          <div class="tile">
+            <div class="tile-head"><h2 class="h2" data-alt="صدا">Sound</h2></div>
+            <fieldset style="border:0; margin:0; padding:0; display:grid; gap: 12px"><legend class="label" style="margin-block-end: 8px" data-alt="صدای راهنما">Guide voice</legend>
+              <div class="answers" style="display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+                <label class="choice" style="padding: 14px"><input type="radio" name="voice" value="soft" checked><b data-alt="نرم">Soft</b></label>
+                <label class="choice" style="padding: 14px"><input type="radio" name="voice" value="warm"><b data-alt="گرم">Warm</b></label>
+                <label class="choice" style="padding: 14px"><input type="radio" name="voice" value="none"><b data-alt="بی‌صدا">Silent</b></label>
+              </div></fieldset>
+            <div class="vol"><i class="ph ph-microphone" aria-hidden="true"></i><input class="range" type="range" min="0" max="100" value="70" name="voiceVol" aria-label="Voice volume" data-alt-aria-label="بلندی صدای راهنما" oninput="const o = this.nextElementSibling; o.dataset.num = this.value; o.textContent = tf.fmt(this.value)"><output data-num="70">70</output></div>
+            <div class="vol"><i class="ph ph-waves" aria-hidden="true"></i><input class="range" type="range" min="0" max="100" value="40" name="ambVol" aria-label="Ambience volume" data-alt-aria-label="بلندی صدای محیط" oninput="const o = this.nextElementSibling; o.dataset.num = this.value; o.textContent = tf.fmt(this.value)"><output data-num="40">40</output></div>
+            <div class="field"><label class="label" for="s-name" data-alt="نامی که صدایتان کنیم">Name we greet you with</label><input class="input" id="s-name" name="name" value="Leila" data-alt-value="لیلا" required></div>
+            <div class="row"><button class="btn btn-primary" type="submit" data-alt="ذخیره">Save</button><button class="btn btn-ghost" type="reset" data-alt="بازنشانی">Reset</button></div>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+</div>
+</body>
+</html>

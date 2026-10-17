@@ -50,6 +50,8 @@ try {
         if (document.documentElement.scrollWidth > W + 1) return [`document ${document.documentElement.scrollWidth}px > ${W}px`];
         return [...document.querySelectorAll('body *')].filter((e) => { const r = e.getBoundingClientRect(); return r.width && (r.right > W + 1 || r.left < -1) && getComputedStyle(e).position !== 'fixed'; })
           .filter((e) => !e.closest('[data-track], .table-wrap, .table-scroll, [role=tablist], .chip-group, .mono-feed, .scroll-x, .feature-tabs, .marquee, .aura, .cat-bar, .track, .catnav, .pills, .shots, .banners, .screens, .sections, .ticker-strip, .window-body, .log, .code, .install, .side:not([data-open]), .tape'))
+          // ignore anything clipped by an ancestor that hides or scrolls its overflow
+          .filter((e) => { for (let p = e.parentElement; p && p !== document.body; p = p.parentElement) { const o = getComputedStyle(p).overflowX; if (o !== 'visible') return false; } return true; })
           .slice(0, 5).map((e) => `${e.tagName.toLowerCase()}.${String(e.className).split(' ')[0]}`);
       }, VIEW[vp].viewport.width);
       if (overflow.length) notes.push(`${slug}/${demo} ${lang} ${vp}: overflow → ${overflow.join(', ')}`);

@@ -1,0 +1,167 @@
+/* Clay — design tokens (Tastefolio). Soft, tactile wellness: warm cream, pastel clay tiles, a terracotta brand,
+   puffy surfaces lit from above (inner highlight + soft cast shadow), pill controls pressed *into* the surface,
+   a soft-axis serif and slow, springy motion. */
+:root {
+  --canvas: #f6efe7;          /* warm cream */
+  --surface: #fdf9f4;
+  --surface-2: #f1e7dc;       /* pressed-in wells: inputs, tracks */
+  --surface-3: #e8dacb;
+  --surface-ink: #2d2433;
+  --overlay: rgba(45, 36, 51, .35);
+
+  --ink: #2d2433;             /* plum-brown, never pure black */
+  --ink-2: #5d5263;
+  --ink-3: #7f7385;
+  --ink-inverse: #fdf9f4;
+
+  --line: #eadfd2;
+  --line-2: #dccbb9;
+
+  --brand: #bf4f37;           /* terracotta — fired clay */
+  --brand-ink: #ffffff;
+  --brand-soft: color-mix(in oklab, var(--brand) 14%, #fdf9f4);
+  --brand-strong: color-mix(in oklab, var(--brand) 78%, #2d2433);
+  --focus: color-mix(in oklab, var(--brand) 55%, transparent);
+
+  /* pastel clay tiles — content color-coding (moods, categories, days) */
+  --peach: #ffd8c2;
+  --sage: #cfe2cc;
+  --lavender: #ddd3f4;
+  --butter: #f9e6a6;
+  --sky: #cde4f1;
+  --rose: #f7cfd6;
+
+  --success: #3e7d55;
+  --success-soft: #dcefe0;
+  --warning: #a8641a;
+  --warning-soft: #fbe8c8;
+  --danger: #b4322f;
+  --danger-soft: #f9dcd8;
+  --info: #3f6c9a;
+  --info-soft: #dbe8f5;
+
+  /* the clay look: top highlight + bottom shade inside, soft warm cast shadow outside */
+  --clay: inset 0 2px 1px rgba(255, 255, 255, .75), inset 0 -8px 16px rgba(120, 70, 40, .07), 0 16px 32px -14px rgba(120, 70, 40, .32), 0 2px 5px rgba(120, 70, 40, .07);
+  --clay-sm: inset 0 1px 1px rgba(255, 255, 255, .75), inset 0 -4px 8px rgba(120, 70, 40, .07), 0 8px 18px -10px rgba(120, 70, 40, .35), 0 1px 3px rgba(120, 70, 40, .08);
+  --press: inset 0 3px 7px rgba(120, 70, 40, .14), inset 0 -1px 1px rgba(255, 255, 255, .7);
+
+  --chart-1: var(--brand);
+  --chart-2: #7d6bd1;
+  --chart-3: #5f9a6b;
+  --chart-4: #e3a72f;
+  --chart-5: #5a96c2;
+  --chart-6: #d9788a;
+  --chart-grid: #ece2d6;
+  --chart-axis: var(--ink-3);
+  --chart-curve: smooth;
+  --chart-stroke: 3;
+  --chart-area: .22;
+  --chart-radius: 10;
+  --chart-bar-gap: .42;
+  --chart-donut: 18;
+  --chart-gap: 6;
+  --chart-dots: 0;
+
+  --font-sans: "Nunito Sans", "Readex Pro", system-ui, sans-serif;
+  --font-display: "Fraunces", "Lemonada", Georgia, serif;   /* Fraunces with SOFT=100 */
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --fs-xs: 12px;
+  --fs-sm: 14px;
+  --fs-md: 17px;
+  --fs-lg: 20px;
+  --fs-xl: 25px;
+  --fs-2xl: 32px;
+  --fs-3xl: 44px;
+  --fs-display: clamp(44px, 6.6vw, 92px);
+  --fw-regular: 400;
+  --fw-medium: 600;
+  --fw-bold: 800;
+  --fw-display: 600;
+  --lh-tight: 1.02;
+  --lh-snug: 1.25;
+  --lh-body: 1.6;
+  --tracking-display: -.025em;
+  --tracking-caps: .1em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 18px;
+  --space-5: 24px;
+  --space-6: 36px;
+  --space-7: 52px;
+  --space-8: 76px;
+  --space-9: 110px;
+  --space-10: 150px;
+  --radius-sm: 14px;
+  --radius-md: 22px;
+  --radius-lg: 34px;
+  --radius-pill: 999px;
+  --border-w: 0px;
+  --shadow-1: var(--clay-sm);
+  --shadow-2: var(--clay);
+  --shadow-3: 0 40px 80px -24px rgba(70, 40, 30, .45);
+
+  --container: 1180px;
+  --gutter: clamp(18px, 4vw, 40px);
+  --control-h: 46px;
+  --control-h-lg: 58px;
+
+  --ease: cubic-bezier(.34, 1.4, .64, 1);   /* a little spring */
+  --ease-soft: cubic-bezier(.45, 0, .2, 1);
+  --dur-1: 180ms;
+  --dur-2: 320ms;
+  --dur-3: 600ms;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  /* "evening": warm plum dusk, tiles keep their hue but dim */
+  --canvas: #221c27;
+  --surface: #2c2532;
+  --surface-2: #1c1720;
+  --surface-3: #3a3141;
+  --surface-ink: #f6efe7;
+  --overlay: rgba(10, 6, 14, .6);
+  --ink: #f6efe7;
+  --ink-2: #d2c5cd;
+  --ink-3: #a5979f;
+  --ink-inverse: #221c27;
+  --line: #3a3141;
+  --line-2: #4a3f52;
+  --brand: #ee8a6e;
+  --brand-ink: #2a1610;
+  --brand-soft: color-mix(in oklab, var(--brand) 18%, #2c2532);
+  --peach: #5a3d38;
+  --sage: #3a4a3c;
+  --lavender: #453e5c;
+  --butter: #55492c;
+  --sky: #34475a;
+  --rose: #553944;
+  --success: #8fd1a2;
+  --success-soft: rgba(143, 209, 162, .15);
+  --warning: #f0b860;
+  --warning-soft: rgba(240, 184, 96, .15);
+  --danger: #f08a83;
+  --danger-soft: rgba(240, 138, 131, .15);
+  --info: #9cc4ec;
+  --info-soft: rgba(156, 196, 236, .15);
+  --clay: inset 0 1px 1px rgba(255, 255, 255, .09), inset 0 -8px 16px rgba(0, 0, 0, .18), 0 18px 34px -14px rgba(0, 0, 0, .6);
+  --clay-sm: inset 0 1px 1px rgba(255, 255, 255, .08), inset 0 -4px 8px rgba(0, 0, 0, .18), 0 8px 18px -10px rgba(0, 0, 0, .55);
+  --press: inset 0 3px 8px rgba(0, 0, 0, .35), inset 0 -1px 1px rgba(255, 255, 255, .05);
+  --chart-grid: #3a3141;
+  color-scheme: dark;
+}
+
+:root:lang(fa) {
+  --font-sans: "Readex Pro", "Nunito Sans", Tahoma, sans-serif;
+  --font-display: "Lemonada", "Readex Pro", sans-serif;
+  --fs-md: 16px;
+  --fs-display: clamp(34px, 4.8vw, 66px);
+  --fw-display: 600;
+  --lh-tight: 1.5;
+  --lh-snug: 1.6;
+  --lh-body: 1.9;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+}

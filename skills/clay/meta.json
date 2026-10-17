@@ -1,0 +1,34 @@
+{
+  "name": "Clay",
+  "order": 16,
+  "category": "product",
+  "mode": "light",
+  "density": "airy",
+  "persianFirst": false,
+  "tags": ["claymorphism", "soft", "wellness", "pastel", "rounded", "calm"],
+  "tagline": {
+    "en": "Soft, tactile wellness — puffy clay surfaces, pastel tiles, controls pressed into the page",
+    "fa": "سلامت نرم و لمسی — سطح‌های پف‌دار گِلی، کاشی‌های پاستلی، کنترل‌هایی که در صفحه فرو رفته‌اند"
+  },
+  "summary": {
+    "en": "A gentle, physical language for wellness and personal products. Surfaces look like soft clay lit from above — an inner highlight, an inner shade and a warm cast shadow — on a cream ground with pastel tiles (peach, sage, lavender, butter, sky, rose) and one terracotta brand. Inputs, tracks and tab bars are wells pressed into the surface; the chosen option pops out of them. Pills, blobs and pebbles replace boxes; Fraunces with its soft axis gives a rounded serif voice (Lemonada for Persian). Motion is slow and springy, led by a breathing orb. The app side becomes a floating dock on phones.",
+    "fa": "زبانی آرام و ملموس برای محصولات سلامت و شخصی. سطح‌ها مثل گِل نرمی‌اند که از بالا نور خورده — برجستگی روشن درونی، سایهٔ درونی و سایهٔ گرم بیرونی — روی زمینهٔ کرم با کاشی‌های پاستلی (هلویی، مریمی، اسطوخودوسی، کره‌ای، آسمانی، گلبهی) و یک رنگ برند سفالی. فیلدها، شیارها و نوار تب‌ها گودی‌هایی‌اند که در سطح فرو رفته‌اند و گزینهٔ انتخاب‌شده از آن‌ها بیرون می‌زند. قرص، لکه و سنگ‌ریزه جای جعبه را گرفته‌اند؛ فرانسس با محور نرمش صدایی گرد و سریف می‌دهد (لمونادا برای فارسی). حرکت آهسته و فنری است و یک گوی تنفس آن را هدایت می‌کند. بخش اپ روی موبایل به یک داک شناور تبدیل می‌شود."
+  },
+  "bestFor": {
+    "en": ["Wellness, meditation, sleep and health apps", "Habit, journaling and personal-growth tools", "Kids, family and education products", "Friendly onboarding and multi-step sign-ups"],
+    "fa": ["اپ‌های سلامت، مدیتیشن، خواب و تندرستی", "ابزار عادت، یادداشت روزانه و رشد فردی", "محصولات کودک، خانواده و آموزش", "آشناسازی صمیمی و ثبت‌نام چندمرحله‌ای"]
+  },
+  "avoidFor": {
+    "en": ["Dense data tables and admin consoles", "Finance, legal and enterprise compliance", "Brands that need sharp, technical credibility"],
+    "fa": ["جدول‌های پرداده و کنسول‌های مدیریتی", "مالی، حقوقی و انطباق سازمانی", "برندهایی که اعتبار فنی و تیز لازم دارند"]
+  },
+  "signature": {
+    "en": ["Clay shadows: inner highlight + inner shade + warm cast shadow", "Wells pressed into the surface; the chosen tab or chip pops out", "Pastel tiles for moods and categories, one terracotta brand", "Pills, blobs and pebbles instead of boxes and borders", "Fraunces SOFT serif (Lemonada in Persian) with Nunito Sans / Readex Pro", "Breathing orb, choice-card wizard, floating dock on phones"],
+    "fa": ["سایهٔ گِلی: برجستگی روشن + سایهٔ درونی + سایهٔ گرم بیرونی", "گودی‌های فرورفته؛ تب یا تراشهٔ انتخاب‌شده بیرون می‌زند", "کاشی‌های پاستلی برای حال و دسته‌ها، یک رنگ برند سفالی", "قرص، لکه و سنگ‌ریزه به‌جای جعبه و خط دور", "سریف نرم فرانسس (لمونادا در فارسی) با نونیتو سنس / ریدکس پرو", "گوی تنفس، ویزارد با کارت‌های انتخاب، داک شناور در موبایل"]
+  },
+  "swatches": ["#f6efe7", "#ffd8c2", "#cfe2cc", "#ddd3f4", "#bf4f37"],
+  "fonts": { "latin": "Fraunces (SOFT) + Nunito Sans", "persian": "Lemonada + Readex Pro", "mono": "system mono" },
+  "icons": "Phosphor (regular)",
+  "brandTrials": ["7d6bd1", "3e7d55", "3f6c9a", "d9788a"],
+  "demos": { "site": { "host": "nafas.example" }, "dashboard": { "host": "my.nafas.example" } }
+}

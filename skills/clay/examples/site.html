@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-alt-lang="fa" data-demo="site">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="نَفَس — نفس بکش، بقیه‌اش صبر می‌کند">Nafas — breathe in, the rest can wait</title>
+<meta name="description" content="Nafas is a sample breathwork app: guided breathing sessions for sleep, focus and calm." data-alt-content="نَفَس یک اپ نمونهٔ تمرین تنفس است: جلسه‌های راهنما برای خواب، تمرکز و آرامش.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..700,100&family=Lemonada:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&family=Readex+Pro:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: var(--space-8); align-items: center; padding-block: var(--space-9) var(--space-8); }
+  @media (max-width: 920px) { .hero { grid-template-columns: minmax(0, 1fr); padding-block: var(--space-7); gap: var(--space-7); } }
+  .hero-copy { display: grid; gap: var(--space-5); justify-items: start; }
+  .breathe { display: grid; gap: var(--space-4); justify-items: center; }
+  .breathe .orb-wrap { inline-size: min(100%, 440px); }
+  .proof { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+  .proof .avs { display: flex; }
+  .proof .avs .avatar { inline-size: 38px; block-size: 38px; font-size: 13px; margin-inline-start: -10px; border: 3px solid var(--canvas); }
+  .proof .avs .avatar:first-child { margin-inline-start: 0; }
+  .filters { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); margin-block-end: var(--space-6); }
+  .sessions { --n: 4; }
+  @media (max-width: 1100px) { .sessions { --n: 3; } }
+  .session .art .pebble { position: relative; inline-size: 64px; block-size: 64px; }
+  .session .art .pebble i { font-size: 30px; }
+  .session .play { margin-inline-start: auto; }
+  .how .tile { text-align: center; justify-items: center; padding: var(--space-6); }
+  .plan { display: grid; gap: var(--space-4); align-content: start; padding: var(--space-6); }
+  .plan .price { font: 600 46px/1 var(--font-display); }
+  :lang(fa) .plan .price { font: 600 34px/1.4 var(--font-sans); }
+  .plan ul { display: grid; gap: 10px; }
+  .plan li { display: flex; gap: 10px; align-items: center; font-weight: 600; }
+  .plan li i { color: var(--brand); font-size: 20px; }
+  .wizard-card { max-inline-size: 760px; margin-inline: auto; padding: var(--space-7) var(--space-6); }
+  .answers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+  @media (max-width: 560px) { .answers { grid-template-columns: minmax(0, 1fr); } }
+  .wiz-foot { display: flex; justify-content: space-between; gap: var(--space-3); margin-block-start: var(--space-3); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="رفتن به محتوا">Skip to content</a>
+<header class="site-head">
+  <div class="container">
+    <div class="bar">
+      <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"></span><span data-alt="نَفَس">nafas</span></a>
+      <nav class="nav" id="nav" data-dismissable aria-label="Main" data-alt-aria-label="اصلی">
+        <a href="#top" aria-current="page" data-alt="تنفس">Breathe</a>
+        <a href="#sessions" data-alt="جلسه‌ها">Sessions</a>
+        <a href="#how" data-alt="روش کار">How it works</a>
+        <a href="#pricing" data-alt="اشتراک">Pricing</a>
+      </nav>
+      <div class="head-end">
+        <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="EN">فا</button>
+        <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="Toggle evening theme" data-alt-aria-label="تغییر پوستهٔ شب"><i class="ph ph-moon" aria-hidden="true"></i></button>
+        <a class="btn btn-primary btn-sm hide-sm" href="#start" data-alt="شروع کنید">Start breathing</a>
+        <button class="btn btn-icon btn-sm menu-btn" type="button" data-toggle="#nav" aria-controls="nav" aria-expanded="false" aria-label="Menu" data-alt-aria-label="منو"><i class="ph ph-list" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="container hero" id="top">
+    <div class="hero-copy">
+      <span class="eyebrow"><i class="ph ph-wind" aria-hidden="true"></i><span data-alt="تمرین تنفس، روزی ده دقیقه">Breathwork, ten minutes a day</span></span>
+      <h1 class="display" data-alt="نفس بکش. بقیه‌اش صبر می‌کند.">Breathe in. The rest can wait.</h1>
+      <p class="lead" data-alt="جلسه‌های کوتاه و راهنمادار تنفس برای خواب عمیق‌تر، ذهن آرام‌تر و تمرکز بیشتر. بدون عجله، بدون رتبه‌بندی.">Short, guided breathing sessions for deeper sleep, a quieter mind and a steadier focus. No streak pressure, no leaderboards.</p>
+      <div class="row">
+        <a class="btn btn-primary btn-lg" href="#start" data-alt="شروع رایگان">Start free</a>
+        <a class="btn btn-lg" href="#sessions"><i class="ph ph-play" aria-hidden="true"></i><span data-alt="یک جلسه را بشنوید">Hear a session</span></a>
+      </div>
+      <div class="proof">
+        <div class="avs" aria-hidden="true"><span class="avatar">SN</span><span class="avatar" style="background: var(--sage)">AM</span><span class="avatar" style="background: var(--peach)">RK</span></div>
+        <p class="small muted"><b><span data-num="1200000" data-fmt="compact">1.2M</span></b> <span data-alt="نفر این ماه با ما نفس کشیدند">people breathed with us this month</span></p>
+      </div>
+    </div>
+
+    <div class="breathe">
+      <div class="orb-wrap" id="orb" data-phase="in" aria-live="polite">
+        <div class="orb" style="--s:.9">
+          <div>
+            <p class="phase in" data-alt="دم">Breathe in</p>
+            <p class="phase hold" data-alt="نگه دار">Hold</p>
+            <p class="phase out" data-alt="بازدم">Breathe out</p>
+            <p class="count" data-count>4</p>
+          </div>
+        </div>
+      </div>
+      <div class="seg" data-group="pattern" role="group" aria-label="Breathing pattern" data-alt-aria-label="الگوی تنفس">
+        <button type="button" data-value="calm" aria-pressed="true" data-alt="آرام ۴-۴-۶">Calm 4·4·6</button>
+        <button type="button" data-value="box" aria-pressed="false" data-alt="مربعی ۴-۴-۴-۴">Box 4·4·4·4</button>
+        <button type="button" data-value="even" aria-pressed="false" data-alt="هم‌آهنگ ۵-۵">Even 5·5</button>
+      </div>
+      <button class="btn btn-sm" type="button" id="orb-toggle" aria-pressed="true"><i class="ph ph-pause" aria-hidden="true"></i><span data-alt="توقف">Pause</span></button>
+    </div>
+  </section>
+
+  <section class="section" id="sessions" data-filter-scope style="padding-block-start: var(--space-7)">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-alt="کتابخانه">Library</span>
+        <h2 class="h1" data-alt="یک جلسه برای هر حالِ امروز">A session for however today feels</h2>
+        <p data-alt="هر جلسه با صدای یک راهنمای واقعی ضبط شده و از سه دقیقه تا بیست دقیقه طول می‌کشد.">Every session is voiced by a real guide and runs from three to twenty minutes.</p>
+      </div>
+      <div class="filters">
+        <div class="chips" data-group role="group" aria-label="Mood" data-alt-aria-label="حال">
+          <button type="button" data-filter="mood" data-value="all" aria-pressed="true" data-alt="همه">All</button>
+          <button type="button" data-filter="mood" data-value="sleep" aria-pressed="false"><i class="ph ph-moon-stars" aria-hidden="true"></i><span data-alt="خواب">Sleep</span></button>
+          <button type="button" data-filter="mood" data-value="focus" aria-pressed="false"><i class="ph ph-target" aria-hidden="true"></i><span data-alt="تمرکز">Focus</span></button>
+          <button type="button" data-filter="mood" data-value="calm" aria-pressed="false"><i class="ph ph-leaf" aria-hidden="true"></i><span data-alt="آرامش">Calm</span></button>
+          <button type="button" data-filter="mood" data-value="energy" aria-pressed="false"><i class="ph ph-sun" aria-hidden="true"></i><span data-alt="انرژی">Energy</span></button>
+        </div>
+        <div class="seg sm" data-group role="group" aria-label="Length" data-alt-aria-label="مدت">
+          <button type="button" data-filter="len" data-value="all" aria-pressed="true" data-alt="هر مدت">Any length</button>
+          <button type="button" data-filter="len" data-value="short" aria-pressed="false" data-alt="تا ۵ دقیقه">≤ 5 min</button>
+          <button type="button" data-filter="len" data-value="mid" aria-pressed="false" data-alt="۱۰ دقیقه">10 min</button>
+          <button type="button" data-filter="len" data-value="long" aria-pressed="false" data-alt="۲۰ دقیقه">20 min</button>
+        </div>
+      </div>
+      <div class="cols sessions">
+        <article class="session" data-filter-item data-mood="sleep" data-len="mid">
+          <div class="art lavender" aria-hidden="true"><span class="blob peach" style="inline-size:46%; aspect-ratio:1; inset-inline-start:-8%; inset-block-end:-14%"></span><span class="pebble"><i class="ph ph-moon-stars"></i></span></div>
+          <h3 class="h3" data-alt="بازدم آرام برای خواب">Slow exhale for sleep</h3>
+          <div class="meta"><span class="badge lavender" data-alt="خواب">Sleep</span><span class="badge"><span data-num="10">10</span>&nbsp;<span data-alt="دقیقه">min</span></span><button class="btn btn-icon btn-sm play" type="button" aria-label="Play: Slow exhale for sleep" data-alt-aria-label="پخش: بازدم آرام برای خواب" data-toast="Playing “Slow exhale for sleep”" data-toast-alt="در حال پخش «بازدم آرام برای خواب»"><i class="ph ph-play" aria-hidden="true"></i></button></div>
+        </article>
+        <article class="session" data-filter-item data-mood="focus" data-len="short">
+          <div class="art sky" aria-hidden="true"><span class="blob butter" style="inline-size:40%; aspect-ratio:1; inset-inline-end:-6%; inset-block-start:-12%"></span><span class="pebble"><i class="ph ph-target"></i></span></div>
+          <h3 class="h3" data-alt="تنفس مربعی">Box breathing</h3>
+          <div class="meta"><span class="badge sky" data-alt="تمرکز">Focus</span><span class="badge"><span data-num="5">5</span>&nbsp;<span data-alt="دقیقه">min</span></span><button class="btn btn-icon btn-sm play" type="button" aria-label="Play: Box breathing" data-alt-aria-label="پخش: تنفس مربعی" data-toast="Playing “Box breathing”" data-toast-alt="در حال پخش «تنفس مربعی»"><i class="ph ph-play" aria-hidden="true"></i></button></div>
+        </article>
+        <article class="session" data-filter-item data-mood="energy" data-len="short">
+          <div class="art butter" aria-hidden="true"><span class="blob peach" style="inline-size:52%; aspect-ratio:1; inset-inline-start:-14%; inset-block-start:-20%"></span><span class="pebble"><i class="ph ph-sun"></i></span></div>
+          <h3 class="h3" data-alt="جرقهٔ صبح">Morning spark</h3>
+          <div class="meta"><span class="badge butter" data-alt="انرژی">Energy</span><span class="badge"><span data-num="5">5</span>&nbsp;<span data-alt="دقیقه">min</span></span><button class="btn btn-icon btn-sm play" type="button" aria-label="Play: Morning spark" data-alt-aria-label="پخش: جرقهٔ صبح" data-toast="Playing “Morning spark”" data-toast-alt="در حال پخش «جرقهٔ صبح»"><i class="ph ph-play" aria-hidden="true"></i></button></div>
+        </article>
+        <article class="session" data-filter-item data-mood="calm" data-len="mid">
+          <div class="art sage" aria-hidden="true"><span class="blob sky" style="inline-size:44%; aspect-ratio:1; inset-inline-end:-10%; inset-block-end:-16%"></span><span class="pebble"><i class="ph ph-leaf"></i></span></div>
+          <h3 class="h3" data-alt="شکم نرم">Soft belly</h3>
+          <div class="meta"><span class="badge sage" data-alt="آرامش">Calm</span><span class="badge"><span data-num="10">10</span>&nbsp;<span data-alt="دقیقه">min</span></span><button class="btn btn-icon btn-sm play" type="button" aria-label="Play: Soft belly" data-alt-aria-label="پخش: شکم نرم" data-toast="Playing “Soft belly”" data-toast-alt="در حال پخش «شکم نرم»"><i class="ph ph-play" aria-hidden="true"></i></button></div>
+        </article>
+        <article class="session" data-filter-item data-mood="sleep" data-len="long">
+          <div class="art lavender" aria-hidden="true"><span class="blob sky" style="inline-size:50%; aspect-ratio:1; inset-inline-end:-12%; inset-block-start:-18%"></span><span class="pebble"><i class="ph ph-cloud-moon"></i></span></div>
+          <h3 class="h3" data-alt="آرام‌شدن ۴-۷-۸">4·7·8 wind-down</h3>
+          <div class="meta"><span class="badge lavender" data-alt="خواب">Sleep</span><span class="badge"><span data-num="20">20</span>&nbsp;<span data-alt="دقیقه">min</span></span><button class="btn btn-icon btn-sm play" type="button" aria-label="Play: 4·7·8 wind-down" data-alt-aria-label="پخش: آرام‌شدن ۴-۷-۸" data-toast="Playing “4·7·8 wind-down”" data-toast-alt="در حال پخش «آرام‌شدن ۴-۷-۸»"><i class="ph ph-play" aria-hidden="true"></i></button></div>
+        </article>
+        <article class="session" data-filter-item data-mood="focus" data-len="short">
+          <div class="art peach" aria-hidden="true"><span class="blob rose" style="inline-size:42%; aspect-ratio:1; inset-inline-start:-10%; inset-block-end:-12%"></span><span class="pebble"><i class="ph ph-desktop"></i></span></div>
+          <h3 class="h3" data-alt="ریست پشت میز">Desk reset</h3>
+          <div class="meta"><span class="badge peach" data-alt="تمرکز">Focus</span><span class="badge"><span data-num="3">3</span>&nbsp;<span data-alt="دقیقه">min</span></span><button class="btn btn-icon btn-sm play" type="button" aria-label="Play: Desk reset" data-alt-aria-label="پخش: ریست پشت میز" data-toast="Playing “Desk reset”" data-toast-alt="در حال پخش «ریست پشت میز»"><i class="ph ph-play" aria-hidden="true"></i></button></div>
+        </article>
+        <article class="session" data-filter-item data-mood="calm" data-len="long">
+          <div class="art sky" aria-hidden="true"><span class="blob sage" style="inline-size:48%; aspect-ratio:1; inset-inline-start:-12%; inset-block-start:-16%"></span><span class="pebble"><i class="ph ph-waves"></i></span></div>
+          <h3 class="h3" data-alt="شمارش موج">Ocean count</h3>
+          <div class="meta"><span class="badge sky" data-alt="آرامش">Calm</span><span class="badge"><span data-num="20">20</span>&nbsp;<span data-alt="دقیقه">min</span></span><button class="btn btn-icon btn-sm play" type="button" aria-label="Play: Ocean count" data-alt-aria-label="پخش: شمارش موج" data-toast="Playing “Ocean count”" data-toast-alt="در حال پخش «شمارش موج»"><i class="ph ph-play" aria-hidden="true"></i></button></div>
+        </article>
+        <article class="session" data-filter-item data-mood="energy" data-len="mid">
+          <div class="art rose" aria-hidden="true"><span class="blob butter" style="inline-size:44%; aspect-ratio:1; inset-inline-end:-10%; inset-block-end:-14%"></span><span class="pebble"><i class="ph ph-heart"></i></span></div>
+          <h3 class="h3" data-alt="نفسِ شجاعت">Courage breath</h3>
+          <div class="meta"><span class="badge rose" data-alt="انرژی">Energy</span><span class="badge"><span data-num="10">10</span>&nbsp;<span data-alt="دقیقه">min</span></span><button class="btn btn-icon btn-sm play" type="button" aria-label="Play: Courage breath" data-alt-aria-label="پخش: نفسِ شجاعت" data-toast="Playing “Courage breath”" data-toast-alt="در حال پخش «نفسِ شجاعت»"><i class="ph ph-play" aria-hidden="true"></i></button></div>
+        </article>
+      </div>
+      <p class="empty" data-filter-empty hidden data-alt="جلسه‌ای با این ترکیب نیست — یک فیلتر را بردارید.">No session matches that mix — try removing a filter.</p>
+    </div>
+  </section>
+
+  <section class="section how" id="how" style="padding-block-start: 0">
+    <div class="container">
+      <div class="section-head"><span class="eyebrow" data-alt="روش کار">How it works</span><h2 class="h1" data-alt="سه قدم کوچک، هر روز">Three small steps, every day</h2></div>
+      <div class="cols" style="--n:3">
+        <div class="tile peach"><span class="pebble" data-num="1">1</span><h3 class="h2" data-alt="حالت را بگو">Tell us how you feel</h3><p class="muted" data-alt="با یک لمس؛ نفس پیشنهاد امروز را بر اساس آن می‌چیند.">One tap. Nafas shapes today’s suggestion around it.</p></div>
+        <div class="tile sage"><span class="pebble" data-num="2">2</span><h3 class="h2" data-alt="با گوی نفس بکش">Breathe with the orb</h3><p class="muted" data-alt="گوی بزرگ و کوچک می‌شود؛ فقط همراهش شوید. صدای راهنما اختیاری است.">It grows and shrinks; you simply follow. The voice is optional.</p></div>
+        <div class="tile lavender"><span class="pebble" data-num="3">3</span><h3 class="h2" data-alt="تفاوت را ببین">Notice the difference</h3><p class="muted" data-alt="یادداشت کوتاه بعد از هر جلسه، الگوی خواب و آرامش‌تان را نشان می‌دهد.">A two-line note after each session reveals your sleep and calm patterns.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-block-start: 0">
+    <div class="container">
+      <div class="section-head"><span class="eyebrow" data-alt="تجربه‌ها">Stories</span><h2 class="h1" data-alt="آن‌چه دیگران حس کردند">What people noticed</h2></div>
+      <div class="carousel" data-carousel>
+        <div data-track>
+          <figure class="quote butter"><blockquote data-alt="«اولین بار در این سال‌ها بدون موبایل خوابم برد. فقط ده دقیقه با گوی.»">“For the first time in years I fell asleep without my phone. Ten minutes with the orb.”</blockquote><figcaption class="row"><span class="avatar" aria-hidden="true">SN</span><span><b data-alt="سارا ن.">Sara N.</b><br><span class="small muted" data-alt="پرستار، شیفت شب">Night-shift nurse</span></span></figcaption></figure>
+          <figure class="quote sage"><blockquote data-alt="«قبل از هر جلسهٔ سخت، تنفس مربعی. سه دقیقه و صدایم دیگر نمی‌لرزد.»">“Box breathing before every hard meeting. Three minutes and my voice stops shaking.”</blockquote><figcaption class="row"><span class="avatar" style="background: var(--sky)" aria-hidden="true">AM</span><span><b data-alt="آرش م.">Arash M.</b><br><span class="small muted" data-alt="مدیر محصول">Product lead</span></span></figcaption></figure>
+          <figure class="quote lavender"><blockquote data-alt="«دخترم حالا خودش می‌گوید مامان، وقت گوی است.»">“My daughter now reminds me herself: Mum, it’s orb time.”</blockquote><figcaption class="row"><span class="avatar" style="background: var(--peach)" aria-hidden="true">RK</span><span><b data-alt="رها ک.">Raha K.</b><br><span class="small muted" data-alt="اشتراک خانوادگی">Family plan</span></span></figcaption></figure>
+          <figure class="quote peach"><blockquote data-alt="«هیچ رتبه‌ای، هیچ رقابتی. فقط یک جای آرام در روزم.»">“No ranks, no streak guilt. Just a quiet corner of my day.”</blockquote><figcaption class="row"><span class="avatar" style="background: var(--rose)" aria-hidden="true">JL</span><span><b data-alt="جان ل.">Jon L.</b><br><span class="small muted" data-alt="معلم">Teacher</span></span></figcaption></figure>
+        </div>
+        <div class="row" style="justify-content: center">
+          <button class="btn btn-icon" type="button" data-prev-slide aria-label="Previous story" data-alt-aria-label="تجربهٔ قبلی"><i class="ph ph-arrow-left flip-rtl" aria-hidden="true"></i></button>
+          <button class="btn btn-icon" type="button" data-next-slide aria-label="Next story" data-alt-aria-label="تجربهٔ بعدی"><i class="ph ph-arrow-right flip-rtl" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing" style="padding-block-start: 0">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" data-alt="اشتراک">Pricing</span><h2 class="h1" data-alt="رایگان شروع کنید، هر وقت خواستید بمانید">Start free, stay if it helps</h2>
+        <div class="seg" data-group="bill" role="group" aria-label="Billing" data-alt-aria-label="پرداخت"><button type="button" data-value="m" aria-pressed="false" data-alt="ماهانه">Monthly</button><button type="button" data-value="y" aria-pressed="true"><span data-alt="سالانه">Yearly</span> <span class="badge sage" data-alt="۳۷٪ کمتر">−37%</span></button></div>
+      </div>
+      <div class="cols" style="--n:3; align-items: start">
+        <div class="clay plan"><h3 class="h2" data-alt="رایگان">Free</h3><p><span class="price" data-num="0" data-fmt="usd">$0</span></p><ul><li><i class="ph ph-check-circle" aria-hidden="true"></i><span data-alt="۱۲ جلسهٔ پایه">12 core sessions</span></li><li><i class="ph ph-check-circle" aria-hidden="true"></i><span data-alt="گوی تنفس بی‌صدا">Silent breathing orb</span></li><li><i class="ph ph-check-circle" aria-hidden="true"></i><span data-alt="یادآوری روزانه">Daily reminder</span></li></ul><a class="btn" href="#start" data-alt="شروع">Start</a></div>
+        <div class="clay plan peach" style="transform: translateY(-12px)"><div class="row"><h3 class="h2" data-alt="پلاس">Plus</h3><span class="badge" style="background: var(--surface)" data-alt="محبوب‌ترین">Most loved</span></div>
+          <p><span class="price" data-when="bill:m" hidden data-num="8" data-fmt="usd">$8</span><span class="price" data-when="bill:y" data-num="5" data-fmt="usd">$5</span> <span class="muted small" data-alt="در ماه">/ month</span></p>
+          <ul><li><i class="ph ph-check-circle" aria-hidden="true"></i><span data-alt="همهٔ ۲۰۰+ جلسه">All 200+ sessions</span></li><li><i class="ph ph-check-circle" aria-hidden="true"></i><span data-alt="داستان‌های خواب و صدای طبیعت">Sleep stories &amp; soundscapes</span></li><li><i class="ph ph-check-circle" aria-hidden="true"></i><span data-alt="یادداشت و نمودار آرامش">Journal &amp; calm insights</span></li><li><i class="ph ph-check-circle" aria-hidden="true"></i><span data-alt="بارگیری برای حالت آفلاین">Offline downloads</span></li></ul>
+          <a class="btn btn-primary" href="#start" data-alt="۱۴ روز رایگان">Try 14 days free</a></div>
+        <div class="clay plan"><h3 class="h2" data-alt="خانواده">Family</h3>
+          <p><span class="price" data-when="bill:m" hidden data-num="14" data-fmt="usd">$14</span><span class="price" data-when="bill:y" data-num="9" data-fmt="usd">$9</span> <span class="muted small" data-alt="در ماه، تا ۵ نفر">/ month, up to 5</span></p>
+          <ul><li><i class="ph ph-check-circle" aria-hidden="true"></i><span data-alt="همهٔ امکانات پلاس">Everything in Plus</span></li><li><i class="ph ph-check-circle" aria-hidden="true"></i><span data-alt="جلسه‌های ویژهٔ کودکان">Sessions for kids</span></li><li><i class="ph ph-check-circle" aria-hidden="true"></i><span data-alt="تمرین مشترک خانواده">Shared family practice</span></li></ul>
+          <a class="btn" href="#start" data-alt="انتخاب خانواده">Choose family</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="start" style="padding-block-start: 0">
+    <div class="container">
+      <div class="clay wizard-card">
+        <form class="wizard" data-validate data-steps id="wiz">
+          <div class="section-head" style="margin-block-end: 0"><span class="eyebrow"><span data-alt="قدم">Step</span> <span data-step-count>1</span> / <span data-num="3">3</span></span><h2 class="h1" data-alt="بیایید جلسهٔ اول‌تان را بچینیم">Let’s set up your first session</h2></div>
+          <div class="step-dots" data-step-indicator aria-hidden="true"><span></span><span></span><span></span></div>
+          <fieldset data-step style="border:0; margin:0; padding:0; display:grid; gap: var(--space-4)">
+            <legend class="h2" style="margin-block-end: var(--space-4)" data-alt="چه چیزی شما را این‌جا آورده؟">What brings you here?</legend>
+            <div class="answers">
+              <label class="choice"><input type="radio" name="goal" value="sleep" required><span class="pebble lavender"><i class="ph ph-moon-stars" aria-hidden="true"></i></span><b data-alt="خواب بهتر">Better sleep</b><small data-alt="زودتر خوابیدن، کمتر بیدار شدن">Fall asleep sooner, wake less</small></label>
+              <label class="choice"><input type="radio" name="goal" value="stress"><span class="pebble sage"><i class="ph ph-leaf" aria-hidden="true"></i></span><b data-alt="استرس کمتر">Less stress</b><small data-alt="آرام کردن روزهای شلوغ">Settle the busy days</small></label>
+              <label class="choice"><input type="radio" name="goal" value="focus"><span class="pebble sky"><i class="ph ph-target" aria-hidden="true"></i></span><b data-alt="تمرکز">Focus</b><small data-alt="کار عمیق بدون پرش ذهن">Deep work without drifting</small></label>
+              <label class="choice"><input type="radio" name="goal" value="energy"><span class="pebble butter"><i class="ph ph-sun" aria-hidden="true"></i></span><b data-alt="انرژی">Energy</b><small data-alt="شروع روشن صبح">A brighter start to mornings</small></label>
+            </div>
+          </fieldset>
+          <fieldset data-step hidden style="border:0; margin:0; padding:0; display:grid; gap: var(--space-5)">
+            <legend class="h2" style="margin-block-end: var(--space-4)" data-alt="کی تمرین را دوست دارید؟">When do you like to practise?</legend>
+            <div class="answers" style="grid-template-columns: repeat(3, minmax(0, 1fr))">
+              <label class="choice"><input type="radio" name="when" value="am" required><b data-alt="صبح">Morning</b><small data-alt="با چای اول">With the first tea</small></label>
+              <label class="choice"><input type="radio" name="when" value="noon"><b data-alt="ظهر">Midday</b><small data-alt="یک وقفهٔ کوتاه">A short pause</small></label>
+              <label class="choice"><input type="radio" name="when" value="pm"><b data-alt="شب">Evening</b><small data-alt="پیش از خواب">Before bed</small></label>
+            </div>
+            <div class="field"><label class="label" for="w-exp" data-alt="تجربهٔ قبلی">Experience</label><select class="select" id="w-exp" name="exp"><option data-alt="تازه شروع می‌کنم">I’m brand new</option><option data-alt="گاهی مدیتیشن می‌کنم">I meditate sometimes</option><option data-alt="تمرین منظم دارم">I practise regularly</option></select></div>
+          </fieldset>
+          <fieldset data-step hidden style="border:0; margin:0; padding:0; display:grid; gap: var(--space-5)">
+            <legend class="h2" style="margin-block-end: var(--space-4)" data-alt="یادآوری آرام">Gentle reminders</legend>
+            <div class="answers">
+              <div class="field"><label class="label" for="w-time" data-alt="ساعت یادآوری">Reminder time</label><input class="input" id="w-time" name="time" type="time" value="21:30" required></div>
+              <div class="field"><label class="label" for="w-mail" data-alt="ایمیل">Email</label><input class="input" id="w-mail" name="email" type="email" required autocomplete="email" placeholder="you@example.com" dir="ltr"></div>
+            </div>
+            <label class="check"><input type="checkbox" name="tips" checked><span data-alt="هفته‌ای یک نکتهٔ کوتاه تنفس بفرستید">Send me one short breathing tip a week</span></label>
+          </fieldset>
+          <div class="clay sm sage" data-success-panel hidden style="padding: var(--space-5); text-align: center"><b data-alt="آماده‌اید. اولین جلسه در صندوق ایمیل‌تان است.">You’re set. Your first session is waiting in your inbox.</b></div>
+          <div class="wiz-foot" data-wiz-nav>
+            <button class="btn" type="button" data-prev><i class="ph ph-arrow-left flip-rtl" aria-hidden="true"></i><span data-alt="قبلی">Back</span></button>
+            <button class="btn btn-primary" type="button" data-next data-when-step="0,1"><span data-alt="بعدی">Next</span><i class="ph ph-arrow-right flip-rtl" aria-hidden="true"></i></button>
+            <button class="btn btn-primary" type="submit" data-when-step="2" hidden data-alt="ساخت برنامهٔ من">Create my plan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="container">
+    <div class="clay">
+      <div class="cols" style="--n:4">
+        <div class="stack"><a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"></span><span data-alt="نَفَس">nafas</span></a><p class="small muted" data-alt="یک اپ نمونه برای گالری تیست‌فولیو. توصیهٔ پزشکی نیست.">A sample app for the Tastefolio gallery. Not medical advice.</p></div>
+        <div><h3 data-alt="تمرین">Practice</h3><ul><li><a href="#sessions" data-alt="جلسه‌ها">Sessions</a></li><li><a href="#top" data-alt="گوی تنفس">Breathing orb</a></li><li><a href="dashboard.html" data-alt="پنل من">My space</a></li></ul></div>
+        <div><h3 data-alt="نفس">Nafas</h3><ul><li><a href="#how" data-alt="روش کار">How it works</a></li><li><a href="#pricing" data-alt="اشتراک">Pricing</a></li><li><a href="#start" data-alt="شروع">Get started</a></li></ul></div>
+        <div><h3 data-alt="کمک">Help</h3><ul><li><a href="#top" data-alt="پرسش‌ها">FAQ</a></li><li><a href="#top" data-alt="حریم خصوصی">Privacy</a></li><li><a href="#top" data-alt="تماس">Contact</a></li></ul></div>
+      </div>
+      <div class="foot-base"><span data-alt="© ۲۰۲۶ نَفَس">© 2026 nafas</span><span data-alt="آرام نفس بکشید.">Breathe gently.</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (() => {
+    // breathing orb: phases in → hold → out (→ hold), scale and countdown follow the chosen pattern
+    const PATTERNS = { calm: [4, 4, 6, 0], box: [4, 4, 4, 4], even: [5, 0, 5, 0] };
+    const wrap = document.getElementById('orb'), orb = wrap.querySelector('.orb'), count = wrap.querySelector('[data-count]');
+    const toggle = document.getElementById('orb-toggle');
+    let timer, tick, running = true, pattern = 'calm';
+    const show = (n) => { count.dataset.n = n; count.textContent = window.tf ? tf.fmt(n) : n; };
+    function run() {
+      clearTimeout(timer); clearInterval(tick);
+      const [a, b, c, d] = PATTERNS[pattern];
+      const seq = [['in', a, 1], b && ['hold', b, 1], ['out', c, .64], d && ['hold', d, .64]].filter(Boolean);
+      if (tf.reduceMotion || !running) { wrap.dataset.phase = 'in'; orb.style.setProperty('--t', '0s'); orb.style.setProperty('--s', '.9'); show(a); return; }
+      let k = 0;
+      const step = () => {
+        const [ph, sec, scale] = seq[k++ % seq.length];
+        wrap.dataset.phase = ph; orb.style.setProperty('--t', sec + 's'); orb.style.setProperty('--s', scale);
+        let left = sec; show(left);
+        clearInterval(tick); tick = setInterval(() => { if (--left > 0) show(left); }, 1000);
+        timer = setTimeout(step, sec * 1000);
+      };
+      step();
+    }
+    document.addEventListener('tf:change', (e) => {
+      const g = e.target.closest?.('[data-group="pattern"]');
+      if (g) { pattern = g.querySelector('[aria-pressed="true"]').dataset.value; run(); }
+    });
+    toggle.addEventListener('click', () => {
+      running = !running;
+      toggle.setAttribute('aria-pressed', String(running));
+      toggle.querySelector('i').className = 'ph ' + (running ? 'ph-pause' : 'ph-play');
+      run();
+    });
+    document.addEventListener('tf:lang', () => show(Number(count.dataset.n || PATTERNS[pattern][0])));
+    document.addEventListener('tf:ready', run);
+    // wizard: swap Next for Submit on the last step; hide steps once done
+    const wiz = document.getElementById('wiz');
+    const syncNav = () => {
+      const i = String(wiz.dataset.current || 0);
+      wiz.querySelectorAll('[data-when-step]').forEach((b) => { b.hidden = !b.dataset.whenStep.split(',').includes(i); });
+    };
+    wiz.addEventListener('tf:step', syncNav);
+    wiz.addEventListener('tf:submit', () => { wiz.querySelectorAll('[data-step], [data-wiz-nav], [data-step-indicator]').forEach((el) => { el.hidden = true; }); });
+    document.addEventListener('tf:ready', () => tf.showStep(wiz, 0));
+  })();
+</script>
+</body>
+</html>
