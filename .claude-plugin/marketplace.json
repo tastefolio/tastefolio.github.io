@@ -243,6 +243,15 @@
       ]
     },
     {
+      "name": "dot",
+      "description": "Tastefolio design language — Dot-matrix hardware — paper or black, one LED red, display type made of dots, a drawn device with a live 15×15 face and a device app with a glyph composer",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/dot"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -273,7 +282,8 @@
         "./skills/clinic",
         "./skills/linework",
         "./skills/estate",
-        "./skills/margin"
+        "./skills/margin",
+        "./skills/dot"
       ]
     }
   ]

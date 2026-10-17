@@ -1,0 +1,34 @@
+{
+  "name": "Dot",
+  "order": 27,
+  "category": "brand",
+  "mode": "light",
+  "density": "balanced",
+  "persianFirst": true,
+  "tags": ["hardware", "dot-matrix", "led", "device", "iot", "minimal", "persian"],
+  "tagline": {
+    "en": "Dot-matrix hardware — paper or black, one LED red, display type made of dots, a drawn device with a live 15×15 face and a device app with a glyph composer",
+    "fa": "سخت‌افزار نقطه‌ای — کاغذی یا سیاه، یک قرمز LED، حروف نمایشی از نقطه، دستگاه طراحی‌شده با صفحهٔ زندهٔ ۱۵×۱۵ و اپ دستگاه با سازندهٔ نشانه"
+  },
+  "summary": {
+    "en": "A minimal industrial language for hardware brands, smart devices and their companion apps, Persian-first. Off-white paper (or pure black) with a dot grid, ink capsule controls, dotted rules, mono micro-labels and a single LED red that means light, live and the one action. Display type is made of dots: Doto in Latin, Vazirmatn Black behind a dot mask in Persian. The signature is a drawn device whose 15×15 LED face is real (assets/matrix.js): clock, timer, music, weather, notifications, battery and your own glyphs, animated only while visible and still under reduced motion. Sites get a launch hero with callouts, a vertical face switcher, feature tiles, a dotted spec sheet, a store configurator (model, finish, quantity, Toman or dollars) and a black-glass sign-up band. The app has a device sidebar, live preview with brightness and night mode, dot meters and dot bar charts, a keyboard-friendly glyph composer, routines and a firmware update flow.",
+    "fa": "زبانی صنعتی و مینیمال برای برندهای سخت‌افزار، دستگاه‌های هوشمند و اپ همراهشان، فارسی‌محور. کاغذ روشن (یا سیاه مطلق) با شبکهٔ نقطه، کنترل‌های کپسولی جوهری، خط‌های نقطه‌چین، برچسب‌های ریز تک‌فاصله و یک قرمز LED که یعنی نور، زنده و تنها اقدام صفحه. حروف نمایشی از نقطه ساخته شده‌اند: Doto برای لاتین و وزیرمتن سیاه پشت ماسک نقطه‌ای برای فارسی. امضای این سبک دستگاهی طراحی‌شده است که صفحهٔ ۱۵×۱۵ آن واقعاً کار می‌کند (assets/matrix.js): ساعت، تایمر، موسیقی، آب‌وهوا، اعلان، باتری و نشانه‌های شخصی، که فقط وقتی دیده می‌شوند حرکت می‌کنند و با کاهش حرکت ثابت می‌مانند. سایت‌ها هیرو معرفی با برچسب‌های اشاره‌گر، انتخابگر عمودی چهره‌ها، کاشی ویژگی‌ها، جدول مشخصات نقطه‌چین، پیکربند فروشگاه (مدل، رنگ، تعداد، تومان یا دلار) و نوار ثبت‌نام شیشهٔ سیاه دارند. اپ، فهرست دستگاه‌ها، پیش‌نمایش زنده با روشنایی و حالت شب، نشانگرهای نقطه‌ای و نمودار میله‌ای نقطه‌ای، سازندهٔ نشانه با پشتیبانی صفحه‌کلید، روال‌ها و فرایند به‌روزرسانی را دارد."
+  },
+  "bestFor": {
+    "en": ["Hardware launches and device stores", "Smart-home, wearable and IoT companion apps", "Audio, clocks and desk gadgets", "Developer-friendly product brands that want warmth"],
+    "fa": ["معرفی و فروش سخت‌افزار", "اپ همراه خانهٔ هوشمند، پوشیدنی و اینترنت اشیا", "صوتی، ساعت و ابزار رومیزی", "برندهای محصول که گرما می‌خواهند"]
+  },
+  "avoidFor": {
+    "en": ["Long-form reading and editorial", "Healthcare, finance and legal trust surfaces", "Dense data tables as the main job"],
+    "fa": ["خواندن طولانی و محتوای سردبیری", "سلامت، مالی و حقوقی که اعتماد رسمی می‌خواهند", "محصولاتی که کار اصلی‌شان جدول پرتراکم است"]
+  },
+  "signature": {
+    "en": ["Display type made of dots (Doto; Vazirmatn Black behind a dot mask)", "One LED red: light, live state, the one action", "A drawn device with a working 15×15 LED face", "Dot grid paper, dotted rules, mono micro-labels", "LED switches, dot meters and dot bar charts", "Glyph composer: draw dot by dot with mouse, touch or keys"],
+    "fa": ["حروف نمایشی از نقطه (Doto؛ وزیرمتن سیاه پشت ماسک نقطه‌ای)", "یک قرمز LED: نور، وضعیت زنده، تنها اقدام", "دستگاه طراحی‌شده با صفحهٔ ۱۵×۱۵ که کار می‌کند", "کاغذ شبکه‌نقطه، خط نقطه‌چین، برچسب ریز تک‌فاصله", "کلید LED، نشانگر نقطه‌ای و نمودار میله‌ای نقطه‌ای", "سازندهٔ نشانه: نقطه‌به‌نقطه با موس، لمس یا صفحه‌کلید"]
+  },
+  "swatches": ["#f2f2f0", "#ffffff", "#cf2f17", "#0b0b0b", "#0d0d0d"],
+  "fonts": { "latin": "Doto + Host Grotesk + Geist Mono", "persian": "Vazirmatn", "mono": "Geist Mono" },
+  "icons": "Pixelarticons (inline SVG sprite, MIT)",
+  "brandTrials": ["1f6f8b", "2f5d46", "5b4a8a", "b0461a"],
+  "demos": { "site": { "host": "cheshmak.example" }, "dashboard": { "host": "cheshmak.example/app" } }
+}

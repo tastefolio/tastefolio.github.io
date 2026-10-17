@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="dashboard">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Cheshmak app — Desk Cube">اپ چشمک — مکعب میز</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Doto:wght,ROND@100..900,0..100&family=Host+Grotesk:wght@300..800&family=Geist+Mono:wght@400..600&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<script src="../assets/matrix.js" defer></script>
+</head>
+<body>
+<svg class="sprite" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Icons: Pixelarticons (MIT License) — pixelarticons.com --><!--ICONS-->
+<symbol id="i-battery-full" viewBox="0 0 24 24" fill="currentColor"><path d="M4 5h14v2H4zm0 12h14v2H4zM2 7h2v10H2zm16-2h2v14h-2zm2 4h2v6h-2zM6 9h2v6H6zm4 0h2v6h-2zm4 0h2v6h-2z"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24" fill="currentColor"><path d="M9 2h6v2H9zM7 4h2v2H7zm8 0h2v2h-2zM5 6h2v7H5zm12 0h2v7h-2zM3 13h2v4H3zm16 0h2v4h-2z"/> <path d="M3 15h18v2H3zm5 3h2v2H8zm6 0h2v2h-2zm-4 2h4v2h-4z"/></symbol>
+<symbol id="i-calendar" viewBox="0 0 24 24" fill="currentColor"><path d="M5 4h14v2H5zm0 16h14v2H5zM3 10h2v10H3zm0-4h2v2H3zm16 0h2v2h-2zm0 4h2v10h-2zM3 8h18v2H3zm12-6h2v2h-2zM7 2h2v2H7z"/></symbol>
+<symbol id="i-eraser" viewBox="0 0 24 24" fill="currentColor"><path d="M15 18h6v2H7v-2h6v-2h2v2Zm-8 0H5v-2h2v2Zm-2-2H3v-2h2v2Zm12 0h-2v-2h2v2ZM7 14H5v-2h2v2Zm8 0h-2v-2h2v2Zm4 0h-2v-2h2v2ZM9 12H7v-2h2v2Zm4 0h-2v-2h2v2Zm8 0h-2v-2h2v2Zm-10-2H9V8h2v2Zm8 0h-2V8h2v2Zm-6-2h-2V6h2v2Zm4 0h-2V6h2v2Zm-2-2h-2V4h2v2Z"/></symbol>
+<symbol id="i-hourglass" viewBox="0 0 24 24" fill="currentColor"><path d="M16 22H8v-2h8v2Zm-8-2H6v-4h2v4Zm10 0h-2v-4h2v4Zm-8-4H8v-2h2v2Zm6 0h-2v-2h2v2Zm-6-6h4v4h-4v-4Zm0 0H8V8h2v2Zm6 0h-2V8h2v2ZM8 8H6V4h2v4Zm10 0h-2V4h2v4Zm-2-4H8V2h8v2Z"/></symbol>
+<symbol id="i-invert" viewBox="0 0 24 24" fill="currentColor"><path d="M4 2h16v2H4zm0 18h16v2H4zM2 4h2v16H2zm18 0h2v16h-2zM4 18h2v2H4zm0-2h4v2H4zm0-2h6v2H4zm0-2h8v2H4zm0-2h10v2H4zm0-2h12v2H4zm0-2h14v2H4zm0-2h16v2H4z"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24" fill="currentColor"><path d="M6 8h2v2H6zm2 2h2v2H8zm10-2h-2v2h2zm-2 2h-2v2h2zm-6 2h4v2h-4zM2 6h2v12H2zm18 0h2v12h-2zM4 4h16v2H4zm0 14h16v2H4z"/></symbol>
+<symbol id="i-message" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4v2h16zm0 14H6v2h14zm2-12h-2v12h2zM4 4H2v18h2zm2 14H4v2h2z"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M18 22H8v-2h10v2ZM8 20H6v-2h2v2Zm12 0h-2v-2h2v2ZM6 18H4v-2h2v2Zm16 0h-2v-4h-2v-2h2v-2h2v8ZM4 16H2V6h2v10Zm14 0h-6v-2h6v2Zm-6-2h-2v-2h2v2Zm-2-2H8V6h2v6ZM6 6H4V4h2v2Zm8-2h-2v2h-2V4H6V2h8v2Z"/></symbol>
+<symbol id="i-music" viewBox="0 0 24 24" fill="currentColor"><path d="M4 12h4v2H4zm-2 2h2v4H2zm2 4h4v2H4zM8 6h2v12H8zm10 0h2v12h-2zm-6 8h2v4h-2zm2-2h4v2h-4zm0 6h4v2h-4zM10 4h8v2h-8z"/></symbol>
+<symbol id="i-pencil" viewBox="0 0 24 24" fill="currentColor"><path d="M4 16H6V18H8V20H10V22H2V14H4V16ZM12 20H10V18H12V20ZM14 18H12V16H14V18ZM10 16H8V14H10V16ZM16 16H14V14H16V16ZM6 14H4V12H6V14ZM12 14H10V12H12V14ZM18 14H16V12H18V14ZM8 12H6V10H8V12ZM14 12H12V10H14V12ZM20 12H18V10H20V12ZM10 10H8V8H10V10ZM18 10H16V8H18V10ZM22 10H20V8H22V10ZM12 8H10V6H12V8ZM16 8H14V6H16V8ZM20 8H18V6H20V8ZM14 6H12V4H14V6ZM18 6H16V4H18V6ZM16 4H14V2H16V4Z"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24" fill="currentColor"><path d="M13 11h7v2h-7v7h-2v-7H4v-2h7V4h2v7Z"/></symbol>
+<symbol id="i-reload" viewBox="0 0 24 24" fill="currentColor"><path d="M16 4h2v6h-2zm-2-2h2v2h-2zm0 2h2v8h-2zM4 8H2v5h2z"/> <path d="M4 6h16v2H4zm4 14H6v-6h2zm2 2H8v-2h2zm0-2H8v-8h2zm10-4h2v-5h-2z"/> <path d="M20 18H4v-2h16z"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22h-2v-3h2v3Zm-6-3H5v-2h2v2Zm12 0h-2v-2h2v2Zm-4-2H9v-2h6v2Zm-6-2H7V9h2v6Zm8 0h-2V9h2v6ZM5 13H2v-2h3v2Zm17 0h-3v-2h3v2Zm-7-4H9V7h6v2ZM7 7H5V5h2v2Zm12 0h-2V5h2v2Zm-6-2h-2V2h2v3Z"/></symbol>
+<symbol id="i-test-tube" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10v2H7zm1 2h2v16H8zm2 16h4v2h-4zm4-16h2v16h-2z"/> <path d="M8 13h8v2H8z"/></symbol>
+<symbol id="i-trash" viewBox="0 0 24 24" fill="currentColor"><path d="M18 22H6V20H18V22ZM9 6H15V4H17V6H22V8H20V20H18V8H6V20H4V8H2V6H7V4H9V6ZM15 4H9V2H15V4Z"/></symbol>
+<symbol id="i-truck" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h12v2H2zM0 16h4v2H0zm10 0h4v2h-4zm12-4h2v6h-2zm-8-6h2v12h-2zM0 6h2v10H0zm20 4h2v2h-2z"/> <path d="M14 8h6v2h-6zM4 14h6v2H4zm10 0h6v2h-6zM4 16h2v2H4zm10 0h2v2h-2zM4 18h6v2H4zm10 0h6v2h-6zm-6-2h2v2H8zm10 0h4v2h-4z"/></symbol>
+<symbol id="i-upload" viewBox="0 0 24 24" fill="currentColor"><path d="M19 21H5v-2h14v2ZM5 19H3v-4h2v4Zm16 0h-2v-4h2v4ZM13 5h2v2h2v2h-4v8h-2V9H7V7h2V5h2V3h2v2Z"/></symbol>
+<symbol id="i-volume-2" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22h-2v-2H9v-2h2V6H9V4h2V2h2v20Zm-4-4H7v-2h2v2Zm10 0h-4v-2h4v2ZM7 10H5v4h2v2H3V8h4v2Zm14 6h-2V8h2v8Zm-4-2h-2v-4h2v4ZM9 8H7V6h2v2Zm10 0h-4V6h4v2Z"/></symbol>
+<!--/ICONS--></svg>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<div class="app">
+  <aside class="side" aria-label="دستگاه‌ها" data-alt-aria-label="Devices">
+    <a class="logo" href="site.html"><span data-alt="cheshmak">چشمک</span><i class="led" aria-hidden="true"></i></a>
+    <p class="micro" data-alt="Your devices">دستگاه‌های شما</p>
+    <div class="dev-list" id="devs">
+      <button type="button" aria-current="true" data-dev="desk"><span class="dev-thumb"><span></span></span><span><b data-alt="Desk Cube">مکعب میز</b><span class="status"><i class="led ok" aria-hidden="true"></i><span data-alt="Online · 72%">روشن · ۷۲٪</span></span></span></button>
+      <button type="button" data-dev="kitchen"><span class="dev-thumb"><span></span></span><span><b data-alt="Kitchen Mini">مینی آشپزخانه</b><span class="status"><i class="led off" aria-hidden="true"></i><span data-alt="Asleep · 31%">خواب · ۳۱٪</span></span></span></button>
+      <button type="button" data-dev="studio"><span class="dev-thumb ink"><span></span></span><span><b data-alt="Studio Cube">مکعب استودیو</b><span class="status"><i class="led warn blink" aria-hidden="true"></i><span data-alt="Updating · 64%">به‌روزرسانی · ۶۴٪</span></span></span></button>
+    </div>
+    <button class="btn btn-outline btn-sm add-dev" type="button" data-toast="مکعب را کنار گوشی بگذارید و تاج را سه ثانیه نگه دارید" data-toast-alt="Hold the crown for three seconds with the Cube next to your phone"><svg class="ic sm" aria-hidden="true"><use href="#i-plus"/></svg><span data-alt="Add a device">افزودن دستگاه</span></button>
+    <div class="side-foot"><span class="avatar" style="--c:#e9e9e6" data-alt="R">ر</span><span><b class="small" style="display:block" data-alt="Roya Ahmadi">رویا احمدی</b><span class="tiny subtle" data-alt="2 Cubes · 1 Mini">۲ مکعب · ۱ مینی</span></span></div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="who"><b id="dev-name" data-alt="Desk Cube">مکعب میز</b><span class="tiny subtle row" style="gap: 6px"><i class="led ok" id="dev-led" aria-hidden="true"></i><span id="dev-status" data-alt="Online · firmware 3.1">روشن · نسخهٔ ۳٫۱</span></span></div>
+      <div class="tabs" role="tablist" aria-label="بخش‌ها" data-alt-aria-label="Sections">
+        <button type="button" role="tab" id="t-over" aria-controls="p-over" aria-selected="true" data-alt="Overview">نمای کلی</button>
+        <button type="button" role="tab" id="t-glyph" aria-controls="p-glyph" aria-selected="false" data-alt="Glyphs">نشانه‌ها</button>
+        <button type="button" role="tab" id="t-rout" aria-controls="p-rout" aria-selected="false" data-alt="Routines">روال‌ها</button>
+        <button type="button" role="tab" id="t-upd" aria-controls="p-upd" aria-selected="false" data-alt="Updates">به‌روزرسانی</button>
+      </div>
+      <div class="head-end">
+        <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+        <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="حالت تیره" data-alt-aria-label="Dark mode"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg></button>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ============================================ overview -->
+      <section role="tabpanel" id="p-over" aria-labelledby="t-over" class="page">
+        <div class="grid12">
+          <div class="panel now span-8">
+            <div class="device" id="dev-device" data-finish="paper"><div class="matrix" id="preview" data-matrix="clock" role="img" aria-label="پیش‌نمایش زندهٔ صفحهٔ مکعب" data-alt-aria-label="Live preview of the Cube’s face"></div></div>
+            <div class="stack" style="gap: 18px">
+              <div class="split"><span class="micro" data-alt="On the face now">الان روی صفحه</span><span class="badge ok"><i class="led ok" aria-hidden="true"></i><span data-alt="Live">زنده</span></span></div>
+              <div class="chips" data-group="face" role="group" aria-label="چهره" data-alt-aria-label="Face">
+                <button type="button" aria-pressed="true" data-value="clock" data-alt="Clock">ساعت</button>
+                <button type="button" aria-pressed="false" data-value="timer" data-alt="Timer">تایمر</button>
+                <button type="button" aria-pressed="false" data-value="eq" data-alt="Music">موسیقی</button>
+                <button type="button" aria-pressed="false" data-value="weather" data-alt="Weather">آب‌وهوا</button>
+                <button type="button" aria-pressed="false" data-value="bell" data-alt="Notifications">اعلان</button>
+                <button type="button" aria-pressed="false" data-value="wink" data-alt="Wink">چشمک</button>
+              </div>
+              <div class="ctrl"><label class="small" for="bright" data-alt="Brightness">روشنایی</label><input class="range" id="bright" type="range" min="10" max="100" step="5" value="80"><output for="bright" id="bright-out" data-num="80" data-fmt="pct">۸۰٪</output></div>
+              <div class="ctrl"><label class="small" for="vol" data-alt="Volume">صدا</label><input class="range" id="vol" type="range" min="0" max="100" step="5" value="40"><output for="vol" id="vol-out" data-num="40" data-fmt="pct">۴۰٪</output></div>
+              <div class="split"><span class="small" id="night-l" data-alt="Night mode">حالت شب</span><button class="switch" type="button" role="switch" aria-checked="false" aria-labelledby="night-l" id="night"></button></div>
+              <div class="row"><button class="btn btn-sm" type="button" id="find"><svg class="ic sm" aria-hidden="true"><use href="#i-volume-2"/></svg><span data-alt="Find my Cube">پیدا کردن مکعب</span></button><button class="btn btn-sm btn-outline" type="button" data-toast="مکعب دوباره راه‌اندازی شد" data-toast-alt="The Cube restarted"><svg class="ic sm" aria-hidden="true"><use href="#i-reload"/></svg><span data-alt="Restart">راه‌اندازی دوباره</span></button></div>
+            </div>
+          </div>
+          <div class="panel span-4">
+            <div class="panel-head"><span class="micro" data-alt="Battery">باتری</span><svg class="ic" aria-hidden="true"><use href="#i-battery-full"/></svg></div>
+            <b class="dots num" data-num="72" data-fmt="pct">۷۲٪</b>
+            <span class="meter lg" style="--v: 7" role="img" aria-label="۷ از ۱۰ نقطه" data-alt-aria-label="7 of 10 dots"></span>
+            <p class="small muted" data-alt="About 29 hours left at this brightness. Full in 50 minutes on the cable.">با این روشنایی حدود ۲۹ ساعت دیگر. با کابل در ۵۰ دقیقه پر می‌شود.</p>
+            <div data-chart="line" data-height="120" data-fmt="pct" data-min="0" data-max="100" data-dates="2026-10-11,7,day,short" data-values="100,86,71,58,96,84,72" data-name='{"en":"Battery","fa":"باتری"}' data-label='{"en":"Battery level, last 7 days","fa":"سطح باتری، ۷ روز اخیر"}'></div>
+          </div>
+
+          <div class="panel stat span-3"><span class="micro" data-alt="Glances today">نگاه امروز</span><b class="dots num" data-num="148">۱۴۸</b><span class="small muted"><span data-num="12" data-fmt="signed">+۱۲</span> <span data-alt="vs. yesterday">نسبت به دیروز</span></span></div>
+          <div class="panel stat span-3"><span class="micro" data-alt="Focus minutes">دقیقهٔ تمرکز</span><b class="dots num" data-num="95">۹۵</b><span class="small muted"><span data-num="3">۳</span> <span data-alt="sessions">جلسه</span></span></div>
+          <div class="panel stat span-3"><span class="micro" data-alt="Held notifications">اعلان نگه‌داشته</span><b class="dots num" data-num="41">۴۱</b><span class="small muted" data-alt="shown after focus">بعد از تمرکز نشان داده شد</span></div>
+          <div class="panel stat span-3"><span class="micro" data-alt="Your glyphs">نشانه‌های شما</span><b class="dots num" id="glyph-count" data-num="4">۴</b><span class="small muted" data-alt="2 sent today">۲ تا امروز فرستاده شد</span></div>
+
+          <div class="panel span-7">
+            <div class="panel-head"><span class="micro" data-alt="Glances per hour · today">نگاه در هر ساعت · امروز</span><span class="badge"><span data-alt="Peak">اوج</span>&nbsp;<span class="ltr" data-alt="10:00">۱۰:۰۰</span></span></div>
+            <div>
+              <div class="dotbars" data-dotbars="0,0,0,0,0,0,1,4,9,12,14,11,8,6,10,9,7,5,6,8,9,5,2,0" data-hl="14" data-rows="8" role="img" aria-label="نگاه‌ها در ۲۴ ساعت امروز؛ اوج ساعت ۱۰ و الان ساعت ۱۴" data-alt-aria-label="Glances across today’s 24 hours; peak at 10, now at 14"></div>
+              <div class="dotbars-axis micro" aria-hidden="true"><span data-num="0" data-fmt="plain">۰</span><span data-num="6" data-fmt="plain">۶</span><span data-num="12" data-fmt="plain">۱۲</span><span data-num="18" data-fmt="plain">۱۸</span><span data-num="24" data-fmt="plain">۲۴</span></div>
+            </div>
+          </div>
+          <div class="panel span-5">
+            <div class="panel-head"><span class="micro" data-alt="What can light it up">چه چیزی روشنش می‌کند</span></div>
+            <div class="app-rows">
+              <div class="app-row"><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-message"/></svg></span><span><b data-alt="Messages">پیام‌ها</b><span class="tiny subtle" data-alt="Family and 3 favourites">خانواده و ۳ نفر محبوب</span></span><button class="switch" type="button" role="switch" aria-checked="true" aria-label="پیام‌ها" data-alt-aria-label="Messages"></button></div>
+              <div class="app-row"><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg></span><span><b data-alt="Calendar">تقویم</b><span class="tiny subtle" data-alt="10 minutes before each meeting">۱۰ دقیقه پیش از هر جلسه</span></span><button class="switch" type="button" role="switch" aria-checked="true" aria-label="تقویم" data-alt-aria-label="Calendar"></button></div>
+              <div class="app-row"><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg></span><span><b data-alt="Mail">ایمیل</b><span class="tiny subtle" data-alt="Only from people you star">فقط از کسانی که ستاره زده‌اید</span></span><button class="switch" type="button" role="switch" aria-checked="false" aria-label="ایمیل" data-alt-aria-label="Mail"></button></div>
+              <div class="app-row"><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-truck"/></svg></span><span><b data-alt="Deliveries">مرسوله‌ها</b><span class="tiny subtle" data-alt="When the courier is close">وقتی پیک نزدیک است</span></span><button class="switch" type="button" role="switch" aria-checked="true" aria-label="مرسوله‌ها" data-alt-aria-label="Deliveries"></button></div>
+              <div class="app-row"><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg></span><span><b data-alt="Doorbell">زنگ در</b><span class="tiny subtle" data-alt="Always, even in focus">همیشه، حتی در حالت تمرکز</span></span><button class="switch" type="button" role="switch" aria-checked="true" aria-label="زنگ در" data-alt-aria-label="Doorbell"></button></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================ glyphs -->
+      <section role="tabpanel" id="p-glyph" aria-labelledby="t-glyph" class="page" hidden>
+        <div class="panel">
+          <div class="panel-head"><div class="stack" style="gap: 4px"><span class="micro" data-alt="Glyph composer">سازندهٔ نشانه</span><h1 class="h2" data-alt="Draw it dot by dot">نقطه‌به‌نقطه بکشید</h1></div><span class="badge"><span id="lit" data-num="0">۰</span>&nbsp;<span data-alt="dots lit">نقطهٔ روشن</span></span></div>
+          <div class="composer">
+            <div class="stack" style="gap: 10px">
+              <div class="matrix" id="editor" data-matrix-edit aria-label="ویرایشگر ۱۵ در ۱۵ نقطه" data-alt-aria-label="15 by 15 dot editor"></div>
+              <p class="tiny subtle" data-alt="Click or drag to draw. Arrow keys move between dots; Space turns one on or off.">کلیک کنید یا بکشید. با کلیدهای جهت بین نقطه‌ها بروید و با فاصله روشن یا خاموششان کنید.</p>
+            </div>
+            <div class="stack" style="gap: 20px">
+              <div class="row" style="gap: 20px 28px; align-items: start">
+                <div class="field"><span class="label" id="tool-l" data-alt="Tool">ابزار</span>
+                  <div class="seg" data-group="tool" role="group" aria-labelledby="tool-l"><button type="button" aria-pressed="true" data-value="pen"><svg class="ic sm" aria-hidden="true"><use href="#i-pencil"/></svg><span data-alt="Pen">قلم</span></button><button type="button" aria-pressed="false" data-value="erase"><svg class="ic sm" aria-hidden="true"><use href="#i-eraser"/></svg><span data-alt="Eraser">پاک‌کن</span></button></div>
+                </div>
+                <div class="field"><span class="label" id="ink-l" data-alt="Light">نور</span>
+                  <div class="seg" data-group="ink" role="group" aria-labelledby="ink-l"><button type="button" aria-pressed="true" data-value="1"><i class="led" style="background: #f4f4f1; box-shadow: 0 0 0 1px var(--line-2)" aria-hidden="true"></i><span data-alt="White">سفید</span></button><button type="button" aria-pressed="false" data-value="2"><i class="led" aria-hidden="true"></i><span data-alt="Red">قرمز</span></button></div>
+                </div>
+              </div>
+              <div class="field"><span class="label" id="preset-l" data-alt="Start from">شروع از</span>
+                <div class="chips" role="group" aria-labelledby="preset-l"><button type="button" data-preset="wink" data-alt="Wink">چشمک</button><button type="button" data-preset="heart" data-alt="Heart">قلب</button><button type="button" data-preset="coffee" data-alt="Coffee">قهوه</button><button type="button" data-preset="moon" data-alt="Moon">ماه</button><button type="button" data-preset="bell" data-alt="Bell">زنگوله</button></div>
+              </div>
+              <div class="row"><button class="btn btn-sm btn-outline" type="button" id="clear"><svg class="ic sm" aria-hidden="true"><use href="#i-trash"/></svg><span data-alt="Clear">پاک کردن</span></button><button class="btn btn-sm btn-outline" type="button" id="invert"><svg class="ic sm" aria-hidden="true"><use href="#i-invert"/></svg><span data-alt="Invert">وارونه</span></button></div>
+              <form class="stack" id="save-glyph" data-validate data-success="نشانه ذخیره شد" data-success-alt="Glyph saved" style="gap: 14px; padding-block-start: 18px; border-block-start: 2px dotted var(--line-2)">
+                <div class="field"><label class="label" for="g-name" data-alt="Name">نام</label><input class="input" id="g-name" name="name" required maxlength="24" placeholder="مثلاً «قهوه آماده است»" data-alt-placeholder="e.g. “Coffee is ready”"></div>
+                <div class="field"><label class="label" for="g-when" data-alt="Show it when">کی نشان داده شود</label><select class="select" id="g-when" name="when"><option value="manual" data-alt="Only when I send it">فقط وقتی خودم بفرستم</option><option value="family" data-alt="A message from family">پیامی از خانواده</option><option value="focus" data-alt="Focus ends">پایان تمرکز</option><option value="door" data-alt="The doorbell rings">زنگ در</option></select></div>
+                <div class="row"><button class="btn" type="submit"><i class="led" aria-hidden="true"></i><span data-alt="Save glyph">ذخیرهٔ نشانه</span></button><button class="btn btn-outline" type="button" id="send"><svg class="ic sm" aria-hidden="true"><use href="#i-upload"/></svg><span data-alt="Show on the Cube">نمایش روی مکعب</span></button></div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="stack">
+          <span class="micro" data-alt="Your glyphs · tap one to edit">نشانه‌های شما · برای ویرایش بزنید</span>
+          <div class="glyph-grid" id="glyphs">
+            <button class="glyph-card" type="button"><div class="matrix sm" data-glyph="wink" aria-hidden="true"></div><b data-alt="Hello">سلام</b><span data-alt="When I send it">وقتی بفرستم</span></button>
+            <button class="glyph-card" type="button"><div class="matrix sm" data-glyph="heart" aria-hidden="true"></div><b data-alt="Mom">مامان</b><span data-alt="A message from family">پیامی از خانواده</span></button>
+            <button class="glyph-card" type="button"><div class="matrix sm" data-glyph="coffee" aria-hidden="true"></div><b data-alt="Coffee’s ready">قهوه آماده است</b><span data-alt="When I send it">وقتی بفرستم</span></button>
+            <button class="glyph-card" type="button"><div class="matrix sm" data-glyph="moon" aria-hidden="true"></div><b data-alt="Good night">شب‌بخیر</b><span data-alt="Night routine">روال شب</span></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================ routines -->
+      <section role="tabpanel" id="p-rout" aria-labelledby="t-rout" class="page" hidden>
+        <div class="panel">
+          <div class="panel-head"><div class="stack" style="gap: 4px"><span class="micro" data-alt="Routines">روال‌ها</span><h1 class="h2" data-alt="The Cube follows your day">مکعب با روزتان همراه می‌شود</h1></div><button class="btn btn-sm" type="button" data-dialog="#new-routine"><svg class="ic sm" aria-hidden="true"><use href="#i-plus"/></svg><span data-alt="New routine">روال تازه</span></button></div>
+          <div id="routines">
+            <div class="routine"><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg></span><span><b data-alt="Morning">صبح</b><span class="small subtle" data-alt="07:00–09:00 · weather, then the clock">۰۷:۰۰ تا ۰۹:۰۰ · آب‌وهوا، بعد ساعت</span></span><span class="days" role="img" aria-label="شنبه تا چهارشنبه" data-alt-aria-label="Saturday to Wednesday"><span class="on" data-alt="Sa">ش</span><span class="on" data-alt="Su">ی</span><span class="on" data-alt="Mo">د</span><span class="on" data-alt="Tu">س</span><span class="on" data-alt="We">چ</span><span data-alt="Th">پ</span><span data-alt="Fr">ج</span></span><button class="switch" type="button" role="switch" aria-checked="true" aria-label="صبح" data-alt-aria-label="Morning"></button></div>
+            <div class="routine"><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-hourglass"/></svg></span><span><b data-alt="Focus">تمرکز</b><span class="small subtle" data-alt="10:00–12:00 · timer, notifications held">۱۰:۰۰ تا ۱۲:۰۰ · تایمر، اعلان‌ها نگه داشته می‌شوند</span></span><span class="days" role="img" aria-label="شنبه تا چهارشنبه" data-alt-aria-label="Saturday to Wednesday"><span class="on" data-alt="Sa">ش</span><span class="on" data-alt="Su">ی</span><span class="on" data-alt="Mo">د</span><span class="on" data-alt="Tu">س</span><span class="on" data-alt="We">چ</span><span data-alt="Th">پ</span><span data-alt="Fr">ج</span></span><button class="switch" type="button" role="switch" aria-checked="true" aria-label="تمرکز" data-alt-aria-label="Focus"></button></div>
+            <div class="routine"><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg></span><span><b data-alt="Night">شب</b><span class="small subtle" data-alt="23:00–07:00 · clock only, 5% light">۲۳:۰۰ تا ۰۷:۰۰ · فقط ساعت، نور ۵٪</span></span><span class="days" role="img" aria-label="هر روز" data-alt-aria-label="Every day"><span class="on" data-alt="Sa">ش</span><span class="on" data-alt="Su">ی</span><span class="on" data-alt="Mo">د</span><span class="on" data-alt="Tu">س</span><span class="on" data-alt="We">چ</span><span class="on" data-alt="Th">پ</span><span class="on" data-alt="Fr">ج</span></span><button class="switch" type="button" role="switch" aria-checked="true" aria-label="شب" data-alt-aria-label="Night"></button></div>
+            <div class="routine"><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-music"/></svg></span><span><b data-alt="Friday">جمعه</b><span class="small subtle" data-alt="All day · music and the weather">تمام روز · موسیقی و آب‌وهوا</span></span><span class="days" role="img" aria-label="جمعه" data-alt-aria-label="Friday"><span data-alt="Sa">ش</span><span data-alt="Su">ی</span><span data-alt="Mo">د</span><span data-alt="Tu">س</span><span data-alt="We">چ</span><span data-alt="Th">پ</span><span class="on" data-alt="Fr">ج</span></span><button class="switch" type="button" role="switch" aria-checked="false" aria-label="جمعه" data-alt-aria-label="Friday"></button></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================ updates -->
+      <section role="tabpanel" id="p-upd" aria-labelledby="t-upd" class="page" hidden>
+        <div class="grid12">
+          <div class="panel span-7">
+            <div class="panel-head"><span class="micro" data-alt="Firmware">نرم‌افزار دستگاه</span><span class="badge red" id="upd-badge" data-alt="New">تازه</span></div>
+            <h1 class="h2"><span data-alt="Version">نسخهٔ</span> <span data-num="3.2" data-fmt="dec1">۳٫۲</span></h1>
+            <ul class="changes">
+              <li><span data-alt="Night mode follows sunset in your city">حالت شب با غروب آفتاب شهرتان تنظیم می‌شود</span></li>
+              <li><span data-alt="Glyphs can have up to four frames — small animations">نشانه‌ها می‌توانند تا چهار فریم داشته باشند — انیمیشن‌های کوچک</span></li>
+              <li><span data-alt="In the last minute the timer ring counts seconds">در دقیقهٔ آخر، حلقهٔ تایمر ثانیه‌ها را می‌شمارد</span></li>
+              <li><span data-alt="About 10% more battery life">حدود ۱۰٪ عمر باتری بیشتر</span></li>
+            </ul>
+            <div class="stack" style="gap: 14px; padding-block-start: 18px; border-block-start: 2px dotted var(--line-2)">
+              <span class="meter lg" id="upd-meter" style="--n: 16; --v: 0" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="پیشرفت نصب" data-alt-aria-label="Install progress"></span>
+              <div class="steps-led" id="upd-steps"><span><i class="led" aria-hidden="true"></i><span data-alt="Download">دریافت</span></span><span><i class="led" aria-hidden="true"></i><span data-alt="Install">نصب</span></span><span><i class="led" aria-hidden="true"></i><span data-alt="Restart">راه‌اندازی دوباره</span></span></div>
+              <div class="row"><button class="btn" type="button" id="install"><i class="led" aria-hidden="true"></i><span data-alt="Install now">همین حالا نصب کن</span></button><span class="small subtle" data-alt="About 4 minutes · the Cube keeps working">حدود ۴ دقیقه · مکعب کار می‌کند</span></div>
+            </div>
+          </div>
+          <div class="panel span-5">
+            <div class="panel-head"><span class="micro" data-alt="Automatic updates">به‌روزرسانی خودکار</span></div>
+            <div class="app-rows">
+              <div class="app-row"><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg></span><span><b data-alt="Install at night">نصب در شب</b><span class="tiny subtle" data-alt="Between 2 and 5 am, when nobody is looking">بین ۲ تا ۵ بامداد، وقتی کسی نگاه نمی‌کند</span></span><button class="switch" type="button" role="switch" aria-checked="true" aria-label="نصب در شب" data-alt-aria-label="Install at night"></button></div>
+              <div class="app-row"><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-test-tube"/></svg></span><span><b data-alt="Early features">امکانات آزمایشی</b><span class="tiny subtle" data-alt="Try new faces before everyone else">چهره‌های تازه را زودتر امتحان کنید</span></span><button class="switch" type="button" role="switch" aria-checked="false" aria-label="امکانات آزمایشی" data-alt-aria-label="Early features"></button></div>
+            </div>
+          </div>
+          <div class="panel span-12">
+            <div class="panel-head"><span class="micro" data-alt="History">سابقه</span></div>
+            <div class="table-wrap">
+              <table class="table">
+                <thead><tr><th scope="col" data-alt="Version">نسخه</th><th scope="col" data-alt="Installed">نصب</th><th scope="col" data-alt="Devices">دستگاه‌ها</th><th scope="col" data-alt="What changed">چه چیزی عوض شد</th></tr></thead>
+                <tbody>
+                  <tr><td><b data-num="3.1" data-fmt="dec1">۳٫۱</b></td><td class="subtle" data-date="2026-09-02" data-fmt="short">۱۱ شهریور</td><td data-alt="All devices">همهٔ دستگاه‌ها</td><td data-alt="Weather face, faster pairing">چهرهٔ آب‌وهوا، اتصال سریع‌تر</td></tr>
+                  <tr><td><b data-num="3.0" data-fmt="dec1">۳٫۰</b></td><td class="subtle" data-date="2026-07-14" data-fmt="short">۲۳ تیر</td><td data-alt="All devices">همهٔ دستگاه‌ها</td><td data-alt="Routines, night mode">روال‌ها، حالت شب</td></tr>
+                  <tr><td><b data-num="2.6" data-fmt="dec1">۲٫۶</b></td><td class="subtle" data-date="2026-05-30" data-fmt="short">۹ خرداد</td><td data-alt="Desk Cube">مکعب میز</td><td data-alt="Glyph composer">سازندهٔ نشانه</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<dialog class="modal" id="new-routine" aria-labelledby="nr-title">
+  <form id="nr-form" data-validate data-success="روال تازه ساخته شد" data-success-alt="Routine created">
+    <div class="modal-body">
+      <h2 class="h3" id="nr-title" data-alt="New routine">روال تازه</h2>
+      <div class="field"><label class="label" for="nr-name" data-alt="Name">نام</label><input class="input" id="nr-name" name="name" required maxlength="24" placeholder="مثلاً «ناهار»" data-alt-placeholder="e.g. “Lunch”"></div>
+      <div class="field"><label class="label" for="nr-face" data-alt="Face">چهره</label><select class="select" id="nr-face" name="face"><option value="clock" data-alt="Clock">ساعت</option><option value="timer" data-alt="Timer">تایمر</option><option value="eq" data-alt="Music">موسیقی</option><option value="weather" data-alt="Weather">آب‌وهوا</option></select></div>
+      <div class="row" style="gap: 12px; align-items: start">
+        <div class="field" style="flex: 1"><label class="label" for="nr-from" data-alt="From">از</label><input class="input ltr" id="nr-from" name="from" type="time" value="12:30" required></div>
+        <div class="field" style="flex: 1"><label class="label" for="nr-to" data-alt="To">تا</label><input class="input ltr" id="nr-to" name="to" type="time" value="13:30" required></div>
+      </div>
+      <div class="field"><span class="label" id="nr-days-l" data-alt="Days">روزها</span>
+        <div class="days" id="nr-days" data-group data-multi role="group" aria-labelledby="nr-days-l">
+          <button type="button" aria-pressed="true" aria-label="شنبه" data-alt-aria-label="Saturday" data-alt="Sa">ش</button>
+          <button type="button" aria-pressed="true" aria-label="یکشنبه" data-alt-aria-label="Sunday" data-alt="Su">ی</button>
+          <button type="button" aria-pressed="true" aria-label="دوشنبه" data-alt-aria-label="Monday" data-alt="Mo">د</button>
+          <button type="button" aria-pressed="true" aria-label="سه‌شنبه" data-alt-aria-label="Tuesday" data-alt="Tu">س</button>
+          <button type="button" aria-pressed="true" aria-label="چهارشنبه" data-alt-aria-label="Wednesday" data-alt="We">چ</button>
+          <button type="button" aria-pressed="false" aria-label="پنجشنبه" data-alt-aria-label="Thursday" data-alt="Th">پ</button>
+          <button type="button" aria-pressed="false" aria-label="جمعه" data-alt-aria-label="Friday" data-alt="Fr">ج</button>
+        </div>
+      </div>
+      <div class="split"><span class="small" id="nr-hold-l" data-alt="Hold notifications">اعلان‌ها نگه داشته شوند</span><button class="switch" type="button" role="switch" aria-checked="false" aria-labelledby="nr-hold-l"></button></div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" type="button" data-close data-alt="Cancel">انصراف</button><button class="btn" type="submit" data-alt="Create">ساختن</button></div>
+  </form>
+</dialog>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+    const fa = () => tf.lang() === 'fa';
+    const pick = (pair) => (fa() ? pair[0] : pair[1]);
+    // set text in the current language and keep the other one in data-alt for the language switch
+    const say = (el, pair) => { el.textContent = pick(pair); el.dataset.alt = fa() ? pair[1] : pair[0]; };
+    const preview = $('#preview'), editor = $('#editor');
+    let face = 'clock';
+
+    // ------------------------------------------------ devices
+    const DEVS = {
+      desk: { name: ['مکعب میز', 'Desk Cube'], status: ['روشن · نسخهٔ ۳٫۱', 'Online · firmware 3.1'], led: 'ok', finish: 'paper' },
+      kitchen: { name: ['مینی آشپزخانه', 'Kitchen Mini'], status: ['خواب · باتری ۳۱٪', 'Asleep · battery 31%'], led: 'off', finish: 'paper', mini: true },
+      studio: { name: ['مکعب استودیو', 'Studio Cube'], status: ['در حال به‌روزرسانی · ۶۴٪', 'Updating · 64%'], led: 'warn', finish: 'ink' },
+    };
+    const showFace = () => {
+      const d = $('#devs [aria-current="true"]').dataset.dev;
+      if (DEVS[d].mini) { preview.dataset.n = '9'; preview.dataset.matrix = 'wink'; } else { delete preview.dataset.n; preview.dataset.matrix = face; }
+      preview.classList.toggle('asleep', d === 'kitchen' || $('#night').getAttribute('aria-checked') === 'true');
+      dotMatrix.render(preview);
+    };
+    $$('#devs button').forEach((b) => b.addEventListener('click', () => {
+      $$('#devs button').forEach((x) => x.setAttribute('aria-current', String(x === b)));
+      const d = DEVS[b.dataset.dev], dev = $('#dev-device');
+      say($('#dev-name'), d.name); say($('#dev-status'), d.status);
+      $('#dev-led').className = 'led ' + d.led;
+      dev.dataset.finish = d.finish;
+      if (d.mini) dev.dataset.model = 'mini'; else delete dev.dataset.model;
+      delete preview.dataset.bits;
+      showFace();
+    }));
+
+    // ------------------------------------------------ overview controls
+    document.addEventListener('tf:change', (e) => {
+      const g = e.target.closest('[data-group]');
+      if (g?.dataset.group === 'face') { face = e.detail.value; delete preview.dataset.bits; showFace(); }
+      if (g?.dataset.group === 'tool') editor.dataset.tool = e.detail.value;
+      if (g?.dataset.group === 'ink') editor.dataset.ink = e.detail.value;
+    });
+    const fill = (r) => r.style.setProperty('--p', ((r.value - r.min) / (r.max - r.min) * 100) + '%');
+    $$('.range').forEach((r) => {
+      fill(r);
+      r.addEventListener('input', () => {
+        fill(r);
+        const out = $(`output[for="${r.id}"]`); out.dataset.num = r.value; out.textContent = tf.fmt(r.value, 'pct');
+        if (r.id === 'bright') preview.style.setProperty('--level', r.value / 100);
+      });
+    });
+    preview.style.setProperty('--level', .8);
+    $('#night').addEventListener('tf:switch', showFace);
+    $('#find').addEventListener('click', () => {
+      preview.classList.remove('flash'); void preview.offsetWidth; preview.classList.add('flash');
+      tf.toast(fa() ? 'مکعب صدا می‌دهد و چشمک می‌زند' : 'Your Cube is chiming and blinking');
+    });
+
+    // ------------------------------------------------ glyph composer
+    const lit = () => { const n = dotMatrix.editor.get(editor).filter(Boolean).length, el = $('#lit'); el.dataset.num = n; el.textContent = tf.fmt(n); };
+    editor.addEventListener('dot:change', lit);
+    dotMatrix.editor.set(editor, dotMatrix.glyph('wink'));
+    $$('[data-preset]').forEach((b) => b.addEventListener('click', () => dotMatrix.editor.set(editor, dotMatrix.glyph(b.dataset.preset, b.dataset.preset === 'bell' ? 1 : undefined))));
+    $('#clear').addEventListener('click', () => dotMatrix.editor.clear(editor));
+    $('#invert').addEventListener('click', () => dotMatrix.editor.invert(editor));
+    const thumb = (el, bits) => { el.dataset.bits = bits; dotMatrix.render(el); };
+    $$('[data-glyph]').forEach((el) => thumb(el, dotMatrix.bits(dotMatrix.glyph(el.dataset.glyph))));
+    $('#glyphs').addEventListener('click', (e) => {
+      const card = e.target.closest('.glyph-card'); if (!card) return;
+      dotMatrix.editor.set(editor, dotMatrix.parse(card.querySelector('.matrix').dataset.bits));
+      editor.querySelector('button[tabindex="0"]')?.focus();
+    });
+    $('#save-glyph').addEventListener('tf:submit', (e) => {
+      const opt = $('#g-when').querySelector(`option[value="${e.detail.when}"]`);
+      const card = document.createElement('button');
+      card.type = 'button'; card.className = 'glyph-card';
+      card.innerHTML = '<div class="matrix sm" aria-hidden="true"></div><b></b><span></span>';
+      thumb(card.firstChild, dotMatrix.bits(dotMatrix.editor.get(editor)));
+      card.children[1].textContent = e.detail.name;
+      card.children[2].textContent = opt.textContent; card.children[2].dataset.alt = opt.dataset.alt;
+      $('#glyphs').prepend(card);
+      const count = $('#glyph-count'), n = Number(count.dataset.num) + 1; count.dataset.num = n; count.textContent = tf.fmt(n);
+    });
+    $('#send').addEventListener('click', () => {
+      preview.dataset.bits = dotMatrix.bits(dotMatrix.editor.get(editor)); dotMatrix.render(preview);
+      tf.toast(fa() ? `روی ${$('#dev-name').textContent} نمایش داده شد` : `Showing on ${$('#dev-name').textContent}`);
+    });
+
+    // ------------------------------------------------ routines
+    const ICON = { clock: 'sun', timer: 'hourglass', eq: 'music', weather: 'sun' };
+    const DAYS = [['ش', 'Sa'], ['ی', 'Su'], ['د', 'Mo'], ['س', 'Tu'], ['چ', 'We'], ['پ', 'Th'], ['ج', 'Fr']];
+    $('#nr-form').addEventListener('tf:submit', (e) => {
+      const { name, face: f, from, to } = e.detail;
+      const on = $$('#nr-days button').map((b) => b.getAttribute('aria-pressed') === 'true');
+      const opt = $('#nr-face').querySelector(`option[value="${f}"]`);
+      const hhmm = (t) => t.split(':').map((x) => tf.fmt(Number(x), 'plain').padStart(2, fa() ? '۰' : '0')).join(':');
+      const row = document.createElement('div');
+      row.className = 'routine';
+      row.innerHTML = `<span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-${ICON[f]}"/></svg></span><span><b></b><span class="small subtle"></span></span><span class="days" role="img"></span><button class="switch" type="button" role="switch" aria-checked="true"></button>`;
+      row.querySelector('b').textContent = name;
+      row.querySelector('.small').textContent = `${hhmm(from)} ${fa() ? 'تا' : '–'} ${hhmm(to)} · ${opt.textContent}`;
+      const days = row.querySelector('.days');
+      days.setAttribute('aria-label', DAYS.filter((_, i) => on[i]).map(pick).join('، '));
+      DAYS.forEach((d, i) => { const s = document.createElement('span'); if (on[i]) s.className = 'on'; say(s, d); days.append(s); });
+      row.querySelector('.switch').setAttribute('aria-label', name);
+      $('#routines').append(row);
+    });
+
+    // ------------------------------------------------ firmware update
+    $('#install').addEventListener('click', (e) => {
+      const btn = e.currentTarget, meter = $('#upd-meter'), steps = $$('#upd-steps > span');
+      btn.disabled = true;
+      let v = 0;
+      const tick = () => {
+        v = tf.reduceMotion ? 16 : v + 1;
+        meter.style.setProperty('--v', v); meter.setAttribute('aria-valuenow', Math.round(v / 16 * 100));
+        const at = v < 8 ? 0 : v < 14 ? 1 : 2;
+        steps.forEach((s, i) => { s.className = i < at || v >= 16 ? 'done' : i === at ? 'now' : ''; });
+        if (v < 16) return setTimeout(tick, 220);
+        const badge = $('#upd-badge'); badge.className = 'badge ok'; say(badge, ['به‌روز', 'Up to date']);
+        say(btn.querySelector('span'), ['نصب شد', 'Installed']);
+        tf.toast(fa() ? 'نسخهٔ ۳٫۲ نصب شد' : 'Version 3.2 installed');
+      };
+      tick();
+    });
+  });
+</script>
+</body>
+</html>

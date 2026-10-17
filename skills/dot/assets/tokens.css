@@ -1,0 +1,160 @@
+/* Dot — design tokens (Tastefolio). Dot-matrix hardware: off-white paper (or pure black), ink, one LED red, a dot
+   grid, and display type made of dots — Doto for Latin, Vazirmatn Black behind a dot mask for Persian. Host Grotesk
+   carries text, Geist Mono the small labels. Anything that lights up is a dot. */
+:root {
+  --canvas: #f2f2f0;
+  --surface: #ffffff;
+  --surface-2: #e9e9e6;
+  --surface-3: #dcdcd8;
+  --surface-ink: #0d0d0d;
+  --overlay: rgba(13, 13, 13, .5);
+
+  --ink: #0d0d0d;
+  --ink-2: #474745;
+  --ink-3: #666663;
+  --ink-inverse: #f2f2f0;
+
+  --line: #dcdcd8;
+  --line-2: #c5c5c0;
+  --dot: #c4c4bf;              /* the dot grid behind things */
+
+  --brand: #cf2f17;            /* LED red — the light, the live state, the one accent */
+  --brand-ink: #ffffff;
+  --brand-soft: color-mix(in oklab, var(--brand) 11%, #fff);
+  --brand-strong: color-mix(in oklab, var(--brand) 82%, #000);
+  --focus: color-mix(in oklab, var(--brand) 60%, transparent);
+
+  --glass: #0b0b0b;            /* the black glass in front of the LEDs */
+  --led: color-mix(in oklab, var(--brand) 80%, #fff);
+  --led-white: #f4f4f1;
+  --led-off: #1f1f1e;
+  --led-glow: color-mix(in oklab, var(--led) 60%, transparent);
+
+  --success: #2a6f38;
+  --success-soft: #e3f0e5;
+  --warning: #8a5d00;
+  --warning-soft: #f6ecd2;
+  --danger: #b3261a;
+  --danger-soft: #f9e3df;
+  --info: #2f5f9e;
+  --info-soft: #e4ecf7;
+
+  --chart-1: var(--ink);
+  --chart-2: var(--brand);
+  --chart-3: #8f8f8a;
+  --chart-4: #c5c5c0;
+  --chart-5: #474745;
+  --chart-6: #e0a090;
+  --chart-grid: #e0e0dc;
+  --chart-axis: var(--ink-3);
+  --chart-curve: linear;
+  --chart-stroke: 3;
+  --chart-area: 0;
+  --chart-radius: 99;
+  --chart-bar-gap: .55;
+  --chart-donut: 12;
+  --chart-gap: 3;
+  --chart-dots: 0;
+
+  --font-sans: "Host Grotesk", "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Doto", "Vazirmatn", ui-monospace, monospace;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, "Vazirmatn", monospace;
+  --fs-xs: 12px;
+  --fs-sm: 13.5px;
+  --fs-md: 15px;
+  --fs-lg: 17px;
+  --fs-xl: 22px;
+  --fs-2xl: 30px;
+  --fs-3xl: 44px;
+  --fs-display: clamp(46px, 7.4vw, 108px);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 650;
+  --fw-display: 900;
+  --lh-tight: 1;
+  --lh-snug: 1.25;
+  --lh-body: 1.55;
+  --tracking-display: -.01em;
+  --tracking-caps: .1em;
+  --dot-mask: .092em;          /* tile of the dot mask on Persian display type */
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 72px;
+  --space-9: 104px;
+  --space-10: 144px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --border-w: 1px;
+  --shadow-1: 0 1px 2px rgba(13, 13, 13, .06);
+  --shadow-2: 0 14px 34px -18px rgba(13, 13, 13, .3);
+  --shadow-3: 0 30px 70px -30px rgba(13, 13, 13, .45);
+
+  --container: 1240px;
+  --gutter: clamp(16px, 3.4vw, 40px);
+  --control-h: 42px;
+  --control-h-lg: 52px;
+  --grid-step: 18px;           /* dot grid spacing */
+
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --dur-1: 120ms;
+  --dur-2: 220ms;
+  --dur-3: 420ms;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --canvas: #000000;
+  --surface: #0e0e0e;
+  --surface-2: #161616;
+  --surface-3: #222221;
+  --surface-ink: #1a1a1a;
+  --overlay: rgba(0, 0, 0, .7);
+  --ink: #f2f2f0;
+  --ink-2: #b0b0ab;
+  --ink-3: #8a8a86;
+  --ink-inverse: #0d0d0d;
+  --line: #232322;
+  --line-2: #343432;
+  --dot: #2a2a29;
+  --brand: #ff4a2e;
+  --brand-ink: #000000;
+  --brand-soft: color-mix(in oklab, var(--brand) 16%, transparent);
+  --brand-strong: color-mix(in oklab, var(--brand) 80%, #fff);
+  --glass: #050505;
+  --led: var(--brand);
+  --led-off: #191918;
+  --success: #6cc47e;
+  --success-soft: rgba(108, 196, 126, .14);
+  --warning: #e8b54a;
+  --warning-soft: rgba(232, 181, 74, .14);
+  --danger: #ff7a66;
+  --danger-soft: rgba(255, 122, 102, .14);
+  --info: #86aef0;
+  --info-soft: rgba(134, 174, 240, .14);
+  --chart-3: #6d6d69;
+  --chart-4: #3a3a38;
+  --chart-grid: #1f1f1e;
+  --shadow-2: 0 14px 34px -18px rgba(0, 0, 0, .9);
+  --shadow-3: 0 30px 70px -30px rgba(0, 0, 0, .95);
+  color-scheme: dark;
+}
+
+:root:lang(fa) {
+  --font-sans: "Vazirmatn", "Host Grotesk", Tahoma, sans-serif;
+  --font-display: "Vazirmatn", "Doto", sans-serif;
+  --font-mono: "Vazirmatn", "Geist Mono", ui-monospace, monospace;
+  --fs-display: clamp(52px, 6.8vw, 100px);
+  --lh-tight: 1.35;
+  --lh-snug: 1.6;
+  --lh-body: 1.85;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+}

@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="site">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Cheshmak Cube — a clock that winks">مکعب چشمک — ساعتی که چشمک می‌زند</title>
+<meta name="description" content="مکعب رومیزی با ۲۲۵ نقطهٔ نور برای ساعت، تایمر، آب‌وهوا و اعلان‌ها." data-alt-content="A desk cube with 225 points of light for the time, timers, weather and notifications.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Doto:wght,ROND@100..900,0..100&family=Host+Grotesk:wght@300..800&family=Geist+Mono:wght@400..600&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<script src="../assets/matrix.js" defer></script>
+<style>
+  .hero .stage .device { --size: min(360px, 74vw); }
+  .hero .price-from { display: inline-flex; align-items: baseline; gap: 6px; }
+</style>
+</head>
+<body>
+<svg class="sprite" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Icons: Pixelarticons (MIT License) — pixelarticons.com --><!--ICONS-->
+<symbol id="i-bell-off" viewBox="0 0 24 24" fill="currentColor"><path d="M9 2h6v2H9zm6 2h2v2h-2zM5 6h2v7H5zm12 0h2v6h-2zM3 13h2v4H3z"/> <path d="M3 15h14v2H3zm5 3h2v2H8zm6 0h2v2h-2zm-4 2h4v2h-4zM5 4h2v2H5zm2 2h2v2H7zm2 2h2v2H9zm2 2h2v2h-2zm2 2h2v2h-2z"/> <path d="M15 14h2v2h-2zm2 2h2v2h-2zm2 2h2v2h-2zM3 2h2v2H3z"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24" fill="currentColor"><path d="M10 18H8v-2h2v2Zm-2-2H6v-2h2v2Zm4-2v2h-2v-2h2Zm-6 0H4v-2h2v2Zm8 0h-2v-2h2v2Zm2-2h-2v-2h2v2Zm2-2h-2V8h2v2Zm2-2h-2V6h2v2Z"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24" fill="currentColor"><path d="M16 20H8v-2h8v2Zm-8-2H4v-2h4v2Zm12 0h-4v-2h4v2ZM4 16H2v-2h2v2Zm10-6h-2v2h2v-2h2v4h-2v2h-4v-2H8v-4h2V8h4v2Zm8 6h-2v-2h2v2ZM2 14H0v-4h2v4Zm22 0h-2v-4h2v4ZM4 10H2V8h2v2Zm18 0h-2V8h2v2ZM8 8H4V6h4v2Zm12 0h-4V6h4v2Zm-4-2H8V4h8v2Z"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24" fill="currentColor"><path d="M20 18H4v-2h16v2Zm0-5H4v-2h16v2Zm0-5H4V6h16v2Z"/></symbol>
+<symbol id="i-minus" viewBox="0 0 24 24" fill="currentColor"><path d="M4 11h16v2H4z"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M18 22H8v-2h10v2ZM8 20H6v-2h2v2Zm12 0h-2v-2h2v2ZM6 18H4v-2h2v2Zm16 0h-2v-4h-2v-2h2v-2h2v8ZM4 16H2V6h2v10Zm14 0h-6v-2h6v2Zm-6-2h-2v-2h2v2Zm-2-2H8V6h2v6ZM6 6H4V4h2v2Zm8-2h-2v2h-2V4H6V2h8v2Z"/></symbol>
+<symbol id="i-pencil" viewBox="0 0 24 24" fill="currentColor"><path d="M4 16H6V18H8V20H10V22H2V14H4V16ZM12 20H10V18H12V20ZM14 18H12V16H14V18ZM10 16H8V14H10V16ZM16 16H14V14H16V16ZM6 14H4V12H6V14ZM12 14H10V12H12V14ZM18 14H16V12H18V14ZM8 12H6V10H8V12ZM14 12H12V10H14V12ZM20 12H18V10H20V12ZM10 10H8V8H10V10ZM18 10H16V8H18V10ZM22 10H20V8H22V10ZM12 8H10V6H12V8ZM16 8H14V6H16V8ZM20 8H18V6H20V8ZM14 6H12V4H14V6ZM18 6H16V4H18V6ZM16 4H14V2H16V4Z"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24" fill="currentColor"><path d="M13 11h7v2h-7v7h-2v-7H4v-2h7V4h2v7Z"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24" fill="currentColor"><path d="M4 2h16v2H4zM2 4h2v10H2zm18 0h2v10h-2zM4 14h2v2H4zm2 2h2v2H6zm4 4h4v2h-4zm10-6h-2v2h2zm-2 2h-2v2h2zm-2 2h-2v2h2zm-6 0H8v2h2z"/></symbol>
+<symbol id="i-shopping-bag" viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h18v2H3zm2 14h14v2H5zM3 8h2v12H3zm16 0h2v12h-2z"/> <path d="M7 4h2v6H7zm2-2h6v2H9zm6 2h2v6h-2z"/></symbol>
+<symbol id="i-tools" viewBox="0 0 24 24" fill="currentColor"><path d="M9 22H7v-2h2v2Zm12-6h2v6h-6v-6h2v-6h2v6Zm-2 2v2h2v-2h-2ZM7 20H5v-8h2v8Zm4 0H9v-8h2v8Zm-6-8H3v-2h2v2Zm8 0h-2v-2h2v2ZM3 10H1V4h2v6Zm12 0h-2V4h2v6Zm4 0h-2V4h2v6Zm4 0h-2V4h2v6ZM7 6h2V2h4v2h-2v4H5V4H3V2h4v4Zm14-2h-2V2h2v2Z"/></symbol>
+<symbol id="i-truck" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h12v2H2zM0 16h4v2H0zm10 0h4v2h-4zm12-4h2v6h-2zm-8-6h2v12h-2zM0 6h2v10H0zm20 4h2v2h-2z"/> <path d="M14 8h6v2h-6zM4 14h6v2H4zm10 0h6v2h-6zM4 16h2v2H4zm10 0h2v2h-2zM4 18h6v2H4zm10 0h6v2h-6zm-6-2h2v2H8zm10 0h4v2h-4z"/></symbol>
+<!--/ICONS--></svg>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+
+<header class="site-head">
+  <div class="container">
+    <a class="logo" href="#top"><span data-alt="cheshmak">چشمک</span><i class="led" aria-hidden="true"></i></a>
+    <nav class="nav" id="nav" data-dismissable aria-label="اصلی" data-alt-aria-label="Main">
+      <a href="#top" aria-current="page" data-alt="Cube">مکعب</a>
+      <a href="#faces" data-alt="Faces">چهره‌ها</a>
+      <a href="#specs" data-alt="Specs">مشخصات</a>
+      <a href="#store" data-alt="Store">فروشگاه</a>
+      <a href="#support" data-alt="Support">پشتیبانی</a>
+      <a href="dashboard.html" data-alt="The app">اپ</a>
+    </nav>
+    <div class="head-end">
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+      <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="حالت تیره" data-alt-aria-label="Dark mode"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg></button>
+      <a class="btn btn-ghost btn-icon btn-sm cart-btn" href="#store"><svg class="ic" aria-hidden="true"><use href="#i-shopping-bag"/></svg><span class="sr-only" data-alt="Cart">سبد خرید</span><span class="count" id="cart-count" data-num="0">۰</span></a>
+      <a class="btn btn-sm hide-sm" href="#store"><i class="led" aria-hidden="true"></i><span data-alt="Pre-order">پیش‌خرید</span></a>
+      <button class="btn btn-outline btn-icon btn-sm menu-btn" type="button" data-toggle="#nav" aria-controls="nav" aria-expanded="false" aria-label="منو" data-alt-aria-label="Menu"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <!-- ============================================ hero -->
+  <section class="hero dotgrid" id="top" aria-labelledby="hero-title">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="micro row" style="gap: 10px"><i class="led glow" aria-hidden="true"></i><span data-alt="New · desk companion · 2026">تازه · همراه رومیزی · ۱۴۰۵</span></span>
+          <h1 class="display" id="hero-title"><span data-alt="A clock that winks">ساعتی که چشمک می‌زند</span><i class="dot-end" aria-hidden="true"></i></h1>
+          <p class="lead" data-alt="A small cube for your desk with 225 points of light. It shows the time, timers, the weather and the messages you choose — without a sound. A glance, not a scroll.">مکعبی کوچک برای میزتان با ۲۲۵ نقطهٔ نور. ساعت، تایمر، آب‌وهوا و پیام‌هایی را که خودتان انتخاب کرده‌اید نشان می‌دهد — بی‌صدا. یک نگاه، نه یک اسکرول.</p>
+          <div class="row" style="gap: 10px 14px">
+            <a class="btn btn-lg" href="#store"><i class="led" aria-hidden="true"></i><span data-alt="Pre-order">پیش‌خرید</span></a>
+            <a class="btn btn-lg btn-outline" href="#faces" data-alt="See the faces">چهره‌ها را ببینید</a>
+            <span class="price-from small muted"><span data-alt="from">از</span> <b data-price="8900000|89">۸٫۹ میلیون تومان</b></span>
+          </div>
+          <div class="hero-note small muted">
+            <span><svg class="ic sm" aria-hidden="true"><use href="#i-truck"/></svg><span data-alt="Ships from late October">ارسال از اول آبان</span></span>
+            <span><svg class="ic sm" aria-hidden="true"><use href="#i-shield"/></svg><span data-alt="2-year warranty, 5 years of parts">۲ سال گارانتی، ۵ سال قطعه</span></span>
+          </div>
+        </div>
+        <div class="stage">
+          <div class="device" data-finish="paper"><div class="matrix" data-matrix="wink" role="img" aria-label="صفحهٔ نقطه‌ای مکعب: صورتکی که چشمک می‌زند" data-alt-aria-label="The Cube’s dot face: a winking smiley"></div></div>
+          <span class="callout micro" style="inset-block-start: 47%; inset-inline-start: 0" aria-hidden="true"><span data-alt="15×15 LEDs">۱۵×۱۵ LED</span></span>
+          <span class="callout c-end micro" style="inset-block-start: 6%; inset-inline-end: 0" aria-hidden="true"><span data-alt="Crown: turn, press">تاج: بچرخان، فشار بده</span></span>
+          <span class="callout c-end micro" style="inset-block-end: 14%; inset-inline-end: 0" aria-hidden="true"><span data-alt="USB-C · 40 h">۴۰ ساعت · USB-C</span></span>
+        </div>
+      </div>
+      <div class="numbers">
+        <div><b class="dots big" data-num="225">۲۲۵</b><span class="micro" data-alt="points of light">نقطهٔ نور</span></div>
+        <div><b class="dots big" data-num="40">۴۰</b><span class="micro" data-alt="hours on one charge">ساعت با یک شارژ</span></div>
+        <div><b class="dots big" data-num="182">۱۸۲</b><span class="micro" data-alt="grams">گرم</span></div>
+        <div><b class="dots big" data-num="5">۵</b><span class="micro" data-alt="years of spare parts">سال قطعهٔ یدکی</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ faces -->
+  <section class="section" id="faces" aria-labelledby="faces-title">
+    <div class="container">
+      <div class="sec-head">
+        <span class="micro" data-alt="01 — Faces">۰۱ — چهره‌ها</span>
+        <h2 class="h2" id="faces-title" data-alt="Six faces, one glance.">شش چهره، یک نگاه.</h2>
+        <p class="lead" data-alt="Turn the crown to move between faces, press it to act. Every face is drawn with the same 225 dots.">با چرخاندن تاج بین چهره‌ها بروید و با فشار دادنش کاری انجام دهید. همهٔ چهره‌ها با همان ۲۲۵ نقطه کشیده می‌شوند.</p>
+      </div>
+      <div class="faces">
+        <div class="face-list" role="tablist" aria-orientation="vertical" aria-label="چهره‌ها" data-alt-aria-label="Faces">
+          <button type="button" role="tab" id="f-clock" aria-controls="fp-clock" aria-selected="true"><i class="led" aria-hidden="true"></i><span data-alt="Clock">ساعت</span><span class="micro" data-alt="01">۰۱</span></button>
+          <button type="button" role="tab" id="f-timer" aria-controls="fp-timer" aria-selected="false"><i class="led" aria-hidden="true"></i><span data-alt="Timer">تایمر</span><span class="micro" data-alt="02">۰۲</span></button>
+          <button type="button" role="tab" id="f-eq" aria-controls="fp-eq" aria-selected="false"><i class="led" aria-hidden="true"></i><span data-alt="Now playing">در حال پخش</span><span class="micro" data-alt="03">۰۳</span></button>
+          <button type="button" role="tab" id="f-weather" aria-controls="fp-weather" aria-selected="false"><i class="led" aria-hidden="true"></i><span data-alt="Weather">آب‌وهوا</span><span class="micro" data-alt="04">۰۴</span></button>
+          <button type="button" role="tab" id="f-bell" aria-controls="fp-bell" aria-selected="false"><i class="led" aria-hidden="true"></i><span data-alt="Notifications">اعلان‌ها</span><span class="micro" data-alt="05">۰۵</span></button>
+          <button type="button" role="tab" id="f-battery" aria-controls="fp-battery" aria-selected="false"><i class="led" aria-hidden="true"></i><span data-alt="Battery">باتری</span><span class="micro" data-alt="06">۰۶</span></button>
+        </div>
+        <div>
+          <div role="tabpanel" id="fp-clock" aria-labelledby="f-clock" class="face-panel">
+            <div class="matrix" data-matrix="clock" role="img" aria-label="چهرهٔ ساعت با عقربه‌های نقطه‌ای" data-alt-aria-label="Clock face with dotted hands"></div>
+            <div class="stack"><h3 class="h3" data-alt="Hands made of dots">عقربه‌هایی از نقطه</h3><p class="muted" data-alt="Twelve o’clock is always the red dot, so the face reads at a glance and in the dark. Night mode dims everything to five percent.">ساعت دوازده همیشه نقطهٔ قرمز است تا صفحه با یک نگاه و در تاریکی هم خوانده شود. حالت شب همه چیز را تا پنج درصد کم‌نور می‌کند.</p><span class="micro" data-alt="Crown: turn to set an alarm">تاج: برای تنظیم زنگ بچرخانید</span></div>
+          </div>
+          <div role="tabpanel" id="fp-timer" aria-labelledby="f-timer" class="face-panel" hidden>
+            <div class="matrix" data-matrix="timer" data-value="25/60" role="img" aria-label="تایمر: ۲۵ دقیقه از ۶۰ باقی مانده" data-alt-aria-label="Timer: 25 of 60 minutes left"></div>
+            <div class="stack"><h3 class="h3" data-alt="One dot, one minute">هر نقطه یک دقیقه</h3><p class="muted" data-alt="The ring around the edge counts down the minutes. When it runs out the Cube winks once — no alarm, no buzzing.">حلقهٔ دور صفحه دقیقه‌ها را می‌شمارد. وقتی تمام شد، مکعب یک بار چشمک می‌زند — نه زنگی، نه لرزشی.</p><span class="micro" data-alt="Crown: press to start, turn to change">تاج: فشار برای شروع، چرخش برای تغییر</span></div>
+          </div>
+          <div role="tabpanel" id="fp-eq" aria-labelledby="f-eq" class="face-panel" hidden>
+            <div class="matrix" data-matrix="eq" role="img" aria-label="میله‌های صدا در حال پخش موسیقی" data-alt-aria-label="Sound bars while music plays"></div>
+            <div class="stack"><h3 class="h3" data-alt="Bars that listen">میله‌هایی که گوش می‌دهند</h3><p class="muted" data-alt="Whatever plays on the 2-watt speaker or your phone moves the bars. The top dot of each bar is the red one.">هرچه از بلندگوی ۲ واتی یا گوشی‌تان پخش شود، میله‌ها را تکان می‌دهد. نقطهٔ بالای هر میله قرمز است.</p><span class="micro" data-alt="Crown: press to pause">تاج: فشار برای توقف</span></div>
+          </div>
+          <div role="tabpanel" id="fp-weather" aria-labelledby="f-weather" class="face-panel" hidden>
+            <div class="matrix" data-matrix="weather" role="img" aria-label="آب‌وهوا: آفتابی با کمی ابر" data-alt-aria-label="Weather: sunny with some cloud"></div>
+            <div class="stack"><h3 class="h3" data-alt="Today, in one picture">امروز، در یک تصویر</h3><p class="muted" data-alt="A red sun for a warm day, a white cloud for a grey one. Turn the crown for the next three hours.">آفتاب قرمز برای روز گرم، ابر سفید برای روز خاکستری. با چرخاندن تاج سه ساعت بعد را ببینید.</p><span class="micro" data-alt="Updates every 30 minutes">هر ۳۰ دقیقه به‌روز می‌شود</span></div>
+          </div>
+          <div role="tabpanel" id="fp-bell" aria-labelledby="f-bell" class="face-panel" hidden>
+            <div class="matrix" data-matrix="bell" data-value="3" role="img" aria-label="اعلان: زنگوله با نشانهٔ قرمز" data-alt-aria-label="Notification: a bell with a red badge"></div>
+            <div class="stack"><h3 class="h3" data-alt="Only the people you choose">فقط کسانی که انتخاب کرده‌اید</h3><p class="muted" data-alt="Pick which people and apps may light it up and give each one a glyph. There is no sound; focus mode dims even the light.">انتخاب کنید کدام آدم‌ها و برنامه‌ها اجازهٔ روشن کردنش را دارند و برای هر کدام نشانه‌ای بگذارید. صدایی در کار نیست؛ حالت تمرکز حتی نور را هم کم می‌کند.</p><span class="micro" data-alt="Crown: press to clear">تاج: فشار برای پاک کردن</span></div>
+          </div>
+          <div role="tabpanel" id="fp-battery" aria-labelledby="f-battery" class="face-panel" hidden>
+            <div class="matrix" data-matrix="battery" data-value="72" role="img" aria-label="باتری: ۷۲ درصد" data-alt-aria-label="Battery: 72 percent"></div>
+            <div class="stack"><h3 class="h3" data-alt="A working week per charge">یک هفتهٔ کاری با یک شارژ</h3><p class="muted" data-alt="Forty hours of light on one charge. Below twenty percent the dots turn red and the Cube asks for its cable.">چهل ساعت نور با یک شارژ. زیر بیست درصد نقطه‌ها قرمز می‌شوند و مکعب کابلش را می‌خواهد.</p><span class="micro" data-alt="USB-C · full in 90 minutes">USB-C · شارژ کامل در ۹۰ دقیقه</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ design -->
+  <section class="section" id="design" aria-labelledby="design-title">
+    <div class="container">
+      <div class="sec-head">
+        <span class="micro" data-alt="02 — Design">۰۲ — طراحی</span>
+        <h2 class="h2" id="design-title" data-alt="Made of dots, not of notifications.">ساخته از نقطه، نه از اعلان.</h2>
+      </div>
+      <div class="features">
+        <article class="feature"><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-eye"/></svg></span><h3 class="h3" data-alt="Glance, don’t scroll">نگاه کنید، اسکرول نکنید</h3><p data-alt="Everything you need fits in 225 dots. Everything else can wait in your pocket.">هرچه لازم دارید در ۲۲۵ نقطه جا می‌شود. بقیه می‌تواند در جیبتان منتظر بماند.</p></article>
+        <article class="feature"><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-bell-off"/></svg></span><h3 class="h3" data-alt="Quiet by design">بی‌صدا از اول</h3><p data-alt="Notifications are light, never sound. Focus mode dims even the light until you are done.">اعلان‌ها نور هستند، هرگز صدا. حالت تمرکز تا کارتان تمام نشده نور را هم کم می‌کند.</p></article>
+        <article class="feature"><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-pencil"/></svg></span><h3 class="h3" data-alt="Draw your own">چهرهٔ خودتان را بکشید</h3><p data-alt="Draw glyphs dot by dot in the app and give one to each person, app or routine.">در اپ نقطه‌به‌نقطه نشانه بکشید و به هر آدم، برنامه یا روال یکی بدهید.</p></article>
+        <article class="feature"><span class="tile"><svg class="ic" aria-hidden="true"><use href="#i-tools"/></svg></span><h3 class="h3" data-alt="Made to be opened">ساخته‌شده برای باز شدن</h3><p data-alt="Six screws, a battery you can swap and spare parts for five years. The repair guide is public.">شش پیچ، باتری قابل تعویض و قطعهٔ یدکی تا پنج سال. راهنمای تعمیرش هم عمومی است.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ specs -->
+  <section class="section" id="specs" aria-labelledby="specs-title">
+    <div class="container">
+      <div class="sec-head">
+        <span class="micro" data-alt="03 — Specs">۰۳ — مشخصات</span>
+        <h2 class="h2" id="specs-title" data-alt="Everything, in numbers.">همه چیز، با عدد.</h2>
+      </div>
+      <div class="spec-wrap">
+        <table class="spec">
+          <thead><tr><th scope="col"><span class="micro" data-alt="Spec">مشخصه</span></th><th scope="col"><span class="micro" data-alt="Cube">مکعب</span></th><th scope="col"><span class="micro" data-alt="Cube Mini">مکعب مینی</span></th></tr></thead>
+          <tbody>
+            <tr><th scope="row" data-alt="Display">صفحه</th><td data-alt="15 × 15 · 225 LEDs">۱۵ × ۱۵ · ۲۲۵ LED</td><td data-alt="9 × 9 · 81 LEDs">۹ × ۹ · ۸۱ LED</td></tr>
+            <tr><th scope="row" data-alt="Brightness">روشنایی</th><td data-alt="600 nits, ambient sensor">۶۰۰ نیت، حسگر نور محیط</td><td data-alt="450 nits">۴۵۰ نیت</td></tr>
+            <tr><th scope="row" data-alt="Battery">باتری</th><td data-alt="40 h · replaceable">۴۰ ساعت · قابل تعویض</td><td data-alt="18 h">۱۸ ساعت</td></tr>
+            <tr><th scope="row" data-alt="Speaker">بلندگو</th><td data-alt="2 W">۲ وات</td><td class="off">—</td></tr>
+            <tr><th scope="row" data-alt="Size">اندازه</th><td data-alt="92 × 92 × 92 mm">۹۲ × ۹۲ × ۹۲ میلی‌متر</td><td data-alt="64 × 64 × 64 mm">۶۴ × ۶۴ × ۶۴ میلی‌متر</td></tr>
+            <tr><th scope="row" data-alt="Weight">وزن</th><td data-alt="182 g">۱۸۲ گرم</td><td data-alt="96 g">۹۶ گرم</td></tr>
+            <tr><th scope="row" data-alt="Connectivity">اتصال</th><td><span class="ltr">Wi-Fi 6 · Bluetooth 5.3</span></td><td><span class="ltr">Bluetooth 5.3</span></td></tr>
+            <tr><th scope="row" data-alt="Body">بدنه</th><td data-alt="Recycled aluminium, glass">آلومینیوم بازیافتی، شیشه</td><td data-alt="Recycled polycarbonate">پلی‌کربنات بازیافتی</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ store -->
+  <section class="section" id="store" aria-labelledby="store-title">
+    <div class="container">
+      <div class="sec-head">
+        <span class="micro" data-alt="04 — Store">۰۴ — فروشگاه</span>
+        <h2 class="h2" id="store-title" data-alt="Build your cube.">مکعب خودتان را بسازید.</h2>
+      </div>
+      <div class="buy">
+        <div class="buy-stage dotgrid"><div class="device" id="buy-device" data-finish="paper"><div class="matrix" id="buy-matrix" data-matrix="wink" role="img" aria-label="پیش‌نمایش مکعب" data-alt-aria-label="Cube preview"></div></div></div>
+        <div class="buy-panel">
+          <div class="stack" style="gap: 8px"><span class="micro" data-alt="Price">قیمت</span><div class="row" style="align-items: baseline; gap: 12px"><b class="dots big price-big" id="price">۱۴٫۹</b><span class="muted" id="price-unit">میلیون تومان</span></div></div>
+          <div class="field"><span class="label" id="model-l" data-alt="Model">مدل</span>
+            <div class="seg" data-group="model" role="group" aria-labelledby="model-l">
+              <button type="button" aria-pressed="true" data-value="cube" data-alt="Cube · 15×15">مکعب · ۱۵×۱۵</button>
+              <button type="button" aria-pressed="false" data-value="mini" data-alt="Cube Mini · 9×9">مکعب مینی · ۹×۹</button>
+            </div>
+          </div>
+          <div class="field"><span class="label" id="finish-l"><span data-alt="Finish">رنگ بدنه</span> · <span class="muted" id="finish-name" data-alt="Paper">کاغذی</span></span>
+            <div class="swatches" data-group="finish" role="group" aria-labelledby="finish-l">
+              <button type="button" aria-pressed="true" data-value="paper" style="--c: linear-gradient(155deg, #fdfdfb, #d8d8d3)" aria-label="کاغذی" data-alt-aria-label="Paper"></button>
+              <button type="button" aria-pressed="false" data-value="ink" style="--c: linear-gradient(155deg, #3a3a38, #0e0e0e)" aria-label="جوهری" data-alt-aria-label="Ink"></button>
+              <button type="button" aria-pressed="false" data-value="signal" style="--c: linear-gradient(155deg, color-mix(in oklab, var(--brand) 78%, #fff), var(--brand-strong))" aria-label="سیگنال" data-alt-aria-label="Signal"></button>
+            </div>
+          </div>
+          <div class="field"><span class="label" id="qty-l" data-alt="Quantity">تعداد</span>
+            <div class="row"><div class="qty" role="group" aria-labelledby="qty-l"><button type="button" data-qty="-1" aria-label="یکی کمتر" data-alt-aria-label="One fewer"><svg class="ic" aria-hidden="true"><use href="#i-minus"/></svg></button><output id="qty" aria-live="polite" data-num="1">۱</output><button type="button" data-qty="1" aria-label="یکی بیشتر" data-alt-aria-label="One more"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button></div></div>
+          </div>
+          <ul class="ticks">
+            <li><svg class="ic sm" aria-hidden="true"><use href="#i-check"/></svg><span data-alt="In the box: Cube, USB-C cable, magnetic stand">در جعبه: مکعب، کابل USB-C، پایهٔ مغناطیسی</span></li>
+            <li><svg class="ic sm" aria-hidden="true"><use href="#i-truck"/></svg><span data-alt="Free delivery in Tehran, 2–4 working days">ارسال رایگان در تهران، ۲ تا ۴ روز کاری</span></li>
+            <li><svg class="ic sm" aria-hidden="true"><use href="#i-shield"/></svg><span data-alt="30 days to change your mind">۳۰ روز فرصت برای پس دادن</span></li>
+          </ul>
+          <button class="btn btn-lg btn-block" type="button" id="add"><i class="led" aria-hidden="true"></i><span data-alt="Add to cart">افزودن به سبد</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ questions -->
+  <section class="section" id="support" aria-labelledby="support-title">
+    <div class="container" style="max-inline-size: 980px">
+      <div class="sec-head">
+        <span class="micro" data-alt="05 — Questions">۰۵ — پرسش‌ها</span>
+        <h2 class="h2" id="support-title" data-alt="Before you buy.">پیش از خرید.</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq" open><summary data-alt="Does it work without a phone?">بدون گوشی هم کار می‌کند؟</summary><p data-alt="Yes. The clock, timer and battery faces work on their own; the app adds notifications, weather and your own glyphs.">بله. ساعت، تایمر و باتری بدون اپ کار می‌کنند؛ اپ اعلان‌ها، آب‌وهوا و نشانه‌های شخصی را اضافه می‌کند.</p></details>
+        <details class="faq"><summary data-alt="Will it keep me up at night?">شب‌ها اذیت نمی‌کند؟</summary><p data-alt="Night mode dims the dots to five percent and shows only the clock. The ambient light sensor switches it on by itself.">حالت شب نقطه‌ها را تا پنج درصد کم‌نور می‌کند و فقط ساعت را نشان می‌دهد. حسگر نور محیط خودش آن را روشن می‌کند.</p></details>
+        <details class="faq"><summary data-alt="What if it breaks?">اگر خراب شود چه؟</summary><p data-alt="Two years of warranty, and parts from the battery to the glass for five years. The repair guide and the screw sizes are on our support page.">دو سال گارانتی، و قطعه‌ها — از باتری تا شیشه — تا پنج سال. راهنمای تعمیر و اندازهٔ پیچ‌ها در صفحهٔ پشتیبانی است.</p></details>
+        <details class="faq"><summary data-alt="What does it work with?">با چه چیزهایی کار می‌کند؟</summary><p data-alt="Android and iOS, and any calendar or messaging app that sends notifications. Several Cubes can share one account.">اندروید و iOS، و هر تقویم یا پیام‌رسانی که اعلان بفرستد. چند مکعب می‌توانند یک حساب داشته باشند.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ news band -->
+  <section class="section" id="news" aria-labelledby="news-title">
+    <div class="container">
+      <div class="band">
+        <span class="micro" data-alt="Not ready yet?">هنوز مطمئن نیستید؟</span>
+        <h2 class="display" id="news-title" style="font-size: clamp(38px, 6vw, 84px)"><span data-alt="We’ll wink when it ships">وقتی رسید، چشمک می‌زنیم</span><i class="dot-end" aria-hidden="true"></i></h2>
+        <p class="lead" data-alt="One email when the Cube ships, one when the app learns something new. Nothing else.">یک ایمیل وقتی مکعب ارسال شد، یکی وقتی اپ چیز تازه‌ای یاد گرفت. همین.</p>
+        <form data-validate data-success="ثبت شد. منتظر چشمک باشید." data-success-alt="You’re on the list. Watch for the wink.">
+          <div class="field"><label class="sr-only" for="email" data-alt="Email">ایمیل</label><input class="input ltr" id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"></div>
+          <button class="btn" type="submit" data-alt="Notify me">خبرم کن</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="stack" style="gap: 12px"><a class="logo" href="#top"><span data-alt="cheshmak">چشمک</span><i class="led" aria-hidden="true"></i></a><p class="small muted" style="max-inline-size: 30ch" data-alt="Small objects made of light, designed and repaired in Tehran.">اشیای کوچکی از جنس نور، طراحی و تعمیرشده در تهران.</p></div>
+      <div class="stack" style="gap: 12px"><p class="micro" data-alt="Product">محصول</p><ul><li><a href="#top" data-alt="Cube">مکعب</a></li><li><a href="#store" data-alt="Cube Mini">مکعب مینی</a></li><li><a href="dashboard.html" data-alt="The app">اپ</a></li></ul></div>
+      <div class="stack" style="gap: 12px"><p class="micro" data-alt="Support">پشتیبانی</p><ul><li><a href="#support" data-alt="Questions">پرسش‌ها</a></li><li><a href="#support" data-alt="Repair guide">راهنمای تعمیر</a></li><li><a href="#support" data-alt="Warranty">گارانتی</a></li></ul></div>
+      <div class="stack" style="gap: 12px"><p class="micro" data-alt="Company">شرکت</p><ul><li><a href="#top" data-alt="About">دربارهٔ ما</a></li><li><a href="#top" data-alt="Jobs">همکاری</a></li><li><a href="#news" data-alt="Newsletter">خبرنامه</a></li></ul></div>
+    </div>
+    <span class="foot-word dots big" aria-hidden="true" data-alt="cheshmak">چشمک</span>
+    <div class="split small subtle" style="margin-block-start: var(--space-5); flex-wrap: wrap"><span data-alt="© 2026 Cheshmak">© ۱۴۰۵ چشمک</span><span data-alt="Prices include VAT">قیمت‌ها با مالیات بر ارزش افزوده است</span></div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const $ = (s) => document.querySelector(s), $$ = (s) => Array.from(document.querySelectorAll(s));
+    const fa = () => tf.lang() === 'fa';
+    const PRICE = { cube: [14900000, 149], mini: [8900000, 89] };
+    const FINISH = { paper: ['کاغذی', 'Paper'], ink: ['جوهری', 'Ink'], signal: ['سیگنال', 'Signal'] };
+    let model = 'cube', qty = 1, cart = 0;
+    // prices: Toman (in millions) in Persian, dollars in English
+    const paint = () => {
+      $$('[data-price]').forEach((el) => { const [t, u] = el.dataset.price.split('|').map(Number); el.textContent = fa() ? `${tf.fmt(t / 1e6, 'dec1')} میلیون تومان` : tf.fmt(u, 'usd'); });
+      const [t, u] = PRICE[model];
+      $('#price').textContent = fa() ? tf.fmt(t * qty / 1e6, 'dec1') : tf.fmt(u * qty, 'usd');
+      $('#price-unit').textContent = fa() ? 'میلیون تومان' : (qty > 1 ? `${qty} × ${tf.fmt(u, 'usd')}` : 'USD');
+    };
+    document.addEventListener('tf:lang', paint);
+    paint();
+    document.addEventListener('tf:change', (e) => {
+      const group = e.target.closest('[data-group]')?.dataset.group, v = e.detail.value;
+      if (group === 'model') {
+        model = v;
+        const m = $('#buy-matrix');
+        $('#buy-device').dataset.model = v;
+        if (v === 'mini') m.dataset.n = '9'; else delete m.dataset.n;
+        dotMatrix.render(m); paint();
+      }
+      if (group === 'finish') {
+        $('#buy-device').dataset.finish = v;
+        const name = $('#finish-name'), [f, en] = FINISH[v];
+        name.textContent = fa() ? f : en; name.dataset.alt = fa() ? en : f;
+      }
+    });
+    $$('[data-qty]').forEach((b) => b.addEventListener('click', () => {
+      qty = Math.max(1, Math.min(9, qty + Number(b.dataset.qty)));
+      const out = $('#qty'); out.dataset.num = qty; out.textContent = tf.fmt(qty); paint();
+    }));
+    $('#add').addEventListener('click', () => {
+      cart += qty;
+      const c = $('#cart-count'); c.dataset.num = cart; c.textContent = tf.fmt(cart);
+      const what = model === 'mini' ? (fa() ? 'مکعب مینی' : 'Cube Mini') : (fa() ? 'مکعب' : 'Cube');
+      tf.toast(fa() ? `${tf.fmt(qty)} ${what} به سبد اضافه شد` : `Added ${qty} × ${what} to your cart`);
+    });
+  });
+</script>
+</body>
+</html>
