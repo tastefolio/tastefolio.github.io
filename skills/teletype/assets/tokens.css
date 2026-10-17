@@ -1,0 +1,156 @@
+/* Teletype — design tokens (Tastefolio). Terminal-native: one monospace family on a character grid,
+   phosphor ink on near-black, one amber signal, the 6-color ANSI set for status and data.
+   Default theme is dark (<html data-theme="dark">); the light theme is "printout" paper with green-bar tables. */
+:root, [data-theme="dark"] {
+  --canvas: #0f0f0d;
+  --surface: #141412;
+  --surface-2: #1b1b18;
+  --surface-3: #262622;
+  --surface-ink: #e8e5d8;
+  --overlay: rgba(6, 6, 5, .78);
+
+  --ink: #e8e5d8;           /* phosphor white, slightly warm */
+  --ink-2: #aaa797;
+  --ink-3: #77746a;
+  --ink-inverse: #0f0f0d;
+
+  --line: #2c2b27;          /* pane borders */
+  --line-2: #45433c;        /* focused-less dividers, inputs */
+
+  --brand: #ffaf38;          /* amber — cursor, prompt, active pane, primary */
+  --brand-ink: #111110;
+  --brand-soft: color-mix(in oklab, var(--brand) 16%, transparent);
+  --brand-strong: color-mix(in oklab, var(--brand) 78%, #fff);
+  --focus: var(--brand);
+
+  /* ANSI set — the only other colors; used for status, log levels, diff and chart series */
+  --ansi-red: #ff6e5e;
+  --ansi-green: #93d46b;
+  --ansi-yellow: #f2d06b;
+  --ansi-blue: #73b6ff;
+  --ansi-magenta: #d796ff;
+  --ansi-cyan: #62d8c9;
+
+  --success: var(--ansi-green);
+  --success-soft: color-mix(in oklab, var(--ansi-green) 14%, transparent);
+  --warning: var(--ansi-yellow);
+  --warning-soft: color-mix(in oklab, var(--ansi-yellow) 14%, transparent);
+  --danger: var(--ansi-red);
+  --danger-soft: color-mix(in oklab, var(--ansi-red) 14%, transparent);
+  --info: var(--ansi-cyan);
+  --info-soft: color-mix(in oklab, var(--ansi-cyan) 14%, transparent);
+
+  --band: transparent;       /* green-bar paper bands (light theme only) */
+  --glow: 0 0 .55em color-mix(in oklab, var(--brand) 45%, transparent);
+
+  --chart-1: var(--brand);
+  --chart-2: var(--ansi-cyan);
+  --chart-3: var(--ansi-magenta);
+  --chart-4: var(--ansi-green);
+  --chart-5: var(--ansi-blue);
+  --chart-6: var(--ansi-red);
+  --chart-grid: #26251f;
+  --chart-axis: var(--ink-3);
+  --chart-curve: step;
+  --chart-stroke: 1.5;
+  --chart-area: .1;
+  --chart-radius: 0;
+  --chart-bar-gap: .45;
+  --chart-donut: 10;
+  --chart-gap: 3;
+  --chart-dots: 0;
+
+  --font-sans: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;   /* yes: the body face is mono */
+  --font-display: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  --fs-xs: 11px;
+  --fs-sm: 12px;
+  --fs-md: 14px;
+  --fs-lg: 16px;
+  --fs-xl: 20px;
+  --fs-2xl: 28px;
+  --fs-3xl: 40px;
+  --fs-display: clamp(34px, 5.4vw, 76px);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --fw-display: 800;
+  --lh-tight: 1.08;
+  --lh-snug: 1.3;
+  --lh-body: 1.6;            /* one terminal row = 1.6em */
+  --tracking-display: -.035em;
+  --tracking-caps: .08em;
+
+  /* spacing follows the row height (≈ 22px at 14px) and the character cell (1ch) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 22px;
+  --space-6: 32px;
+  --space-7: 44px;
+  --space-8: 66px;
+  --space-9: 88px;
+  --space-10: 132px;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-pill: 0;
+  --border-w: 1px;
+  --shadow-1: none;
+  --shadow-2: none;
+  --shadow-3: 0 24px 64px rgba(0, 0, 0, .55);
+
+  --container: 1240px;
+  --gutter: clamp(16px, 3vw, 32px);
+  --control-h: 32px;
+  --control-h-lg: 40px;
+
+  --ease: steps(3, end);     /* mechanical, frame-stepped */
+  --dur-1: 60ms;
+  --dur-2: 120ms;
+  --dur-3: 200ms;
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --canvas: #f3f0e4;         /* continuous-feed printout paper */
+  --surface: #f8f6ed;
+  --surface-2: #e9e5d6;
+  --surface-3: #dcd7c3;
+  --surface-ink: #1c1b17;
+  --overlay: rgba(40, 38, 30, .45);
+  --ink: #1c1b17;
+  --ink-2: #4b483f;
+  --ink-3: #6f6b5f;
+  --ink-inverse: #f3f0e4;
+  --line: #cfc9b4;
+  --line-2: #a9a28a;
+  --brand: #b35900;
+  --brand-ink: #ffffff;
+  --ansi-red: #c4321f;
+  --ansi-green: #3d7a1f;
+  --ansi-yellow: #8a6400;
+  --ansi-blue: #1f5fae;
+  --ansi-magenta: #8a3fb5;
+  --ansi-cyan: #0f7a6d;
+  --band: rgba(61, 122, 31, .075);
+  --glow: none;
+  --chart-grid: #ddd8c5;
+  --shadow-3: 0 18px 50px rgba(40, 38, 30, .22);
+  color-scheme: light;
+}
+
+:root:lang(fa) {
+  /* Latin and digits in code stay JetBrains Mono; Persian script falls through to Vazir Code (monospace Persian) */
+  --font-sans: "JetBrains Mono", "Vazir Code", ui-monospace, monospace;
+  --font-display: "JetBrains Mono", "Vazir Code", ui-monospace, monospace;
+  --font-mono: "JetBrains Mono", "Vazir Code", ui-monospace, monospace;
+  --fs-md: 15px;
+  --fs-display: clamp(30px, 4.6vw, 64px);
+  --lh-tight: 1.45;
+  --lh-snug: 1.6;
+  --lh-body: 1.95;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+}

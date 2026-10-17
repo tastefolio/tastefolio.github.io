@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-alt-lang="fa" data-demo="dashboard" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="کنسول kiln · acme/web">kiln console · acme/web</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-code-font@v1.1.2/dist/font-face.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .top-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-6) 3ch; }
+  @media (max-width: 960px) { .top-grid { grid-template-columns: minmax(0, 1fr); } }
+  .meters { display: grid; gap: 6px; }
+  .meters .meter { --label: 13ch; }
+  .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) 2ch; margin-block-end: var(--space-3); }
+  .toolbar .cmd { inline-size: min(100%, 34ch); min-block-size: var(--control-h); }
+  .run-head { display: grid; gap: var(--space-2); }
+  .run-head .h1 { display: flex; gap: 1.5ch; align-items: baseline; flex-wrap: wrap; }
+  .gantt-col { inline-size: 40%; min-inline-size: 22ch; }
+  .set-row { display: flex; align-items: center; justify-content: space-between; gap: 2ch; padding-block: 6px; border-block-end: 1px dashed var(--line); }
+  .set-row:last-child { border: 0; }
+  .radios { display: flex; flex-wrap: wrap; gap: 4px 3ch; }
+  .panel.danger { border-color: color-mix(in oklab, var(--danger) 60%, var(--line-2)); }
+  .panel.danger > .ptitle { color: var(--danger); }
+  fieldset { border: 0; margin: 0; padding: 0; min-inline-size: 0; }
+  legend { padding: 0; margin-block-end: 6px; font-size: var(--fs-sm); color: var(--ink-2); }
+  .cmini { display: inline-block; inline-size: 10ch; vertical-align: middle; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="رفتن به محتوا">Skip to content</a>
+<div class="app">
+  <header class="app-top">
+    <a class="wordmark" href="site.html" aria-label="kiln — site" data-alt-aria-label="kiln — سایت">kiln<span class="cursor" aria-hidden="true"></span></a>
+    <span class="dim small hide-sm ltr">acme/web<span class="fg-brand">@main</span></span>
+    <div class="tabs" role="tablist" aria-label="Views" data-alt-aria-label="نماها">
+      <button role="tab" id="t-ov" aria-controls="p-ov" aria-selected="true" data-hotkey="1" data-alt="نمای کلی">overview</button>
+      <button role="tab" id="t-run" aria-controls="p-run" aria-selected="false" data-hotkey="2"><span data-alt="اجرا">run</span> <span class="ltr">#4823</span></button>
+      <button role="tab" id="t-rn" aria-controls="p-rn" aria-selected="false" data-hotkey="3" data-alt="رانرها">runners</button>
+      <button role="tab" id="t-set" aria-controls="p-set" aria-selected="false" data-hotkey="4" data-alt="تنظیمات">settings</button>
+    </div>
+    <div class="row" style="gap: 1ch">
+      <button class="btn btn-sm" type="button" data-palette-open data-hotkey=":"><span class="k">:</span><span data-alt="فرمان">command</span></button>
+      <button class="btn btn-sm" type="button" data-lang-toggle data-alt="en">fa</button>
+      <button class="btn btn-sm hide-sm" type="button" data-theme-toggle aria-pressed="true" data-alt="پوسته">theme</button>
+    </div>
+  </header>
+
+  <main id="main" class="app-main">
+    <!-- ============================================================ overview -->
+    <section role="tabpanel" id="p-ov" aria-labelledby="t-ov" class="stack" style="gap: var(--space-6)">
+      <div class="top-grid">
+        <div class="panel">
+          <h2 class="ptitle"><span data-alt="رانرها">runners</span> <span class="dim" data-alt="۶ از ۸ آنلاین">6 of 8 online</span></h2>
+          <div class="meters">
+            <div class="meter"><span class="ltr">eu-1/r01</span><span class="bar" style="--v:72%"></span><b data-num="72" data-fmt="pct">72%</b></div>
+            <div class="meter"><span class="ltr">eu-1/r02</span><span class="bar hot" style="--v:94%"></span><b class="fg-red" data-num="94" data-fmt="pct">94%</b></div>
+            <div class="meter"><span class="ltr">eu-2/r03</span><span class="bar" style="--v:41%"></span><b data-num="41" data-fmt="pct">41%</b></div>
+            <div class="meter"><span class="ltr">us-1/r04</span><span class="bar" style="--v:63%"></span><b data-num="63" data-fmt="pct">63%</b></div>
+            <div class="meter"><span class="ltr">us-1/r05</span><span class="bar" style="--v:8%"></span><b data-num="8" data-fmt="pct">8%</b></div>
+            <div class="meter"><span class="ltr">ap-1/r06</span><span class="bar" style="--v:55%"></span><b data-num="55" data-fmt="pct">55%</b></div>
+            <div class="meter"><span data-alt="صف">queue</span><span class="bar cyan" style="--v:20%"></span><b data-num="2">2</b></div>
+          </div>
+          <p class="pkeys"><b>3</b> <span data-alt="رانرها">runners</span></p>
+        </div>
+        <div class="panel">
+          <h2 class="ptitle"><span data-alt="امروز">today</span> <span class="dim" data-date="2026-10-16" data-fmt="long">October 16, 2026</span></h2>
+          <dl class="kv">
+            <div><dt data-alt="بیلدها">builds</dt><dd data-num="412">412</dd></div>
+            <div><dt data-alt="موفق">passed</dt><dd class="fg-green" data-num="396">396</dd></div>
+            <div><dt data-alt="ناموفق">failed</dt><dd class="fg-red" data-num="9">9</dd></div>
+            <div><dt data-alt="لغوشده">cancelled</dt><dd class="dim" data-num="7">7</dd></div>
+            <div><dt data-alt="میانهٔ زمان (p50)">duration p50</dt><dd data-num="134" data-fmt="dur">2m 14s</dd></div>
+            <div><dt data-alt="زمان p95">duration p95</dt><dd data-num="362" data-fmt="dur">6m 02s</dd></div>
+            <div><dt data-alt="برخورد کش">cache hit rate</dt><dd class="fg-brand" data-num="88.4" data-fmt="pct1">88.4%</dd></div>
+            <div><dt data-alt="دقیقه‌های مصرفی">minutes used</dt><dd><span data-num="3912">3,912</span> <span class="dim">/ <span data-num="10000">10,000</span></span></dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="cols" style="--n:2; row-gap: var(--space-6)">
+        <div class="panel">
+          <h2 class="ptitle"><span data-alt="زمان بیلد">build duration</span> <span class="dim" data-alt="۲۴ ساعت">24h</span></h2>
+          <p class="legend" style="margin-block-end: var(--space-2)"><span style="--c: var(--chart-1)">p50</span><span style="--c: var(--chart-2)">p95</span></p>
+          <div data-chart="line" data-height="200" data-fmt="dur" data-dates="2026-10-15T15:00,24,hour" data-series='[{"name":{"en":"p50","fa":"p50"},"values":[128,132,126,140,135,122,118,110,104,98,96,101,112,124,138,146,152,149,141,136,131,129,134,128]},{"name":{"en":"p95","fa":"p95"},"values":[340,352,331,368,360,345,320,300,290,276,270,288,310,334,372,398,410,402,380,365,350,344,362,346]}]' data-label='{"en":"Build duration, last 24 hours","fa":"زمان بیلد در ۲۴ ساعت گذشته"}'></div>
+        </div>
+        <div class="panel">
+          <h2 class="ptitle"><span data-alt="اجرا در ساعت">runs per hour</span> <span class="dim" data-alt="۱۲ ساعت">12h</span></h2>
+          <p class="legend" style="margin-block-end: var(--space-2)"><span style="--c: var(--chart-4)" data-alt="موفق">passed</span><span style="--c: var(--chart-6)" data-alt="ناموفق">failed</span></p>
+          <div data-chart="stacked" data-height="200" data-fmt="int" data-dates="2026-10-16T03:00,12,hour" data-series='[{"name":{"en":"passed","fa":"موفق"},"values":[8,6,5,9,14,22,31,38,41,36,44,39],"color":"var(--chart-4)"},{"name":{"en":"failed","fa":"ناموفق"},"values":[0,1,0,0,1,2,1,3,2,1,2,1],"color":"var(--chart-6)"}]' data-label='{"en":"Runs per hour","fa":"اجرا در ساعت"}'></div>
+        </div>
+      </div>
+
+      <div class="panel" data-filter-scope>
+        <h2 class="ptitle"><span data-alt="اجراهای اخیر">recent runs</span> <span class="dim"><span data-filter-count>8</span>/<span data-num="8">8</span></span></h2>
+        <div class="toolbar">
+          <label class="cmd"><span class="p" aria-hidden="true">/</span><span class="sr-only" data-alt="فیلتر اجراها">Filter runs</span><input type="search" data-filter-search data-hotkey="/" placeholder="branch, author, message…" data-alt-placeholder="شاخه، نویسنده، پیام…"></label>
+          <div class="seg" data-group role="group" aria-label="Status" data-alt-aria-label="وضعیت">
+            <button type="button" data-filter="st" data-value="all" aria-pressed="true" data-alt="همه">all</button>
+            <button type="button" data-filter="st" data-value="ok" aria-pressed="false" data-alt="موفق">passed</button>
+            <button type="button" data-filter="st" data-value="fail" aria-pressed="false" data-alt="ناموفق">failed</button>
+            <button type="button" data-filter="st" data-value="run" aria-pressed="false" data-alt="در حال اجرا">running</button>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="table">
+            <thead><tr>
+              <th scope="col" data-alt="اجرا">run</th>
+              <th scope="col" data-alt="وضعیت">status</th>
+              <th scope="col" data-alt="شاخه">branch</th>
+              <th scope="col" data-alt="کامیت">commit</th>
+              <th scope="col" data-alt="نویسنده">author</th>
+              <th scope="col" class="num" aria-sort="none"><button type="button" data-sort="num" data-alt="مدت">duration</button></th>
+              <th scope="col" class="num" aria-sort="descending"><button type="button" data-sort="num" data-alt="شروع">started</button></th>
+            </tr></thead>
+            <tbody>
+              <tr data-filter-item data-st="run" class="is-sel"><td><button class="btn btn-sm btn-text ltr" type="button" data-goto="t-run" style="padding:0">#4823</button></td><td><span class="st run" data-alt="در حال اجرا">running</span></td><td class="ltr">main</td><td class="ltr">feat(edge): warm cache on deploy</td><td>sara.k</td><td class="num" data-value="252" data-num="252" data-fmt="dur">4m 12s</td><td class="num dim" data-value="-252" data-ago="252">4 min ago</td></tr>
+              <tr data-filter-item data-st="ok"><td class="ltr">#4822</td><td><span class="st ok" data-alt="موفق">passed</span></td><td class="ltr">main</td><td class="ltr">fix(api): retry idempotent writes</td><td>omid</td><td class="num" data-value="128" data-num="128" data-fmt="dur">2m 08s</td><td class="num dim" data-value="-1140" data-ago="1140">19 min ago</td></tr>
+              <tr data-filter-item data-st="fail"><td class="ltr">#4821</td><td><span class="st fail" data-alt="ناموفق">failed</span></td><td class="ltr">feat/search</td><td class="ltr">feat(search): typo tolerance</td><td>lena</td><td class="num" data-value="221" data-num="221" data-fmt="dur">3m 41s</td><td class="num dim" data-value="-2280" data-ago="2280">38 min ago</td></tr>
+              <tr data-filter-item data-st="ok"><td class="ltr">#4820</td><td><span class="st ok" data-alt="موفق">passed</span></td><td class="ltr">main</td><td class="ltr">chore: bump toolchain to 1.9</td><td>bot</td><td class="num" data-value="62" data-num="62" data-fmt="dur">1m 02s</td><td class="num dim" data-value="-3900" data-ago="3900">1 hr ago</td></tr>
+              <tr data-filter-item data-st="ok"><td class="ltr">#4819</td><td><span class="st ok" data-alt="موفق">passed</span></td><td class="ltr">fix/i18n</td><td class="ltr">fix(i18n): plural rules for fa</td><td>nima</td><td class="num" data-value="151" data-num="151" data-fmt="dur">2m 31s</td><td class="num dim" data-value="-5400" data-ago="5400">1 hr ago</td></tr>
+              <tr data-filter-item data-st="fail"><td class="ltr">#4818</td><td><span class="st fail" data-alt="ناموفق">failed</span></td><td class="ltr">main</td><td class="ltr">perf(ui): virtualize long tables</td><td>sara.k</td><td class="num" data-value="355" data-num="355" data-fmt="dur">5m 55s</td><td class="num dim" data-value="-7800" data-ago="7800">2 hr ago</td></tr>
+              <tr data-filter-item data-st="ok"><td class="ltr">#4817</td><td><span class="st ok" data-alt="موفق">passed</span></td><td class="ltr">docs/cli</td><td class="ltr">docs: man pages for kiln ci</td><td>lena</td><td class="num" data-value="48" data-num="48" data-fmt="dur">48s</td><td class="num dim" data-value="-10200" data-ago="10200">3 hr ago</td></tr>
+              <tr data-filter-item data-st="skip"><td class="ltr">#4816</td><td><span class="st skip" data-alt="لغوشده">cancelled</span></td><td class="ltr">feat/billing</td><td class="ltr">feat(billing): usage export</td><td>omid</td><td class="num dim" data-value="0">—</td><td class="num dim" data-value="-12600" data-ago="12600">4 hr ago</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="empty" data-filter-empty hidden data-alt="هیچ اجرایی با این فیلتر نیست.">no runs match this filter.</p>
+        <p class="pkeys"><b>/</b> <span data-alt="فیلتر">filter</span> · <b>2</b> <span data-alt="باز کردن">open</span> · <b>r</b> <span data-alt="اجرای دوباره">rerun</span></p>
+      </div>
+    </section>
+
+    <!-- ============================================================ run detail -->
+    <section role="tabpanel" id="p-run" aria-labelledby="t-run" class="stack" style="gap: var(--space-6)" hidden>
+      <div class="run-head">
+        <h1 class="h1"><span class="st run" role="img" aria-label="running" data-alt-aria-label="در حال اجرا"></span><span class="ltr">#4823</span><span class="ltr" style="font-weight:500">feat(edge): warm cache on deploy</span></h1>
+        <p class="dim small"><span class="ltr">main · 9f3c2ab</span> · sara.k · <span data-alt="شروع">started</span> <span data-ago="252">4 min ago</span> · <span data-alt="رانر">runner</span> <span class="ltr">eu-1/r02</span></p>
+        <div class="row" style="gap: 1ch">
+          <button class="btn" type="button" data-dialog="#rerun" data-hotkey="r"><span data-alt="اجرای دوباره">rerun</span><kbd>r</kbd></button>
+          <button class="btn btn-danger" type="button" data-toast="Run #4823 cancelled" data-toast-alt="اجرای ‎#4823‎ لغو شد" data-tone="danger" data-hotkey="c"><span data-alt="لغو">cancel</span><kbd>c</kbd></button>
+          <button class="btn" type="button" data-copy="https://kiln.example/acme/web/runs/4823" data-alt="کپی پیوند">copy link</button>
+        </div>
+      </div>
+      <div class="panel">
+        <h2 class="ptitle"><span data-alt="مراحل">steps</span> <span class="dim" data-alt="۵ از ۸ انجام شد">5 of 8 done</span></h2>
+        <div class="table-scroll">
+          <table class="table">
+            <thead><tr><th scope="col" data-alt="مرحله">step</th><th scope="col" data-alt="وضعیت">status</th><th scope="col" class="num" data-alt="مدت">time</th><th scope="col" class="gantt-col" data-alt="خط زمانی">timeline</th></tr></thead>
+            <tbody>
+              <tr><td class="ltr">checkout</td><td><span class="st ok" data-alt="انجام شد">done</span></td><td class="num" data-num="2" data-fmt="dur">2s</td><td><div class="gantt"><i style="--s:0%; --w:1%; --c: var(--success)"></i></div></td></tr>
+              <tr><td class="ltr">install</td><td><span class="st ok" data-alt="از کش">cached</span></td><td class="num" data-num="15" data-fmt="dur">15s</td><td><div class="gantt"><i style="--s:1%; --w:6%; --c: var(--info)"></i></div></td></tr>
+              <tr><td class="ltr">graph</td><td><span class="st ok" data-alt="انجام شد">done</span></td><td class="num" data-num="1" data-fmt="dur">1s</td><td><div class="gantt"><i style="--s:7%; --w:1%; --c: var(--success)"></i></div></td></tr>
+              <tr><td class="ltr">lint</td><td><span class="st ok" data-alt="انجام شد">done</span></td><td class="num" data-num="9" data-fmt="dur">9s</td><td><div class="gantt"><i style="--s:8%; --w:4%; --c: var(--success)"></i></div></td></tr>
+              <tr><td class="ltr">test:unit</td><td><span class="st ok" data-alt="انجام شد">done</span></td><td class="num" data-num="48" data-fmt="dur">48s</td><td><div class="gantt"><i style="--s:8%; --w:19%; --c: var(--success)"></i></div></td></tr>
+              <tr class="is-sel"><td class="ltr">build:web</td><td><span class="st run" data-alt="در حال اجرا">running</span></td><td class="num" data-num="72" data-fmt="dur">1m 12s</td><td><div class="gantt"><i style="--s:27%; --w:29%; --c: var(--brand)"></i></div></td></tr>
+              <tr><td class="ltr">build:edge</td><td><span class="st queue" data-alt="در صف">queued</span></td><td class="num dim">—</td><td><div class="gantt"></div></td></tr>
+              <tr><td class="ltr">deploy:preview</td><td><span class="st skip" data-alt="در انتظار">waiting</span></td><td class="num dim">—</td><td><div class="gantt"></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel is-focus">
+        <h2 class="ptitle"><span data-alt="لاگ">log</span> <span class="dim ltr">build:web</span></h2>
+        <div class="log" style="--log-h: 320px" tabindex="0" aria-label="Build log" data-alt-aria-label="لاگ بیلد">
+          <p><span class="ts">14:28:03</span><span class="lv-info">info</span> resolving graph for @acme/web</p>
+          <p><span class="ts">14:28:03</span><span class="lv-info">info</span> 42 packages, 3 affected (base origin/main)</p>
+          <p><span class="ts">14:28:04</span><span class="lv-ok">hit </span> @acme/tokens#build  <span class="ts">remote 3f9a…c21</span></p>
+          <p><span class="ts">14:28:04</span><span class="lv-ok">hit </span> @acme/ui#build      <span class="ts">remote 8b10…77e</span></p>
+          <p><span class="ts">14:28:05</span><span class="lv-info">run </span> @acme/web#build → vite build --mode production</p>
+          <p><span class="ts">14:28:09</span>      transforming (1204) src/routes/billing/+page.ts</p>
+          <p><span class="ts">14:28:21</span><span class="lv-warn">warn</span> chunk "vendor" is 612 kB after minification (&gt; 500 kB)</p>
+          <p><span class="ts">14:28:21</span>      consider manualChunks for @acme/charts</p>
+          <p><span class="ts">14:28:34</span>      transforming (2871) src/lib/edge/warm.ts</p>
+          <p class="is-err"><span class="ts">14:28:41</span><span class="lv-err">err </span> retry 1/3: upload to cache shard eu-1 timed out after 10s</p>
+          <p><span class="ts">14:28:52</span><span class="lv-ok">ok  </span> upload retried on shard eu-2 (1.4 s)</p>
+          <p><span class="ts">14:29:06</span>      rendering chunks (38/52)</p>
+          <p class="is-hl"><span class="ts">14:29:15</span>      rendering chunks (44/52) <span class="fg-brand">▌</span></p>
+        </div>
+        <p class="pkeys"><b>f</b> <span data-alt="دنبال‌کردن">follow</span> · <b>w</b> <span data-alt="شکستن خط">wrap</span></p>
+      </div>
+    </section>
+
+    <!-- ============================================================ runners -->
+    <section role="tabpanel" id="p-rn" aria-labelledby="t-rn" hidden>
+      <div class="panel" data-filter-scope>
+        <h2 class="ptitle"><span data-alt="رانرها">runners</span> <span class="dim"><span data-filter-count>8</span> <span data-alt="مورد">shown</span></span></h2>
+        <div class="toolbar">
+          <label class="field" style="grid-auto-flow: column; align-items: center; gap: 1ch"><span class="flabel" data-alt="منطقه">region</span>
+            <span class="select-wrap"><select class="select" data-filter="region" style="min-block-size: var(--control-h); inline-size: 14ch">
+              <option value="all" data-alt="همه">all</option><option value="eu">eu</option><option value="us">us</option><option value="ap">ap</option>
+            </select></span></label>
+          <div class="seg" data-group role="group" aria-label="State" data-alt-aria-label="حالت">
+            <button type="button" data-filter="state" data-value="all" aria-pressed="true" data-alt="همه">all</button>
+            <button type="button" data-filter="state" data-value="busy" aria-pressed="false" data-alt="مشغول">busy</button>
+            <button type="button" data-filter="state" data-value="idle" aria-pressed="false" data-alt="بیکار">idle</button>
+            <button type="button" data-filter="state" data-value="off" aria-pressed="false" data-alt="خاموش">offline</button>
+          </div>
+          <span class="spacer"></span>
+          <button class="btn btn-primary btn-sm" type="button" data-dialog="#add-runner" data-alt="+ افزودن رانر">+ add runner</button>
+        </div>
+        <div class="table-scroll">
+          <table class="table">
+            <thead><tr>
+              <th scope="col" aria-sort="none"><button type="button" data-sort="text" data-alt="نام">name</button></th>
+              <th scope="col" data-alt="سیستم">os</th>
+              <th scope="col" data-alt="حالت">state</th>
+              <th scope="col" data-alt="پردازنده">cpu</th>
+              <th scope="col" class="num" aria-sort="none"><button type="button" data-sort="num" data-alt="کار امروز">jobs today</button></th>
+              <th scope="col" class="num" data-alt="روشن از">uptime</th>
+              <th scope="col" data-alt="فعال">enabled</th>
+            </tr></thead>
+            <tbody>
+              <tr data-filter-item data-region="eu" data-state="busy"><td class="ltr">eu-1/r01</td><td class="ltr">linux · 16c</td><td><span class="st run" data-alt="مشغول">busy</span></td><td><span class="cmini bar thin" style="--v:72%"></span></td><td class="num" data-value="96" data-num="96">96</td><td class="num" data-num="1123200" data-fmt="dur">312h 00m</td><td><button class="switch" type="button" role="switch" aria-checked="true" aria-label="Enable eu-1/r01" data-alt-aria-label="فعال‌سازی eu-1/r01"></button></td></tr>
+              <tr data-filter-item data-region="eu" data-state="busy"><td class="ltr">eu-1/r02</td><td class="ltr">linux · 16c</td><td><span class="st run" data-alt="مشغول">busy</span></td><td><span class="cmini bar thin hot" style="--v:94%"></span></td><td class="num" data-value="104" data-num="104">104</td><td class="num" data-num="1123200" data-fmt="dur">312h 00m</td><td><button class="switch" type="button" role="switch" aria-checked="true" aria-label="Enable eu-1/r02" data-alt-aria-label="فعال‌سازی eu-1/r02"></button></td></tr>
+              <tr data-filter-item data-region="eu" data-state="idle"><td class="ltr">eu-2/r03</td><td class="ltr">linux · 8c</td><td><span class="st ok" data-alt="بیکار">idle</span></td><td><span class="cmini bar thin" style="--v:41%"></span></td><td class="num" data-value="71" data-num="71">71</td><td class="num" data-num="417600" data-fmt="dur">116h 00m</td><td><button class="switch" type="button" role="switch" aria-checked="true" aria-label="Enable eu-2/r03" data-alt-aria-label="فعال‌سازی eu-2/r03"></button></td></tr>
+              <tr data-filter-item data-region="us" data-state="busy"><td class="ltr">us-1/r04</td><td class="ltr">linux · 16c</td><td><span class="st run" data-alt="مشغول">busy</span></td><td><span class="cmini bar thin" style="--v:63%"></span></td><td class="num" data-value="88" data-num="88">88</td><td class="num" data-num="259200" data-fmt="dur">72h 00m</td><td><button class="switch" type="button" role="switch" aria-checked="true" aria-label="Enable us-1/r04" data-alt-aria-label="فعال‌سازی us-1/r04"></button></td></tr>
+              <tr data-filter-item data-region="us" data-state="idle"><td class="ltr">us-1/r05</td><td class="ltr">macos · 12c</td><td><span class="st ok" data-alt="بیکار">idle</span></td><td><span class="cmini bar thin" style="--v:8%"></span></td><td class="num" data-value="23" data-num="23">23</td><td class="num" data-num="86400" data-fmt="dur">24h 00m</td><td><button class="switch" type="button" role="switch" aria-checked="true" aria-label="Enable us-1/r05" data-alt-aria-label="فعال‌سازی us-1/r05"></button></td></tr>
+              <tr data-filter-item data-region="ap" data-state="busy"><td class="ltr">ap-1/r06</td><td class="ltr">linux · 8c</td><td><span class="st run" data-alt="مشغول">busy</span></td><td><span class="cmini bar thin" style="--v:55%"></span></td><td class="num" data-value="30" data-num="30">30</td><td class="num" data-num="172800" data-fmt="dur">48h 00m</td><td><button class="switch" type="button" role="switch" aria-checked="true" aria-label="Enable ap-1/r06" data-alt-aria-label="فعال‌سازی ap-1/r06"></button></td></tr>
+              <tr data-filter-item data-region="ap" data-state="off"><td class="ltr">ap-1/r07</td><td class="ltr">windows · 8c</td><td><span class="st off" data-alt="خاموش">offline</span></td><td><span class="cmini bar thin" style="--v:0%"></span></td><td class="num" data-value="0" data-num="0">0</td><td class="num dim">—</td><td><button class="switch" type="button" role="switch" aria-checked="false" aria-label="Enable ap-1/r07" data-alt-aria-label="فعال‌سازی ap-1/r07"></button></td></tr>
+              <tr data-filter-item data-region="eu" data-state="off"><td class="ltr">eu-2/r08</td><td class="ltr">linux · 32c</td><td><span class="st fail" data-alt="از دسترس خارج">unreachable</span></td><td><span class="cmini bar thin" style="--v:0%"></span></td><td class="num" data-value="0" data-num="0">0</td><td class="num dim">—</td><td><button class="switch" type="button" role="switch" aria-checked="true" aria-label="Enable eu-2/r08" data-alt-aria-label="فعال‌سازی eu-2/r08"></button></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="empty" data-filter-empty hidden data-alt="رانری با این فیلتر نیست.">no runners match.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================ settings -->
+    <section role="tabpanel" id="p-set" aria-labelledby="t-set" hidden>
+      <form class="stack" style="gap: var(--space-6)" data-validate data-keep data-success="Settings written to kiln.toml" data-success-alt="تنظیمات در kiln.toml نوشته شد">
+        <div class="cols" style="--n:2; row-gap: var(--space-6)">
+          <div class="panel stack">
+            <h2 class="ptitle" data-alt="عمومی">general</h2>
+            <div class="field"><label class="flabel" for="s-name" data-alt="نام پروژه">project name</label><input class="input" id="s-name" name="name" value="acme-web" required minlength="3" dir="ltr" autocomplete="off"><span class="hint" data-alt="حروف کوچک، عدد و خط تیره">lowercase letters, digits and dashes</span></div>
+            <div class="field"><label class="flabel" for="s-branch" data-alt="شاخهٔ پیش‌فرض">default branch</label><span class="select-wrap"><select class="select" id="s-branch" name="branch"><option>main</option><option>trunk</option><option>develop</option></select></span></div>
+            <div class="field"><span class="flabel" id="l-conc" data-alt="حداکثر اجرای هم‌زمان">max concurrent runs</span>
+              <div class="qty" data-qty><button type="button" data-step="-1" aria-label="Fewer" data-alt-aria-label="کمتر">−</button><input type="number" name="concurrency" value="6" min="1" max="20" aria-labelledby="l-conc"><button type="button" data-step="1" aria-label="More" data-alt-aria-label="بیشتر">+</button></div></div>
+            <div class="field"><label class="flabel" for="s-timeout" data-alt="مهلت هر وظیفه (دقیقه)">task timeout (minutes)</label><input class="input" id="s-timeout" name="timeout" type="number" value="30" min="1" max="120" required style="inline-size: 12ch"></div>
+          </div>
+          <div class="panel stack">
+            <h2 class="ptitle" data-alt="کش">cache</h2>
+            <div>
+              <div class="set-row"><span id="l-remote" data-alt="کش راه‌دور">remote cache</span><button class="switch" type="button" role="switch" aria-checked="true" aria-labelledby="l-remote"></button></div>
+              <div class="set-row"><span id="l-local" data-alt="نوشتن از ماشین‌های محلی">write from local machines</span><button class="switch" type="button" role="switch" aria-checked="false" aria-labelledby="l-local"></button></div>
+              <div class="set-row"><span id="l-deps" data-alt="کش وابستگی‌ها">cache dependencies</span><button class="switch" type="button" role="switch" aria-checked="true" aria-labelledby="l-deps"></button></div>
+            </div>
+            <fieldset>
+              <legend data-alt="نگه‌داری کش">retention</legend>
+              <div class="radios">
+                <label class="check"><input type="radio" name="retention" value="7"><span class="box" aria-hidden="true"></span><span data-alt="۷ روز">7 days</span></label>
+                <label class="check"><input type="radio" name="retention" value="14" checked><span class="box" aria-hidden="true"></span><span data-alt="۱۴ روز">14 days</span></label>
+                <label class="check"><input type="radio" name="retention" value="30"><span class="box" aria-hidden="true"></span><span data-alt="۳۰ روز">30 days</span></label>
+              </div>
+            </fieldset>
+            <p class="dim small"><span data-alt="مصرف فعلی">current usage</span> <span class="ltr">142.6 GB / 200 GB</span></p>
+            <span class="bar" style="--v:71%"></span>
+          </div>
+          <div class="panel stack">
+            <h2 class="ptitle" data-alt="اعلان‌ها">notify</h2>
+            <fieldset class="stack" style="gap: 4px">
+              <legend data-alt="وقتی خبرم کن که…">tell me when…</legend>
+              <label class="check"><input type="checkbox" name="n-fail" checked><span class="box" aria-hidden="true"></span><span data-alt="اجرایی روی main شکست بخورد">a run on main fails</span></label>
+              <label class="check"><input type="checkbox" name="n-fix" checked><span class="box" aria-hidden="true"></span><span data-alt="شاخهٔ شکسته دوباره سبز شود">a broken branch goes green again</span></label>
+              <label class="check"><input type="checkbox" name="n-deploy"><span class="box" aria-hidden="true"></span><span data-alt="هر استقرار">every deploy</span></label>
+              <label class="check"><input type="checkbox" name="n-week" checked><span class="box" aria-hidden="true"></span><span data-alt="خلاصهٔ هفتگی برسد">the weekly summary is ready</span></label>
+            </fieldset>
+            <div class="field"><label class="flabel" for="s-hook" data-alt="وب‌هوک">webhook url</label><input class="input" id="s-hook" name="webhook" type="url" placeholder="https://hooks.example/kiln" dir="ltr"></div>
+          </div>
+          <div class="panel danger stack">
+            <h2 class="ptitle" data-alt="منطقهٔ خطر">danger zone</h2>
+            <p class="muted small" data-alt="بایگانی، اجراهای در صف را متوقف و کش را پس از ۷ روز پاک می‌کند. تاریخچه می‌ماند.">Archiving stops queued runs and deletes the cache after 7 days. History is kept.</p>
+            <div class="row"><button class="btn btn-danger" type="button" data-dialog="#archive" data-alt="بایگانی پروژه…">archive project…</button><button class="btn" type="button" data-copy="kiln project export acme/web" data-alt="کپی فرمان خروجی">copy export command</button></div>
+          </div>
+        </div>
+        <div class="row"><button class="btn btn-primary btn-lg" type="submit"><span data-alt="نوشتن تغییرات">write changes</span> <kbd>⌘S</kbd></button><button class="btn btn-lg" type="reset" data-alt="بازگردانی">reset</button></div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="statusbar">
+    <span class="mode">NORMAL</span>
+    <span class="hide-sm ltr">acme/web</span>
+    <span class="ltr"><span class="fg-brand">git:</span>main</span>
+    <span><span class="st run"><span data-num="3">3</span>&nbsp;<span data-alt="در حال اجرا">running</span></span></span>
+    <span class="hide-sm"><span class="st queue"><span data-num="2">2</span>&nbsp;<span data-alt="در صف">queued</span></span></span>
+    <span class="end hide-sm">utf-8 · <span data-date="2026-10-16T14:32:00" data-fmt="time">14:32</span></span>
+    <span><button class="btn btn-sm btn-text" type="button" data-palette-open data-hotkey="?" style="padding:0; min-block-size:0"><b class="fg-brand">?</b>&nbsp;<span data-alt="راهنما">help</span></button></span>
+  </footer>
+</div>
+
+<!-- dialogs -->
+<dialog class="modal" id="rerun" aria-labelledby="rerun-t">
+  <h2 class="modal-title" id="rerun-t"><span data-alt="اجرای دوباره">rerun</span> <span class="ltr">#4823</span></h2>
+  <div class="modal-body">
+    <fieldset class="stack" style="gap: 4px">
+      <legend data-alt="چه چیزی اجرا شود؟">what should run?</legend>
+      <label class="check"><input type="radio" name="scope" value="failed" checked><span class="box" aria-hidden="true"></span><span data-alt="فقط مراحل ناموفق و پایین‌دستی">failed and downstream steps only</span></label>
+      <label class="check"><input type="radio" name="scope" value="all"><span class="box" aria-hidden="true"></span><span data-alt="همهٔ مراحل">every step</span></label>
+    </fieldset>
+    <label class="check"><input type="checkbox" name="nocache"><span class="box" aria-hidden="true"></span><span data-alt="بدون کش (‎--no-cache‎)">ignore the cache (--no-cache)</span></label>
+    <div class="field"><label class="flabel" for="r-pool" data-alt="گروه رانر">runner pool</label><span class="select-wrap"><select class="select" id="r-pool"><option value="any" data-alt="هر رانر آزاد">any free runner</option><option>eu</option><option>us</option><option>ap</option></select></span></div>
+    <pre class="code" style="font-size: 12px"><span class="tk-p">$</span> kiln run build --affected --from 4823</pre>
+  </div>
+  <div class="modal-foot"><button class="btn" type="button" data-close data-alt="انصراف">cancel</button><button class="btn btn-primary" type="button" data-close data-toast="Run #4824 queued on eu-2/r03" data-toast-alt="اجرای ‎#4824‎ روی eu-2/r03 در صف قرار گرفت" data-tone="success" data-alt="اجرا">run</button></div>
+</dialog>
+
+<dialog class="modal" id="add-runner" aria-labelledby="ar-t">
+  <h2 class="modal-title" id="ar-t" data-alt="افزودن رانر">add runner</h2>
+  <form data-validate data-success="Runner registered — waiting for first heartbeat" data-success-alt="رانر ثبت شد — منتظر اولین ضربان">
+    <div class="modal-body">
+      <p class="muted small" data-alt="این فرمان را روی ماشین جدید اجرا کنید، سپس فرم را کامل کنید.">Run this on the new machine, then fill in the form.</p>
+      <div class="install"><code id="reg-cmd">kiln runner register --token kr_9a7f…e21</code><button class="btn btn-sm" type="button" data-copy="#reg-cmd" data-alt="کپی">copy</button></div>
+      <div class="field"><label class="flabel" for="ar-name" data-alt="نام">name</label><input class="input" id="ar-name" name="name" required pattern="[a-z]{2}-[0-9]/r[0-9]{2}" placeholder="eu-3/r09" dir="ltr" data-pattern-msg="Use region-n/rNN, e.g. eu-3/r09" data-pattern-msg-alt="به شکل region-n/rNN، مثل eu-3/r09"></div>
+      <fieldset>
+        <legend data-alt="منطقه">region</legend>
+        <div class="radios"><label class="check"><input type="radio" name="region" value="eu" checked><span class="box" aria-hidden="true"></span>eu</label><label class="check"><input type="radio" name="region" value="us"><span class="box" aria-hidden="true"></span>us</label><label class="check"><input type="radio" name="region" value="ap"><span class="box" aria-hidden="true"></span>ap</label></div>
+      </fieldset>
+      <div class="field"><label class="flabel" for="ar-labels" data-alt="برچسب‌ها">labels</label><input class="input" id="ar-labels" name="labels" placeholder="linux, gpu, large" dir="ltr"></div>
+    </div>
+    <div class="modal-foot"><button class="btn" type="button" data-close data-alt="انصراف">cancel</button><button class="btn btn-primary" type="submit" data-alt="ثبت">register</button></div>
+  </form>
+</dialog>
+
+<dialog class="modal" id="archive" aria-labelledby="arc-t">
+  <h2 class="modal-title" id="arc-t" style="color: var(--danger)" data-alt="بایگانی acme/web">archive acme/web</h2>
+  <form data-validate data-success="acme/web archived" data-success-alt="acme/web بایگانی شد">
+    <div class="modal-body">
+      <p class="muted" data-alt="برای تأیید، نام پروژه را بنویسید.">Type the project name to confirm.</p>
+      <div class="field"><label class="flabel" for="arc-name">acme-web</label><input class="input" id="arc-name" name="confirm" required pattern="acme-web" dir="ltr" autocomplete="off" data-pattern-msg="Type acme-web exactly" data-pattern-msg-alt="دقیقاً acme-web را بنویسید"></div>
+    </div>
+    <div class="modal-foot"><button class="btn" type="button" data-close data-alt="انصراف">cancel</button><button class="btn btn-primary" type="submit" style="background: var(--danger)" data-alt="بایگانی">archive</button></div>
+  </form>
+</dialog>
+
+<dialog class="palette" data-palette aria-label="Command line" data-alt-aria-label="خط فرمان">
+  <ul role="listbox" aria-label="Commands" data-alt-aria-label="فرمان‌ها">
+    <li data-palette-item role="option" data-goto="t-ov"><span data-alt="رفتن به نمای کلی">go overview</span><span class="dim">1</span></li>
+    <li data-palette-item role="option" data-goto="t-run"><span data-alt="باز کردن اجرای ‎#4823‎">open run #4823</span><span class="dim">2</span></li>
+    <li data-palette-item role="option" data-goto="t-rn"><span data-alt="رفتن به رانرها">go runners</span><span class="dim">3</span></li>
+    <li data-palette-item role="option" data-goto="t-set"><span data-alt="رفتن به تنظیمات">go settings</span><span class="dim">4</span></li>
+    <li data-palette-item role="option" data-dialog="#rerun"><span data-alt="اجرای دوبارهٔ ‎#4823‎">rerun #4823</span><span class="dim">r</span></li>
+    <li data-palette-item role="option" data-dialog="#add-runner"><span data-alt="افزودن رانر">runner add</span><span class="dim">:runner</span></li>
+    <li data-palette-item role="option" data-toast="cache prune: 14.2 GB freed" data-toast-alt="پاک‌سازی کش: ۱۴٫۲ گیگابایت آزاد شد" data-tone="success" data-keywords="clean"><span data-alt="پاک‌سازی کش قدیمی‌تر از ۳۰ روز">cache prune --older 30d</span><span class="dim">:cache</span></li>
+    <li data-palette-item role="option" data-theme-toggle><span data-alt="تغییر پوسته">set theme</span><span class="dim">:theme</span></li>
+    <li data-palette-item role="option" data-lang-toggle><span data-alt="English">فارسی</span><span class="dim">:lang</span></li>
+  </ul>
+  <p data-palette-empty hidden class="dim" style="padding: 4px var(--gutter)" data-alt="فرمان ناشناخته — ‎:help‎ را امتحان کنید">unknown command — try :help</p>
+  <div class="cmdline"><input type="text" aria-label="Command" data-alt-aria-label="فرمان" placeholder="type a command" data-alt-placeholder="فرمانی بنویسید" autocomplete="off" spellcheck="false"></div>
+</dialog>
+
+<script>
+  // palette and table shortcuts jump to tabs; dialogs close once their form submits
+  document.addEventListener('click', (e) => {
+    const g = e.target.closest('[data-goto]');
+    if (g) document.getElementById(g.dataset.goto)?.click();
+  });
+  document.addEventListener('tf:submit', (e) => e.target.closest('dialog')?.close());
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 's') {
+      const form = document.querySelector('#p-set:not([hidden]) form');
+      if (form) { e.preventDefault(); form.requestSubmit(); }
+    }
+  });
+</script>
+</body>
+</html>

@@ -117,6 +117,15 @@
       ]
     },
     {
+      "name": "teletype",
+      "description": "Tastefolio design language — Terminal-native UI — one monospace face, box-drawn panes, [ bracketed ] controls and a status bar",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/teletype"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -133,7 +142,8 @@
         "./skills/shelf",
         "./skills/broadsheet",
         "./skills/stamp",
-        "./skills/raster"
+        "./skills/raster",
+        "./skills/teletype"
       ]
     }
   ]

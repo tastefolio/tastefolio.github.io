@@ -1,0 +1,34 @@
+{
+  "name": "Teletype",
+  "order": 13,
+  "category": "devdata",
+  "mode": "dark",
+  "density": "dense",
+  "persianFirst": false,
+  "tags": ["terminal", "monospace", "developer", "cli", "tui", "keyboard-first"],
+  "tagline": {
+    "en": "Terminal-native UI — one monospace face, box-drawn panes, [ bracketed ] controls and a status bar",
+    "fa": "رابط ترمینال‌محور — یک فونت تک‌فاصله، پنل‌های قاب‌کشیده، کنترل‌های [ کروشه‌دار ] و نوار وضعیت"
+  },
+  "summary": {
+    "en": "A keyboard-first language for developer tools, built like a text UI: everything is set in one monospace family on a character grid, panes are box-drawn with their title sitting on the border, buttons are [ bracketed ] and invert on hover, checkboxes are [x], tabs read like a tmux window list, meters are block cells, logs are numbered and always left-to-right, and a vim-style command line and status bar run the app. One amber signal plus the six ANSI colors for status and data; a light 'printout' theme with green-bar tables.",
+    "fa": "زبانی کیبوردمحور برای ابزارهای توسعه‌دهنده که مثل یک رابط متنی ساخته شده: همه‌چیز با یک خانوادهٔ تک‌فاصله روی شبکهٔ نویسه‌ها، پنل‌ها با قاب خطی و عنوانِ نشسته روی خط قاب، دکمه‌های [ کروشه‌دار ] که با هاور معکوس می‌شوند، چک‌باکس [x]، تب‌هایی شبیه فهرست پنجره‌های tmux، سنجه‌های خانه‌خانه، لاگ‌های شماره‌دار و همیشه چپ‌به‌راست، و خط فرمان و نوار وضعیت به سبک vim. یک رنگ کهربایی برای سیگنال و شش رنگ ANSI برای وضعیت و داده؛ پوستهٔ روشن «پرینت» با جدول‌های نوارسبز."
+  },
+  "bestFor": {
+    "en": ["CLIs, build tools, CI/CD and dev platforms", "API, database and infrastructure consoles", "Changelogs, docs and release pages", "Hacker-culture events and developer communities"],
+    "fa": ["CLI، ابزار بیلد، CI/CD و پلتفرم توسعه", "کنسول API، پایگاه داده و زیرساخت", "صفحهٔ تغییرات، مستندات و انتشار", "رویدادها و جامعه‌های برنامه‌نویسی"]
+  },
+  "avoidFor": {
+    "en": ["Consumer apps for non-technical audiences", "Fashion, food and lifestyle brands", "Long-form reading in Persian (monospace Persian tires the eye)"],
+    "fa": ["اپ‌های عمومی برای مخاطب غیرفنی", "برندهای مد، غذا و سبک زندگی", "متن‌های بلند فارسی (فارسی تک‌فاصله خسته‌کننده است)"]
+  },
+  "signature": {
+    "en": ["One monospace family for everything; sizes snap to the character cell", "Box-drawn panes with the title on the top border; focused pane turns amber", "[ bracketed ] buttons, [x] checkboxes, (•) radios, ● on / ○ off switches", "tmux-style numbered tabs with number-key hotkeys", "Block-cell meters, step charts, numbered LTR log viewer", "Vim-style command line (:) and a status bar with mode"],
+    "fa": ["یک خانوادهٔ تک‌فاصله برای همه‌چیز؛ اندازه‌ها هم‌گام با خانهٔ نویسه", "پنل قاب‌کشیده با عنوان روی خط بالا؛ پنل فعال کهربایی می‌شود", "دکمه [ کروشه‌دار ]، چک‌باکس [x]، رادیو (•)، سوییچ ● روشن / ○ خاموش", "تب‌های شماره‌دار به سبک tmux با میان‌بر عددی", "سنجهٔ خانه‌خانه، نمودار پله‌ای، لاگ شماره‌دار چپ‌به‌راست", "خط فرمان (:) به سبک vim و نوار وضعیت با حالت"]
+  },
+  "swatches": ["#0f0f0d", "#e8e5d8", "#ffaf38", "#62d8c9", "#93d46b"],
+  "fonts": { "latin": "JetBrains Mono", "persian": "Vazir Code", "mono": "JetBrains Mono" },
+  "icons": "None — glyphs and box-drawing characters",
+  "brandTrials": ["93d46b", "62d8c9", "d796ff", "ff6e5e"],
+  "demos": { "site": { "host": "kiln.example" }, "dashboard": { "host": "console.kiln.example" } }
+}

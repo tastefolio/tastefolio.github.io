@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-alt-lang="fa" data-demo="site" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="kiln — بیلدهایی که زودتر از قهوه‌تان تمام می‌شوند">kiln — builds that finish before your coffee</title>
+<meta name="description" content="kiln is a build system for monorepos: affected-only runs, a shared remote cache and automatic CI sharding." data-alt-content="kiln سیستم بیلد مونوریپو است: اجرای فقط بخش‌های تغییرکرده، کش مشترک راه‌دور و تقسیم خودکار کار CI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-code-font@v1.1.2/dist/font-face.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .hero { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-7) 5ch; align-items: center; padding-block: var(--space-8); }
+  .hero > * { min-inline-size: 0; }
+  @media (max-width: 1040px) { .hero { grid-template-columns: minmax(0, 1fr); padding-block: var(--space-7); } }
+  .hero-copy { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-5); }
+  .install-box { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-2); }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-block: 1px solid var(--line); }
+  .stats > div { padding: var(--space-5) 2ch; display: grid; gap: 2px; }
+  .stats > div + div { border-inline-start: 1px solid var(--line); }
+  @media (max-width: 800px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stats > div:nth-child(3) { border-inline-start: 0; } .stats > div:nth-child(n+3) { border-block-start: 1px solid var(--line); } }
+  .sec-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--space-4) 3ch; margin-block-end: var(--space-6); }
+  .sec-head > div { display: grid; gap: var(--space-2); max-inline-size: 62ch; }
+  .man-grid .panel { display: grid; gap: var(--space-2); align-content: start; }
+  .bench { display: grid; gap: var(--space-3); }
+  .bench .meter { --label: 22ch; grid-template-columns: var(--label) minmax(0, 1fr) 8ch; }
+  @media (max-width: 640px) { .bench .meter { grid-template-columns: minmax(0, 1fr) 8ch; row-gap: 2px; } .bench .meter > :first-child { grid-column: 1 / -1; } }
+  .dash-list li { padding-inline-start: 2ch; text-indent: -2ch; color: var(--ink-2); }
+  .dash-list li::before { content: "- "; color: var(--brand); }
+  .plan { display: grid; gap: var(--space-4); align-content: start; }
+  .plan .price { font: 800 clamp(30px, 3vw, 40px)/1 var(--font-display); letter-spacing: -.03em; }
+  .flag-list { display: grid; gap: 2px; font-size: var(--fs-sm); }
+  .flag-list li::before { content: "[x] "; color: var(--brand); white-space: pre; }
+  .flag-list li.no { color: var(--ink-3); }
+  .flag-list li.no::before { content: "[ ] "; color: var(--ink-3); }
+  .changelog li { display: grid; grid-template-columns: 10ch 14ch 8ch minmax(0, 1fr); gap: 2ch; padding-block: 9px; border-block-end: 1px dashed var(--line); align-items: baseline; }
+  @media (max-width: 720px) { .changelog li { grid-template-columns: auto auto 1fr; gap: 0 2ch; } .changelog li > p { grid-column: 1 / -1; } }
+  details.faq { border-block-end: 1px dashed var(--line-2); }
+  details.faq summary { cursor: pointer; list-style: none; padding-block: 12px; display: flex; gap: 1ch; font-weight: 600; }
+  details.faq summary::-webkit-details-marker { display: none; }
+  details.faq summary::before { content: "[+]"; color: var(--brand); flex: none; }
+  details.faq[open] summary::before { content: "[-]"; }
+  details.faq p { padding-inline-start: 4ch; padding-block-end: var(--space-4); color: var(--ink-2); max-inline-size: 72ch; }
+  .subscribe { display: flex; gap: 1ch; flex-wrap: wrap; align-items: flex-start; }
+  .subscribe .field { flex: 1 1 280px; }
+  .foot-bar { margin-block-start: var(--space-7); }
+</style>
+</head>
+<body id="top">
+<a class="skip-link" href="#main" data-alt="رفتن به محتوا">Skip to content</a>
+<header class="site-head">
+  <div class="container">
+    <a class="wordmark" href="#top" aria-label="kiln — home" data-alt-aria-label="kiln — خانه">kiln<span class="cursor" aria-hidden="true"></span></a>
+    <nav class="nav" id="nav" data-dismissable aria-label="Main" data-alt-aria-label="اصلی">
+      <a href="#top" aria-current="page" data-alt="محصول">product</a>
+      <a href="#features" data-alt="مستندات">docs</a>
+      <a href="#pricing" data-alt="قیمت">pricing</a>
+      <a href="#changelog" data-alt="تغییرات">changelog</a>
+      <a href="#faq" data-alt="پرسش‌ها">faq</a>
+    </nav>
+    <div class="head-tools">
+      <button class="btn btn-sm" type="button" data-lang-toggle data-alt="en">fa</button>
+      <button class="btn btn-sm hide-sm" type="button" data-theme-toggle aria-pressed="true" data-alt="پوسته">theme</button>
+      <a class="btn btn-sm hide-md" href="dashboard.html" data-alt="ورود">sign in</a>
+      <a class="btn btn-primary btn-sm hide-sm" href="dashboard.html" data-alt="شروع کنید">get started</a>
+      <button class="btn btn-sm menu-btn" type="button" data-toggle="#nav" aria-controls="nav" aria-expanded="false" data-alt="منو">menu</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="container hero">
+    <div class="hero-copy">
+      <p class="eyebrow" data-alt="نسخهٔ ۲٫۱۴ — کش راه‌دور برای همه">v2.14 — remote cache for everyone</p>
+      <h1 class="display" data-alt="بیلدهایی که زودتر از قهوه‌تان تمام می‌شوند.">Builds that finish before your coffee does.</h1>
+      <p class="lead" data-alt="kiln سیستم بیلد مونوریپوهاست. فقط چیزی را اجرا می‌کند که تغییر کرده، کش را بین لپ‌تاپ و CI به اشتراک می‌گذارد و باقی کار را بین رانرها پخش می‌کند.">kiln is a build system for monorepos. It runs only what changed, shares one cache between laptops and CI, and splits the rest across runners.</p>
+      <div class="install-box">
+        <div class="tabs line" role="tablist" aria-label="Install method" data-alt-aria-label="روش نصب">
+          <button role="tab" id="t-curl" aria-controls="p-curl" aria-selected="true">curl</button>
+          <button role="tab" id="t-brew" aria-controls="p-brew" aria-selected="false">brew</button>
+          <button role="tab" id="t-npm" aria-controls="p-npm" aria-selected="false">npm</button>
+          <button role="tab" id="t-docker" aria-controls="p-docker" aria-selected="false">docker</button>
+        </div>
+        <div role="tabpanel" id="p-curl" aria-labelledby="t-curl"><div class="install"><code id="c-curl">curl -fsSL https://kiln.example/install | sh</code><button class="btn btn-sm" type="button" data-copy="#c-curl" data-alt="کپی">copy</button></div></div>
+        <div role="tabpanel" id="p-brew" aria-labelledby="t-brew" hidden><div class="install"><code id="c-brew">brew install kiln-build/tap/kiln</code><button class="btn btn-sm" type="button" data-copy="#c-brew" data-alt="کپی">copy</button></div></div>
+        <div role="tabpanel" id="p-npm" aria-labelledby="t-npm" hidden><div class="install"><code id="c-npm">npm install -g @kiln-build/cli</code><button class="btn btn-sm" type="button" data-copy="#c-npm" data-alt="کپی">copy</button></div></div>
+        <div role="tabpanel" id="p-docker" aria-labelledby="t-docker" hidden><div class="install"><code id="c-docker">docker run --rm -v "$PWD":/src kiln/kiln run build</code><button class="btn btn-sm" type="button" data-copy="#c-docker" data-alt="کپی">copy</button></div></div>
+      </div>
+      <div class="row">
+        <a class="btn btn-primary btn-lg" href="dashboard.html"><span data-alt="شروع رایگان">start free</span> <span class="flip-rtl" aria-hidden="true">→</span></a>
+        <a class="btn btn-lg" href="#features" data-alt="خواندن مستندات">read the docs</a>
+      </div>
+    </div>
+
+    <figure class="window crt" aria-label="Example terminal session: an affected-only build" data-alt-aria-label="نمونهٔ نشست ترمینال: بیلد فقط بخش‌های تغییرکرده">
+      <div class="window-bar" aria-hidden="true"><span>●</span><span class="title">~/acme — kiln run build</span><span>80×24</span></div>
+      <div class="window-body typed" data-reveal-stagger>
+        <p><span class="prompt">kiln run build --affected</span></p>
+        <p><span class="dim">▸ graph</span>   42 packages · <span class="fg-brand">3 affected</span> · 39 cached     <span class="dim">0.21s</span></p>
+        <p><span class="fg-green">✓</span> @acme/tokens  build   <span class="fg-cyan">remote hit</span>          <span class="dim">0.04s</span></p>
+        <p><span class="fg-green">✓</span> @acme/ui      build   <span class="fg-cyan">remote hit</span>          <span class="dim">0.06s</span></p>
+        <p><span class="fg-green">✓</span> @acme/api     test    <span class="fg-cyan">local hit</span>           <span class="dim">0.03s</span></p>
+        <p><span class="fg-green">✓</span> @acme/docs    build   built               <span class="dim">4.21s</span></p>
+        <p><span class="fg-green">✓</span> @acme/edge    bundle  built               <span class="dim">2.07s</span></p>
+        <p><span class="fg-yellow">●</span> @acme/web     build   <span class="fg-brand">█████████████</span><span class="dim">░░░░</span> 74%  <span class="dim">11.8s</span></p>
+        <p> </p>
+        <p>  <span class="fg-green">done</span> in 18.4s · 39/42 from cache · <span class="fg-brand">saved 11m 02s</span></p>
+        <p><span class="prompt"></span><span class="cursor" aria-hidden="true"></span></p>
+      </div>
+    </figure>
+  </section>
+
+  <div class="container">
+    <div class="stats">
+      <div><span class="big" data-num="12400">12,400</span><span class="dim small" data-alt="تیم فعال">teams shipping with kiln</span></div>
+      <div><span class="big" data-num="3100000000" data-fmt="compact">3.1B</span><span class="dim small" data-alt="برخورد کش در ماه">cache hits per month</span></div>
+      <div><span class="big fg-brand" data-num="82" data-fmt="pct">82%</span><span class="dim small" data-alt="میانهٔ صرفه‌جویی در زمان CI">median CI time saved</span></div>
+      <div><span class="big" data-num="99.98" data-fmt="pct2">99.98%</span><span class="dim small" data-alt="دسترس‌پذیری کش راه‌دور">remote cache uptime</span></div>
+    </div>
+  </div>
+
+  <section class="container section" id="features" style="border:0">
+    <div class="sec-head">
+      <div><p class="eyebrow" data-alt="مستندات">docs</p><h2 class="h1" data-alt="چهار فرمان، همهٔ مونوریپو.">Four commands. The whole monorepo.</h2></div>
+      <p class="comment" data-alt="هر فرمان صفحهٔ راهنمای خودش را دارد: man kiln-cache">every command ships its own manual: man kiln-cache</p>
+    </div>
+    <div class="cols man-grid" style="--n:2; row-gap: var(--space-6)">
+      <article class="panel">
+        <h3 class="ptitle">kiln-affected(1) <span class="dim" data-alt="راهنمای kiln">kiln manual</span></h3>
+        <dl class="man">
+          <dt data-alt="نام">name</dt><dd data-alt="kiln affected — فقط چیزی را بساز که تغییر کرده">kiln affected — build only what changed</dd>
+          <dt data-alt="نحوهٔ استفاده">synopsis</dt><dd><code class="ltr">kiln run &lt;task&gt; --affected [--base main]</code></dd>
+          <dt data-alt="شرح">description</dt><dd data-alt="تفاوت git و گراف بسته‌ها را می‌خواند و وظیفه را فقط برای بسته‌های تغییرکرده و وابسته‌هایشان اجرا می‌کند.">Reads the git diff and the package graph, then runs the task only for changed packages and everything that depends on them.</dd>
+        </dl>
+      </article>
+      <article class="panel">
+        <h3 class="ptitle">kiln-cache(1) <span class="dim" data-alt="راهنمای kiln">kiln manual</span></h3>
+        <dl class="man">
+          <dt data-alt="نام">name</dt><dd data-alt="kiln cache — کش راه‌دور با آدرس‌دهی محتوا">kiln cache — content-addressed remote cache</dd>
+          <dt data-alt="نحوهٔ استفاده">synopsis</dt><dd><code class="ltr">kiln cache [status | push | prune --older 30d]</code></dd>
+          <dt data-alt="شرح">description</dt><dd data-alt="خروجی هر وظیفه با هش ورودی‌هایش ذخیره می‌شود؛ لپ‌تاپ شما، CI و هم‌تیمی‌ها از یک کش می‌خوانند.">Every task output is stored under the hash of its inputs, so your laptop, CI and teammates read from the same cache.</dd>
+        </dl>
+      </article>
+      <article class="panel">
+        <h3 class="ptitle">kiln-watch(1) <span class="dim" data-alt="راهنمای kiln">kiln manual</span></h3>
+        <dl class="man">
+          <dt data-alt="نام">name</dt><dd data-alt="kiln watch — بازسازی افزایشی هنگام ذخیره">kiln watch — incremental rebuilds on save</dd>
+          <dt data-alt="نحوهٔ استفاده">synopsis</dt><dd><code class="ltr">kiln watch web --open</code></dd>
+          <dt data-alt="شرح">description</dt><dd data-alt="گراف را در حافظه نگه می‌دارد و فقط گره‌های آلوده را دوباره می‌سازد؛ معمولاً زیر ۲۰۰ میلی‌ثانیه.">Keeps the graph in memory and rebuilds only the dirty nodes — usually in under 200 ms.</dd>
+        </dl>
+      </article>
+      <article class="panel">
+        <h3 class="ptitle">kiln-ci(1) <span class="dim" data-alt="راهنمای kiln">kiln manual</span></h3>
+        <dl class="man">
+          <dt data-alt="نام">name</dt><dd data-alt="kiln ci — تقسیم خودکار کار بین رانرها">kiln ci — automatic sharding across runners</dd>
+          <dt data-alt="نحوهٔ استفاده">synopsis</dt><dd><code class="ltr">kiln ci --affected --shards auto</code></dd>
+          <dt data-alt="شرح">description</dt><dd data-alt="وظیفه‌ها را بر اساس زمان واقعی اجراهای قبلی متعادل می‌کند تا همهٔ رانرها هم‌زمان تمام کنند.">Balances tasks by their real historical run time so every runner finishes at the same moment.</dd>
+        </dl>
+      </article>
+    </div>
+  </section>
+
+  <section class="container section">
+    <div class="cols" style="--n:2; gap: var(--space-7) 6ch; align-items: start">
+      <div class="stack" style="gap: var(--space-5)">
+        <p class="eyebrow" data-alt="بنچمارک">benchmark</p>
+        <h2 class="h1" data-alt="۶ دقیقه به ۱۸ ثانیه.">6 minutes to 18 seconds.</h2>
+        <p class="muted" data-alt="بیلد کامل یک مونوریپوی ۱۲۰ بسته‌ای روی یک رانر ۸ هسته‌ای. کمتر بهتر است.">Full build of a 120-package monorepo on one 8-core runner. Lower is better.</p>
+        <div class="bench" role="list">
+          <div class="meter" role="listitem"><span class="muted" data-alt="اسکریپت‌های شل">shell scripts</span><span class="bar" style="--v:100%; --c: var(--ink-3)"></span><b>6m12s</b></div>
+          <div class="meter" role="listitem"><span class="muted" data-alt="کش معمولی CI">generic CI cache</span><span class="bar" style="--v:78%; --c: var(--ink-3)"></span><b>4m50s</b></div>
+          <div class="meter" role="listitem"><span data-alt="kiln، کش سرد">kiln, cold cache</span><span class="bar" style="--v:27%"></span><b>1m41s</b></div>
+          <div class="meter" role="listitem"><span data-alt="kiln، کش گرم">kiln, warm cache</span><span class="bar" style="--v:5%"></span><b class="fg-brand">0m18s</b></div>
+        </div>
+      </div>
+      <div class="stack" style="gap: var(--space-3)">
+        <div class="tabs line" role="tablist" aria-label="Configuration files" data-alt-aria-label="فایل‌های پیکربندی">
+          <button role="tab" id="t-toml" aria-controls="p-toml" aria-selected="true">kiln.toml</button>
+          <button role="tab" id="t-ci" aria-controls="p-ci" aria-selected="false" class="ltr">.ci/pipeline.yml</button>
+        </div>
+<pre class="code" role="tabpanel" id="p-toml" aria-labelledby="t-toml"><span class="tk-c"># one file at the repo root</span>
+<span class="tk-p">[project]</span>
+name         = <span class="tk-s">"acme"</span>
+remote_cache = <span class="tk-k">true</span>
+
+<span class="tk-p">[tasks.build]</span>
+deps    = [<span class="tk-s">"^build"</span>]
+outputs = [<span class="tk-s">"dist/**"</span>]
+
+<span class="tk-p">[tasks.test]</span>
+deps    = [<span class="tk-s">"build"</span>]
+inputs  = [<span class="tk-s">"src/**"</span>, <span class="tk-s">"test/**"</span>]
+timeout = <span class="tk-n">600</span></pre>
+<pre class="code" role="tabpanel" id="p-ci" aria-labelledby="t-ci" hidden><span class="tk-c"># any CI that can run a shell</span>
+<span class="tk-p">steps</span>:
+  - <span class="tk-f">run</span>: curl -fsSL https://kiln.example/install | sh
+  - <span class="tk-f">run</span>: kiln ci --affected --shards <span class="tk-n">auto</span>
+    <span class="tk-p">env</span>:
+      KILN_TOKEN: <span class="tk-s">$KILN_TOKEN</span>
+      KILN_BASE:  <span class="tk-s">origin/main</span></pre>
+        <ul class="dash-list small">
+          <li data-alt="بدون پلاگین: وظیفه‌ها همان اسکریپت‌های package.json شما هستند.">No plugins: tasks are the scripts you already have.</li>
+          <li data-alt="«^build» یعنی اول وابستگی‌ها ساخته شوند.">"^build" means build dependencies first.</li>
+          <li data-alt="هر چیزی که در inputs نیامده، کش را باطل نمی‌کند.">Anything outside inputs never busts the cache.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section" id="pricing">
+    <div class="sec-head">
+      <div><p class="eyebrow" data-alt="قیمت">pricing</p><h2 class="h1" data-alt="برای هر کس پول بدهد که بیلد می‌گیرد.">Pay per person who ships, not per minute.</h2></div>
+      <div class="seg" data-group="period" role="group" aria-label="Billing period" data-alt-aria-label="دورهٔ پرداخت">
+        <button type="button" class="ltr" data-value="m" aria-pressed="true">--monthly</button>
+        <button type="button" class="ltr" data-value="y" aria-pressed="false"><span>--yearly</span> <span class="fg-brand" data-alt="−۲۰٪">−20%</span></button>
+      </div>
+    </div>
+    <div class="cols" style="--n:3">
+      <article class="panel plan">
+        <h3 class="ptitle">hobby</h3>
+        <p><span class="price" data-num="0" data-fmt="usd">$0</span> <span class="dim small" data-alt="برای همیشه">forever</span></p>
+        <p class="muted small" data-alt="برای پروژه‌های شخصی و متن‌باز.">For side projects and open source.</p>
+        <ul class="flag-list">
+          <li data-alt="کش محلی و affected">local cache + affected</li>
+          <li data-alt="۵ گیگابایت کش راه‌دور">5 GB remote cache</li>
+          <li data-alt="۱ رانر هم‌زمان">1 concurrent runner</li>
+          <li class="no" data-alt="ورود یکپارچه (SSO)">single sign-on</li>
+          <li class="no" data-alt="گزارش ممیزی">audit log</li>
+        </ul>
+        <a class="btn" href="dashboard.html" data-alt="شروع">start</a>
+      </article>
+      <article class="panel plan is-focus">
+        <h3 class="ptitle">team <span class="dim" data-alt="پیشنهادی">recommended</span></h3>
+        <p><span class="price" data-when="period:m"><span data-num="24" data-fmt="usd">$24</span></span><span class="price" data-when="period:y" hidden><span data-num="19" data-fmt="usd">$19</span></span> <span class="dim small" data-alt="هر نفر / ماه">per user / mo</span></p>
+        <p class="muted small" data-alt="برای تیم‌هایی که هر روز ادغام می‌کنند.">For teams that merge every day.</p>
+        <ul class="flag-list">
+          <li data-alt="۲۰۰ گیگابایت کش راه‌دور">200 GB remote cache</li>
+          <li data-alt="۲۰ رانر هم‌زمان">20 concurrent runners</li>
+          <li data-alt="تقسیم خودکار CI">automatic CI sharding</li>
+          <li data-alt="هشدار شکست در چت تیم">failure alerts in team chat</li>
+          <li class="no" data-alt="ورود یکپارچه (SSO)">single sign-on</li>
+        </ul>
+        <a class="btn btn-primary" href="dashboard.html" data-alt="آزمایش ۱۴ روزه">start 14-day trial</a>
+      </article>
+      <article class="panel plan">
+        <h3 class="ptitle">enterprise</h3>
+        <p><span class="price" data-alt="توافقی">custom</span></p>
+        <p class="muted small" data-alt="برای سازمان‌هایی با نیاز امنیتی و انطباق.">For orgs with security and compliance needs.</p>
+        <ul class="flag-list">
+          <li data-alt="همهٔ امکانات تیم">everything in team</li>
+          <li data-alt="ورود یکپارچه و SCIM">single sign-on + SCIM</li>
+          <li data-alt="گزارش ممیزی">audit log</li>
+          <li data-alt="رانرهای میزبانی‌شده توسط خودتان">self-hosted runners</li>
+          <li data-alt="توافق‌نامهٔ سطح خدمت ۹۹٫۹۹٪">99.99% uptime SLA</li>
+        </ul>
+        <a class="btn" href="#subscribe" data-alt="گفت‌وگو با فروش">talk to sales</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="container section" id="changelog" data-filter-scope>
+    <div class="sec-head">
+      <div><p class="eyebrow" data-alt="تغییرات">changelog</p><h2 class="h1" data-alt="هر دو هفته یک نسخه.">A release every two weeks.</h2></div>
+      <div class="row">
+        <label class="cmd" style="inline-size:min(100%, 30ch)"><span class="p" aria-hidden="true">/</span><span class="sr-only" data-alt="جست‌وجوی تغییرات">Search changes</span><input type="search" data-filter-search data-hotkey="/" placeholder="search…" data-alt-placeholder="جست‌وجو…"></label>
+        <div class="seg" data-group role="group" aria-label="Change type" data-alt-aria-label="نوع تغییر">
+          <button type="button" data-filter="type" data-value="all" aria-pressed="true" data-alt="همه">all</button>
+          <button type="button" data-filter="type" data-value="feat" aria-pressed="false">feat</button>
+          <button type="button" data-filter="type" data-value="fix" aria-pressed="false">fix</button>
+          <button type="button" data-filter="type" data-value="perf" aria-pressed="false">perf</button>
+        </div>
+      </div>
+    </div>
+    <p class="dim small" style="margin-block-end: var(--space-3)"><span data-filter-count>8</span> <span data-alt="نسخه نمایش داده شده">releases shown</span></p>
+    <ol class="changelog">
+      <li data-filter-item data-type="feat"><b class="ltr">v2.14.0</b><span class="dim" data-date="2026-10-02" data-fmt="short">Oct 2, 2026</span><span class="tag fg-green">feat</span><p data-alt="کش راه‌دور حالا در همهٔ پلن‌ها، حتی رایگان، در دسترس است.">Remote cache is generally available on every plan, including hobby.</p></li>
+      <li data-filter-item data-type="fix"><b class="ltr">v2.13.2</b><span class="dim" data-date="2026-09-24" data-fmt="short">Sep 24, 2026</span><span class="tag fg-red">fix</span><p data-alt="‎--affected‎ دیگر بسته‌های تغییرنام‌داده را جا نمی‌اندازد.">--affected no longer misses packages that were renamed.</p></li>
+      <li data-filter-item data-type="perf"><b class="ltr">v2.13.1</b><span class="dim" data-date="2026-09-18" data-fmt="short">Sep 18, 2026</span><span class="tag fg-cyan">perf</span><p data-alt="حل گراف در شروع سرد ۳٫۲ برابر سریع‌تر شد.">Graph resolution is 3.2× faster on a cold start.</p></li>
+      <li data-filter-item data-type="feat"><b class="ltr">v2.13.0</b><span class="dim" data-date="2026-09-09" data-fmt="short">Sep 9, 2026</span><span class="tag fg-green">feat</span><p data-alt="kiln watch نمای زندهٔ وابستگی‌ها را در ترمینال باز می‌کند.">kiln watch opens a live dependency view in the terminal.</p></li>
+      <li data-filter-item data-type="fix"><b class="ltr">v2.12.4</b><span class="dim" data-date="2026-08-27" data-fmt="short">Aug 27, 2026</span><span class="tag fg-red">fix</span><p data-alt="مسیرهای ویندوز با فاصله در خروجی‌ها درست کش می‌شوند.">Windows output paths that contain spaces are cached correctly.</p></li>
+      <li data-filter-item data-type="perf"><b class="ltr">v2.12.3</b><span class="dim" data-date="2026-08-20" data-fmt="short">Aug 20, 2026</span><span class="tag fg-cyan">perf</span><p data-alt="آپلود کش به‌صورت موازی و تا ۸ برابر سریع‌تر انجام می‌شود.">Cache uploads stream in parallel — up to 8× faster.</p></li>
+      <li data-filter-item data-type="feat"><b class="ltr">v2.12.0</b><span class="dim" data-date="2026-08-04" data-fmt="short">Aug 4, 2026</span><span class="tag fg-green">feat</span><p data-alt="شاردها بر اساس زمان تاریخی وظیفه‌ها متعادل می‌شوند.">Shards are balanced by historical task time.</p></li>
+      <li data-filter-item data-type="fix"><b class="ltr">v2.11.6</b><span class="dim" data-date="2026-07-22" data-fmt="short">Jul 22, 2026</span><span class="tag fg-red">fix</span><p data-alt="متغیرهایی که secret علامت خورده‌اند در لاگ‌ها پوشانده می‌شوند.">Variables marked secret are masked in every log.</p></li>
+    </ol>
+    <p class="empty" data-filter-empty hidden data-alt="هیچ نسخه‌ای با این جست‌وجو پیدا نشد.">no releases match that search.</p>
+  </section>
+
+  <section class="container section" id="faq">
+    <div class="cols" style="--n:2; gap: var(--space-7) 6ch; align-items: start">
+      <div class="stack" style="gap: var(--space-3)">
+        <p class="eyebrow" data-alt="پرسش‌ها">faq</p>
+        <h2 class="h1" data-alt="پیش از نصب بپرسید.">Ask before you install.</h2>
+        <p class="muted" data-alt="یا در انجمن بپرسید؛ معمولاً ظرف یک ساعت پاسخ می‌گیرید.">Or ask in the community forum — answers usually land within an hour.</p>
+      </div>
+      <div>
+        <details class="faq" open><summary data-alt="باید ساختار ریپو را تغییر دهم؟">Do I have to restructure my repo?</summary><p data-alt="نه. kiln فضاهای کاری موجود npm، pnpm و yarn را می‌خواند و فقط یک فایل kiln.toml لازم دارد.">No. kiln reads your existing npm, pnpm or yarn workspaces and only needs one kiln.toml.</p></details>
+        <details class="faq"><summary data-alt="کد من کجا ذخیره می‌شود؟">Where is my code stored?</summary><p data-alt="هیچ‌جا. فقط خروجی وظیفه‌ها رمزنگاری و با هش ورودی ذخیره می‌شود.">Nowhere. Only task outputs are stored, encrypted and keyed by their input hash.</p></details>
+        <details class="faq"><summary data-alt="بدون اینترنت کار می‌کند؟">Does it work offline?</summary><p data-alt="بله؛ کش محلی همیشه کار می‌کند و وقتی برگردید با کش راه‌دور همگام می‌شود.">Yes — the local cache always works and syncs with the remote cache when you are back.</p></details>
+        <details class="faq"><summary data-alt="می‌توانم رانرهای خودم را بیاورم؟">Can I bring my own runners?</summary><p data-alt="در پلن سازمانی، با یک فرمان: kiln runner register.">On enterprise, with one command: kiln runner register.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section" id="subscribe">
+    <div class="panel raised" style="padding-block: var(--space-6)">
+      <h2 class="ptitle" data-alt="یادداشت‌های انتشار">release notes</h2>
+      <div class="cols" style="--n:2; align-items: center">
+        <div class="stack" style="gap: var(--space-2)"><p class="h2" data-alt="هر نسخه، یک ایمیل کوتاه.">One short email per release.</p><p class="muted small" data-alt="بدون بازاریابی. هر وقت خواستید لغو کنید.">No marketing. Unsubscribe whenever you like.</p></div>
+        <form class="subscribe" data-validate data-success="Subscribed — see you next release." data-success-alt="عضو شدید — تا نسخهٔ بعد.">
+          <div class="field">
+            <label class="sr-only" for="sub-email" data-alt="ایمیل">Email</label>
+            <div class="cmd"><span class="p" aria-hidden="true">›</span><input id="sub-email" name="email" type="email" required autocomplete="email" placeholder="you@company.dev" dir="ltr"></div>
+          </div>
+          <button class="btn btn-primary btn-lg" type="submit" data-alt="عضویت">subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="container">
+    <div class="cols" style="--n:4">
+      <div><h3 data-alt="محصول">product</h3><ul><li><a href="#features" data-alt="امکانات">features</a></li><li><a href="#pricing" data-alt="قیمت">pricing</a></li><li><a href="#changelog" data-alt="تغییرات">changelog</a></li><li><a href="dashboard.html" data-alt="کنسول">console</a></li></ul></div>
+      <div><h3 data-alt="مستندات">docs</h3><ul><li><a href="#features" data-alt="شروع سریع">quick start</a></li><li><a href="#features" data-alt="مرجع فرمان‌ها">command reference</a></li><li><a href="#features" data-alt="راهنمای CI">CI guide</a></li></ul></div>
+      <div><h3 data-alt="شرکت">company</h3><ul><li><a href="#top" data-alt="درباره">about</a></li><li><a href="#top" data-alt="وبلاگ">blog</a></li><li><a href="#top" data-alt="فرصت‌های شغلی">careers</a></li></ul></div>
+      <div><h3 data-alt="جامعه">community</h3><ul><li><a href="#faq" data-alt="انجمن">forum</a></li><li><a href="#top" data-alt="کد منبع">source code</a></li><li><a href="#top" data-alt="وضعیت سرویس">status</a></li></ul></div>
+    </div>
+  </div>
+  <div class="statusbar foot-bar" style="position:static">
+    <span class="mode">kiln</span>
+    <span>v2.14.0</span>
+    <span class="hide-sm">MIT</span>
+    <span><span class="st ok" data-alt="همهٔ سرویس‌ها برقرارند">all systems operational</span></span>
+    <span class="end hide-sm" data-alt="© ۲۰۲۶ کیلن">© 2026 kiln</span>
+  </div>
+</footer>
+</body>
+</html>
