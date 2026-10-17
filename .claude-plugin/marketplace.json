@@ -153,6 +153,15 @@
       ]
     },
     {
+      "name": "maison",
+      "description": "Tastefolio design language — Quiet luxury — Didone display, spaced small caps, hairlines and a great deal of ivory",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/maison"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -173,7 +182,8 @@
         "./skills/teletype",
         "./skills/kashi",
         "./skills/ticker",
-        "./skills/clay"
+        "./skills/clay",
+        "./skills/maison"
       ]
     }
   ]

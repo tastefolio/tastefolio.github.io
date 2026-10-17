@@ -1,0 +1,151 @@
+/* Maison — design tokens (Tastefolio). Quiet luxury: ivory and ink, a Didone display at whisper weights, spaced
+   small capitals, hairline rules, very slow motion and one bronze used almost never. */
+:root {
+  --canvas: #f7f4ef;          /* ivory paper */
+  --surface: #fbf9f5;
+  --surface-2: #efebe4;       /* stone */
+  --surface-3: #e4ded4;
+  --surface-ink: #111110;
+  --overlay: rgba(17, 17, 16, .42);
+
+  --ink: #111110;
+  --ink-2: #4c4a46;
+  --ink-3: #7b7770;
+  --ink-inverse: #f7f4ef;
+
+  --line: #dcd6cc;            /* hairline */
+  --line-2: #111110;          /* the black rule, used with intent */
+
+  --brand: #111110;           /* luxury houses lead with ink; the brand IS the black */
+  --brand-ink: #f7f4ef;
+  --brand-soft: #ece7df;
+  --brand-strong: #000000;
+  --accent: #8e7146;          /* bronze — a price note, a seal, one line per page */
+  --focus: #8e7146;
+
+  /* still-life backdrops for product imagery */
+  --sand: #e9dfcf;
+  --smoke: #d9d6d1;
+  --blush: #ecd8d0;
+  --sage: #d7dccf;
+  --night: #2a2724;
+
+  --success: #4f6b4f;
+  --success-soft: #e4ebe0;
+  --warning: #8e6a2a;
+  --warning-soft: #f2e9d7;
+  --danger: #8f3a32;
+  --danger-soft: #f3e1dd;
+  --info: #4a5a6e;
+  --info-soft: #e3e7ec;
+
+  --chart-1: var(--ink);
+  --chart-2: var(--accent);
+  --chart-3: #a8a29a;
+  --chart-4: #5c6b5a;
+  --chart-5: #8a6e6a;
+  --chart-6: #c9c2b6;
+  --chart-grid: #e7e2da;
+  --chart-axis: var(--ink-3);
+  --chart-curve: smooth;
+  --chart-stroke: 1.2;
+  --chart-area: 0;
+  --chart-radius: 0;
+  --chart-bar-gap: .62;
+  --chart-donut: 2;
+  --chart-gap: 6;
+  --chart-dots: 0;
+
+  --font-sans: "Jost", "Futura", "Century Gothic", system-ui, sans-serif;
+  --font-display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --font-mono: "Jost", system-ui, sans-serif;
+  --fs-xs: 11px;
+  --fs-sm: 13px;
+  --fs-md: 16px;
+  --fs-lg: 19px;
+  --fs-xl: 24px;
+  --fs-2xl: 34px;
+  --fs-3xl: 52px;
+  --fs-display: clamp(52px, 9vw, 150px);
+  --fw-regular: 300;
+  --fw-medium: 400;
+  --fw-bold: 500;
+  --fw-display: 400;
+  --lh-tight: .96;
+  --lh-snug: 1.2;
+  --lh-body: 1.75;
+  --tracking-display: -.02em;
+  --tracking-caps: .28em;     /* spaced small capitals for every label */
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 14px;
+  --space-4: 20px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 72px;
+  --space-8: 112px;
+  --space-9: 160px;
+  --space-10: 220px;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-pill: 999px;
+  --border-w: 1px;
+  --shadow-1: none;
+  --shadow-2: none;
+  --shadow-3: 0 40px 100px -40px rgba(17, 17, 16, .35);
+
+  --container: 1320px;
+  --gutter: clamp(20px, 5vw, 64px);
+  --control-h: 48px;
+  --control-h-lg: 56px;
+
+  --ease: cubic-bezier(.22, .61, .36, 1);
+  --dur-1: 240ms;
+  --dur-2: 480ms;
+  --dur-3: 900ms;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  /* "noir": evening boutique */
+  --canvas: #0f0e0d;
+  --surface: #161513;
+  --surface-2: #1d1b19;
+  --surface-3: #282522;
+  --surface-ink: #f2ede4;
+  --overlay: rgba(0, 0, 0, .6);
+  --ink: #f2ede4;
+  --ink-2: #bdb6aa;
+  --ink-3: #8a8378;
+  --ink-inverse: #0f0e0d;
+  --line: #2e2b27;
+  --line-2: #f2ede4;
+  --brand: #f2ede4;
+  --brand-ink: #0f0e0d;
+  --brand-soft: #24211e;
+  --brand-strong: #ffffff;
+  --accent: #c2a271;
+  --focus: #c2a271;
+  --sand: #3a342c;
+  --smoke: #2f2e2c;
+  --blush: #3b2f2b;
+  --sage: #2f342d;
+  --night: #050505;
+  --chart-grid: #26231f;
+  color-scheme: dark;
+}
+
+:root:lang(fa) {
+  --font-sans: "Vazirmatn", "Jost", Tahoma, sans-serif;
+  --font-display: "Vazirmatn", "Bodoni Moda", sans-serif;   /* Persian display: Vazirmatn at light weights */
+  --fs-md: 15px;
+  --fs-display: clamp(40px, 6.4vw, 104px);
+  --fw-display: 200;
+  --lh-tight: 1.45;
+  --lh-snug: 1.6;
+  --lh-body: 2;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+}

@@ -1,0 +1,34 @@
+{
+  "name": "Maison",
+  "order": 17,
+  "category": "commerce",
+  "mode": "light",
+  "density": "airy",
+  "persianFirst": false,
+  "tags": ["luxury", "minimal", "editorial", "fashion", "fragrance", "didone"],
+  "tagline": {
+    "en": "Quiet luxury — Didone display, spaced small caps, hairlines and a great deal of ivory",
+    "fa": "لوکس آرام — تیتر دیدون، حروف کوچکِ فاصله‌دار، خطوط مویی و فضای سفید فراوان"
+  },
+  "summary": {
+    "en": "A restrained, editorial language for luxury and premium commerce. Ivory paper and ink, a Didone display (Bodoni Moda) at whisper weights with italic accents, every label in widely spaced small capitals, hairline rules, underlined fields and text-first buttons. Product imagery is staged as still lifes — objects on soft backdrops — and the layout breathes with asymmetric spreads and huge margins. A full-screen menu, a quick-view dialog and a bag side sheet carry commerce; the client account keeps the same calm with a black membership card, order timelines and a scent profile. One bronze accent, used almost never. Persian is set in Vazirmatn at light weights.",
+    "fa": "زبانی خویشتن‌دار و مجله‌ای برای تجارت لوکس و ممتاز. کاغذ عاجی و جوهر سیاه، تیتر دیدون (بودونی مودا) با وزن‌های بسیار نازک و ایتالیک برای تأکید، همهٔ برچسب‌ها با حروف کوچکِ پرفاصله، خطوط مویی، فیلدهای زیرخط‌دار و دکمه‌های متنی. تصویر محصولات به شکل طبیعت بی‌جان صحنه‌آرایی می‌شود — اشیا روی زمینهٔ نرم — و چیدمان با صفحه‌های نامتقارن و حاشیه‌های بزرگ نفس می‌کشد. منوی تمام‌صفحه، نگاه سریع و سبد کشویی بار فروش را می‌کشند؛ حساب مشتری هم با کارت عضویت سیاه، خط زمانی سفارش و نمایهٔ رایحه همین آرامش را دارد. یک رنگ برنزی که تقریباً هرگز به کار نمی‌رود. فارسی با وزیرمتن در وزن‌های نازک."
+  },
+  "bestFor": {
+    "en": ["Fashion, fragrance, jewellery and beauty houses", "Premium furniture, objects and design galleries", "Boutique hotels, private clubs and concierge services", "Client accounts and appointment booking for luxury retail"],
+    "fa": ["خانه‌های مد، عطر، جواهر و زیبایی", "مبلمان ممتاز، اشیا و گالری‌های طراحی", "هتل‌های بوتیک، باشگاه‌های خصوصی و خدمات ویژه", "حساب مشتری و رزرو مشاوره برای خرده‌فروشی لوکس"]
+  },
+  "avoidFor": {
+    "en": ["Discount or high-volume e-commerce", "Data-heavy dashboards and admin tools", "Playful, youthful or community-led brands"],
+    "fa": ["فروشگاه‌های تخفیفی یا پرحجم", "داشبوردهای پرداده و ابزار مدیریتی", "برندهای بازیگوش، جوان یا جامعه‌محور"]
+  },
+  "signature": {
+    "en": ["Didone display at whisper weights, italic for the one word that matters", "Every label in widely spaced small capitals", "Hairline rules, underlined fields, text-first buttons", "Still-life product imagery on soft backdrops", "Full-screen menu, quick view and a bag side sheet", "Huge margins, asymmetric spreads, a giant wordmark footer"],
+    "fa": ["تیتر دیدون با وزن بسیار نازک، ایتالیک برای تنها کلمهٔ مهم", "همهٔ برچسب‌ها با حروف کوچکِ پرفاصله", "خط مویی، فیلد زیرخط‌دار، دکمه‌های متنی", "تصویر محصول به شکل طبیعت بی‌جان روی زمینهٔ نرم", "منوی تمام‌صفحه، نگاه سریع و سبد کشویی", "حاشیه‌های بزرگ، صفحه‌های نامتقارن، پانویس با نام‌نشان عظیم"]
+  },
+  "swatches": ["#f7f4ef", "#111110", "#e9dfcf", "#d9d6d1", "#8e7146"],
+  "fonts": { "latin": "Bodoni Moda + Jost", "persian": "Vazirmatn", "mono": "Jost" },
+  "icons": "Phosphor (thin), sparingly",
+  "brandTrials": ["8e7146", "4a5a6e", "5c6b5a", "8f3a32"],
+  "demos": { "site": { "host": "maison-sahar.example" }, "dashboard": { "host": "maison-sahar.example/account" } }
+}

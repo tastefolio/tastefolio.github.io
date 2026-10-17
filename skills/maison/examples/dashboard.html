@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-alt-lang="fa" data-demo="dashboard">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="حساب من · خانهٔ سحر">My account · Maison Sahar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Jost:wght@300;400;500&family=Vazirmatn:wght@100;200;300;400;500;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/thin/style.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-6); }
+  @media (max-width: 760px) { .two { grid-template-columns: minmax(0, 1fr); } }
+  .order-card { display: grid; gap: var(--space-4); padding-block: var(--space-4) 0; }
+  .order-card .items { display: flex; gap: 10px; }
+  .order-card .items .still { inline-size: 72px; }
+  .appt-card { display: grid; gap: var(--space-3); padding: var(--space-5); border: 1px solid var(--line); }
+  .wish { --n: 4; }
+  @media (max-width: 1100px) { .wish { --n: 2; } }
+  .wish .product { gap: 8px; }
+  .wish .name { font-size: var(--fs-lg); }
+  .profile { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--space-7); align-items: start; }
+  @media (max-width: 900px) { .profile { grid-template-columns: minmax(0, 1fr); } }
+  .slider { display: grid; gap: 2px; }
+  .slider .ends { display: flex; justify-content: space-between; }
+  .details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5) var(--space-6); }
+  .details .full { grid-column: 1 / -1; }
+  @media (max-width: 600px) { .details { grid-template-columns: minmax(0, 1fr); } }
+  .pref { display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); padding-block: 14px; border-block-end: 1px solid var(--line); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="رفتن به محتوا">Skip to content</a>
+<header class="site-head">
+  <div class="container">
+    <div class="top">
+      <div class="head-start"><a class="text-btn" href="site.html"><i class="ph-thin ph-arrow-left flip-rtl" aria-hidden="true"></i><span data-alt="فروشگاه">Shop</span></a></div>
+      <a class="wordmark" href="site.html" data-alt="خانهٔ سحر">Maison Sahar</a>
+      <div class="head-end">
+        <button class="text-btn" type="button" data-lang-toggle data-alt="English">فارسی</button>
+        <button class="text-btn hide-md" type="button" data-theme-toggle aria-label="Toggle noir theme" data-alt-aria-label="تغییر پوستهٔ شب"><i class="ph-thin ph-moon" aria-hidden="true"></i></button>
+        <button class="text-btn hide-md" type="button" data-toast="Signed out of the sample" data-toast-alt="از نمونه خارج شدید" data-alt="خروج">Sign out</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container account">
+  <div class="acct-nav" role="tablist" aria-orientation="vertical" aria-label="Account" data-alt-aria-label="حساب">
+    <button role="tab" id="t-ov" aria-controls="p-ov" aria-selected="true" data-alt="نمای کلی">Overview</button>
+    <button role="tab" id="t-ord" aria-controls="p-ord" aria-selected="false" data-alt="سفارش‌ها">Orders</button>
+    <button role="tab" id="t-wish" aria-controls="p-wish" aria-selected="false" data-alt="فهرست دلخواه">Wishlist</button>
+    <button role="tab" id="t-appt" aria-controls="p-appt" aria-selected="false" data-alt="مشاوره‌ها">Appointments</button>
+    <button role="tab" id="t-prof" aria-controls="p-prof" aria-selected="false" data-alt="نمایهٔ رایحه">Scent profile</button>
+    <button role="tab" id="t-det" aria-controls="p-det" aria-selected="false" data-alt="مشخصات">Details</button>
+  </div>
+
+  <main id="main">
+    <!-- ============================================================ overview -->
+    <section role="tabpanel" id="p-ov" aria-labelledby="t-ov" class="panel">
+      <div class="stack" style="gap: 8px">
+        <span class="caps subtle" data-date="2026-10-16" data-fmt="long">October 16, 2026</span>
+        <h1 class="h1"><span data-alt="عصر بخیر،">Good evening,</span> <i data-alt="مینا">Mina</i></h1>
+      </div>
+      <div class="two">
+        <div class="cercle">
+          <span class="caps accent" data-alt="حلقهٔ طلایی">Cercle · Or</span>
+          <p class="h2" data-alt="عضو از ۱۳۹۹">A member since 2020</p>
+          <div class="bar" aria-hidden="true"><i style="--v:72%"></i></div>
+          <div class="price-line small"><span><span data-num="1440">1,440</span> / <span data-num="2000">2,000</span> <span data-alt="امتیاز">points</span></span><span class="caps" data-alt="تا حلقهٔ پلاتین">to Platine</span></div>
+          <p class="small" style="opacity:.75" data-alt="پیش‌نمایش خصوصی مجموعهٔ زمستان: ۲۰ آبان.">Private preview of the winter collection: November 11.</p>
+        </div>
+        <div class="appt-card">
+          <span class="caps subtle" data-alt="مشاورهٔ بعدی">Next consultation</span>
+          <p class="h3"><span data-date="2026-10-24" data-fmt="long">October 24, 2026</span> · <span data-alt="۱۴:۰۰">14:00</span></p>
+          <p class="muted small" data-alt="تهران · فرشته، با عطرساز آرین کیانی">Tehran · Fereshteh, with perfumer Arian Kiani</p>
+          <div class="row"><button class="u-link" type="button" data-goto="t-appt" data-alt="تغییر">Change</button><button class="u-link" type="button" data-toast="Added to your calendar" data-toast-alt="به تقویم شما اضافه شد" data-alt="افزودن به تقویم">Add to calendar</button></div>
+        </div>
+      </div>
+      <div class="facts">
+        <div><span class="caps subtle" data-alt="سفارش">Orders</span><span class="v" data-num="6">6</span></div>
+        <div><span class="caps subtle" data-alt="دلخواه">Saved</span><span class="v" data-num="14">14</span></div>
+        <div><span class="caps subtle" data-alt="نمونهٔ امتحان‌شده">Samples tried</span><span class="v" data-num="9">9</span></div>
+      </div>
+      <div>
+        <div class="panel-head"><h2 class="caps" data-alt="آخرین سفارش">Latest order</h2><span class="caps subtle">MS-20418</span></div>
+        <div class="order-card">
+          <div class="row" style="justify-content: space-between">
+            <div class="items" aria-hidden="true">
+              <div class="still blush"><div class="obj bottle" style="--liquid:#d9a3a0"><span class="cap"></span><span class="neck"></span><span class="glass"></span></div></div>
+              <div class="still sand"><div class="obj candle" style="--liquid:#2c2926"><span class="wick"></span><span class="vessel"></span></div></div>
+            </div>
+            <span class="status moving" data-alt="در راه">In transit</span>
+          </div>
+          <ol class="timeline" style="--steps:4">
+            <li class="done"><span data-alt="ثبت">Placed</span><br><span class="subtle small" data-date="2026-10-12" data-fmt="short">Oct 12</span></li>
+            <li class="done"><span data-alt="بسته‌بندی هدیه">Gift-wrapped</span><br><span class="subtle small" data-date="2026-10-13" data-fmt="short">Oct 13</span></li>
+            <li class="done now"><span data-alt="در راه">In transit</span><br><span class="subtle small" data-date="2026-10-15" data-fmt="short">Oct 15</span></li>
+            <li><span data-alt="تحویل">Delivered</span><br><span class="subtle small" data-alt="تا ۲۷ مهر">by Oct 19</span></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ orders -->
+    <section role="tabpanel" id="p-ord" aria-labelledby="t-ord" class="panel" hidden>
+      <div class="panel-head"><h1 class="h2" data-alt="سفارش‌ها">Orders</h1><span class="caps subtle"><span data-num="6">6</span> <span data-alt="سفارش">orders</span></span></div>
+      <div class="table-scroll">
+        <table class="table">
+          <thead><tr><th scope="col" data-alt="شماره">Order</th><th scope="col" aria-sort="descending"><button type="button" data-sort="date" data-alt="تاریخ">Date</button></th><th scope="col" data-alt="اقلام">Items</th><th scope="col" class="end" aria-sort="none"><button type="button" data-sort="num" data-alt="مبلغ">Total</button></th><th scope="col" data-alt="وضعیت">Status</th><th scope="col"><span class="sr-only" data-alt="کار">Action</span></th></tr></thead>
+          <tbody>
+            <tr><td>MS-20418</td><td data-value="2026-10-12" data-date="2026-10-12" data-fmt="long">October 12, 2026</td><td data-alt="گل سرخ کاشان، شمع کتابخانه">Rose of Kashan, Library candle</td><td class="end" data-value="335" data-num="335" data-fmt="eur">€335</td><td><span class="status moving" data-alt="در راه">In transit</span></td><td class="end"><button class="u-link" type="button" data-goto="t-ov" data-alt="پیگیری">Track</button></td></tr>
+            <tr><td>MS-19877</td><td data-value="2026-08-30" data-date="2026-08-30" data-fmt="long">August 30, 2026</td><td data-alt="شمارهٔ ۱۱ — نمک">N°11 Salt</td><td class="end" data-value="210" data-num="210" data-fmt="eur">€210</td><td><span class="status done" data-alt="تحویل شد">Delivered</span></td><td class="end"><button class="u-link" type="button" data-toast="Invoice downloaded" data-toast-alt="فاکتور دریافت شد" data-alt="فاکتور">Invoice</button></td></tr>
+            <tr><td>MS-19102</td><td data-value="2026-06-14" data-date="2026-06-14" data-fmt="long">June 14, 2026</td><td data-alt="گلدان سحر">Sahar vase</td><td class="end" data-value="380" data-num="380" data-fmt="eur">€380</td><td><span class="status done" data-alt="تحویل شد">Delivered</span></td><td class="end"><button class="u-link" type="button" data-toast="Invoice downloaded" data-toast-alt="فاکتور دریافت شد" data-alt="فاکتور">Invoice</button></td></tr>
+            <tr><td>MS-18560</td><td data-value="2026-03-20" data-date="2026-03-20" data-fmt="long">March 20, 2026</td><td data-alt="شمارهٔ ۷، دو شمع">N°7, two candles</td><td class="end" data-value="410" data-num="410" data-fmt="eur">€410</td><td><span class="status done" data-alt="تحویل شد">Delivered</span></td><td class="end"><button class="u-link" type="button" data-toast="Invoice downloaded" data-toast-alt="فاکتور دریافت شد" data-alt="فاکتور">Invoice</button></td></tr>
+            <tr><td>MS-17431</td><td data-value="2025-12-18" data-date="2025-12-18" data-fmt="long">December 18, 2025</td><td data-alt="جعبهٔ کشف — شش نمونه">Discovery box — six samples</td><td class="end" data-value="45" data-num="45" data-fmt="eur">€45</td><td><span class="status done" data-alt="تحویل شد">Delivered</span></td><td class="end"><button class="u-link" type="button" data-toast="Invoice downloaded" data-toast-alt="فاکتور دریافت شد" data-alt="فاکتور">Invoice</button></td></tr>
+            <tr><td>MS-16902</td><td data-value="2025-10-02" data-date="2025-10-02" data-fmt="long">October 2, 2025</td><td data-alt="شمارهٔ ۹ — عنبر">N°9 Ambergris</td><td class="end" data-value="260" data-num="260" data-fmt="eur">€260</td><td><span class="status held" data-alt="بازگشت داده شد">Returned</span></td><td class="end"><button class="u-link" type="button" data-toast="Credit note downloaded" data-toast-alt="یادداشت اعتبار دریافت شد" data-alt="اعتبار">Credit note</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============================================================ wishlist -->
+    <section role="tabpanel" id="p-wish" aria-labelledby="t-wish" class="panel" hidden>
+      <div class="panel-head"><h1 class="h2" data-alt="فهرست دلخواه">Wishlist</h1><button class="u-link" type="button" data-toast="Wishlist link copied" data-toast-alt="پیوند فهرست کپی شد" data-alt="هم‌رسانی فهرست">Share the list</button></div>
+      <div class="cols wish">
+        <article class="product"><div class="still night" aria-hidden="true"><div class="obj bottle" style="--liquid:#9fb4c9"><span class="cap"></span><span class="neck"></span><span class="glass"><span class="tag">Sahar<b>N°7</b></span></span></div></div><div class="price-line"><h2 class="name" data-alt="شمارهٔ ۷">N°7 Before Dawn</h2><span class="price" data-num="220" data-fmt="eur">€220</span></div><div class="row"><button class="u-link" type="button" data-toast="Moved to your bag" data-toast-alt="به سبد منتقل شد" data-alt="به سبد">Move to bag</button><button class="u-link" type="button" data-toast="Removed" data-toast-alt="حذف شد" data-alt="حذف" style="color: var(--ink-3)">Remove</button></div></article>
+        <article class="product"><div class="still sand" aria-hidden="true"><div class="obj bottle" style="--liquid:#c99a5b"><span class="cap"></span><span class="neck"></span><span class="glass"><span class="tag">Sahar<b>N°9</b></span></span></div></div><div class="price-line"><h2 class="name" data-alt="شمارهٔ ۹">N°9 Ambergris</h2><span class="price" data-num="260" data-fmt="eur">€260</span></div><div class="row"><button class="u-link" type="button" data-toast="Moved to your bag" data-toast-alt="به سبد منتقل شد" data-alt="به سبد">Move to bag</button><button class="u-link" type="button" data-toast="Removed" data-toast-alt="حذف شد" data-alt="حذف" style="color: var(--ink-3)">Remove</button></div></article>
+        <article class="product"><div class="still smoke" aria-hidden="true"><div class="obj vase" style="--liquid:#9aa7ad; inline-size:26%"></div></div><div class="price-line"><h2 class="name" data-alt="تُنگ شیشه‌ای">Glass carafe</h2><span class="price" data-num="320" data-fmt="eur">€320</span></div><div class="row"><button class="u-link" type="button" data-toast="Moved to your bag" data-toast-alt="به سبد منتقل شد" data-alt="به سبد">Move to bag</button><button class="u-link" type="button" data-toast="Removed" data-toast-alt="حذف شد" data-alt="حذف" style="color: var(--ink-3)">Remove</button></div></article>
+        <article class="product"><div class="still sage" aria-hidden="true"><div class="obj candle" style="--liquid:#4b5a49"><span class="wick"></span><span class="vessel"></span></div></div><div class="price-line"><h2 class="name" data-alt="باغ زمستانی">Winter garden</h2><span class="price" data-num="95" data-fmt="eur">€95</span></div><div class="row"><button class="u-link" type="button" data-toast="Moved to your bag" data-toast-alt="به سبد منتقل شد" data-alt="به سبد">Move to bag</button><button class="u-link" type="button" data-toast="Removed" data-toast-alt="حذف شد" data-alt="حذف" style="color: var(--ink-3)">Remove</button></div></article>
+      </div>
+    </section>
+
+    <!-- ============================================================ appointments -->
+    <section role="tabpanel" id="p-appt" aria-labelledby="t-appt" class="panel" hidden>
+      <div class="panel-head"><h1 class="h2" data-alt="مشاوره‌ها">Appointments</h1></div>
+      <div class="two">
+        <div class="stack" style="gap: var(--space-4)">
+          <div class="appt-card"><span class="caps subtle" data-alt="پیش رو">Upcoming</span><p class="h3"><span data-date="2026-10-24" data-fmt="long">October 24, 2026</span> · <span data-alt="۱۴:۰۰">14:00</span></p><p class="muted small" data-alt="تهران · فرشته، با آرین کیانی">Tehran · Fereshteh, with Arian Kiani</p><button class="u-link" type="button" data-toast="Appointment cancelled" data-toast-alt="مشاوره لغو شد" data-alt="لغو" style="justify-self: start">Cancel</button></div>
+          <div class="appt-card" style="border-style: dashed"><span class="caps subtle" data-alt="گذشته">Past</span><p data-alt="۱۸ اسفند ۱۴۰۴ · پاریس، سن‌ژرمن — شش عطر امتحان شد؛ انتخاب: نمک.">March 9, 2026 · Paris, Saint-Germain — six tried, chose Salt.</p></div>
+        </div>
+        <form class="stack" style="gap: var(--space-5)" data-validate data-success="Requested — we will confirm by email." data-success-alt="درخواست ثبت شد — با ایمیل تأیید می‌کنیم.">
+          <span class="caps subtle" data-alt="قرار تازه">Book another</span>
+          <div class="field"><label class="label" for="b-shop" data-alt="بوتیک">Boutique</label><select class="select" id="b-shop" name="shop"><option data-alt="تهران · فرشته">Tehran · Fereshteh</option><option data-alt="پاریس · سن‌ژرمن">Paris · Saint-Germain</option><option data-alt="استانبول · نیشانتاشی">Istanbul · Nişantaşı</option></select></div>
+          <div class="field"><label class="label" for="b-date" data-alt="تاریخ">Date</label><input class="input" id="b-date" name="date" type="date" required min="2026-10-17"></div>
+          <fieldset class="field" style="border:0; padding:0; margin:0"><legend class="label" style="margin-block-end: 10px" data-alt="ساعت">Time</legend><div class="sizes"><label><input type="radio" name="t" value="11" required><span data-alt="۱۱:۰۰">11:00</span></label><label><input type="radio" name="t" value="15"><span data-alt="۱۵:۰۰">15:00</span></label><label><input type="radio" name="t" value="18"><span data-alt="۱۸:۰۰">18:00</span></label></div></fieldset>
+          <button class="btn btn-solid" type="submit" data-alt="درخواست">Request</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============================================================ scent profile -->
+    <section role="tabpanel" id="p-prof" aria-labelledby="t-prof" class="panel" hidden>
+      <div class="panel-head"><h1 class="h2" data-alt="نمایهٔ رایحه">Scent profile</h1><span class="caps subtle" data-alt="برای پیشنهاد نمونه‌ها">Guides your samples</span></div>
+      <div class="profile">
+        <form class="stack" style="gap: var(--space-6)" data-validate data-keep data-success="Profile saved" data-success-alt="نمایه ذخیره شد">
+          <div class="field"><span class="label" data-alt="خانواده‌هایی که دوست دارید">Families you love</span>
+            <div class="note-chips" data-group data-multi role="group" aria-label="Families" data-alt-aria-label="خانواده‌ها">
+              <button type="button" aria-pressed="true" data-alt="مرکباتی">Citrus</button><button type="button" aria-pressed="true" data-alt="گلی">Floral</button><button type="button" aria-pressed="true" data-alt="چوبی">Woody</button><button type="button" aria-pressed="false" data-alt="کهربایی">Amber</button><button type="button" aria-pressed="false" data-alt="چرمی">Leather</button><button type="button" aria-pressed="true" data-alt="سبز">Green</button><button type="button" aria-pressed="false" data-alt="دریایی">Aquatic</button><button type="button" aria-pressed="false" data-alt="ادویه‌ای">Spice</button>
+            </div></div>
+          <div class="slider"><label class="label" for="r-int" data-alt="شدت">Intensity</label><input class="range" id="r-int" type="range" min="0" max="100" value="35"><div class="ends caps subtle"><span data-alt="نجواگونه">Whisper</span><span data-alt="حضور">Presence</span></div></div>
+          <div class="slider"><label class="label" for="r-sea" data-alt="فصل">Season</label><input class="range" id="r-sea" type="range" min="0" max="100" value="70"><div class="ends caps subtle"><span data-alt="تابستان">Summer</span><span data-alt="زمستان">Winter</span></div></div>
+          <button class="btn btn-solid" type="submit" style="justify-self: start" data-alt="ذخیره">Save profile</button>
+        </form>
+        <div class="stack" style="gap: var(--space-4); justify-items: center; text-align: center">
+          <span class="caps subtle" data-alt="قفسهٔ شما بر اساس خانواده">Your shelf by family</span>
+          <div data-chart="donut" data-height="220" data-fmt="pct" data-values="40,25,20,15" data-labels='{"en":["Woody","Floral","Citrus","Green"],"fa":["چوبی","گلی","مرکباتی","سبز"]}' data-center='{"en":"Woody","fa":"چوبی"}' data-label='{"en":"Your shelf by scent family","fa":"قفسهٔ شما بر اساس خانوادهٔ رایحه"}' style="inline-size: 100%"></div>
+          <p class="small muted" data-alt="پیشنهاد بعدی: شمارهٔ ۹، عنبر — گرم‌تر از آن‌چه معمولاً انتخاب می‌کنید.">Next suggestion: N°9 Ambergris — warmer than your usual.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ details -->
+    <section role="tabpanel" id="p-det" aria-labelledby="t-det" class="panel" hidden>
+      <div class="panel-head"><h1 class="h2" data-alt="مشخصات">Details</h1></div>
+      <form class="details" data-validate data-keep data-success="Details updated" data-success-alt="مشخصات به‌روز شد">
+        <div class="field"><label class="label" for="d-first" data-alt="نام">First name</label><input class="input" id="d-first" name="first" value="Mina" data-alt-value="مینا" required></div>
+        <div class="field"><label class="label" for="d-last" data-alt="نام خانوادگی">Last name</label><input class="input" id="d-last" name="last" value="Rahmani" data-alt-value="رحمانی" required></div>
+        <div class="field"><label class="label" for="d-mail" data-alt="ایمیل">Email</label><input class="input" id="d-mail" name="email" type="email" value="mina@example.com" required dir="ltr"></div>
+        <div class="field"><label class="label" for="d-bday" data-alt="تولد (برای هدیهٔ سالانه)">Birthday (for a yearly gift)</label><input class="input" id="d-bday" name="bday" type="date" value="1992-04-18"></div>
+        <div class="field full"><label class="label" for="d-addr" data-alt="نشانی ارسال">Delivery address</label><input class="input" id="d-addr" name="addr" value="12 Rue de Grenelle, Paris" data-alt-value="خیابان فرشته، کوچهٔ نارون، پلاک ۱۲، تهران" required></div>
+        <div class="full">
+          <div class="pref"><span id="l-news" data-alt="نامه‌های فصلی">Seasonal letters</span><button class="switch" type="button" role="switch" aria-checked="true" aria-labelledby="l-news"></button></div>
+          <div class="pref"><span id="l-prev" data-alt="دعوت به پیش‌نمایش خصوصی">Invitations to private previews</span><button class="switch" type="button" role="switch" aria-checked="true" aria-labelledby="l-prev"></button></div>
+          <div class="pref"><span id="l-samp" data-alt="نمونه با هر سفارش">Samples with every order</span><button class="switch" type="button" role="switch" aria-checked="false" aria-labelledby="l-samp"></button></div>
+        </div>
+        <div class="full row"><button class="btn btn-solid" type="submit" data-alt="ذخیره">Save</button><button class="u-link" type="reset" data-alt="بازنشانی">Reset</button></div>
+      </form>
+    </section>
+  </main>
+</div>
+
+<footer class="site-foot" style="padding-block-start: var(--space-5)">
+  <div class="container"><div class="foot-base caps" style="margin: 0"><span data-alt="© ۲۰۲۶ خانهٔ سحر">© 2026 Maison Sahar</span><span data-alt="نمونه برای تیست‌فولیو">A Tastefolio sample</span></div></div>
+</footer>
+<script>
+  document.addEventListener('click', (e) => {
+    const g = e.target.closest('[data-goto]');
+    if (g) document.getElementById(g.dataset.goto)?.click();
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-alt-lang="fa" data-demo="site">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="خانهٔ سحر — عطر و اشیا">Maison Sahar — fragrance &amp; objects</title>
+<meta name="description" content="Maison Sahar, a sample fragrance house: eaux de parfum, candles and objects, private consultations." data-alt-content="خانهٔ سحر، یک خانهٔ عطر نمونه: عطر، شمع و اشیا، با مشاورهٔ خصوصی.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Jost:wght@300;400;500&family=Vazirmatn:wght@100;200;300;400;500;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/thin/style.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .hero { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-7); align-items: end; padding-block: var(--space-6) var(--space-8); }
+  .hero .still { aspect-ratio: 5 / 6; }
+  .hero-copy { display: grid; gap: var(--space-5); padding-block-end: var(--space-6); }
+  @media (max-width: 900px) { .hero { grid-template-columns: minmax(0, 1fr); gap: var(--space-5); } .hero .still { aspect-ratio: 4 / 4.4; } .hero-copy { padding: 0; } }
+  .statement { text-align: center; display: grid; justify-items: center; gap: var(--space-4); padding-block: var(--space-8); border-block: 1px solid var(--line); }
+  .statement blockquote { font: italic 400 clamp(26px, 3.4vw, 46px)/1.25 var(--font-display); max-inline-size: 26ch; }
+  :lang(fa) .statement blockquote { font: 200 clamp(24px, 3vw, 40px)/1.8 var(--font-sans); font-style: normal; }
+  .coll-head { display: grid; justify-items: center; gap: var(--space-4); margin-block-end: var(--space-6); text-align: center; }
+  .products { --n: 4; row-gap: var(--space-7); }
+  @media (max-width: 1100px) { .products { --n: 3; } }
+  .product .still { position: relative; }
+  .atelier { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: var(--space-8); align-items: center; }
+  @media (max-width: 900px) { .atelier { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); } }
+  .appt { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 6fr); gap: var(--space-8); }
+  @media (max-width: 900px) { .appt { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); } }
+  .appt form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5) var(--space-6); }
+  .appt .full { grid-column: 1 / -1; }
+  @media (max-width: 600px) { .appt form { grid-template-columns: minmax(0, 1fr); } }
+  .news { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-4) var(--space-6); justify-content: space-between; padding-block: var(--space-6); border-block-start: 1px solid var(--line); }
+  .news form { display: flex; gap: var(--space-4); align-items: flex-end; flex: 1 1 360px; max-inline-size: 520px; }
+  .news .field { flex: 1; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="رفتن به محتوا">Skip to content</a>
+<header class="site-head">
+  <div class="container">
+    <div class="top">
+      <div class="head-start">
+        <button class="text-btn" type="button" data-toggle="#menu" aria-controls="menu" aria-expanded="false" aria-label="Menu" data-alt-aria-label="منو"><i class="ph-thin ph-list" aria-hidden="true"></i><span class="hide-md" data-alt="منو">Menu</span></button>
+        <button class="text-btn hide-md" type="button" data-toast="Search is not part of this sample" data-toast-alt="جست‌وجو در این نمونه نیست"><i class="ph-thin ph-magnifying-glass" aria-hidden="true"></i><span data-alt="جست‌وجو">Search</span></button>
+      </div>
+      <a class="wordmark" href="#top" data-alt="خانهٔ سحر">Maison Sahar</a>
+      <div class="head-end">
+        <button class="text-btn hide-md" type="button" data-lang-toggle data-alt="English">فارسی</button>
+        <button class="text-btn hide-md" type="button" data-theme-toggle aria-label="Toggle noir theme" data-alt-aria-label="تغییر پوستهٔ شب"><i class="ph-thin ph-moon" aria-hidden="true"></i></button>
+        <a class="text-btn hide-md" href="dashboard.html" data-alt="حساب">Account</a>
+        <button class="text-btn" type="button" data-dialog="#bag" aria-label="Bag" data-alt-aria-label="سبد"><i class="ph-thin ph-handbag" aria-hidden="true"></i><span class="hide-md" data-alt="سبد">Bag</span> <span class="count">(<span data-bag-count data-num="2">2</span>)</span></button>
+      </div>
+    </div>
+    <nav class="subnav" aria-label="Collections" data-alt-aria-label="مجموعه‌ها">
+      <a href="#collection" aria-current="page" data-alt="تازه‌ها">New</a>
+      <a href="#collection" data-alt="عطرها">Eaux de parfum</a>
+      <a href="#collection" data-alt="شمع‌ها">Candles</a>
+      <a href="#collection" data-alt="اشیا">Objects</a>
+      <a href="#atelier" data-alt="آتلیه">The atelier</a>
+      <a href="#appointment" data-alt="مشاوره">Appointments</a>
+    </nav>
+  </div>
+</header>
+
+<div class="menu-panel" id="menu" data-dismissable role="dialog" aria-label="Menu" data-alt-aria-label="منو">
+  <div class="bar"><span class="wordmark" data-alt="خانهٔ سحر">Maison Sahar</span><button class="text-btn" type="button" data-toggle="#menu" aria-controls="menu"><span data-alt="بستن">Close</span><i class="ph-thin ph-x" aria-hidden="true"></i></button></div>
+  <nav aria-label="Main" data-alt-aria-label="اصلی">
+    <a href="#collection" data-alt="عطرها">Eaux de parfum</a>
+    <a href="#collection" data-alt="شمع‌ها">Candles</a>
+    <a href="#collection" data-alt="اشیا">Objects</a>
+    <a href="#atelier" data-alt="آتلیه">The atelier</a>
+    <a href="#appointment" data-alt="مشاورهٔ خصوصی">Private consultation</a>
+  </nav>
+  <div class="foot"><button class="text-btn" type="button" data-lang-toggle data-alt="English">فارسی</button><button class="text-btn" type="button" data-theme-toggle data-alt="پوستهٔ شب">Noir</button><a class="text-btn" href="dashboard.html" data-alt="حساب من">My account</a></div>
+</div>
+
+<main id="main">
+  <section class="container hero" id="top">
+    <div class="still night" role="img" aria-label="N°7 Before Dawn, a tall glass bottle with pale blue juice on a dark backdrop" data-alt-aria-label="شمارهٔ ۷، پیش از سپیده: شیشه‌ای بلند با عطری آبی‌کم‌رنگ روی زمینهٔ تیره">
+      <div class="obj bottle" style="--liquid: #9fb4c9; inline-size: 30%"><span class="cap"></span><span class="neck"></span><span class="glass"><span class="tag">Maison Sahar<b>N°7</b></span></span></div>
+    </div>
+    <div class="hero-copy">
+      <span class="caps subtle" data-alt="مجموعهٔ پاییز · شمارهٔ ۷">Autumn collection · N°7</span>
+      <h1 class="display"><span data-alt="ساعتِ پیش از">The hour before</span> <i data-alt="سحر">dawn</i></h1>
+      <p class="lead" data-alt="برگاموت سرد، چای سیاه و ریشهٔ زنبق — عطری برای وقتی شهر هنوز بیدار نشده.">Cold bergamot, black tea and iris root — a fragrance for the minutes when the city is not yet awake.</p>
+      <div class="row"><button class="btn btn-solid" type="button" data-qv="n7" data-alt="کشف شمارهٔ ۷">Discover N°7</button><a class="u-link" href="#collection" data-alt="همهٔ مجموعه">The collection</a></div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="statement">
+      <span class="seal" aria-hidden="true" data-alt="س">S</span>
+      <blockquote data-alt="«عطر را آن‌طور می‌سازیم که شهر بیدار می‌شود: آرام، و بعد ناگهان.»">“We compose a scent the way a city wakes: slowly, then all at once.”</blockquote>
+      <span class="caps subtle" data-alt="مینا صدر، عطرساز">Mina Sadr, perfumer</span>
+    </div>
+  </section>
+
+  <section class="section" id="collection" data-filter-scope>
+    <div class="container">
+      <div class="coll-head">
+        <h2 class="h1" data-alt="مجموعه">The collection</h2>
+        <div class="filters" data-group role="group" aria-label="Category" data-alt-aria-label="دسته">
+          <button type="button" data-filter="cat" data-value="all" aria-pressed="true" data-alt="همه">All</button>
+          <button type="button" data-filter="cat" data-value="edp" aria-pressed="false" data-alt="عطرها">Eaux de parfum</button>
+          <button type="button" data-filter="cat" data-value="candle" aria-pressed="false" data-alt="شمع‌ها">Candles</button>
+          <button type="button" data-filter="cat" data-value="object" aria-pressed="false" data-alt="اشیا">Objects</button>
+        </div>
+        <span class="caps subtle"><span data-filter-count data-num="8">8</span> <span data-alt="اثر">pieces</span></span>
+      </div>
+      <div class="cols products">
+        <article class="product" data-filter-item data-cat="edp" id="p-n7" data-name-en="N°7 Before Dawn" data-name-fa="شمارهٔ ۷ — پیش از سپیده" data-notes-en="Bergamot · black tea · iris" data-notes-fa="برگاموت · چای سیاه · زنبق" data-price="220">
+          <div class="still night" aria-hidden="true"><div class="obj bottle" style="--liquid:#9fb4c9"><span class="cap"></span><span class="neck"></span><span class="glass"><span class="tag">Sahar<b>N°7</b></span></span></div><button class="btn btn-sm quick" type="button" data-qv="n7" tabindex="-1" data-alt="نگاه سریع">Quick view</button></div>
+          <div class="price-line"><h3 class="name"><button class="u-link" style="font: inherit; letter-spacing: inherit; text-transform: none; padding: 0" type="button" data-qv="n7" data-alt="شمارهٔ ۷ — پیش از سپیده">N°7 Before Dawn</button></h3><span class="price" data-num="220" data-fmt="eur">€220</span></div>
+          <p class="caps notes" data-alt="برگاموت · چای سیاه · زنبق">Bergamot · black tea · iris</p>
+        </article>
+        <article class="product" data-filter-item data-cat="edp" id="p-n3" data-name-en="N°3 Rose of Kashan" data-name-fa="شمارهٔ ۳ — گل سرخ کاشان" data-notes-en="Damask rose · saffron · oud" data-notes-fa="گل محمدی · زعفران · عود" data-price="240">
+          <div class="still blush" aria-hidden="true"><div class="obj bottle" style="--liquid:#d9a3a0"><span class="cap"></span><span class="neck"></span><span class="glass"><span class="tag">Sahar<b>N°3</b></span></span></div><button class="btn btn-sm quick" type="button" data-qv="n3" tabindex="-1" data-alt="نگاه سریع">Quick view</button></div>
+          <div class="price-line"><h3 class="name"><button class="u-link" style="font: inherit; letter-spacing: inherit; text-transform: none; padding: 0" type="button" data-qv="n3" data-alt="شمارهٔ ۳ — گل سرخ کاشان">N°3 Rose of Kashan</button></h3><span class="price" data-num="240" data-fmt="eur">€240</span></div>
+          <p class="caps notes" data-alt="گل محمدی · زعفران · عود">Damask rose · saffron · oud</p>
+        </article>
+        <article class="product" data-filter-item data-cat="candle" id="p-lib" data-name-en="Library candle" data-name-fa="شمع کتابخانه" data-notes-en="Leather · old paper · cedar" data-notes-fa="چرم · کاغذ کهنه · سرو" data-price="95">
+          <div class="still sand" aria-hidden="true"><div class="obj candle" style="--liquid:#2c2926"><span class="wick"></span><span class="vessel"><span class="tag" data-alt="کتابخانه">Library</span></span></div><button class="btn btn-sm quick" type="button" data-qv="lib" tabindex="-1" data-alt="نگاه سریع">Quick view</button></div>
+          <div class="price-line"><h3 class="name"><button class="u-link" style="font: inherit; letter-spacing: inherit; text-transform: none; padding: 0" type="button" data-qv="lib" data-alt="شمع کتابخانه">Library candle</button></h3><span class="price" data-num="95" data-fmt="eur">€95</span></div>
+          <p class="caps notes" data-alt="چرم · کاغذ کهنه · سرو">Leather · old paper · cedar</p>
+        </article>
+        <article class="product" data-filter-item data-cat="object" id="p-vase" data-name-en="Sahar vase" data-name-fa="گلدان سحر" data-notes-en="Stoneware · hand-thrown · 32 cm" data-notes-fa="سفال · دست‌ساز · ۳۲ سانتی‌متر" data-price="380">
+          <div class="still sage" aria-hidden="true"><div class="obj vase" style="--liquid:#b8a58c"></div><button class="btn btn-sm quick" type="button" data-qv="vase" tabindex="-1" data-alt="نگاه سریع">Quick view</button></div>
+          <div class="price-line"><h3 class="name"><button class="u-link" style="font: inherit; letter-spacing: inherit; text-transform: none; padding: 0" type="button" data-qv="vase" data-alt="گلدان سحر">Sahar vase</button></h3><span class="price" data-num="380" data-fmt="eur">€380</span></div>
+          <p class="caps notes" data-alt="سفال · دست‌ساز · ۳۲ سانتی‌متر">Stoneware · hand-thrown · 32 cm</p>
+        </article>
+        <article class="product" data-filter-item data-cat="edp" id="p-n11" data-name-en="N°11 Salt" data-name-fa="شمارهٔ ۱۱ — نمک" data-notes-en="Sea salt · fig leaf · vetiver" data-notes-fa="نمک دریا · برگ انجیر · وتیور" data-price="210">
+          <div class="still smoke" aria-hidden="true"><div class="obj bottle" style="--liquid:#c9cfc6"><span class="cap"></span><span class="neck"></span><span class="glass"><span class="tag">Sahar<b>N°11</b></span></span></div><button class="btn btn-sm quick" type="button" data-qv="n11" tabindex="-1" data-alt="نگاه سریع">Quick view</button></div>
+          <div class="price-line"><h3 class="name"><button class="u-link" style="font: inherit; letter-spacing: inherit; text-transform: none; padding: 0" type="button" data-qv="n11" data-alt="شمارهٔ ۱۱ — نمک">N°11 Salt</button></h3><span class="price" data-num="210" data-fmt="eur">€210</span></div>
+          <p class="caps notes" data-alt="نمک دریا · برگ انجیر · وتیور">Sea salt · fig leaf · vetiver</p>
+        </article>
+        <article class="product" data-filter-item data-cat="candle" id="p-gar" data-name-en="Winter garden candle" data-name-fa="شمع باغ زمستانی" data-notes-en="Pine · bitter orange · smoke" data-notes-fa="کاج · نارنج · دود" data-price="95">
+          <div class="still sage" aria-hidden="true"><div class="obj candle" style="--liquid:#4b5a49"><span class="wick"></span><span class="vessel"><span class="tag" data-alt="باغ زمستانی">Winter garden</span></span></div><button class="btn btn-sm quick" type="button" data-qv="gar" tabindex="-1" data-alt="نگاه سریع">Quick view</button></div>
+          <div class="price-line"><h3 class="name"><button class="u-link" style="font: inherit; letter-spacing: inherit; text-transform: none; padding: 0" type="button" data-qv="gar" data-alt="شمع باغ زمستانی">Winter garden candle</button></h3><span class="price" data-num="95" data-fmt="eur">€95</span></div>
+          <p class="caps notes" data-alt="کاج · نارنج · دود">Pine · bitter orange · smoke</p>
+        </article>
+        <article class="product" data-filter-item data-cat="edp" id="p-n9" data-name-en="N°9 Ambergris" data-name-fa="شمارهٔ ۹ — عنبر" data-notes-en="Amber · labdanum · vanilla" data-notes-fa="کهربا · لادن · وانیل" data-price="260">
+          <div class="still sand" aria-hidden="true"><div class="obj bottle" style="--liquid:#c99a5b"><span class="cap"></span><span class="neck"></span><span class="glass"><span class="tag">Sahar<b>N°9</b></span></span></div><button class="btn btn-sm quick" type="button" data-qv="n9" tabindex="-1" data-alt="نگاه سریع">Quick view</button></div>
+          <div class="price-line"><h3 class="name"><button class="u-link" style="font: inherit; letter-spacing: inherit; text-transform: none; padding: 0" type="button" data-qv="n9" data-alt="شمارهٔ ۹ — عنبر">N°9 Ambergris</button></h3><span class="price" data-num="260" data-fmt="eur">€260</span></div>
+          <p class="caps notes" data-alt="کهربا · لادن · وانیل">Amber · labdanum · vanilla</p>
+        </article>
+        <article class="product" data-filter-item data-cat="object" id="p-car" data-name-en="Glass carafe" data-name-fa="تُنگ شیشه‌ای" data-notes-en="Mouth-blown · smoked glass · 1 L" data-notes-fa="دمیده با دهان · شیشهٔ دودی · ۱ لیتر" data-price="320">
+          <div class="still smoke" aria-hidden="true"><div class="obj vase" style="--liquid:#9aa7ad; inline-size: 26%"></div><button class="btn btn-sm quick" type="button" data-qv="car" tabindex="-1" data-alt="نگاه سریع">Quick view</button></div>
+          <div class="price-line"><h3 class="name"><button class="u-link" style="font: inherit; letter-spacing: inherit; text-transform: none; padding: 0" type="button" data-qv="car" data-alt="تُنگ شیشه‌ای">Glass carafe</button></h3><span class="price" data-num="320" data-fmt="eur">€320</span></div>
+          <p class="caps notes" data-alt="دمیده با دهان · شیشهٔ دودی · ۱ لیتر">Mouth-blown · smoked glass · 1 L</p>
+        </article>
+      </div>
+      <p class="empty" data-filter-empty hidden data-alt="در این دسته اثری نیست.">Nothing in this category.</p>
+    </div>
+  </section>
+
+  <section class="section container" id="atelier" style="padding-block-start: 0">
+    <div class="atelier">
+      <div class="still sand" role="img" aria-label="A hand-thrown vase in the atelier" data-alt-aria-label="گلدانی دست‌ساز در آتلیه" style="aspect-ratio: 4 / 5"><div class="obj vase" style="--liquid:#a8917a; inline-size: 34%"></div></div>
+      <div class="stack" style="gap: var(--space-5)">
+        <span class="caps subtle" data-alt="آتلیه">The atelier</span>
+        <h2 class="h1"><span data-alt="کند،">Slow,</span> <i data-alt="از روی قصد">on purpose</i></h2>
+        <p class="lead" data-alt="هر عطر دو سال در آتلیهٔ ما می‌ماند تا آماده شود. شیشه‌ها در تبریز دمیده می‌شوند و جعبه‌ها با دست تا می‌خورند.">Every composition rests in our atelier for two years before it leaves. Bottles are blown by hand; boxes are folded one by one.</p>
+        <div class="facts">
+          <div><span class="caps subtle" data-alt="تأسیس">Founded</span><span class="v" data-num="2009" data-fmt="plain">2009</span></div>
+          <div><span class="caps subtle" data-alt="ترکیب">Compositions</span><span class="v" data-num="41">41</span></div>
+          <div><span class="caps subtle" data-alt="بوتیک">Boutiques</span><span class="v" data-num="6">6</span></div>
+        </div>
+        <a class="u-link" href="#appointment" data-alt="دیدار از آتلیه">Visit the atelier</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container" id="appointment" style="padding-block-start: 0">
+    <div class="appt">
+      <div class="stack" style="gap: var(--space-4)">
+        <span class="caps subtle" data-alt="مشاورهٔ خصوصی">Private consultation</span>
+        <h2 class="h1"><span data-alt="یک ساعت،">An hour,</span> <i data-alt="فقط برای شما">only for you</i></h2>
+        <p class="muted" data-alt="در بوتیک، با یکی از عطرسازان ما، شش عطر را روی پوست خودتان امتحان کنید. رایگان است و بدون تعهد خرید.">In a boutique, with one of our perfumers, try six compositions on your own skin. Complimentary, with no obligation.</p>
+      </div>
+      <form data-validate data-success="Your consultation is requested — we will confirm by email." data-success-alt="درخواست مشاوره ثبت شد — با ایمیل تأیید می‌کنیم.">
+        <div class="field"><label class="label" for="a-name" data-alt="نام">Name</label><input class="input" id="a-name" name="name" required autocomplete="name"></div>
+        <div class="field"><label class="label" for="a-mail" data-alt="ایمیل">Email</label><input class="input" id="a-mail" name="email" type="email" required autocomplete="email" dir="ltr"></div>
+        <div class="field"><label class="label" for="a-shop" data-alt="بوتیک">Boutique</label><select class="select" id="a-shop" name="shop"><option data-alt="پاریس · سن‌ژرمن">Paris · Saint-Germain</option><option data-alt="تهران · فرشته">Tehran · Fereshteh</option><option data-alt="استانبول · نیشانتاشی">Istanbul · Nişantaşı</option><option data-alt="دبی · منطقهٔ طراحی">Dubai · Design District</option></select></div>
+        <div class="field"><label class="label" for="a-date" data-alt="تاریخ">Date</label><input class="input" id="a-date" name="date" type="date" required min="2026-10-17" value="2026-10-24"></div>
+        <fieldset class="field full" style="border:0; padding:0; margin:0"><legend class="label" style="margin-block-end: 10px" data-alt="ساعت">Time</legend>
+          <div class="sizes"><label><input type="radio" name="slot" value="11" checked><span data-alt="۱۱:۰۰">11:00</span></label><label><input type="radio" name="slot" value="14"><span data-alt="۱۴:۰۰">14:00</span></label><label><input type="radio" name="slot" value="16"><span data-alt="۱۶:۰۰">16:00</span></label><label><input type="radio" name="slot" value="18"><span data-alt="۱۸:۰۰">18:00</span></label></div></fieldset>
+        <div class="field full"><label class="label" for="a-note" data-alt="آن‌چه دوست دارید (اختیاری)">What you love (optional)</label><textarea class="textarea" id="a-note" name="note" placeholder="Fig trees, rain on stone, my grandmother’s rose water…" data-alt-placeholder="درخت انجیر، باران روی سنگ، گلاب مادربزرگ…"></textarea></div>
+        <label class="check full"><input type="checkbox" name="consent" required><span data-alt="با نگه‌داری اطلاعاتم برای این قرار موافقم.">I agree that my details are kept for this appointment.</span></label>
+        <div class="full"><button class="btn btn-solid btn-lg" type="submit" data-alt="درخواست مشاوره">Request a consultation</button></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="news">
+      <div class="stack" style="gap: 6px"><span class="caps subtle" data-alt="نامه‌ها">Letters</span><p class="h3" data-alt="چهار نامه در سال؛ پیش از همه دربارهٔ عطر تازه.">Four letters a year. New compositions, before anyone else.</p></div>
+      <form data-validate data-success="Thank you — the next letter is yours." data-success-alt="سپاس — نامهٔ بعدی برای شماست.">
+        <div class="field"><label class="label" for="n-mail" data-alt="ایمیل">Email</label><input class="input" id="n-mail" name="email" type="email" required dir="ltr"></div>
+        <button class="u-link" type="submit" data-alt="عضویت">Subscribe</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="container">
+    <div class="cols" style="--n:4">
+      <div><h3 class="caps" data-alt="خدمات مشتری">Client care</h3><ul><li><a href="#top" data-alt="ارسال و بازگشت">Delivery &amp; returns</a></li><li><a href="#top" data-alt="بسته‌بندی هدیه">Gift wrapping</a></li><li><a href="#top" data-alt="تماس">Contact</a></li></ul></div>
+      <div><h3 class="caps" data-alt="خانه">The house</h3><ul><li><a href="#atelier" data-alt="آتلیه">The atelier</a></li><li><a href="#top" data-alt="عطرسازان">Perfumers</a></li><li><a href="#top" data-alt="نامه‌ها">Letters</a></li></ul></div>
+      <div><h3 class="caps" data-alt="بوتیک‌ها">Boutiques</h3><ul><li data-alt="پاریس">Paris</li><li data-alt="تهران">Tehran</li><li data-alt="استانبول">Istanbul</li></ul></div>
+      <div><h3 class="caps" data-alt="حساب">Account</h3><ul><li><a href="dashboard.html" data-alt="حساب من">My account</a></li><li><a href="dashboard.html" data-alt="سفارش‌ها">Orders</a></li><li><a href="#appointment" data-alt="مشاوره">Consultations</a></li></ul></div>
+    </div>
+    <span class="giant" aria-hidden="true" data-alt="خانهٔ سحر">Maison Sahar</span>
+    <div class="foot-base caps"><span data-alt="© ۲۰۲۶ خانهٔ سحر">© 2026 Maison Sahar</span><span data-alt="نمونه برای تیست‌فولیو">A Tastefolio sample</span></div>
+  </div>
+</footer>
+
+<dialog class="modal" id="qv" aria-labelledby="qv-name">
+  <button class="text-btn close-x" type="button" data-close aria-label="Close" data-alt-aria-label="بستن"><i class="ph-thin ph-x" aria-hidden="true"></i></button>
+  <div class="quickview">
+    <div data-qv-still></div>
+    <form class="stack" data-validate data-success="Added to your bag" data-success-alt="به سبد اضافه شد">
+      <span class="caps subtle" data-alt="عطر · ۵۰ میلی‌لیتر">Eau de parfum</span>
+      <h2 class="h1" id="qv-name" data-qv-name>N°7 Before Dawn</h2>
+      <p class="caps subtle" data-qv-notes>Bergamot · black tea · iris</p>
+      <p class="muted" data-alt="غلظت عطر ۱۸٪، ماندگاری هشت ساعت. در شیشهٔ دست‌ساز با درپوش برنجی.">18% concentration, eight hours on skin. Hand-blown glass with a brass cap.</p>
+      <fieldset style="border:0; padding:0; margin:0" class="field"><legend class="label" style="margin-block-end: 10px" data-alt="اندازه">Size</legend>
+        <div class="sizes"><label><input type="radio" name="size" value="30"><span>30 ml</span></label><label><input type="radio" name="size" value="50" checked><span>50 ml</span></label><label><input type="radio" name="size" value="100"><span>100 ml</span></label></div></fieldset>
+      <div class="price-line"><span class="h3" data-qv-price>€220</span><span class="caps subtle" data-alt="نمونهٔ رایگان همراه">Complimentary sample</span></div>
+      <button class="btn btn-solid btn-lg btn-block" type="submit" data-alt="افزودن به سبد">Add to bag</button>
+    </form>
+  </div>
+</dialog>
+
+<dialog class="sheet" id="bag" aria-labelledby="bag-t">
+  <div class="sheet-head"><h2 class="caps" id="bag-t"><span data-alt="سبد شما">Your bag</span> (<span data-bag-count data-num="2">2</span>)</h2><button class="text-btn" type="button" data-close aria-label="Close bag" data-alt-aria-label="بستن سبد"><i class="ph-thin ph-x" aria-hidden="true"></i></button></div>
+  <div class="sheet-body">
+    <div class="line-item"><div class="still blush" aria-hidden="true"><div class="obj bottle" style="--liquid:#d9a3a0"><span class="cap"></span><span class="neck"></span><span class="glass"></span></div></div><div class="stack" style="gap: 6px"><b class="h3" style="font-size: 18px" data-alt="شمارهٔ ۳ — گل سرخ کاشان">N°3 Rose of Kashan</b><span class="caps subtle">50 ml</span><div class="qty" data-qty><button type="button" data-step="-1" aria-label="Fewer" data-alt-aria-label="کمتر">−</button><input type="number" value="1" min="1" max="5" aria-label="Quantity" data-alt-aria-label="تعداد"><button type="button" data-step="1" aria-label="More" data-alt-aria-label="بیشتر">+</button></div></div><span class="small" data-num="240" data-fmt="eur">€240</span></div>
+    <div class="line-item"><div class="still sand" aria-hidden="true"><div class="obj candle" style="--liquid:#2c2926"><span class="wick"></span><span class="vessel"></span></div></div><div class="stack" style="gap: 6px"><b class="h3" style="font-size: 18px" data-alt="شمع کتابخانه">Library candle</b><span class="caps subtle">220 g</span><div class="qty" data-qty><button type="button" data-step="-1" aria-label="Fewer" data-alt-aria-label="کمتر">−</button><input type="number" value="1" min="1" max="5" aria-label="Quantity" data-alt-aria-label="تعداد"><button type="button" data-step="1" aria-label="More" data-alt-aria-label="بیشتر">+</button></div></div><span class="small" data-num="95" data-fmt="eur">€95</span></div>
+  </div>
+  <div class="sheet-foot">
+    <div class="price-line"><span class="caps" data-alt="جمع">Subtotal</span><span class="h3" data-num="335" data-fmt="eur">€335</span></div>
+    <p class="small subtle" data-alt="ارسال رایگان با بسته‌بندی هدیه. دو نمونه به انتخاب ما.">Complimentary delivery and gift wrapping. Two samples of our choosing.</p>
+    <a class="btn btn-solid btn-lg btn-block" href="dashboard.html" data-alt="پرداخت">Checkout</a>
+    <button class="u-link" type="button" data-close data-alt="ادامهٔ خرید" style="justify-self: center">Continue shopping</button>
+  </div>
+</dialog>
+
+<script>
+  // quick view: fill the dialog from the product's data; adding to the bag bumps the counter
+  (() => {
+    const dlg = document.getElementById('qv');
+    let current = null;
+    const fill = () => {
+      if (!current) return;
+      const fa = tf.lang() === 'fa';
+      dlg.querySelector('[data-qv-name]').textContent = current.dataset[fa ? 'nameFa' : 'nameEn'];
+      dlg.querySelector('[data-qv-notes]').textContent = current.dataset[fa ? 'notesFa' : 'notesEn'];
+      const price = dlg.querySelector('[data-qv-price]');
+      price.dataset.num = current.dataset.price; price.dataset.fmt = 'eur'; price.textContent = tf.fmt(current.dataset.price, 'eur');
+      const still = current.querySelector('.still').cloneNode(true);
+      still.querySelector('.quick')?.remove();
+      still.style.blockSize = '100%';
+      dlg.querySelector('[data-qv-still]').replaceChildren(still);
+    };
+    document.addEventListener('click', (e) => {
+      const b = e.target.closest('[data-qv]');
+      if (!b) return;
+      current = document.getElementById('p-' + b.dataset.qv);
+      fill();
+      if (!dlg.open) dlg.showModal();
+    });
+    document.addEventListener('tf:lang', fill);
+    dlg.addEventListener('tf:submit', () => {
+      document.querySelectorAll('[data-bag-count]').forEach((el) => { const n = Number(el.dataset.num) + 1; el.dataset.num = n; el.textContent = tf.fmt(n); });
+    });
+  })();
+</script>
+</body>
+</html>
