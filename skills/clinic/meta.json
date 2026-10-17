@@ -1,0 +1,34 @@
+{
+  "name": "Clinic",
+  "order": 23,
+  "category": "product",
+  "mode": "light",
+  "density": "balanced",
+  "persianFirst": true,
+  "tags": ["healthcare", "medical", "booking", "appointments", "patient portal", "accessibility", "persian"],
+  "tagline": {
+    "en": "Healthcare booking — search-first hero, doctor cards with free slots, a time picker and a patient panel set in a hyperlegible face",
+    "fa": "نوبت‌دهی پزشکی — هیروی جست‌وجومحور، کارت پزشک با زمان خالی، انتخاب‌گر ساعت و پنل بیمار با حروفی بسیار خوانا"
+  },
+  "summary": {
+    "en": "A calm, trustworthy language for clinics, doctor-booking marketplaces and patient portals, Persian-first. Cool clean white, deep blue-ink text, a cerulean brand for booking and navigation and a mint that only ever means “available”. Atkinson Hyperlegible Next — designed for low-vision readers — keeps every time, dose and value unmistakable. A search-first hero with an ECG line, specialty tiles, doctor cards with council numbers, insurers, ratings and the next free slot, a date strip and time-slot picker inside a three-step booking dialog, an online-visit band, and a patient panel with the next appointment, a medicine checklist, home blood-pressure charts, lab results with range bars, prescriptions with refills, messages and family members.",
+    "fa": "زبانی آرام و قابل‌اعتماد برای درمانگاه‌ها، بازارگاه‌های نوبت‌دهی پزشک و پنل بیمار، فارسی‌محور. سفید تمیز و خنک، متن آبی‌تیره، رنگ برند آبی آسمانی برای نوبت‌گیری و ناوبری و رنگ نعنایی که فقط و فقط یعنی «زمان خالی». حروف Atkinson Hyperlegible Next که برای کم‌بینایان طراحی شده، هر ساعت و دوز و عددی را بی‌ابهام نگه می‌دارد. هیروی جست‌وجومحور با خط نوار قلب، کاشی تخصص‌ها، کارت پزشک با شمارهٔ نظام پزشکی، بیمه‌ها، امتیاز و نزدیک‌ترین زمان خالی، نوار روزها و انتخاب ساعت در گفت‌وگوی سه‌مرحله‌ای نوبت، نوار ویزیت آنلاین و پنل بیمار با نوبت بعدی، فهرست داروهای امروز، نمودار فشار خون خانگی، جواب آزمایش با نوار محدوده، نسخه‌ها با تمدید، پیام‌ها و اعضای خانواده."
+  },
+  "bestFor": {
+    "en": ["Clinics, hospitals and dental practices", "Doctor-booking marketplaces and telehealth", "Patient portals with results and prescriptions", "Labs, pharmacies and wellness services"],
+    "fa": ["درمانگاه، بیمارستان و دندان‌پزشکی", "بازارگاه نوبت‌دهی پزشک و ویزیت آنلاین", "پنل بیمار با جواب آزمایش و نسخه", "آزمایشگاه، داروخانه و خدمات سلامت"]
+  },
+  "avoidFor": {
+    "en": ["Entertainment and gaming", "Fashion and luxury brands", "Dense developer tooling"],
+    "fa": ["سرگرمی و بازی", "برندهای مد و لوکس", "ابزارهای پرتراکم برنامه‌نویسی"]
+  },
+  "signature": {
+    "en": ["Atkinson Hyperlegible Next for unmistakable times and doses", "Cerulean for booking; mint only means “available”", "Search-first hero with an ECG line and a live booking preview", "Doctor cards with council number, insurers, rating and next free slot", "Date strip + time-slot picker in a three-step booking dialog", "Patient panel: medicine checklist, BP chart, lab range bars"],
+    "fa": ["حروف Atkinson Hyperlegible Next برای ساعت و دوز بی‌ابهام", "آبی آسمانی برای نوبت؛ نعنایی فقط یعنی «خالی»", "هیروی جست‌وجومحور با خط نوار قلب و پیش‌نمایش نوبت", "کارت پزشک با نظام پزشکی، بیمه‌ها، امتیاز و نزدیک‌ترین زمان خالی", "نوار روزها و انتخاب ساعت در گفت‌وگوی سه‌مرحله‌ای", "پنل بیمار: فهرست داروها، نمودار فشار، نوار محدودهٔ آزمایش"]
+  },
+  "swatches": ["#f4f7f9", "#ffffff", "#0a7ea4", "#13a36e", "#102a43"],
+  "fonts": { "latin": "Atkinson Hyperlegible Next", "persian": "Vazirmatn", "mono": "system mono" },
+  "icons": "Font Awesome Free 6 (solid + regular)",
+  "brandTrials": ["2563eb", "0f766e", "7c3aed", "be185d"],
+  "demos": { "site": { "host": "hamdam.example" }, "dashboard": { "host": "hamdam.example/panel" } }
+}

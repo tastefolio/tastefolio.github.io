@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="dashboard">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Patient panel · Hamdam Health">پنل بیمار · همدم سلامت</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400..800&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; font-size: var(--fs-sm); }
+  .facts div { display: grid; gap: 2px; padding: 10px 12px; border-radius: 12px; background: var(--surface-2); }
+  .facts span { font-size: var(--fs-xs); color: var(--ink-3); }
+  .bring { display: grid; gap: 8px; margin-block-start: var(--space-4); padding: var(--space-4); border-radius: var(--radius-md); background: var(--surface-2); font-size: var(--fs-sm); }
+  .bring li { display: flex; gap: 10px; align-items: center; }
+  .bring i { color: var(--brand); }
+  .vitals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-3); }
+  @media (max-width: 560px) { .vitals { grid-template-columns: minmax(0, 1fr); } }
+  .vitals .card { padding: var(--space-4); }
+  .vital .k { display: flex; align-items: center; gap: 8px; font-size: var(--fs-xs); font-weight: 700; color: var(--ink-2); }
+  .vital .k i { inline-size: 28px; block-size: 28px; border-radius: 9px; display: grid; place-items: center; background: var(--c); color: var(--ic); }
+  .appt-tabs { margin-block-end: var(--space-4); }
+  .files li { display: flex; align-items: center; gap: 12px; padding-block: 12px; }
+  .files li + li { border-block-start: 1px solid var(--line); }
+  .file-ic { inline-size: 42px; block-size: 42px; border-radius: 12px; display: grid; place-items: center; background: var(--danger-soft); color: var(--danger); font-size: 18px; flex: none; }
+  .rx-list { display: grid; gap: var(--space-3); }
+  .who-badge { display: inline-flex; align-items: center; gap: 6px; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<header class="site-head">
+  <div class="container">
+    <a class="logo" href="site.html"><span class="logo-mark" aria-hidden="true"></span><span data-alt="Hamdam">همدم</span></a>
+    <span class="badge brand hide-sm" data-alt="Patient panel">پنل بیمار</span>
+    <div class="head-end">
+      <a class="btn btn-sm hide-sm" href="site.html#doctors"><i class="fa-solid fa-plus" aria-hidden="true"></i><span data-alt="New appointment">نوبت جدید</span></a>
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+      <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="تغییر حالت تیره" data-alt-aria-label="Toggle dark mode"><i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i></button>
+      <button class="btn btn-ghost btn-icon btn-sm" type="button" data-toast="۲ یادآوری: دارو ساعت ۲۱ و نوبت شنبه" data-toast-alt="2 reminders: medicine at 21:00 and Saturday’s visit" aria-label="یادآوری‌ها" data-alt-aria-label="Reminders"><i class="fa-regular fa-bell" aria-hidden="true"></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="container p-layout">
+  <aside class="p-side">
+    <div class="profile">
+      <div class="who"><span class="avatar lg" style="--c:#dff3fa" data-alt="S">س</span><div class="stack" style="gap: 2px"><b class="h3" data-alt="Sara Nouri">سارا نوری</b><span class="small subtle"><span data-alt="National ID">کد ملی</span> <span class="ltr">0012•••678</span></span></div></div>
+      <div class="facts">
+        <div><span data-alt="Insurance">بیمه</span><b data-alt="Social security + supplementary">تأمین + تکمیلی</b></div>
+        <div><span data-alt="Blood type">گروه خون</span><b class="ltr" style="justify-self: start">A+</b></div>
+        <div><span data-alt="Age">سن</span><b><span data-num="52">۵۲</span> <span data-alt="years">سال</span></b></div>
+        <div><span data-alt="Allergy">حساسیت</span><b style="color: var(--danger)" data-alt="Penicillin">پنی‌سیلین</b></div>
+      </div>
+    </div>
+    <nav class="p-nav" role="tablist" aria-orientation="vertical" aria-label="بخش‌های پنل" data-alt-aria-label="Panel sections">
+      <button type="button" role="tab" id="t-home" aria-controls="p-home" aria-selected="true"><i class="fa-solid fa-house-medical" aria-hidden="true"></i><span data-alt="Overview">پیشخوان</span></button>
+      <button type="button" role="tab" id="t-appt" aria-controls="p-appt" aria-selected="false"><i class="fa-regular fa-calendar-check" aria-hidden="true"></i><span data-alt="Appointments">نوبت‌ها</span><span class="count" data-num="2">۲</span></button>
+      <button type="button" role="tab" id="t-rec" aria-controls="p-rec" aria-selected="false"><i class="fa-solid fa-file-medical" aria-hidden="true"></i><span data-alt="Results &amp; records">جواب‌ها و سوابق</span></button>
+      <button type="button" role="tab" id="t-med" aria-controls="p-med" aria-selected="false"><i class="fa-solid fa-pills" aria-hidden="true"></i><span data-alt="Medicines">داروها</span></button>
+      <button type="button" role="tab" id="t-msg" aria-controls="p-msg" aria-selected="false"><i class="fa-solid fa-comment-medical" aria-hidden="true"></i><span data-alt="Messages">پیام‌ها</span><span class="count" data-num="1">۱</span></button>
+      <button type="button" role="tab" id="t-fam" aria-controls="p-fam" aria-selected="false"><i class="fa-solid fa-users" aria-hidden="true"></i><span data-alt="Family">خانواده</span></button>
+    </nav>
+  </aside>
+
+  <main id="main" class="stack" style="gap: var(--space-5)">
+    <!-- ======================================== overview -->
+    <section class="grid12" role="tabpanel" id="p-home" aria-labelledby="t-home">
+      <div class="c12"><h1 class="h1" data-alt="Good morning, Sara">صبح بخیر، سارا</h1><p class="muted" data-alt="Your next visit is in 3 days. Two of today’s three medicines are done.">ویزیت بعدی شما ۳ روز دیگر است. دو داروی امروز از سه دارو مصرف شده.</p></div>
+      <article class="card c7">
+        <div class="card-head"><h2 data-alt="Next appointment">نوبت بعدی</h2><span class="countdown"><i class="fa-regular fa-clock" aria-hidden="true"></i><span data-alt="in 3 days">۳ روز دیگر</span></span></div>
+        <div class="next-appt">
+          <div class="date-tile"><span data-date="2026-10-17" data-fmt="day">شنبه</span><b data-alt="17">۲۵</b><span data-alt="Oct · 9:30">مهر · ۹:۳۰</span></div>
+          <div class="stack" style="gap: 8px">
+            <div class="row"><span class="avatar" style="--c:#fde4e4" data-alt="B">ب</span><div class="stack" style="gap: 0"><b data-alt="Dr. Bahram Niknam">دکتر بهرام نیک‌نام</b><span class="small subtle" data-alt="Cardiology · follow-up visit">قلب و عروق · ویزیت پیگیری</span></div><span class="badge ok" style="margin-inline-start: auto" data-alt="Confirmed">تأییدشده</span></div>
+            <span class="small muted"><i class="fa-solid fa-location-dot" aria-hidden="true" style="color: var(--brand)"></i> <span data-alt="Jordan, Naft St., Medical Building No. 4, 3rd floor">جردن، خیابان نفت، ساختمان پزشکان ۴، طبقهٔ ۳</span></span>
+            <div class="row" style="gap: 8px"><button class="btn btn-sm" type="button" data-toast="مسیریابی باز شد" data-toast-alt="Directions opened"><i class="fa-solid fa-route" aria-hidden="true"></i><span data-alt="Directions">مسیریابی</span></button><button class="btn btn-outline btn-sm" type="button" data-dialog="#move"><i class="fa-regular fa-calendar" aria-hidden="true"></i><span data-alt="Reschedule">جابه‌جایی</span></button><button class="btn btn-danger btn-sm" type="button" data-dialog="#cancel"><span data-alt="Cancel">لغو</span></button></div>
+          </div>
+        </div>
+        <ul class="bring">
+          <li><b data-alt="Bring with you">همراه داشته باشید</b></li>
+          <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span data-alt="Your last ECG (it is in Records)">آخرین نوار قلب (در سوابق موجود است)</span></li>
+          <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span data-alt="A list of your current medicines">فهرست داروهای فعلی</span></li>
+          <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span data-alt="Fasting is not needed">ناشتا بودن لازم نیست</span></li>
+        </ul>
+      </article>
+      <article class="card c5">
+        <div class="card-head"><h2 data-alt="Today’s medicines">داروهای امروز</h2><span class="badge mint"><span id="taken" data-num="2">۲</span>&nbsp;<span data-alt="of 3">از ۳</span></span></div>
+        <div class="meds" id="meds">
+          <div class="stack" style="gap: 8px"><h3><i class="fa-solid fa-sun" aria-hidden="true" style="color: #e0a32e"></i><span data-alt="Morning">صبح</span></h3>
+            <label class="med"><input type="checkbox" checked><span class="stack" style="gap: 0"><span class="name" data-alt="Aspirin 80 mg">آسپرین ۸۰ میلی‌گرم</span><span class="tiny subtle" data-alt="1 tablet after breakfast">۱ قرص بعد از صبحانه</span></span><span class="pill-ic" style="--c:#fde4e4; --ic:#c53030"><i class="fa-solid fa-tablets" aria-hidden="true"></i></span></label>
+            <label class="med"><input type="checkbox" checked><span class="stack" style="gap: 0"><span class="name" data-alt="Losartan 50 mg">لوزارتان ۵۰ میلی‌گرم</span><span class="tiny subtle" data-alt="1 tablet">۱ قرص</span></span><span class="pill-ic"><i class="fa-solid fa-capsules" aria-hidden="true"></i></span></label>
+          </div>
+          <div class="stack" style="gap: 8px"><h3><i class="fa-solid fa-moon" aria-hidden="true" style="color: #5b7cfa"></i><span data-alt="Night · 21:00">شب · ۲۱:۰۰</span></h3>
+            <label class="med"><input type="checkbox"><span class="stack" style="gap: 0"><span class="name" data-alt="Atorvastatin 20 mg">آتورواستاتین ۲۰ میلی‌گرم</span><span class="tiny subtle" data-alt="1 tablet before sleep">۱ قرص قبل از خواب</span></span><span class="pill-ic" style="--c:#efe8ff; --ic:#7b3fc4"><i class="fa-solid fa-pills" aria-hidden="true"></i></span></label>
+          </div>
+        </div>
+      </article>
+      <article class="card c7">
+        <div class="card-head"><h2 data-alt="Blood pressure">فشار خون</h2><span class="small subtle" data-alt="Last 14 days · home readings">۱۴ روز اخیر · اندازه‌گیری در خانه</span></div>
+        <div class="row" style="align-items: baseline; gap: 8px; margin-block-end: 8px"><span class="vital"><span class="v"><span class="ltr">128/82</span> <small>mmHg</small></span></span><span class="badge warn" data-alt="Slightly high">کمی بالا</span></div>
+        <div data-chart="line" data-height="200" data-fmt="int" data-min="60" data-max="150" data-dates="2026-10-01,14,day,short" data-series='[{"name":{"en":"Systolic","fa":"سیستولیک"},"values":[136,134,138,133,131,130,132,129,131,128,130,127,129,128]},{"name":{"en":"Diastolic","fa":"دیاستولیک"},"values":[88,87,89,86,85,84,85,83,84,82,83,81,82,82]}]' data-label='{"en":"Home blood pressure, last 14 days","fa":"فشار خون خانگی، ۱۴ روز اخیر"}'></div>
+      </article>
+      <div class="c5 stack" style="gap: var(--space-4)">
+        <div class="vitals" style="grid-template-columns: minmax(0, 1fr)">
+          <div class="card vital"><span class="k"><i class="fa-solid fa-heart-pulse" aria-hidden="true" style="--c:#fde4e4; --ic:#c53030"></i><span data-alt="Heart rate">ضربان قلب</span></span><span class="v"><span data-num="72">۷۲</span> <small>bpm</small></span><div data-chart="spark" data-height="40" data-values="76,74,75,73,72,74,71,72" data-label='{"en":"Heart rate trend","fa":"روند ضربان قلب"}'></div></div>
+          <div class="card vital"><span class="k"><i class="fa-solid fa-weight-scale" aria-hidden="true" style="--c:#e2f2f8; --ic:#065f7d"></i><span data-alt="Weight">وزن</span></span><span class="v"><span data-num="74.5" data-fmt="dec1">۷۴٫۵</span> <small data-alt="kg">کیلوگرم</small></span><div data-chart="spark" data-height="40" data-values="77,76.6,76.1,75.8,75.2,75,74.8,74.5" data-label='{"en":"Weight trend","fa":"روند وزن"}'></div></div>
+        </div>
+      </div>
+      <article class="card c12">
+        <div class="card-head"><h2 data-alt="Latest results">آخرین جواب‌ها</h2><button class="btn btn-ghost btn-sm" type="button" data-goto="t-rec"><span data-alt="All results">همهٔ جواب‌ها</span><i class="fa-solid fa-chevron-right flip-rtl" aria-hidden="true"></i></button></div>
+        <div class="lab-wrap">
+          <table class="lab">
+            <thead><tr><th scope="col" data-alt="Test">آزمایش</th><th scope="col" data-alt="Result">نتیجه</th><th scope="col" data-alt="Normal range">محدودهٔ طبیعی</th><th scope="col"><span class="sr-only" data-alt="Position in range">جایگاه در محدوده</span></th><th scope="col" data-alt="Status">وضعیت</th></tr></thead>
+            <tbody>
+              <tr><td><b data-alt="LDL cholesterol">کلسترول LDL</b></td><td class="val"><span class="ltr">142 mg/dL</span></td><td class="small subtle"><span class="ltr">&lt; 100</span></td><td><span class="range high" style="--lo: 0%; --hi: 50%; --at: 71%" aria-hidden="true"><i></i></span></td><td><span class="badge bad" data-alt="High">بالا</span></td></tr>
+              <tr><td><b data-alt="Fasting glucose">قند ناشتا</b></td><td class="val"><span class="ltr">98 mg/dL</span></td><td class="small subtle"><span class="ltr">70–100</span></td><td><span class="range" style="--lo: 25%; --hi: 50%; --at: 48%" aria-hidden="true"><i></i></span></td><td><span class="badge ok" data-alt="Normal">طبیعی</span></td></tr>
+              <tr><td><b data-alt="Vitamin D">ویتامین D</b></td><td class="val"><span class="ltr">18 ng/mL</span></td><td class="small subtle"><span class="ltr">30–100</span></td><td><span class="range low" style="--lo: 25%; --hi: 83%; --at: 15%" aria-hidden="true"><i></i></span></td><td><span class="badge warn" data-alt="Low">پایین</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <!-- ======================================== appointments -->
+    <section role="tabpanel" id="p-appt" aria-labelledby="t-appt" hidden>
+      <div class="card">
+        <div class="card-head"><h2 data-alt="Appointments">نوبت‌ها</h2><a class="btn btn-sm" href="site.html#doctors"><i class="fa-solid fa-plus" aria-hidden="true"></i><span data-alt="New appointment">نوبت جدید</span></a></div>
+        <div class="tabs appt-tabs" role="tablist" aria-label="وضعیت نوبت" data-alt-aria-label="Appointment status">
+          <button type="button" role="tab" id="at-up" aria-controls="ap-up" aria-selected="true"><span data-alt="Upcoming">پیش رو</span> <span class="badge brand" data-num="2">۲</span></button>
+          <button type="button" role="tab" id="at-past" aria-controls="ap-past" aria-selected="false"><span data-alt="Past">گذشته</span> <span class="badge" data-num="3">۳</span></button>
+          <button type="button" role="tab" id="at-can" aria-controls="ap-can" aria-selected="false" data-alt="Cancelled">لغوشده</button>
+        </div>
+        <div role="tabpanel" id="ap-up" aria-labelledby="at-up" class="list-appt">
+          <div class="appt"><span class="mini-date"><span data-date="2026-10-17" data-fmt="day">شنبه</span><b data-alt="17">۲۵</b><span data-alt="9:30">۹:۳۰</span></span><div class="stack" style="gap: 2px"><b data-alt="Dr. Bahram Niknam · cardiology">دکتر بهرام نیک‌نام · قلب و عروق</b><span class="small subtle"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> <span data-alt="In person · Jordan">حضوری · جردن</span></span><span class="badge ok" style="justify-self: start" data-alt="Confirmed">تأییدشده</span></div><div class="row actions" style="gap: 6px"><button class="btn btn-outline btn-sm" type="button" data-dialog="#move" data-alt="Reschedule">جابه‌جایی</button><button class="btn btn-danger btn-sm" type="button" data-dialog="#cancel" data-alt="Cancel">لغو</button></div></div>
+          <div class="appt"><span class="mini-date"><span data-date="2026-10-21" data-fmt="day">چهارشنبه</span><b data-alt="21">۲۹</b><span data-alt="20:00">۲۰:۰۰</span></span><div class="stack" style="gap: 2px"><b data-alt="Leila Sadeghi, PhD · psychology">دکتر لیلا صادقی · روان‌شناسی</b><span class="small subtle"><i class="fa-solid fa-video" aria-hidden="true"></i> <span data-alt="Online · the link opens 10 minutes before">آنلاین · لینک ۱۰ دقیقه قبل فعال می‌شود</span></span><span class="badge mint" style="justify-self: start" data-alt="Online">آنلاین</span></div><div class="row actions" style="gap: 6px"><button class="btn btn-mint btn-sm" type="button" disabled><i class="fa-solid fa-video" aria-hidden="true"></i><span data-alt="Join">ورود</span></button><button class="btn btn-outline btn-sm" type="button" data-dialog="#move" data-alt="Reschedule">جابه‌جایی</button></div></div>
+        </div>
+        <div role="tabpanel" id="ap-past" aria-labelledby="at-past" class="list-appt" hidden>
+          <div class="appt"><span class="mini-date"><span data-date="2026-09-29" data-fmt="day">سه‌شنبه</span><b data-alt="29">۷</b><span data-alt="Mehr">مهر</span></span><div class="stack" style="gap: 2px"><b data-alt="Dr. Neda Karimi · for Ali (son)">دکتر ندا کریمی · برای علی (پسر)</b><span class="small subtle" data-alt="Pediatrics · prescription issued">کودکان · نسخه صادر شد</span></div><div class="row actions" style="gap: 6px"><button class="btn btn-soft btn-sm" type="button" data-toast="از امتیاز شما متشکریم" data-toast-alt="Thanks for rating your visit"><i class="fa-regular fa-star" aria-hidden="true"></i><span data-alt="Rate">امتیاز</span></button><a class="btn btn-outline btn-sm" href="site.html#doctors" data-alt="Book again">نوبت دوباره</a></div></div>
+          <div class="appt"><span class="mini-date"><span data-date="2026-09-14" data-fmt="day">دوشنبه</span><b data-alt="14">۲۳</b><span data-alt="Shahrivar">شهریور</span></span><div class="stack" style="gap: 2px"><b data-alt="Noor Laboratory · blood tests">آزمایشگاه نور · آزمایش خون</b><span class="small subtle" data-alt="Results ready · 6 tests">جواب آماده · ۶ آزمایش</span></div><div class="row actions" style="gap: 6px"><button class="btn btn-soft btn-sm" type="button" data-goto="t-rec" data-alt="See results">دیدن جواب</button></div></div>
+          <div class="appt"><span class="mini-date"><span data-date="2026-08-30" data-fmt="day">یکشنبه</span><b data-alt="30">۸</b><span data-alt="Shahrivar">شهریور</span></span><div class="stack" style="gap: 2px"><b data-alt="Dr. Bahram Niknam · cardiology">دکتر بهرام نیک‌نام · قلب و عروق</b><span class="small subtle" data-alt="ECG and echo · medicines changed">نوار قلب و اکو · داروها تغییر کرد</span></div><div class="row actions" style="gap: 6px"><a class="btn btn-outline btn-sm" href="site.html#doctors" data-alt="Book again">نوبت دوباره</a></div></div>
+        </div>
+        <div role="tabpanel" id="ap-can" aria-labelledby="at-can" class="list-appt" hidden>
+          <div class="appt"><span class="mini-date"><span data-date="2026-08-12" data-fmt="day">چهارشنبه</span><b data-alt="12">۲۱</b><span data-alt="Mordad">مرداد</span></span><div class="stack" style="gap: 2px"><b data-alt="Dr. Samira Ahmadi · dermatology">دکتر سمیرا احمدی · پوست و مو</b><span class="small subtle" data-alt="Cancelled by you · fully refunded">لغو توسط شما · بدون هزینه</span></div><span class="badge" data-alt="Cancelled">لغوشده</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================== records -->
+    <section role="tabpanel" id="p-rec" aria-labelledby="t-rec" hidden class="stack" style="gap: var(--space-5)">
+      <article class="card">
+        <div class="card-head"><h2 data-alt="Blood tests · Noor Laboratory">آزمایش خون · آزمایشگاه نور</h2><span class="small subtle" data-date="2026-09-14" data-fmt="long">۲۳ شهریور ۱۴۰۵</span><button class="btn btn-outline btn-sm" type="button" data-toast="فایل PDF جواب دانلود شد" data-toast-alt="Results PDF downloaded"><i class="fa-solid fa-download" aria-hidden="true"></i><span data-alt="PDF">PDF</span></button></div>
+        <div class="lab-wrap">
+          <table class="lab">
+            <thead><tr><th scope="col" data-alt="Test">آزمایش</th><th scope="col" data-alt="Result">نتیجه</th><th scope="col" data-alt="Normal range">محدودهٔ طبیعی</th><th scope="col"><span class="sr-only" data-alt="Position in range">جایگاه در محدوده</span></th><th scope="col" data-alt="Status">وضعیت</th></tr></thead>
+            <tbody>
+              <tr><td><b data-alt="Fasting glucose">قند ناشتا</b><br><span class="tiny subtle ltr">FBS</span></td><td class="val"><span class="ltr">98 mg/dL</span></td><td class="small subtle"><span class="ltr">70–100</span></td><td><span class="range" style="--lo: 25%; --hi: 50%; --at: 48%" aria-hidden="true"><i></i></span></td><td><span class="badge ok" data-alt="Normal">طبیعی</span></td></tr>
+              <tr><td><b data-alt="LDL cholesterol">کلسترول LDL</b><br><span class="tiny subtle ltr">LDL-C</span></td><td class="val"><span class="ltr">142 mg/dL</span></td><td class="small subtle"><span class="ltr">&lt; 100</span></td><td><span class="range high" style="--lo: 0%; --hi: 50%; --at: 71%" aria-hidden="true"><i></i></span></td><td><span class="badge bad" data-alt="High">بالا</span></td></tr>
+              <tr><td><b data-alt="HDL cholesterol">کلسترول HDL</b><br><span class="tiny subtle ltr">HDL-C</span></td><td class="val"><span class="ltr">48 mg/dL</span></td><td class="small subtle"><span class="ltr">&gt; 40</span></td><td><span class="range" style="--lo: 40%; --hi: 100%; --at: 48%" aria-hidden="true"><i></i></span></td><td><span class="badge ok" data-alt="Normal">طبیعی</span></td></tr>
+              <tr><td><b data-alt="Triglycerides">تری‌گلیسرید</b><br><span class="tiny subtle ltr">TG</span></td><td class="val"><span class="ltr">168 mg/dL</span></td><td class="small subtle"><span class="ltr">&lt; 150</span></td><td><span class="range high" style="--lo: 0%; --hi: 60%; --at: 67%" aria-hidden="true"><i></i></span></td><td><span class="badge bad" data-alt="High">بالا</span></td></tr>
+              <tr><td><b data-alt="Vitamin D">ویتامین D</b><br><span class="tiny subtle ltr">25-OH D</span></td><td class="val"><span class="ltr">18 ng/mL</span></td><td class="small subtle"><span class="ltr">30–100</span></td><td><span class="range low" style="--lo: 25%; --hi: 83%; --at: 15%" aria-hidden="true"><i></i></span></td><td><span class="badge warn" data-alt="Low">پایین</span></td></tr>
+              <tr><td><b data-alt="Haemoglobin">هموگلوبین</b><br><span class="tiny subtle ltr">Hb</span></td><td class="val"><span class="ltr">13.6 g/dL</span></td><td class="small subtle"><span class="ltr">12–16</span></td><td><span class="range" style="--lo: 33%; --hi: 67%; --at: 47%" aria-hidden="true"><i></i></span></td><td><span class="badge ok" data-alt="Normal">طبیعی</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="hint" style="margin-block-start: var(--space-3)" data-alt="Results are explained by your doctor; this page does not give a diagnosis.">تفسیر جواب‌ها با پزشک شماست؛ این صفحه تشخیص پزشکی نیست.</p>
+      </article>
+      <article class="card">
+        <div class="card-head"><h2 data-alt="Reports &amp; images">گزارش‌ها و تصاویر</h2></div>
+        <ul class="files">
+          <li><span class="file-ic"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i></span><div class="stack" style="gap: 0; flex: 1"><b class="small" data-alt="ECG — Dr. Niknam">نوار قلب — دکتر نیک‌نام</b><span class="tiny subtle" data-date="2026-08-30" data-fmt="long">۸ شهریور ۱۴۰۵</span></div><button class="btn btn-ghost btn-sm" type="button" data-toast="دانلود شد" data-toast-alt="Downloaded"><i class="fa-solid fa-download" aria-hidden="true"></i><span data-alt="Download">دانلود</span></button></li>
+          <li><span class="file-ic"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i></span><div class="stack" style="gap: 0; flex: 1"><b class="small" data-alt="Echocardiography report">گزارش اکوکاردیوگرافی</b><span class="tiny subtle" data-date="2026-08-30" data-fmt="long">۸ شهریور ۱۴۰۵</span></div><button class="btn btn-ghost btn-sm" type="button" data-toast="دانلود شد" data-toast-alt="Downloaded"><i class="fa-solid fa-download" aria-hidden="true"></i><span data-alt="Download">دانلود</span></button></li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- ======================================== medicines -->
+    <section role="tabpanel" id="p-med" aria-labelledby="t-med" hidden class="grid12">
+      <article class="card c7">
+        <div class="card-head"><h2 data-alt="Active prescriptions">نسخه‌های فعال</h2><span class="badge" data-alt="e-prescription">نسخهٔ الکترونیک</span></div>
+        <div class="rx-list">
+          <div class="rx"><span class="pill-ic" style="--c:#efe8ff; --ic:#7b3fc4"><i class="fa-solid fa-pills" aria-hidden="true"></i></span><div class="stack" style="gap: 2px"><b data-alt="Atorvastatin 20 mg">آتورواستاتین ۲۰ میلی‌گرم</b><span class="small muted" data-alt="1 tablet every night · Dr. Niknam">هر شب ۱ قرص · دکتر نیک‌نام</span><span class="tiny subtle" data-alt="2 refills left">۲ بار تمدید باقی‌مانده</span></div><button class="btn btn-soft btn-sm" type="button" data-toast="درخواست تمدید برای پزشک فرستاده شد" data-toast-alt="Refill request sent to your doctor" data-alt="Refill">تمدید</button></div>
+          <div class="rx"><span class="pill-ic" style="--c:#fde4e4; --ic:#c53030"><i class="fa-solid fa-tablets" aria-hidden="true"></i></span><div class="stack" style="gap: 2px"><b data-alt="Aspirin 80 mg">آسپرین ۸۰ میلی‌گرم</b><span class="small muted" data-alt="1 tablet after breakfast · Dr. Niknam">صبح‌ها ۱ قرص بعد از صبحانه · دکتر نیک‌نام</span><span class="tiny subtle" data-alt="Long-term">مصرف طولانی</span></div><button class="btn btn-soft btn-sm" type="button" data-toast="درخواست تمدید برای پزشک فرستاده شد" data-toast-alt="Refill request sent to your doctor" data-alt="Refill">تمدید</button></div>
+          <div class="rx"><span class="pill-ic"><i class="fa-solid fa-capsules" aria-hidden="true"></i></span><div class="stack" style="gap: 2px"><b data-alt="Losartan 50 mg">لوزارتان ۵۰ میلی‌گرم</b><span class="small muted" data-alt="1 tablet every morning · Dr. Niknam">هر صبح ۱ قرص · دکتر نیک‌نام</span><span class="tiny subtle" data-alt="1 refill left">۱ بار تمدید باقی‌مانده</span></div><button class="btn btn-soft btn-sm" type="button" data-toast="درخواست تمدید برای پزشک فرستاده شد" data-toast-alt="Refill request sent to your doctor" data-alt="Refill">تمدید</button></div>
+          <div class="rx"><span class="pill-ic" style="--c:#fdf3d8; --ic:#a8650a"><i class="fa-solid fa-sun" aria-hidden="true"></i></span><div class="stack" style="gap: 2px"><b data-alt="Vitamin D3 50,000 IU">ویتامین D3 ۵۰٬۰۰۰ واحد</b><span class="small muted" data-alt="1 capsule every Friday · 8 weeks">هر جمعه ۱ عدد · ۸ هفته</span><span class="tiny subtle" data-alt="Week 3 of 8">هفتهٔ ۳ از ۸</span></div><div class="progress mint" style="inline-size: 90px"><i style="--v: 37%"></i></div></div>
+        </div>
+      </article>
+      <article class="card c5">
+        <div class="card-head"><h2 data-alt="Taken on time">مصرف به‌موقع</h2><span class="badge mint" data-num="92" data-fmt="pct">۹۲٪</span></div>
+        <div data-chart="bar" data-height="200" data-fmt="pct" data-max="100" data-dates="2026-08-30,7,week,short" data-values="78,85,88,92,90,95,92" data-name='{"en":"Doses on time","fa":"دوز به‌موقع"}' data-label='{"en":"Share of doses taken on time, per week","fa":"درصد دوزهای به‌موقع در هر هفته"}'></div>
+        <div class="split" style="margin-block-start: var(--space-4)"><span class="label" id="rem-l" data-alt="SMS reminders">یادآوری پیامکی</span><button class="switch" type="button" role="switch" aria-checked="true" aria-labelledby="rem-l"></button></div>
+      </article>
+    </section>
+
+    <!-- ======================================== messages -->
+    <section role="tabpanel" id="p-msg" aria-labelledby="t-msg" hidden>
+      <article class="card stack" style="gap: var(--space-4)">
+        <div class="card-head" style="margin: 0"><h2 data-alt="Dr. Niknam’s office">مطب دکتر نیک‌نام</h2><span class="badge" data-alt="Replies within a day">پاسخ تا یک روز</span></div>
+        <div class="thread" id="thread">
+          <div class="msg me"><div><div class="by"><span data-alt="You">شما</span> · <span data-ago="172800">۲ روز پیش</span></div><div class="bubble" data-alt="My LDL came back 142. Should I change anything before Saturday?">LDL من ۱۴۲ شده. تا شنبه باید کاری انجام بدهم؟</div></div></div>
+          <div class="msg"><span class="avatar" style="--c:#fde4e4" data-alt="B">ب</span><div><div class="by"><b data-alt="Dr. Niknam">دکتر نیک‌نام</b> · <span data-ago="86400">دیروز</span></div><div class="bubble" data-alt="Keep taking atorvastatin every night and cut back on fried food. We will review the dose on Saturday — bring your blood-pressure readings.">آتورواستاتین را هر شب ادامه دهید و غذای سرخ‌کردنی را کم کنید. شنبه دوز را بررسی می‌کنیم — اعداد فشار خون را هم بیاورید.</div></div></div>
+        </div>
+        <form class="composer" id="composer" data-validate data-success="پیام برای مطب فرستاده شد" data-success-alt="Message sent to the office">
+          <div class="field"><label class="sr-only" for="msg" data-alt="Message">پیام</label><textarea class="textarea" id="msg" name="msg" required minlength="2" maxlength="600" style="min-block-size: 56px" placeholder="پرسش خود را بنویسید…" data-alt-placeholder="Write your question…"></textarea></div>
+          <button class="btn" type="submit"><i class="fa-solid fa-paper-plane flip-rtl" aria-hidden="true"></i><span data-alt="Send">ارسال</span></button>
+        </form>
+        <p class="hint" data-alt="For emergencies, call 115 — messages are not monitored around the clock.">برای موارد اورژانسی با ۱۱۵ تماس بگیرید — پیام‌ها شبانه‌روزی بررسی نمی‌شوند.</p>
+      </article>
+    </section>
+
+    <!-- ======================================== family -->
+    <section role="tabpanel" id="p-fam" aria-labelledby="t-fam" hidden>
+      <article class="card stack">
+        <div class="card-head" style="margin: 0"><h2 data-alt="Family members">اعضای خانواده</h2><button class="btn btn-sm" type="button" data-dialog="#member"><i class="fa-solid fa-plus" aria-hidden="true"></i><span data-alt="Add member">افزودن عضو</span></button></div>
+        <p class="muted small" data-alt="Book and keep records for the people you care for. Each adult controls what they share.">برای عزیزانتان نوبت بگیرید و سوابقشان را نگه دارید. هر بزرگسال خودش تعیین می‌کند چه چیزی را به اشتراک بگذارد.</p>
+        <div class="stack" id="members" style="gap: 10px">
+          <div class="member"><span class="avatar" style="--c:#ffe1d6" data-alt="A">ع</span><div class="stack" style="gap: 0"><b data-alt="Ali · son">علی · پسر</b><span class="small subtle"><span data-num="7">۷</span> <span data-alt="years · pediatrics with Dr. Karimi">سال · کودکان نزد دکتر کریمی</span></span></div><a class="btn btn-outline btn-sm" href="site.html#doctors" data-alt="Book for Ali">نوبت برای علی</a></div>
+          <div class="member"><span class="avatar" style="--c:#efe8ff" data-alt="M">م</span><div class="stack" style="gap: 0"><b data-alt="Mahin · mother">مهین · مادر</b><span class="small subtle"><span data-num="74">۷۴</span> <span data-alt="years · shares results with you">سال · جواب‌ها را با شما به اشتراک می‌گذارد</span></span></div><a class="btn btn-outline btn-sm" href="site.html#doctors" data-alt="Book for Mahin">نوبت برای مهین</a></div>
+        </div>
+      </article>
+    </section>
+  </main>
+</div>
+
+<dialog class="modal" id="move" aria-labelledby="move-title">
+  <form data-validate data-success="نوبت به زمان جدید منتقل شد" data-success-alt="Appointment moved to the new time">
+    <div class="modal-head"><b class="h2" id="move-title" style="flex: 1" data-alt="Pick a new time">زمان جدید را انتخاب کنید</b><button class="btn btn-ghost btn-icon btn-sm" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div>
+    <div class="modal-body">
+      <div class="days" data-group="mday" role="group" aria-label="روز" data-alt-aria-label="Day">
+        <button class="day" type="button" aria-pressed="false" data-value="2026-10-17"><span data-date="2026-10-17" data-fmt="day">شنبه</span><b data-alt="17">۲۵</b><small><span data-num="2">۲</span></small></button>
+        <button class="day" type="button" aria-pressed="true" data-value="2026-10-18"><span data-date="2026-10-18" data-fmt="day">یکشنبه</span><b data-alt="18">۲۶</b><small><span data-num="4">۴</span></small></button>
+        <button class="day" type="button" aria-pressed="false" data-value="2026-10-19"><span data-date="2026-10-19" data-fmt="day">دوشنبه</span><b data-alt="19">۲۷</b><small><span data-num="5">۵</span></small></button>
+        <button class="day full" type="button" aria-pressed="false" data-value="2026-10-20" disabled><span data-date="2026-10-20" data-fmt="day">سه‌شنبه</span><b data-alt="20">۲۸</b><small data-alt="Full">پر</small></button>
+      </div>
+      <div class="slots" data-group="mslot" role="group" aria-label="ساعت" data-alt-aria-label="Time">
+        <button class="slot" type="button" disabled data-alt="9:00">۹:۰۰</button><button class="slot" type="button" aria-pressed="true" data-alt="9:30">۹:۳۰</button><button class="slot" type="button" aria-pressed="false" data-alt="10:00">۱۰:۰۰</button><button class="slot" type="button" disabled data-alt="10:30">۱۰:۳۰</button><button class="slot" type="button" aria-pressed="false" data-alt="11:00">۱۱:۰۰</button><button class="slot" type="button" aria-pressed="false" data-alt="11:30">۱۱:۳۰</button>
+      </div>
+      <p class="hint" data-alt="Free up to 3 hours before your visit.">تا ۳ ساعت قبل از ویزیت، رایگان است.</p>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" type="button" data-close data-alt="Keep the old time">زمان قبلی بماند</button><button class="btn" type="submit" data-alt="Move appointment">انتقال نوبت</button></div>
+  </form>
+</dialog>
+
+<dialog class="modal" id="cancel" aria-labelledby="cancel-title">
+  <form data-validate data-success="نوبت لغو شد؛ پیامک تأیید ارسال شد" data-success-alt="Appointment cancelled; an SMS confirmation was sent">
+    <div class="modal-head"><b class="h2" id="cancel-title" style="flex: 1" data-alt="Cancel this appointment?">این نوبت لغو شود؟</b><button class="btn btn-ghost btn-icon btn-sm" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div>
+    <div class="modal-body">
+      <p class="muted small" data-alt="Dr. Bahram Niknam · Saturday 9:30. Cancelling now is free; the time goes to the next patient on the waiting list.">دکتر بهرام نیک‌نام · شنبه ۹:۳۰. لغو در این زمان رایگان است و نوبت به بیمار بعدی در فهرست انتظار می‌رسد.</p>
+      <div class="field"><label class="label" for="cn-why" data-alt="Reason">دلیل</label><select class="select" id="cn-why" name="why" required><option value="" data-alt="Choose…">انتخاب کنید…</option><option value="better" data-alt="I feel better">بهتر شده‌ام</option><option value="time" data-alt="The time no longer works">زمانش مناسب نیست</option><option value="other" data-alt="Seeing another doctor">نزد پزشک دیگری می‌روم</option></select></div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" type="button" data-close data-alt="Keep it">نگه دار</button><button class="btn btn-danger" type="submit" data-alt="Cancel appointment">لغو نوبت</button></div>
+  </form>
+</dialog>
+
+<dialog class="modal" id="member" aria-labelledby="member-title">
+  <form data-validate data-success="عضو خانواده افزوده شد" data-success-alt="Family member added" id="member-form">
+    <div class="modal-head"><b class="h2" id="member-title" style="flex: 1" data-alt="Add a family member">افزودن عضو خانواده</b><button class="btn btn-ghost btn-icon btn-sm" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div>
+    <div class="modal-body">
+      <div class="field"><label class="label" for="fm-name" data-alt="Full name">نام و نام خانوادگی</label><input class="input" id="fm-name" name="name" required minlength="2"></div>
+      <div class="cols" style="--n:2; gap: var(--space-4)">
+        <div class="field"><label class="label" for="fm-rel" data-alt="Relationship">نسبت</label><select class="select" id="fm-rel" name="rel" required><option value="" data-alt="Choose…">انتخاب کنید…</option><option value="child" data-alt="Child">فرزند</option><option value="parent" data-alt="Parent">پدر یا مادر</option><option value="spouse" data-alt="Spouse">همسر</option></select></div>
+        <div class="field"><label class="label" for="fm-nid" data-alt="National ID">کد ملی</label><input class="input" id="fm-nid" name="nid" required pattern="[0-9]{10}" inputmode="numeric" dir="ltr" data-pattern-msg="کد ملی ۱۰ رقم است" data-pattern-msg-alt="The national ID has 10 digits"></div>
+      </div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" type="button" data-close data-alt="Cancel">انصراف</button><button class="btn" type="submit" data-alt="Add">افزودن</button></div>
+  </form>
+</dialog>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+    const fa = () => tf.lang() === 'fa';
+    const both = (el, f, e) => { el.textContent = fa() ? f : e; el.dataset.alt = fa() ? e : f; };
+    document.addEventListener('click', (e) => {
+      const g = e.target.closest('[data-goto]');
+      if (g) { tf.selectTab(document.getElementById(g.dataset.goto)); window.scrollTo({ top: 0, behavior: tf.reduceMotion ? 'auto' : 'smooth' }); }
+    });
+    // medicines checklist updates the count
+    const meds = $('#meds'), taken = $('#taken');
+    meds.addEventListener('change', () => {
+      const n = $$('input:checked', meds).length;
+      taken.dataset.num = n; taken.textContent = tf.fmt(n);
+      if (n === 3) tf.toast(fa() ? 'همهٔ داروهای امروز مصرف شد' : 'All of today’s medicines taken', { tone: 'success' });
+    });
+    // messages
+    $('#composer').addEventListener('tf:submit', (e) => {
+      const m = document.createElement('div');
+      m.className = 'msg me';
+      m.innerHTML = '<div><div class="by"><span></span></div><div class="bubble"></div></div>';
+      both($('.by span', m), 'شما · همین حالا', 'You · just now');
+      $('.bubble', m).textContent = e.detail.msg;
+      $('#thread').append(m);
+    });
+    // family
+    $('#member-form').addEventListener('tf:submit', (e) => {
+      const rel = { child: ['فرزند', 'child'], parent: ['پدر یا مادر', 'parent'], spouse: ['همسر', 'spouse'] }[e.detail.rel];
+      const row = document.createElement('div');
+      row.className = 'member';
+      row.innerHTML = '<span class="avatar" style="--c: var(--brand-soft)"></span><div class="stack" style="gap: 0"><b></b><span class="small subtle"></span></div><span class="badge mint"></span>';
+      $('.avatar', row).textContent = e.detail.name.trim().charAt(0);
+      $('b', row).textContent = e.detail.name + ' · ' + (fa() ? rel[0] : rel[1]);
+      both($('.small', row), 'افزوده شد همین حالا', 'Added just now');
+      both($('.badge', row), 'تازه', 'New');
+      $('#members').append(row);
+    });
+  });
+</script>
+</body>
+</html>

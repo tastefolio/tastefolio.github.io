@@ -1,0 +1,147 @@
+/* Clinic — design tokens (Tastefolio). Healthcare booking: cool clean white, deep blue-ink text, a cerulean brand for
+   booking and navigation, mint for availability, and Atkinson Hyperlegible Next — a typeface made for low-vision
+   readers — so every time, dose and value is unmistakable. */
+:root {
+  --canvas: #f4f7f9;
+  --surface: #ffffff;
+  --surface-2: #edf2f6;
+  --surface-3: #dfe7ee;
+  --surface-ink: #0c2a42;     /* deep band: footer, panel sidebar */
+  --overlay: rgba(12, 32, 52, .5);
+
+  --ink: #102a43;
+  --ink-2: #486581;
+  --ink-3: #7b93ab;
+  --ink-inverse: #ffffff;
+
+  --line: #e1e8ef;
+  --line-2: #cad6e1;
+
+  --brand: #0a7ea4;           /* cerulean — book, navigate, select */
+  --brand-ink: #ffffff;
+  --brand-soft: color-mix(in oklab, var(--brand) 12%, #fff);
+  --brand-strong: color-mix(in oklab, var(--brand) 75%, #000);
+  --mint: #13a36e;            /* availability: open slots, online now */
+  --mint-soft: #e2f6ed;
+  --focus: color-mix(in oklab, var(--brand) 55%, transparent);
+
+  --success: #13a36e;
+  --success-soft: #e2f6ed;
+  --warning: #a8650a;
+  --warning-soft: #fcf1df;
+  --danger: #d13f3f;
+  --danger-soft: #fce8e8;
+  --info: #3466d1;
+  --info-soft: #e6eefc;
+
+  --chart-1: var(--brand);
+  --chart-2: #13a36e;
+  --chart-3: #e08a2e;
+  --chart-4: #7b61d8;
+  --chart-5: #d13f3f;
+  --chart-6: #9fb3c8;
+  --chart-grid: #e6edf3;
+  --chart-axis: var(--ink-3);
+  --chart-curve: smooth;
+  --chart-stroke: 2.5;
+  --chart-area: .1;
+  --chart-radius: 6;
+  --chart-bar-gap: .45;
+  --chart-donut: 16;
+  --chart-gap: 2;
+  --chart-dots: 1;
+
+  --font-sans: "Atkinson Hyperlegible Next", "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Atkinson Hyperlegible Next", "Vazirmatn", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, "Vazirmatn", monospace;
+  --fs-xs: 12.5px;
+  --fs-sm: 14px;
+  --fs-md: 16px;
+  --fs-lg: 19px;
+  --fs-xl: 23px;
+  --fs-2xl: 30px;
+  --fs-3xl: 42px;
+  --fs-display: clamp(36px, 5vw, 64px);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --fw-display: 800;
+  --lh-tight: 1.1;
+  --lh-snug: 1.3;
+  --lh-body: 1.6;
+  --tracking-display: -.02em;
+  --tracking-caps: .04em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 72px;
+  --space-9: 104px;
+  --space-10: 144px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+  --border-w: 1px;
+  --shadow-1: 0 1px 2px rgba(16, 42, 67, .06);
+  --shadow-2: 0 12px 30px -14px rgba(16, 42, 67, .22);
+  --shadow-3: 0 30px 70px -26px rgba(16, 42, 67, .35);
+
+  --container: 1240px;
+  --gutter: clamp(16px, 3vw, 32px);
+  --control-h: 48px;
+  --control-h-lg: 56px;
+
+  --ease: cubic-bezier(.25, .8, .25, 1);
+  --dur-1: 140ms;
+  --dur-2: 240ms;
+  --dur-3: 420ms;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --canvas: #0a1622;
+  --surface: #10202f;
+  --surface-2: #162a3c;
+  --surface-3: #1f374d;
+  --surface-ink: #06111b;
+  --overlay: rgba(0, 0, 0, .6);
+  --ink: #e8f0f7;
+  --ink-2: #a3b8cc;
+  --ink-3: #6f879e;
+  --line: #1c3246;
+  --line-2: #2a4660;
+  --brand: #3fb6dc;
+  --brand-ink: #04202b;
+  --brand-soft: color-mix(in oklab, var(--brand) 14%, transparent);
+  --brand-strong: color-mix(in oklab, var(--brand) 70%, #fff);
+  --mint: #3ed49a;
+  --mint-soft: rgba(62, 212, 154, .14);
+  --success: #3ed49a;
+  --success-soft: rgba(62, 212, 154, .14);
+  --warning: #f0b34a;
+  --warning-soft: rgba(240, 179, 74, .14);
+  --danger: #ff7272;
+  --danger-soft: rgba(255, 114, 114, .14);
+  --info: #79a3ff;
+  --info-soft: rgba(121, 163, 255, .14);
+  --chart-grid: #183044;
+  --shadow-2: 0 12px 30px -14px rgba(0, 0, 0, .7);
+  color-scheme: dark;
+}
+
+:root:lang(fa) {
+  --font-sans: "Vazirmatn", "Atkinson Hyperlegible Next", Tahoma, sans-serif;
+  --font-display: "Vazirmatn", "Atkinson Hyperlegible Next", sans-serif;
+  --fs-display: clamp(32px, 4.4vw, 56px);
+  --fw-display: 800;
+  --lh-tight: 1.45;
+  --lh-snug: 1.6;
+  --lh-body: 1.95;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+}

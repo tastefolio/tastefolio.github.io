@@ -207,6 +207,15 @@
       ]
     },
     {
+      "name": "clinic",
+      "description": "Tastefolio design language — Healthcare booking — search-first hero, doctor cards with free slots, a time picker and a patient panel set in a hyperlegible face",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/clinic"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -233,7 +242,8 @@
         "./skills/aisle",
         "./skills/syllabus",
         "./skills/brief",
-        "./skills/lucent"
+        "./skills/lucent",
+        "./skills/clinic"
       ]
     }
   ]

@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="site">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Hamdam Health — book a doctor online">همدم سلامت — نوبت آنلاین پزشک</title>
+<meta name="description" content="همدم سلامت، یک سامانهٔ نمونهٔ نوبت‌دهی پزشکی: جست‌وجوی پزشک، انتخاب زمان خالی و ویزیت آنلاین." data-alt-content="Hamdam Health, a sample medical booking service: find a doctor, pick a free time and visit online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400..800&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .preview .doc-head { display: flex; align-items: center; gap: 12px; }
+  .preview .slots { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .preview .days { grid-auto-columns: minmax(0, 1fr); }
+  .today-check { margin-inline-start: auto; }
+  .reviews { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); }
+  @media (max-width: 900px) { .reviews { grid-template-columns: minmax(0, 1fr); } .today-check { margin-inline-start: 0; } }
+  .band ul { display: grid; gap: 10px; }
+  .band li { display: flex; gap: 10px; align-items: center; }
+  .call-bar { display: flex; justify-content: center; gap: 10px; }
+  .call-bar span { inline-size: 40px; block-size: 40px; border-radius: 50%; display: grid; place-items: center; background: rgba(255, 255, 255, .2); }
+  .call-bar span.end { background: #e5484d; }
+  .done-panel { display: grid; gap: var(--space-3); justify-items: center; text-align: center; padding: var(--space-5); }
+  .done-panel .big-ok { inline-size: 72px; block-size: 72px; border-radius: 50%; display: grid; place-items: center; background: var(--mint-soft); color: var(--mint); font-size: 32px; }
+  .code { display: inline-flex; padding: 4px 12px; border-radius: 8px; background: var(--surface-2); font: 700 var(--fs-md)/1.5 var(--font-mono); letter-spacing: .06em; direction: ltr; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<header class="site-head">
+  <div class="container">
+    <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"></span><span data-alt="Hamdam">همدم</span></a>
+    <nav class="nav" id="nav" data-dismissable aria-label="اصلی" data-alt-aria-label="Main">
+      <a href="#specialties" data-alt="Specialties">تخصص‌ها</a>
+      <a href="#doctors" data-alt="Doctors">پزشکان</a>
+      <a href="#online" data-alt="Online visit">ویزیت آنلاین</a>
+      <a href="#magazine" data-alt="Health magazine">مجلهٔ سلامت</a>
+      <a href="#faq" data-alt="Help">راهنما</a>
+    </nav>
+    <div class="head-end">
+      <span class="emergency hide-md"><i class="fa-solid fa-truck-medical" aria-hidden="true"></i><span data-alt="Emergency 115">اورژانس ۱۱۵</span></span>
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+      <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="تغییر حالت تیره" data-alt-aria-label="Toggle dark mode"><i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i></button>
+      <a class="btn btn-soft btn-sm hide-sm" href="dashboard.html"><i class="fa-solid fa-user" aria-hidden="true"></i><span data-alt="Patient panel">پنل بیمار</span></a>
+      <button class="btn btn-outline btn-icon btn-sm menu-btn" type="button" data-toggle="#nav" aria-controls="nav" aria-expanded="false" aria-label="منو" data-alt-aria-label="Menu"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <svg class="pulse-line" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70 H520 l18 -10 l14 10 h40 l16 -58 l20 108 l18 -76 l12 26 h60 l14 -12 l14 12 H1440" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg>
+    <div class="container">
+      <div class="hero-copy">
+        <span class="eyebrow"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span data-alt="In-person and online visits with 2,400 verified doctors">ویزیت حضوری و آنلاین با ۲٬۴۰۰ پزشک تأییدشده</span></span>
+        <h1 class="display" data-alt="Book a doctor — no queues, no phone calls.">نوبت پزشک، بدون صف و بدون تلفن.</h1>
+        <p class="lead" data-alt="Find the right doctor, see the first free time and book in under a minute. Reminders, prescriptions and results stay in your patient panel.">پزشک مناسب را پیدا کنید، اولین زمان خالی را ببینید و در کمتر از یک دقیقه نوبت بگیرید. یادآوری، نسخه و جواب آزمایش در پنل بیمار شما می‌ماند.</p>
+        <form class="search-panel" role="search" id="hero-search">
+          <div class="in"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><label class="sr-only" for="hq" data-alt="Specialty, condition or doctor">تخصص، بیماری یا نام پزشک</label><input class="input" id="hq" type="search" placeholder="تخصص، بیماری یا نام پزشک" data-alt-placeholder="Specialty, condition or doctor"></div>
+          <div class="in"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><label class="sr-only" for="city" data-alt="City">شهر</label><select class="select" id="city"><option data-alt="Tehran">تهران</option><option data-alt="Isfahan">اصفهان</option><option data-alt="Shiraz">شیراز</option><option data-alt="Mashhad">مشهد</option><option data-alt="Tabriz">تبریز</option></select></div>
+          <button class="btn btn-lg" type="submit"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><span data-alt="Find a doctor">پیدا کردن پزشک</span></button>
+        </form>
+        <div class="quick"><span data-alt="Popular:">پرجست‌وجو:</span><div class="chips"><a href="#doctors" data-q="کودکان" data-q-alt="Pediatrics"><i class="fa-solid fa-baby" aria-hidden="true"></i><span data-alt="Pediatrics">کودکان</span></a><a href="#doctors" data-q="دندان" data-q-alt="Dentist"><i class="fa-solid fa-tooth" aria-hidden="true"></i><span data-alt="Dentistry">دندان‌پزشکی</span></a><a href="#doctors" data-q="پوست" data-q-alt="Dermatology"><i class="fa-solid fa-hand-dots" aria-hidden="true"></i><span data-alt="Skin">پوست</span></a><a href="#doctors" data-q="روان" data-q-alt="Psych"><i class="fa-solid fa-brain" aria-hidden="true"></i><span data-alt="Psychology">روان‌شناسی</span></a></div></div>
+        <div class="trust">
+          <div><i class="fa-solid fa-user-doctor" aria-hidden="true"></i><span><b data-alt="2,400 doctors">۲٬۴۰۰ پزشک</b><span data-alt="with a medical council licence">دارای پروانهٔ نظام پزشکی</span></span></div>
+          <div><i class="fa-solid fa-star" aria-hidden="true"></i><span><b data-alt="4.8 of 5">۴٫۸ از ۵</b><span data-alt="patient satisfaction">رضایت بیماران</span></span></div>
+          <div><i class="fa-solid fa-shield-heart" aria-hidden="true"></i><span><b data-alt="18 insurers">۱۸ بیمه</b><span data-alt="basic and supplementary">پایه و تکمیلی</span></span></div>
+        </div>
+      </div>
+      <aside class="preview" aria-label="نمونهٔ نوبت" data-alt-aria-label="Booking preview">
+        <div class="doc-head"><span class="avatar" style="--c:#ffe1d6"><span data-alt="N">ن</span><span class="verified" aria-hidden="true"><i class="fa-solid fa-check"></i></span></span><div class="stack" style="gap: 2px"><b data-alt="Dr. Neda Karimi">دکتر ندا کریمی</b><span class="small subtle" data-alt="Pediatrician · Saadat Abad">متخصص کودکان · سعادت‌آباد</span></div><span class="badge mint live" style="margin-inline-start: auto" data-alt="Today">امروز</span></div>
+        <div class="days" data-group="pday" role="group" aria-label="روز" data-alt-aria-label="Day">
+          <button class="day" type="button" aria-pressed="true" data-value="0"><span data-alt="Today">امروز</span><b data-alt="14">۲۲</b><small><span data-num="3">۳</span></small></button>
+          <button class="day" type="button" aria-pressed="false" data-value="1"><span data-date="2026-10-15" data-fmt="day">پنجشنبه</span><b data-alt="15">۲۳</b><small><span data-num="6">۶</span></small></button>
+          <button class="day full" type="button" aria-pressed="false" data-value="2"><span data-date="2026-10-16" data-fmt="day">جمعه</span><b data-alt="16">۲۴</b><small data-alt="Closed">تعطیل</small></button>
+        </div>
+        <div class="slots" data-group="pslot" role="group" aria-label="ساعت" data-alt-aria-label="Time">
+          <button class="slot" type="button" disabled data-alt="16:30">۱۶:۳۰</button><button class="slot" type="button" disabled data-alt="17:00">۱۷:۰۰</button><button class="slot" type="button" aria-pressed="true" data-value="17:30" data-alt="17:30">۱۷:۳۰</button>
+          <button class="slot" type="button" aria-pressed="false" data-value="18:00" data-alt="18:00">۱۸:۰۰</button><button class="slot" type="button" disabled data-alt="18:30">۱۸:۳۰</button><button class="slot" type="button" aria-pressed="false" data-value="19:00" data-alt="19:00">۱۹:۰۰</button>
+        </div>
+        <button class="btn btn-block" type="button" data-dialog="#book" data-doctor="0"><i class="fa-regular fa-calendar-check" aria-hidden="true"></i><span data-alt="Book this time">رزرو همین زمان</span></button>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="specialties">
+    <div class="container">
+      <div class="sec-head"><div><span class="eyebrow" data-alt="Specialties">تخصص‌ها</span><h2 class="h1" data-alt="Which doctor do you need?">به چه پزشکی نیاز دارید؟</h2></div><a class="btn btn-outline" href="#doctors"><span data-alt="All 42 specialties">همهٔ ۴۲ تخصص</span><i class="fa-solid fa-chevron-right flip-rtl" aria-hidden="true"></i></a></div>
+      <div class="specs">
+        <a class="spec" href="#doctors" data-q="عمومی" data-q-alt="General" style="--c:#e2f2f8; --ic:#065f7d"><i class="fa-solid fa-stethoscope" aria-hidden="true"></i><span data-alt="General">عمومی</span><small><span data-num="410">۴۱۰</span> <span data-alt="doctors">پزشک</span></small></a>
+        <a class="spec" href="#doctors" data-q="کودکان" data-q-alt="Pediatrics" style="--c:#ffe9df; --ic:#c2491d"><i class="fa-solid fa-baby" aria-hidden="true"></i><span data-alt="Pediatrics">کودکان</span><small><span data-num="220">۲۲۰</span> <span data-alt="doctors">پزشک</span></small></a>
+        <a class="spec" href="#doctors" data-q="دندان" data-q-alt="Dentist" style="--c:#e8f0ff; --ic:#3466d1"><i class="fa-solid fa-tooth" aria-hidden="true"></i><span data-alt="Dentistry">دندان‌پزشکی</span><small><span data-num="360">۳۶۰</span> <span data-alt="doctors">پزشک</span></small></a>
+        <a class="spec" href="#doctors" data-q="پوست" data-q-alt="Dermatology" style="--c:#fdeef5; --ic:#b8336a"><i class="fa-solid fa-hand-dots" aria-hidden="true"></i><span data-alt="Skin &amp; hair">پوست و مو</span><small><span data-num="180">۱۸۰</span> <span data-alt="doctors">پزشک</span></small></a>
+        <a class="spec" href="#doctors" data-q="قلب" data-q-alt="Cardiology" style="--c:#fde8e8; --ic:#c53030"><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i><span data-alt="Heart">قلب و عروق</span><small><span data-num="140">۱۴۰</span> <span data-alt="doctors">پزشک</span></small></a>
+        <a class="spec" href="#doctors" data-q="زنان" data-q-alt="Women" style="--c:#f3e8ff; --ic:#7b3fc4"><i class="fa-solid fa-person-pregnant" aria-hidden="true"></i><span data-alt="Women’s health">زنان و زایمان</span><small><span data-num="160">۱۶۰</span> <span data-alt="doctors">پزشک</span></small></a>
+        <a class="spec" href="#doctors" data-q="روان" data-q-alt="Psych" style="--c:#e2f6ed; --ic:#0e7a52"><i class="fa-solid fa-brain" aria-hidden="true"></i><span data-alt="Psychology">روان‌شناسی</span><small><span data-num="210">۲۱۰</span> <span data-alt="therapists">درمانگر</span></small></a>
+        <a class="spec" href="#doctors" data-q="چشم" data-q-alt="Eye" style="--c:#e6f7fb; --ic:#0a7ea4"><i class="fa-solid fa-eye" aria-hidden="true"></i><span data-alt="Eyes">چشم</span><small><span data-num="90">۹۰</span> <span data-alt="doctors">پزشک</span></small></a>
+        <a class="spec" href="#doctors" data-q="ارتوپد" data-q-alt="Ortho" style="--c:#f1f3f6; --ic:#486581"><i class="fa-solid fa-bone" aria-hidden="true"></i><span data-alt="Orthopaedics">ارتوپدی</span><small><span data-num="110">۱۱۰</span> <span data-alt="doctors">پزشک</span></small></a>
+        <a class="spec" href="#doctors" data-q="تغذیه" data-q-alt="Nutrition" style="--c:#eef8e3; --ic:#4b8a12"><i class="fa-solid fa-apple-whole" aria-hidden="true"></i><span data-alt="Nutrition">تغذیه</span><small><span data-num="75">۷۵</span> <span data-alt="experts">کارشناس</span></small></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="doctors" data-filter-scope style="padding-block-start: 0">
+    <div class="container">
+      <div class="sec-head"><div><span class="eyebrow" data-alt="Doctors">پزشکان</span><h2 class="h1" data-alt="Free times, at a glance">زمان‌های خالی، با یک نگاه</h2></div><span class="small subtle"><span data-filter-count data-num="5">۵</span> <span data-alt="doctors shown">پزشک</span></span></div>
+      <div class="filters">
+        <div class="chips" data-group role="group" aria-label="تخصص" data-alt-aria-label="Specialty">
+          <button type="button" data-filter="spec" data-value="all" aria-pressed="true" data-alt="All">همه</button>
+          <button type="button" data-filter="spec" data-value="peds" aria-pressed="false" data-alt="Pediatrics">کودکان</button>
+          <button type="button" data-filter="spec" data-value="dent" aria-pressed="false" data-alt="Dentistry">دندان‌پزشکی</button>
+          <button type="button" data-filter="spec" data-value="derm" aria-pressed="false" data-alt="Skin">پوست</button>
+          <button type="button" data-filter="spec" data-value="card" aria-pressed="false" data-alt="Heart">قلب</button>
+          <button type="button" data-filter="spec" data-value="psy" aria-pressed="false" data-alt="Psychology">روان‌شناسی</button>
+        </div>
+        <select class="select" data-filter="ins" aria-label="بیمه" data-alt-aria-label="Insurance"><option value="all" data-alt="Any insurance">همهٔ بیمه‌ها</option><option value="tamin" data-alt="Social security">تأمین اجتماعی</option><option value="salamat" data-alt="Salamat">سلامت</option><option value="takmili" data-alt="Supplementary">تکمیلی</option></select>
+        <label class="check today-check"><input type="checkbox" data-filter="today" value="yes"><span data-alt="Free today">زمان خالی امروز</span></label>
+        <input class="input" type="search" id="doc-q" data-filter-search aria-label="جست‌وجوی پزشک" data-alt-aria-label="Search doctors" placeholder="نام یا تخصص…" data-alt-placeholder="Name or specialty…" style="inline-size: 220px; min-block-size: 42px; font-size: var(--fs-sm)">
+      </div>
+      <div class="docs">
+        <article class="doc" data-filter-item data-spec="peds" data-ins="tamin takmili" data-today="yes" data-keywords="pediatrics child کودک اطفال neda karimi">
+          <span class="avatar lg" style="--c:#ffe1d6"><span data-alt="N">ن</span><span class="verified" aria-hidden="true"><i class="fa-solid fa-check"></i></span></span>
+          <div class="info"><b class="name" data-alt="Dr. Neda Karimi">دکتر ندا کریمی</b><span class="muted small" data-alt="Pediatrician · 14 years’ experience">متخصص کودکان · ۱۴ سال تجربه</span><div class="meta"><span class="stars"><i class="fa-solid fa-star" aria-hidden="true"></i><span data-num="4.9" data-fmt="dec1">۴٫۹</span> <small>(<span data-num="820">۸۲۰</span>)</small></span><span><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span data-alt="Tehran, Saadat Abad">تهران، سعادت‌آباد</span></span><span class="mc"><span data-alt="Council no.">نظام پزشکی</span> <span data-num="142873" data-fmt="plain">۱۴۲۸۷۳</span></span></div><div class="row" style="gap: 6px"><span class="badge" data-alt="Social security">تأمین اجتماعی</span><span class="badge" data-alt="Supplementary">تکمیلی</span><span class="badge mint" data-alt="Online visit">ویزیت آنلاین</span></div></div>
+          <div class="book"><span class="next-slot"><span data-alt="Today 17:30">امروز ۱۷:۳۰</span></span><span class="fee"><span data-alt="Visit fee">ویزیت</span> <b data-num="650000" data-fmt="toman">۶۵۰٬۰۰۰ تومان</b></span><button class="btn" type="button" data-dialog="#book" data-doctor="0"><i class="fa-regular fa-calendar-check" aria-hidden="true"></i><span data-alt="Book a visit">نوبت حضوری</span></button></div>
+        </article>
+        <article class="doc" data-filter-item data-spec="dent" data-ins="takmili" data-today="no" data-keywords="dentist dentistry دندان arash moradi">
+          <span class="avatar lg" style="--c:#dfe9ff"><span data-alt="A">آ</span><span class="verified" aria-hidden="true"><i class="fa-solid fa-check"></i></span></span>
+          <div class="info"><b class="name" data-alt="Dr. Arash Moradi">دکتر آرش مرادی</b><span class="muted small" data-alt="Dentist · cosmetic and root canal">دندان‌پزشک · زیبایی و عصب‌کشی</span><div class="meta"><span class="stars"><i class="fa-solid fa-star" aria-hidden="true"></i><span data-num="4.8" data-fmt="dec1">۴٫۸</span> <small>(<span data-num="540">۵۴۰</span>)</small></span><span><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span data-alt="Tehran, Vanak">تهران، ونک</span></span><span class="mc"><span data-alt="Council no.">نظام پزشکی</span> <span data-num="98214" data-fmt="plain">۹۸۲۱۴</span></span></div><div class="row" style="gap: 6px"><span class="badge" data-alt="Supplementary">تکمیلی</span></div></div>
+          <div class="book"><span class="next-slot later"><span data-alt="Tomorrow 10:00">فردا ۱۰:۰۰</span></span><span class="fee"><span data-alt="Consultation">مشاوره</span> <b data-num="400000" data-fmt="toman">۴۰۰٬۰۰۰ تومان</b></span><button class="btn" type="button" data-dialog="#book" data-doctor="1"><i class="fa-regular fa-calendar-check" aria-hidden="true"></i><span data-alt="Book a visit">نوبت حضوری</span></button></div>
+        </article>
+        <article class="doc" data-filter-item data-spec="derm" data-ins="salamat takmili" data-today="yes" data-keywords="dermatology skin پوست مو samira ahmadi">
+          <span class="avatar lg" style="--c:#fde3ee"><span data-alt="S">س</span><span class="verified" aria-hidden="true"><i class="fa-solid fa-check"></i></span></span>
+          <div class="info"><b class="name" data-alt="Dr. Samira Ahmadi">دکتر سمیرا احمدی</b><span class="muted small" data-alt="Dermatologist · skin and hair">متخصص پوست و مو</span><div class="meta"><span class="stars"><i class="fa-solid fa-star" aria-hidden="true"></i><span data-num="4.7" data-fmt="dec1">۴٫۷</span> <small>(<span data-num="390">۳۹۰</span>)</small></span><span><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span data-alt="Tehran, Pasdaran">تهران، پاسداران</span></span><span class="mc"><span data-alt="Council no.">نظام پزشکی</span> <span data-num="120456" data-fmt="plain">۱۲۰۴۵۶</span></span></div><div class="row" style="gap: 6px"><span class="badge" data-alt="Salamat">سلامت</span><span class="badge" data-alt="Supplementary">تکمیلی</span></div></div>
+          <div class="book"><span class="next-slot"><span data-alt="Today 19:15">امروز ۱۹:۱۵</span></span><span class="fee"><span data-alt="Visit fee">ویزیت</span> <b data-num="750000" data-fmt="toman">۷۵۰٬۰۰۰ تومان</b></span><button class="btn" type="button" data-dialog="#book" data-doctor="2"><i class="fa-regular fa-calendar-check" aria-hidden="true"></i><span data-alt="Book a visit">نوبت حضوری</span></button></div>
+        </article>
+        <article class="doc" data-filter-item data-spec="card" data-ins="tamin salamat" data-today="no" data-keywords="cardiology heart قلب bahram niknam">
+          <span class="avatar lg" style="--c:#fde4e4"><span data-alt="B">ب</span><span class="verified" aria-hidden="true"><i class="fa-solid fa-check"></i></span></span>
+          <div class="info"><b class="name" data-alt="Dr. Bahram Niknam">دکتر بهرام نیک‌نام</b><span class="muted small" data-alt="Cardiologist · fellowship in echocardiography">متخصص قلب و عروق · فلوشیپ اکوکاردیوگرافی</span><div class="meta"><span class="stars"><i class="fa-solid fa-star" aria-hidden="true"></i><span data-num="4.9" data-fmt="dec1">۴٫۹</span> <small>(<span data-num="1200">۱٬۲۰۰</span>)</small></span><span><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span data-alt="Tehran, Jordan">تهران، جردن</span></span><span class="mc"><span data-alt="Council no.">نظام پزشکی</span> <span data-num="87532" data-fmt="plain">۸۷۵۳۲</span></span></div><div class="row" style="gap: 6px"><span class="badge" data-alt="Social security">تأمین اجتماعی</span><span class="badge" data-alt="Salamat">سلامت</span></div></div>
+          <div class="book"><span class="next-slot later"><span data-alt="Saturday 9:30">شنبه ۹:۳۰</span></span><span class="fee"><span data-alt="Visit fee">ویزیت</span> <b data-num="850000" data-fmt="toman">۸۵۰٬۰۰۰ تومان</b></span><button class="btn" type="button" data-dialog="#book" data-doctor="3"><i class="fa-regular fa-calendar-check" aria-hidden="true"></i><span data-alt="Book a visit">نوبت حضوری</span></button></div>
+        </article>
+        <article class="doc" data-filter-item data-spec="psy" data-ins="takmili" data-today="yes" data-keywords="psychology therapist روان leila sadeghi online">
+          <span class="avatar lg" style="--c:#dcf3e7"><span data-alt="L">ل</span><span class="verified" aria-hidden="true"><i class="fa-solid fa-check"></i></span></span>
+          <div class="info"><b class="name" data-alt="Leila Sadeghi, PhD">دکتر لیلا صادقی</b><span class="muted small" data-alt="Clinical psychologist · anxiety and sleep">روان‌شناس بالینی · اضطراب و خواب</span><div class="meta"><span class="stars"><i class="fa-solid fa-star" aria-hidden="true"></i><span data-num="4.8" data-fmt="dec1">۴٫۸</span> <small>(<span data-num="610">۶۱۰</span>)</small></span><span><i class="fa-solid fa-video" aria-hidden="true"></i><span data-alt="Online only">فقط آنلاین</span></span><span class="mc"><span data-alt="Licence no.">پروانه</span> <span data-num="23718" data-fmt="plain">۲۳۷۱۸</span></span></div><div class="row" style="gap: 6px"><span class="badge" data-alt="Supplementary">تکمیلی</span><span class="badge mint" data-alt="Online visit">ویزیت آنلاین</span></div></div>
+          <div class="book"><span class="next-slot"><span data-alt="Today 20:00 · online">امروز ۲۰:۰۰ · آنلاین</span></span><span class="fee"><span data-alt="45-minute session">جلسهٔ ۴۵ دقیقه‌ای</span> <b data-num="550000" data-fmt="toman">۵۵۰٬۰۰۰ تومان</b></span><button class="btn btn-mint" type="button" data-dialog="#book" data-doctor="4"><i class="fa-solid fa-video" aria-hidden="true"></i><span data-alt="Book online">نوبت آنلاین</span></button></div>
+        </article>
+      </div>
+      <p class="empty" data-filter-empty hidden data-alt="No doctor matches these filters — try another day or insurer.">پزشکی با این فیلترها پیدا نشد — روز یا بیمهٔ دیگری را امتحان کنید.</p>
+    </div>
+  </section>
+
+  <section class="container" id="online" style="padding-block-end: var(--space-8)">
+    <div class="band">
+      <div class="stack" style="gap: var(--space-4)">
+        <span class="eyebrow" style="background: rgba(255,255,255,.18); color: #fff"><i class="fa-solid fa-video" aria-hidden="true"></i><span data-alt="Online visit">ویزیت آنلاین</span></span>
+        <h2 class="h1" data-alt="See a doctor in 15 minutes, from home.">در ۱۵ دقیقه، از خانه، پزشک ببینید.</h2>
+        <ul>
+          <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span data-alt="Video, voice or text — your choice">تصویری، صوتی یا متنی — به انتخاب شما</span></li>
+          <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span data-alt="Electronic prescription sent to any pharmacy">نسخهٔ الکترونیک برای هر داروخانه</span></li>
+          <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span data-alt="Free follow-up questions for 3 days">پرسش پیگیری رایگان تا ۳ روز</span></li>
+        </ul>
+        <div class="row"><button class="btn btn-lg" type="button" data-dialog="#book" data-doctor="4"><i class="fa-solid fa-video" aria-hidden="true"></i><span data-alt="Start an online visit">شروع ویزیت آنلاین</span></button><span class="small" style="opacity: .85"><span data-num="38">۳۸</span> <span data-alt="doctors online now">پزشک همین حالا آنلاین‌اند</span></span></div>
+      </div>
+      <div class="call" aria-hidden="true">
+        <div class="screen"><span class="pip"></span></div>
+        <div class="split small"><span data-alt="Dr. Leila Sadeghi">دکتر لیلا صادقی</span><span class="ltr">12:48</span></div>
+        <div class="call-bar"><span><i class="fa-solid fa-microphone"></i></span><span><i class="fa-solid fa-video"></i></span><span class="end"><i class="fa-solid fa-phone-slash"></i></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-block-start: 0">
+    <div class="container">
+      <div class="sec-head"><div><span class="eyebrow" data-alt="How it works">نحوهٔ کار</span><h2 class="h1" data-alt="Three steps to your doctor">سه گام تا پزشک</h2></div></div>
+      <ol class="how">
+        <li><span class="ic"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></span><b class="h3" data-alt="Search">جست‌وجو</b><p class="muted small" data-alt="By specialty, condition, insurer or the doctor’s name — with real reviews from patients.">بر اساس تخصص، بیماری، بیمه یا نام پزشک — با نظر واقعی بیماران.</p></li>
+        <li><span class="ic"><i class="fa-regular fa-calendar-check" aria-hidden="true"></i></span><b class="h3" data-alt="Pick a time">انتخاب زمان</b><p class="muted small" data-alt="Only truly free times are shown. You get an SMS and a reminder the day before.">فقط زمان‌های واقعاً خالی نمایش داده می‌شود. پیامک تأیید و یادآوری روز قبل می‌گیرید.</p></li>
+        <li><span class="ic"><i class="fa-solid fa-user-doctor" aria-hidden="true"></i></span><b class="h3" data-alt="Visit">ویزیت</b><p class="muted small" data-alt="In person or online. Prescriptions and results land in your patient panel.">حضوری یا آنلاین. نسخه و جواب آزمایش در پنل بیمار شما ثبت می‌شود.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="magazine" style="padding-block-start: 0">
+    <div class="container">
+      <div class="sec-head"><div><span class="eyebrow" data-alt="Health magazine">مجلهٔ سلامت</span><h2 class="h1" data-alt="Reviewed by doctors, written for people">بازبینی‌شده توسط پزشک، نوشته‌شده برای همه</h2></div></div>
+      <div class="posts">
+        <a class="post" href="#magazine"><span class="thumb" style="--bg: linear-gradient(135deg, #ff9a76, #ffcf8a)"><i class="fa-solid fa-baby" aria-hidden="true"></i></span><span class="badge" style="justify-self: start" data-alt="Children · 5 min read">کودکان · ۵ دقیقه</span><b data-alt="Five signs your child should see a doctor today">پنج نشانه که کودک باید همین امروز پزشک ببیند</b></a>
+        <a class="post" href="#magazine"><span class="thumb" style="--bg: linear-gradient(135deg, #5b7cfa, #9fb6ff)"><i class="fa-solid fa-moon" aria-hidden="true"></i></span><span class="badge" style="justify-self: start" data-alt="Sleep · 7 min read">خواب · ۷ دقیقه</span><b data-alt="Better sleep in seven nights, without pills">خواب بهتر در هفت شب، بدون قرص</b></a>
+        <a class="post" href="#magazine"><span class="thumb" style="--bg: linear-gradient(135deg, #0a7ea4, #4fd1c5)"><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i></span><span class="badge" style="justify-self: start" data-alt="Heart · 4 min read">قلب · ۴ دقیقه</span><b data-alt="How to measure blood pressure at home, properly">فشار خون را در خانه درست اندازه بگیرید</b></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-block-start: 0">
+    <div class="container reviews">
+      <figure class="review"><span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span><blockquote class="muted" data-alt="Booked a pediatrician at 4 and saw her at 5:30. The reminder SMS was a lifesaver.">ساعت ۴ نوبت متخصص کودکان گرفتم و ساعت ۵:۳۰ ویزیت شدیم. پیامک یادآوری خیلی به کارم آمد.</blockquote><figcaption class="small"><b data-alt="Mina R.">مینا ر.</b> · <span class="subtle" data-alt="Pediatrics">کودکان</span></figcaption></figure>
+      <figure class="review"><span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span><blockquote class="muted" data-alt="My father’s lab results and prescriptions are all in one place now. Big text, easy to read.">جواب آزمایش‌ها و نسخه‌های پدرم حالا یک‌جاست. نوشته‌ها درشت و خواناست.</blockquote><figcaption class="small"><b data-alt="Hamed K.">حامد ک.</b> · <span class="subtle" data-alt="Family account">حساب خانوادگی</span></figcaption></figure>
+      <figure class="review"><span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></span><blockquote class="muted" data-alt="The online session felt like a real appointment. The prescription reached the pharmacy before I did.">جلسهٔ آنلاین مثل یک ویزیت واقعی بود. نسخه قبل از من به داروخانه رسیده بود.</blockquote><figcaption class="small"><b data-alt="Sara T.">سارا ت.</b> · <span class="subtle" data-alt="Online visit">ویزیت آنلاین</span></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="section" id="faq" style="padding-block-start: 0">
+    <div class="container" style="max-inline-size: 860px">
+      <h2 class="h1" style="margin-block-end: var(--space-4)" data-alt="Questions">پرسش‌های رایج</h2>
+      <details class="faq" open><summary data-alt="Can I cancel or move my appointment?">می‌توانم نوبتم را لغو یا جابه‌جا کنم؟</summary><p data-alt="Yes — up to 3 hours before, from your patient panel, at no cost. Later than that, the clinic’s own policy applies.">بله — تا ۳ ساعت قبل، از پنل بیمار و بدون هزینه. پس از آن، قوانین خود مطب اعمال می‌شود.</p></details>
+      <details class="faq"><summary data-alt="Is my insurance accepted?">بیمه‌ام پذیرفته می‌شود؟</summary><p data-alt="Each doctor’s card lists the insurers they accept; filter by yours above. Supplementary claims can be sent from the panel.">روی کارت هر پزشک، بیمه‌های طرف قرارداد آمده؛ بالای فهرست بر اساس بیمهٔ خودتان فیلتر کنید. پروندهٔ بیمهٔ تکمیلی از پنل ارسال می‌شود.</p></details>
+      <details class="faq"><summary data-alt="Are online prescriptions valid?">نسخهٔ ویزیت آنلاین معتبر است؟</summary><p data-alt="Yes. Prescriptions are electronic and can be filled at any pharmacy with your national ID.">بله. نسخه‌ها الکترونیک‌اند و با کد ملی در هر داروخانه‌ای قابل دریافت‌اند.</p></details>
+      <details class="faq"><summary data-alt="Who can see my records?">چه کسی سوابقم را می‌بیند؟</summary><p data-alt="Only you and the doctors you visit. Family members see records only if you share them.">فقط شما و پزشکانی که به آن‌ها مراجعه می‌کنید. اعضای خانواده فقط در صورت اشتراک‌گذاری شما دسترسی دارند.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="stack" style="gap: 12px"><a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"></span><span data-alt="Hamdam">همدم</span></a><p style="max-inline-size: 34ch" data-alt="A sample medical booking service for the Tastefolio gallery. Doctors and data are fictional.">یک سامانهٔ نمونهٔ نوبت‌دهی پزشکی برای گالری تیست‌فولیو. پزشکان و داده‌ها خیالی‌اند.</p><div class="seals"><span class="seal"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i><span data-alt="Licensed doctors">پزشکان دارای پروانه</span></span><span class="seal"><i class="fa-solid fa-lock" aria-hidden="true"></i><span data-alt="Encrypted records">سوابق رمزنگاری‌شده</span></span><span class="seal"><i class="fa-solid fa-headset" aria-hidden="true"></i><span data-alt="Support every day">پشتیبانی هر روز</span></span></div></div>
+      <div><h3 data-alt="Patients">بیماران</h3><ul><li><a href="#doctors" data-alt="Find a doctor">پیدا کردن پزشک</a></li><li><a href="#online" data-alt="Online visit">ویزیت آنلاین</a></li><li><a href="dashboard.html" data-alt="Patient panel">پنل بیمار</a></li></ul></div>
+      <div><h3 data-alt="Doctors">پزشکان</h3><ul><li><a href="#top" data-alt="Join as a doctor">همکاری پزشکان</a></li><li><a href="#top" data-alt="Clinic software">نرم‌افزار مطب</a></li></ul></div>
+      <div><h3 data-alt="Support">پشتیبانی</h3><ul><li><a href="#faq" data-alt="Help centre">مرکز راهنما</a></li><li><a href="#faq" data-alt="Privacy">حریم خصوصی</a></li><li class="ltr">+98 21 0000 0000</li></ul></div>
+    </div>
+    <div class="foot-base"><span data-alt="© 2026 Hamdam Health">© ۱۴۰۵ همدم سلامت</span><span data-alt="Not for emergencies — call 115">برای موارد اورژانسی با ۱۱۵ تماس بگیرید</span></div>
+  </div>
+</footer>
+
+<dialog class="modal" id="book" aria-labelledby="book-title">
+  <form id="book-form" data-validate data-steps data-success-panel="#booked">
+    <div class="modal-head"><span class="avatar" id="bk-av" style="--c:#ffe1d6" data-alt="N">ن</span><div class="stack" style="gap: 0; flex: 1"><b id="book-title" data-alt="Dr. Neda Karimi">دکتر ندا کریمی</b><span class="small subtle" id="bk-spec" data-alt="Pediatrician">متخصص کودکان</span></div><button class="btn btn-ghost btn-icon btn-sm" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div>
+    <div class="modal-body">
+      <div class="stepper" data-step-indicator><span data-alt="1 · Time">۱ · زمان</span><span data-alt="2 · Patient">۲ · بیمار</span><span data-alt="3 · Confirm">۳ · تأیید</span></div>
+      <div data-step class="stack">
+        <span class="label" data-alt="Day">روز</span>
+        <div class="days" data-group="bday" role="group" aria-label="روز" data-alt-aria-label="Day">
+          <button class="day" type="button" aria-pressed="true" data-value="2026-10-14"><span data-alt="Today">امروز</span><b data-alt="14">۲۲</b><small><span data-num="3">۳</span></small></button>
+          <button class="day" type="button" aria-pressed="false" data-value="2026-10-15"><span data-date="2026-10-15" data-fmt="day">پنجشنبه</span><b data-alt="15">۲۳</b><small><span data-num="6">۶</span></small></button>
+          <button class="day full" type="button" aria-pressed="false" data-value="2026-10-16" disabled><span data-date="2026-10-16" data-fmt="day">جمعه</span><b data-alt="16">۲۴</b><small data-alt="Closed">تعطیل</small></button>
+          <button class="day" type="button" aria-pressed="false" data-value="2026-10-17"><span data-date="2026-10-17" data-fmt="day">شنبه</span><b data-alt="17">۲۵</b><small><span data-num="8">۸</span></small></button>
+          <button class="day" type="button" aria-pressed="false" data-value="2026-10-18"><span data-date="2026-10-18" data-fmt="day">یکشنبه</span><b data-alt="18">۲۶</b><small><span data-num="5">۵</span></small></button>
+        </div>
+        <span class="label" data-alt="Time">ساعت</span>
+        <div class="slots" data-group="bslot" role="group" aria-label="ساعت" data-alt-aria-label="Time">
+          <button class="slot" type="button" disabled data-alt="16:00">۱۶:۰۰</button><button class="slot" type="button" disabled data-alt="16:30">۱۶:۳۰</button><button class="slot" type="button" disabled data-alt="17:00">۱۷:۰۰</button><button class="slot" type="button" aria-pressed="true" data-value="17:30" data-alt="17:30">۱۷:۳۰</button>
+          <button class="slot" type="button" aria-pressed="false" data-value="18:00" data-alt="18:00">۱۸:۰۰</button><button class="slot" type="button" disabled data-alt="18:30">۱۸:۳۰</button><button class="slot" type="button" aria-pressed="false" data-value="19:00" data-alt="19:00">۱۹:۰۰</button><button class="slot" type="button" aria-pressed="false" data-value="19:30" data-alt="19:30">۱۹:۳۰</button>
+        </div>
+        <div class="slot-legend"><span><i style="--c: var(--mint-soft); --b: var(--mint)"></i><span data-alt="Free">خالی</span></span><span><i style="--c: var(--brand)"></i><span data-alt="Your choice">انتخاب شما</span></span><span><i style="--c: var(--surface-2); --b: var(--line)"></i><span data-alt="Booked">پر</span></span></div>
+      </div>
+      <div data-step class="stack" hidden>
+        <div class="seg" data-group="for" role="group" aria-label="نوبت برای" data-alt-aria-label="Booking for" style="justify-self: start"><button type="button" data-value="me" aria-pressed="true" data-alt="Myself">خودم</button><button type="button" data-value="family" aria-pressed="false" data-alt="A family member">عضو خانواده</button></div>
+        <div class="field"><label class="label" for="bk-name" data-alt="Full name">نام و نام خانوادگی</label><input class="input" id="bk-name" name="name" required minlength="3" autocomplete="name"></div>
+        <div class="cols" style="--n:2; gap: var(--space-4)">
+          <div class="field"><label class="label" for="bk-nid" data-alt="National ID">کد ملی</label><input class="input" id="bk-nid" name="nid" required inputmode="numeric" pattern="[0-9]{10}" dir="ltr" placeholder="0012345678" data-pattern-msg="کد ملی ۱۰ رقم است" data-pattern-msg-alt="The national ID has 10 digits"></div>
+          <div class="field"><label class="label" for="bk-mob" data-alt="Mobile">موبایل</label><input class="input" id="bk-mob" name="mobile" type="tel" required pattern="09[0-9]{9}" dir="ltr" placeholder="09xx xxx xxxx" data-pattern-msg="یک شمارهٔ ۱۱ رقمی که با ۰۹ شروع شود" data-pattern-msg-alt="An 11-digit number starting with 09"></div>
+        </div>
+        <div class="field"><label class="label" for="bk-ins" data-alt="Insurance">بیمه</label><select class="select" id="bk-ins" name="ins"><option value="none" data-alt="No insurance">بدون بیمه</option><option value="tamin" data-alt="Social security">تأمین اجتماعی</option><option value="salamat" data-alt="Salamat">سلامت</option><option value="takmili" selected data-alt="Supplementary">تکمیلی</option></select></div>
+        <div class="field"><label class="label" for="bk-why" data-alt="Reason for the visit (optional)">علت مراجعه (اختیاری)</label><textarea class="textarea" id="bk-why" name="why" maxlength="300" placeholder="مثلاً: تب از دیروز" data-alt-placeholder="e.g. fever since yesterday"></textarea></div>
+      </div>
+      <div data-step class="stack" hidden>
+        <div class="summary">
+          <div><span data-alt="Doctor">پزشک</span><b id="sum-doc" data-alt="Dr. Neda Karimi">دکتر ندا کریمی</b></div>
+          <div><span data-alt="When">زمان</span><b><span id="sum-day" data-date="2026-10-14" data-fmt="long">۲۲ مهر ۱۴۰۵</span> · <span id="sum-time">۱۷:۳۰</span></b></div>
+          <div><span data-alt="Where">نشانی</span><b data-alt="Saadat Abad, Sarv St., No. 12">سعادت‌آباد، خیابان سرو، پلاک ۱۲</b></div>
+          <div><span data-alt="Fee (pay at the clinic)">هزینه (پرداخت در مطب)</span><b id="sum-fee" data-num="650000" data-fmt="toman">۶۵۰٬۰۰۰ تومان</b></div>
+        </div>
+        <label class="check"><input type="checkbox" name="policy" required><span data-alt="I can cancel free up to 3 hours before">می‌دانم تا ۳ ساعت قبل لغو رایگان است</span></label>
+      </div>
+      <div class="done-panel" id="booked" hidden>
+        <span class="big-ok"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
+        <b class="h2" data-alt="Your appointment is booked">نوبت شما ثبت شد</b>
+        <span class="code">HM-58214</span>
+        <p class="muted small" data-alt="An SMS confirmation is on its way; we’ll remind you the day before.">پیامک تأیید در راه است؛ یک روز قبل یادآوری می‌کنیم.</p>
+        <div class="row" style="justify-content: center"><button class="btn btn-soft" type="button" data-toast="به تقویم افزوده شد" data-toast-alt="Added to your calendar"><i class="fa-regular fa-calendar" aria-hidden="true"></i><span data-alt="Add to calendar">افزودن به تقویم</span></button><a class="btn" href="dashboard.html" data-alt="Open my panel">پنل من</a></div>
+      </div>
+    </div>
+    <div class="modal-foot" id="book-nav">
+      <button class="btn btn-ghost" type="button" data-prev><i class="fa-solid fa-chevron-left flip-rtl" aria-hidden="true"></i><span data-alt="Back">قبلی</span></button>
+      <button class="btn" type="button" data-next><span data-alt="Continue">ادامه</span></button>
+      <button class="btn" type="submit" id="book-submit" hidden><i class="fa-solid fa-check" aria-hidden="true"></i><span data-alt="Confirm booking">تأیید نوبت</span></button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+    const fa = () => tf.lang() === 'fa';
+    const both = (el, f, e) => { el.textContent = fa() ? f : e; el.dataset.alt = fa() ? e : f; };
+    const DOCS = [
+      { n: ['دکتر ندا کریمی', 'Dr. Neda Karimi'], s: ['متخصص کودکان', 'Pediatrician'], i: ['ن', 'N'], c: '#ffe1d6', fee: 650000 },
+      { n: ['دکتر آرش مرادی', 'Dr. Arash Moradi'], s: ['دندان‌پزشک', 'Dentist'], i: ['آ', 'A'], c: '#dfe9ff', fee: 400000 },
+      { n: ['دکتر سمیرا احمدی', 'Dr. Samira Ahmadi'], s: ['متخصص پوست و مو', 'Dermatologist'], i: ['س', 'S'], c: '#fde3ee', fee: 750000 },
+      { n: ['دکتر بهرام نیک‌نام', 'Dr. Bahram Niknam'], s: ['متخصص قلب و عروق', 'Cardiologist'], i: ['ب', 'B'], c: '#fde4e4', fee: 850000 },
+      { n: ['دکتر لیلا صادقی', 'Leila Sadeghi, PhD'], s: ['روان‌شناس بالینی · آنلاین', 'Clinical psychologist · online'], i: ['ل', 'L'], c: '#dcf3e7', fee: 550000 },
+    ];
+    // hero search and quick links fill the doctor search
+    const search = (q) => { const box = $('#doc-q'); box.value = q; box.dispatchEvent(new Event('input', { bubbles: true })); $('#doctors').scrollIntoView({ behavior: tf.reduceMotion ? 'auto' : 'smooth' }); };
+    $('#hero-search').addEventListener('submit', (e) => { e.preventDefault(); search($('#hq').value.trim()); });
+    $$('[data-q]').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); search(fa() ? a.dataset.q : a.dataset.qAlt); }));
+    // booking dialog: which doctor, step buttons, summary
+    const form = $('#book-form'), nav = $('#book-nav');
+    let doc = DOCS[0];
+    document.addEventListener('click', (e) => {
+      const b = e.target.closest('[data-doctor]');
+      if (!b) return;
+      doc = DOCS[Number(b.dataset.doctor)];
+      both($('#book-title'), doc.n[0], doc.n[1]); both($('#bk-spec'), doc.s[0], doc.s[1]); both($('#bk-av'), doc.i[0], doc.i[1]); both($('#sum-doc'), doc.n[0], doc.n[1]);
+      $('#bk-av').style.setProperty('--c', doc.c);
+      const fee = $('#sum-fee'); fee.dataset.num = doc.fee; fee.textContent = tf.fmt(doc.fee, 'toman');
+      $('#booked').hidden = true; nav.hidden = false; tf.showStep(form, 0);
+    });
+    form.addEventListener('tf:step', (e) => {
+      const last = e.detail.index === 2;
+      $('[data-next]', nav).hidden = last; $('#book-submit').hidden = !last;
+      const day = $('[data-group="bday"] [aria-pressed="true"]'), slot = $('[data-group="bslot"] [aria-pressed="true"]');
+      const d = $('#sum-day'); d.dataset.date = day.dataset.value; d.textContent = tf.date(day.dataset.value, 'long');
+      both($('#sum-time'), slot.dataset.value.replace(/[0-9]/g, (c) => '۰۱۲۳۴۵۶۷۸۹'[c]), slot.dataset.value);
+    });
+    // each day has its own free times (deterministic demo pattern)
+    const FREE = { '2026-10-14': [3, 4, 6, 7], '2026-10-15': [0, 1, 2, 4, 5, 7], '2026-10-17': [0, 1, 2, 3, 4, 5, 6, 7], '2026-10-18': [1, 3, 4, 6, 7] };
+    const TIMES = ['16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30'];
+    document.addEventListener('tf:change', (e) => {
+      if (!e.target.closest?.('[data-group="bday"]')) return;
+      const free = FREE[e.detail.value] || [];
+      $$('[data-group="bslot"] .slot').forEach((b, k) => {
+        b.disabled = !free.includes(k);
+        b.dataset.value = TIMES[k];
+        b.setAttribute('aria-pressed', String(k === free[0]));
+      });
+    });
+    form.addEventListener('tf:submit', () => { $$('[data-step], [data-step-indicator]', form).forEach((el) => { el.hidden = true; }); nav.hidden = true; });
+    $('#book').addEventListener('close', () => { $$('[data-step-indicator]', form).forEach((el) => { el.hidden = false; }); });
+  });
+</script>
+</body>
+</html>
