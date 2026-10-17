@@ -1,0 +1,156 @@
+/* Estate — design tokens (Tastefolio). Property listings: warm stone paper, charcoal ink with a hint of green, a moss
+   brand for searching and contacting, sun-amber for what is new or featured, a quiet serif (Young Serif) for prices
+   and places, Albert Sans for everything else. */
+:root {
+  --canvas: #f6f4ef;
+  --surface: #ffffff;
+  --surface-2: #efece5;
+  --surface-3: #e3dfd5;
+  --surface-ink: #1d211c;
+  --overlay: rgba(20, 24, 18, .5);
+
+  --ink: #1d211c;
+  --ink-2: #545a50;
+  --ink-3: #868b80;
+  --ink-inverse: #ffffff;
+
+  --line: #e4e0d6;
+  --line-2: #d2cdc0;
+
+  --brand: #55702b;           /* moss — search, contact, primary */
+  --brand-ink: #ffffff;
+  --brand-soft: color-mix(in oklab, var(--brand) 12%, #fff);
+  --brand-strong: color-mix(in oklab, var(--brand) 78%, #000);
+  --sun: #d99a2b;             /* new, featured, price drops */
+  --sun-soft: #fbf0d9;
+  --map-water: #cfe0e3;
+  --map-park: #dce6c8;
+  --map-road: #ffffff;
+  --map-block: #ebe7dd;
+  --focus: color-mix(in oklab, var(--brand) 55%, transparent);
+
+  --success: #2f8a4c;
+  --success-soft: #e4f3e8;
+  --warning: #b2741b;
+  --warning-soft: #fbf0d9;
+  --danger: #c2412d;
+  --danger-soft: #fbe8e4;
+  --info: #3a6ea5;
+  --info-soft: #e5eef8;
+
+  --chart-1: var(--brand);
+  --chart-2: var(--sun);
+  --chart-3: #3a6ea5;
+  --chart-4: #9a6b4f;
+  --chart-5: #c2412d;
+  --chart-6: #b9b4a7;
+  --chart-grid: #ebe7de;
+  --chart-axis: var(--ink-3);
+  --chart-curve: smooth;
+  --chart-stroke: 2.25;
+  --chart-area: .12;
+  --chart-radius: 4;
+  --chart-bar-gap: .4;
+  --chart-donut: 14;
+  --chart-gap: 2;
+  --chart-dots: 0;
+
+  --font-sans: "Albert Sans", "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Young Serif", "Vazirmatn", Georgia, serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, "Vazirmatn", monospace;
+  --fs-xs: 12px;
+  --fs-sm: 13.5px;
+  --fs-md: 15.5px;
+  --fs-lg: 18px;
+  --fs-xl: 22px;
+  --fs-2xl: 30px;
+  --fs-3xl: 42px;
+  --fs-display: clamp(38px, 5.4vw, 76px);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 650;
+  --fw-display: 400;
+  --lh-tight: 1.05;
+  --lh-snug: 1.25;
+  --lh-body: 1.6;
+  --tracking-display: -.02em;
+  --tracking-caps: .1em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 72px;
+  --space-9: 104px;
+  --space-10: 144px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  --border-w: 1px;
+  --shadow-1: 0 1px 2px rgba(29, 33, 28, .06);
+  --shadow-2: 0 14px 32px -16px rgba(29, 33, 28, .28);
+  --shadow-3: 0 30px 70px -28px rgba(29, 33, 28, .42);
+
+  --container: 1280px;
+  --gutter: clamp(16px, 3vw, 32px);
+  --control-h: 46px;
+  --control-h-lg: 54px;
+
+  --ease: cubic-bezier(.25, .8, .25, 1);
+  --dur-1: 150ms;
+  --dur-2: 260ms;
+  --dur-3: 480ms;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --canvas: #12140f;
+  --surface: #1a1d17;
+  --surface-2: #22261e;
+  --surface-3: #2d3227;
+  --surface-ink: #0b0c09;
+  --overlay: rgba(0, 0, 0, .62);
+  --ink: #eeede6;
+  --ink-2: #b2b5aa;
+  --ink-3: #80857a;
+  --line: #2b2f26;
+  --line-2: #3a3f33;
+  --brand: #9cbc5f;
+  --brand-ink: #12160c;
+  --brand-soft: color-mix(in oklab, var(--brand) 14%, transparent);
+  --brand-strong: color-mix(in oklab, var(--brand) 75%, #fff);
+  --sun: #f0b94e;
+  --sun-soft: rgba(240, 185, 78, .14);
+  --map-water: #23383c;
+  --map-park: #2a3521;
+  --map-road: #3a3f33;
+  --map-block: #22261e;
+  --success: #6fcf8d;
+  --success-soft: rgba(111, 207, 141, .14);
+  --warning: #f0b94e;
+  --warning-soft: rgba(240, 185, 78, .14);
+  --danger: #ff8a75;
+  --danger-soft: rgba(255, 138, 117, .14);
+  --info: #86b4ea;
+  --info-soft: rgba(134, 180, 234, .14);
+  --chart-grid: #262a21;
+  --shadow-2: 0 14px 32px -16px rgba(0, 0, 0, .75);
+  --shadow-3: 0 30px 70px -28px rgba(0, 0, 0, .85);
+  color-scheme: dark;
+}
+
+:root:lang(fa) {
+  --font-sans: "Vazirmatn", "Albert Sans", Tahoma, sans-serif;
+  --font-display: "Vazirmatn", "Young Serif", serif;
+  --fs-display: clamp(34px, 4.6vw, 64px);
+  --fw-display: 800;
+  --lh-tight: 1.4;
+  --lh-snug: 1.6;
+  --lh-body: 1.95;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+}

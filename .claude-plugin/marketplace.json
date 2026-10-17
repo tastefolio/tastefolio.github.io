@@ -225,6 +225,15 @@
       ]
     },
     {
+      "name": "estate",
+      "description": "Tastefolio design language — Property listings — stone paper, moss actions, serif prices, a list + map split with price pins and an agent panel with a lead pipeline",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/estate"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -253,7 +262,8 @@
         "./skills/brief",
         "./skills/lucent",
         "./skills/clinic",
-        "./skills/linework"
+        "./skills/linework",
+        "./skills/estate"
       ]
     }
   ]

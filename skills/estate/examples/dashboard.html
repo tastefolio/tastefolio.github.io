@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="dashboard">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Agent panel · Ashiyaneh">پنل مشاور · آشیانه</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Albert+Sans:wght@400..800&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,300..500,0..1,0&icon_names=add,add_home,add_photo_alternate,apartment,balcony,call,chevron_left,chevron_right,close,contact_phone,dark_mode,edit,elevator,event,favorite,garage,home_work,key,notifications,pool,rocket_launch,space_dashboard,star,trending_up,unfold_more,villa,visibility,warehouse&display=block">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .me-card .row { color: rgba(242, 241, 234, .8); }
+  .credit { display: grid; gap: 6px; padding: 12px; border-radius: 12px; background: rgba(255, 255, 255, .08); }
+  .credit .progress { background: rgba(255, 255, 255, .14); }
+  .stat-row { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: var(--fs-xs); color: var(--ink-3); }
+  .stat-row span { display: inline-flex; align-items: center; gap: 4px; }
+  .top-list { display: grid; gap: 12px; }
+  .top-list li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; align-items: center; }
+  .top-list .photo { inline-size: 64px; aspect-ratio: 1; border-radius: 10px; }
+  .wiz-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+  @media (max-width: 560px) { .wiz-grid { grid-template-columns: minmax(0, 1fr); } }
+  .amen-picks { display: flex; flex-wrap: wrap; gap: 8px; }
+  .amen-picks label { display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border: 1px solid var(--line-2); border-radius: var(--radius-pill); font-size: var(--fs-sm); cursor: pointer; }
+  .amen-picks label:has(input:checked) { background: var(--brand-soft); border-color: var(--brand); color: var(--brand-strong); }
+  .amen-picks input { margin: 0; accent-color: var(--brand); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<header class="site-head">
+  <div class="container">
+    <a class="logo" href="site.html"><span class="roof" aria-hidden="true"></span><span data-alt="Ashiyaneh">آشیانه</span></a>
+    <span class="badge brand hide-sm" data-alt="Agent panel">پنل مشاور</span>
+    <div class="head-end">
+      <button class="btn btn-sm" type="button" data-dialog="#wizard" aria-label="آگهی تازه" data-alt-aria-label="New listing"><span class="ms" aria-hidden="true">add_home</span><span class="hide-sm" data-alt="New listing">آگهی تازه</span></button>
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+      <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="تغییر حالت تیره" data-alt-aria-label="Toggle dark mode"><span class="ms" aria-hidden="true">dark_mode</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="container d-layout">
+  <aside class="d-side">
+    <div class="me-card">
+      <div class="row" style="flex-wrap: nowrap"><span class="avatar lg" style="--c:#e3ead1" data-alt="S">س</span><div class="stack" style="gap: 2px"><b class="h3" style="color: #f2f1ea" data-alt="Sepideh Rad">سپیده راد</b><span class="small subtle" data-alt="Zafaraniyeh branch · verified">شعبهٔ زعفرانیه · تأییدشده</span></div></div>
+      <div class="row small"><span class="ms fill" style="color: var(--sun)" aria-hidden="true">star</span><span data-num="4.9" data-fmt="dec1">۴٫۹</span><span>·</span><span><span data-num="128">۱۲۸</span> <span data-alt="reviews">نظر</span></span></div>
+      <div class="credit"><div class="split small"><span data-alt="Boost credits">اعتبار نردبان</span><b><span data-num="7">۷</span> / <span data-num="20">۲۰</span></b></div><div class="progress"><i style="--v: 35%; background: var(--sun)"></i></div></div>
+    </div>
+    <nav class="d-nav" role="tablist" aria-orientation="vertical" aria-label="بخش‌های پنل" data-alt-aria-label="Panel sections">
+      <button type="button" role="tab" id="t-home" aria-controls="p-home" aria-selected="true"><span class="ms" aria-hidden="true">space_dashboard</span><span data-alt="Overview">پیشخوان</span></button>
+      <button type="button" role="tab" id="t-list" aria-controls="p-list" aria-selected="false"><span class="ms" aria-hidden="true">home_work</span><span data-alt="My listings">آگهی‌های من</span></button>
+      <button type="button" role="tab" id="t-leads" aria-controls="p-leads" aria-selected="false"><span class="ms" aria-hidden="true">contact_phone</span><span data-alt="Leads">مشتریان</span><span class="count" data-num="5">۵</span></button>
+      <button type="button" role="tab" id="t-visits" aria-controls="p-visits" aria-selected="false"><span class="ms" aria-hidden="true">event</span><span data-alt="Visits">بازدیدها</span></button>
+      <button type="button" role="tab" id="t-alerts" aria-controls="p-alerts" aria-selected="false"><span class="ms" aria-hidden="true">notifications</span><span data-alt="Saved searches">جست‌وجوهای ذخیره‌شده</span></button>
+    </nav>
+  </aside>
+
+  <main id="main" class="stack" style="gap: var(--space-5)">
+    <!-- ======================================== overview -->
+    <section class="grid12" role="tabpanel" id="p-home" aria-labelledby="t-home">
+      <div class="c12"><h1 class="h1" data-alt="Good morning, Sepideh">صبح بخیر، سپیده</h1><p class="muted" data-alt="Three visits today and five people waiting for a call back.">امروز سه بازدید دارید و پنج نفر منتظر تماس شما هستند.</p></div>
+      <div class="card c3 kpi"><span class="k"><span class="ms" aria-hidden="true">home_work</span><span data-alt="Active listings">آگهی فعال</span></span><b data-num="12">۱۲</b><span class="tiny subtle" data-alt="2 pending review">۲ در انتظار تأیید</span></div>
+      <div class="card c3 kpi"><span class="k"><span class="ms" aria-hidden="true">visibility</span><span data-alt="Views · 7 days">بازدید آگهی · ۷ روز</span></span><b data-num="3420">۳٬۴۲۰</b><span class="trend up"><span class="ms" aria-hidden="true">trending_up</span><span data-num="18" data-fmt="pct">۱۸٪</span></span></div>
+      <div class="card c3 kpi"><span class="k"><span class="ms" aria-hidden="true">call</span><span data-alt="Calls &amp; messages">تماس و پیام</span></span><b data-num="46">۴۶</b><span class="trend up"><span class="ms" aria-hidden="true">trending_up</span><span data-num="9" data-fmt="pct">۹٪</span></span></div>
+      <div class="card c3 kpi"><span class="k"><span class="ms" aria-hidden="true">event</span><span data-alt="Visits this week">بازدید این هفته</span></span><b data-num="8">۸</b><span class="tiny subtle" data-alt="3 today">۳ مورد امروز</span></div>
+      <article class="card c8">
+        <div class="card-head"><h2 data-alt="Listing views">بازدید آگهی‌ها</h2><div class="seg" data-group="range" role="group" aria-label="بازه" data-alt-aria-label="Range"><button type="button" data-value="w" aria-pressed="true" data-alt="7 days">۷ روز</button><button type="button" data-value="m" aria-pressed="false" data-alt="30 days">۳۰ روز</button></div></div>
+        <div data-when="range:w"><div data-chart="area" data-height="230" data-fmt="int" data-dates="2026-10-08,7,day,day" data-values="380,420,510,460,540,590,520" data-name='{"en":"Views","fa":"بازدید"}' data-label='{"en":"Listing views per day, last 7 days","fa":"بازدید آگهی‌ها در روز، ۷ روز اخیر"}'></div></div>
+        <div data-when="range:m" hidden><div data-chart="bar" data-height="230" data-fmt="int" data-dates="2026-09-15,30,day,short" data-values="300,320,280,350,410,390,260,240,380,420,400,450,470,330,310,480,500,460,520,540,410,380,560,590,520,600,620,480,470,520" data-name='{"en":"Views","fa":"بازدید"}' data-label='{"en":"Views per day, last 30 days","fa":"بازدید در روز، ۳۰ روز اخیر"}'></div></div>
+      </article>
+      <article class="card c4">
+        <div class="card-head"><h2 data-alt="Today’s visits">بازدیدهای امروز</h2><button class="btn btn-ghost btn-sm" type="button" data-goto="t-visits"><span data-alt="All">همه</span><span class="ms flip-rtl" aria-hidden="true">chevron_right</span></button></div>
+        <div class="stack" style="gap: 8px">
+          <div class="vitem"><span class="t" data-alt="10:00">۱۰:۰۰</span><div class="stack" style="gap: 0"><b class="small" data-alt="Penthouse, Zafaraniyeh">پنت‌هاوس، زعفرانیه</b><span class="tiny subtle" data-alt="Mr. Farahani · 2nd visit">آقای فراهانی · بازدید دوم</span></div><span class="badge ok" data-alt="Confirmed">تأیید</span></div>
+          <div class="vitem"><span class="t" data-alt="12:00">۱۲:۰۰</span><div class="stack" style="gap: 0"><b class="small" data-alt="115 m², Saadat Abad">۱۱۵ متر، سعادت‌آباد</b><span class="tiny subtle" data-alt="Ms. Karimi & husband">خانم کریمی و همسر</span></div><span class="badge ok" data-alt="Confirmed">تأیید</span></div>
+          <div class="vitem"><span class="t" data-alt="17:00">۱۷:۰۰</span><div class="stack" style="gap: 0"><b class="small" data-alt="Villa, Niavaran">ویلا، نیاوران</b><span class="tiny subtle" data-alt="Dr. Saberi · bringing an architect">دکتر صابری · همراه معمار</span></div><span class="badge warn" data-alt="To confirm">در انتظار</span></div>
+        </div>
+      </article>
+      <article class="card c7">
+        <div class="card-head"><h2 data-alt="Best performing">پربازدیدترین آگهی‌ها</h2></div>
+        <ol class="top-list">
+          <li><div class="photo" data-v="3" aria-hidden="true"></div><div class="stack" style="gap: 2px"><b class="small" data-alt="Penthouse with roof garden · Zafaraniyeh">پنت‌هاوس با روف‌گاردن · زعفرانیه</b><div class="stat-row"><span><span class="ms" aria-hidden="true">visibility</span><span data-num="1240">۱٬۲۴۰</span></span><span><span class="ms" aria-hidden="true">favorite</span><span data-num="96">۹۶</span></span><span><span class="ms" aria-hidden="true">call</span><span data-num="18">۱۸</span></span></div></div><button class="btn btn-soft btn-sm" type="button" data-boost><span class="ms" aria-hidden="true">rocket_launch</span><span data-alt="Boost">نردبان</span></button></li>
+          <li><div class="photo" data-v="2" aria-hidden="true"></div><div class="stack" style="gap: 2px"><b class="small" data-alt="Bright 115 m² · Saadat Abad">۱۱۵ متر نورگیر · سعادت‌آباد</b><div class="stat-row"><span><span class="ms" aria-hidden="true">visibility</span><span data-num="910">۹۱۰</span></span><span><span class="ms" aria-hidden="true">favorite</span><span data-num="71">۷۱</span></span><span><span class="ms" aria-hidden="true">call</span><span data-num="12">۱۲</span></span></div></div><button class="btn btn-soft btn-sm" type="button" data-boost><span class="ms" aria-hidden="true">rocket_launch</span><span data-alt="Boost">نردبان</span></button></li>
+          <li><div class="photo" data-v="5" aria-hidden="true"></div><div class="stack" style="gap: 2px"><b class="small" data-alt="Garden villa with a pool · Niavaran">ویلای حیاط‌دار با استخر · نیاوران</b><div class="stat-row"><span><span class="ms" aria-hidden="true">visibility</span><span data-num="640">۶۴۰</span></span><span><span class="ms" aria-hidden="true">favorite</span><span data-num="58">۵۸</span></span><span><span class="ms" aria-hidden="true">call</span><span data-num="6">۶</span></span></div></div><button class="btn btn-soft btn-sm" type="button" data-boost><span class="ms" aria-hidden="true">rocket_launch</span><span data-alt="Boost">نردبان</span></button></li>
+        </ol>
+      </article>
+      <article class="card c5">
+        <div class="card-head"><h2 data-alt="Waiting for a call back">منتظر تماس</h2><button class="btn btn-ghost btn-sm" type="button" data-goto="t-leads"><span data-alt="Pipeline">قیف فروش</span><span class="ms flip-rtl" aria-hidden="true">chevron_right</span></button></div>
+        <ul class="stack" style="gap: 10px">
+          <li class="row" style="flex-wrap: nowrap"><span class="avatar" style="--c:#f6e3c6" data-alt="R">ر</span><div class="stack" style="gap: 0; flex: 1"><b class="small" data-alt="Reza Moghadam">رضا مقدم</b><span class="tiny subtle" data-alt="Asked about the Punak flat · 25 min ago">دربارهٔ آپارتمان پونک پرسیده · ۲۵ دقیقه پیش</span></div><button class="btn btn-sm" type="button" data-toast="در حال تماس با رضا مقدم…" data-toast-alt="Calling Reza Moghadam…"><span class="ms" aria-hidden="true">call</span></button></li>
+          <li class="row" style="flex-wrap: nowrap"><span class="avatar" style="--c:#dfe9f2" data-alt="N">ن</span><div class="stack" style="gap: 0; flex: 1"><b class="small" data-alt="Nazanin Ebadi">نازنین عبادی</b><span class="tiny subtle" data-alt="Wants a 3-bed under 16 billion · 1 h ago">سه‌خوابه زیر ۱۶ میلیارد می‌خواهد · ۱ ساعت پیش</span></div><button class="btn btn-sm" type="button" data-toast="در حال تماس با نازنین عبادی…" data-toast-alt="Calling Nazanin Ebadi…"><span class="ms" aria-hidden="true">call</span></button></li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- ======================================== listings -->
+    <section role="tabpanel" id="p-list" aria-labelledby="t-list" hidden data-filter-scope>
+      <div class="card">
+        <div class="card-head"><h2 data-alt="My listings">آگهی‌های من</h2><button class="btn btn-sm" type="button" data-dialog="#wizard"><span class="ms" aria-hidden="true">add</span><span data-alt="New listing">آگهی تازه</span></button></div>
+        <div class="results-bar">
+          <div class="chips" data-group role="group" aria-label="وضعیت" data-alt-aria-label="Status">
+            <button type="button" data-filter="st" data-value="all" aria-pressed="true" data-alt="All">همه</button>
+            <button type="button" data-filter="st" data-value="active" aria-pressed="false" data-alt="Active">فعال</button>
+            <button type="button" data-filter="st" data-value="pending" aria-pressed="false" data-alt="Pending">در انتظار تأیید</button>
+            <button type="button" data-filter="st" data-value="sold" aria-pressed="false" data-alt="Sold / let">فروخته / اجاره شد</button>
+          </div>
+          <span class="spacer"></span>
+          <input class="input" type="search" data-filter-search aria-label="جست‌وجوی آگهی" data-alt-aria-label="Search listings" placeholder="محله یا عنوان…" data-alt-placeholder="Area or title…" style="inline-size: 220px; min-block-size: 38px; font-size: var(--fs-sm)">
+        </div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th scope="col" data-alt="Listing">آگهی</th><th scope="col"><button type="button" data-sort="num"><span data-alt="Price">قیمت</span><span class="ms" aria-hidden="true">unfold_more</span></button></th><th scope="col"><button type="button" data-sort="num"><span data-alt="Views">بازدید</span><span class="ms" aria-hidden="true">unfold_more</span></button></th><th scope="col" data-alt="Calls">تماس</th><th scope="col" data-alt="Status">وضعیت</th><th scope="col"><span class="sr-only" data-alt="Actions">اقدام</span></th></tr></thead>
+            <tbody>
+              <tr data-filter-item data-st="active" data-keywords="zafaraniyeh penthouse"><td><div class="mini"><div class="photo" data-v="3" aria-hidden="true"></div><div class="stack" style="gap: 0"><b class="small" data-alt="Penthouse with roof garden">پنت‌هاوس با روف‌گاردن</b><span class="tiny subtle" data-alt="Zafaraniyeh · 210 m²">زعفرانیه · ۲۱۰ متر</span></div></div></td><td data-value="34600000000"><b class="small"><span data-num="34600000000" data-fmt="compact">۳۴٫۶ میلیارد</span></b></td><td data-value="1240" data-num="1240">۱٬۲۴۰</td><td data-num="18">۱۸</td><td><span class="badge ok" data-alt="Active">فعال</span></td><td><div class="row" style="gap: 4px; flex-wrap: nowrap"><button class="btn btn-ghost btn-icon btn-sm" type="button" data-boost aria-label="نردبان" data-alt-aria-label="Boost"><span class="ms" aria-hidden="true">rocket_launch</span></button><button class="btn btn-ghost btn-icon btn-sm" type="button" data-toast="ویرایشگر آگهی باز شد" data-toast-alt="Listing editor opened" aria-label="ویرایش" data-alt-aria-label="Edit"><span class="ms" aria-hidden="true">edit</span></button></div></td></tr>
+              <tr data-filter-item data-st="active" data-keywords="saadat abad"><td><div class="mini"><div class="photo" data-v="2" aria-hidden="true"></div><div class="stack" style="gap: 0"><b class="small" data-alt="Bright 115 m²">۱۱۵ متر نورگیر</b><span class="tiny subtle" data-alt="Saadat Abad · 2 beds">سعادت‌آباد · ۲ خواب</span></div></div></td><td data-value="10900000000"><b class="small"><span data-num="10900000000" data-fmt="compact">۱۰٫۹ میلیارد</span></b></td><td data-value="910" data-num="910">۹۱۰</td><td data-num="12">۱۲</td><td><span class="badge ok" data-alt="Active">فعال</span></td><td><div class="row" style="gap: 4px; flex-wrap: nowrap"><button class="btn btn-ghost btn-icon btn-sm" type="button" data-boost aria-label="نردبان" data-alt-aria-label="Boost"><span class="ms" aria-hidden="true">rocket_launch</span></button><button class="btn btn-ghost btn-icon btn-sm" type="button" data-toast="ویرایشگر آگهی باز شد" data-toast-alt="Listing editor opened" aria-label="ویرایش" data-alt-aria-label="Edit"><span class="ms" aria-hidden="true">edit</span></button></div></td></tr>
+              <tr data-filter-item data-st="pending" data-keywords="velenjak"><td><div class="mini"><div class="photo" data-v="4" aria-hidden="true"></div><div class="stack" style="gap: 0"><b class="small" data-alt="Classic 160 m² with a yard">۱۶۰ متر کلاسیک حیاط‌دار</b><span class="tiny subtle" data-alt="Velenjak · 3 beds">ولنجک · ۳ خواب</span></div></div></td><td data-value="22500000000"><b class="small"><span data-num="22500000000" data-fmt="compact">۲۲٫۵ میلیارد</span></b></td><td data-value="0" class="subtle">—</td><td class="subtle">—</td><td><span class="badge warn" data-alt="In review">در حال بررسی</span></td><td><button class="btn btn-ghost btn-icon btn-sm" type="button" data-toast="ویرایشگر آگهی باز شد" data-toast-alt="Listing editor opened" aria-label="ویرایش" data-alt-aria-label="Edit"><span class="ms" aria-hidden="true">edit</span></button></td></tr>
+              <tr data-filter-item data-st="active" data-keywords="niavaran villa"><td><div class="mini"><div class="photo" data-v="5" aria-hidden="true"></div><div class="stack" style="gap: 0"><b class="small" data-alt="Garden villa with a pool">ویلای حیاط‌دار با استخر</b><span class="tiny subtle" data-alt="Niavaran · 420 m²">نیاوران · ۴۲۰ متر</span></div></div></td><td data-value="68000000000"><b class="small"><span data-num="68000000000" data-fmt="compact">۶۸ میلیارد</span></b></td><td data-value="640" data-num="640">۶۴۰</td><td data-num="6">۶</td><td><span class="badge ok" data-alt="Active">فعال</span></td><td><div class="row" style="gap: 4px; flex-wrap: nowrap"><button class="btn btn-ghost btn-icon btn-sm" type="button" data-boost aria-label="نردبان" data-alt-aria-label="Boost"><span class="ms" aria-hidden="true">rocket_launch</span></button><button class="btn btn-ghost btn-icon btn-sm" type="button" data-toast="ویرایشگر آگهی باز شد" data-toast-alt="Listing editor opened" aria-label="ویرایش" data-alt-aria-label="Edit"><span class="ms" aria-hidden="true">edit</span></button></div></td></tr>
+              <tr data-filter-item data-st="sold" data-keywords="elahieh"><td><div class="mini"><div class="photo" data-v="6" aria-hidden="true"></div><div class="stack" style="gap: 0"><b class="small" data-alt="Three-bed with concierge">سه‌خوابه لابی‌دار</b><span class="tiny subtle" data-alt="Elahieh · sold in 19 days">الهیه · فروش در ۱۹ روز</span></div></div></td><td data-value="19800000000"><b class="small"><span data-num="19800000000" data-fmt="compact">۱۹٫۸ میلیارد</span></b></td><td data-value="2210" data-num="2210">۲٬۲۱۰</td><td data-num="31">۳۱</td><td><span class="badge" data-alt="Sold">فروخته شد</span></td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="empty" data-filter-empty hidden data-alt="No listings here.">آگهی‌ای اینجا نیست.</p>
+      </div>
+    </section>
+
+    <!-- ======================================== leads -->
+    <section role="tabpanel" id="p-leads" aria-labelledby="t-leads" hidden>
+      <div class="card">
+        <div class="card-head"><h2 data-alt="Lead pipeline">قیف مشتریان</h2><span class="small subtle" data-alt="Move a lead forward when it changes stage.">هر مشتری را با تغییر مرحله جلو ببرید.</span></div>
+        <div class="board" id="board">
+          <div class="lane" data-lane="0"><div class="lane-head"><span data-alt="New">تازه</span><span class="badge" data-lane-count>2</span></div>
+            <div class="lead-card"><div class="who"><span class="avatar" style="--c:#f6e3c6" data-alt="R">ر</span><b data-alt="Reza Moghadam">رضا مقدم</b></div><span class="tiny subtle" data-alt="2-bed in Punak · budget 6B">دوخوابه پونک · بودجه ۶ میلیارد</span><div class="acts"><button class="btn btn-ghost btn-sm" type="button" data-advance data-alt="Contacted →">تماس گرفتم ←</button></div></div>
+            <div class="lead-card"><div class="who"><span class="avatar" style="--c:#dfe9f2" data-alt="N">ن</span><b data-alt="Nazanin Ebadi">نازنین عبادی</b></div><span class="tiny subtle" data-alt="3-bed, west · under 16B">سه‌خوابه غرب · زیر ۱۶ میلیارد</span><div class="acts"><button class="btn btn-ghost btn-sm" type="button" data-advance data-alt="Contacted →">تماس گرفتم ←</button></div></div>
+          </div>
+          <div class="lane" data-lane="1"><div class="lane-head"><span data-alt="Contacted">تماس گرفته‌شده</span><span class="badge" data-lane-count>1</span></div>
+            <div class="lead-card"><div class="who"><span class="avatar" style="--c:#e3ead1" data-alt="K">ک</span><b data-alt="Kaveh Ansari">کاوه انصاری</b></div><span class="tiny subtle" data-alt="Rent, Saadat Abad · deposit 2B">اجاره سعادت‌آباد · رهن ۲ میلیارد</span><div class="acts"><button class="btn btn-ghost btn-sm" type="button" data-advance data-alt="Visit set →">بازدید گذاشتیم ←</button></div></div>
+          </div>
+          <div class="lane" data-lane="2"><div class="lane-head"><span data-alt="Visit set">بازدید هماهنگ شد</span><span class="badge" data-lane-count>2</span></div>
+            <div class="lead-card"><div class="who"><span class="avatar" style="--c:#f2dfe6" data-alt="F">ف</span><b data-alt="Ali Farahani">علی فراهانی</b></div><span class="tiny subtle" data-alt="Penthouse, Zafaraniyeh · today 10:00">پنت‌هاوس زعفرانیه · امروز ۱۰:۰۰</span><div class="acts"><button class="btn btn-ghost btn-sm" type="button" data-advance data-alt="Offer →">پیشنهاد داد ←</button></div></div>
+            <div class="lead-card"><div class="who"><span class="avatar" style="--c:#e6e1f4" data-alt="S">ص</span><b data-alt="Dr. Saberi">دکتر صابری</b></div><span class="tiny subtle" data-alt="Villa, Niavaran · today 17:00">ویلا نیاوران · امروز ۱۷:۰۰</span><div class="acts"><button class="btn btn-ghost btn-sm" type="button" data-advance data-alt="Offer →">پیشنهاد داد ←</button></div></div>
+          </div>
+          <div class="lane" data-lane="3"><div class="lane-head"><span data-alt="Offer">پیشنهاد</span><span class="badge" data-lane-count>1</span></div>
+            <div class="lead-card"><div class="who"><span class="avatar" style="--c:#dff0e6" data-alt="M">م</span><b data-alt="Mina Rostami">مینا رستمی</b></div><span class="tiny subtle" data-alt="115 m² Saadat Abad · offered 10.4B">۱۱۵ متر سعادت‌آباد · پیشنهاد ۱۰٫۴ میلیارد</span><div class="acts"><button class="btn btn-sm" type="button" data-toast="قرارداد برای امضا آماده شد" data-toast-alt="Contract ready to sign" data-tone="success" data-alt="Draft contract">تنظیم قرارداد</button></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================== visits -->
+    <section role="tabpanel" id="p-visits" aria-labelledby="t-visits" hidden>
+      <div class="card">
+        <div class="card-head"><h2 data-alt="Visit schedule">برنامهٔ بازدید</h2><button class="btn btn-sm" type="button" data-dialog="#visit"><span class="ms" aria-hidden="true">add</span><span data-alt="Add visit">بازدید تازه</span></button></div>
+        <div class="visits" id="visits">
+          <div class="vday"><div class="d"><span data-alt="Today">امروز</span><b data-alt="14">۲۲</b></div><div>
+            <div class="vitem"><span class="t" data-alt="10:00">۱۰:۰۰</span><div class="stack" style="gap: 0"><b class="small" data-alt="Penthouse, Zafaraniyeh">پنت‌هاوس، زعفرانیه</b><span class="tiny subtle" data-alt="Ali Farahani · 2nd visit">علی فراهانی · بازدید دوم</span></div><span class="badge ok" data-alt="Confirmed">تأیید</span></div>
+            <div class="vitem"><span class="t" data-alt="12:00">۱۲:۰۰</span><div class="stack" style="gap: 0"><b class="small" data-alt="115 m², Saadat Abad">۱۱۵ متر، سعادت‌آباد</b><span class="tiny subtle" data-alt="Mina Rostami">مینا رستمی</span></div><span class="badge ok" data-alt="Confirmed">تأیید</span></div>
+            <div class="vitem"><span class="t" data-alt="17:00">۱۷:۰۰</span><div class="stack" style="gap: 0"><b class="small" data-alt="Villa, Niavaran">ویلا، نیاوران</b><span class="tiny subtle" data-alt="Dr. Saberi">دکتر صابری</span></div><span class="badge warn" data-alt="To confirm">در انتظار</span></div>
+          </div></div>
+          <div class="vday"><div class="d"><span data-date="2026-10-15" data-fmt="day">پنجشنبه</span><b data-alt="15">۲۳</b></div><div>
+            <div class="vitem"><span class="t" data-alt="11:00">۱۱:۰۰</span><div class="stack" style="gap: 0"><b class="small" data-alt="Classic 160 m², Velenjak">۱۶۰ متر کلاسیک، ولنجک</b><span class="tiny subtle" data-alt="Photographer · listing photos">عکاس · عکس آگهی</span></div><span class="badge info" data-alt="Shoot">عکاسی</span></div>
+          </div></div>
+          <div class="vday"><div class="d"><span data-date="2026-10-17" data-fmt="day">شنبه</span><b data-alt="17">۲۵</b></div><div>
+            <div class="vitem"><span class="t" data-alt="16:30">۱۶:۳۰</span><div class="stack" style="gap: 0"><b class="small" data-alt="Rent, Saadat Abad">اجاره، سعادت‌آباد</b><span class="tiny subtle" data-alt="Kaveh Ansari">کاوه انصاری</span></div><span class="badge ok" data-alt="Confirmed">تأیید</span></div>
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================== saved searches -->
+    <section role="tabpanel" id="p-alerts" aria-labelledby="t-alerts" hidden>
+      <div class="card">
+        <div class="card-head"><h2 data-alt="Saved searches &amp; alerts">جست‌وجوهای ذخیره‌شده و هشدار</h2></div>
+        <div>
+          <div class="alert-row"><span class="ic"><span class="ms" aria-hidden="true">apartment</span></span><div class="stack" style="gap: 2px"><b class="small" data-alt="2-bed, west Tehran, under 7B">دوخوابه، غرب تهران، زیر ۷ میلیارد</b><span class="tiny subtle"><span data-num="14">۱۴</span> <span data-alt="matches · 3 new today">مورد · ۳ تازه امروز</span></span></div><button class="switch" type="button" role="switch" aria-checked="true" aria-label="هشدار" data-alt-aria-label="Alert"></button></div>
+          <div class="alert-row"><span class="ic"><span class="ms" aria-hidden="true">villa</span></span><div class="stack" style="gap: 2px"><b class="small" data-alt="Villa with a garden, north">ویلای حیاط‌دار، شمال</b><span class="tiny subtle"><span data-num="5">۵</span> <span data-alt="matches · weekly email">مورد · ایمیل هفتگی</span></span></div><button class="switch" type="button" role="switch" aria-checked="true" aria-label="هشدار" data-alt-aria-label="Alert"></button></div>
+          <div class="alert-row"><span class="ic"><span class="ms" aria-hidden="true">key</span></span><div class="stack" style="gap: 2px"><b class="small" data-alt="Deposit lease, Saadat Abad, 2–3 billion">رهن کامل، سعادت‌آباد، ۲ تا ۳ میلیارد</b><span class="tiny subtle"><span data-num="9">۹</span> <span data-alt="matches · paused">مورد · متوقف</span></span></div><button class="switch" type="button" role="switch" aria-checked="false" aria-label="هشدار" data-alt-aria-label="Alert"></button></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<dialog class="modal" id="wizard" aria-labelledby="wz-title">
+  <form id="wz-form" data-validate data-steps data-success="آگهی برای بررسی فرستاده شد؛ معمولاً تا ۲ ساعت منتشر می‌شود" data-success-alt="Listing sent for review — usually live within 2 hours">
+    <div class="modal-head"><b class="h2" id="wz-title" style="flex: 1" data-alt="New listing">آگهی تازه</b><button class="btn btn-ghost btn-icon btn-sm" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><span class="ms" aria-hidden="true">close</span></button></div>
+    <div class="modal-body">
+      <div class="step-ind" data-step-indicator><span data-alt="1 · Basics">۱ · پایه</span><span data-alt="2 · Details">۲ · جزئیات</span><span data-alt="3 · Price &amp; photos">۳ · قیمت و عکس</span></div>
+      <div data-step class="stack">
+        <div class="seg" data-group="wdeal" role="group" aria-label="نوع معامله" data-alt-aria-label="Deal type" style="justify-self: start"><button type="button" data-value="sale" aria-pressed="true" data-alt="Sale">فروش</button><button type="button" data-value="rent" aria-pressed="false" data-alt="Rent">اجاره</button><button type="button" data-value="rahn" aria-pressed="false" data-alt="Deposit lease">رهن</button></div>
+        <div class="wiz-grid">
+          <div class="field"><label class="label" for="w-type" data-alt="Property type">نوع ملک</label><select class="select" id="w-type" name="type" required><option value="" data-alt="Choose…">انتخاب کنید…</option><option value="apt" data-alt="Apartment">آپارتمان</option><option value="villa" data-alt="Villa">ویلایی</option><option value="land" data-alt="Land">زمین</option></select></div>
+          <div class="field"><label class="label" for="w-area" data-alt="Neighbourhood">محله</label><input class="input" id="w-area" name="area" required minlength="2" placeholder="مثلاً ولنجک" data-alt-placeholder="e.g. Velenjak"></div>
+        </div>
+        <div class="field"><label class="label" for="w-addr" data-alt="Street address (not shown publicly)">نشانی (به‌صورت عمومی نمایش داده نمی‌شود)</label><input class="input" id="w-addr" name="addr" required minlength="6"></div>
+      </div>
+      <div data-step class="stack" hidden>
+        <div class="wiz-grid">
+          <div class="field"><label class="label" for="w-m2" data-alt="Area (m²)">متراژ (متر مربع)</label><input class="input" id="w-m2" name="m2" type="number" min="20" max="5000" required dir="ltr"></div>
+          <div class="field"><label class="label" for="w-beds" data-alt="Bedrooms">خواب</label><select class="select" id="w-beds" name="beds"><option>1</option><option selected>2</option><option>3</option><option>4+</option></select></div>
+          <div class="field"><label class="label" for="w-year" data-alt="Year built (Jalali)">سال ساخت (شمسی)</label><input class="input" id="w-year" name="year" type="number" min="1300" max="1406" required dir="ltr" placeholder="1398"></div>
+          <div class="field"><label class="label" for="w-floor" data-alt="Floor">طبقه</label><input class="input" id="w-floor" name="floor" type="number" min="-2" max="60" dir="ltr"></div>
+        </div>
+        <div class="field"><span class="label" data-alt="Amenities">امکانات</span><div class="amen-picks"><label><input type="checkbox" checked><span class="ms" aria-hidden="true">garage</span><span data-alt="Parking">پارکینگ</span></label><label><input type="checkbox" checked><span class="ms" aria-hidden="true">elevator</span><span data-alt="Elevator">آسانسور</span></label><label><input type="checkbox"><span class="ms" aria-hidden="true">warehouse</span><span data-alt="Storage">انباری</span></label><label><input type="checkbox"><span class="ms" aria-hidden="true">balcony</span><span data-alt="Balcony">بالکن</span></label><label><input type="checkbox"><span class="ms" aria-hidden="true">pool</span><span data-alt="Pool">استخر</span></label></div></div>
+      </div>
+      <div data-step class="stack" hidden>
+        <div class="field"><label class="label" for="w-price" data-alt="Asking price (Toman)">قیمت پیشنهادی (تومان)</label><input class="input" id="w-price" name="price" type="number" min="100000000" required dir="ltr" placeholder="22500000000"><span class="hint" data-alt="Similar homes nearby: 125–145 million per m².">ملک‌های مشابه اطراف: هر متر ۱۲۵ تا ۱۴۵ میلیون.</span></div>
+        <label class="dropzone"><input class="sr-only" type="file" multiple accept="image/*" id="w-photos"><span class="ms" aria-hidden="true" style="font-size: 30px; color: var(--brand)">add_photo_alternate</span><b data-alt="Add photos (at least 5)">افزودن عکس (حداقل ۵)</b><span class="tiny subtle" id="w-photo-count" data-alt="Real photos only — we check them on site.">فقط عکس واقعی — در محل بررسی می‌کنیم.</span></label>
+      </div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" type="button" data-prev><span class="ms flip-rtl" aria-hidden="true">chevron_left</span><span data-alt="Back">قبلی</span></button><button class="btn" type="button" data-next><span data-alt="Continue">ادامه</span></button><button class="btn" type="submit" id="wz-submit" hidden data-alt="Send for review">ارسال برای بررسی</button></div>
+  </form>
+</dialog>
+
+<dialog class="modal" id="visit" aria-labelledby="vs-title">
+  <form id="visit-form" data-validate data-success="بازدید ثبت شد و پیامک برای مشتری رفت" data-success-alt="Visit added and an SMS sent to the client">
+    <div class="modal-head"><b class="h2" id="vs-title" style="flex: 1" data-alt="Add a visit">بازدید تازه</b><button class="btn btn-ghost btn-icon btn-sm" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><span class="ms" aria-hidden="true">close</span></button></div>
+    <div class="modal-body">
+      <div class="field"><label class="label" for="vs-prop" data-alt="Property">ملک</label><select class="select" id="vs-prop" name="prop"><option data-alt="Penthouse, Zafaraniyeh">پنت‌هاوس، زعفرانیه</option><option data-alt="115 m², Saadat Abad">۱۱۵ متر، سعادت‌آباد</option><option data-alt="Villa, Niavaran">ویلا، نیاوران</option></select></div>
+      <div class="wiz-grid">
+        <div class="field"><label class="label" for="vs-client" data-alt="Client">مشتری</label><input class="input" id="vs-client" name="client" required minlength="2"></div>
+        <div class="field"><label class="label" for="vs-time" data-alt="Time">ساعت</label><select class="select" id="vs-time" name="time"><option>10:00</option><option>12:00</option><option selected>16:30</option><option>18:00</option></select></div>
+      </div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" type="button" data-close data-alt="Cancel">انصراف</button><button class="btn" type="submit" data-alt="Add visit">ثبت بازدید</button></div>
+  </form>
+</dialog>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+    const fa = () => tf.lang() === 'fa';
+    const both = (el, f, e) => { el.textContent = fa() ? f : e; el.dataset.alt = fa() ? e : f; };
+    let credits = 7;
+    document.addEventListener('click', (e) => {
+      const g = e.target.closest('[data-goto]');
+      if (g) { tf.selectTab(document.getElementById(g.dataset.goto)); return; }
+      const b = e.target.closest('[data-boost]');
+      if (b) {
+        if (credits <= 0) { tf.toast(fa() ? 'اعتبار نردبان تمام شده' : 'No boost credits left'); return; }
+        credits -= 1;
+        const c = $('.credit b span'); c.dataset.num = credits; c.textContent = tf.fmt(credits);
+        $('.credit .progress i').style.setProperty('--v', (credits / 20 * 100) + '%');
+        tf.toast(fa() ? 'آگهی به بالای فهرست رفت' : 'Listing moved to the top', { tone: 'success' });
+        return;
+      }
+      const a = e.target.closest('[data-advance]');
+      if (a) {
+        const card = a.closest('.lead-card'), lane = card.closest('.lane'), next = lane.nextElementSibling;
+        if (!next) return;
+        next.append(card);
+        const labels = [['بازدید گذاشتیم ←', 'Visit set →'], ['پیشنهاد داد ←', 'Offer →'], ['تنظیم قرارداد', 'Draft contract']];
+        const idx = Number(next.dataset.lane) - 1;
+        if (idx < 2) both(a, labels[idx][0], labels[idx][1]);
+        else { a.replaceWith(Object.assign(document.createElement('span'), { className: 'badge ok', textContent: fa() ? 'پیشنهاد رسید' : 'Offer in' })); }
+        $$('.lane').forEach((l) => { const n = $$('.lead-card', l).length, el = $('[data-lane-count]', l); el.textContent = tf.fmt(n); });
+      }
+    });
+    $$('.lane').forEach((l) => { $('[data-lane-count]', l).textContent = tf.fmt($$('.lead-card', l).length); });
+    // wizard: show submit on the last step; count photos
+    const wz = $('#wz-form');
+    wz.addEventListener('tf:step', (e) => { $('[data-next]', wz).hidden = e.detail.index === 2; $('#wz-submit').hidden = e.detail.index !== 2; });
+    $('#wizard').addEventListener('tf:dialog', () => tf.showStep(wz, 0));
+    $('#w-photos').addEventListener('change', (e) => { const n = e.target.files.length; both($('#w-photo-count'), tf.fmt(n) + ' عکس انتخاب شد', n + ' photo(s) selected'); });
+    // new visit appears in today's list
+    $('#visit-form').addEventListener('tf:submit', (e) => {
+      const day = $('#visits .vday > div:last-child');
+      const it = document.createElement('div');
+      it.className = 'vitem';
+      it.innerHTML = '<span class="t"></span><div class="stack" style="gap: 0"><b class="small"></b><span class="tiny subtle"></span></div><span class="badge warn"></span>';
+      $('.t', it).textContent = e.detail.time;
+      $('b', it).textContent = $('#vs-prop').selectedOptions[0].textContent;
+      $('.tiny', it).textContent = e.detail.client;
+      both($('.badge', it), 'در انتظار', 'To confirm');
+      day.append(it);
+    });
+  });
+</script>
+</body>
+</html>

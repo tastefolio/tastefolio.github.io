@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="site">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Ashiyaneh — homes to live in">آشیانه — خانه‌ای برای زندگی</title>
+<meta name="description" content="آشیانه، یک سامانهٔ نمونهٔ آگهی ملک: خرید، اجاره و رهن با نقشه، محله‌ها و محاسبه‌گر وام." data-alt-content="Ashiyaneh, a sample property listings site: buy, rent and deposit-lease with a map, neighbourhoods and a loan calculator.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Albert+Sans:wght@400..800&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,300..500,0..1,0&icon_names=add,add_home,balcony,bed,calendar_month,call,dark_mode,deck,description,elevator,event_available,favorite,fitness_center,garage,grid_view,location_on,map,menu,mode_heat,my_location,photo_library,play_circle,pool,remove,search,security,square_foot,stairs,star,trending_down,trending_up,verified,warehouse&display=block">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .listing .price-row { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+  .desc { color: var(--ink-2); max-inline-size: 70ch; }
+  .key-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; }
+  .hoods { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); }
+  @media (max-width: 1000px) { .hoods { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px) { .hoods { grid-template-columns: minmax(0, 1fr); } }
+  .phone-reveal { justify-content: space-between; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<header class="site-head">
+  <div class="container">
+    <a class="logo" href="#top"><span class="roof" aria-hidden="true"></span><span data-alt="Ashiyaneh">آشیانه</span></a>
+    <nav class="nav" id="nav" data-dismissable aria-label="اصلی" data-alt-aria-label="Main">
+      <a href="#listings" data-alt="Buy">خرید</a>
+      <a href="#listings" data-alt="Rent">اجاره</a>
+      <a href="#detail" data-alt="New builds">نوساز</a>
+      <a href="#hoods" data-alt="Neighbourhoods">محله‌ها</a>
+      <a href="#faq" data-alt="Guides">راهنما</a>
+      <a class="m-only" href="dashboard.html" data-alt="Sign in · list a property">ورود · ثبت آگهی</a>
+    </nav>
+    <div class="head-end">
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+      <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="تغییر حالت تیره" data-alt-aria-label="Toggle dark mode"><span class="ms" aria-hidden="true">dark_mode</span></button>
+      <button class="btn btn-ghost btn-sm hide-sm" type="button" data-toast="۲ آگهی ذخیره‌شده" data-toast-alt="2 saved listings"><span class="ms" aria-hidden="true">favorite</span><span id="saved-count" data-num="2">۲</span></button>
+      <a class="btn btn-outline btn-sm hide-md" href="dashboard.html"><span class="ms" aria-hidden="true">add_home</span><span data-alt="List a property">ثبت آگهی</span></a>
+      <a class="btn btn-ink btn-sm hide-sm" href="dashboard.html" data-alt="Sign in">ورود</a>
+      <button class="btn btn-outline btn-icon btn-sm menu-btn" type="button" data-toggle="#nav" aria-controls="nav" aria-expanded="false" aria-label="منو" data-alt-aria-label="Menu"><span class="ms" aria-hidden="true">menu</span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="container">
+      <div class="hero-copy">
+        <span class="eyebrow" data-alt="24,000 verified listings">۲۴ هزار آگهی تأییدشده</span>
+        <h1 class="display" data-alt="A home you’ll live in, not just square metres.">خانه‌ای که در آن زندگی می‌کنید، نه فقط متراژ.</h1>
+        <p class="lead" data-alt="Real photos, honest prices per square metre and neighbourhood scores — then visit with an agent who knows the street.">عکس واقعی، قیمت هر متر بی‌پرده و امتیاز محله — بعد با مشاوری که کوچه را می‌شناسد بازدید کنید.</p>
+      </div>
+      <div class="photo" data-v="2" role="img" aria-label="تصویر یک ساختمان مسکونی در غروب" data-alt-aria-label="A residential building at sunset"><i class="tree"></i><span class="count badge glass"><span class="ms" aria-hidden="true">verified</span><span data-alt="Photos checked on site">عکس‌ها در محل بررسی شده</span></span></div>
+    </div>
+  </section>
+  <div class="container">
+    <form class="search-card" role="search" id="search">
+      <div class="seg" data-group="deal" role="group" aria-label="نوع معامله" data-alt-aria-label="Deal type" style="justify-self: start">
+        <button type="button" data-value="buy" aria-pressed="true" data-alt="Buy">خرید</button>
+        <button type="button" data-value="rent" aria-pressed="false" data-alt="Rent">اجاره</button>
+        <button type="button" data-value="rahn" aria-pressed="false" data-alt="Deposit lease">رهن کامل</button>
+        <button type="button" data-value="new" aria-pressed="false" data-alt="New builds">پیش‌فروش</button>
+      </div>
+      <div class="search-grid">
+        <div class="field"><label class="label" for="loc" data-alt="Where">کجا</label><div class="in-ic"><span class="ms" aria-hidden="true">location_on</span><input class="input" id="loc" type="search" placeholder="شهر، محله یا خیابان" data-alt-placeholder="City, area or street" value="تهران" data-alt-value="Tehran"></div></div>
+        <div class="field"><label class="label" for="ptype" data-alt="Type">نوع ملک</label><select class="select" id="ptype"><option data-alt="Apartment">آپارتمان</option><option data-alt="House / villa">ویلایی</option><option data-alt="Land">زمین</option><option data-alt="Commercial">تجاری</option></select></div>
+        <div class="field"><label class="label" for="budget" data-alt="Budget">بودجه</label><select class="select" id="budget"><option data-alt="Any">مهم نیست</option><option data-alt="Up to 6 billion">تا ۶ میلیارد</option><option data-alt="6–15 billion">۶ تا ۱۵ میلیارد</option><option data-alt="15 billion +">بیش از ۱۵ میلیارد</option></select></div>
+        <div class="field"><label class="label" for="beds" data-alt="Bedrooms">خواب</label><select class="select" id="beds"><option data-alt="Any">همه</option><option data-alt="1+">۱+</option><option data-alt="2+">۲+</option><option data-alt="3+">۳+</option></select></div>
+        <button class="btn btn-lg" type="submit"><span class="ms" aria-hidden="true">search</span><span data-alt="Search">جست‌وجو</span></button>
+      </div>
+    </form>
+    <div class="quick-stats">
+      <div><b data-num="24100">۲۴٬۱۰۰</b><span class="small subtle" data-alt="listings today">آگهی فعال امروز</span></div>
+      <div><b data-num="310">۳۱۰</b><span class="small subtle" data-alt="verified agents">مشاور تأییدشده</span></div>
+      <div><b data-num="18">۱۸</b><span class="small subtle" data-alt="cities">شهر</span></div>
+    </div>
+  </div>
+
+  <section class="section" id="listings" data-filter-scope>
+    <div class="container">
+      <div class="sec-head"><div><span class="eyebrow" data-alt="For sale · Tehran">فروش · تهران</span><h2 class="h1" data-alt="Apartments for sale in Tehran">آپارتمان‌های فروشی تهران</h2></div><span class="small subtle"><span data-filter-count data-num="6">۶</span> <span data-alt="homes on the map">ملک روی نقشه</span></span></div>
+      <div class="results-bar">
+        <div class="chips" data-group role="group" aria-label="خواب" data-alt-aria-label="Bedrooms">
+          <button type="button" data-filter="rooms" data-value="all" aria-pressed="true" data-alt="All">همه</button>
+          <button type="button" data-filter="rooms" data-value="2" aria-pressed="false" data-alt="2 beds">۲ خواب</button>
+          <button type="button" data-filter="rooms" data-value="3" aria-pressed="false" data-alt="3 beds">۳ خواب</button>
+          <button type="button" data-filter="rooms" data-value="4" aria-pressed="false" data-alt="4+ beds">۴+ خواب</button>
+        </div>
+        <label class="check"><input type="checkbox" data-filter="park" value="yes"><span data-alt="Parking">پارکینگ</span></label>
+        <label class="check"><input type="checkbox" data-filter="lift" value="yes"><span data-alt="Elevator">آسانسور</span></label>
+        <span class="spacer"></span>
+        <select class="select" id="sort" aria-label="مرتب‌سازی" data-alt-aria-label="Sort"><option value="new" data-alt="Newest">تازه‌ترین</option><option value="low" data-alt="Price: low to high">ارزان‌ترین</option><option value="m2" data-alt="Price per m²">کمترین قیمت هر متر</option></select>
+        <div class="seg" data-group="view" role="group" aria-label="نمایش" data-alt-aria-label="View"><button type="button" data-value="map" aria-pressed="true"><span class="ms" aria-hidden="true">map</span><span data-alt="Map">نقشه</span></button><button type="button" data-value="list" aria-pressed="false"><span class="ms" aria-hidden="true">grid_view</span><span data-alt="Grid">فهرست</span></button></div>
+      </div>
+      <div class="split-view" id="split">
+        <div class="list-grid" id="list">
+          <article class="listing" data-filter-item data-id="1" data-rooms="2" data-park="yes" data-lift="yes" data-price="10900000000" data-m2="95000000" data-keywords="saadat abad سعادت‌آباد">
+            <div class="photo" data-v="2"><i class="tree"></i><div class="badges"><span class="badge sun" data-alt="New">تازه</span></div><button class="fav" type="button" aria-pressed="true" aria-label="ذخیره" data-alt-aria-label="Save"><span class="ms" aria-hidden="true">favorite</span></button><div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div>
+            <div class="body"><div class="price-row"><span class="price"><span data-num="10900000000" data-fmt="compact">۱۰٫۹ میلیارد</span> <small class="small" data-alt="Toman">تومان</small></span><span class="per"><span data-num="95000000" data-fmt="compact">۹۵ میلیون</span> <span data-alt="/ m²">هر متر</span></span></div><b class="title" data-alt="Bright 115 m² with a south-facing balcony">۱۱۵ متر نورگیر با بالکن جنوبی</b><span class="addr"><span class="ms" aria-hidden="true">location_on</span><span data-alt="Saadat Abad, 22nd St.">سعادت‌آباد، خیابان ۲۲</span></span><div class="specs"><span><span class="ms" aria-hidden="true">square_foot</span><span data-num="115">۱۱۵</span> <span data-alt="m²">متر</span></span><span><span class="ms" aria-hidden="true">bed</span><span data-num="2">۲</span></span><span><span class="ms" aria-hidden="true">calendar_month</span><span data-alt="2019">۱۳۹۸</span></span><span title="پارکینگ" data-alt-title="Parking"><span class="ms" aria-hidden="true">garage</span></span><span title="آسانسور" data-alt-title="Elevator"><span class="ms" aria-hidden="true">elevator</span></span><span title="انباری" data-alt-title="Storage"><span class="ms" aria-hidden="true">warehouse</span></span></div><div class="foot"><span data-ago="7200">۲ ساعت پیش</span><span data-alt="Ashiyaneh · Saadat Abad">آشیانه · سعادت‌آباد</span></div></div>
+          </article>
+          <article class="listing" data-filter-item data-id="2" data-rooms="3" data-park="yes" data-lift="yes" data-price="34600000000" data-m2="165000000" data-keywords="zafaraniyeh زعفرانیه">
+            <div class="photo" data-v="3"><i class="tree"></i><div class="badges"><span class="badge glass"><span class="ms" aria-hidden="true">play_circle</span><span data-alt="Video tour">بازدید ویدیویی</span></span></div><button class="fav" type="button" aria-pressed="false" aria-label="ذخیره" data-alt-aria-label="Save"><span class="ms" aria-hidden="true">favorite</span></button><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div></div>
+            <div class="body"><div class="price-row"><span class="price"><span data-num="34600000000" data-fmt="compact">۳۴٫۶ میلیارد</span> <small class="small" data-alt="Toman">تومان</small></span><span class="per"><span data-num="165000000" data-fmt="compact">۱۶۵ میلیون</span> <span data-alt="/ m²">هر متر</span></span></div><b class="title" data-alt="Penthouse with a roof garden and city view">پنت‌هاوس با روف‌گاردن و دید شهر</b><span class="addr"><span class="ms" aria-hidden="true">location_on</span><span data-alt="Zafaraniyeh, Maqdis St.">زعفرانیه، خیابان مقدس</span></span><div class="specs"><span><span class="ms" aria-hidden="true">square_foot</span><span data-num="210">۲۱۰</span> <span data-alt="m²">متر</span></span><span><span class="ms" aria-hidden="true">bed</span><span data-num="3">۳</span></span><span><span class="ms" aria-hidden="true">calendar_month</span><span data-alt="2022">۱۴۰۱</span></span><span title="پارکینگ" data-alt-title="Parking"><span class="ms" aria-hidden="true">garage</span></span><span title="آسانسور" data-alt-title="Elevator"><span class="ms" aria-hidden="true">elevator</span></span><span title="انباری" data-alt-title="Storage"><span class="ms" aria-hidden="true">warehouse</span></span></div><div class="foot"><span data-ago="18000">۵ ساعت پیش</span><span data-alt="Ashiyaneh · Zafaraniyeh">آشیانه · زعفرانیه</span></div></div>
+          </article>
+          <article class="listing" data-filter-item data-id="3" data-rooms="2" data-park="yes" data-lift="yes" data-price="5400000000" data-m2="63500000" data-keywords="punak پونک">
+            <div class="photo" data-v="4"><i class="tree"></i><div class="badges"><span class="badge sun"><span class="ms" aria-hidden="true">trending_down</span><span data-alt="Price cut 4%">کاهش ۴٪</span></span></div><button class="fav" type="button" aria-pressed="false" aria-label="ذخیره" data-alt-aria-label="Save"><span class="ms" aria-hidden="true">favorite</span></button><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div></div>
+            <div class="body"><div class="price-row"><span class="price"><span data-num="5400000000" data-fmt="compact">۵٫۴ میلیارد</span> <small class="small" data-alt="Toman">تومان</small></span><span class="per"><span data-num="63500000" data-fmt="compact">۶۳٫۵ میلیون</span> <span data-alt="/ m²">هر متر</span></span></div><b class="title" data-alt="Two-bed near Punak metro">دوخوابه نزدیک مترو پونک</b><span class="addr"><span class="ms" aria-hidden="true">location_on</span><span data-alt="Punak, Bahar Blvd.">پونک، بلوار بهار</span></span><div class="specs"><span><span class="ms" aria-hidden="true">square_foot</span><span data-num="85">۸۵</span> <span data-alt="m²">متر</span></span><span><span class="ms" aria-hidden="true">bed</span><span data-num="2">۲</span></span><span><span class="ms" aria-hidden="true">calendar_month</span><span data-alt="2016">۱۳۹۵</span></span><span title="پارکینگ" data-alt-title="Parking"><span class="ms" aria-hidden="true">garage</span></span><span title="آسانسور" data-alt-title="Elevator"><span class="ms" aria-hidden="true">elevator</span></span><span class="no" title="بدون انباری" data-alt-title="No storage"><span class="ms" aria-hidden="true">warehouse</span></span></div><div class="foot"><span data-ago="86400">دیروز</span><span data-alt="Owner listing">آگهی مالک</span></div></div>
+          </article>
+          <article class="listing" data-filter-item data-id="4" data-rooms="4" data-park="yes" data-lift="no" data-price="68000000000" data-m2="162000000" data-keywords="niavaran villa نیاوران ویلا">
+            <div class="photo" data-v="5"><i class="tree"></i><div class="badges"><span class="badge glass" data-alt="Garden">حیاط‌دار</span></div><button class="fav" type="button" aria-pressed="true" aria-label="ذخیره" data-alt-aria-label="Save"><span class="ms" aria-hidden="true">favorite</span></button><div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
+            <div class="body"><div class="price-row"><span class="price"><span data-num="68000000000" data-fmt="compact">۶۸ میلیارد</span> <small class="small" data-alt="Toman">تومان</small></span><span class="per"><span data-num="162000000" data-fmt="compact">۱۶۲ میلیون</span> <span data-alt="/ m²">هر متر</span></span></div><b class="title" data-alt="Garden villa with a pool, 420 m² of land">ویلای حیاط‌دار با استخر، ۴۲۰ متر زمین</b><span class="addr"><span class="ms" aria-hidden="true">location_on</span><span data-alt="Niavaran, Jamaran">نیاوران، جماران</span></span><div class="specs"><span><span class="ms" aria-hidden="true">square_foot</span><span data-num="420">۴۲۰</span> <span data-alt="m²">متر</span></span><span><span class="ms" aria-hidden="true">bed</span><span data-num="4">۴</span></span><span><span class="ms" aria-hidden="true">calendar_month</span><span data-alt="2006">۱۳۸۵</span></span><span title="پارکینگ" data-alt-title="Parking"><span class="ms" aria-hidden="true">garage</span></span><span class="no" title="بدون آسانسور" data-alt-title="No elevator"><span class="ms" aria-hidden="true">elevator</span></span><span title="استخر" data-alt-title="Pool"><span class="ms" aria-hidden="true">pool</span></span></div><div class="foot"><span data-ago="259200">۳ روز پیش</span><span data-alt="Ashiyaneh · Niavaran">آشیانه · نیاوران</span></div></div>
+          </article>
+          <article class="listing" data-filter-item data-id="5" data-rooms="2" data-park="yes" data-lift="yes" data-price="5900000000" data-m2="64100000" data-keywords="tehranpars تهرانپارس">
+            <div class="photo" data-v="4" style="--sky1: #d8e4ea; --wall: #c99a74"><i class="tree"></i><button class="fav" type="button" aria-pressed="false" aria-label="ذخیره" data-alt-aria-label="Save"><span class="ms" aria-hidden="true">favorite</span></button><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div></div>
+            <div class="body"><div class="price-row"><span class="price"><span data-num="5900000000" data-fmt="compact">۵٫۹ میلیارد</span> <small class="small" data-alt="Toman">تومان</small></span><span class="per"><span data-num="64100000" data-fmt="compact">۶۴٫۱ میلیون</span> <span data-alt="/ m²">هر متر</span></span></div><b class="title" data-alt="New-build 92 m², ready to move in">نوساز ۹۲ متری، آمادهٔ سکونت</b><span class="addr"><span class="ms" aria-hidden="true">location_on</span><span data-alt="Tehranpars, 196th St.">تهرانپارس، خیابان ۱۹۶</span></span><div class="specs"><span><span class="ms" aria-hidden="true">square_foot</span><span data-num="92">۹۲</span> <span data-alt="m²">متر</span></span><span><span class="ms" aria-hidden="true">bed</span><span data-num="2">۲</span></span><span><span class="ms" aria-hidden="true">calendar_month</span><span data-alt="2021">۱۴۰۰</span></span><span title="پارکینگ" data-alt-title="Parking"><span class="ms" aria-hidden="true">garage</span></span><span title="آسانسور" data-alt-title="Elevator"><span class="ms" aria-hidden="true">elevator</span></span><span title="انباری" data-alt-title="Storage"><span class="ms" aria-hidden="true">warehouse</span></span></div><div class="foot"><span data-ago="172800">۲ روز پیش</span><span data-alt="Ashiyaneh · East">آشیانه · شرق</span></div></div>
+          </article>
+          <article class="listing" data-filter-item data-id="6" data-rooms="3" data-park="yes" data-lift="yes" data-price="15200000000" data-m2="108600000" data-keywords="shahrak gharb شهرک غرب">
+            <div class="photo" data-v="6"><i class="tree"></i><div class="badges"><span class="badge sun" data-alt="Featured">ویژه</span></div><button class="fav" type="button" aria-pressed="false" aria-label="ذخیره" data-alt-aria-label="Save"><span class="ms" aria-hidden="true">favorite</span></button><div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div>
+            <div class="body"><div class="price-row"><span class="price"><span data-num="15200000000" data-fmt="compact">۱۵٫۲ میلیارد</span> <small class="small" data-alt="Toman">تومان</small></span><span class="per"><span data-num="108600000" data-fmt="compact">۱۰۸٫۶ میلیون</span> <span data-alt="/ m²">هر متر</span></span></div><b class="title" data-alt="Three-bed with a lobby and concierge">سه‌خوابه لابی‌دار با نگهبان</b><span class="addr"><span class="ms" aria-hidden="true">location_on</span><span data-alt="Shahrak-e Gharb, Iran Zamin">شهرک غرب، ایران‌زمین</span></span><div class="specs"><span><span class="ms" aria-hidden="true">square_foot</span><span data-num="140">۱۴۰</span> <span data-alt="m²">متر</span></span><span><span class="ms" aria-hidden="true">bed</span><span data-num="3">۳</span></span><span><span class="ms" aria-hidden="true">calendar_month</span><span data-alt="2020">۱۳۹۹</span></span><span title="پارکینگ" data-alt-title="Parking"><span class="ms" aria-hidden="true">garage</span></span><span title="آسانسور" data-alt-title="Elevator"><span class="ms" aria-hidden="true">elevator</span></span><span title="انباری" data-alt-title="Storage"><span class="ms" aria-hidden="true">warehouse</span></span></div><div class="foot"><span data-ago="43200">۱۲ ساعت پیش</span><span data-alt="Ashiyaneh · West">آشیانه · غرب</span></div></div>
+          </article>
+        </div>
+        <div class="map" role="region" aria-label="نقشهٔ آگهی‌ها" data-alt-aria-label="Listings map">
+          <span class="park" style="inset: 8% auto auto 60%; inline-size: 26%; block-size: 22%" aria-hidden="true"></span>
+          <span class="park" style="inset: 64% auto auto 8%; inline-size: 18%; block-size: 16%" aria-hidden="true"></span>
+          <span class="water" style="inset: 72% auto auto 52%; inline-size: 34%; block-size: 14%" aria-hidden="true"></span>
+          <span class="lbl" style="inset: 4% auto auto 6%" data-alt="NIAVARAN">نیاوران</span>
+          <span class="lbl" style="inset: 40% auto auto 6%" data-alt="SAADAT ABAD">سعادت‌آباد</span>
+          <span class="lbl" style="inset: 90% auto auto 62%" data-alt="CHITGAR LAKE">دریاچهٔ چیتگر</span>
+          <button class="pin" type="button" data-pin="1" style="--x: 30%; --y: 46%" aria-pressed="false"><span data-num="10900000000" data-fmt="compact">۱۰٫۹ میلیارد</span></button>
+          <button class="pin" type="button" data-pin="2" style="--x: 68%; --y: 16%" aria-pressed="false"><span data-num="34600000000" data-fmt="compact">۳۴٫۶ میلیارد</span></button>
+          <button class="pin new" type="button" data-pin="3" style="--x: 22%; --y: 70%" aria-pressed="false"><span data-num="5400000000" data-fmt="compact">۵٫۴ میلیارد</span></button>
+          <button class="pin" type="button" data-pin="4" style="--x: 82%; --y: 30%" aria-pressed="false"><span data-num="68000000000" data-fmt="compact">۶۸ میلیارد</span></button>
+          <button class="pin" type="button" data-pin="5" style="--x: 88%; --y: 62%" aria-pressed="false"><span data-num="5900000000" data-fmt="compact">۵٫۹ میلیارد</span></button>
+          <button class="pin" type="button" data-pin="6" style="--x: 44%; --y: 58%" aria-pressed="false"><span data-num="15200000000" data-fmt="compact">۱۵٫۲ میلیارد</span></button>
+          <div class="map-ctrl"><button type="button" aria-label="بزرگ‌نمایی" data-alt-aria-label="Zoom in"><span class="ms" aria-hidden="true">add</span></button><button type="button" aria-label="کوچک‌نمایی" data-alt-aria-label="Zoom out"><span class="ms" aria-hidden="true">remove</span></button><button type="button" aria-label="موقعیت من" data-alt-aria-label="My location" data-toast="موقعیت شما روی نقشه" data-toast-alt="Showing your location"><span class="ms" aria-hidden="true">my_location</span></button></div>
+          <span class="map-note badge glass" data-alt="Search as I move the map">جست‌وجو با جابه‌جایی نقشه</span>
+        </div>
+      </div>
+      <p class="empty" data-filter-empty hidden data-alt="No homes match — remove a filter.">ملکی با این فیلترها نیست — یکی از فیلترها را بردارید.</p>
+    </div>
+  </section>
+
+  <section class="section" id="detail" style="padding-block-start: 0">
+    <div class="container">
+      <div class="sec-head"><div><span class="eyebrow" data-alt="Featured home">ملک ویژه</span><h2 class="h1" data-alt="Penthouse with a roof garden, Zafaraniyeh">پنت‌هاوس با روف‌گاردن، زعفرانیه</h2></div><div class="key-line"><span class="price" style="font-size: var(--fs-2xl)"><span data-num="34600000000" data-fmt="compact">۳۴٫۶ میلیارد</span> <small class="small" data-alt="Toman">تومان</small></span><span class="per"><span data-num="165000000" data-fmt="compact">۱۶۵ میلیون</span> <span data-alt="per m²">هر متر</span></span></div></div>
+      <div class="gallery" aria-label="عکس‌های ملک" data-alt-aria-label="Photos of the home">
+        <div class="photo" data-v="3" role="img" aria-label="نمای ساختمان" data-alt-aria-label="Building view"><i class="tree"></i><span class="count badge glass"><span class="ms" aria-hidden="true">photo_library</span><span data-alt="24 photos">۲۴ عکس</span></span></div>
+        <div class="photo" data-v="2" aria-hidden="true"></div>
+        <div class="photo" data-v="5" aria-hidden="true"><i class="tree"></i></div>
+        <div class="photo" data-v="6" aria-hidden="true"></div>
+        <div class="photo" data-v="4" aria-hidden="true"><i class="tree"></i></div>
+      </div>
+      <div class="detail">
+        <div class="stack" style="gap: var(--space-6)">
+          <dl class="facts">
+            <div><dt><span class="ms" aria-hidden="true">square_foot</span><span data-alt="Area">متراژ</span></dt><dd><span data-num="210">۲۱۰</span> <span data-alt="m²">متر</span></dd></div>
+            <div><dt><span class="ms" aria-hidden="true">bed</span><span data-alt="Bedrooms">خواب</span></dt><dd data-num="3">۳</dd></div>
+            <div><dt><span class="ms" aria-hidden="true">stairs</span><span data-alt="Floor">طبقه</span></dt><dd><span data-num="9">۹</span> <span data-alt="of 9">از ۹</span></dd></div>
+            <div><dt><span class="ms" aria-hidden="true">calendar_month</span><span data-alt="Built">ساخت</span></dt><dd data-alt="2022">۱۴۰۱</dd></div>
+            <div><dt><span class="ms" aria-hidden="true">garage</span><span data-alt="Parking">پارکینگ</span></dt><dd data-alt="2 spaces">۲ واحد</dd></div>
+            <div><dt><span class="ms" aria-hidden="true">elevator</span><span data-alt="Elevator">آسانسور</span></dt><dd data-alt="Yes">دارد</dd></div>
+            <div><dt><span class="ms" aria-hidden="true">warehouse</span><span data-alt="Storage">انباری</span></dt><dd><span data-num="8">۸</span> <span data-alt="m²">متر</span></dd></div>
+            <div><dt><span class="ms" aria-hidden="true">description</span><span data-alt="Deed">سند</span></dt><dd data-alt="Single-sheet">تک‌برگ</dd></div>
+          </dl>
+          <div class="stack" style="gap: 10px"><h3 class="h3" data-alt="About this home">دربارهٔ این خانه</h3><p class="desc" data-alt="A full-floor penthouse with windows on three sides, an 80 m² roof garden and a view of the whole city. Underfloor heating, a separate laundry and two parking spaces. Quiet street, ten minutes’ walk from the park.">پنت‌هاوس یک‌طبقه با پنجره در سه جهت، ۸۰ متر روف‌گاردن و دید به کل شهر. گرمایش از کف، رخت‌شوی‌خانهٔ جدا و دو واحد پارکینگ. کوچهٔ آرام، ده دقیقه پیاده تا پارک.</p></div>
+          <div class="stack" style="gap: 10px"><h3 class="h3" data-alt="Amenities">امکانات</h3>
+            <ul class="amenities">
+              <li><span class="ms" aria-hidden="true">deck</span><span data-alt="Roof garden">روف‌گاردن</span></li>
+              <li><span class="ms" aria-hidden="true">balcony</span><span data-alt="Balcony">بالکن</span></li>
+              <li><span class="ms" aria-hidden="true">security</span><span data-alt="Concierge">نگهبانی</span></li>
+              <li><span class="ms" aria-hidden="true">fitness_center</span><span data-alt="Gym">باشگاه</span></li>
+              <li><span class="ms" aria-hidden="true">mode_heat</span><span data-alt="Underfloor heating">گرمایش از کف</span></li>
+              <li class="no"><span class="ms" aria-hidden="true">pool</span><span data-alt="No pool">بدون استخر</span></li>
+            </ul>
+          </div>
+          <form class="calc" id="calc" onsubmit="return false">
+            <div class="split"><h3 class="h3" data-alt="Loan calculator">محاسبه‌گر وام</h3><span class="badge" data-alt="Estimate">تخمینی</span></div>
+            <div class="field"><div class="split"><label class="label" for="down" data-alt="Down payment">پیش‌پرداخت</label><b class="small"><span id="down-v" data-num="60" data-fmt="pct">۶۰٪</span></b></div><input class="range-input" id="down" type="range" min="30" max="90" step="5" value="60" style="--v: 50%"></div>
+            <div class="cols" style="--n: 2; gap: var(--space-4)">
+              <div class="field"><label class="label" for="years" data-alt="Years">مدت (سال)</label><select class="select" id="years"><option value="5" data-alt="5 years">۵ سال</option><option value="10" selected data-alt="10 years">۱۰ سال</option><option value="15" data-alt="15 years">۱۵ سال</option></select></div>
+              <div class="field"><label class="label" for="rate" data-alt="Annual rate">سود سالانه</label><select class="select" id="rate"><option value="18" data-alt="18%">۱۸٪</option><option value="23" selected data-alt="23%">۲۳٪</option><option value="28" data-alt="28%">۲۸٪</option></select></div>
+            </div>
+            <div class="out"><span class="small muted" data-alt="Monthly instalment">قسط ماهانه</span><b><span id="monthly" data-num="243000000" data-fmt="compact">۲۴۳ میلیون</span> <small class="small" data-alt="Toman">تومان</small></b><div class="split-bar" aria-hidden="true"><i id="bar-down" style="--w: 60%; --c: var(--brand)"></i><i id="bar-loan" style="--w: 40%; --c: var(--sun)"></i></div><div class="split tiny"><span><span data-alt="Cash">نقد</span> <span id="cash" data-num="20760000000" data-fmt="compact">۲۰٫۸ میلیارد</span></span><span><span data-alt="Loan">وام</span> <span id="loan" data-num="13840000000" data-fmt="compact">۱۳٫۸ میلیارد</span></span></div></div>
+          </form>
+        </div>
+        <aside class="agent-card" aria-label="مشاور این ملک" data-alt-aria-label="Agent for this home">
+          <div class="row" style="flex-wrap: nowrap"><span class="avatar lg" style="--c:#e3ead1" data-alt="S">س</span><div class="stack" style="gap: 2px"><b data-alt="Sepideh Rad">سپیده راد</b><span class="small subtle" data-alt="Ashiyaneh · Zafaraniyeh branch">آشیانه · شعبهٔ زعفرانیه</span><span class="small"><span class="ms fill" style="color: var(--sun)" aria-hidden="true">star</span> <span data-num="4.9" data-fmt="dec1">۴٫۹</span> <span class="subtle">(<span data-num="128">۱۲۸</span>)</span></span></div></div>
+          <button class="btn btn-outline btn-block phone-reveal" type="button" id="reveal"><span class="ms" aria-hidden="true">call</span><span id="phone" class="ltr">0912 ••• ••••</span><span class="small subtle" data-alt="Show">نمایش</span></button>
+          <div class="stack" style="gap: 8px"><span class="label" data-alt="Book a visit">رزرو بازدید</span>
+            <div class="seg" data-group="vday" role="group" aria-label="روز بازدید" data-alt-aria-label="Visit day"><button type="button" data-value="sat" aria-pressed="true" data-alt="Sat">شنبه</button><button type="button" data-value="sun" aria-pressed="false" data-alt="Sun">یکشنبه</button><button type="button" data-value="mon" aria-pressed="false" data-alt="Mon">دوشنبه</button></div>
+            <div class="slots" data-group="vslot" role="group" aria-label="ساعت" data-alt-aria-label="Time"><button type="button" aria-pressed="false" data-alt="10:00">۱۰:۰۰</button><button type="button" aria-pressed="true" data-alt="12:00">۱۲:۰۰</button><button type="button" aria-pressed="false" data-alt="17:00">۱۷:۰۰</button></div>
+          </div>
+          <form class="stack" style="gap: 10px" data-validate data-success="درخواست بازدید ثبت شد؛ سپیده تماس می‌گیرد" data-success-alt="Visit requested — Sepideh will call you">
+            <div class="field"><label class="label" for="v-name" data-alt="Your name">نام شما</label><input class="input" id="v-name" name="name" required minlength="2" autocomplete="name"></div>
+            <div class="field"><label class="label" for="v-mob" data-alt="Mobile">موبایل</label><input class="input" id="v-mob" name="mob" type="tel" required pattern="09[0-9]{9}" dir="ltr" placeholder="09xx xxx xxxx" data-pattern-msg="یک شمارهٔ ۱۱ رقمی که با ۰۹ شروع شود" data-pattern-msg-alt="An 11-digit number starting with 09"></div>
+            <button class="btn btn-block" type="submit"><span class="ms" aria-hidden="true">event_available</span><span data-alt="Request visit">درخواست بازدید</span></button>
+          </form>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="hoods" style="padding-block-start: 0">
+    <div class="container">
+      <div class="sec-head"><div><span class="eyebrow" data-alt="Neighbourhoods">محله‌ها</span><h2 class="h1" data-alt="Know the street before you call">پیش از تماس، کوچه را بشناسید</h2></div></div>
+      <div class="hoods">
+        <article class="hood"><div class="photo" data-v="2" aria-hidden="true"><i class="tree"></i></div><div class="split"><b class="h3" data-alt="Saadat Abad">سعادت‌آباد</b><span class="trend up"><span class="ms" aria-hidden="true">trending_up</span><span data-num="6" data-fmt="pct">۶٪</span></span></div><span class="small muted"><span data-alt="Average">میانگین</span> <b><span data-num="92000000" data-fmt="compact">۹۲ میلیون</span></b> <span data-alt="/ m²">هر متر</span></span><div class="scores"><div><span data-alt="Transit">دسترسی</span><i style="--v: 72%"></i><b data-num="7.2" data-fmt="dec1">۷٫۲</b></div><div><span data-alt="Green">فضای سبز</span><i style="--v: 84%"></i><b data-num="8.4" data-fmt="dec1">۸٫۴</b></div><div><span data-alt="Schools">مدرسه</span><i style="--v: 80%"></i><b data-num="8" data-fmt="dec1">۸٫۰</b></div><div><span data-alt="Quiet">آرامش</span><i style="--v: 61%"></i><b data-num="6.1" data-fmt="dec1">۶٫۱</b></div></div></article>
+        <article class="hood"><div class="photo" data-v="3" aria-hidden="true"><i class="tree"></i></div><div class="split"><b class="h3" data-alt="Zafaraniyeh">زعفرانیه</b><span class="trend up"><span class="ms" aria-hidden="true">trending_up</span><span data-num="9" data-fmt="pct">۹٪</span></span></div><span class="small muted"><span data-alt="Average">میانگین</span> <b><span data-num="158000000" data-fmt="compact">۱۵۸ میلیون</span></b> <span data-alt="/ m²">هر متر</span></span><div class="scores"><div><span data-alt="Transit">دسترسی</span><i style="--v: 58%"></i><b data-num="5.8" data-fmt="dec1">۵٫۸</b></div><div><span data-alt="Green">فضای سبز</span><i style="--v: 90%"></i><b data-num="9" data-fmt="dec1">۹٫۰</b></div><div><span data-alt="Schools">مدرسه</span><i style="--v: 86%"></i><b data-num="8.6" data-fmt="dec1">۸٫۶</b></div><div><span data-alt="Quiet">آرامش</span><i style="--v: 82%"></i><b data-num="8.2" data-fmt="dec1">۸٫۲</b></div></div></article>
+        <article class="hood"><div class="photo" data-v="4" aria-hidden="true"><i class="tree"></i></div><div class="split"><b class="h3" data-alt="Punak">پونک</b><span class="trend down"><span class="ms" aria-hidden="true">trending_down</span><span data-num="2" data-fmt="pct">۲٪</span></span></div><span class="small muted"><span data-alt="Average">میانگین</span> <b><span data-num="61000000" data-fmt="compact">۶۱ میلیون</span></b> <span data-alt="/ m²">هر متر</span></span><div class="scores"><div><span data-alt="Transit">دسترسی</span><i style="--v: 88%"></i><b data-num="8.8" data-fmt="dec1">۸٫۸</b></div><div><span data-alt="Green">فضای سبز</span><i style="--v: 55%"></i><b data-num="5.5" data-fmt="dec1">۵٫۵</b></div><div><span data-alt="Schools">مدرسه</span><i style="--v: 70%"></i><b data-num="7" data-fmt="dec1">۷٫۰</b></div><div><span data-alt="Quiet">آرامش</span><i style="--v: 52%"></i><b data-num="5.2" data-fmt="dec1">۵٫۲</b></div></div></article>
+        <article class="hood"><div class="photo" data-v="5" aria-hidden="true"><i class="tree"></i></div><div class="split"><b class="h3" data-alt="Niavaran">نیاوران</b><span class="trend up"><span class="ms" aria-hidden="true">trending_up</span><span data-num="4" data-fmt="pct">۴٪</span></span></div><span class="small muted"><span data-alt="Average">میانگین</span> <b><span data-num="140000000" data-fmt="compact">۱۴۰ میلیون</span></b> <span data-alt="/ m²">هر متر</span></span><div class="scores"><div><span data-alt="Transit">دسترسی</span><i style="--v: 50%"></i><b data-num="5" data-fmt="dec1">۵٫۰</b></div><div><span data-alt="Green">فضای سبز</span><i style="--v: 94%"></i><b data-num="9.4" data-fmt="dec1">۹٫۴</b></div><div><span data-alt="Schools">مدرسه</span><i style="--v: 78%"></i><b data-num="7.8" data-fmt="dec1">۷٫۸</b></div><div><span data-alt="Quiet">آرامش</span><i style="--v: 91%"></i><b data-num="9.1" data-fmt="dec1">۹٫۱</b></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="container" style="padding-block-end: var(--space-8)">
+    <div class="cta-band"><div class="stack" style="gap: 8px"><h2 class="h1" data-alt="Selling or letting? List it in five minutes.">می‌فروشید یا اجاره می‌دهید؟ در پنج دقیقه آگهی کنید.</h2><p class="lead" data-alt="A free valuation from a local agent, real photos and a dashboard that shows who called and when.">قیمت‌گذاری رایگان توسط مشاور محله، عکس واقعی و پنلی که نشان می‌دهد چه کسی و کی تماس گرفته.</p></div><a class="btn btn-lg" href="dashboard.html"><span class="ms" aria-hidden="true">add_home</span><span data-alt="List a property">ثبت آگهی</span></a></div>
+  </section>
+
+  <section class="section" id="faq" style="padding-block-start: 0">
+    <div class="container" style="max-inline-size: 860px">
+      <h2 class="h1" style="margin-block-end: var(--space-4)" data-alt="Buying, renting, leasing">خرید، اجاره، رهن</h2>
+      <details class="faq" open><summary data-alt="Are the prices real?">قیمت‌ها واقعی است؟</summary><p data-alt="Every listing is checked against the deed and recent sales in the same block; outliers are labelled before they are published.">هر آگهی با سند و معاملات اخیر همان بلوک مقایسه می‌شود؛ قیمت‌های غیرعادی پیش از انتشار برچسب می‌خورند.</p></details>
+      <details class="faq"><summary data-alt="What does “deposit lease” mean?">«رهن کامل» یعنی چه؟</summary><p data-alt="You pay a refundable deposit instead of monthly rent; it comes back in full when the lease ends.">به‌جای اجارهٔ ماهانه، ودیعهٔ قابل‌برگشت می‌پردازید که پایان قرارداد کامل برمی‌گردد.</p></details>
+      <details class="faq"><summary data-alt="Do you charge buyers?">از خریدار هم کمیسیون می‌گیرید؟</summary><p data-alt="The legal commission is split between both sides and shown before you sign anything.">کمیسیون قانونی بین دو طرف تقسیم می‌شود و پیش از امضا نمایش داده می‌شود.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="stack" style="gap: 10px"><a class="logo" href="#top"><span class="roof" aria-hidden="true"></span><span data-alt="Ashiyaneh">آشیانه</span></a><p style="max-inline-size: 32ch" data-alt="A sample property site for the Tastefolio gallery. Listings are fictional.">یک سامانهٔ نمونهٔ ملک برای گالری تیست‌فولیو. آگهی‌ها خیالی‌اند.</p></div>
+      <div><h3 data-alt="Find">پیدا کنید</h3><ul><li><a href="#listings" data-alt="Buy">خرید</a></li><li><a href="#listings" data-alt="Rent">اجاره</a></li><li><a href="#hoods" data-alt="Neighbourhoods">محله‌ها</a></li></ul></div>
+      <div><h3 data-alt="Owners">مالکان</h3><ul><li><a href="dashboard.html" data-alt="List a property">ثبت آگهی</a></li><li><a href="dashboard.html" data-alt="Free valuation">قیمت‌گذاری رایگان</a></li></ul></div>
+      <div><h3 data-alt="Agents">مشاوران</h3><ul><li><a href="dashboard.html" data-alt="Agent panel">پنل مشاور</a></li><li><a href="#faq" data-alt="Help">راهنما</a></li></ul></div>
+    </div>
+    <div class="foot-base"><span data-alt="© 2026 Ashiyaneh">© ۱۴۰۵ آشیانه</span><span data-alt="Sample data — not a real agency">داده‌ها نمونه‌اند — آژانس واقعی نیست</span></div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+    const fa = () => tf.lang() === 'fa';
+    // favourites
+    document.addEventListener('click', (e) => {
+      const f = e.target.closest('.fav');
+      if (!f) return;
+      const on = f.getAttribute('aria-pressed') !== 'true';
+      f.setAttribute('aria-pressed', String(on));
+      const c = $('#saved-count'), n = Number(c.dataset.num) + (on ? 1 : -1);
+      c.dataset.num = n; c.textContent = tf.fmt(n);
+      tf.toast(on ? (fa() ? 'به ذخیره‌ها افزوده شد' : 'Saved') : (fa() ? 'از ذخیره‌ها حذف شد' : 'Removed'));
+    });
+    // list ↔ map
+    const card = (id) => $(`.listing[data-id="${id}"]`), pin = (id) => $(`.pin[data-pin="${id}"]`);
+    $$('.listing').forEach((c) => {
+      c.addEventListener('mouseenter', () => pin(c.dataset.id)?.classList.add('hot'));
+      c.addEventListener('mouseleave', () => pin(c.dataset.id)?.classList.remove('hot'));
+    });
+    $$('.pin').forEach((p) => {
+      p.addEventListener('mouseenter', () => card(p.dataset.pin)?.classList.add('hot'));
+      p.addEventListener('mouseleave', () => card(p.dataset.pin)?.classList.remove('hot'));
+      p.addEventListener('click', () => {
+        $$('.pin').forEach((x) => x.setAttribute('aria-pressed', String(x === p)));
+        card(p.dataset.pin)?.scrollIntoView({ behavior: tf.reduceMotion ? 'auto' : 'smooth', block: 'center' });
+      });
+    });
+    // filtering hides pins too
+    $('#listings').addEventListener('tf:filter', () => $$('.listing').forEach((c) => { const p = pin(c.dataset.id); if (p) p.hidden = c.hidden; }));
+    // map on/off and sort
+    document.addEventListener('tf:change', (e) => { if (e.target.closest?.('[data-group="view"]')) $('#split').classList.toggle('map-off', e.detail.value === 'list'); });
+    $('#sort').addEventListener('change', (e) => {
+      const list = $('#list'), items = $$('.listing', list);
+      const key = { new: (a) => Number(a.dataset.id), low: (a) => Number(a.dataset.price), m2: (a) => Number(a.dataset.m2) }[e.target.value];
+      items.sort((a, b) => key(a) - key(b)).forEach((x) => list.append(x));
+    });
+    $('#search').addEventListener('submit', (e) => { e.preventDefault(); $('#listings').scrollIntoView({ behavior: tf.reduceMotion ? 'auto' : 'smooth' }); });
+    // phone reveal
+    $('#reveal').addEventListener('click', () => { $('#phone').textContent = '0912 345 6789'; tf.toast(fa() ? 'تماس ثبت شد؛ بگویید از آشیانه آمده‌اید' : 'Mention you found it on Ashiyaneh'); });
+    // loan calculator (annuity)
+    const PRICE = 34600000000;
+    const calc = () => {
+      const down = Number($('#down').value), years = Number($('#years').value), rate = Number($('#rate').value) / 100 / 12;
+      const loan = PRICE * (1 - down / 100), n = years * 12;
+      const m = loan * rate / (1 - Math.pow(1 + rate, -n));
+      $('#down').style.setProperty('--v', ((down - 30) / 60 * 100) + '%');
+      const set = (el, v) => { el.dataset.num = Math.round(v); el.textContent = tf.fmt(Math.round(v), el.dataset.fmt); };
+      set($('#down-v'), down); set($('#monthly'), m); set($('#cash'), PRICE - loan); set($('#loan'), loan);
+      $('#bar-down').style.setProperty('--w', down + '%'); $('#bar-loan').style.setProperty('--w', (100 - down) + '%');
+    };
+    ['down', 'years', 'rate'].forEach((id) => $('#' + id).addEventListener('input', calc));
+    ['years', 'rate'].forEach((id) => $('#' + id).addEventListener('change', calc));
+    calc();
+  });
+</script>
+</body>
+</html>

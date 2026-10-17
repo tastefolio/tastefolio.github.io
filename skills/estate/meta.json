@@ -1,0 +1,34 @@
+{
+  "name": "Estate",
+  "order": 25,
+  "category": "commerce",
+  "mode": "light",
+  "density": "balanced",
+  "persianFirst": true,
+  "tags": ["real estate", "property", "listings", "map", "agents", "crm", "persian"],
+  "tagline": {
+    "en": "Property listings — stone paper, moss actions, serif prices, a list + map split with price pins and an agent panel with a lead pipeline",
+    "fa": "آگهی ملک — کاغذ سنگی، اقدام‌های سبز خزه‌ای، قیمت با حروف سریف، فهرست کنار نقشه با پین قیمت و پنل مشاور با قیف مشتری"
+  },
+  "summary": {
+    "en": "A warm, architectural language for property portals, agencies and developers, Persian-first. Stone paper and charcoal ink, a moss green for searching and contacting, sun-amber reserved for new, featured and price cuts, and Young Serif for prices, places and headings. Drawn architectural “photos” stand in for listing images; listing cards share one anatomy (price and price per m², title, address, area, bedrooms, year, parking, elevator, storage); results sit beside a map with price pins that highlight their cards; a featured home has a gallery, fact grid, amenities, a loan calculator and a sticky agent card with visit booking. The agent panel covers KPIs, views, best performers with boosts, a listings table, a lead pipeline, a visit schedule, saved-search alerts and a three-step listing wizard.",
+    "fa": "زبانی گرم و معمارانه برای سامانه‌های ملک، آژانس‌ها و سازندگان، فارسی‌محور. کاغذ سنگی و جوهر زغالی، سبز خزه‌ای برای جست‌وجو و تماس، زرد آفتابی فقط برای تازه، ویژه و کاهش قیمت، و حروف Young Serif برای قیمت، مکان و تیتر. «عکس‌های» معماری طراحی‌شده جای تصویر آگهی را می‌گیرند؛ کارت‌های آگهی یک ساختار دارند (قیمت و قیمت هر متر، عنوان، نشانی، متراژ، خواب، سال ساخت، پارکینگ، آسانسور، انباری)؛ نتایج کنار نقشه‌ای با پین قیمت می‌نشینند که کارتشان را برجسته می‌کند؛ ملک ویژه گالری، جدول مشخصات، امکانات، محاسبه‌گر وام و کارت مشاور چسبان با رزرو بازدید دارد. پنل مشاور شاخص‌ها، بازدیدها، پربازدیدها با نردبان، جدول آگهی‌ها، قیف مشتری، برنامهٔ بازدید، هشدار جست‌وجو و فرم سه‌مرحله‌ای ثبت آگهی را پوشش می‌دهد."
+  },
+  "bestFor": {
+    "en": ["Property portals and classifieds", "Real-estate agencies and brokers", "Developers selling new builds off-plan", "Agent CRMs and owner dashboards"],
+    "fa": ["سامانه‌های آگهی ملک", "آژانس‌های املاک و مشاوران", "سازندگان و پیش‌فروش پروژه", "پنل مشاور و داشبورد مالک"]
+  },
+  "avoidFor": {
+    "en": ["Developer tools and dashboards-only products", "Nightlife, gaming and youth brands", "Dense trading interfaces"],
+    "fa": ["ابزارهای برنامه‌نویسی و محصولات فقط داشبوردی", "برندهای شبانه، بازی و جوانانه", "رابط‌های معاملاتی پرتراکم"]
+  },
+  "signature": {
+    "en": ["Young Serif prices and places on stone paper", "Moss for actions; sun-amber only for new, featured and price cuts", "One listing anatomy with a spec row (m², beds, year, parking, elevator, storage)", "List + map split with price pins that highlight their cards", "Loan calculator and sticky agent card with visit booking", "Agent panel: lead pipeline, visits, boosts, listing wizard"],
+    "fa": ["قیمت و مکان با Young Serif روی کاغذ سنگی", "سبز خزه‌ای برای اقدام؛ زرد آفتابی فقط برای تازه، ویژه و کاهش قیمت", "یک ساختار آگهی با ردیف مشخصات (متراژ، خواب، سال، پارکینگ، آسانسور، انباری)", "فهرست کنار نقشه با پین قیمت که کارت را برجسته می‌کند", "محاسبه‌گر وام و کارت مشاور چسبان با رزرو بازدید", "پنل مشاور: قیف مشتری، بازدیدها، نردبان، فرم ثبت آگهی"]
+  },
+  "swatches": ["#f6f4ef", "#ffffff", "#55702b", "#d99a2b", "#1d211c"],
+  "fonts": { "latin": "Young Serif + Albert Sans", "persian": "Vazirmatn", "mono": "system mono" },
+  "icons": "Material Symbols Sharp (subset)",
+  "brandTrials": ["1f6f8b", "8c3b2e", "2f4858", "6b4ea0"],
+  "demos": { "site": { "host": "ashiyaneh.example" }, "dashboard": { "host": "ashiyaneh.example/agent" } }
+}
