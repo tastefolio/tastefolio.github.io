@@ -1,0 +1,34 @@
+{
+  "name": "Syllabus",
+  "order": 20,
+  "category": "content",
+  "mode": "light",
+  "density": "balanced",
+  "persianFirst": true,
+  "tags": ["education", "online courses", "lms", "academy", "persian", "video", "student panel"],
+  "tagline": {
+    "en": "Online academy — navy graph-paper heroes, highlighter actions, curriculum with free previews and a real lesson player",
+    "fa": "آکادمی آنلاین — هیرو سرمه‌ای با کاغذ شطرنجی، اقدام‌های ماژیکی، سرفصل با پیش‌نمایش رایگان و پخش‌کنندهٔ واقعی درس"
+  },
+  "summary": {
+    "en": "A clear, encouraging language for online academies, course marketplaces and learning platforms, Persian-first. Cool paper surfaces and a navy structure for heroes, the lesson player and the footer, with a faint graph-paper grid; a highlighter-orange brand that always carries dark text, and a marker-yellow stroke under the key words of a heading. Course cards share one anatomy (thumbnail with length, instructor, level, rating, price), learning paths are dotted step tracks, the curriculum is an accordion with free previews and locks, and a sticky buy card sits beside it. The student panel has a navy welcome band with folder tabs, a weekly goal ring and streak, an agenda, a classroom with a working player (chapter ticks, speed, captions, time-stamped notes, Q&A, files) and certificates with public verification.",
+    "fa": "زبانی روشن و دلگرم‌کننده برای آکادمی‌های آنلاین، بازارگاه دوره و پلتفرم‌های یادگیری، فارسی‌محور. سطح‌های کاغذی خنک و ساختار سرمه‌ای برای هیرو، پخش‌کنندهٔ درس و فوتر، با شبکهٔ کم‌رنگ کاغذ شطرنجی؛ رنگ برند نارنجی ماژیکی که همیشه متن تیره دارد و خط ماژیک زرد زیر کلمه‌های کلیدی عنوان. کارت‌های دوره یک ساختار مشترک دارند (تصویر با مدت، مدرس، سطح، امتیاز، قیمت)، مسیرهای یادگیری خط نقطه‌چین مرحله‌ای‌اند، سرفصل آکاردئونی است با پیش‌نمایش رایگان و قفل، و کارت خرید چسبان کنار آن می‌نشیند. پنل دانشجو نوار خوش‌آمد سرمه‌ای با زبانه‌های پوشه‌ای، حلقهٔ هدف هفتگی و زنجیرهٔ روزها، برنامهٔ پیش رو، کلاس درس با پخش‌کنندهٔ کارا (نشانهٔ فصل‌ها، سرعت، زیرنویس، یادداشت با زمان، پرسش و پاسخ، فایل‌ها) و گواهی‌های قابل استعلام دارد."
+  },
+  "bestFor": {
+    "en": ["Online academies and course marketplaces", "Bootcamps, tutoring and language schools", "Corporate learning and onboarding portals", "Student panels with progress, lessons and certificates"],
+    "fa": ["آکادمی‌های آنلاین و بازارگاه دوره", "بوت‌کمپ، کلاس خصوصی و آموزشگاه زبان", "آموزش سازمانی و پورتال آشنایی کارکنان", "پنل دانشجو با پیشرفت، درس و گواهی"]
+  },
+  "avoidFor": {
+    "en": ["Luxury and fashion brands", "Dense trading or monitoring tools", "Children’s apps that need a playful, illustrated look"],
+    "fa": ["برندهای لوکس و مد", "ابزارهای معامله یا پایش پرتراکم", "اپ‌های کودک که ظاهر بازیگوش و تصویری می‌خواهند"]
+  },
+  "signature": {
+    "en": ["Navy graph-paper hero with a highlighter search", "Marker-yellow stroke under key words", "One course-card anatomy: length, instructor, level, rating, price", "Curriculum accordion with free previews, locks and a sticky buy card", "Navy welcome band with folder tabs, goal ring and streak", "Lesson player with chapter ticks, captions and time-stamped notes"],
+    "fa": ["هیروی سرمه‌ای شطرنجی با جست‌وجوی برجسته", "خط ماژیک زرد زیر کلمه‌های کلیدی", "یک ساختار برای کارت دوره: مدت، مدرس، سطح، امتیاز، قیمت", "سرفصل آکاردئونی با پیش‌نمایش رایگان، قفل و کارت خرید چسبان", "نوار خوش‌آمد سرمه‌ای با زبانه‌های پوشه‌ای، حلقهٔ هدف و زنجیرهٔ روزها", "پخش‌کنندهٔ درس با نشانهٔ فصل، زیرنویس و یادداشت با زمان"]
+  },
+  "swatches": ["#f6f7fb", "#0f1b3d", "#ff8c1a", "#ffe27a", "#111a33"],
+  "fonts": { "latin": "Lexend", "persian": "Vazirmatn", "mono": "system mono" },
+  "icons": "Tabler Icons (webfont)",
+  "brandTrials": ["38bdf8", "84cc16", "f472b6", "a78bfa"],
+  "demos": { "site": { "host": "pelleh.example" }, "dashboard": { "host": "pelleh.example/learn" } }
+}

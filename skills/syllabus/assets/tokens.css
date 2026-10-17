@@ -1,0 +1,150 @@
+/* Syllabus — design tokens (Tastefolio). Online academy: cool paper, a navy structure for heroes, players and
+   footers, a highlighter-orange brand that carries dark text, marker-yellow emphasis on key words, Lexend for
+   readability and progress everywhere. */
+:root {
+  --canvas: #f6f7fb;
+  --surface: #ffffff;
+  --surface-2: #eef1f7;
+  --surface-3: #e1e6f0;
+  --surface-ink: #0f1b3d;     /* navy: hero band, video player, footer */
+  --navy: #0f1b3d;
+  --navy-2: #1a2a57;
+  --overlay: rgba(10, 16, 40, .55);
+
+  --ink: #111a33;
+  --ink-2: #4a5574;
+  --ink-3: #8590ab;
+  --ink-inverse: #ffffff;
+
+  --line: #e4e8f1;
+  --line-2: #d1d8e6;
+
+  --brand: #ff8c1a;           /* highlighter orange — primary actions and progress; always with dark ink */
+  --brand-ink: #1b1204;
+  --brand-soft: color-mix(in oklab, var(--brand) 12%, #fff);
+  --brand-strong: color-mix(in oklab, var(--brand) 70%, #000);   /* brand as small text on paper (≥ 4.5:1) */
+  --marker: #ffe27a;          /* key words in headings, like a highlighter stroke */
+  --focus: color-mix(in oklab, var(--brand) 60%, transparent);
+
+  --success: #15994b;
+  --success-soft: #e2f5ea;
+  --warning: #b45309;
+  --warning-soft: #fdf0dc;
+  --danger: #d92d2d;
+  --danger-soft: #fde6e6;
+  --info: #2a62e8;
+  --info-soft: #e4ecff;
+
+  --chart-1: var(--brand);
+  --chart-2: #2a62e8;
+  --chart-3: #15994b;
+  --chart-4: #9b51e0;
+  --chart-5: #0ea5c6;
+  --chart-6: #94a0ba;
+  --chart-grid: #e9edf5;
+  --chart-axis: var(--ink-3);
+  --chart-curve: smooth;
+  --chart-stroke: 2.5;
+  --chart-area: .12;
+  --chart-radius: 7;
+  --chart-bar-gap: .42;
+  --chart-donut: 16;
+  --chart-gap: 3;
+  --chart-dots: 0;
+
+  --font-sans: "Lexend", "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Lexend", "Vazirmatn", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, "Vazirmatn", monospace;
+  --fs-xs: 12px;
+  --fs-sm: 13.5px;
+  --fs-md: 15.5px;
+  --fs-lg: 18px;
+  --fs-xl: 22px;
+  --fs-2xl: 30px;
+  --fs-3xl: 40px;
+  --fs-display: clamp(34px, 4.6vw, 62px);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 600;
+  --fw-display: 700;
+  --lh-tight: 1.12;
+  --lh-snug: 1.3;
+  --lh-body: 1.65;
+  --tracking-display: -.025em;
+  --tracking-caps: .06em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 72px;
+  --space-9: 100px;
+  --space-10: 140px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  --border-w: 1px;
+  --shadow-1: 0 1px 2px rgba(15, 27, 61, .06);
+  --shadow-2: 0 14px 34px -16px rgba(15, 27, 61, .28);
+  --shadow-3: 0 30px 70px -24px rgba(15, 27, 61, .45);
+
+  --container: 1240px;
+  --gutter: clamp(14px, 3vw, 32px);
+  --control-h: 44px;
+  --control-h-lg: 52px;
+
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --dur-1: 150ms;
+  --dur-2: 260ms;
+  --dur-3: 460ms;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --canvas: #0a1125;
+  --surface: #111a34;
+  --surface-2: #17223f;
+  --surface-3: #22305a;
+  --surface-ink: #060b1b;
+  --navy: #060b1b;
+  --navy-2: #0f1a38;
+  --overlay: rgba(0, 0, 0, .65);
+  --ink: #edf1fc;
+  --ink-2: #a9b3cf;
+  --ink-3: #7480a0;
+  --ink-inverse: #ffffff;
+  --line: #1f2b4d;
+  --line-2: #2c3a63;
+  --brand: #ffa040;
+  --brand-ink: #1b1204;
+  --brand-soft: color-mix(in oklab, var(--brand) 14%, transparent);
+  --brand-strong: color-mix(in oklab, var(--brand) 70%, #fff);
+  --marker: rgba(255, 210, 90, .32);
+  --success: #3fcf7e;
+  --success-soft: rgba(63, 207, 126, .14);
+  --warning: #f2b14d;
+  --warning-soft: rgba(242, 177, 77, .14);
+  --danger: #ff6b6b;
+  --danger-soft: rgba(255, 107, 107, .14);
+  --info: #6c95ff;
+  --info-soft: rgba(108, 149, 255, .14);
+  --chart-grid: #1c2849;
+  --shadow-2: 0 14px 34px -16px rgba(0, 0, 0, .7);
+  color-scheme: dark;
+}
+
+:root:lang(fa) {
+  --font-sans: "Vazirmatn", "Lexend", Tahoma, sans-serif;
+  --font-display: "Vazirmatn", "Lexend", sans-serif;
+  --fs-display: clamp(30px, 4vw, 54px);
+  --fw-display: 800;
+  --lh-tight: 1.5;
+  --lh-snug: 1.6;
+  --lh-body: 1.95;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+}

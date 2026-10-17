@@ -180,6 +180,15 @@
       ]
     },
     {
+      "name": "syllabus",
+      "description": "Tastefolio design language — Online academy — navy graph-paper heroes, highlighter actions, curriculum with free previews and a real lesson player",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/syllabus"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -203,7 +212,8 @@
         "./skills/clay",
         "./skills/maison",
         "./skills/bento",
-        "./skills/aisle"
+        "./skills/aisle",
+        "./skills/syllabus"
       ]
     }
   ]

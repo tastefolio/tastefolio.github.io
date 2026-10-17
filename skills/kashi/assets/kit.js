@@ -7,7 +7,7 @@
  *              [data-alt-placeholder|aria-label|title|alt|content|value|label], [data-lang-toggle], ?lang=en
  *   Theme      <html data-theme="light|dark">, [data-theme-toggle], ?theme=dark
  *   Brand      ?brand=ff5a36  → sets --brand and a readable --brand-ink
- *   Numbers    [data-num="12840" data-fmt="int|dec1|dec2|pct|pct1|pct2|compact|usd|eur|toman|signed|signedpct|dur"], [data-ago="120"], [data-date="2026-10-12" data-fmt="short|long|day|time"]
+ *   Numbers    [data-num="12840" data-fmt="int|dec1|dec2|pct|pct1|pct2|compact|usd|eur|toman|signed|signedpct|dur|clock"], [data-ago="120"], [data-date="2026-10-12" data-fmt="short|long|day|time"]
  *   Toggles    [data-toggle="#id"] → target[data-open]; target[data-dismissable] closes on outside click / Esc
  *   Tabs       [role=tablist] > [role=tab][aria-controls] with [role=tabpanel]
  *   Pressed    [data-group] > button[aria-pressed]   (radio-like button groups, segmented controls)
@@ -160,6 +160,11 @@
         const p = (x) => nf({}).format(x), p2 = (x) => nf({ minimumIntegerDigits: 2 }).format(x);
         return h ? `${p(h)}${u[0]} ${p2(m)}${u[1]}` : m ? `${p(m)}${u[1]} ${p2(sec)}${u[2]}` : `${p(sec)}${u[2]}`;
       }
+      case 'clock': { // seconds → 6:16 / 1:02:05 (media time, locale digits)
+        const t = Math.max(0, Math.floor(v)), h = Math.floor(t / 3600), m = Math.floor((t % 3600) / 60), sec = t % 60;
+        const p = (x, n = 1) => nf({ minimumIntegerDigits: n, useGrouping: false }).format(x);
+        return h ? `${p(h)}:${p(m, 2)}:${p(sec, 2)}` : `${p(m)}:${p(sec, 2)}`;
+      }
       case 'signedpct': return (v > 0 ? '+' : '') + nf({ style: 'percent', minimumFractionDigits: 1, maximumFractionDigits: 2 }).format(v / 100);
       default: return nf({ maximumFractionDigits: 0 }).format(v);
     }
@@ -257,6 +262,11 @@
       const panel = d.getElementById(t.getAttribute('aria-controls'));
       if (panel) panel.hidden = !sel;
     });
+    if (list.scrollWidth > list.clientWidth + 1) { // scrollable tab row: bring the selected tab into view (page scroll untouched)
+      const lr = list.getBoundingClientRect(), tr = tab.getBoundingClientRect();
+      if (tr.left < lr.left) list.scrollLeft -= lr.left - tr.left + 24;
+      else if (tr.right > lr.right) list.scrollLeft += tr.right - lr.right + 24;
+    }
     if (focus) tab.focus();
     tab.dispatchEvent(new CustomEvent('tf:tab', { bubbles: true, detail: { id: tab.getAttribute('aria-controls') } }));
     requestAnimationFrame(() => drawCharts(d.getElementById(tab.getAttribute('aria-controls')) || d));

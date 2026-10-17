@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="dashboard">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="My learning · Pelleh Academy">یادگیری من · آکادمی پله</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300..800&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .dash { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--space-4); }
+  .s4 { grid-column: span 4; } .s8 { grid-column: span 8; }
+  @media (max-width: 1100px) { .s8 { grid-column: 1 / -1; } .s4 { grid-column: span 6; } }
+  @media (max-width: 720px) { .s4 { grid-column: 1 / -1; } }
+  .find { position: relative; flex: 1; max-inline-size: 420px; }
+  .find .ti { position: absolute; inset-inline-start: 12px; inset-block-start: 50%; transform: translateY(-50%); color: var(--ink-3); pointer-events: none; }
+  .find .input { min-block-size: 40px; padding-inline-start: 40px; background: var(--surface-2); border-color: transparent; font-size: var(--fs-sm); }
+  @media (max-width: 760px) { .site-head .find { display: none; } }
+  .bell { position: relative; }
+  .bell .dot { position: absolute; inset-block-start: 6px; inset-inline-end: 7px; inline-size: 8px; block-size: 8px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 2px var(--surface); }
+  .me { display: inline-flex; align-items: center; gap: 8px; border: 0; background: none; padding: 3px 8px 3px 3px; border-radius: var(--radius-pill); cursor: pointer; font-size: var(--fs-sm); font-weight: 600; }
+  [dir="rtl"] .me { padding: 3px 3px 3px 8px; }
+  .me:hover { background: var(--surface-2); }
+  .drop-head { padding: 6px 10px 2px; font-size: var(--fs-sm); }
+  .pill-tabs .badge { padding: 0 8px; }
+  .pill-tabs [aria-selected="false"] .badge { background: rgba(255, 255, 255, .14); color: #fff; }
+  .rec { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
+  @media (max-width: 900px) { .rec { grid-template-columns: minmax(0, 1fr); } }
+  .rec-item { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 12px; align-items: center; }
+  .rec-item .thumb { border-radius: 12px; }
+  .rec-item .thumb > .ti { font-size: 28px; }
+  .split { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .streak { display: flex; align-items: center; gap: 8px; font-size: var(--fs-sm); color: var(--ink-2); }
+  .streak .ti { color: var(--brand-strong); font-size: 20px; }
+  .frames { display: flex; align-items: center; gap: 14px; direction: ltr; }
+  .frames span { inline-size: 68px; block-size: 44px; border-radius: 8px; background: rgba(255, 255, 255, .12); border: 1px solid rgba(255, 255, 255, .25); }
+  .frames span.b { inline-size: 92px; background: color-mix(in oklab, var(--brand) 32%, transparent); border-color: color-mix(in oklab, var(--brand) 75%, transparent); }
+  .lesson-title { display: flex; flex-wrap: wrap; align-items: center; gap: 10px var(--space-3); }
+  .lesson-title .stack { flex: 1; min-inline-size: 220px; }
+  .learn { display: grid; gap: 8px; font-size: var(--fs-sm); color: var(--ink-2); }
+  .learn li { display: flex; gap: 8px; align-items: center; }
+  .learn .ti { color: var(--success); }
+  .qa { display: grid; gap: var(--space-4); }
+  .qa-item { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; }
+  .qa-item p { font-size: var(--fs-sm); margin-block-start: 4px; }
+  .answer { margin-block-start: 10px; padding: 12px 14px; border-radius: var(--radius-sm); background: var(--surface-2); border-inline-start: 3px solid var(--brand); }
+  .files li { display: flex; align-items: center; gap: 12px; padding-block: 12px; }
+  .files li + li { border-block-start: 1px solid var(--line); }
+  .file-ic { inline-size: 42px; block-size: 42px; border-radius: 11px; display: grid; place-items: center; background: var(--c, var(--surface-2)); color: #1b2340; font-size: 21px; flex: none; }
+  .cert-wrap { display: grid; gap: 12px; align-content: start; }
+  .cert .logo { font-size: 15px; color: #0f1b3d; }
+  .cert .logo-mark { inline-size: 26px; block-size: 26px; border-radius: 7px; }
+  .cert .logo-mark::before { inset: 6px; }
+  .cert .ltr { font-size: 11px; letter-spacing: .04em; color: #6b7391; }
+  .lock-note { position: absolute; inset: 0; display: grid; place-items: center; }
+  .lock-note span { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: var(--radius-pill); background: var(--navy); color: #fff; font-size: var(--fs-sm); font-weight: 600; box-shadow: var(--shadow-2); }
+  .verify { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-4); align-items: end; }
+  @media (max-width: 640px) { .verify { grid-template-columns: minmax(0, 1fr); } }
+  .day-chips button { min-inline-size: 44px; justify-content: center; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<header class="site-head">
+  <div class="container">
+    <a class="logo" href="site.html"><span class="logo-mark" aria-hidden="true"></span><span data-alt="Pelleh">پله</span></a>
+    <form class="find" role="search" onsubmit="event.preventDefault()">
+      <i class="ti ti-search" aria-hidden="true"></i>
+      <label class="sr-only" for="find" data-alt="Search your courses">جست‌وجو در دوره‌های من</label>
+      <input class="input" id="find" type="search" autocomplete="off" placeholder="جست‌وجو در دوره‌های من…  /" data-alt-placeholder="Search my courses…  /" data-hotkey="/">
+    </form>
+    <div class="head-end">
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+      <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="تغییر حالت تیره" data-alt-aria-label="Toggle dark mode"><i class="ti ti-moon" aria-hidden="true"></i></button>
+      <div class="drop">
+        <button class="btn btn-ghost btn-icon btn-sm bell" type="button" data-toggle="#notif" aria-controls="notif" aria-expanded="false" aria-label="اعلان‌ها، ۳ مورد تازه" data-alt-aria-label="Notifications, 3 new"><i class="ti ti-bell" aria-hidden="true"></i><span class="dot" aria-hidden="true"></span></button>
+        <div class="drop-panel end" id="notif" data-dismissable>
+          <b class="drop-head" data-alt="Notifications">اعلان‌ها</b>
+          <a href="#main" data-goto="tab-home"><i class="ti ti-video" aria-hidden="true" style="--c: var(--danger-soft)"></i><span><b data-alt="Live clinic today at 18:00">کلینیک زنده امروز ساعت ۱۸</b><small data-alt="Sara Mohammadi · portfolio reviews">سارا محمدی · بازبینی نمونه‌کار</small></span></a>
+          <a href="#main" data-goto="tab-class"><i class="ti ti-message-circle" aria-hidden="true" style="--c: var(--info-soft)"></i><span><b data-alt="Your question got an answer">به پرسش شما پاسخ داده شد</b><small data-alt="Smart animate · 2 hours ago">انیمیشن هوشمند · ۲ ساعت پیش</small></span></a>
+          <a href="#main" data-goto="tab-certs"><i class="ti ti-certificate" aria-hidden="true" style="--c: var(--success-soft)"></i><span><b data-alt="Certificate issued">گواهی صادر شد</b><small data-alt="Python for data analysis">پایتون برای تحلیل داده</small></span></a>
+        </div>
+      </div>
+      <div class="drop">
+        <button class="me" type="button" data-toggle="#me-menu" aria-controls="me-menu" aria-expanded="false" aria-label="حساب کاربری" data-alt-aria-label="Account"><span class="avatar" style="--c: var(--brand-soft)" data-alt="MH">م</span><span class="hide-sm" data-alt="Maryam">مریم</span><i class="ti ti-chevron-down" aria-hidden="true"></i></button>
+        <div class="drop-panel end" id="me-menu" data-dismissable>
+          <a href="#main" data-goto="tab-courses"><i class="ti ti-books" aria-hidden="true"></i><span><b data-alt="My courses">دوره‌های من</b><small data-alt="6 courses · 2 in progress">۶ دوره · ۲ در حال یادگیری</small></span></a>
+          <a href="#goal" data-dialog="#goal-dialog"><i class="ti ti-target-arrow" aria-hidden="true" style="--c: var(--warning-soft)"></i><span><b data-alt="Goal &amp; reminders">هدف و یادآوری</b><small data-alt="300 minutes a week">۳۰۰ دقیقه در هفته</small></span></a>
+          <a href="site.html#pricing"><i class="ti ti-crown" aria-hidden="true" style="--c: var(--info-soft)"></i><span><b data-alt="Membership">اشتراک</b><small data-alt="Yearly · renews 1 Bahman">سالانه · تمدید ۱ بهمن</small></span></a>
+          <a href="site.html"><i class="ti ti-logout" aria-hidden="true" style="--c: var(--surface-2)"></i><span><b data-alt="Sign out">خروج</b><small data-alt="Back to the academy">بازگشت به آکادمی</small></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="welcome on-navy graph">
+  <div class="container">
+    <div class="hello">
+      <div class="stack" style="gap: 6px">
+        <span class="eyebrow"><i class="ti ti-calendar" aria-hidden="true"></i><span data-date="2026-10-14" data-fmt="long">۲۲ مهر ۱۴۰۵</span></span>
+        <h1 class="h1"><span data-alt="Hi Maryam,">سلام مریم،</span> <span class="marker" data-alt="5 days in a row">۵ روز پشت‌سرهم</span> <span data-alt="of learning.">درس خوانده‌ای.</span></h1>
+        <p class="lead"><b data-left data-num="95">۹۵</b> <span data-alt="minutes to this week’s goal. Today’s lesson takes 16.">دقیقه تا هدف این هفته مانده؛ درس امروز ۱۶ دقیقه است.</span></p>
+      </div>
+      <div class="goal">
+        <i class="ti ti-target-arrow" aria-hidden="true" style="font-size: 24px; color: var(--brand)"></i>
+        <span><b data-studied data-num="205">۲۰۵</b> / <span data-goal data-num="300">۳۰۰</span> <span data-alt="min this week">دقیقه این هفته</span></span>
+        <button class="btn btn-primary btn-sm" type="button" data-dialog="#goal-dialog" data-alt="Change goal">تغییر هدف</button>
+      </div>
+    </div>
+    <div class="pill-tabs" role="tablist" aria-label="بخش‌های پنل" data-alt-aria-label="Panel sections">
+      <button type="button" role="tab" id="tab-home" aria-controls="p-home" aria-selected="true"><i class="ti ti-layout-grid" aria-hidden="true"></i><span data-alt="Overview">پیشخوان</span></button>
+      <button type="button" role="tab" id="tab-courses" aria-controls="p-courses" aria-selected="false"><i class="ti ti-books" aria-hidden="true"></i><span data-alt="My courses">دوره‌های من</span><span class="badge" data-num="6">۶</span></button>
+      <button type="button" role="tab" id="tab-class" aria-controls="p-class" aria-selected="false"><i class="ti ti-player-play" aria-hidden="true"></i><span data-alt="Classroom">کلاس درس</span></button>
+      <button type="button" role="tab" id="tab-certs" aria-controls="p-certs" aria-selected="false"><i class="ti ti-certificate" aria-hidden="true"></i><span data-alt="Certificates">گواهی‌ها</span><span class="badge" data-num="2">۲</span></button>
+    </div>
+  </div>
+</section>
+
+<main id="main" class="container" style="padding-block: var(--space-5) var(--space-8)">
+  <!-- ============================================================ overview -->
+  <section class="dash" role="tabpanel" id="p-home" aria-labelledby="tab-home">
+    <article class="panel s8">
+      <div class="panel-head"><h2 data-alt="Continue learning">ادامهٔ یادگیری</h2><button class="btn btn-ghost btn-sm" type="button" data-goto="tab-courses"><span data-alt="All my courses">همهٔ دوره‌هایم</span><i class="ti ti-chevron-right flip-rtl" aria-hidden="true"></i></button></div>
+      <div class="continue">
+        <div class="thumb" style="--bg: linear-gradient(135deg, #ff8c1a, #ff5f6d)"><i class="ti ti-layout-dashboard" aria-hidden="true"></i><span class="len" data-num="990" data-fmt="clock">۱۶:۳۰</span><span class="play" aria-hidden="true" style="opacity: 1; transform: none"><i class="ti ti-player-play-filled"></i></span></div>
+        <div class="stack" style="gap: 12px">
+          <span class="eyebrow" data-alt="Chapter 3 · Lesson 8 — Smart animate">فصل ۳ · درس ۸ — انیمیشن هوشمند</span>
+          <h3 class="h2" data-alt="UI design with Figma, from zero to portfolio">طراحی رابط کاربری با فیگما، از صفر تا نمونه‌کار</h3>
+          <div class="teacher"><span class="avatar" style="--c:#fff1e0" data-alt="SM">س</span><span data-alt="Sara Mohammadi">سارا محمدی</span></div>
+          <div class="stack" style="gap: 6px">
+            <div class="split"><span class="small subtle"><span data-done-count data-num="27">۲۷</span> <span data-alt="of 42 lessons">از ۴۲ درس</span></span><b class="small" data-done-pct data-num="64" data-fmt="pct">۶۴٪</b></div>
+            <div class="progress"><i data-done-bar style="--v:64%"></i></div>
+          </div>
+          <div class="row"><button class="btn btn-primary" type="button" data-goto="tab-class"><i class="ti ti-player-play-filled" aria-hidden="true"></i><span data-alt="Resume lesson">ادامهٔ درس</span></button><button class="btn btn-outline" type="button" data-toast="جزوهٔ فصل ۳ دانلود شد" data-toast-alt="Chapter 3 notes downloaded"><i class="ti ti-file-text" aria-hidden="true"></i><span data-alt="Chapter notes">جزوهٔ فصل</span></button></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="panel s4">
+      <div class="panel-head"><h2 data-alt="Weekly goal">هدف هفتگی</h2><button class="btn btn-ghost btn-icon btn-sm" type="button" data-dialog="#goal-dialog" aria-label="ویرایش هدف" data-alt-aria-label="Edit goal"><i class="ti ti-pencil" aria-hidden="true"></i></button></div>
+      <div id="goal-donut" data-chart="donut" data-height="164" data-fmt="int" data-values="205,95" data-labels='{"en":["Studied","To go"],"fa":["مطالعه‌شده","مانده"]}' data-center='{"en":"205 / 300 min","fa":"۲۰۵ از ۳۰۰ دقیقه"}' data-label='{"en":"205 of 300 minutes this week","fa":"۲۰۵ از ۳۰۰ دقیقهٔ این هفته"}' style="--chart-2: var(--surface-2)"></div>
+      <div class="week" role="img" aria-label="این هفته: شنبه تا چهارشنبه مطالعه شده" data-alt-aria-label="This week: studied Saturday to Wednesday" style="margin-block: var(--space-4) var(--space-3)">
+        <span><span data-alt="Sa">ش</span><b class="on"><i class="ti ti-check" aria-hidden="true"></i></b></span>
+        <span><span data-alt="Su">ی</span><b class="on"><i class="ti ti-check" aria-hidden="true"></i></b></span>
+        <span><span data-alt="Mo">د</span><b class="on"><i class="ti ti-check" aria-hidden="true"></i></b></span>
+        <span><span data-alt="Tu">س</span><b class="on"><i class="ti ti-check" aria-hidden="true"></i></b></span>
+        <span><span data-alt="We">چ</span><b class="on today"><i class="ti ti-check" aria-hidden="true"></i></b></span>
+        <span><span data-alt="Th">پ</span><b></b></span>
+        <span><span data-alt="Fr">ج</span><b></b></span>
+      </div>
+      <p class="streak"><i class="ti ti-flame" aria-hidden="true"></i><span data-alt="Best streak: 12 days">بهترین رکورد: ۱۲ روز</span></p>
+    </article>
+
+    <article class="panel s8">
+      <div class="panel-head"><h2 data-alt="Study time">زمان مطالعه</h2>
+        <div class="seg" data-group="range" role="group" aria-label="بازه" data-alt-aria-label="Range"><button type="button" data-value="w" aria-pressed="true" data-alt="7 days">۷ روز</button><button type="button" data-value="m" aria-pressed="false" data-alt="30 days">۳۰ روز</button></div>
+      </div>
+      <div data-when="range:w"><div data-chart="bar" data-height="220" data-fmt="int" data-dates="2026-10-08,7,day,short" data-values="25,0,40,35,55,30,45" data-name='{"en":"Minutes","fa":"دقیقه"}' data-label='{"en":"Minutes studied per day, last 7 days","fa":"دقیقهٔ مطالعه در هر روز، ۷ روز اخیر"}'></div></div>
+      <div data-when="range:m" hidden><div data-chart="area" data-height="220" data-fmt="int" data-dates="2026-09-15,30,day,short" data-values="20,35,0,15,40,45,30,0,25,30,50,35,20,0,45,60,30,25,40,0,15,35,55,25,0,40,35,55,30,45" data-name='{"en":"Minutes","fa":"دقیقه"}' data-label='{"en":"Minutes studied per day, last 30 days","fa":"دقیقهٔ مطالعه در هر روز، ۳۰ روز اخیر"}'></div></div>
+    </article>
+
+    <article class="panel s4">
+      <div class="panel-head"><h2 data-alt="Coming up">پیش رو</h2></div>
+      <ul class="agenda">
+        <li><span class="when"><span data-alt="Today">امروز</span><b data-alt="14">۲۲</b></span><div class="stack" style="gap: 2px"><b class="small" data-alt="Live: portfolio clinic">جلسهٔ زنده: کلینیک نمونه‌کار</b><span class="tiny subtle" data-alt="18:00 · Sara Mohammadi · 45 min">ساعت ۱۸ · سارا محمدی · ۴۵ دقیقه</span></div><button class="btn btn-primary btn-sm" type="button" data-toast="اتاق جلسه ۱۰ دقیقه پیش از شروع باز می‌شود" data-toast-alt="The room opens 10 minutes before the start" data-alt="Join">ورود</button></li>
+        <li><span class="when"><span data-date="2026-10-15" data-fmt="day">پنجشنبه</span><b data-alt="15">۲۳</b></span><div class="stack" style="gap: 2px"><b class="small" data-alt="Quiz: prototyping">آزمون: پروتوتایپ</b><span class="tiny subtle" data-alt="10 questions · 15 min">۱۰ پرسش · ۱۵ دقیقه</span></div><span class="badge warn" data-alt="Quiz">آزمون</span></li>
+        <li><span class="when"><span data-date="2026-10-17" data-fmt="day">شنبه</span><b data-alt="17">۲۵</b></span><div class="stack" style="gap: 2px"><b class="small" data-alt="Project due: app prototype">تحویل پروژه: پروتوتایپ اپ</b><span class="tiny subtle" data-alt="Reviewed by a mentor in 48 h">بازبینی منتور ظرف ۴۸ ساعت</span></div><span class="badge info" data-alt="Project">پروژه</span></li>
+      </ul>
+    </article>
+
+    <article class="panel s4">
+      <div class="panel-head"><h2 data-alt="Your path">مسیر شما</h2><span class="badge brand" data-alt="Product designer">طراح محصول</span></div>
+      <ol class="steps" style="--n:4">
+        <li class="done"><span class="node"><i class="ti ti-check" aria-hidden="true"></i></span><span data-alt="Basics">مبانی</span></li>
+        <li class="now"><span class="node" data-num="2">۲</span><span data-alt="Figma">فیگما</span></li>
+        <li><span class="node" data-num="3">۳</span><span data-alt="Research">پژوهش</span></li>
+        <li><span class="node" data-num="4">۴</span><span data-alt="Portfolio">نمونه‌کار</span></li>
+      </ol>
+      <div class="stack" style="gap: 6px; margin-block-start: var(--space-4)">
+        <div class="split"><span class="small subtle" data-alt="Path progress">پیشرفت مسیر</span><b class="small" data-num="41" data-fmt="pct">۴۱٪</b></div>
+        <div class="progress"><i style="--v:41%"></i></div>
+        <span class="tiny subtle" data-alt="Next stop: user research · 3 courses · 22 hours">ایستگاه بعد: پژوهش کاربر · ۳ دوره · ۲۲ ساعت</span>
+      </div>
+    </article>
+
+    <article class="panel s8">
+      <div class="panel-head"><h2 data-alt="Recommended for your path">پیشنهاد برای مسیر شما</h2><a class="btn btn-ghost btn-sm" href="site.html#courses"><span data-alt="Browse all">همهٔ دوره‌ها</span><i class="ti ti-chevron-right flip-rtl" aria-hidden="true"></i></a></div>
+      <div class="rec">
+        <div class="rec-item"><div class="thumb" style="--bg: linear-gradient(135deg, #9b51e0, #4b2a8f)"><i class="ti ti-users" aria-hidden="true"></i></div><div class="stack" style="gap: 4px"><b class="small" data-alt="User research in two weeks">پژوهش کاربر در دو هفته</b><span class="tiny subtle" data-alt="Leila Ahmadi · 8 hrs">لیلا احمدی · ۸ ساعت</span><button class="btn btn-outline btn-sm" type="button" style="justify-self: start" aria-pressed="false" data-save><i class="ti ti-bookmark" aria-hidden="true"></i><span data-alt="Save">ذخیره</span></button></div></div>
+        <div class="rec-item"><div class="thumb" style="--bg: linear-gradient(135deg, #0ea5c6, #1a2a57)"><i class="ti ti-forms" aria-hidden="true"></i></div><div class="stack" style="gap: 4px"><b class="small" data-alt="UX writing for interfaces">نگارش رابط کاربری</b><span class="tiny subtle" data-alt="Arash Nouri · 5 hrs">آرش نوری · ۵ ساعت</span><button class="btn btn-outline btn-sm" type="button" style="justify-self: start" aria-pressed="false" data-save><i class="ti ti-bookmark" aria-hidden="true"></i><span data-alt="Save">ذخیره</span></button></div></div>
+        <div class="rec-item"><div class="thumb" style="--bg: linear-gradient(135deg, #15994b, #0c5b31)"><i class="ti ti-clipboard-check" aria-hidden="true"></i></div><div class="stack" style="gap: 4px"><b class="small" data-alt="Usability testing on a budget">آزمون کاربردپذیری کم‌هزینه</b><span class="tiny subtle" data-alt="Sara Mohammadi · 6 hrs">سارا محمدی · ۶ ساعت</span><button class="btn btn-outline btn-sm" type="button" style="justify-self: start" aria-pressed="false" data-save><i class="ti ti-bookmark" aria-hidden="true"></i><span data-alt="Save">ذخیره</span></button></div></div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============================================================ my courses -->
+  <section role="tabpanel" id="p-courses" aria-labelledby="tab-courses" hidden data-filter-scope>
+    <div class="panel-head">
+      <h2 class="h2" data-alt="My courses">دوره‌های من</h2>
+      <div class="find" style="max-inline-size: 300px"><i class="ti ti-search" aria-hidden="true"></i><input class="input" type="search" data-filter-search aria-label="جست‌وجو در دوره‌های من" data-alt-aria-label="Search my courses" placeholder="جست‌وجو…" data-alt-placeholder="Search…"></div>
+    </div>
+    <div class="chips" data-group role="group" aria-label="وضعیت" data-alt-aria-label="Status" style="margin-block-end: var(--space-5)">
+      <button type="button" data-filter="status" data-value="all" aria-pressed="true"><span data-alt="All">همه</span><small data-num="6">۶</small></button>
+      <button type="button" data-filter="status" data-value="active" aria-pressed="false"><span data-alt="In progress">در حال یادگیری</span><small data-num="2">۲</small></button>
+      <button type="button" data-filter="status" data-value="done" aria-pressed="false"><span data-alt="Finished">تمام‌شده</span><small data-num="2">۲</small></button>
+      <button type="button" data-filter="status" data-value="saved" aria-pressed="false"><span data-alt="Saved">ذخیره‌شده</span><small data-num="2">۲</small></button>
+    </div>
+    <div class="cgrid">
+      <article class="course" data-filter-item data-status="active" data-keywords="figma ui design فیگما طراحی"><div class="thumb" style="--bg: linear-gradient(135deg, #ff8c1a, #ff5f6d)"><i class="ti ti-layout-dashboard" aria-hidden="true"></i><span class="len"><span data-num="11">۱۱</span> <span data-alt="hrs">ساعت</span></span></div><div class="body"><span class="kicker" data-alt="Design">طراحی</span><h3 class="title" data-alt="UI design with Figma, from zero to portfolio">طراحی رابط کاربری با فیگما، از صفر تا نمونه‌کار</h3><div class="teacher"><span class="avatar" style="--c:#fff1e0" data-alt="SM">س</span><span data-alt="Sara Mohammadi">سارا محمدی</span></div><div class="stack" style="gap: 6px"><div class="split"><span class="tiny subtle"><span data-done-count data-num="27">۲۷</span> <span data-alt="of 42 lessons">از ۴۲ درس</span></span><b class="tiny" data-done-pct data-num="64" data-fmt="pct">۶۴٪</b></div><div class="progress"><i data-done-bar style="--v:64%"></i></div></div><div class="foot"><span class="tiny subtle"><span data-alt="Opened">آخرین بازدید</span> <span data-ago="7200">۲ ساعت پیش</span></span><button class="btn btn-primary btn-sm" type="button" data-goto="tab-class" data-alt="Resume">ادامه</button></div></div></article>
+      <article class="course" data-filter-item data-status="active" data-keywords="react javascript ری‌اکت"><div class="thumb" style="--bg: linear-gradient(135deg, #0ea5c6, #1a2a57)"><i class="ti ti-brand-react" aria-hidden="true"></i><span class="len"><span data-num="30">۳۰</span> <span data-alt="hrs">ساعت</span></span></div><div class="body"><span class="kicker" data-alt="Programming">برنامه‌نویسی</span><h3 class="title" data-alt="React from scratch: build three real apps">ری‌اکت از صفر: ساخت سه اپ واقعی</h3><div class="teacher"><span class="avatar" style="--c:#e0f6fa" data-alt="MR">م</span><span data-alt="Mahsa Rahimi">مهسا رحیمی</span></div><div class="stack" style="gap: 6px"><div class="split"><span class="tiny subtle"><span data-num="8">۸</span> <span data-alt="of 64 lessons">از ۶۴ درس</span></span><b class="tiny" data-num="12" data-fmt="pct">۱۲٪</b></div><div class="progress"><i style="--v:12%"></i></div></div><div class="foot"><span class="tiny subtle"><span data-alt="Opened">آخرین بازدید</span> <span data-ago="432000">۵ روز پیش</span></span><button class="btn btn-primary btn-sm" type="button" data-toast="درس ۹ ری‌اکت آماده است" data-toast-alt="React lesson 9 is ready" data-alt="Resume">ادامه</button></div></div></article>
+      <article class="course" data-filter-item data-status="done" data-keywords="python pandas data پایتون داده"><div class="thumb" style="--bg: linear-gradient(135deg, #2a62e8, #0f1b3d)"><i class="ti ti-brand-python" aria-hidden="true"></i><span class="tag badge ok"><i class="ti ti-check" aria-hidden="true"></i><span data-alt="Finished">تمام‌شده</span></span><span class="len"><span data-num="24">۲۴</span> <span data-alt="hrs">ساعت</span></span></div><div class="body"><span class="kicker" data-alt="Data">داده</span><h3 class="title" data-alt="Python for data analysis with pandas">پایتون برای تحلیل داده با پانداس</h3><div class="teacher"><span class="avatar" style="--c:#e4ecff" data-alt="RK">ر</span><span data-alt="Reza Karimi">رضا کریمی</span></div><div class="stack" style="gap: 6px"><div class="split"><span class="tiny subtle"><span data-alt="Score">نمره</span> <span data-num="94">۹۴</span></span><b class="tiny" data-num="100" data-fmt="pct">۱۰۰٪</b></div><div class="progress done"><i style="--v:100%"></i></div></div><div class="foot"><span class="badge ok"><i class="ti ti-certificate" aria-hidden="true"></i><span data-alt="Certificate">گواهی</span></span><button class="btn btn-outline btn-sm" type="button" data-goto="tab-certs" data-alt="View certificate">دیدن گواهی</button></div></div></article>
+      <article class="course" data-filter-item data-status="done" data-keywords="photo photography mobile camera عکاسی موبایل"><div class="thumb" style="--bg: linear-gradient(135deg, #15994b, #0c5b31)"><i class="ti ti-camera" aria-hidden="true"></i><span class="tag badge ok"><i class="ti ti-check" aria-hidden="true"></i><span data-alt="Finished">تمام‌شده</span></span><span class="len"><span data-num="6">۶</span> <span data-alt="hrs">ساعت</span></span></div><div class="body"><span class="kicker" data-alt="Photo &amp; video">عکس و فیلم</span><h3 class="title" data-alt="Mobile photography that looks professional">عکاسی با موبایل، با نتیجهٔ حرفه‌ای</h3><div class="teacher"><span class="avatar" style="--c:#e2f5ea" data-alt="NS">ن</span><span data-alt="Nima Sadeghi">نیما صادقی</span></div><div class="stack" style="gap: 6px"><div class="split"><span class="tiny subtle"><span data-alt="Score">نمره</span> <span data-num="88">۸۸</span></span><b class="tiny" data-num="100" data-fmt="pct">۱۰۰٪</b></div><div class="progress done"><i style="--v:100%"></i></div></div><div class="foot"><span class="badge ok"><i class="ti ti-certificate" aria-hidden="true"></i><span data-alt="Certificate">گواهی</span></span><button class="btn btn-outline btn-sm" type="button" data-goto="tab-certs" data-alt="View certificate">دیدن گواهی</button></div></div></article>
+      <article class="course" data-filter-item data-status="saved" data-keywords="english interview job انگلیسی زبان مصاحبه"><div class="thumb" style="--bg: linear-gradient(135deg, #9b51e0, #4b2a8f)"><i class="ti ti-language" aria-hidden="true"></i><span class="len"><span data-num="9">۹</span> <span data-alt="hrs">ساعت</span></span></div><div class="body"><span class="kicker" data-alt="Languages">زبان</span><h3 class="title" data-alt="English for job interviews">انگلیسی برای مصاحبهٔ کاری</h3><div class="teacher"><span class="avatar" style="--c:#f1e7fb" data-alt="AN">آ</span><span data-alt="Arash Nouri">آرش نوری</span></div><div class="stack" style="gap: 6px"><div class="split"><span class="tiny subtle" data-alt="Not started">شروع نشده</span><b class="tiny" data-num="0" data-fmt="pct">۰٪</b></div><div class="progress"><i style="--v:0%"></i></div></div><div class="foot"><span class="tiny subtle"><i class="ti ti-bookmark-filled" aria-hidden="true"></i> <span data-alt="Saved">ذخیره‌شده</span></span><button class="btn btn-outline btn-sm" type="button" data-toast="درس اول باز شد" data-toast-alt="Lesson one unlocked" data-alt="Start lesson 1">شروع درس ۱</button></div></div></article>
+      <article class="course" data-filter-item data-status="saved" data-keywords="product management pm مدیریت محصول"><div class="thumb" style="--bg: linear-gradient(135deg, #f2b14d, #e06f00)"><i class="ti ti-route" aria-hidden="true"></i><span class="len"><span data-num="14">۱۴</span> <span data-alt="hrs">ساعت</span></span></div><div class="body"><span class="kicker" data-alt="Business">کسب‌وکار</span><h3 class="title" data-alt="Product management for growing teams">مدیریت محصول برای تیم‌های در حال رشد</h3><div class="teacher"><span class="avatar" style="--c:#fdf0dc" data-alt="LA">ل</span><span data-alt="Leila Ahmadi">لیلا احمدی</span></div><div class="stack" style="gap: 6px"><div class="split"><span class="tiny subtle" data-alt="Not started">شروع نشده</span><b class="tiny" data-num="0" data-fmt="pct">۰٪</b></div><div class="progress"><i style="--v:0%"></i></div></div><div class="foot"><span class="tiny subtle"><i class="ti ti-bookmark-filled" aria-hidden="true"></i> <span data-alt="Saved">ذخیره‌شده</span></span><button class="btn btn-outline btn-sm" type="button" data-toast="درس اول باز شد" data-toast-alt="Lesson one unlocked" data-alt="Start lesson 1">شروع درس ۱</button></div></div></article>
+    </div>
+    <p class="empty" data-filter-empty hidden data-alt="Nothing here — try another filter.">چیزی پیدا نشد — فیلتر دیگری را امتحان کنید.</p>
+  </section>
+
+  <!-- ============================================================ classroom -->
+  <section role="tabpanel" id="p-class" aria-labelledby="tab-class" hidden>
+    <div class="lesson-layout">
+      <div class="stack" style="gap: var(--space-4)">
+        <div class="player" id="player">
+          <div class="slide" aria-hidden="true"><div class="head"><span class="k"><span data-alt="Chapter">فصل</span> <span data-ch-num data-num="3">۳</span> · <span data-ch-name data-alt="Prototyping">پروتوتایپ</span></span><b data-lesson-title data-alt="Smart animate">انیمیشن هوشمند</b></div><div class="art frames"><span></span><i class="ti ti-arrow-narrow-right" aria-hidden="true" style="font-size: 26px"></i><span class="b"></span></div></div>
+          <p class="caption" id="cc"><span data-alt="Smart animate pairs layers with the same name across two frames.">انیمیشن هوشمند لایه‌های هم‌نام را در دو فریم با هم جفت می‌کند.</span></p>
+          <button class="big-play" type="button" data-play aria-label="پخش درس" data-alt-aria-label="Play lesson"><i class="ti ti-player-play-filled" aria-hidden="true"></i></button>
+          <div class="bar">
+            <div class="track" id="track" role="slider" tabindex="0" aria-label="زمان درس" data-alt-aria-label="Lesson time" aria-valuemin="0" aria-valuemax="990" aria-valuenow="376"><i></i><span class="tick" style="inset-inline-start: 21%"></span><span class="tick" style="inset-inline-start: 48%"></span><span class="tick" style="inset-inline-start: 77%"></span></div>
+            <div class="controls">
+              <button type="button" data-play aria-pressed="false" aria-label="پخش" data-alt-aria-label="Play"><i class="ti ti-player-play-filled" aria-hidden="true"></i></button>
+              <button class="hide-sm" type="button" data-seek="-10" aria-label="۱۰ ثانیه عقب" data-alt-aria-label="Back 10 seconds"><i class="ti ti-rewind-backward-10" aria-hidden="true"></i></button>
+              <button class="hide-sm" type="button" data-seek="10" aria-label="۱۰ ثانیه جلو" data-alt-aria-label="Forward 10 seconds"><i class="ti ti-rewind-forward-10" aria-hidden="true"></i></button>
+              <span class="time" id="time">۶:۱۶ / ۱۶:۳۰</span>
+              <span class="spacer"></span>
+              <select id="speed" aria-label="سرعت پخش" data-alt-aria-label="Playback speed"><option value="1">1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="2">2×</option></select>
+              <button type="button" id="cc-toggle" aria-pressed="true" aria-label="زیرنویس" data-alt-aria-label="Captions"><i class="ti ti-badge-cc" aria-hidden="true"></i></button>
+              <button type="button" id="fs" aria-label="تمام‌صفحه" data-alt-aria-label="Full screen"><i class="ti ti-maximize" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="lesson-title">
+          <div class="stack" style="gap: 0">
+            <span class="small subtle"><span data-alt="Chapter">فصل</span> <span data-ch-num data-num="3">۳</span> · <span data-alt="Lesson">درس</span> <span data-l-num data-num="8">۸</span> <span data-alt="of">از</span> <span data-l-total data-num="10">۱۰</span></span>
+            <h2 class="h2" data-lesson-title data-alt="Smart animate">انیمیشن هوشمند</h2>
+          </div>
+          <div class="row" style="gap: 8px">
+            <button class="btn btn-outline btn-sm" type="button" data-lesson-step="-1"><i class="ti ti-chevron-left flip-rtl" aria-hidden="true"></i><span data-alt="Previous">قبلی</span></button>
+            <button class="btn btn-sm" type="button" data-lesson-step="1"><span data-alt="Next lesson">درس بعد</span><i class="ti ti-chevron-right flip-rtl" aria-hidden="true"></i></button>
+          </div>
+        </div>
+        <label class="check"><input type="checkbox" id="complete"><span data-alt="I’ve finished this lesson">این درس را تمام کردم</span></label>
+
+        <div class="panel">
+          <div class="tabs" role="tablist" aria-label="جزئیات درس" data-alt-aria-label="Lesson details">
+            <button type="button" role="tab" id="lt-about" aria-controls="lp-about" aria-selected="true" data-alt="Overview">درباره</button>
+            <button type="button" role="tab" id="lt-notes" aria-controls="lp-notes" aria-selected="false"><span data-alt="My notes">یادداشت‌ها</span> <span class="badge" id="notes-count" data-num="3">۳</span></button>
+            <button type="button" role="tab" id="lt-qa" aria-controls="lp-qa" aria-selected="false"><span data-alt="Q&amp;A">پرسش و پاسخ</span> <span class="badge" id="qa-count" data-num="2">۲</span></button>
+            <button type="button" role="tab" id="lt-files" aria-controls="lp-files" aria-selected="false" data-alt="Files">فایل‌ها</button>
+          </div>
+          <div role="tabpanel" id="lp-about" aria-labelledby="lt-about" class="stack" style="padding-block-start: var(--space-4)">
+            <p class="muted" data-alt="Smart animate looks for layers with the same name in two frames and animates every difference between them — position, size, colour and rotation. In this lesson you turn a static card into an expanding detail view.">انیمیشن هوشمند لایه‌های هم‌نام را در دو فریم پیدا می‌کند و هر تفاوتی میان آن‌ها را متحرک می‌کند — جایگاه، اندازه، رنگ و چرخش. در این درس یک کارت ساده را به نمای جزئیات بازشونده تبدیل می‌کنید.</p>
+            <ul class="learn">
+              <li><i class="ti ti-circle-check" aria-hidden="true"></i><span data-alt="Name layers so frames can match">نام‌گذاری لایه‌ها برای جفت شدن فریم‌ها</span></li>
+              <li><i class="ti ti-circle-check" aria-hidden="true"></i><span data-alt="Choose easing and duration">انتخاب منحنی و مدت حرکت</span></li>
+              <li><i class="ti ti-circle-check" aria-hidden="true"></i><span data-alt="Avoid the three most common glitches">پرهیز از سه خطای رایج</span></li>
+            </ul>
+          </div>
+          <div role="tabpanel" id="lp-notes" aria-labelledby="lt-notes" hidden style="padding-block-start: var(--space-4)">
+            <ul class="note-list" id="notes">
+              <li><span class="stamp-time" data-num="102" data-fmt="clock">۱:۴۲</span><span data-alt="Layer names must match in both frames.">نام لایه‌ها باید در هر دو فریم یکی باشد.</span></li>
+              <li><span class="stamp-time" data-num="236" data-fmt="clock">۳:۵۶</span><span data-alt="Ease out for things entering, ease in for things leaving.">برای ورود Ease out، برای خروج Ease in.</span></li>
+              <li><span class="stamp-time" data-num="331" data-fmt="clock">۵:۳۱</span><span data-alt="300 ms feels right for cards.">برای کارت‌ها ۳۰۰ میلی‌ثانیه مناسب است.</span></li>
+            </ul>
+            <form class="stack" id="note-form" data-validate data-success="یادداشت ذخیره شد" data-success-alt="Note saved" style="margin-block-start: var(--space-4); gap: 10px">
+              <div class="field"><label class="label" for="note"><span data-alt="New note at">یادداشت تازه در لحظهٔ</span> <span class="stamp-time" id="stamp" data-num="376" data-fmt="clock">۶:۱۶</span></label><textarea class="textarea" id="note" name="note" required minlength="3" maxlength="400" placeholder="چه چیزی می‌خواهید به خاطر بسپارید؟" data-alt-placeholder="What do you want to remember?"></textarea></div>
+              <div class="row"><button class="btn btn-primary" type="submit" data-alt="Save note">ذخیرهٔ یادداشت</button><span class="hint" data-alt="Notes are private to you.">یادداشت‌ها فقط برای خودتان است.</span></div>
+            </form>
+          </div>
+          <div role="tabpanel" id="lp-qa" aria-labelledby="lt-qa" hidden style="padding-block-start: var(--space-4)">
+            <div class="qa" id="qa">
+              <div class="qa-item"><span class="avatar" style="--c:#e4ecff" data-alt="KJ">ک</span><div><div class="row" style="gap: 8px"><b class="small" data-alt="Kian J.">کیان ج.</b><span class="tiny subtle" data-ago="10800">۳ ساعت پیش</span><span class="stamp-time" data-num="512" data-fmt="clock">۸:۳۲</span></div><p data-alt="Why does my card jump instead of sliding?">چرا کارت من به‌جای لغزیدن، می‌پرد؟</p><div class="answer"><div class="row" style="gap: 8px"><b class="small" data-alt="Sara Mohammadi">سارا محمدی</b><span class="badge brand" data-alt="Instructor">مدرس</span></div><p data-alt="One of the layers was renamed in the second frame. Give both the same name and it will slide.">یکی از لایه‌ها در فریم دوم تغییر نام داده. هر دو را هم‌نام کنید تا بلغزد.</p></div></div></div>
+              <div class="qa-item"><span class="avatar" style="--c:#f1e7fb" data-alt="PS">پ</span><div><div class="row" style="gap: 8px"><b class="small" data-alt="Parisa S.">پریسا س.</b><span class="tiny subtle" data-ago="86400">دیروز</span><span class="stamp-time" data-num="845" data-fmt="clock">۱۴:۰۵</span></div><p data-alt="Can smart animate work with variants?">انیمیشن هوشمند با واریانت‌ها هم کار می‌کند؟</p><div class="answer"><div class="row" style="gap: 8px"><b class="small" data-alt="Sara Mohammadi">سارا محمدی</b><span class="badge brand" data-alt="Instructor">مدرس</span></div><p data-alt="Yes — that is exactly what lesson 6 of this chapter covers.">بله — درس ۶ همین فصل دقیقاً همین را نشان می‌دهد.</p></div></div></div>
+            </div>
+            <form class="stack" id="qa-form" data-validate data-success="پرسش شما ارسال شد" data-success-alt="Question sent" style="margin-block-start: var(--space-5); gap: 10px">
+              <div class="field"><label class="label" for="ask" data-alt="Ask the instructor">پرسش از مدرس</label><textarea class="textarea" id="ask" name="ask" required minlength="10" maxlength="600" placeholder="پرسش خود را با جزئیات بنویسید…" data-alt-placeholder="Describe your question…"></textarea></div>
+              <div class="row"><button class="btn" type="submit" data-alt="Send question">ارسال پرسش</button><span class="hint" data-alt="Usually answered within a day.">معمولاً تا یک روز پاسخ داده می‌شود.</span></div>
+            </form>
+          </div>
+          <div role="tabpanel" id="lp-files" aria-labelledby="lt-files" hidden style="padding-block-start: var(--space-2)">
+            <ul class="files">
+              <li><span class="file-ic" style="--c:#fff1e0"><i class="ti ti-brand-figma" aria-hidden="true"></i></span><div class="stack" style="gap: 0; flex: 1"><b class="small" data-alt="Lesson file — expanding card">فایل درس — کارت بازشونده</b><span class="tiny subtle ltr">.fig · 4.2 MB</span></div><button class="btn btn-outline btn-sm" type="button" data-toast="دانلود فایل فیگما شروع شد" data-toast-alt="Figma file download started"><i class="ti ti-download" aria-hidden="true"></i><span data-alt="Download">دانلود</span></button></li>
+              <li><span class="file-ic" style="--c:#fde6e6"><i class="ti ti-file-type-pdf" aria-hidden="true"></i></span><div class="stack" style="gap: 0; flex: 1"><b class="small" data-alt="Easing cheat sheet">برگهٔ تقلب منحنی‌ها</b><span class="tiny subtle ltr">.pdf · 380 KB</span></div><button class="btn btn-outline btn-sm" type="button" data-toast="دانلود برگهٔ تقلب شروع شد" data-toast-alt="Cheat sheet download started"><i class="ti ti-download" aria-hidden="true"></i><span data-alt="Download">دانلود</span></button></li>
+              <li><span class="file-ic" style="--c:#e4ecff"><i class="ti ti-badge-cc" aria-hidden="true"></i></span><div class="stack" style="gap: 0; flex: 1"><b class="small" data-alt="Transcript (Persian and English)">متن کامل درس (فارسی و انگلیسی)</b><span class="tiny subtle ltr">.srt · 18 KB</span></div><button class="btn btn-outline btn-sm" type="button" data-toast="دانلود زیرنویس شروع شد" data-toast-alt="Transcript download started"><i class="ti ti-download" aria-hidden="true"></i><span data-alt="Download">دانلود</span></button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <aside class="panel stack" style="gap: var(--space-4)" aria-label="سرفصل دوره" data-alt-aria-label="Course contents">
+        <div class="stack" style="gap: 8px">
+          <span class="eyebrow" data-alt="Design · Sara Mohammadi">طراحی · سارا محمدی</span>
+          <b class="h3" data-alt="UI design with Figma">طراحی رابط کاربری با فیگما</b>
+          <div class="split"><span class="tiny subtle"><span data-done-count data-num="27">۲۷</span> <span data-alt="of 42 lessons done">از ۴۲ درس انجام شده</span></span><b class="tiny" data-done-pct data-num="64" data-fmt="pct">۶۴٪</b></div>
+          <div class="progress"><i data-done-bar style="--v:64%"></i></div>
+        </div>
+        <div class="curriculum" id="curriculum">
+          <details class="chapter" data-ch="1"><summary><span class="n" style="background: var(--success)"><i class="ti ti-check" aria-hidden="true"></i></span><span data-ch-title data-alt="Getting comfortable with Figma">آشنایی با فیگما</span><span class="info" data-alt="8 / 8">۸ از ۸</span><i class="ti ti-chevron-down" aria-hidden="true"></i></summary>
+            <button class="lesson done" type="button" data-dur="372"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Tour of the interface">گشتی در محیط فیگما</span><span class="d" data-num="372" data-fmt="clock">۶:۱۲</span></button>
+            <button class="lesson done" type="button" data-dur="545"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Frames, groups and layers">فریم، گروه و لایه</span><span class="d" data-num="545" data-fmt="clock">۹:۰۵</span></button>
+            <button class="lesson done" type="button" data-dur="1080"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Auto layout in practice">اتولی‌اوت در عمل</span><span class="d" data-num="1080" data-fmt="clock">۱۸:۰۰</span></button>
+            <button class="lesson done" type="button" data-dur="1312"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Components and variants">کامپوننت و واریانت</span><span class="d" data-num="1312" data-fmt="clock">۲۱:۵۲</span></button>
+            <button class="lesson done" type="button" data-dur="610"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Pen tool and shapes">ابزار قلم و شکل‌ها</span><span class="d" data-num="610" data-fmt="clock">۱۰:۱۰</span></button>
+            <button class="lesson done" type="button" data-dur="735"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Text and styles">متن و استایل‌ها</span><span class="d" data-num="735" data-fmt="clock">۱۲:۱۵</span></button>
+            <button class="lesson done" type="button" data-dur="820"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Grids and layout">گرید و چیدمان</span><span class="d" data-num="820" data-fmt="clock">۱۳:۴۰</span></button>
+            <button class="lesson done" type="button" data-dur="480"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Exporting assets">خروجی گرفتن</span><span class="d" data-num="480" data-fmt="clock">۸:۰۰</span></button>
+          </details>
+          <details class="chapter" data-ch="2"><summary><span class="n" style="background: var(--success)"><i class="ti ti-check" aria-hidden="true"></i></span><span data-ch-title data-alt="Design systems">سیستم طراحی</span><span class="info" data-alt="12 / 12">۱۲ از ۱۲</span><i class="ti ti-chevron-down" aria-hidden="true"></i></summary>
+            <button class="lesson done" type="button" data-dur="1460"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Colour and type tokens">توکن‌های رنگ و تایپوگرافی</span><span class="d" data-num="1460" data-fmt="clock">۲۴:۲۰</span></button>
+            <button class="lesson done" type="button" data-dur="1120"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Variables and modes">متغیرها و حالت‌ها</span><span class="d" data-num="1120" data-fmt="clock">۱۸:۴۰</span></button>
+            <button class="lesson done" type="button" data-dur="760"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Spacing and grids">فاصله‌گذاری و شبکه</span><span class="d" data-num="760" data-fmt="clock">۱۲:۴۰</span></button>
+            <button class="lesson done" type="button" data-dur="540"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Icons">آیکون‌ها</span><span class="d" data-num="540" data-fmt="clock">۹:۰۰</span></button>
+            <button class="lesson done" type="button" data-dur="980"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Buttons">دکمه‌ها</span><span class="d" data-num="980" data-fmt="clock">۱۶:۲۰</span></button>
+            <button class="lesson done" type="button" data-dur="1040"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Form fields">فیلدهای فرم</span><span class="d" data-num="1040" data-fmt="clock">۱۷:۲۰</span></button>
+            <button class="lesson done" type="button" data-dur="870"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Cards and lists">کارت‌ها و فهرست‌ها</span><span class="d" data-num="870" data-fmt="clock">۱۴:۳۰</span></button>
+            <button class="lesson done" type="button" data-dur="930"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Navigation">ناوبری</span><span class="d" data-num="930" data-fmt="clock">۱۵:۳۰</span></button>
+            <button class="lesson done" type="button" data-dur="690"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Dark mode">حالت تاریک</span><span class="d" data-num="690" data-fmt="clock">۱۱:۳۰</span></button>
+            <button class="lesson done" type="button" data-dur="820"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Documentation">مستندسازی</span><span class="d" data-num="820" data-fmt="clock">۱۳:۴۰</span></button>
+            <button class="lesson done" type="button" data-dur="640"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Team libraries">کتابخانهٔ تیمی</span><span class="d" data-num="640" data-fmt="clock">۱۰:۴۰</span></button>
+            <button class="lesson done" type="button" data-dur="1150"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="System review">بازبینی سیستم</span><span class="d" data-num="1150" data-fmt="clock">۱۹:۱۰</span></button>
+          </details>
+          <details class="chapter" data-ch="3" open><summary><span class="n" data-num="3">۳</span><span data-ch-title data-alt="Prototyping">پروتوتایپ</span><span class="info" data-alt="7 / 10">۷ از ۱۰</span><i class="ti ti-chevron-down" aria-hidden="true"></i></summary>
+            <button class="lesson done" type="button" data-dur="400"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="What a prototype is for">پروتوتایپ برای چیست؟</span><span class="d" data-num="400" data-fmt="clock">۶:۴۰</span></button>
+            <button class="lesson done" type="button" data-dur="555"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Connecting frames">اتصال فریم‌ها</span><span class="d" data-num="555" data-fmt="clock">۹:۱۵</span></button>
+            <button class="lesson done" type="button" data-dur="680"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Triggers and actions">تریگرها و اکشن‌ها</span><span class="d" data-num="680" data-fmt="clock">۱۱:۲۰</span></button>
+            <button class="lesson done" type="button" data-dur="725"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Overlays and pop-ups">اوورلی و پاپ‌آپ</span><span class="d" data-num="725" data-fmt="clock">۱۲:۰۵</span></button>
+            <button class="lesson done" type="button" data-dur="530"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Scrolling and fixed frames">اسکرول و فریم ثابت</span><span class="d" data-num="530" data-fmt="clock">۸:۵۰</span></button>
+            <button class="lesson done" type="button" data-dur="850"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Interactive components">کامپوننت تعاملی</span><span class="d" data-num="850" data-fmt="clock">۱۴:۱۰</span></button>
+            <button class="lesson done" type="button" data-dur="1065"><i class="ti ti-circle-check" aria-hidden="true"></i><span class="t" data-alt="Variables in prototypes">متغیرها در پروتوتایپ</span><span class="d" data-num="1065" data-fmt="clock">۱۷:۴۵</span></button>
+            <button class="lesson now" type="button" data-dur="990" aria-current="true"><i class="ti ti-player-play-filled" aria-hidden="true"></i><span class="t" data-alt="Smart animate">انیمیشن هوشمند</span><span class="d" data-num="990" data-fmt="clock">۱۶:۳۰</span></button>
+            <button class="lesson" type="button" data-dur="780"><i class="ti ti-player-play" aria-hidden="true"></i><span class="t" data-alt="Testing with users">تست با کاربر</span><span class="d" data-num="780" data-fmt="clock">۱۳:۰۰</span></button>
+            <button class="lesson" type="button" data-dur="920"><i class="ti ti-player-play" aria-hidden="true"></i><span class="t" data-alt="Handing off to developers">تحویل به برنامه‌نویس</span><span class="d" data-num="920" data-fmt="clock">۱۵:۲۰</span></button>
+          </details>
+          <details class="chapter" data-ch="4"><summary><span class="n" data-num="4">۴</span><span data-ch-title data-alt="Your portfolio project">پروژهٔ نمونه‌کار</span><span class="info" data-alt="0 / 12">۰ از ۱۲</span><i class="ti ti-chevron-down" aria-hidden="true"></i></summary>
+            <button class="lesson" type="button" data-dur="720"><i class="ti ti-player-play" aria-hidden="true"></i><span class="t" data-alt="Choosing a problem">انتخاب مسئله</span><span class="d" data-num="720" data-fmt="clock">۱۲:۰۰</span></button>
+            <button class="lesson" type="button" data-dur="960"><i class="ti ti-player-play" aria-hidden="true"></i><span class="t" data-alt="Quick research">پژوهش سریع</span><span class="d" data-num="960" data-fmt="clock">۱۶:۰۰</span></button>
+            <button class="lesson" type="button" data-dur="1100"><i class="ti ti-player-play" aria-hidden="true"></i><span class="t" data-alt="Wireframes">وایرفریم</span><span class="d" data-num="1100" data-fmt="clock">۱۸:۲۰</span></button>
+            <button class="lesson" type="button" data-dur="1500"><i class="ti ti-player-play" aria-hidden="true"></i><span class="t" data-alt="Designing the screens">طراحی صفحه‌ها</span><span class="d" data-num="1500" data-fmt="clock">۲۵:۰۰</span></button>
+            <button class="lesson" type="button" data-dur="1240"><i class="ti ti-player-play" aria-hidden="true"></i><span class="t" data-alt="Final prototype">پروتوتایپ نهایی</span><span class="d" data-num="1240" data-fmt="clock">۲۰:۴۰</span></button>
+            <button class="lesson" type="button" data-dur="1020"><i class="ti ti-player-play" aria-hidden="true"></i><span class="t" data-alt="Testing with five users">تست با پنج کاربر</span><span class="d" data-num="1020" data-fmt="clock">۱۷:۰۰</span></button>
+            <button class="lesson" type="button" data-dur="900"><i class="ti ti-player-play" aria-hidden="true"></i><span class="t" data-alt="Iterate">اصلاح و تکرار</span><span class="d" data-num="900" data-fmt="clock">۱۵:۰۰</span></button>
+            <button class="lesson" type="button" data-dur="1180"><i class="ti ti-player-play" aria-hidden="true"></i><span class="t" data-alt="Writing the case study">نوشتن کیس‌استادی</span><span class="d" data-num="1180" data-fmt="clock">۱۹:۴۰</span></button>
+            <button class="lesson" type="button" data-dur="960"><i class="ti ti-player-play" aria-hidden="true"></i><span class="t" data-alt="Your portfolio page">صفحهٔ نمونه‌کار</span><span class="d" data-num="960" data-fmt="clock">۱۶:۰۰</span></button>
+            <button class="lesson" type="button" data-dur="840"><i class="ti ti-player-play" aria-hidden="true"></i><span class="t" data-alt="Presenting your work">ارائهٔ کار</span><span class="d" data-num="840" data-fmt="clock">۱۴:۰۰</span></button>
+            <button class="lesson locked" type="button" data-dur="2700" aria-disabled="true" title="پس از تحویل پروژه باز می‌شود" data-alt-title="Opens after you submit the project"><i class="ti ti-lock" aria-hidden="true"></i><span class="t" data-alt="Mentor review">بازبینی منتور</span><span class="d" data-num="2700" data-fmt="clock">۴۵:۰۰</span></button>
+            <button class="lesson" type="button" data-dur="300"><i class="ti ti-player-play" aria-hidden="true"></i><span class="t" data-alt="Getting your certificate">دریافت گواهی</span><span class="d" data-num="300" data-fmt="clock">۵:۰۰</span></button>
+          </details>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============================================================ certificates -->
+  <section role="tabpanel" id="p-certs" aria-labelledby="tab-certs" hidden>
+    <div class="panel-head"><h2 class="h2" data-alt="Certificates">گواهی‌ها</h2><span class="small subtle" data-alt="Each one has a public verification link.">هر گواهی یک لینک استعلام عمومی دارد.</span></div>
+    <div class="cols" style="--n:3; align-items: start">
+      <div class="cert-wrap">
+        <article class="cert">
+          <span class="logo"><span class="logo-mark" aria-hidden="true"></span><span data-alt="Pelleh Academy">آکادمی پله</span></span>
+          <span class="tiny" data-alt="Certificate of completion">گواهی پایان دوره</span>
+          <b class="name" data-alt="Maryam Hosseini">مریم حسینی</b>
+          <span class="tiny" data-alt="has completed the course">دورهٔ زیر را با موفقیت گذرانده است</span>
+          <b class="title" data-alt="Python for data analysis with pandas">پایتون برای تحلیل داده با پانداس</b>
+          <span class="tiny"><span data-alt="Score">نمره</span> <span data-num="94">۹۴</span> · <span data-date="2026-09-05" data-fmt="long">۱۴ شهریور ۱۴۰۵</span></span>
+          <span class="ltr">ID PL-26-0914-7731</span>
+          <span class="seal" aria-hidden="true"><i class="ti ti-award"></i></span>
+        </article>
+        <div class="row"><button class="btn btn-sm" type="button" data-toast="فایل PDF گواهی آماده شد" data-toast-alt="Certificate PDF ready"><i class="ti ti-download" aria-hidden="true"></i><span data-alt="PDF">دانلود PDF</span></button><button class="btn btn-outline btn-sm" type="button" data-copy="https://pelleh.example/verify/PL-26-0914-7731"><i class="ti ti-link" aria-hidden="true"></i><span data-alt="Copy link">کپی لینک</span></button><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="افزودن به لینکدین" data-alt-aria-label="Add to LinkedIn" data-toast="گواهی به پروفایل لینکدین افزوده شد" data-toast-alt="Added to your LinkedIn profile"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></button></div>
+      </div>
+      <div class="cert-wrap">
+        <article class="cert">
+          <span class="logo"><span class="logo-mark" aria-hidden="true"></span><span data-alt="Pelleh Academy">آکادمی پله</span></span>
+          <span class="tiny" data-alt="Certificate of completion">گواهی پایان دوره</span>
+          <b class="name" data-alt="Maryam Hosseini">مریم حسینی</b>
+          <span class="tiny" data-alt="has completed the course">دورهٔ زیر را با موفقیت گذرانده است</span>
+          <b class="title" data-alt="Mobile photography that looks professional">عکاسی با موبایل، با نتیجهٔ حرفه‌ای</b>
+          <span class="tiny"><span data-alt="Score">نمره</span> <span data-num="88">۸۸</span> · <span data-date="2026-07-21" data-fmt="long">۳۰ تیر ۱۴۰۵</span></span>
+          <span class="ltr">ID PL-26-0721-2048</span>
+          <span class="seal" aria-hidden="true"><i class="ti ti-award"></i></span>
+        </article>
+        <div class="row"><button class="btn btn-sm" type="button" data-toast="فایل PDF گواهی آماده شد" data-toast-alt="Certificate PDF ready"><i class="ti ti-download" aria-hidden="true"></i><span data-alt="PDF">دانلود PDF</span></button><button class="btn btn-outline btn-sm" type="button" data-copy="https://pelleh.example/verify/PL-26-0721-2048"><i class="ti ti-link" aria-hidden="true"></i><span data-alt="Copy link">کپی لینک</span></button><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="افزودن به لینکدین" data-alt-aria-label="Add to LinkedIn" data-toast="گواهی به پروفایل لینکدین افزوده شد" data-toast-alt="Added to your LinkedIn profile"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></button></div>
+      </div>
+      <div class="cert-wrap">
+        <div style="position: relative">
+          <article class="cert locked" aria-hidden="true">
+            <span class="logo"><span class="logo-mark"></span><span data-alt="Pelleh Academy">آکادمی پله</span></span>
+            <span class="tiny" data-alt="Certificate of completion">گواهی پایان دوره</span>
+            <b class="name" data-alt="Maryam Hosseini">مریم حسینی</b>
+            <span class="tiny" data-alt="has completed the course">دورهٔ زیر را با موفقیت گذرانده است</span>
+            <b class="title" data-alt="UI design with Figma">طراحی رابط کاربری با فیگما</b>
+            <span class="tiny">—</span>
+            <span class="ltr">ID ········</span>
+            <span class="seal"><i class="ti ti-award"></i></span>
+          </article>
+          <div class="lock-note"><span><i class="ti ti-lock" aria-hidden="true"></i><span data-alt="15 lessons to unlock">۱۵ درس تا این گواهی</span></span></div>
+        </div>
+        <div class="row" style="flex-wrap: nowrap"><div class="progress" style="flex: 1"><i data-done-bar style="--v:64%"></i></div><button class="btn btn-primary btn-sm" type="button" data-goto="tab-class" data-alt="Keep going">ادامهٔ دوره</button></div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-block-start: var(--space-6)">
+      <div class="panel-head"><h2 data-alt="Verify a certificate">استعلام گواهی</h2></div>
+      <form class="verify" data-validate data-keep data-success="گواهی معتبر است — مریم حسینی، پایتون برای تحلیل داده" data-success-alt="Valid certificate — Maryam Hosseini, Python for data analysis">
+        <div class="field"><label class="label" for="cid" data-alt="Certificate ID">شناسهٔ گواهی</label><input class="input" id="cid" name="cid" dir="ltr" required pattern="PL-\d{2}-\d{4}-\d{4}" placeholder="PL-26-0914-7731" data-pattern-msg="شناسه به شکل PL-26-0914-7731 است" data-pattern-msg-alt="IDs look like PL-26-0914-7731"><span class="hint" data-alt="Employers can check any ID here without signing in.">کارفرماها بدون ورود هم می‌توانند هر شناسه را اینجا بررسی کنند.</span></div>
+        <button class="btn btn-primary" type="submit" style="margin-block-end: 24px"><i class="ti ti-shield-check" aria-hidden="true"></i><span data-alt="Verify">استعلام</span></button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<dialog class="modal" id="goal-dialog" aria-labelledby="goal-title">
+  <form data-validate data-success="هدف هفتگی به‌روز شد" data-success-alt="Weekly goal updated" id="goal-form">
+    <div class="modal-body">
+      <div class="split"><h2 class="h2" id="goal-title" data-alt="Weekly goal">هدف هفتگی</h2><button class="btn btn-ghost btn-icon btn-sm" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><i class="ti ti-x" aria-hidden="true"></i></button></div>
+      <p class="small muted" data-alt="Small, steady goals beat long weekends. Most learners who finish pick 150–300 minutes.">هدف‌های کوچک و پیوسته بهتر از آخر هفته‌های طولانی‌اند. بیشتر کسانی که دوره را تمام می‌کنند ۱۵۰ تا ۳۰۰ دقیقه انتخاب می‌کنند.</p>
+      <div class="field"><span class="label" id="goal-l" data-alt="Minutes per week">دقیقه در هفته</span>
+        <div class="seg" data-group="goal" role="group" aria-labelledby="goal-l"><button type="button" data-value="150" aria-pressed="false" data-num="150">۱۵۰</button><button type="button" data-value="300" aria-pressed="true" data-num="300">۳۰۰</button><button type="button" data-value="450" aria-pressed="false" data-num="450">۴۵۰</button></div>
+      </div>
+      <div class="field"><span class="label" id="days-l" data-alt="Study days">روزهای مطالعه</span>
+        <div class="chips day-chips" data-group data-multi role="group" aria-labelledby="days-l">
+          <button type="button" aria-pressed="true" data-alt="Sa">ش</button><button type="button" aria-pressed="true" data-alt="Su">ی</button><button type="button" aria-pressed="true" data-alt="Mo">د</button><button type="button" aria-pressed="true" data-alt="Tu">س</button><button type="button" aria-pressed="true" data-alt="We">چ</button><button type="button" aria-pressed="false" data-alt="Th">پ</button><button type="button" aria-pressed="false" data-alt="Fr">ج</button>
+        </div>
+      </div>
+      <div class="split"><span class="label" id="rem-l" data-alt="Daily reminder">یادآوری روزانه</span><button class="switch" type="button" role="switch" aria-checked="true" aria-labelledby="rem-l"></button></div>
+      <div class="field"><label class="label" for="rem-time" data-alt="Reminder time">ساعت یادآوری</label><select class="select" id="rem-time" name="time"><option value="07" data-alt="07:00 — before work">۰۷:۰۰ — پیش از کار</option><option value="13" data-alt="13:00 — lunch break">۱۳:۰۰ — وقت ناهار</option><option value="21" selected data-alt="21:00 — evening">۲۱:۰۰ — عصر</option></select></div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" type="button" data-close data-alt="Cancel">انصراف</button><button class="btn btn-primary" type="submit" data-alt="Save goal">ذخیرهٔ هدف</button></div>
+  </form>
+</dialog>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+    const fa = () => tf.lang() === 'fa';
+    const setNum = (el, n) => { el.dataset.num = n; el.textContent = tf.fmt(n, el.dataset.fmt); };
+
+    // tab shortcuts: any [data-goto] selects that panel tab
+    document.addEventListener('click', (e) => {
+      const g = e.target.closest('[data-goto]');
+      if (!g) return;
+      if (g.matches('a')) e.preventDefault();
+      tf.selectTab(document.getElementById(g.dataset.goto));
+      $$('.drop-panel[data-open]').forEach((p) => p.removeAttribute('data-open'));
+      $$('[aria-expanded="true"][data-toggle]').forEach((b) => b.setAttribute('aria-expanded', 'false'));
+      document.getElementById('main').scrollIntoView({ behavior: tf.reduceMotion ? 'auto' : 'smooth' });
+    });
+    // header search filters "My courses"
+    const find = $('#find'), inner = $('#p-courses [data-filter-search]');
+    find.addEventListener('input', () => {
+      if (find.value) tf.selectTab($('#tab-courses'));
+      inner.value = find.value;
+      inner.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+    // save buttons on recommendations
+    document.addEventListener('click', (e) => {
+      const b = e.target.closest('[data-save]');
+      if (!b) return;
+      const on = b.getAttribute('aria-pressed') !== 'true';
+      b.setAttribute('aria-pressed', String(on));
+      b.querySelector('.ti').className = 'ti ' + (on ? 'ti-bookmark-filled' : 'ti-bookmark');
+      tf.toast(on ? (fa() ? 'به دوره‌های ذخیره‌شده افزوده شد' : 'Saved to your courses') : (fa() ? 'از ذخیره‌شده‌ها حذف شد' : 'Removed from saved'), { tone: on ? 'success' : 'neutral' });
+    });
+
+    // ------------------------------------------------ player
+    const player = $('#player'), track = $('#track'), time = $('#time'), stamp = $('#stamp');
+    let total = 990, pos = 376, timer = null;
+    const paint = () => {
+      track.style.setProperty('--v', (pos / total * 100).toFixed(2) + '%');
+      track.setAttribute('aria-valuemax', total);
+      track.setAttribute('aria-valuenow', Math.floor(pos));
+      track.setAttribute('aria-valuetext', tf.fmt(pos, 'clock') + ' / ' + tf.fmt(total, 'clock'));
+      time.textContent = tf.fmt(pos, 'clock') + ' / ' + tf.fmt(total, 'clock');
+      setNum(stamp, Math.floor(pos));
+    };
+    const setPlaying = (on) => {
+      clearInterval(timer);
+      player.toggleAttribute('data-playing', on);
+      $$('[data-play]', player).forEach((b) => { if (b.hasAttribute('aria-pressed')) b.setAttribute('aria-pressed', String(on)); });
+      $('.controls [data-play] .ti', player).className = 'ti ' + (on ? 'ti-player-pause-filled' : 'ti-player-play-filled');
+      if (on && !tf.reduceMotion) timer = setInterval(() => { pos = Math.min(total, pos + 1); paint(); if (pos >= total) setPlaying(false); }, 1000 / Number($('#speed').value));
+    };
+    const seek = (s) => { pos = Math.max(0, Math.min(total, s)); paint(); };
+    player.addEventListener('click', (e) => {
+      if (e.target.closest('[data-play]')) setPlaying(!player.hasAttribute('data-playing'));
+      const sk = e.target.closest('[data-seek]');
+      if (sk) seek(pos + Number(sk.dataset.seek));
+    });
+    track.addEventListener('click', (e) => { const r = track.getBoundingClientRect(); seek(((e.clientX - r.left) / r.width) * total); });
+    track.addEventListener('keydown', (e) => {
+      const step = { ArrowRight: 5, ArrowUp: 5, ArrowLeft: -5, ArrowDown: -5, PageUp: 30, PageDown: -30 }[e.key];
+      if (step !== undefined) { e.preventDefault(); seek(pos + step); }
+      if (e.key === 'Home') { e.preventDefault(); seek(0); }
+      if (e.key === 'End') { e.preventDefault(); seek(total); }
+    });
+    $('#speed').addEventListener('change', () => { if (player.hasAttribute('data-playing')) setPlaying(true); });
+    $('#cc-toggle').addEventListener('click', (e) => { const b = e.currentTarget; const on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', String(on)); $('#cc').hidden = !on; });
+    $('#fs').addEventListener('click', () => { if (document.fullscreenElement) document.exitFullscreen(); else player.requestFullscreen?.(); });
+    document.addEventListener('tf:lang', paint);
+    paint();
+
+    // ------------------------------------------------ lessons: select, previous/next, mark as finished
+    const lessons = $$('#curriculum button.lesson');
+    const complete = $('#complete');
+    const current = () => lessons.find((l) => l.getAttribute('aria-current') === 'true');
+    const iconOf = (l) => l.classList.contains('locked') ? 'ti-lock' : l.classList.contains('now') ? 'ti-player-play-filled' : l.classList.contains('done') ? 'ti-circle-check' : 'ti-player-play';
+    const refresh = () => {
+      lessons.forEach((l) => { l.querySelector('.ti').className = 'ti ' + iconOf(l); });
+      const done = lessons.filter((l) => l.classList.contains('done')).length;
+      const pct = Math.round(done / lessons.length * 100);
+      $$('[data-done-count]').forEach((el) => setNum(el, done));
+      $$('[data-done-pct]').forEach((el) => setNum(el, pct));
+      $$('[data-done-bar]').forEach((el) => el.style.setProperty('--v', pct + '%'));
+    };
+    const copyText = (from, to) => { to.textContent = from.textContent; to.dataset.alt = from.dataset.alt; };
+    const select = (btn) => {
+      if (!btn || btn.classList.contains('locked')) return;
+      lessons.forEach((l) => { const on = l === btn; l.classList.toggle('now', on); if (on) l.setAttribute('aria-current', 'true'); else l.removeAttribute('aria-current'); });
+      const ch = btn.closest('details');
+      ch.open = true;
+      const inCh = $$('button.lesson', ch);
+      $$('[data-lesson-title]').forEach((h) => copyText($('.t', btn), h));
+      $$('[data-ch-name]').forEach((h) => copyText($('[data-ch-title]', ch), h));
+      $$('[data-ch-num]').forEach((el) => setNum(el, Number(ch.dataset.ch)));
+      $$('[data-l-num]').forEach((el) => setNum(el, inCh.indexOf(btn) + 1));
+      $$('[data-l-total]').forEach((el) => setNum(el, inCh.length));
+      complete.checked = btn.classList.contains('done');
+      setPlaying(false);
+      total = Number(btn.dataset.dur); pos = 0; paint();
+      refresh();
+    };
+    $('#curriculum').addEventListener('click', (e) => {
+      const l = e.target.closest('button.lesson');
+      if (!l) return;
+      if (l.classList.contains('locked')) { tf.toast(fa() ? 'پس از تحویل پروژه باز می‌شود' : 'Opens after you submit the project'); return; }
+      select(l);
+    });
+    $$('[data-lesson-step]').forEach((b) => b.addEventListener('click', () => {
+      const step = Number(b.dataset.lessonStep);
+      let i = lessons.indexOf(current()) + step;
+      while (lessons[i]?.classList.contains('locked')) i += step;
+      if (lessons[i]) select(lessons[i]);
+    }));
+    complete.addEventListener('change', () => {
+      current().classList.toggle('done', complete.checked);
+      refresh();
+      if (complete.checked) tf.toast(fa() ? 'آفرین! درس تمام‌شده ثبت شد' : 'Nice — lesson marked as finished', { tone: 'success' });
+    });
+
+    // ------------------------------------------------ notes and questions
+    const addItem = (list, html, text) => { const li = document.createElement(list.tagName === 'UL' ? 'li' : 'div'); li.innerHTML = html; li.querySelector('[data-text]').textContent = text; list.append(li); return li; };
+    $('#note-form').addEventListener('tf:submit', (e) => {
+      addItem($('#notes'), `<span class="stamp-time" data-num="${Math.floor(pos)}" data-fmt="clock">${tf.fmt(pos, 'clock')}</span><span data-text></span>`, e.detail.note);
+      setNum($('#notes-count'), $$('#notes li').length);
+    });
+    $('#qa-form').addEventListener('tf:submit', (e) => {
+      const item = addItem($('#qa'), `<span class="avatar" style="--c: var(--brand-soft)" data-alt="${fa() ? 'MH' : 'م'}">${fa() ? 'م' : 'MH'}</span><div><div class="row" style="gap: 8px"><b class="small"></b><span class="badge warn"></span></div><p data-text></p></div>`, e.detail.ask);
+      item.className = 'qa-item';
+      const [name, badge] = [item.querySelector('b'), item.querySelector('.badge')];
+      name.textContent = fa() ? 'شما' : 'You'; name.dataset.alt = fa() ? 'You' : 'شما';
+      badge.textContent = fa() ? 'در انتظار پاسخ' : 'Awaiting answer'; badge.dataset.alt = fa() ? 'Awaiting answer' : 'در انتظار پاسخ';
+      setNum($('#qa-count'), $$('#qa .qa-item').length);
+    });
+
+    // ------------------------------------------------ weekly goal
+    const studied = 205;
+    $('#goal-form').addEventListener('tf:submit', () => {
+      const goal = Number($('[data-group="goal"] [aria-pressed="true"]').dataset.value);
+      const left = Math.max(0, goal - studied);
+      $$('[data-goal]').forEach((el) => setNum(el, goal));
+      $$('[data-left]').forEach((el) => setNum(el, left));
+      const donut = $('#goal-donut'), faN = (n) => new Intl.NumberFormat('fa-IR').format(n);
+      donut.dataset.values = `${studied},${left}`;
+      donut.dataset.center = JSON.stringify({ en: `${studied} / ${goal} min`, fa: `${faN(studied)} از ${faN(goal)} دقیقه` });
+      donut.dataset.label = JSON.stringify({ en: `${studied} of ${goal} minutes this week`, fa: `${faN(studied)} از ${faN(goal)} دقیقهٔ این هفته` });
+      tf.drawCharts(donut.parentElement);
+    });
+  });
+</script>
+</body>
+</html>

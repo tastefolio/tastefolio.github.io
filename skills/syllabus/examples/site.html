@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="site">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Pelleh Academy — skills that get you hired">آکادمی پله — مهارتی که استخدامتان می‌کند</title>
+<meta name="description" content="آکادمی پله، یک آموزشگاه آنلاین نمونه: دوره‌های پروژه‌محور، مسیرهای یادگیری و گواهی پایان دوره." data-alt-content="Pelleh Academy, a sample online school: project-based courses, learning paths and certificates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300..800&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .topics { display: flex; flex-wrap: wrap; gap: 10px; margin-block-end: var(--space-5); }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-block-end: var(--space-5); }
+  .toolbar .select { inline-size: auto; min-inline-size: 160px; }
+  .find { position: relative; inline-size: min(100%, 240px); }
+  .find .ti { position: absolute; inset-inline-start: 12px; inset-block-start: 50%; transform: translateY(-50%); color: var(--ink-3); pointer-events: none; }
+  .find .input { padding-inline-start: 40px; }
+  @media (max-width: 640px) { .toolbar .spacer { display: none; } .find, .toolbar .select { inline-size: 100%; } }
+  .spot { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--space-6); align-items: start; }
+  @media (max-width: 980px) { .spot { grid-template-columns: minmax(0, 1fr); } .buy { position: static; } }
+  .cta { border-radius: var(--radius-lg); padding: var(--space-7); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-5); align-items: center; }
+  @media (max-width: 760px) { .cta { grid-template-columns: minmax(0, 1fr); padding: var(--space-6); } }
+  .mini-course { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 14px; align-items: center; }
+  .mini-course .thumb { border-radius: 12px; }
+  .mini-course .thumb > .ti { font-size: 30px; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<header class="site-head">
+  <div class="container">
+    <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"></span><span data-alt="Pelleh">پله</span></a>
+    <nav class="nav" id="nav" data-dismissable aria-label="اصلی" data-alt-aria-label="Main">
+      <div class="drop">
+        <button type="button" data-toggle="#courses-menu" aria-controls="courses-menu" aria-expanded="false"><span data-alt="Courses">دوره‌ها</span><i class="ti ti-chevron-down" aria-hidden="true"></i></button>
+        <div class="drop-panel" id="courses-menu" data-dismissable>
+          <a href="#courses"><i class="ti ti-layout-dashboard" aria-hidden="true" style="--c:#fff1e0"></i><span><b data-alt="Design">طراحی</b><small data-alt="64 courses">۶۴ دوره</small></span></a>
+          <a href="#courses"><i class="ti ti-code" aria-hidden="true" style="--c:#e4ecff"></i><span><b data-alt="Programming">برنامه‌نویسی</b><small data-alt="118 courses">۱۱۸ دوره</small></span></a>
+          <a href="#courses"><i class="ti ti-chart-bar" aria-hidden="true" style="--c:#e2f5ea"></i><span><b data-alt="Data">داده</b><small data-alt="41 courses">۴۱ دوره</small></span></a>
+          <a href="#courses"><i class="ti ti-language" aria-hidden="true" style="--c:#f1e7fb"></i><span><b data-alt="Languages">زبان</b><small data-alt="36 courses">۳۶ دوره</small></span></a>
+          <a href="#courses"><i class="ti ti-camera" aria-hidden="true" style="--c:#e0f6fa"></i><span><b data-alt="Photo &amp; video">عکس و فیلم</b><small data-alt="22 courses">۲۲ دوره</small></span></a>
+          <a href="#courses"><i class="ti ti-route" aria-hidden="true" style="--c:#fdf0dc"></i><span><b data-alt="Business">کسب‌وکار</b><small data-alt="39 courses">۳۹ دوره</small></span></a>
+        </div>
+      </div>
+      <a href="#paths" data-alt="Learning paths">مسیرهای یادگیری</a>
+      <a href="#teachers" data-alt="Instructors">اساتید</a>
+      <a href="#pricing" data-alt="Membership">اشتراک</a>
+      <a href="#faq" data-alt="Help">راهنما</a>
+    </nav>
+    <div class="head-end">
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+      <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="تغییر حالت تیره" data-alt-aria-label="Toggle dark mode"><i class="ti ti-moon" aria-hidden="true"></i></button>
+      <a class="btn btn-outline btn-sm hide-md" href="dashboard.html" data-alt="Log in">ورود</a>
+      <a class="btn btn-primary btn-sm hide-sm" href="#pricing" data-alt="Start free">شروع رایگان</a>
+      <button class="btn btn-ghost btn-icon btn-sm menu-btn" type="button" data-toggle="#nav" aria-controls="nav" aria-expanded="false" aria-label="منو" data-alt-aria-label="Menu"><i class="ti ti-menu-2" aria-hidden="true"></i></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero on-navy graph" id="top">
+    <div class="container">
+      <div class="hero-copy">
+        <span class="eyebrow"><i class="ti ti-sparkles" aria-hidden="true"></i><span data-alt="320+ project-based courses">بیش از ۳۲۰ دورهٔ پروژه‌محور</span></span>
+        <h1 class="display"><span data-alt="Learn the skills that">مهارتی را یاد بگیرید که</span> <span class="marker" data-alt="get you hired">استخدامتان می‌کند</span><span data-alt=", one step at a time.">، پله‌به‌پله.</span></h1>
+        <p class="lead" data-alt="Short video lessons, real projects reviewed by mentors and a certificate that employers recognise. The first lesson of every course is free.">درس‌های کوتاه ویدیویی، پروژه‌های واقعی با بازخورد منتور و گواهی‌ای که کارفرماها می‌شناسند. اولین درس همهٔ دوره‌ها رایگان است.</p>
+        <form class="course-search" role="search" id="hero-search">
+          <i class="ti ti-search" aria-hidden="true"></i><label class="sr-only" for="q" data-alt="What do you want to learn?">چه می‌خواهید یاد بگیرید؟</label><input id="q" type="search" placeholder="چه می‌خواهید یاد بگیرید؟" data-alt-placeholder="What do you want to learn?"><button class="btn btn-primary" type="submit" data-alt="Search">جست‌وجو</button>
+        </form>
+        <div class="popular"><span data-alt="Popular:">پرطرفدار:</span><a href="#courses" data-q="figma" data-alt="Figma">فیگما</a><a href="#courses" data-q="python" data-alt="Python">پایتون</a><a href="#courses" data-q="react" data-alt="React">ری‌اکت</a><a href="#courses" data-q="english" data-alt="English">انگلیسی</a></div>
+        <div class="hero-stats">
+          <div><b data-num="85000" data-fmt="compact">۸۵ هزار</b><span data-alt="learners">دانشجو</span></div>
+          <div><b data-num="320">۳۲۰</b><span data-alt="courses">دوره</span></div>
+          <div><b data-num="96" data-fmt="pct">۹۶٪</b><span data-alt="satisfaction">رضایت</span></div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="float-card tilt">
+          <div class="mini-course"><div class="thumb" style="--bg: linear-gradient(135deg, #ff8c1a, #ff5f6d)"><i class="ti ti-layout-dashboard"></i></div><div class="stack" style="gap: 6px"><b class="small" data-alt="UI design with Figma">طراحی رابط کاربری با فیگما</b><div class="progress"><i style="--v:68%"></i></div><span class="tiny subtle"><span data-alt="Next:">درس بعد:</span> <span data-alt="Auto layout in practice">اتولی‌اوت در عمل</span></span></div></div>
+        </div>
+        <div class="float-card" style="margin-inline-start: 18%">
+          <div class="row" style="flex-wrap: nowrap"><span class="avatar" style="--c:#fff1e0" data-alt="SM">س</span><div class="stack" style="gap: 2px"><b class="small" data-alt="Live review starts in 15 min">جلسهٔ زنده تا ۱۵ دقیقهٔ دیگر</b><span class="tiny subtle" data-alt="Sara Mohammadi · portfolio clinic">سارا محمدی · کلینیک نمونه‌کار</span></div><span class="badge bad" style="margin-inline-start:auto" data-alt="Live">زنده</span></div>
+        </div>
+        <div class="float-card" style="margin-inline-end: 24%; justify-self: end">
+          <div class="row" style="flex-wrap: nowrap"><i class="ti ti-certificate" style="font-size: 30px; color: var(--brand-strong)"></i><div class="stack" style="gap: 2px"><b class="small" data-alt="Certificate unlocked">گواهی صادر شد</b><span class="tiny subtle" data-alt="Python for data analysis">پایتون برای تحلیل داده</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="courses" data-filter-scope>
+    <div class="container">
+      <div class="sec-head"><div><span class="eyebrow" data-alt="Courses">دوره‌ها</span><h2 class="h1" data-alt="Start with what you need this month">از چیزی شروع کنید که همین ماه لازمش دارید</h2></div><span class="small subtle"><span data-filter-count data-num="6">۶</span> <span data-alt="courses shown">دوره</span></span></div>
+      <div class="toolbar">
+        <div class="chips" data-group role="group" aria-label="موضوع" data-alt-aria-label="Topic">
+          <button type="button" data-filter="cat" data-value="all" aria-pressed="true" data-alt="All">همه</button>
+          <button type="button" data-filter="cat" data-value="design" aria-pressed="false"><i class="ti ti-layout-dashboard" aria-hidden="true"></i><span data-alt="Design">طراحی</span></button>
+          <button type="button" data-filter="cat" data-value="code" aria-pressed="false"><i class="ti ti-code" aria-hidden="true"></i><span data-alt="Programming">برنامه‌نویسی</span></button>
+          <button type="button" data-filter="cat" data-value="data" aria-pressed="false"><i class="ti ti-chart-bar" aria-hidden="true"></i><span data-alt="Data">داده</span></button>
+          <button type="button" data-filter="cat" data-value="lang" aria-pressed="false"><i class="ti ti-language" aria-hidden="true"></i><span data-alt="Languages">زبان</span></button>
+          <button type="button" data-filter="cat" data-value="biz" aria-pressed="false"><i class="ti ti-route" aria-hidden="true"></i><span data-alt="Business">کسب‌وکار</span></button>
+        </div>
+        <span class="spacer"></span>
+        <div class="find"><i class="ti ti-search" aria-hidden="true"></i><input class="input" id="course-q" type="search" data-filter-search aria-label="جست‌وجو در دوره‌ها" data-alt-aria-label="Search courses" placeholder="جست‌وجو…" data-alt-placeholder="Search…"></div>
+        <select class="select" data-filter="level" aria-label="سطح" data-alt-aria-label="Level"><option value="all" data-alt="Any level">همهٔ سطح‌ها</option><option value="l1" data-alt="Beginner">مقدماتی</option><option value="l2" data-alt="Intermediate">متوسط</option><option value="l3" data-alt="Advanced">پیشرفته</option></select>
+      </div>
+      <div class="cgrid">
+        <article class="course" data-filter-item data-cat="design" data-level="l1" data-keywords="figma ui design فیگما طراحی"><div class="thumb" style="--bg: linear-gradient(135deg, #ff8c1a, #ff5f6d)"><i class="ti ti-layout-dashboard" aria-hidden="true"></i><span class="badge brand tag" data-alt="Bestseller">پرفروش</span><span class="len"><span data-num="11">۱۱</span> <span data-alt="hrs">ساعت</span></span><span class="play" aria-hidden="true"><i class="ti ti-player-play-filled"></i></span></div><div class="body"><span class="kicker" data-alt="Design">طراحی</span><h3 class="title" data-alt="UI design with Figma, from zero to portfolio">طراحی رابط کاربری با فیگما، از صفر تا نمونه‌کار</h3><div class="teacher"><span class="avatar" style="--c:#fff1e0" data-alt="SM">س</span><span data-alt="Sara Mohammadi">سارا محمدی</span></div><div class="meta"><span><i class="ti ti-player-play" aria-hidden="true"></i><span data-num="42">۴۲</span> <span data-alt="lessons">درس</span></span><span class="level l1" data-alt="Beginner">مقدماتی</span><span><i class="ti ti-users" aria-hidden="true"></i><span data-num="8300" data-fmt="compact">۸٫۳ هزار</span></span></div><div class="foot"><span class="stars"><i class="ti ti-star-filled" aria-hidden="true"></i><span data-num="4.9" data-fmt="dec1">۴٫۹</span> <small>(<span data-num="1240">۱٬۲۴۰</span>)</small></span><span class="cost"><del data-num="1490000">۱٬۴۹۰٬۰۰۰</del><b><span data-num="990000">۹۹۰٬۰۰۰</span> <small class="tiny" data-alt="Toman">تومان</small></b></span></div></div></article>
+        <article class="course" data-filter-item data-cat="data code" data-level="l2" data-keywords="python pandas data پایتون داده"><div class="thumb" style="--bg: linear-gradient(135deg, #2a62e8, #0f1b3d)"><i class="ti ti-brand-python" aria-hidden="true"></i><span class="len"><span data-num="24">۲۴</span> <span data-alt="hrs">ساعت</span></span><span class="play" aria-hidden="true"><i class="ti ti-player-play-filled"></i></span></div><div class="body"><span class="kicker" data-alt="Data">داده</span><h3 class="title" data-alt="Python for data analysis with pandas">پایتون برای تحلیل داده با پانداس</h3><div class="teacher"><span class="avatar" style="--c:#e4ecff" data-alt="RK">ر</span><span data-alt="Reza Karimi">رضا کریمی</span></div><div class="meta"><span><i class="ti ti-player-play" aria-hidden="true"></i><span data-num="56">۵۶</span> <span data-alt="lessons">درس</span></span><span class="level l2" data-alt="Intermediate">متوسط</span><span><i class="ti ti-users" aria-hidden="true"></i><span data-num="5100" data-fmt="compact">۵٫۱ هزار</span></span></div><div class="foot"><span class="stars"><i class="ti ti-star-filled" aria-hidden="true"></i><span data-num="4.8" data-fmt="dec1">۴٫۸</span> <small>(<span data-num="860">۸۶۰</span>)</small></span><span class="cost"><b><span data-num="1290000">۱٬۲۹۰٬۰۰۰</span> <small class="tiny" data-alt="Toman">تومان</small></b></span></div></div></article>
+        <article class="course" data-filter-item data-cat="design" data-level="l1" data-keywords="photo photography mobile camera عکاسی موبایل"><div class="thumb" style="--bg: linear-gradient(135deg, #15994b, #0c5b31)"><i class="ti ti-camera" aria-hidden="true"></i><span class="badge ok tag" data-alt="Free">رایگان</span><span class="len"><span data-num="6">۶</span> <span data-alt="hrs">ساعت</span></span><span class="play" aria-hidden="true"><i class="ti ti-player-play-filled"></i></span></div><div class="body"><span class="kicker" data-alt="Photo &amp; video">عکس و فیلم</span><h3 class="title" data-alt="Mobile photography that looks professional">عکاسی با موبایل، با نتیجهٔ حرفه‌ای</h3><div class="teacher"><span class="avatar" style="--c:#e2f5ea" data-alt="NS">ن</span><span data-alt="Nima Sadeghi">نیما صادقی</span></div><div class="meta"><span><i class="ti ti-player-play" aria-hidden="true"></i><span data-num="18">۱۸</span> <span data-alt="lessons">درس</span></span><span class="level l1" data-alt="Beginner">مقدماتی</span><span><i class="ti ti-users" aria-hidden="true"></i><span data-num="21000" data-fmt="compact">۲۱ هزار</span></span></div><div class="foot"><span class="stars"><i class="ti ti-star-filled" aria-hidden="true"></i><span data-num="4.7" data-fmt="dec1">۴٫۷</span> <small>(<span data-num="3100">۳٬۱۰۰</span>)</small></span><span class="cost"><b class="free" data-alt="Free">رایگان</b></span></div></div></article>
+        <article class="course" data-filter-item data-cat="code" data-level="l2" data-keywords="react javascript ری‌اکت جاوااسکریپت"><div class="thumb" style="--bg: linear-gradient(135deg, #0ea5c6, #1a2a57)"><i class="ti ti-brand-react" aria-hidden="true"></i><span class="badge navy tag" data-alt="New">جدید</span><span class="len"><span data-num="30">۳۰</span> <span data-alt="hrs">ساعت</span></span><span class="play" aria-hidden="true"><i class="ti ti-player-play-filled"></i></span></div><div class="body"><span class="kicker" data-alt="Programming">برنامه‌نویسی</span><h3 class="title" data-alt="React from scratch: build three real apps">ری‌اکت از صفر: ساخت سه اپ واقعی</h3><div class="teacher"><span class="avatar" style="--c:#e0f6fa" data-alt="MR">م</span><span data-alt="Mahsa Rahimi">مهسا رحیمی</span></div><div class="meta"><span><i class="ti ti-player-play" aria-hidden="true"></i><span data-num="64">۶۴</span> <span data-alt="lessons">درس</span></span><span class="level l2" data-alt="Intermediate">متوسط</span><span><i class="ti ti-users" aria-hidden="true"></i><span data-num="3400" data-fmt="compact">۳٫۴ هزار</span></span></div><div class="foot"><span class="stars"><i class="ti ti-star-filled" aria-hidden="true"></i><span data-num="4.9" data-fmt="dec1">۴٫۹</span> <small>(<span data-num="410">۴۱۰</span>)</small></span><span class="cost"><del data-num="2190000">۲٬۱۹۰٬۰۰۰</del><b><span data-num="1590000">۱٬۵۹۰٬۰۰۰</span> <small class="tiny" data-alt="Toman">تومان</small></b></span></div></div></article>
+        <article class="course" data-filter-item data-cat="lang" data-level="l2" data-keywords="english interview ielts انگلیسی زبان مصاحبه"><div class="thumb" style="--bg: linear-gradient(135deg, #9b51e0, #4b2a8f)"><i class="ti ti-language" aria-hidden="true"></i><span class="len"><span data-num="9">۹</span> <span data-alt="hrs">ساعت</span></span><span class="play" aria-hidden="true"><i class="ti ti-player-play-filled"></i></span></div><div class="body"><span class="kicker" data-alt="Languages">زبان</span><h3 class="title" data-alt="English for job interviews">انگلیسی برای مصاحبهٔ کاری</h3><div class="teacher"><span class="avatar" style="--c:#f1e7fb" data-alt="AN">آ</span><span data-alt="Arash Nouri">آرش نوری</span></div><div class="meta"><span><i class="ti ti-player-play" aria-hidden="true"></i><span data-num="24">۲۴</span> <span data-alt="lessons">درس</span></span><span class="level l2" data-alt="Intermediate">متوسط</span><span><i class="ti ti-users" aria-hidden="true"></i><span data-num="6700" data-fmt="compact">۶٫۷ هزار</span></span></div><div class="foot"><span class="stars"><i class="ti ti-star-filled" aria-hidden="true"></i><span data-num="4.6" data-fmt="dec1">۴٫۶</span> <small>(<span data-num="980">۹۸۰</span>)</small></span><span class="cost"><b><span data-num="690000">۶۹۰٬۰۰۰</span> <small class="tiny" data-alt="Toman">تومان</small></b></span></div></div></article>
+        <article class="course" data-filter-item data-cat="biz" data-level="l3" data-keywords="product management pm مدیریت محصول"><div class="thumb" style="--bg: linear-gradient(135deg, #f2b14d, #e06f00)"><i class="ti ti-route" aria-hidden="true"></i><span class="len"><span data-num="14">۱۴</span> <span data-alt="hrs">ساعت</span></span><span class="play" aria-hidden="true"><i class="ti ti-player-play-filled"></i></span></div><div class="body"><span class="kicker" data-alt="Business">کسب‌وکار</span><h3 class="title" data-alt="Product management for growing teams">مدیریت محصول برای تیم‌های در حال رشد</h3><div class="teacher"><span class="avatar" style="--c:#fdf0dc" data-alt="LA">ل</span><span data-alt="Leila Ahmadi">لیلا احمدی</span></div><div class="meta"><span><i class="ti ti-player-play" aria-hidden="true"></i><span data-num="30">۳۰</span> <span data-alt="lessons">درس</span></span><span class="level l3" data-alt="Advanced">پیشرفته</span><span><i class="ti ti-users" aria-hidden="true"></i><span data-num="2200" data-fmt="compact">۲٫۲ هزار</span></span></div><div class="foot"><span class="stars"><i class="ti ti-star-filled" aria-hidden="true"></i><span data-num="4.8" data-fmt="dec1">۴٫۸</span> <small>(<span data-num="330">۳۳۰</span>)</small></span><span class="cost"><b><span data-num="1890000">۱٬۸۹۰٬۰۰۰</span> <small class="tiny" data-alt="Toman">تومان</small></b></span></div></div></article>
+      </div>
+      <p class="empty" data-filter-empty hidden data-alt="No course matches — try another level.">دوره‌ای با این فیلتر نیست — سطح دیگری را امتحان کنید.</p>
+    </div>
+  </section>
+
+  <section class="section" id="paths" style="padding-block-start: 0">
+    <div class="container">
+      <div class="sec-head"><div><span class="eyebrow" data-alt="Learning paths">مسیرهای یادگیری</span><h2 class="h1" data-alt="Not sure where to start? Follow a path.">نمی‌دانید از کجا شروع کنید؟ یک مسیر را دنبال کنید.</h2></div></div>
+      <div class="cols" style="--n:3">
+        <article class="path"><div class="row" style="justify-content: space-between"><b class="h3" data-alt="Product designer">طراح محصول</b><span class="badge" ><span data-num="64">۶۴</span>&nbsp;<span data-alt="hrs">ساعت</span></span></div><ol class="steps" style="--n:4"><li class="done"><span class="node"><i class="ti ti-check" aria-hidden="true"></i></span><span data-alt="Basics">مبانی</span></li><li class="now"><span class="node" data-num="2">۲</span><span data-alt="Figma">فیگما</span></li><li><span class="node" data-num="3">۳</span><span data-alt="Research">پژوهش</span></li><li><span class="node" data-num="4">۴</span><span data-alt="Portfolio">نمونه‌کار</span></li></ol><a class="btn btn-outline btn-sm" href="#courses" style="justify-self: start" data-alt="See the path">دیدن مسیر</a></article>
+        <article class="path"><div class="row" style="justify-content: space-between"><b class="h3" data-alt="Data analyst">تحلیل‌گر داده</b><span class="badge"><span data-num="92">۹۲</span>&nbsp;<span data-alt="hrs">ساعت</span></span></div><ol class="steps" style="--n:5"><li><span class="node" data-num="1">۱</span><span data-alt="Excel">اکسل</span></li><li><span class="node" data-num="2">۲</span><span>SQL</span></li><li><span class="node" data-num="3">۳</span><span data-alt="Python">پایتون</span></li><li><span class="node" data-num="4">۴</span><span data-alt="Charts">نمودار</span></li><li><span class="node" data-num="5">۵</span><span data-alt="Project">پروژه</span></li></ol><a class="btn btn-outline btn-sm" href="#courses" style="justify-self: start" data-alt="See the path">دیدن مسیر</a></article>
+        <article class="path"><div class="row" style="justify-content: space-between"><b class="h3" data-alt="Front-end developer">برنامه‌نویس فرانت‌اند</b><span class="badge"><span data-num="120">۱۲۰</span>&nbsp;<span data-alt="hrs">ساعت</span></span></div><ol class="steps" style="--n:4"><li><span class="node" data-num="1">۱</span><span>HTML/CSS</span></li><li><span class="node" data-num="2">۲</span><span>JavaScript</span></li><li><span class="node" data-num="3">۳</span><span data-alt="React">ری‌اکت</span></li><li><span class="node" data-num="4">۴</span><span data-alt="Job prep">آمادگی شغلی</span></li></ol><a class="btn btn-outline btn-sm" href="#courses" style="justify-self: start" data-alt="See the path">دیدن مسیر</a></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--surface); border-block: 1px solid var(--line)">
+    <div class="container spot">
+      <div class="stack" style="gap: var(--space-4)">
+        <span class="eyebrow" data-alt="Course spotlight">دورهٔ ویژه</span>
+        <h2 class="h1" data-alt="UI design with Figma, from zero to portfolio">طراحی رابط کاربری با فیگما، از صفر تا نمونه‌کار</h2>
+        <p class="muted" data-alt="Four chapters, 42 short lessons and one real project you can show an employer. Free lessons are marked.">چهار فصل، ۴۲ درس کوتاه و یک پروژهٔ واقعی که می‌توانید به کارفرما نشان دهید. درس‌های رایگان مشخص شده‌اند.</p>
+        <div class="curriculum">
+          <details class="chapter" open><summary><span class="n" data-num="1">۱</span><span data-alt="Getting comfortable with Figma">آشنایی با فیگما</span><span class="info"><span data-num="8">۸</span> <span data-alt="lessons · 1h 39m">درس · ۱ ساعت و ۳۹ دقیقه</span></span><i class="ti ti-chevron-down" aria-hidden="true"></i></summary>
+            <div class="lesson free"><i class="ti ti-player-play" aria-hidden="true"></i><span class="t" data-alt="Tour of the interface">گشتی در محیط فیگما</span><span class="badge ok" data-alt="Free preview">پیش‌نمایش رایگان</span><span class="d" data-num="372" data-fmt="clock">۶:۱۲</span></div>
+            <div class="lesson free"><i class="ti ti-player-play" aria-hidden="true"></i><span class="t" data-alt="Frames, groups and layers">فریم، گروه و لایه</span><span class="badge ok" data-alt="Free preview">پیش‌نمایش رایگان</span><span class="d" data-num="545" data-fmt="clock">۹:۰۵</span></div>
+            <div class="lesson locked"><i class="ti ti-lock" aria-hidden="true"></i><span class="t" data-alt="Auto layout in practice">اتولی‌اوت در عمل</span><span class="d" data-num="1080" data-fmt="clock">۱۸:۰۰</span></div>
+            <div class="lesson locked"><i class="ti ti-lock" aria-hidden="true"></i><span class="t" data-alt="Components and variants">کامپوننت و واریانت</span><span class="d" data-num="1312" data-fmt="clock">۲۱:۵۲</span></div>
+          </details>
+          <details class="chapter"><summary><span class="n" data-num="2">۲</span><span data-alt="Design systems">سیستم طراحی</span><span class="info"><span data-num="12">۱۲</span> <span data-alt="lessons · 3h 03m">درس · ۳ ساعت و ۳ دقیقه</span></span><i class="ti ti-chevron-down" aria-hidden="true"></i></summary>
+            <div class="lesson locked"><i class="ti ti-lock" aria-hidden="true"></i><span class="t" data-alt="Colour and type tokens">توکن‌های رنگ و تایپوگرافی</span><span class="d" data-num="1460" data-fmt="clock">۲۴:۲۰</span></div>
+          </details>
+          <details class="chapter"><summary><span class="n" data-num="3">۳</span><span data-alt="Prototyping">پروتوتایپ</span><span class="info"><span data-num="10">۱۰</span> <span data-alt="lessons · 2h 05m">درس · ۲ ساعت و ۵ دقیقه</span></span><i class="ti ti-chevron-down" aria-hidden="true"></i></summary>
+            <div class="lesson locked"><i class="ti ti-lock" aria-hidden="true"></i><span class="t" data-alt="Smart animate">انیمیشن هوشمند</span><span class="d" data-num="990" data-fmt="clock">۱۶:۳۰</span></div>
+          </details>
+          <details class="chapter"><summary><span class="n" data-num="4">۴</span><span data-alt="Your portfolio project">پروژهٔ نمونه‌کار</span><span class="info"><span data-num="12">۱۲</span> <span data-alt="lessons · 3h 44m">درس · ۳ ساعت و ۴۴ دقیقه</span></span><i class="ti ti-chevron-down" aria-hidden="true"></i></summary>
+            <div class="lesson locked"><i class="ti ti-lock" aria-hidden="true"></i><span class="t" data-alt="Mentor review">بازبینی منتور</span><span class="d" data-num="2700" data-fmt="clock">۴۵:۰۰</span></div>
+          </details>
+        </div>
+      </div>
+      <aside class="buy" aria-label="خرید دوره" data-alt-aria-label="Buy the course">
+        <div class="thumb" style="--bg: linear-gradient(135deg, #ff8c1a, #ff5f6d); border-radius: var(--radius-md)"><i class="ti ti-layout-dashboard" aria-hidden="true"></i><span class="play" aria-hidden="true" style="opacity:1; transform:none"><i class="ti ti-player-play-filled"></i></span></div>
+        <div class="price"><b><span data-num="990000">۹۹۰٬۰۰۰</span> <small class="small" data-alt="Toman">تومان</small></b><del class="subtle" data-num="1490000">۱٬۴۹۰٬۰۰۰</del><span class="badge bad" data-alt="−34% · 2 days left">۳۴٪ تخفیف · ۲ روز مانده</span></div>
+        <ul>
+          <li><i class="ti ti-circle-check" aria-hidden="true"></i><span data-alt="Lifetime access, 42 lessons">دسترسی همیشگی به ۴۲ درس</span></li>
+          <li><i class="ti ti-circle-check" aria-hidden="true"></i><span data-alt="Project reviewed by a mentor">بازبینی پروژه توسط منتور</span></li>
+          <li><i class="ti ti-circle-check" aria-hidden="true"></i><span data-alt="Verifiable certificate">گواهی قابل استعلام</span></li>
+          <li><i class="ti ti-circle-check" aria-hidden="true"></i><span data-alt="7-day money-back guarantee">۷ روز ضمانت بازگشت وجه</span></li>
+        </ul>
+        <a class="btn btn-primary btn-lg btn-block" href="dashboard.html" data-alt="Enrol now">ثبت‌نام در دوره</a>
+        <button class="btn btn-outline btn-block" type="button" data-toast="لینک هدیه برای کپی آماده شد" data-toast-alt="Gift link ready to copy"><i class="ti ti-gift" aria-hidden="true"></i><span data-alt="Give it as a gift">هدیه دادن دوره</span></button>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="teachers">
+    <div class="container">
+      <div class="sec-head"><div><span class="eyebrow" data-alt="Instructors">اساتید</span><h2 class="h1" data-alt="Taught by people who do the job">آموزش از کسانی که همین کار را می‌کنند</h2></div></div>
+      <div class="cols" style="--n:4">
+        <div class="instructor"><span class="avatar" style="--c:#fff1e0" data-alt="SM">س</span><b data-alt="Sara Mohammadi">سارا محمدی</b><span class="small subtle" data-alt="Product designer · 9 years">طراح محصول · ۹ سال</span><span class="badge"><i class="ti ti-users" aria-hidden="true"></i><span data-num="14000" data-fmt="compact">۱۴ هزار</span></span></div>
+        <div class="instructor"><span class="avatar" style="--c:#e4ecff" data-alt="RK">ر</span><b data-alt="Reza Karimi">رضا کریمی</b><span class="small subtle" data-alt="Data scientist · 7 years">دانشمند داده · ۷ سال</span><span class="badge"><i class="ti ti-users" aria-hidden="true"></i><span data-num="9200" data-fmt="compact">۹٫۲ هزار</span></span></div>
+        <div class="instructor"><span class="avatar" style="--c:#e0f6fa" data-alt="MR">م</span><b data-alt="Mahsa Rahimi">مهسا رحیمی</b><span class="small subtle" data-alt="Front-end lead · 8 years">سرپرست فرانت‌اند · ۸ سال</span><span class="badge"><i class="ti ti-users" aria-hidden="true"></i><span data-num="6100" data-fmt="compact">۶٫۱ هزار</span></span></div>
+        <div class="instructor"><span class="avatar" style="--c:#f1e7fb" data-alt="AN">آ</span><b data-alt="Arash Nouri">آرش نوری</b><span class="small subtle" data-alt="Language coach · 11 years">مربی زبان · ۱۱ سال</span><span class="badge"><i class="ti ti-users" aria-hidden="true"></i><span data-num="12000" data-fmt="compact">۱۲ هزار</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-block-start: 0">
+    <div class="container cols" style="--n:3">
+      <figure class="quote"><blockquote data-alt="I finished the Figma course in six weeks and got my first freelance project from the portfolio review.">دورهٔ فیگما را در شش هفته تمام کردم و اولین پروژهٔ فریلنسم را از همان بازبینی نمونه‌کار گرفتم.</blockquote><figcaption class="teacher"><span class="avatar" style="--c:#fff1e0" data-alt="HB">ه</span><span><b data-alt="Hanieh B.">هانیه ب.</b><br><span class="tiny subtle" data-alt="Junior product designer">طراح محصول تازه‌کار</span></span></figcaption></figure>
+      <figure class="quote"><blockquote data-alt="Short lessons fit my commute. The mentor answered every question within a day.">درس‌های کوتاه در مسیر رفت‌وآمدم جا می‌شد. منتور به همهٔ سؤال‌هایم ظرف یک روز جواب داد.</blockquote><figcaption class="teacher"><span class="avatar" style="--c:#e4ecff" data-alt="KJ">ک</span><span><b data-alt="Kian J.">کیان ج.</b><br><span class="tiny subtle" data-alt="Data analyst at a bank">تحلیل‌گر داده در بانک</span></span></figcaption></figure>
+      <figure class="quote"><blockquote data-alt="The interview course gave me phrases I actually used. I start my new job next month.">دورهٔ مصاحبه جمله‌هایی یادم داد که واقعاً به کار بردم. ماه بعد کار تازه‌ام را شروع می‌کنم.</blockquote><figcaption class="teacher"><span class="avatar" style="--c:#f1e7fb" data-alt="PS">پ</span><span><b data-alt="Parisa S.">پریسا س.</b><br><span class="tiny subtle" data-alt="Back-end developer">برنامه‌نویس بک‌اند</span></span></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="section" id="pricing" style="padding-block-start: 0">
+    <div class="container">
+      <div class="sec-head"><div><span class="eyebrow" data-alt="Membership">اشتراک</span><h2 class="h1" data-alt="One course, or all of them">یک دوره، یا همهٔ دوره‌ها</h2></div>
+        <div class="seg" data-group="bill" role="group" aria-label="دوره" data-alt-aria-label="Billing"><button type="button" data-value="m" aria-pressed="true" data-alt="Monthly">ماهانه</button><button type="button" data-value="y" aria-pressed="false" data-alt="Yearly −40%">سالانه ۴۰٪ ارزان‌تر</button></div></div>
+      <div class="cols" style="--n:3; align-items: start">
+        <div class="plan"><b class="h3" data-alt="Course by course">دوره‌به‌دوره</b><span class="amount" data-alt="From 690K">از ۶۹۰ هزار</span><ul><li><i class="ti ti-check" aria-hidden="true"></i><span data-alt="Lifetime access to what you buy">دسترسی همیشگی به دورهٔ خریداری‌شده</span></li><li><i class="ti ti-check" aria-hidden="true"></i><span data-alt="Certificate per course">گواهی برای هر دوره</span></li></ul><a class="btn btn-outline" href="#courses" data-alt="Browse courses">دیدن دوره‌ها</a></div>
+        <div class="plan featured"><div class="row" style="justify-content: space-between"><b class="h3" data-alt="Pelleh membership">اشتراک پله</b><span class="badge brand" data-alt="Most chosen">انتخاب اکثر دانشجوها</span></div><span class="amount"><span data-when="bill:m"><span data-num="490000">۴۹۰٬۰۰۰</span></span><span data-when="bill:y" hidden><span data-num="290000">۲۹۰٬۰۰۰</span></span> <small class="small subtle" data-alt="Toman / month">تومان در ماه</small></span><ul><li><i class="ti ti-check" aria-hidden="true"></i><span data-alt="All 320 courses and paths">همهٔ ۳۲۰ دوره و مسیر</span></li><li><i class="ti ti-check" aria-hidden="true"></i><span data-alt="Weekly live reviews">جلسه‌های زندهٔ هفتگی</span></li><li><i class="ti ti-check" aria-hidden="true"></i><span data-alt="Mentor feedback on 3 projects a month">بازخورد منتور روی ۳ پروژه در ماه</span></li></ul><a class="btn btn-primary" href="dashboard.html" data-alt="Start 7 days free">۷ روز رایگان شروع کنید</a></div>
+        <div class="plan"><b class="h3" data-alt="Teams">سازمانی</b><span class="amount" data-alt="Custom">توافقی</span><ul><li><i class="ti ti-check" aria-hidden="true"></i><span data-alt="Seats for your team">صندلی برای اعضای تیم</span></li><li><i class="ti ti-check" aria-hidden="true"></i><span data-alt="Progress reports">گزارش پیشرفت</span></li></ul><a class="btn btn-outline" href="#faq" data-alt="Talk to us">گفت‌وگو با ما</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" style="padding-block-start: 0">
+    <div class="container" style="max-inline-size: 860px">
+      <h2 class="h1" style="margin-block-end: var(--space-4)" data-alt="Questions">پرسش‌ها</h2>
+      <details class="faq" open><summary data-alt="Is the certificate valid for employers?">گواهی برای کارفرما معتبر است؟</summary><p data-alt="Every certificate has a unique ID that anyone can verify on our site, and it lists the projects you completed.">هر گواهی یک شناسهٔ یکتا دارد که هر کسی می‌تواند در سایت استعلام کند، و پروژه‌هایی که انجام داده‌اید در آن ثبت است.</p></details>
+      <details class="faq"><summary data-alt="Can I watch offline?">می‌توانم آفلاین ببینم؟</summary><p data-alt="Yes — download lessons in the app and watch them anywhere.">بله؛ در اپ درس‌ها را دانلود کنید و هر جا خواستید ببینید.</p></details>
+      <details class="faq"><summary data-alt="What if the course is not for me?">اگر دوره به کارم نیامد؟</summary><p data-alt="Ask for a refund within seven days; no questions asked.">تا هفت روز درخواست بازگشت وجه بدهید؛ بدون پرسش.</p></details>
+    </div>
+  </section>
+
+  <section class="container" style="padding-block-end: var(--space-8)">
+    <div class="cta on-navy graph"><div class="stack" style="gap: 8px"><h2 class="h1" data-alt="The first lesson is on us.">اولین درس مهمان ما.</h2><p style="color: rgba(255,255,255,.75)" data-alt="Pick any course and watch its first lesson free — no card needed.">هر دوره‌ای را انتخاب کنید و اولین درسش را رایگان ببینید — بدون کارت بانکی.</p></div><a class="btn btn-primary btn-lg" href="#courses" data-alt="Choose a course">انتخاب دوره</a></div>
+  </section>
+</main>
+
+<footer class="site-foot on-navy">
+  <div class="container">
+    <div class="cols" style="--n:4">
+      <div class="stack" style="gap: 10px"><a class="logo" href="#top" style="color:#fff"><span class="logo-mark" aria-hidden="true" style="background: #1a2a57"></span><span data-alt="Pelleh">پله</span></a><p style="color: rgba(255,255,255,.65)" data-alt="A sample academy for the Tastefolio gallery.">یک آموزشگاه نمونه برای گالری تیست‌فولیو.</p></div>
+      <div><h3 data-alt="Learn">یادگیری</h3><ul><li><a href="#courses" data-alt="All courses">همهٔ دوره‌ها</a></li><li><a href="#paths" data-alt="Learning paths">مسیرهای یادگیری</a></li><li><a href="#pricing" data-alt="Membership">اشتراک</a></li></ul></div>
+      <div><h3 data-alt="Teach">تدریس</h3><ul><li><a href="#teachers" data-alt="Become an instructor">مدرس شوید</a></li><li><a href="#teachers" data-alt="Instructor guide">راهنمای مدرسان</a></li></ul></div>
+      <div><h3 data-alt="Support">پشتیبانی</h3><ul><li><a href="#faq" data-alt="Help centre">مرکز راهنما</a></li><li><a href="dashboard.html" data-alt="My learning">یادگیری من</a></li><li><a href="#faq" data-alt="Verify a certificate">استعلام گواهی</a></li></ul></div>
+    </div>
+    <div class="foot-base"><span data-alt="© 2026 Pelleh Academy">© ۱۴۰۵ آکادمی پله</span><span data-alt="Sample data, not a real school">داده‌ها نمونه‌اند</span></div>
+  </div>
+</footer>
+<script>
+  // hero search and popular topics fill the course filter, then scroll to it
+  const runSearch = (q) => {
+    const box = document.getElementById('course-q');
+    box.value = q;
+    box.dispatchEvent(new Event('input', { bubbles: true }));
+    document.getElementById('courses').scrollIntoView({ behavior: tf.reduceMotion ? 'auto' : 'smooth' });
+  };
+  document.getElementById('hero-search').addEventListener('submit', (e) => { e.preventDefault(); runSearch(document.getElementById('q').value.trim()); });
+  document.querySelectorAll('[data-q]').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); runSearch(a.dataset.q); }));
+</script>
+</body>
+</html>
