@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-alt-lang="fa" data-demo="dashboard">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="میرا کلاد · خانه">Mira Cloud · Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .device-art { inline-size: 84px; transform: rotate(-6deg); filter: drop-shadow(0 12px 16px rgba(18, 18, 20, .2)); }
+  .nb { justify-content: flex-end; }
+  .nb .cover { position: absolute; inset: 0 0 46% 0; z-index: -1; background-color: var(--c, var(--surface-2)); background-size: 14px 14px; }
+  .nb .cover.lined { background-image: repeating-linear-gradient(to bottom, transparent 0 13px, rgba(18, 18, 20, .12) 13px 14px); }
+  .nb .cover.dotted { background-image: radial-gradient(circle, rgba(18, 18, 20, .2) 1.2px, transparent 1.6px); }
+  .nb .cover.grid { background-image: linear-gradient(rgba(18, 18, 20, .1) 1px, transparent 1px), linear-gradient(90deg, rgba(18, 18, 20, .1) 1px, transparent 1px); }
+  .nb .meta { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .stat-row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-block-start: auto; }
+  .quick { display: flex; gap: 8px; margin-block-start: auto; }
+  .quick .input { background: rgba(255, 255, 255, .18); color: inherit; min-inline-size: 0; }
+  .quick .input::placeholder { color: inherit; opacity: .7; }
+  .quick .input:focus { background: rgba(255, 255, 255, .26); border-color: transparent; }
+  .settings-form { display: contents; }
+  .fw-step { display: grid; gap: 10px; margin-block-start: auto; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></symbol>
+  <symbol id="i-battery" viewBox="0 0 24 24"><rect x="2" y="7" width="18" height="10" rx="2.5"/><path d="M22 11v2"/><rect x="4.5" y="9.5" width="10" height="5" rx="1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l4-1 11-11-3-3L5 16l-1 4zM14 6l3 3"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-sync" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-14 5.3M4 12a8 8 0 0 1 14-5.3M18 3v4h-4M6 21v-4h4"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-note" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6V3zM15 3v4h4M9 12h6M9 16h6"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></symbol>
+  <symbol id="i-text" viewBox="0 0 24 24"><path d="M5 6V4h14v2M12 4v16M9 20h6"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .5-8A6 6 0 0 0 6 9.5 4.3 4.3 0 0 0 7 18z"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/></symbol>
+  <symbol id="art-mira" viewBox="0 0 300 400"><rect x="4" y="4" width="292" height="392" rx="28" style="fill:var(--bezel,#2a2a2e)"/><rect x="24" y="24" width="252" height="352" rx="8" fill="#f3f1ec"/><g fill="none" stroke="#2b2b2f" stroke-width="2.4" stroke-linecap="round"><path d="M48 66c8-6 14 6 22 0s14 6 22 0 14 6 22 0 14 6 22 0"/><path d="M48 96c8-6 14 6 22 0s14 6 22 0 14 6 22 0 14 6 22 0 14 6 22 0 14 6 22 0"/><path d="M48 126c8-6 14 6 22 0s14 6 22 0 14 6 22 0"/><path d="M48 186v80h170"/><path d="M58 246c24-6 32-38 54-42s30 26 52 6 30-40 48-44"/></g><rect x="48" y="334" width="96" height="9" rx="4.5" fill="#df1c71" opacity=".85"/></symbol>
+</svg>
+<a class="skip-link" href="#main" data-alt="رفتن به محتوا">Skip to content</a>
+<header class="app-head">
+  <div class="container">
+    <div class="head-tile"><a class="logo" href="site.html"><span class="logo-mark" aria-hidden="true"></span><span data-alt="میرا کلاد">mira cloud</span></a></div>
+    <div class="head-tile tabs-tile">
+      <div class="tabs" role="tablist" aria-label="Sections" data-alt-aria-label="بخش‌ها">
+        <button role="tab" id="t-home" aria-controls="p-home" aria-selected="true" data-alt="خانه">Home</button>
+        <button role="tab" id="t-nb" aria-controls="p-nb" aria-selected="false" data-alt="دفترها">Notebooks</button>
+        <button role="tab" id="t-dev" aria-controls="p-dev" aria-selected="false" data-alt="دستگاه‌ها">Devices</button>
+        <button role="tab" id="t-set" aria-controls="p-set" aria-selected="false" data-alt="تنظیمات">Settings</button>
+      </div>
+    </div>
+    <div class="head-tile">
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="EN">فا</button>
+      <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="Toggle dark mode" data-alt-aria-label="تغییر حالت تیره"><svg class="ic"><use href="#i-sun"/></svg></button>
+      <span class="avatar" aria-hidden="true">SK</span>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="container app">
+  <!-- ============================================================ home -->
+  <section role="tabpanel" id="p-home" aria-labelledby="t-home">
+    <div class="page-head">
+      <div><p class="small subtle" data-date="2026-10-16" data-fmt="long">October 16, 2026</p><h1 class="h1" data-alt="صبح بخیر، سارا">Good morning, Sara</h1></div>
+      <span class="spacer"></span>
+      <button class="btn btn-soft" type="button" id="customize" aria-pressed="false"><svg class="ic"><use href="#i-grid"/></svg><span data-customize data-alt="چیدمان">Customize</span></button>
+    </div>
+    <div class="bento" id="home-grid">
+      <div class="tile w-2 h-2" data-sizes>
+        <div class="tile-tools" role="group" aria-label="Tile size" data-alt-aria-label="اندازهٔ کاشی"><button type="button" data-size="w-2 h-1">S</button><button type="button" data-size="w-2 h-2" aria-pressed="true">M</button><button type="button" data-size="w-4 h-2">L</button></div>
+        <span class="tile-label"><svg class="ic"><use href="#i-cloud"/></svg><span data-alt="فضای ذخیره">Storage</span></span>
+        <div data-chart="donut" data-height="150" data-fmt="pct" data-values="64,36" data-labels='{"en":["Used","Free"],"fa":["استفاده‌شده","آزاد"]}' data-center='{"en":"20.5 / 32 GB","fa":"۲۰٫۵ از ۳۲ گیگ"}' data-label='{"en":"Storage: 64% used","fa":"فضای ذخیره: ۶۴٪ استفاده‌شده"}' style="--chart-2: var(--surface-2); margin-block-start: auto"></div>
+      </div>
+      <div class="tile w-2 h-2 ink" data-sizes>
+        <div class="tile-tools" role="group" aria-label="Tile size" data-alt-aria-label="اندازهٔ کاشی"><button type="button" data-size="w-2 h-1">S</button><button type="button" data-size="w-2 h-2" aria-pressed="true">M</button><button type="button" data-size="w-4 h-2">L</button></div>
+        <div class="row" style="justify-content: space-between; align-items: flex-start; flex-wrap: nowrap">
+          <div><span class="tile-label" data-alt="میرا · گچی">Mira · Chalk</span><p class="tile-title" data-alt="همگام">In sync</p><p class="small muted"><span data-alt="آخرین همگام‌سازی">Last sync</span> <span data-ago="120">2 min ago</span></p></div>
+          <svg class="device-art" viewBox="0 0 300 400" aria-hidden="true" style="--bezel:#e9e6e0"><use href="#art-mira"/></svg>
+        </div>
+        <div class="tile-foot" style="align-items: center">
+          <div style="flex:1; display:grid; gap:6px"><span class="small muted"><svg class="ic"><use href="#i-battery"/></svg> <span data-num="82" data-fmt="pct">82%</span></span><div class="progress" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" aria-label="Battery" data-alt-aria-label="باتری"><i style="--v:82%"></i></div></div>
+          <button class="btn btn-soft btn-sm" type="button" data-toast="Synced 3 new pages" data-toast-alt="۳ صفحهٔ تازه همگام شد" data-tone="success"><svg class="ic"><use href="#i-sync"/></svg><span data-alt="همگام کن">Sync now</span></button>
+        </div>
+      </div>
+      <div class="tile w-2 h-1" data-sizes>
+        <div class="tile-tools" role="group" aria-label="Tile size" data-alt-aria-label="اندازهٔ کاشی"><button type="button" data-size="w-2 h-1" aria-pressed="true">S</button><button type="button" data-size="w-2 h-2">M</button><button type="button" data-size="w-4 h-2">L</button></div>
+        <span class="tile-label"><svg class="ic"><use href="#i-pen"/></svg><span data-alt="صفحه‌های این هفته">Pages this week</span></span>
+        <div class="stat-row"><span class="kpi" data-num="148">148</span><span class="delta up" data-alt="+۲۲٪">+22%</span></div>
+      </div>
+      <form class="tile w-2 h-1 brand" id="quick" data-sizes>
+        <div class="tile-tools" role="group" aria-label="Tile size" data-alt-aria-label="اندازهٔ کاشی"><button type="button" data-size="w-2 h-1" aria-pressed="true">S</button><button type="button" data-size="w-2 h-2">M</button><button type="button" data-size="w-4 h-2">L</button></div>
+        <label class="tile-label" for="qn" data-alt="یادداشت سریع">Quick note</label>
+        <div class="quick"><input class="input" id="qn" name="note" placeholder="Call the printer…" data-alt-placeholder="به چاپخانه زنگ بزن…" autocomplete="off"><button class="btn btn-icon" type="submit" aria-label="Add note" data-alt-aria-label="افزودن یادداشت"><svg class="ic"><use href="#i-plus"/></svg></button></div>
+      </form>
+      <div class="tile w-4 h-2" data-sizes>
+        <div class="tile-tools" role="group" aria-label="Tile size" data-alt-aria-label="اندازهٔ کاشی"><button type="button" data-size="w-2 h-2">M</button><button type="button" data-size="w-4 h-2" aria-pressed="true">L</button><button type="button" data-size="w-6 h-2">XL</button></div>
+        <div class="row" style="justify-content: space-between"><span class="tile-label"><svg class="ic"><use href="#i-chart"/></svg><span data-alt="نوشتن در ۱۴ روز">Writing, last 14 days</span></span><span class="legend"><span style="--c: var(--ink)" data-alt="صفحه">pages</span></span></div>
+        <div data-chart="bar" data-height="190" data-fmt="int" data-dates="2026-10-03,14,day,short" data-values="12,18,9,22,25,14,6,19,24,27,16,21,30,28" data-name='{"en":"Pages","fa":"صفحه"}' style="margin-block-start: auto"></div>
+      </div>
+      <div class="tile w-2 h-3" data-sizes data-filter-scope>
+        <div class="tile-tools" role="group" aria-label="Tile size" data-alt-aria-label="اندازهٔ کاشی"><button type="button" data-size="w-2 h-2">M</button><button type="button" data-size="w-2 h-3" aria-pressed="true">L</button><button type="button" data-size="w-4 h-3">XL</button></div>
+        <span class="tile-label"><svg class="ic"><use href="#i-note"/></svg><span data-alt="یادداشت‌های اخیر">Recent notes</span></span>
+        <input class="input" type="search" data-filter-search data-hotkey="/" placeholder="Search notes  /" data-alt-placeholder="جست‌وجوی یادداشت  /" aria-label="Search notes" data-alt-aria-label="جست‌وجوی یادداشت">
+        <ul class="list" id="recent">
+          <li data-filter-item><span class="avatar" style="background: var(--brand-soft)" aria-hidden="true"><svg class="ic"><use href="#i-note"/></svg></span><div class="grow"><b data-alt="جلسهٔ دوشنبه — برنامهٔ چاپ">Monday sync — print schedule</b><span class="tiny subtle"><span data-ago="3600">1 hr ago</span></span></div></li>
+          <li data-filter-item><span class="avatar" aria-hidden="true"><svg class="ic"><use href="#i-note"/></svg></span><div class="grow"><b data-alt="ایده‌های جلد پاییز">Autumn cover ideas</b><span class="tiny subtle"><span data-ago="10800">3 hr ago</span></span></div></li>
+          <li data-filter-item><span class="avatar" aria-hidden="true"><svg class="ic"><use href="#i-note"/></svg></span><div class="grow"><b data-alt="خرید: کاغذ، جوهر، نخ">Groceries: paper, ink, thread</b><span class="tiny subtle"><span data-ago="86400">yesterday</span></span></div></li>
+          <li data-filter-item><span class="avatar" aria-hidden="true"><svg class="ic"><use href="#i-note"/></svg></span><div class="grow"><b data-alt="درس ۴ — تایپوگرافی فارسی">Lesson 4 — Persian typography</b><span class="tiny subtle"><span data-ago="172800">2 days ago</span></span></div></li>
+          <li data-filter-item><span class="avatar" aria-hidden="true"><svg class="ic"><use href="#i-note"/></svg></span><div class="grow"><b data-alt="کتاب‌هایی که باید خواند">Books to read</b><span class="tiny subtle"><span data-ago="345600">4 days ago</span></span></div></li>
+        </ul>
+        <p class="empty" data-filter-empty hidden data-alt="یادداشتی پیدا نشد.">No notes found.</p>
+      </div>
+      <div class="tile w-2 h-1 soft" data-sizes>
+        <div class="tile-tools" role="group" aria-label="Tile size" data-alt-aria-label="اندازهٔ کاشی"><button type="button" data-size="w-2 h-1" aria-pressed="true">S</button><button type="button" data-size="w-2 h-2">M</button></div>
+        <span class="tile-label"><svg class="ic"><use href="#i-text"/></svg><span data-alt="دقت تشخیص دست‌خط">Recognition accuracy</span></span>
+        <div class="stat-row"><span class="kpi" data-num="98.4" data-fmt="pct1">98.4%</span></div>
+      </div>
+      <div class="tile w-2 h-1" data-sizes>
+        <div class="tile-tools" role="group" aria-label="Tile size" data-alt-aria-label="اندازهٔ کاشی"><button type="button" data-size="w-2 h-1" aria-pressed="true">S</button><button type="button" data-size="w-2 h-2">M</button></div>
+        <span class="tile-label"><svg class="ic"><use href="#i-pen"/></svg><span data-alt="نوک قلم">Pen tip</span></span>
+        <div class="stat-row" style="inline-size: 100%"><span class="kpi" data-num="74" data-fmt="pct">74%</span><div class="progress" style="flex:1" aria-hidden="true"><i style="--v:74%"></i></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ notebooks -->
+  <section role="tabpanel" id="p-nb" aria-labelledby="t-nb" data-filter-scope hidden>
+    <div class="page-head">
+      <h1 class="h1" data-alt="دفترها">Notebooks</h1>
+      <span class="spacer"></span>
+      <div class="chips" data-group role="group" aria-label="Filter" data-alt-aria-label="فیلتر">
+        <button type="button" data-filter="kind" data-value="all" aria-pressed="true" data-alt="همه">All</button>
+        <button type="button" data-filter="kind" data-value="work" aria-pressed="false" data-alt="کار">Work</button>
+        <button type="button" data-filter="kind" data-value="personal" aria-pressed="false" data-alt="شخصی">Personal</button>
+        <button type="button" data-filter="kind" data-value="shared" aria-pressed="false" data-alt="اشتراکی">Shared</button>
+      </div>
+      <button class="btn btn-brand" type="button" data-dialog="#new-nb"><svg class="ic"><use href="#i-plus"/></svg><span data-alt="دفتر تازه">New notebook</span></button>
+    </div>
+    <div class="bento" style="--row: 116px">
+      <a class="tile w-2 h-2 nb" href="#p-nb" data-filter-item data-kind="work shared"><span class="cover lined" style="--c:#fde3ee"></span><span class="corner" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span><b class="h3" data-alt="برنامهٔ چاپ پاییز">Autumn print run</b><span class="meta"><span class="small muted"><span data-num="42">42</span> <span data-alt="صفحه">pages</span></span><span class="avatars" aria-hidden="true"><span class="avatar">SK</span><span class="avatar">RM</span></span></span></a>
+      <a class="tile w-2 h-2 nb" href="#p-nb" data-filter-item data-kind="personal"><span class="cover dotted" style="--c:#e6f0ff"></span><span class="corner" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span><b class="h3" data-alt="دفتر روزانه">Daily journal</b><span class="meta"><span class="small muted"><span data-num="218">218</span> <span data-alt="صفحه">pages</span></span><span class="badge" data-alt="شخصی">Personal</span></span></a>
+      <a class="tile w-2 h-2 nb" href="#p-nb" data-filter-item data-kind="work"><span class="cover grid" style="--c:#eef6e9"></span><span class="corner" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span><b class="h3" data-alt="طرح‌های قفسه">Shelf sketches</b><span class="meta"><span class="small muted"><span data-num="17">17</span> <span data-alt="صفحه">pages</span></span><span class="badge" data-alt="کار">Work</span></span></a>
+      <a class="tile w-2 h-2 nb" href="#p-nb" data-filter-item data-kind="shared"><span class="cover lined" style="--c:#fff1db"></span><span class="corner" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span><b class="h3" data-alt="کلاس تایپوگرافی">Typography class</b><span class="meta"><span class="small muted"><span data-num="64">64</span> <span data-alt="صفحه">pages</span></span><span class="avatars" aria-hidden="true"><span class="avatar">SK</span><span class="avatar">AH</span><span class="avatar">+9</span></span></span></a>
+      <a class="tile w-2 h-2 nb" href="#p-nb" data-filter-item data-kind="personal"><span class="cover dotted" style="--c:#f1ecfb"></span><span class="corner" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span><b class="h3" data-alt="کتاب‌هایی که خواندم">Books I read</b><span class="meta"><span class="small muted"><span data-num="31">31</span> <span data-alt="صفحه">pages</span></span><span class="badge" data-alt="شخصی">Personal</span></span></a>
+      <a class="tile w-2 h-2 nb" href="#p-nb" data-filter-item data-kind="work"><span class="cover grid" style="--c:#e9f6f6"></span><span class="corner" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span><b class="h3" data-alt="جلسه‌های مشتری">Client meetings</b><span class="meta"><span class="small muted"><span data-num="96">96</span> <span data-alt="صفحه">pages</span></span><span class="badge" data-alt="کار">Work</span></span></a>
+    </div>
+    <p class="empty" data-filter-empty hidden data-alt="دفتری در این دسته نیست.">No notebooks in this group.</p>
+  </section>
+
+  <!-- ============================================================ devices -->
+  <section role="tabpanel" id="p-dev" aria-labelledby="t-dev" hidden>
+    <div class="page-head"><h1 class="h1" data-alt="دستگاه‌ها">Devices</h1></div>
+    <div class="bento" style="--row: 120px">
+      <div class="tile w-3 h-2">
+        <div class="row" style="justify-content: space-between; align-items: flex-start; flex-wrap: nowrap">
+          <div class="stack" style="gap: 4px"><span class="tile-label" data-alt="دستگاه اصلی">Primary device</span><p class="tile-title" data-alt="میرا ۲ · گچی">Mira 2 · Chalk</p><span class="badge ok" data-alt="آنلاین">Online</span></div>
+          <svg class="device-art" viewBox="0 0 300 400" aria-hidden="true" style="--bezel:#e9e6e0"><use href="#art-mira"/></svg>
+        </div>
+        <div class="tile-foot small muted"><span><span data-alt="سریال">Serial</span> <span class="ltr">MR2-7K41-0093</span></span><span><span data-alt="نسخه">Firmware</span> <span class="ltr">3.2.1</span></span></div>
+      </div>
+      <div class="tile w-3 h-2 ink" id="fw">
+        <span class="tile-label" data-alt="به‌روزرسانی">Update</span>
+        <p class="tile-title" data-alt="نسخهٔ ۳٫۳ آماده است">Version 3.3 is ready</p>
+        <p class="small muted" data-alt="تشخیص بهتر دست‌خط فارسی و قالب تقویم شمسی.">Better Persian handwriting recognition and a Solar Hijri calendar template.</p>
+        <div class="fw-step">
+          <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Update progress" data-alt-aria-label="پیشرفت به‌روزرسانی"><i id="fw-bar" style="--v:0%"></i></div>
+          <button class="btn btn-brand" type="button" id="fw-go" data-alt="نصب ۳٫۳">Install 3.3</button>
+        </div>
+      </div>
+      <div class="tile w-6 h-2">
+        <span class="tile-label" data-alt="نشست‌های فعال">Signed-in sessions</span>
+        <div class="table-scroll">
+          <table class="table">
+            <thead><tr><th scope="col" data-alt="دستگاه">Device</th><th scope="col" data-alt="مکان">Location</th><th scope="col" data-alt="آخرین فعالیت">Last active</th><th scope="col"><span class="sr-only" data-alt="کار">Action</span></th></tr></thead>
+            <tbody>
+              <tr><td data-alt="میرا ۲ (همین دستگاه)">Mira 2 (this device)</td><td data-alt="تهران">Tehran</td><td><span data-ago="120">2 min ago</span></td><td></td></tr>
+              <tr><td data-alt="لپ‌تاپ — مرورگر">Laptop — browser</td><td data-alt="تهران">Tehran</td><td><span data-ago="7200">2 hr ago</span></td><td style="text-align:end"><button class="btn btn-soft btn-sm" type="button" data-toast="Session signed out" data-toast-alt="نشست بسته شد"><svg class="ic"><use href="#i-logout"/></svg><span data-alt="خروج">Sign out</span></button></td></tr>
+              <tr><td data-alt="گوشی — اپ میرا">Phone — Mira app</td><td data-alt="اصفهان">Isfahan</td><td><span data-ago="259200">3 days ago</span></td><td style="text-align:end"><button class="btn btn-soft btn-sm" type="button" data-toast="Session signed out" data-toast-alt="نشست بسته شد"><svg class="ic"><use href="#i-logout"/></svg><span data-alt="خروج">Sign out</span></button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ settings -->
+  <section role="tabpanel" id="p-set" aria-labelledby="t-set" hidden>
+    <div class="page-head"><h1 class="h1" data-alt="تنظیمات">Settings</h1></div>
+    <form class="bento" style="--row: 96px" data-validate data-keep data-success="Settings saved" data-success-alt="تنظیمات ذخیره شد">
+      <div class="tile w-3 h-3">
+        <span class="tile-label" data-alt="حساب">Account</span>
+        <div class="field"><label class="label" for="s-name" data-alt="نام">Name</label><input class="input" id="s-name" name="name" value="Sara Karimi" data-alt-value="سارا کریمی" required></div>
+        <div class="field"><label class="label" for="s-mail" data-alt="ایمیل">Email</label><input class="input" id="s-mail" name="email" type="email" value="sara@example.com" required dir="ltr"></div>
+        <div class="field"><label class="label" for="s-lang" data-alt="زبان دست‌خط">Handwriting language</label><select class="select" id="s-lang" name="hw"><option data-alt="فارسی و انگلیسی">Persian + English</option><option data-alt="فقط انگلیسی">English only</option><option data-alt="فقط فارسی">Persian only</option></select></div>
+      </div>
+      <div class="tile w-3 h-3">
+        <span class="tile-label" data-alt="همگام‌سازی و حریم خصوصی">Sync &amp; privacy</span>
+        <div class="row" style="justify-content: space-between; flex-wrap: nowrap"><span id="l-auto" data-alt="همگام‌سازی خودکار">Automatic sync</span><button class="switch" type="button" role="switch" aria-checked="true" aria-labelledby="l-auto"></button></div>
+        <div class="row" style="justify-content: space-between; flex-wrap: nowrap"><span id="l-wifi" data-alt="فقط با وای‌فای">Only on Wi-Fi</span><button class="switch" type="button" role="switch" aria-checked="true" aria-labelledby="l-wifi"></button></div>
+        <div class="row" style="justify-content: space-between; flex-wrap: nowrap"><span id="l-ocr" data-alt="تشخیص دست‌خط در پس‌زمینه">Background recognition</span><button class="switch" type="button" role="switch" aria-checked="false" aria-labelledby="l-ocr"></button></div>
+        <div class="row" style="justify-content: space-between; flex-wrap: nowrap"><span id="l-e2e" data-alt="رمزگذاری سرتاسری">End-to-end encryption</span><button class="switch" type="button" role="switch" aria-checked="true" aria-labelledby="l-e2e"></button></div>
+      </div>
+      <fieldset class="tile w-4 h-2" style="border:0; margin:0">
+        <legend class="tile-label" style="float:inline-start; margin-block-end: 8px" data-alt="قالب خروجی">Export format</legend>
+        <div class="options" style="clear: both">
+          <label class="option"><input type="radio" name="export" value="pdf" checked><b>PDF</b><small data-alt="همان‌طور که نوشته‌اید">Exactly as written</small></label>
+          <label class="option"><input type="radio" name="export" value="md"><b>Markdown</b><small data-alt="متن تشخیص‌داده‌شده">Recognised text</small></label>
+          <label class="option"><input type="radio" name="export" value="png"><b>PNG</b><small data-alt="هر صفحه یک تصویر">One image per page</small></label>
+        </div>
+      </fieldset>
+      <div class="tile w-2 h-2 soft">
+        <span class="tile-label" data-alt="منطقهٔ خطر">Danger zone</span>
+        <p class="small muted" data-alt="حذف حساب، همهٔ یادداشت‌های ابری را پاک می‌کند.">Deleting the account removes every note from the cloud.</p>
+        <button class="btn btn-soft" type="button" data-dialog="#del" style="margin-block-start:auto; color: var(--danger)" data-alt="حذف حساب…">Delete account…</button>
+      </div>
+      <div class="w-6 row" style="grid-row: auto; align-self: start"><button class="btn btn-brand btn-lg" type="submit" data-alt="ذخیره">Save changes</button><button class="btn btn-ghost btn-lg" type="reset" data-alt="بازنشانی">Reset</button></div>
+    </form>
+  </section>
+</main>
+
+<dialog class="modal" id="new-nb" aria-labelledby="nn-t">
+  <form data-validate data-success="Notebook created" data-success-alt="دفتر ساخته شد">
+    <div class="modal-body">
+      <h2 class="h2" id="nn-t" data-alt="دفتر تازه">New notebook</h2>
+      <div class="field"><label class="label" for="nn-name" data-alt="نام">Name</label><input class="input" id="nn-name" name="name" required minlength="2" placeholder="Winter plans" data-alt-placeholder="برنامه‌های زمستان"></div>
+      <fieldset class="field" style="border:0; margin:0; padding:0"><legend class="label" style="margin-block-end: 8px" data-alt="قالب">Template</legend>
+        <div class="options" style="grid-template-columns: repeat(2, minmax(0, 1fr))">
+          <label class="option"><input type="radio" name="tpl" value="lined" checked><b data-alt="خط‌دار">Lined</b></label>
+          <label class="option"><input type="radio" name="tpl" value="dotted"><b data-alt="نقطه‌چین">Dotted</b></label>
+          <label class="option"><input type="radio" name="tpl" value="grid"><b data-alt="شطرنجی">Grid</b></label>
+          <label class="option"><input type="radio" name="tpl" value="blank"><b data-alt="سفید">Blank</b></label>
+        </div></fieldset>
+      <fieldset class="field" style="border:0; margin:0; padding:0"><legend class="label" style="margin-block-end: 8px" data-alt="رنگ جلد">Cover colour</legend>
+        <div class="swatches"><label class="swatch"><input type="radio" name="cover" value="pink" checked aria-label="Pink" data-alt-aria-label="صورتی"><span style="--c:#fde3ee"></span></label><label class="swatch"><input type="radio" name="cover" value="blue" aria-label="Blue" data-alt-aria-label="آبی"><span style="--c:#e6f0ff"></span></label><label class="swatch"><input type="radio" name="cover" value="green" aria-label="Green" data-alt-aria-label="سبز"><span style="--c:#eef6e9"></span></label><label class="swatch"><input type="radio" name="cover" value="sand" aria-label="Sand" data-alt-aria-label="شنی"><span style="--c:#fff1db"></span></label></div></fieldset>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" type="button" data-close data-alt="انصراف">Cancel</button><button class="btn btn-brand" type="submit" data-alt="ساختن">Create</button></div>
+  </form>
+</dialog>
+
+<dialog class="modal" id="del" aria-labelledby="del-t">
+  <form data-validate data-success="Account scheduled for deletion" data-success-alt="حذف حساب زمان‌بندی شد">
+    <div class="modal-body">
+      <h2 class="h2" id="del-t" data-alt="حذف حساب؟">Delete the account?</h2>
+      <p class="muted" data-alt="برای تأیید، عبارت DELETE را بنویسید. یادداشت‌های روی خود دستگاه باقی می‌مانند.">Type DELETE to confirm. Notes stored on the device itself stay there.</p>
+      <div class="field"><label class="label" for="del-c" data-alt="تأیید">Confirmation</label><input class="input" id="del-c" name="confirm" required pattern="DELETE" dir="ltr" autocomplete="off" data-pattern-msg="Type DELETE in capitals" data-pattern-msg-alt="عبارت DELETE را با حروف بزرگ بنویسید"></div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" type="button" data-close data-alt="انصراف">Cancel</button><button class="btn" type="submit" style="background: var(--danger); color: #fff" data-alt="حذف">Delete</button></div>
+  </form>
+</dialog>
+
+<script>
+  (() => {
+    // customize: toggles edit mode; size buttons swap a tile's span classes
+    const grid = document.getElementById('home-grid');
+    const btn = document.getElementById('customize');
+    const label = btn.querySelector('[data-customize]');
+    const words = { en: ['Customize', 'Done'], fa: ['چیدمان', 'تمام'] };
+    const sync = () => { const on = grid.hasAttribute('data-editing'); label.textContent = words[tf.lang()][on ? 1 : 0]; label.dataset.alt = words[tf.lang() === 'fa' ? 'en' : 'fa'][on ? 1 : 0]; btn.setAttribute('aria-pressed', String(on)); };
+    btn.addEventListener('click', () => { grid.toggleAttribute('data-editing'); sync(); });
+    document.addEventListener('tf:lang', sync);
+    grid.addEventListener('click', (e) => {
+      const b = e.target.closest('[data-size]');
+      if (!b) return;
+      const tile = b.closest('.tile');
+      tile.classList.remove(...[...tile.classList].filter((c) => /^[wh]-\d$/.test(c)));
+      tile.classList.add(...b.dataset.size.split(' '));
+      b.parentElement.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      requestAnimationFrame(() => tf.drawCharts(tile));
+    });
+    // quick note: prepend to the recent list
+    document.getElementById('quick').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = e.target.querySelector('input');
+      const text = input.value.trim();
+      if (!text) { input.focus(); return; }
+      const li = document.createElement('li');
+      li.setAttribute('data-filter-item', '');
+      li.innerHTML = '<span class="avatar" style="background: var(--brand-soft)" aria-hidden="true"><svg class="ic"><use href="#i-note"/></svg></span><div class="grow"><b></b><span class="tiny subtle"></span></div>';
+      li.querySelector('b').textContent = text;
+      li.querySelector('.tiny').textContent = tf.lang() === 'fa' ? 'همین حالا' : 'just now';
+      document.getElementById('recent').prepend(li);
+      input.value = '';
+      tf.toast(tf.lang() === 'fa' ? 'یادداشت اضافه شد' : 'Note added', { tone: 'success' });
+    });
+    // firmware: a simulated install
+    document.getElementById('fw-go').addEventListener('click', (e) => {
+      const b = e.currentTarget, bar = document.getElementById('fw-bar');
+      b.disabled = true;
+      let v = 0;
+      const step = () => {
+        v = Math.min(100, v + (tf.reduceMotion ? 100 : 7));
+        bar.style.setProperty('--v', v + '%');
+        bar.parentElement.setAttribute('aria-valuenow', v);
+        if (v < 100) setTimeout(step, 120);
+        else tf.toast(tf.lang() === 'fa' ? 'نسخهٔ ۳٫۳ نصب شد' : 'Version 3.3 installed', { tone: 'success' });
+      };
+      step();
+    });
+  })();
+</script>
+</body>
+</html>

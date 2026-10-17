@@ -162,6 +162,15 @@
       ]
     },
     {
+      "name": "bento",
+      "description": "Tastefolio design language — Modular modern — every idea in its own rounded tile on one calm grid",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/bento"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -183,7 +192,8 @@
         "./skills/kashi",
         "./skills/ticker",
         "./skills/clay",
-        "./skills/maison"
+        "./skills/maison",
+        "./skills/bento"
       ]
     }
   ]

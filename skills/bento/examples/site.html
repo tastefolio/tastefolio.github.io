@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-alt-lang="fa" data-demo="site">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="میرا — کاغذ، منهای کاغذبازی">Mira — paper, minus the paperwork</title>
+<meta name="description" content="Mira is a sample e-ink notebook: six weeks of battery, handwriting search and a pen that never charges." data-alt-content="میرا یک دفترچهٔ جوهر الکترونیکی نمونه است: شش هفته باتری، جست‌وجو در دست‌خط و قلمی که شارژ نمی‌خواهد.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .hero-tile { --pad: clamp(24px, 3vw, 40px); justify-content: space-between; }
+  .hero-tile .copy { display: grid; justify-items: start; gap: var(--space-4); max-inline-size: min(34ch, 60%); position: relative; }
+  .hero-tile .display { font-size: clamp(42px, 5.4vw, 86px); }
+  .hero-art { inset-block-end: -96px; inset-inline-end: -14px; inline-size: clamp(170px, 21vw, 270px); transform: rotate(-8deg); filter: drop-shadow(0 30px 40px rgba(18, 18, 20, .22)); }
+  [dir="rtl"] .hero-art { transform: rotate(8deg); }
+  .pen-art { inset-block-end: -30px; inset-inline-end: clamp(150px, 19vw, 250px); inline-size: 22px; transform: rotate(14deg); }
+  @media (max-width: 680px) { .hero-tile .copy { max-inline-size: none; padding-block-end: 190px; } .hero-art { inline-size: 200px; inset-block-end: -80px; } .pen-art { display: none; } }
+  .scribble { display: grid; gap: 10px; margin-block-start: auto; }
+  .scribble svg { inline-size: 100%; block-size: 34px; }
+  .scribble .typed { font: 600 var(--fs-lg)/1.3 var(--font-sans); }
+  .tmpl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-block-start: auto; }
+  .tmpl span { aspect-ratio: 3 / 4; border-radius: 10px; background: var(--surface-2); background-size: 12px 12px; }
+  .tmpl .lined { background-image: repeating-linear-gradient(to bottom, transparent 0 11px, var(--line-2) 11px 12px); }
+  .tmpl .dotted { background-image: radial-gradient(circle, var(--line-2) 1.2px, transparent 1.6px); }
+  .tmpl .grid { background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); }
+  .tmpl .cal { background-image: linear-gradient(var(--line-2) 1px, transparent 1px), linear-gradient(90deg, var(--line-2) 1px, transparent 1px); background-size: 33.3% 25%; }
+  .tmpl .music { background-image: repeating-linear-gradient(to bottom, transparent 0 18px, var(--line-2) 18px 19px, transparent 19px 21px, var(--line-2) 21px 22px); }
+  .profile { margin-block-start: auto; block-size: 10px; border-radius: 6px; background: linear-gradient(90deg, var(--ink) 0 92%, var(--ink-3) 92%); inline-size: 100%; }
+  .apps { display: flex; flex-wrap: wrap; gap: 8px; margin-block-start: auto; }
+  .apps span { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: var(--radius-pill); background: var(--surface-2); font-weight: 600; font-size: var(--fs-sm); }
+  .tile.ink .apps span { background: rgba(255, 255, 255, .1); }
+  [data-theme="dark"] .tile.ink .apps span { background: rgba(0, 0, 0, .07); }
+  .specs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--space-6); }
+  .specs dl { display: grid; margin: 0; }
+  .specs dl > div { display: flex; justify-content: space-between; gap: 12px; padding-block: 12px; border-block-end: 1px solid var(--line); }
+  .specs dt { color: var(--ink-2); }
+  .specs dd { margin: 0; font-weight: 600; text-align: end; }
+  @media (max-width: 680px) { .specs { grid-template-columns: minmax(0, 1fr); } }
+  .order-art { inline-size: 120px; margin-inline: auto; transform: rotate(-6deg); filter: drop-shadow(0 18px 22px rgba(18, 18, 20, .18)); }
+  .summary dl { display: grid; gap: 10px; margin: 0; }
+  .summary dl > div { display: flex; justify-content: space-between; gap: 8px; }
+  .summary dt { opacity: .72; }
+  .summary dd { margin: 0; font-weight: 600; }
+  .stars { color: var(--brand); letter-spacing: 2px; }
+  details.faq { border-block-end: 1px solid var(--line); }
+  details.faq summary { cursor: pointer; list-style: none; padding-block: 16px; font-weight: 600; display: flex; justify-content: space-between; gap: 12px; }
+  details.faq summary::-webkit-details-marker { display: none; }
+  details.faq summary::after { content: "+"; font-size: 22px; line-height: 1; color: var(--ink-3); }
+  details.faq[open] summary::after { content: "–"; }
+  details.faq p { padding-block-end: 16px; color: var(--ink-2); max-inline-size: 70ch; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></symbol>
+  <symbol id="i-battery" viewBox="0 0 24 24"><rect x="2" y="7" width="18" height="10" rx="2.5"/><path d="M22 11v2"/><rect x="4.5" y="9.5" width="10" height="5" rx="1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l4-1 11-11-3-3L5 16l-1 4zM14 6l3 3"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-bell-off" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 9.4-4.9M18 11v5l2 2H8M10 21h4M3 3l18 18"/></symbol>
+  <symbol id="i-sync" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-14 5.3M4 12a8 8 0 0 1 14-5.3M18 3v4h-4M6 21v-4h4"/></symbol>
+  <symbol id="i-text" viewBox="0 0 24 24"><path d="M5 6V4h14v2M12 4v16M9 20h6"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></symbol>
+  <symbol id="i-laptop" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18h2"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+  <symbol id="art-mira" viewBox="0 0 300 400"><rect x="4" y="4" width="292" height="392" rx="28" style="fill:var(--bezel,#2a2a2e)"/><rect x="24" y="24" width="252" height="352" rx="8" fill="#f3f1ec"/><g fill="none" stroke="#2b2b2f" stroke-width="2.4" stroke-linecap="round"><path d="M48 66c8-6 14 6 22 0s14 6 22 0 14 6 22 0 14 6 22 0"/><path d="M48 96c8-6 14 6 22 0s14 6 22 0 14 6 22 0 14 6 22 0 14 6 22 0 14 6 22 0"/><path d="M48 126c8-6 14 6 22 0s14 6 22 0 14 6 22 0"/><path d="M48 186v80h170"/><path d="M58 246c24-6 32-38 54-42s30 26 52 6 30-40 48-44"/><path d="M48 316c8-6 14 6 22 0s14 6 22 0 14 6 22 0 14 6 22 0 14 6 22 0"/></g><rect x="48" y="334" width="96" height="9" rx="4.5" fill="#df1c71" opacity=".85"/></symbol>
+  <symbol id="art-pen" viewBox="0 0 24 320"><rect x="4" y="4" width="16" height="270" rx="8" style="fill:var(--bezel,#2a2a2e)"/><path d="M4 272l8 42 8-42z" fill="#8a8a92"/></symbol>
+</svg>
+<a class="skip-link" href="#main" data-alt="رفتن به محتوا">Skip to content</a>
+<header class="site-head">
+  <div class="container">
+    <div class="head-tile"><a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"></span><span data-alt="میرا">mira</span></a></div>
+    <nav class="head-tile nav" aria-label="Main" data-alt-aria-label="اصلی">
+      <a href="#top" aria-current="page" data-alt="دفترچه">Notebook</a>
+      <a href="#features" data-alt="امکانات">Features</a>
+      <a href="#specs" data-alt="مشخصات">Specs</a>
+      <a href="#reviews" data-alt="نظرها">Reviews</a>
+      <a href="#faq" data-alt="پرسش‌ها">FAQ</a>
+    </nav>
+    <div class="head-tile">
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="EN">فا</button>
+      <button class="btn btn-ghost btn-icon btn-sm hide-sm" type="button" data-theme-toggle aria-label="Toggle dark mode" data-alt-aria-label="تغییر حالت تیره"><svg class="ic"><use href="#i-sun"/></svg></button>
+      <a class="btn btn-brand btn-sm" href="#order" data-alt="سفارش">Order</a>
+      <button class="btn btn-soft btn-icon btn-sm menu-btn" type="button" data-toggle="#mnav" aria-controls="mnav" aria-expanded="false" aria-label="Menu" data-alt-aria-label="منو"><svg class="ic"><use href="#i-menu"/></svg></button>
+    </div>
+    <nav class="head-tile mnav" id="mnav" data-dismissable aria-label="Mobile" data-alt-aria-label="موبایل">
+      <a href="#features" data-alt="امکانات">Features</a><a href="#specs" data-alt="مشخصات">Specs</a><a href="#reviews" data-alt="نظرها">Reviews</a><a href="#faq" data-alt="پرسش‌ها">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="container">
+  <section class="bento" id="top" aria-label="Mira at a glance" data-alt-aria-label="میرا در یک نگاه">
+    <div class="tile w-4 h-3 hero-tile">
+      <div class="copy">
+        <span class="badge brand" data-alt="تازه · میرا ۲">New · Mira 2</span>
+        <h1 class="display" data-alt="کاغذ، منهای کاغذبازی.">Paper, minus the paperwork.</h1>
+        <p class="lead" data-alt="دفترچه‌ای از جوهر الکترونیکی که مثل کاغذ حس می‌شود، دست‌خطتان را جست‌وجوپذیر می‌کند و هیچ‌وقت اعلان نمی‌فرستد.">An e-ink notebook that feels like paper, makes your handwriting searchable and never sends a notification.</p>
+        <div class="row">
+          <a class="btn btn-brand btn-lg" href="#order"><span data-alt="سفارش از">Order from</span>&nbsp;<span data-num="399" data-fmt="usd">$399</span></a>
+          <button class="btn btn-soft btn-lg" type="button" data-toast="The film is not part of this sample" data-toast-alt="فیلم در این نمونه نیست"><svg class="ic"><use href="#i-play"/></svg><span data-alt="دیدن فیلم">Watch the film</span></button>
+        </div>
+      </div>
+      <svg class="tile-art hero-art" viewBox="0 0 300 400" aria-hidden="true"><use href="#art-mira"/></svg>
+      <svg class="tile-art pen-art" viewBox="0 0 24 320" aria-hidden="true"><use href="#art-pen"/></svg>
+    </div>
+    <div class="tile w-2 h-2 ink">
+      <span class="tile-label"><svg class="ic"><use href="#i-battery"/></svg><span data-alt="باتری">Battery</span></span>
+      <p class="big" style="margin-block-start:auto"><span data-num="6">6</span><small data-alt="هفته">weeks</small></p>
+      <p class="muted" data-alt="با یک بار شارژ، با روزی دو ساعت نوشتن.">on one charge, writing two hours a day.</p>
+    </div>
+    <a class="tile w-2 h-1 brand" href="#order">
+      <span class="corner" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span>
+      <span class="tile-label" data-alt="تا جمعه">Until Friday</span>
+      <span class="tile-title" style="max-inline-size: 15ch" data-alt="حکاکی رایگان روی قلم">Free engraving on the pen</span>
+    </a>
+  </section>
+
+  <section class="section" id="features">
+    <div class="section-head"><div><h2 class="h1" data-alt="یک کار، خیلی خوب.">One job, done very well.</h2><p class="muted" data-alt="بدون مرورگر، بدون شبکهٔ اجتماعی. فقط نوشتن، خواندن و پیدا کردن.">No browser, no feeds. Just writing, reading and finding things again.</p></div></div>
+    <div class="bento">
+      <div class="tile w-2 h-2 soft">
+        <span class="tile-label"><svg class="ic"><use href="#i-text"/></svg><span data-alt="دست‌خط به متن">Handwriting → text</span></span>
+        <div class="scribble" aria-hidden="true">
+          <svg viewBox="0 0 220 34" preserveAspectRatio="none"><path d="M4 22c10-10 16 8 26 0s16 8 26 0 16 8 26 0 16 8 26 0 16 8 26 0 16 8 26 0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <p class="typed" data-alt="«جلسهٔ دوشنبه، ساعت ۱۰»">“Monday sync, 10 am”</p>
+        </div>
+        <p class="small muted" data-alt="هر صفحه در پس‌زمینه خوانده می‌شود؛ ۱۲ زبان، از جمله فارسی.">Every page is read in the background — 12 languages, Persian included.</p>
+      </div>
+      <div class="tile w-2 h-2">
+        <span class="tile-label" data-alt="ضخامت">Thickness</span>
+        <p class="big" style="margin-block-start:auto"><span data-num="5.6" data-fmt="dec1">5.6</span><small data-alt="میلی‌متر">mm</small></p>
+        <span class="profile" aria-hidden="true"></span>
+        <p class="small muted" data-alt="باریک‌تر از یک مداد، سبک‌تر از یک دفتر ۸۰ برگ.">Thinner than a pencil, lighter than an 80-page notebook.</p>
+      </div>
+      <div class="tile w-2 h-2">
+        <span class="tile-label"><svg class="ic"><use href="#i-grid"/></svg><span data-alt="قالب‌ها">Templates</span></span>
+        <p class="tile-title" data-alt="۶۰ قالب، و مال خودتان">60 templates, plus your own</p>
+        <div class="tmpl" aria-hidden="true"><span class="lined"></span><span class="dotted"></span><span class="grid"></span><span class="cal"></span><span class="music"></span><span class="lined"></span></div>
+      </div>
+      <div class="tile w-3 h-2 ink">
+        <span class="tile-label"><svg class="ic"><use href="#i-bell-off"/></svg><span data-alt="تمرکز">Focus</span></span>
+        <p class="h1" style="margin-block-start:auto; max-inline-size: 14ch" data-alt="بدون اعلان. هرگز.">No notifications. Ever.</p>
+        <p class="muted" data-alt="میرا فقط وقتی به شما چیزی می‌گوید که خودتان بپرسید.">Mira only tells you something when you ask it to.</p>
+      </div>
+      <div class="tile w-3 h-2">
+        <span class="tile-label"><svg class="ic"><use href="#i-sync"/></svg><span data-alt="همگام‌سازی">Sync</span></span>
+        <p class="tile-title" data-alt="یادداشت‌ها همه‌جا هستند؛ اول، اما، روی خود دستگاه.">Your notes everywhere — but first, on the device.</p>
+        <div class="apps"><span><svg class="ic"><use href="#i-laptop"/></svg><span data-alt="دسکتاپ">Desktop</span></span><span><svg class="ic"><use href="#i-phone"/></svg><span data-alt="موبایل">Mobile</span></span><span><svg class="ic"><use href="#i-globe"/></svg><span data-alt="وب">Web</span></span><span><svg class="ic"><use href="#i-lock"/></svg><span data-alt="رمزگذاری سرتاسری">End-to-end encrypted</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="specs">
+    <div class="section-head"><div><h2 class="h1" data-alt="مشخصات">Specs</h2></div>
+      <div class="tabs" role="tablist" aria-label="Model" data-alt-aria-label="مدل">
+        <button role="tab" id="t-std" aria-controls="p-std" aria-selected="true" data-alt="میرا">Mira</button>
+        <button role="tab" id="t-pro" aria-controls="p-pro" aria-selected="false" data-alt="میرا پرو">Mira Pro</button>
+      </div></div>
+    <div class="bento">
+      <div class="tile w-6" role="tabpanel" id="p-std" aria-labelledby="t-std">
+        <div class="specs">
+          <dl><div><dt data-alt="نمایشگر">Display</dt><dd data-alt="۱۰٫۳ اینچ، ۲۲۷ ppi">10.3″, 227 ppi</dd></div><div><dt data-alt="وزن">Weight</dt><dd data-alt="۳۶۰ گرم">360 g</dd></div><div><dt data-alt="حافظه">Storage</dt><dd data-alt="۳۲ گیگابایت">32 GB</dd></div></dl>
+          <dl><div><dt data-alt="باتری">Battery</dt><dd data-alt="تا ۶ هفته">Up to 6 weeks</dd></div><div><dt data-alt="نور جلو">Front light</dt><dd data-alt="ندارد">None</dd></div><div><dt data-alt="درگاه">Port</dt><dd>USB-C</dd></div></dl>
+        </div>
+      </div>
+      <div class="tile w-6" role="tabpanel" id="p-pro" aria-labelledby="t-pro" hidden>
+        <div class="specs">
+          <dl><div><dt data-alt="نمایشگر">Display</dt><dd data-alt="۱۱٫۸ اینچ، ۲۲۹ ppi، رنگی">11.8″, 229 ppi, colour</dd></div><div><dt data-alt="وزن">Weight</dt><dd data-alt="۵۲۰ گرم">520 g</dd></div><div><dt data-alt="حافظه">Storage</dt><dd data-alt="۶۴ گیگابایت">64 GB</dd></div></dl>
+          <dl><div><dt data-alt="باتری">Battery</dt><dd data-alt="تا ۴ هفته">Up to 4 weeks</dd></div><div><dt data-alt="نور جلو">Front light</dt><dd data-alt="گرم، تنظیم‌پذیر">Warm, adjustable</dd></div><div><dt data-alt="درگاه">Port</dt><dd>USB-C</dd></div></dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="order">
+    <div class="section-head"><div><h2 class="h1" data-alt="مال خودتان را بسازید">Make it yours</h2><p class="muted" data-alt="ارسال رایگان، ۱۰۰ روز فرصت برای پس دادن.">Free shipping and 100 days to change your mind.</p></div></div>
+    <form class="bento" id="order-form" data-validate data-keep data-success="Order placed — check your inbox for the receipt." data-success-alt="سفارش ثبت شد — رسید را در ایمیل‌تان ببینید.">
+      <div class="tile w-4 h-3">
+        <fieldset class="field" style="border:0; margin:0; padding:0"><legend class="label" style="margin-block-end: 8px" data-alt="مدل">Model</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="model" value="399" checked><b data-alt="میرا">Mira</b><small data-alt="۱۰٫۳ اینچ، سیاه و سفید">10.3″, black and white</small><span data-num="399" data-fmt="usd">$399</span></label>
+            <label class="option"><input type="radio" name="model" value="549"><b data-alt="میرا پرو">Mira Pro</b><small data-alt="۱۱٫۸ اینچ، رنگی، نور گرم">11.8″, colour, warm light</small><span data-num="549" data-fmt="usd">$549</span></label>
+          </div></fieldset>
+        <div class="row" style="justify-content: space-between">
+          <fieldset class="field" style="border:0; margin:0; padding:0"><legend class="label" style="margin-block-end: 8px" data-alt="رنگ">Colour</legend>
+            <div class="swatches"><label class="swatch"><input type="radio" name="colour" value="#e9e6e0" checked aria-label="Chalk" data-alt-aria-label="گچی"><span style="--c:#e9e6e0"></span></label><label class="swatch"><input type="radio" name="colour" value="#2a2a2e" aria-label="Graphite" data-alt-aria-label="گرافیتی"><span style="--c:#2a2a2e"></span></label></div></fieldset>
+          <div class="field"><span class="label" id="l-qty" data-alt="تعداد">Quantity</span><div class="qty" data-qty><button type="button" data-step="-1" aria-label="Fewer" data-alt-aria-label="کمتر">−</button><input type="number" name="qty" value="1" min="1" max="5" aria-labelledby="l-qty"><button type="button" data-step="1" aria-label="More" data-alt-aria-label="بیشتر">+</button></div></div>
+        </div>
+        <div class="row">
+          <label class="check"><input type="checkbox" name="folio" value="59"><span><span data-alt="کیف چرمی">Folio case</span> +<span data-num="59" data-fmt="usd">$59</span></span></label>
+          <label class="check"><input type="checkbox" name="tips" value="15"><span><span data-alt="۱۰ نوک یدک">10 spare tips</span> +<span data-num="15" data-fmt="usd">$15</span></span></label>
+        </div>
+        <div class="field"><label class="label" for="o-mail" data-alt="ایمیل برای رسید">Email for the receipt</label><input class="input" id="o-mail" name="email" type="email" required autocomplete="email" placeholder="you@example.com" dir="ltr"></div>
+      </div>
+      <div class="tile w-2 h-3 ink summary">
+        <svg class="order-art" viewBox="0 0 300 400" aria-hidden="true" id="order-art" style="--bezel:#e9e6e0"><use href="#art-mira"/></svg>
+        <dl>
+          <div><dt data-alt="دستگاه">Device</dt><dd data-o="device" data-num="399" data-fmt="usd">$399</dd></div>
+          <div><dt data-alt="لوازم">Extras</dt><dd data-o="extras" data-num="0" data-fmt="usd">$0</dd></div>
+          <div><dt data-alt="ارسال">Shipping</dt><dd data-alt="رایگان">Free</dd></div>
+        </dl>
+        <div class="tile-foot" style="align-items: center">
+          <p class="kpi" data-o="total" data-num="399" data-fmt="usd">$399</p>
+          <span class="tiny muted"><svg class="ic"><use href="#i-truck"/></svg> <span data-alt="ارسال ظرف ۳ روز">ships in 3 days</span></span>
+        </div>
+        <button class="btn btn-brand btn-lg btn-block" type="submit" data-alt="ثبت سفارش">Place order</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="section" id="reviews">
+    <div class="section-head"><div><h2 class="h1" data-alt="آن‌ها که دیگر کاغذ نمی‌خرند">People who stopped buying paper</h2></div></div>
+    <div class="bento">
+      <figure class="tile w-2 h-2"><span class="stars" aria-label="5 out of 5" data-alt-aria-label="۵ از ۵">★★★★★</span><blockquote class="tile-title" style="font-size: var(--fs-lg)" data-alt="«سه ماه است کاغذ نخریده‌ام و یادداشت‌هایم را در دو ثانیه پیدا می‌کنم.»">“Three months without buying paper, and I find any note in two seconds.”</blockquote><figcaption class="tile-foot"><span class="row" style="gap: 10px"><span class="avatar" aria-hidden="true">LN</span><span><b data-alt="لیلا ن.">Leila N.</b><br><span class="small muted" data-alt="معمار">Architect</span></span></span></figcaption></figure>
+      <figure class="tile w-2 h-2 soft"><span class="stars" aria-label="5 out of 5" data-alt-aria-label="۵ از ۵">★★★★★</span><blockquote class="tile-title" style="font-size: var(--fs-lg)" data-alt="«باتری‌اش از سفر دوهفته‌ای من بیشتر دوام آورد.»">“The battery outlasted my two-week trip with half its charge left.”</blockquote><figcaption class="tile-foot"><span class="row" style="gap: 10px"><span class="avatar" aria-hidden="true">TO</span><span><b data-alt="توماس او.">Tomas O.</b><br><span class="small muted" data-alt="روزنامه‌نگار">Journalist</span></span></span></figcaption></figure>
+      <figure class="tile w-2 h-2"><span class="stars" aria-label="4 out of 5" data-alt-aria-label="۴ از ۵">★★★★☆</span><blockquote class="tile-title" style="font-size: var(--fs-lg)" data-alt="«خواندن دست‌خط فارسی‌ام از خودم بهتر است.»">“It reads my Persian handwriting better than I do.”</blockquote><figcaption class="tile-foot"><span class="row" style="gap: 10px"><span class="avatar" aria-hidden="true">AR</span><span><b data-alt="آرش ر.">Arash R.</b><br><span class="small muted" data-alt="دانشجوی پزشکی">Medical student</span></span></span></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="bento">
+      <div class="tile w-2 h-2 brand"><span class="tile-label" data-alt="پرسش‌ها">Questions</span><p class="h1" style="margin-block-start:auto" data-alt="پیش از خرید بپرسید.">Ask before you buy.</p></div>
+      <div class="tile w-4 h-2">
+        <details class="faq" open><summary data-alt="فایل PDF و کتاب الکترونیکی را باز می‌کند؟">Does it open PDFs and e-books?</summary><p data-alt="بله؛ PDF و EPUB را باز می‌کند و می‌توانید رویشان یادداشت بنویسید.">Yes — PDF and EPUB, and you can write on both.</p></details>
+        <details class="faq"><summary data-alt="قلم باید شارژ شود؟">Does the pen need charging?</summary><p data-alt="نه. قلم باتری ندارد و فقط گاهی نوکش عوض می‌شود.">No. The pen has no battery; you only swap a tip now and then.</p></details>
+        <details class="faq"><summary data-alt="بدون اینترنت چه؟">What about without internet?</summary><p data-alt="همه‌چیز روی دستگاه کار می‌کند؛ همگام‌سازی هر وقت وصل شوید انجام می‌شود.">Everything works on the device; sync happens whenever you are back online.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot container">
+  <div class="bento" style="--row: 120px">
+    <div class="tile w-2"><a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"></span><span data-alt="میرا">mira</span></a><p class="small muted" style="margin-block-start:auto" data-alt="یک محصول نمونه برای گالری تیست‌فولیو.">A sample product for the Tastefolio gallery.</p></div>
+    <div class="tile w-1"><h3 data-alt="محصول">Product</h3><ul><li><a href="#features" data-alt="امکانات">Features</a></li><li><a href="#specs" data-alt="مشخصات">Specs</a></li><li><a href="#order" data-alt="سفارش">Order</a></li></ul></div>
+    <div class="tile w-1"><h3 data-alt="پشتیبانی">Support</h3><ul><li><a href="#faq" data-alt="پرسش‌ها">FAQ</a></li><li><a href="dashboard.html" data-alt="حساب من">My account</a></li><li><a href="#faq" data-alt="گارانتی">Warranty</a></li></ul></div>
+    <form class="tile w-2" data-validate data-success="Subscribed — one email a month." data-success-alt="عضو شدید — ماهی یک ایمیل.">
+      <label class="label" for="nl" data-alt="خبرنامه، ماهی یک بار">Newsletter, once a month</label>
+      <div class="row" style="flex-wrap: nowrap; margin-block-start: auto"><input class="input" id="nl" type="email" required placeholder="you@example.com" dir="ltr" style="min-inline-size:0"><button class="btn" type="submit" data-alt="عضویت">Join</button></div>
+    </form>
+  </div>
+  <p class="tiny subtle" style="margin-block-start: var(--space-5); padding-inline: 4px"><span data-alt="© ۲۰۲۶ میرا">© 2026 Mira</span></p>
+</footer>
+
+<script>
+  // order tile: live total and a colour preview on the device
+  (() => {
+    const form = document.getElementById('order-form');
+    const set = (k, v) => { const el = form.querySelector(`[data-o="${k}"]`); el.dataset.num = v; el.textContent = tf.fmt(v, 'usd'); };
+    const calc = () => {
+      const model = Number(form.querySelector('[name="model"]:checked').value);
+      const qty = Math.max(1, Number(form.querySelector('[name="qty"]').value) || 1);
+      const extras = [...form.querySelectorAll('[name="folio"], [name="tips"]')].filter((c) => c.checked).reduce((a, c) => a + Number(c.value), 0);
+      set('device', model * qty); set('extras', extras * qty); set('total', (model + extras) * qty);
+      document.getElementById('order-art').style.setProperty('--bezel', form.querySelector('[name="colour"]:checked').value);
+    };
+    form.addEventListener('change', calc);
+    form.addEventListener('input', calc);
+    document.addEventListener('tf:ready', calc);
+    document.addEventListener('tf:lang', calc);
+  })();
+</script>
+</body>
+</html>
