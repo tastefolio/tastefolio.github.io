@@ -188,6 +188,8 @@ svg.fill { fill: currentColor; stroke: none; }
 .swatches { margin-inline-start: auto; display: inline-flex; align-self: center; }
 .swatches i { width: 16px; height: 16px; border-radius: 50%; box-shadow: 0 0 0 2px var(--paper); }
 .swatches i + i { margin-inline-start: -5px; }
+.votes { display: inline-flex; align-items: center; gap: 4px; align-self: center; font: 600 13px/1 var(--f-ui); font-variant-numeric: tabular-nums; color: var(--ink-2); }
+.votes svg { width: 15px; height: 15px; }
 .card-tag { margin: -4px 0 0; color: var(--ink-2); font-size: 15px; line-height: 1.5; }
 .chips-static { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; }
 .chips-static li { font: 500 11.5px/1 var(--f-mono); color: var(--ink-2); border: 1px solid var(--line); border-radius: 6px; padding: 5px 7px; }
@@ -315,6 +317,14 @@ svg.fill { fill: currentColor; stroke: none; }
 .files a { text-decoration: none; color: var(--ink-2); }
 .files a:hover { color: var(--ink); text-decoration: underline; }
 .install .spec-h { margin-top: 28px; }
+
+/* votes and comments (giscus frame) */
+.kicker-votes { display: inline-flex; align-items: center; gap: 5px; color: inherit; text-decoration: none; border-bottom: 1px solid var(--line-2); }
+.kicker-votes:hover { color: var(--ink); border-color: var(--ink); }
+.kicker-votes svg { width: 13px; height: 13px; }
+.rate { margin-bottom: 56px; }
+.rate .muted { margin-top: 0; max-width: 72ch; }
+.giscus { min-height: 140px; }
 
 .pager { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; border-top: 1px solid var(--line); padding-top: 24px; }
 .pager a { text-decoration: none; display: grid; gap: 2px; padding: 16px 20px; border-radius: var(--r); border: 1px solid var(--line); }

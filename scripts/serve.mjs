@@ -27,7 +27,8 @@ export function startServer(dir = root, p = port) {
         res.writeHead(404, { 'content-type': types['.html'] }).end(nf || 'Not found');
         return;
       }
-      res.writeHead(200, { 'content-type': types[extname(file)] || 'application/octet-stream', 'cache-control': 'no-store' });
+      // CORS like GitHub Pages, so giscus's frame can load the gallery's theme files in local previews
+      res.writeHead(200, { 'content-type': types[extname(file)] || 'application/octet-stream', 'cache-control': 'no-store', 'access-control-allow-origin': '*' });
       res.end(await readFile(file));
     } catch (e) { res.writeHead(500).end(String(e)); }
   });

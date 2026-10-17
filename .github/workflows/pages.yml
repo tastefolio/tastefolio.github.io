@@ -5,11 +5,14 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  schedule:
+    - cron: '17 */6 * * *' # re-read the 👍 counts that order the gallery
 
 permissions:
   contents: read
   pages: write
   id-token: write
+  discussions: read
 
 concurrency:
   group: pages-${{ github.ref }}
@@ -36,6 +39,8 @@ jobs:
         run: npm run shots
       - name: Build gallery
         run: npm run build
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
       - name: Check internal links
         run: npm run linkcheck
       - name: Test gallery behaviour

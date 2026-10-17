@@ -2,18 +2,23 @@
 // Chromium and checks what a visitor sees on screen, not only what the scripts set:
 //   home      en + fa at 1440px and 390px: facet chips, the Persian-first box and search hide cards, the
 //             result count matches the cards on screen, chip counts and data-zero follow the other
-//             filters, filters round-trip through the URL, and one result reads "1 style"
+//             filters, filters round-trip through the URL, one result reads "1 style", and Top rated
+//             orders by 👍 (curated order on ties)
 //   viewer    en + fa at 1440px and 390px: one screenshot pane at a time, switched by the viewer
-//             buttons; install tabs switch their panels by click and keyboard
+//             buttons; install tabs switch their panels by click and keyboard; the giscus vote box loads
+//             for the right thread and theme (giscus.app itself is blocked, so no test depends on it)
+//   votes     en + fa: the home page rendered with known 👍 counts defaults to Top rated, is served in
+//             that order, shows the counts, and keeps the sort in the URL only when it is not the default
 //   menu      the phone menu opens, closes on Escape and on an outside click, and is gone on desktop
 //   overflow  no page (home, guide, 404, every skill page, both languages) is wider than a 320px or
 //             390px phone, and each starts with one screenshot pane and one panel per tab list
-// Usage: node scripts/gallery-test.mjs [--only=home,viewer,menu,overflow]
+// Usage: node scripts/gallery-test.mjs [--only=home,viewer,votes,menu,overflow]
 import { chromium } from 'playwright';
 import { readFile, readdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { startServer } from './serve.mjs';
+import * as tpl from '../gallery/src/templates.mjs';
 
 const DIST = new URL('../dist', import.meta.url).pathname;
 const only = process.argv.find((a) => a.startsWith('--only='))?.split('=')[1].split(',');
@@ -76,6 +81,8 @@ async function suite(name, label, fn) {
 }
 
 // ------------------------------------------------------------------ home: facets, search, counts, URL state
+// card order in the HTML as served, before the page script re-sorts anything
+const htmlOrder = (html) => [...html.matchAll(/data-item data-slug="([^"]+)"/g)].map((m) => m[1]);
 const readHome = (page) => page.evaluate(() => {
   const num = (s) => Number(s.replace(/[۰-۹]/g, (d) => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/\D/g, ''));
   const onScreen = (el) => el.getClientRects().length > 0;
@@ -126,7 +133,7 @@ function verifyHome(s, cards, f, lang, what) {
 
 const homeSuite = (lang, width) => suite('home', `home ${lang} ${width}px`, (label) => withPage(device(width), async (page) => {
   await visit(page, `${PREFIX[lang]}/`);
-  const cards = await page.$$eval('[data-item]', (els) => els.map((c) => ({ slug: c.dataset.slug, keywords: c.dataset.keywords, persian: c.dataset.persian, category: c.dataset.category, mode: c.dataset.mode, density: c.dataset.density })));
+  const cards = await page.$$eval('[data-item]', (els) => els.map((c) => ({ slug: c.dataset.slug, keywords: c.dataset.keywords, persian: c.dataset.persian, category: c.dataset.category, mode: c.dataset.mode, density: c.dataset.density, order: Number(c.dataset.order), votes: Number(c.dataset.votes) })));
   eq(cards.map((c) => c.slug).sort(), [...SLUGS].sort(), `${label}: one card per skill`);
   let f = { ...ALL };
   const step = async (what, change) => {
@@ -172,13 +179,59 @@ const homeSuite = (lang, width) => suite('home', `home ${lang} ${width}px`, (lab
   const cleared = await step('empty-state "Clear filters"', ALL);
   eq(cleared.count, SLUGS.length, `${label}: results after "Clear filters"`);
 
+  // Top rated: most 👍 first, curated order on ties. Once anyone has voted it is the default and the HTML
+  // already comes in that order. Known votes are then set on the cards to check the order itself.
+  const order = () => page.$$eval('[data-item]', (cs) => cs.map((c) => c.dataset.slug));
+  const byVotes = (v) => [...cards].sort((a, b) => v[b.slug] - v[a.slug] || a.order - b.order).map((c) => c.slug);
+  const curated = [...cards].sort((a, b) => a.order - b.order).map((c) => c.slug);
+  const sortDefault = cards.some((c) => c.votes > 0) ? 'top' : 'curated';
+  const onLoad = sortDefault === 'top' ? byVotes(Object.fromEntries(cards.map((c) => [c.slug, c.votes]))) : curated;
+  eq(await page.$eval('[data-sort]', (el) => el.value), sortDefault, `${label}: default sort`);
+  await visit(page, `${PREFIX[lang]}/`);
+  eq([htmlOrder(await (await page.request.get(`${base}${PREFIX[lang]}/`)).text()), await order()], [onLoad, onLoad], `${label}: card order in the HTML and on load`);
+  const votes = Object.fromEntries(cards.map((c, i) => [c.slug, (i * 7) % 4]));
+  await page.$$eval('[data-item]', (cs, v) => cs.forEach((c) => { c.dataset.votes = v[c.dataset.slug]; }), votes);
+  for (const [value, expectedOrder] of [['top', byVotes(votes)], ['curated', curated]]) {
+    await page.selectOption('[data-sort]', value);
+    eq(await order(), expectedOrder, `${label}: card order for sort=${value}`);
+    eq((await readHome(page)).params, value === sortDefault ? {} : { sort: value }, `${label}: URL query for sort=${value}`);
+  }
+
   // filters in the URL are restored on load
   await visit(page, `${PREFIX[lang]}/?category=content&density=airy`);
   await step('loaded with ?category=content&density=airy', { ...ALL, category: 'content', density: 'airy' });
 }));
 
+// ------------------------------------------------------------------ home once people have voted
+// Real votes may not exist yet, so the home page is rendered from the templates with known counts and
+// served in place of the built one.
+const votedSuite = (lang) => suite('votes', `home with votes ${lang} 1440px`, (label) => withPage(desktop(1440), async (page) => {
+  const skills = await Promise.all(SLUGS.map(async (slug) => ({ slug, meta: JSON.parse(await readFile(join(DIST, 'skills', slug, 'meta.json'), 'utf8')) })));
+  skills.sort((a, b) => a.meta.order - b.meta.order);
+  const votes = Object.fromEntries(skills.map((s, i) => [s.slug, (i * 7) % 4]));
+  const html = tpl.home({ skills, shots: new Set(), votes, version: 'test' }, lang);
+  await page.route((url) => url.pathname === `${PREFIX[lang]}/`, (r) => r.fulfill({ contentType: 'text/html; charset=utf-8', body: html }));
+  const order = () => page.$$eval('[data-item]', (cs) => cs.map((c) => c.dataset.slug));
+  const top = [...skills].sort((a, b) => votes[b.slug] - votes[a.slug] || a.meta.order - b.meta.order).map((s) => s.slug);
+  const curated = skills.map((s) => s.slug);
+
+  await visit(page, `${PREFIX[lang]}/`);
+  eq(await page.$eval('[data-sort]', (el) => el.value), 'top', `${label}: default sort`);
+  eq([htmlOrder(html), await order()], [top, top], `${label}: card order in the HTML and on load`);
+  eq(await page.$$eval('[data-item] .votes', (vs) => vs.map((v) => v.getAttribute('aria-label'))).then((l) => [l.length, l[0]]),
+    [skills.filter((s) => votes[s.slug]).length, lang === 'fa' ? '۳ رأی' : '3 votes'], `${label}: vote counts on cards (how many, the first)`);
+  await page.selectOption('[data-sort]', 'curated');
+  eq([await order(), (await readHome(page)).params], [curated, { sort: 'curated' }], `${label}: curated order and URL`);
+  await page.selectOption('[data-sort]', 'top');
+  eq([await order(), (await readHome(page)).params], [top, {}], `${label}: Top rated order and URL`);
+  await visit(page, `${PREFIX[lang]}/?sort=curated`);
+  eq([await page.$eval('[data-sort]', (el) => el.value), await order()], ['curated', curated], `${label}: loaded with ?sort=curated`);
+}));
+
 // ------------------------------------------------------------------ skill page: screenshot viewer, install tabs
 const viewerSuite = (lang, width, slug) => suite('viewer', `skills/${slug} ${lang} ${width}px`, (label) => withPage(device(width), async (page) => {
+  // only these pages scroll to the vote box; block giscus here (routing turns the HTTP cache off, so not everywhere)
+  await page.route('https://giscus.app/**', (r) => r.abort());
   await visit(page, `${PREFIX[lang]}/skills/${slug}/`);
   const panes = () => page.$$eval('[data-pane]', (ps) => ps.filter((p) => p.getClientRects().length > 0).map((p) => p.dataset.pane));
   eq(await panes(), [`site-${lang}`], `${label}: panes on screen on load`);
@@ -207,6 +260,13 @@ const viewerSuite = (lang, width, slug) => suite('viewer', `skills/${slug} ${lan
     await page.keyboard.press(key);
     await shows(tabs[i], key);
   }
+
+  // the vote box: giscus loads when it comes near, for this skill's thread, in the page language and theme
+  await page.locator('[data-giscus]').scrollIntoViewIfNeeded();
+  const giscus = await page.waitForSelector('script[src="https://giscus.app/client.js"]', { state: 'attached' }).then((el) => el.evaluate((x) => ({ ...x.dataset })));
+  eq({ term: giscus.term, lang: giscus.lang, repo: giscus.repo, mapping: giscus.mapping, strict: giscus.strict, reactions: giscus.reactionsEnabled, theme: giscus.theme?.replace(base, '') },
+    { term: `skills/${slug}`, lang, repo: 'tastefolio/tastefolio.github.io', mapping: 'specific', strict: '1', reactions: '1', theme: '/assets/giscus-light.css' }, `${label}: giscus settings`);
+  for (const mode of ['light', 'dark']) eq((await page.request.get(`${base}/assets/giscus-${mode}.css`)).status(), 200, `${label}: giscus ${mode} theme served`);
 }));
 
 // ------------------------------------------------------------------ phone menu
@@ -289,6 +349,7 @@ try {
   eq(missing, [], 'gallery pages missing from dist/');
   for (const lang of ['en', 'fa']) for (const width of [1440, 390]) await homeSuite(lang, width);
   for (const lang of ['en', 'fa']) for (const width of [1440, 390]) await viewerSuite(lang, width, SLUGS[0]);
+  for (const lang of ['en', 'fa']) await votedSuite(lang);
   for (const lang of ['en', 'fa']) { await menuSuite(lang); await menuDesktopSuite(lang); }
   for (const width of [320, 390]) await overflowSuite(width);
 } finally {

@@ -1,5 +1,5 @@
 // Tastefolio gallery behaviors: search + facets with URL state, preview/view switches, sorting,
-// screenshot viewer, tabs, copy buttons, theme and language preference.
+// screenshot viewer, tabs, copy buttons, votes and comments (giscus), theme and language preference.
 (() => {
   const d = document;
   const root = d.documentElement;
@@ -28,6 +28,7 @@
       root.dataset.theme = next;
       store.set('theme', next);
       b.setAttribute('aria-pressed', String(next === 'dark'));
+      $('iframe.giscus-frame')?.contentWindow.postMessage({ giscus: { setConfig: { theme: giscusTheme() } } }, 'https://giscus.app');
     });
   });
 
@@ -108,6 +109,27 @@
     }));
   }
 
+  // Votes and comments: giscus (GitHub Discussions) loads as its section comes near, in the gallery's theme.
+  // Back from GitHub sign-in the URL carries ?giscus=…, which giscus has to read right away.
+  function giscusTheme() { return `${location.origin}/assets/giscus-${root.dataset.theme === 'dark' ? 'dark' : 'light'}.css`; }
+  const giscusBox = $('[data-giscus]');
+  if (giscusBox) {
+    const load = () => {
+      const s = d.createElement('script');
+      const { giscus, ...thread } = giscusBox.dataset; // the box's data-* (repo, category, term, lang) minus its own marker
+      Object.assign(s.dataset, thread, { mapping: 'specific', strict: '1', reactionsEnabled: '1', emitMetadata: '0', inputPosition: 'top', theme: giscusTheme(), loading: 'lazy' });
+      s.src = 'https://giscus.app/client.js';
+      s.crossOrigin = 'anonymous';
+      s.async = true;
+      giscusBox.after(s);
+    };
+    if (/[?&]giscus=/.test(location.search) || !('IntersectionObserver' in window)) load();
+    else {
+      const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { io.disconnect(); load(); } }, { rootMargin: '600px 0px' });
+      io.observe(giscusBox);
+    }
+  }
+
   // Browser: search + facets
   const cardsEl = $('[data-cards]');
   if (!cardsEl) return;
@@ -118,6 +140,7 @@
   const preview = $('[data-preview]');
   const view = $('[data-view]');
   const sort = $('[data-sort]');
+  const sortDefault = sort.dataset.default || 'curated';
   const results = $('[data-results]');
   const clears = $$('[data-clear]');
   const empty = $('[data-empty]');
@@ -134,7 +157,7 @@
     if (pv) segSet(preview, pv);
     const vw = p.get('view') || store.get('view');
     if (vw) segSet(view, vw);
-    if (p.get('sort')) sort.value = p.get('sort');
+    if (p.get('sort') && $(`option[value="${CSS.escape(p.get('sort'))}"]`, sort)) sort.value = p.get('sort');
   }
   function writeUrl() {
     const p = new URLSearchParams();
@@ -143,7 +166,7 @@
     if (persian.checked) p.set('fa', '1');
     if (segValue(preview) !== 'site') p.set('preview', segValue(preview));
     if (segValue(view) !== 'grid') p.set('view', segValue(view));
-    if (sort.value !== 'curated') p.set('sort', sort.value);
+    if (sort.value !== sortDefault) p.set('sort', sort.value);
     const qs = p.toString();
     history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
   }
@@ -175,6 +198,7 @@
       }
     }
     const by = {
+      top: (a, b) => b.dataset.votes - a.dataset.votes || a.dataset.order - b.dataset.order,
       curated: (a, b) => a.dataset.order - b.dataset.order,
       az: (a, b) => a.dataset.name.localeCompare(b.dataset.name),
       dense: (a, b) => dens[b.dataset.density] - dens[a.dataset.density] || a.dataset.order - b.dataset.order,

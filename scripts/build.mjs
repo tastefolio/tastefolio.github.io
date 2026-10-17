@@ -1,5 +1,6 @@
 // Builds the static gallery into dist/: gallery pages (en + fa), skill folders with live demos,
 // screenshots, per-skill zip downloads, catalog.json, llms.txt, sitemap and OG image.
+// With GITHUB_TOKEN set it also reads each skill's 👍 count for the Top rated order (scripts/votes.mjs).
 import { readFile, writeFile, mkdir, rm, cp, readdir, stat } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { join, relative } from 'node:path';
@@ -7,6 +8,7 @@ import { zipSync, strToU8 } from 'fflate';
 import sharp from 'sharp';
 import { listSkills, sync } from './sync.mjs';
 import { frontmatterOf } from './lib.mjs';
+import { fetchVotes } from './votes.mjs';
 import * as tpl from '../gallery/src/templates.mjs';
 
 const ROOT = new URL('..', import.meta.url).pathname;
@@ -38,7 +40,8 @@ skills.sort((a, b) => a.meta.order - b.meta.order);
 const shots = new Set();
 if (existsSync(SHOTS)) for (const f of await walk(SHOTS)) if (f.endsWith('.webp')) shots.add(f.replace(/\.webp$/, ''));
 const pkg = JSON.parse(await readFile(join(ROOT, 'package.json'), 'utf8'));
-const ctx = { skills, shots, version: Date.now().toString(36) };
+const votes = await fetchVotes(tpl.GISCUS).catch((e) => { console.warn(`! votes not read (${e.message}); the gallery keeps its curated order`); return {}; });
+const ctx = { skills, shots, votes, version: Date.now().toString(36) };
 
 await rm(DIST, { recursive: true, force: true });
 await mkdir(DIST, { recursive: true });
@@ -111,4 +114,5 @@ if (thumbs.length >= 3) {
 }
 
 const size = (await walk(DIST)).length;
-console.log(`✓ built ${skills.length} skills, ${shots.size} screenshots → dist/ (${size} files)`);
+const voted = Object.values(votes).reduce((a, b) => a + b, 0);
+console.log(`✓ built ${skills.length} skills, ${shots.size} screenshots, ${process.env.GITHUB_TOKEN ? `${voted} votes` : 'no votes (GITHUB_TOKEN unset)'} → dist/ (${size} files)`);

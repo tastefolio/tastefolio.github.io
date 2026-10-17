@@ -1,0 +1,12 @@
+/* giscus (votes and comments on skill pages) in the gallery's look: giscus's light theme on the gallery's
+   paper colors, Figtree for Latin and Vazirmatn for Persian. giscus loads this inside its own frame from the
+   public site, so keep the URL stable. */
+@import url("https://giscus.app/themes/light.css");
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700&display=swap");
+main {
+  font-family: "Figtree", "Vazirmatn", system-ui, sans-serif;
+  --color-canvas-default: #fbfaf7;
+  --color-canvas-subtle: #ebe8e0;
+  --color-border-default: #dcd7cc;
+  --color-border-muted: #e5e1d8;
+}

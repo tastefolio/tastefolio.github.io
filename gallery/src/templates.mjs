@@ -5,6 +5,9 @@ import { guideBody } from './guide.mjs';
 export const SITE = 'https://tastefolio.github.io';
 export const REPO = 'tastefolio/tastefolio.github.io';
 export const GH = `https://github.com/${REPO}`;
+// Votes and comments live in GitHub Discussions through giscus (giscus.app): one thread per skill, titled
+// "skills/<slug>", in this category. The build counts each thread's 👍 (scripts/votes.mjs) for the Top rated order.
+export const GISCUS = { repo: REPO, repoId: 'R_kgDOVMtElw', category: 'Announcements', categoryId: 'DIC_kwDOVMtEl84DIyal' };
 
 const esc = (s = '') => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const fill = (s, vars) => s.replace(/\{(\w)\}/g, (_, k) => vars[k] ?? '');
@@ -23,6 +26,7 @@ const ICON = {
   github: '<svg viewBox="0 0 24 24" aria-hidden="true" class="fill"><path d="M12 2.5a9.7 9.7 0 0 0-3.07 18.9c.49.09.66-.21.66-.47v-1.7c-2.7.59-3.27-1.15-3.27-1.15-.44-1.12-1.08-1.42-1.08-1.42-.88-.6.07-.59.07-.59.97.07 1.48 1 1.48 1 .87 1.48 2.28 1.05 2.83.8.09-.63.34-1.05.62-1.29-2.15-.25-4.42-1.08-4.42-4.8 0-1.06.38-1.93 1-2.6-.1-.25-.43-1.24.1-2.58 0 0 .82-.26 2.67 1a9.2 9.2 0 0 1 4.86 0c1.85-1.26 2.67-1 2.67-1 .53 1.34.2 2.33.1 2.58.62.67 1 1.54 1 2.6 0 3.73-2.27 4.55-4.43 4.79.35.3.66.89.66 1.8v2.66c0 .26.17.57.67.47A9.7 9.7 0 0 0 12 2.5Z"/></svg>',
   download: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0 4.5-4.5M12 15l-4.5-4.5M5 19h14"/></svg>',
   menu: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>',
+  thumb: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 10.5v9h-3v-9h3Z"/><path d="M7.5 10.5 11 4a1.8 1.8 0 0 1 3 1.4V9h4.6a2 2 0 0 1 2 2.4l-1.3 6.4a2 2 0 0 1-2 1.7H7.5"/></svg>',
 };
 
 const LOGO = `<svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true">
@@ -35,6 +39,7 @@ function shotUrl(ctx, slug, demo, lang, vp) {
   const key = `${slug}/${demo}-${lang}-${vp}`;
   return ctx.shots.has(key) ? `/shots/${key}.webp` : null;
 }
+const voteLabel = (lang, n) => fill(n === 1 ? T[lang].voteOne : T[lang].votes, { n: digits(lang, n) });
 export const demoUrl = (slug, demo, lang, extra = '') => `/skills/${slug}/examples/${demo}.html?lang=${lang}${extra}`;
 
 function swatches(meta, cls = 'swatches') {
@@ -124,7 +129,8 @@ function card(ctx, s, lang, i) {
   const m = s.meta;
   const keywords = [m.name, m.tagline.en, m.tagline.fa, ...(m.tags || []), ...m.bestFor.en, ...m.bestFor.fa, CATS[m.category].en, CATS[m.category].fa].join(' ');
   const detail = href(lang, `/skills/${s.slug}/`);
-  return `<article class="card" data-item data-slug="${s.slug}" data-category="${m.category}" data-mode="${m.mode}" data-density="${m.density}" data-persian="${m.persianFirst ? 'yes' : 'no'}" data-order="${m.order}" data-name="${esc(m.name)}" data-keywords="${esc(keywords.toLowerCase())}">
+  const votes = ctx.votes[s.slug] || 0;
+  return `<article class="card" data-item data-slug="${s.slug}" data-category="${m.category}" data-mode="${m.mode}" data-density="${m.density}" data-persian="${m.persianFirst ? 'yes' : 'no'}" data-order="${m.order}" data-votes="${votes}" data-name="${esc(m.name)}" data-keywords="${esc(keywords.toLowerCase())}">
   <a class="card-media" href="${detail}" tabindex="-1" aria-hidden="true">
     <span class="chrome"><i></i><i></i><i></i><b>${esc(m.demos.site.host)}</b></span>
     <span class="frame">
@@ -136,6 +142,7 @@ function card(ctx, s, lang, i) {
     <div class="card-head">
       <span class="card-no">${pad2(lang, m.order)}</span>
       <h3 class="card-title"><a href="${detail}">${esc(m.name)}</a></h3>
+      ${votes ? `<span class="votes" role="img" aria-label="${esc(voteLabel(lang, votes))}">${ICON.thumb}${digits(lang, votes)}</span>` : ''}
       ${swatches(m)}
     </div>
     <p class="card-tag">${esc(m.tagline[lang])}</p>
@@ -165,6 +172,10 @@ export function home(ctx, lang) {
   const n = skills.length;
   const fan = [skills[2], skills[0], skills[1]].filter(Boolean);
   const pick = skills[0]?.meta.name || 'Switchboard';
+  // once anyone has voted, Top rated (most 👍 first, ties in curated order) is the default order
+  const votesOf = (s) => ctx.votes[s.slug] || 0;
+  const sortBy = skills.some(votesOf) ? 'top' : 'curated';
+  const ordered = sortBy === 'top' ? [...skills].sort((a, b) => votesOf(b) - votesOf(a) || a.meta.order - b.meta.order) : skills;
   const catCounts = Object.keys(CATS).map((c) => [c, CATS[c][lang], skills.filter((s) => s.meta.category === c).length]).filter((x) => x[2]);
   const body = `
 <section class="hero">
@@ -211,9 +222,8 @@ export function home(ctx, lang) {
           <button type="button" aria-pressed="false" data-value="dashboard">${t.dashboard}</button>
         </div>
         <label class="select"><span class="sr">${t.sort}</span>
-          <select data-sort aria-label="${t.sort}">
-            <option value="curated">${t.sortCurated}</option><option value="az">${t.sortAZ}</option>
-            <option value="dense">${t.sortDense}</option><option value="airy">${t.sortAiry}</option>
+          <select data-sort data-default="${sortBy}" aria-label="${t.sort}">
+            ${[['top', t.sortTop], ['curated', t.sortCurated], ['az', t.sortAZ], ['dense', t.sortDense], ['airy', t.sortAiry]].map(([v, l]) => `<option value="${v}"${v === sortBy ? ' selected' : ''}>${l}</option>`).join('')}
           </select>
         </label>
         <div class="seg seg-icons" role="group" aria-label="${t.view}" data-view>
@@ -227,7 +237,7 @@ export function home(ctx, lang) {
   <div class="wrap">
     <div class="results-bar"><p class="results" aria-live="polite" data-results data-tpl="${esc(t.results)}" data-tpl-one="${esc(t.resultsOne)}">${esc(fill(t.results, { n: digits(lang, n) }))}</p><button type="button" class="link-btn" data-clear hidden>${t.clear}</button></div>
     <div class="cards" data-cards data-preview-mode="site" data-view-mode="grid">
-      ${skills.map((s, i) => card(ctx, s, lang, i)).join('\n')}
+      ${ordered.map((s, i) => card(ctx, s, lang, i)).join('\n')}
     </div>
     <div class="empty" data-empty hidden><p>${t.empty}</p><button type="button" class="btn btn-line" data-clear>${t.clear}</button></div>
   </div>
@@ -265,6 +275,7 @@ export function detail(ctx, s, lang) {
   const next = ctx.skills[(i + 1) % ctx.skills.length];
   const brands = m.brandTrials || ['e8590c', '0f766e', '7c3aed', 'db2777'];
   const install = installTabs(s.slug, lang);
+  const votes = ctx.votes[s.slug] || 0;
   const viewer = ['site', 'dashboard'].map((demo) => ['en', 'fa'].map((l) => `
     <div class="viewer-pane" data-pane="${demo}-${l}" ${demo === 'site' && l === lang ? '' : 'hidden'}>
       <figure class="v-desktop"><span class="chrome"><i></i><i></i><i></i><b>${esc(m.demos[demo].host)}</b></span>${shotImg(ctx, s, demo, l, 'desktop', { alt: `${m.name} — ${t[demo === 'site' ? 'site' : 'dashboard']} (${l === 'fa' ? 'فارسی' : 'English'}, ${t.desktop})`, lazy: !(demo === 'site' && l === lang) })}</figure>
@@ -276,7 +287,7 @@ export function detail(ctx, s, lang) {
     <nav class="crumbs" aria-label="Breadcrumb"><a href="${href(lang, '/')}#skills">${t.back}</a><span aria-hidden="true">/</span><span aria-current="page">${esc(m.name)}</span></nav>
     <header class="detail-head">
       <div>
-        <p class="kicker"><span class="mono">No. ${pad2(lang, m.order)}</span> · ${esc(CATS[m.category][lang])}</p>
+        <p class="kicker"><span class="mono">No. ${pad2(lang, m.order)}</span> · ${esc(CATS[m.category][lang])} · <a class="kicker-votes" href="#rate">${ICON.thumb}${votes ? esc(voteLabel(lang, votes)) : t.rate}</a></p>
         <h1 class="display detail-title">${esc(m.name)}</h1>
         <p class="detail-tag">${esc(m.tagline[lang])}</p>
         <p class="lead">${esc(m.summary[lang])}</p>
@@ -334,6 +345,12 @@ export function detail(ctx, s, lang) {
       ${install}
       <h3 class="spec-h">${t.files}</h3>
       <ul class="files">${s.files.map((f) => `<li><a href="${GH}/blob/main/skills/${s.slug}/${f}"><code>${esc(f)}</code></a></li>`).join('')}</ul>
+    </section>
+
+    <section class="rate" id="rate" aria-labelledby="rate-h">
+      <h2 id="rate-h" class="h3">${t.rateTitle}</h2>
+      <p class="muted">${esc(t.rateLead)}</p>
+      <div class="giscus" id="rate-thread" data-giscus data-repo="${GISCUS.repo}" data-repo-id="${GISCUS.repoId}" data-category="${GISCUS.category}" data-category-id="${GISCUS.categoryId}" data-term="skills/${s.slug}" data-lang="${lang}"></div>
     </section>
 
     <nav class="pager" aria-label="Skills">

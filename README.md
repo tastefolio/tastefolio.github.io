@@ -188,14 +188,15 @@ npm run dev
 | `npm run sync` | copies `shared/kit.js` into every skill, regenerates `references/adapters.md` and `.claude-plugin/marketplace.json` |
 | `npm run check` | validates every skill: required files, frontmatter, `meta.json`, demo wiring, marketplace |
 | `npm run shots` | captures desktop and mobile screenshots of every demo in both languages (Playwright) |
-| `npm run build` | builds the gallery into `dist/` (English + Persian pages, zips, `catalog.json`, `llms.txt`, sitemap) |
+| `npm run build` | builds the gallery into `dist/` (English + Persian pages, zips, `catalog.json`, `llms.txt`, sitemap); with `GITHUB_TOKEN` set it also reads each skill's 👍 votes for the Top rated order |
 | `npm run linkcheck` | verifies every internal link and asset in `dist/` |
 | `npm run test:gallery` | drives the built gallery in Chromium: filters, search and counts, the screenshot viewer, install tabs, the phone menu, and no sideways scrolling at 320px and 390px |
 | `npm run ci` | all of the above, in order — the same pipeline GitHub Actions runs |
 | `npm run serve` | serves `dist/` at http://localhost:4174 |
 
 Every push to `main` runs that pipeline and deploys the gallery to GitHub Pages
-(`.github/workflows/pages.yml`).
+(`.github/workflows/pages.yml`). It also runs every six hours to pick up new votes: each skill page has a
+👍 vote and comments box (GitHub Discussions through giscus), and the gallery's Top rated order counts the 👍.
 
 **Adding a style:** create `skills/<name>/` with the files above (copy an existing skill as a starting point), give it
 its own identity rules, build both demos with the skill itself, then run `npm run ci` and look at the screenshots.
