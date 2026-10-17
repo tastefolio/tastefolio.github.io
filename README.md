@@ -190,6 +190,7 @@ npm run dev
 | `npm run shots` | captures desktop and mobile screenshots of every demo in both languages (Playwright) |
 | `npm run build` | builds the gallery into `dist/` (English + Persian pages, zips, `catalog.json`, `llms.txt`, sitemap) |
 | `npm run linkcheck` | verifies every internal link and asset in `dist/` |
+| `npm run test:gallery` | drives the built gallery in Chromium: filters, search and counts, the screenshot viewer, install tabs, the phone menu, and no sideways scrolling at 320px and 390px |
 | `npm run ci` | all of the above, in order — the same pipeline GitHub Actions runs |
 | `npm run serve` | serves `dist/` at http://localhost:4174 |
 

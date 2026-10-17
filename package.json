@@ -12,9 +12,10 @@
     "build": "node scripts/build.mjs",
     "shots": "node scripts/shots.mjs",
     "linkcheck": "node scripts/linkcheck.mjs",
+    "test:gallery": "node scripts/gallery-test.mjs",
     "serve": "node scripts/serve.mjs dist 4174",
     "dev": "node scripts/serve.mjs . 4173",
-    "ci": "npm run sync && npm run check && npm run shots && npm run build && npm run linkcheck"
+    "ci": "npm run sync && npm run check && npm run shots && npm run build && npm run linkcheck && npm run test:gallery"
   },
   "devDependencies": {
     "fflate": "0.8.3",
