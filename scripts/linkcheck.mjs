@@ -25,8 +25,10 @@ const broken = [];
 let checked = 0;
 for (const f of files) {
   const html = await readFile(f, 'utf8');
-  for (const [, ref] of html.matchAll(/(?:href|src|srcset|poster)="([^"]+)"/g)) {
-    for (const one of ref.split(',').map((x) => x.trim().split(/\s+/)[0])) {
+  for (const [, attr, ref] of html.matchAll(/\b(href|src|srcset|poster)="([^"]+)"/g)) {
+    // only srcset is a comma-separated list; commas inside other URLs (e.g. font axis lists) are literal
+    const refs = attr === 'srcset' ? ref.split(',').map((x) => x.trim().split(/\s+/)[0]) : [ref.trim()];
+    for (const one of refs) {
       if (!one || /^(https?:|mailto:|tel:|data:|javascript:|#)/.test(one) || one.includes('${')) continue;
       checked++;
       if (!(await resolveTarget(f, one))) broken.push(`${relative(DIST, f)} → ${one}`);
