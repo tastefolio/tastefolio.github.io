@@ -53,7 +53,7 @@
   /* Type: native system stack, unbranded and fast */
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Vazirmatn", sans-serif;
   --font-display: var(--font-sans);
-  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", "Vazirmatn", monospace;
   --fs-xs: 12px;
   --fs-sm: 13px;
   --fs-md: 15px;

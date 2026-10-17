@@ -1,6 +1,6 @@
 ---
 name: teletype
-description: Tastefolio "Teletype" design language — terminal-native, keyboard-first UI for developer products. One monospace family (JetBrains Mono + Vazir Code) on a character grid, phosphor ink on near-black with one amber signal and the six ANSI colors for status/data, box-drawn panes with titles on the border, [ bracketed ] buttons that invert on hover, [x] checkboxes, tmux-style numbered tabs, block-cell meters, step charts, numbered log viewers, a vim-style command line and a status bar; light "printout" theme with green-bar tables. Use when the user asks for the Teletype, terminal, TUI, CLI or hacker style, or builds a CLI/devtool/CI/API/database product site, docs or changelog, or a developer console — in English (LTR) and/or Persian (RTL).
+description: Tastefolio "Teletype" design language — terminal-native, keyboard-first UI for developer products. One monospace family (JetBrains Mono, with Vazirmatn for Persian) on a character grid, phosphor ink on near-black with one amber signal and the six ANSI colors for status/data, box-drawn panes with titles on the border, [ bracketed ] buttons that invert on hover, [x] checkboxes, tmux-style numbered tabs, block-cell meters, step charts, numbered log viewers, a vim-style command line and a status bar; light "printout" theme with green-bar tables. Use when the user asks for the Teletype, terminal, TUI, CLI or hacker style, or builds a CLI/devtool/CI/API/database product site, docs or changelog, or a developer console — in English (LTR) and/or Persian (RTL).
 ---
 
 # Teletype
@@ -26,11 +26,10 @@ settings) with the same vocabulary.
 ## Fonts
 
 ```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-code-font@v1.1.2/dist/font-face.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Vazirmatn:wght@100..900&display=swap">
 ```
-**JetBrains Mono** 400–800 for everything — body, display, numbers. Persian: **Vazir Code** (monospace Persian) as the
-fallback in the same stack, so Latin and code keep JetBrains Mono and Persian script falls through. Alternatives:
+**JetBrains Mono** 400–800 for everything — body, display, numbers. Persian: **Vazirmatn** as the fallback in
+the same stack, so Latin and code keep JetBrains Mono and Persian script falls through to Vazirmatn. Alternatives:
 IBM Plex Mono, Commit Mono, Berkeley-style monos; never mix in a proportional sans.
 
 ## Identity rules (non-negotiable)
@@ -106,7 +105,7 @@ Hotkeys: `1–4` views, `/` filter, `:` or mod+K commands, `r` rerun, `?` help, 
 
 ## Persian & RTL
 
-- Stack: JetBrains Mono → **Vazir Code**; body 15px, line-height 1.95, no tracking; tmux tab numbers use `counter(tab, persian)`.
+- Persian UI text leads with **Vazirmatn** (a monospace space glyph would gape between Persian words); code, logs, commands and `.ltr` tokens keep JetBrains Mono via `--font-mono`. Body 15px, line-height 1.95, no tracking; tmux tab numbers use `counter(tab, persian)`.
 - Panes, tabs, meters (`--dir` flips) and status bars mirror; **code, logs, commands, branch names stay LTR** with `.ltr`.
 - Switch text and field errors are localized in CSS (`روشن / خاموش`, `خطا:`). Durations via `data-fmt="dur"` give `۲د ۰۸ث`.
 - Keep Persian copy short: monospace Persian is for UI labels, not long reading.

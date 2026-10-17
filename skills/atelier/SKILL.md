@@ -27,11 +27,11 @@ dashboards, project overviews, schedules, settings).
 ## Fonts
 
 ```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Vazirmatn:wght@300;400;500;700;800&family=Markazi+Text:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Vazirmatn:wght@100..900&display=swap">
 ```
 Latin display + UI: **Geist** (600 display, 400/500 text). Accent: **Instrument Serif italic** (one word or short phrase).
-Mono: **Geist Mono** for eyebrows, kbd, numbers in tables. Persian: **Vazirmatn** (800 display) with **Markazi Text 700**
-replacing the serif-italic accent (Persian has no italic). Fallbacks: Inter Tight / Satoshi-like grotesk; Newsreader italic.
+Mono: **Geist Mono** for eyebrows, kbd, numbers in tables. Persian: **Vazirmatn** only — 800 for display, and the
+serif-italic accent becomes Vazirmatn 300 against the 800 display (Persian has no italic). Fallbacks: Inter Tight / Satoshi-like grotesk; Newsreader italic.
 
 ## Identity rules (non-negotiable)
 
@@ -104,7 +104,7 @@ Never animate layout-critical content on load longer than 1s; never block intera
 ## Persian & RTL
 
 - `lang="fa" dir="rtl"`. Vazirmatn 800 for display at `clamp(40px, 6.6vw, 96px)`, line-height 1.22, **no negative tracking**.
-- The italic accent becomes **Markazi Text 700, upright** — same role, different voice. Never fake-italicize Persian (no `font-style: italic`, no skew).
+- The italic accent becomes **Vazirmatn 300, upright** — same role, lighter voice against the 800 display. Never fake-italicize Persian (no `font-style: italic`, no skew).
 - Mono eyebrows switch to Vazirmatn 13px/600, sentence case.
 - Arrows in pill dots flip (`.flip-rtl`); the hover rotation mirrors (handled). Marquees stay LTR (logos are Latin).
 - Persian digits and Jalali dates via `Intl`; Persian work week (Sat–Wed) in timelines.
@@ -132,10 +132,10 @@ map `--accent` to the highlighter. Remove default focus rings in favor of the in
 
 ## Pre-ship checklist
 
-- [ ] One serif-italic (or Markazi) word per major heading; display ≥ 90px on desktop.
+- [ ] One serif-italic (Persian: light Vazirmatn) word per major heading; display ≥ 90px on desktop.
 - [ ] Highlighter appears only behind ink text; no colored text anywhere.
 - [ ] Bento uses mixed spans and at least one ink and one highlighter tile.
 - [ ] Reveal motion staggered and disabled for reduced motion; nothing invisible without JS.
 - [ ] Mobile: pill nav → sheet; bento → single column; dock → overlay; display scales down.
-- [ ] Persian: Vazirmatn + upright Markazi accent, no tracking, Persian digits.
+- [ ] Persian: Vazirmatn only (800 display, 300 accent), no tracking, Persian digits.
 - [ ] Dark mode: canvas `#0d0d0c`, ink pills flip to light, highlighter unchanged.

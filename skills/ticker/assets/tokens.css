@@ -57,8 +57,8 @@
   --chart-dots: 0;
 
   --font-sans: "Manrope", "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Manrope", system-ui, sans-serif;
-  --font-mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;   /* every price, size, time and % */
+  --font-display: "Manrope", "Vazirmatn", system-ui, sans-serif;
+  --font-mono: "DM Mono", "Vazirmatn", ui-monospace, "SF Mono", Menlo, monospace;   /* every price, size, time and % */
   --fs-xs: 11px;
   --fs-sm: 12px;
   --fs-md: 14px;

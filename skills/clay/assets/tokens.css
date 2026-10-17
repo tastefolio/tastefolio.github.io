@@ -62,9 +62,9 @@
   --chart-gap: 6;
   --chart-dots: 0;
 
-  --font-sans: "Nunito Sans", "Readex Pro", system-ui, sans-serif;
-  --font-display: "Fraunces", "Lemonada", Georgia, serif;   /* Fraunces with SOFT=100 */
-  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --font-sans: "Nunito Sans", "Vazirmatn", system-ui, sans-serif;
+  --font-display: "Fraunces", "Vazirmatn", Georgia, serif;   /* Fraunces with SOFT=100 */
+  --font-mono: ui-monospace, "SF Mono", Menlo, "Vazirmatn", monospace;
   --fs-xs: 12px;
   --fs-sm: 14px;
   --fs-md: 17px;
@@ -154,11 +154,11 @@
 }
 
 :root:lang(fa) {
-  --font-sans: "Readex Pro", "Nunito Sans", Tahoma, sans-serif;
-  --font-display: "Lemonada", "Readex Pro", sans-serif;
+  --font-sans: "Vazirmatn", "Nunito Sans", Tahoma, sans-serif;
+  --font-display: "Vazirmatn", sans-serif;
   --fs-md: 16px;
   --fs-display: clamp(34px, 4.8vw, 66px);
-  --fw-display: 600;
+  --fw-display: 700;
   --lh-tight: 1.5;
   --lh-snug: 1.6;
   --lh-body: 1.9;

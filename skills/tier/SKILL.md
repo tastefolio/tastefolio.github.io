@@ -26,11 +26,10 @@ the **client area** (overview, services, invoices, tickets, wallet, renew flow).
 ## Fonts
 
 ```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Vazirmatn:wght@100..900&display=swap">
 ```
-Persian: **Shabnam** (friendly, commercial; regular/bold). Latin: **Plus Jakarta Sans** 400–800.
-Fallbacks: Vazirmatn; Manrope / Inter.
+Persian: **Vazirmatn** (friendly, commercial; 400–800). Latin: **Plus Jakarta Sans** 400–800.
+Fallbacks: Manrope / Inter.
 
 ## Identity rules (non-negotiable)
 
@@ -135,4 +134,4 @@ Table: tint unpaid rows; numbers right-aligned in LTR, start-aligned in RTL.
 - [ ] Trust strip + FAQ present on pricing pages.
 - [ ] Client area: wallet chip, renewal meters, unpaid invoices highlighted, renew dialog with totals.
 - [ ] Mobile: category bar scrolls, plans stack, comparison scrolls inside its box, no page overflow.
-- [ ] Persian: Shabnam, Persian digits, Toman, LTR identifiers.
+- [ ] Persian: Vazirmatn, Persian digits, Toman, LTR identifiers.

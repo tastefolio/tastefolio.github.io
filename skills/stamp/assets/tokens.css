@@ -53,9 +53,9 @@
   --chart-gap: 0;
   --chart-dots: 1;
 
-  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Bricolage Grotesque", "Space Grotesk", sans-serif;
-  --font-mono: "Space Mono", ui-monospace, monospace;
+  --font-sans: "Space Grotesk", "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", "Space Grotesk", "Vazirmatn", sans-serif;
+  --font-mono: "Space Mono", "Vazirmatn", ui-monospace, monospace;
   --fs-xs: 12px;
   --fs-sm: 14px;
   --fs-md: 16px;
@@ -126,8 +126,8 @@
 
 :root:lang(fa) {
   --font-sans: "Vazirmatn", Tahoma, sans-serif;
-  --font-display: "Lalezar", "Vazirmatn", sans-serif;
-  --fw-display: 400;          /* Lalezar has one heavy weight */
+  --font-display: "Vazirmatn", sans-serif;
+  --fw-display: 900;          /* Vazirmatn Black carries the sticker voice */
   --fs-display: clamp(42px, 7vw, 104px);
   --lh-tight: 1.25;
   --lh-snug: 1.4;

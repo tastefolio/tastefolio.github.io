@@ -27,7 +27,7 @@
     "fa": ["نوار تبلیغ سرمه‌ای با تخفیف نارنجی و شمارش معکوس زنده", "نوار دسته‌بندی خدمات با آیکن زیر سربرگ", "کارت جست‌وجوی دامنه روی هیرو با قیمت پسوندها", "انتخاب دورهٔ پرداخت با برچسب صرفه‌جویی که همهٔ قیمت‌ها را تغییر می‌دهد", "پلن به‌صرفه با حاشیهٔ آبی و نوار نارنجی", "ناحیهٔ کاربری: نوار تمدید، ردیف صورت‌حساب پرداخت‌نشده و کیف پول در نوار بالا"]
   },
   "swatches": ["#ffffff", "#f3f6fd", "#101a33", "#1d5bff", "#ff7a1a"],
-  "fonts": { "latin": "Plus Jakarta Sans", "persian": "Shabnam", "mono": "System monospace" },
+  "fonts": { "latin": "Plus Jakarta Sans", "persian": "Vazirmatn", "mono": "System monospace" },
   "icons": "Remix Icon",
   "brandTrials": ["0e9f6e", "7c3aed", "d9254f", "0f172a"],
   "demos": { "site": { "host": "ashiane.example" }, "dashboard": { "host": "my.ashiane.example" } }

@@ -66,7 +66,7 @@ Set `<html lang="en" dir="ltr">` or `<html lang="fa" dir="rtl">`; dark mode is `
   --color-chart-dots: var(--chart-dots);
   --font-sans: var(--font-sans);
   --font-display: var(--font-display);
-  --font-nastaliq: var(--font-nastaliq);
+  --font-verse: var(--font-verse);
   --font-mono: var(--font-mono);
   --text-xs: var(--fs-xs);
   --text-sm: var(--fs-sm);
@@ -150,7 +150,7 @@ export default {
         'chart-gap': 'var(--chart-gap)',
         'chart-dots': 'var(--chart-dots)',
       },
-      fontFamily: { 'sans': 'var(--font-sans)', 'display': 'var(--font-display)', 'nastaliq': 'var(--font-nastaliq)', 'mono': 'var(--font-mono)' },
+      fontFamily: { 'sans': 'var(--font-sans)', 'display': 'var(--font-display)', 'verse': 'var(--font-verse)', 'mono': 'var(--font-mono)' },
       borderRadius: { 'sm': 'var(--radius-sm)', 'md': 'var(--radius-md)', 'lg': 'var(--radius-lg)', 'pill': 'var(--radius-pill)' },
     },
   },
@@ -204,7 +204,7 @@ Spacing, radius and type values are plain px/rem and translate 1:1 to dp/pt.
 ## Token inventory
 
 - **color**: `--canvas`, `--surface`, `--surface-2`, `--surface-3`, `--surface-ink`, `--overlay`, `--ink`, `--ink-2`, `--ink-3`, `--ink-inverse`, `--line`, `--line-2`, `--brand`, `--brand-ink`, `--brand-soft`, `--brand-strong`, `--focus`, `--success`, `--success-soft`, `--warning`, `--warning-soft`, `--danger`, `--danger-soft`, `--info`, `--info-soft`, `--chart-1`, `--chart-2`, `--chart-3`, `--chart-4`, `--chart-5`, `--chart-6`, `--chart-grid`, `--chart-axis`, `--chart-curve`, `--chart-stroke`, `--chart-area`, `--chart-radius`, `--chart-bar-gap`, `--chart-donut`, `--chart-gap`, `--chart-dots`
-- **font**: `--font-sans`, `--font-display`, `--font-nastaliq`, `--font-mono`
+- **font**: `--font-sans`, `--font-display`, `--font-verse`, `--font-mono`
 - **text**: `--fs-xs`, `--fs-sm`, `--fs-md`, `--fs-lg`, `--fs-xl`, `--fs-2xl`, `--fs-3xl`, `--fs-display`
 - **radius**: `--radius-sm`, `--radius-md`, `--radius-lg`, `--radius-pill`
 - **shadow**: `--shadow-1`, `--shadow-2`, `--shadow-3`

@@ -19,6 +19,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .skip-link { position: absolute; inset-inline-start: 12px; inset-block-start: -60px; z-index: 100; background: var(--brand); color: var(--brand-ink); padding: 6px 1.5ch; }
 .skip-link:focus { inset-block-start: 12px; }
 .ltr { direction: ltr; unicode-bidi: isolate; }
+/* code-like content always stays in the monospace face, even when Persian UI text uses Vazirmatn */
+.ltr, .mono, kbd, .window-body, .install code, .code, .log, .wordmark { font-family: var(--font-mono); }
 :lang(fa) .ltr { text-align: left; }
 
 /* ------------------------------------------------------------ layout */
@@ -207,8 +209,8 @@ kbd, .kbd { display: inline-block; font: 600 var(--fs-xs)/1.5 var(--font-mono); 
 /* ------------------------------------------------------------ data */
 .table-scroll { position: relative; overflow-x: auto; }
 .table { inline-size: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
-.table th { text-align: start; font-weight: 500; font-size: var(--fs-xs); color: var(--ink-3); text-transform: uppercase; letter-spacing: var(--tracking-caps); padding: 6px 2ch 6px 0; padding-inline: 0 2ch; border-block-end: 1px dashed var(--line-2); white-space: nowrap; }
-.table td { padding-block: 7px; padding-inline: 0 2ch; white-space: nowrap; vertical-align: baseline; }
+.table th { text-align: start; font-weight: 500; font-size: var(--fs-xs); color: var(--ink-3); text-transform: uppercase; letter-spacing: var(--tracking-caps); padding: 6px 1ch; border-block-end: 1px dashed var(--line-2); white-space: nowrap; }
+.table td { padding-block: 7px; padding-inline: 1ch; white-space: nowrap; vertical-align: baseline; }
 .table th:first-child, .table td:first-child { padding-inline-start: 1.5ch; }
 .table tbody tr:hover { background: var(--surface-2); }
 .table tbody tr.is-sel, .table tbody tr[aria-selected="true"] { background: var(--brand-soft); box-shadow: inset 2px 0 0 var(--brand); }
@@ -251,7 +253,7 @@ kbd, .kbd { display: inline-block; font: 600 var(--fs-xs)/1.5 var(--font-mono); 
 .tk-k { color: var(--ansi-magenta); } .tk-s { color: var(--ansi-green); } .tk-n { color: var(--ansi-yellow); } .tk-c { color: var(--ink-3); } .tk-f { color: var(--ansi-blue); } .tk-p { color: var(--brand); }
 .diff-add { color: var(--success); } .diff-del { color: var(--danger); }
 .install { display: flex; align-items: center; gap: 1ch; border: 1px solid var(--line-2); background: var(--surface); padding-inline: 1.5ch .5ch; min-block-size: var(--control-h-lg); min-inline-size: 0; }
-.install code { flex: 1; min-inline-size: 0; contain: inline-size; overflow-x: auto; white-space: nowrap; direction: ltr; text-align: left; font: inherit; scrollbar-width: none; }
+.install code { flex: 1; min-inline-size: 0; contain: inline-size; overflow-x: auto; white-space: nowrap; direction: ltr; text-align: left; font: inherit; font-family: var(--font-mono); scrollbar-width: none; }
 .install code::before { content: "$ "; color: var(--brand); }
 /* man-page sections */
 .man-head { display: flex; justify-content: space-between; gap: 2ch; font-size: var(--fs-xs); color: var(--ink-3); text-transform: uppercase; letter-spacing: var(--tracking-caps); }

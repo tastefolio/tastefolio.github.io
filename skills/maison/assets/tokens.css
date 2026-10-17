@@ -56,9 +56,9 @@
   --chart-gap: 6;
   --chart-dots: 0;
 
-  --font-sans: "Jost", "Futura", "Century Gothic", system-ui, sans-serif;
-  --font-display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
-  --font-mono: "Jost", system-ui, sans-serif;
+  --font-sans: "Jost", "Futura", "Century Gothic", "Vazirmatn", system-ui, sans-serif;
+  --font-display: "Bodoni Moda", "Didot", "Bodoni 72", "Vazirmatn", Georgia, serif;
+  --font-mono: "Jost", "Vazirmatn", system-ui, sans-serif;
   --fs-xs: 11px;
   --fs-sm: 13px;
   --fs-md: 16px;

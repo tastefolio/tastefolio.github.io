@@ -49,9 +49,9 @@
   --chart-bar-gap: .45;
   --chart-donut: 12;
 
-  --font-sans: "Sora", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Martian Mono", ui-monospace, Menlo, monospace;
+  --font-sans: "Sora", "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Martian Mono", "Vazirmatn", ui-monospace, Menlo, monospace;
   --fs-xs: 12px;
   --fs-sm: 13px;
   --fs-md: 15px;
@@ -129,9 +129,9 @@
 
 /* Persian: geometric Kufi for both display and text keeps the engineered feel. */
 :root:lang(fa) {
-  --font-sans: "Noto Kufi Arabic", "Sora", Tahoma, sans-serif;
-  --font-display: "Noto Kufi Arabic", "Sora", sans-serif;
-  --font-mono: "Martian Mono", "Noto Kufi Arabic", ui-monospace, monospace;
+  --font-sans: "Vazirmatn", "Sora", Tahoma, sans-serif;
+  --font-display: "Vazirmatn", "Sora", sans-serif;
+  --font-mono: "Martian Mono", "Vazirmatn", ui-monospace, monospace;
   --fs-md: 14px;
   --fs-display: clamp(30px, 4.8vw, 64px);
   --lh-tight: 1.45;

@@ -47,10 +47,10 @@
   --chart-donut: 10;
   --chart-dots: 1;
 
-  --font-sans: "Libre Franklin", "Franklin Gothic", "Helvetica Neue", Arial, sans-serif;   /* labels, UI */
-  --font-serif: "Newsreader", "Georgia", "Times New Roman", serif;                         /* body text */
-  --font-display: "Newsreader", "Georgia", serif;                                          /* headlines */
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-sans: "Libre Franklin", "Franklin Gothic", "Vazirmatn", "Helvetica Neue", Arial, sans-serif;   /* labels, UI */
+  --font-serif: "Newsreader", "Georgia", "Times New Roman", "Vazirmatn", serif;                         /* body text */
+  --font-display: "Newsreader", "Georgia", "Vazirmatn", serif;                                          /* headlines */
+  --font-mono: "IBM Plex Mono", "Vazirmatn", ui-monospace, monospace;
   --fs-xs: 11px;
   --fs-sm: 13px;
   --fs-md: 17px;            /* reading size */
@@ -121,9 +121,10 @@
 
 /* Persian: editorial Naskh for headlines and text, Vazirmatn for labels. Never letter-spaced. */
 :root:lang(fa) {
-  --font-display: "Markazi Text", "Noto Naskh Arabic", serif;
-  --font-serif: "Noto Naskh Arabic", "Markazi Text", serif;
+  --font-display: "Vazirmatn", Tahoma, sans-serif;
+  --font-serif: "Vazirmatn", Tahoma, sans-serif;
   --font-sans: "Vazirmatn", Tahoma, sans-serif;
+  --fw-display: 800;
   --fs-md: 17px;
   --fs-display: clamp(36px, 4.6vw, 66px);
   --lh-tight: 1.3;

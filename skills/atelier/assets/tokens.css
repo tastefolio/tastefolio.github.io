@@ -50,10 +50,10 @@
   --chart-donut: 10;
 
   /* Type: tight grotesk display + serif italic accents + mono details */
-  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-display: "Geist", ui-sans-serif, system-ui, sans-serif;
-  --font-accent: "Instrument Serif", "Iowan Old Style", Georgia, serif;
-  --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-sans: "Geist", "Vazirmatn", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Geist", "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
+  --font-accent: "Instrument Serif", "Iowan Old Style", "Vazirmatn", Georgia, serif;
+  --font-mono: "Geist Mono", "Vazirmatn", ui-monospace, "SF Mono", Menlo, monospace;
   --fs-xs: 12px;
   --fs-sm: 14px;
   --fs-md: 16px;
@@ -126,11 +126,11 @@
   color-scheme: dark;
 }
 
-/* Persian: Vazirmatn for UI/display; Markazi Text replaces the serif-italic accent (no italics in Persian). */
+/* Persian: Vazirmatn for everything; the serif-italic accent becomes light upright Vazirmatn (no italics in Persian). */
 :root:lang(fa) {
   --font-sans: "Vazirmatn", system-ui, Tahoma, sans-serif;
   --font-display: "Vazirmatn", system-ui, sans-serif;
-  --font-accent: "Markazi Text", "Vazirmatn", serif;
+  --font-accent: "Vazirmatn", serif;
   --fs-display: clamp(40px, 6.6vw, 96px);
   --lh-tight: 1.22;
   --lh-snug: 1.5;

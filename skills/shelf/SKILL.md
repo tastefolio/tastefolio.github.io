@@ -26,10 +26,10 @@ Covers the **storefront** (banners, chips, shelves, charts, collections, item sh
 ## Fonts
 
 ```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Nunito:wght@500;600;700;800&family=Vazirmatn:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Nunito:wght@500;600;700;800&family=Vazirmatn:wght@100..900&display=swap">
 ```
-Headings: **Baloo Bhaijaan 2** (rounded; covers Persian and Latin). Body: **Nunito** (Latin) / **Vazirmatn** (Persian).
-Weights lean bold (600–800). Fallbacks: Fredoka / Quicksand; Lemonada for Persian display.
+Headings: **Baloo Bhaijaan 2** (rounded) for Latin. Body: **Nunito**. Persian: **Vazirmatn** for everything.
+Weights lean bold (600–800). Persian headings use **Vazirmatn 800** (Vazirmatn only for Persian). Fallbacks: Fredoka / Quicksand.
 
 ## Identity rules (non-negotiable)
 

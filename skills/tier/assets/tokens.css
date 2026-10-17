@@ -50,9 +50,9 @@
   --chart-bar-gap: .4;
   --chart-donut: 18;
 
-  --font-sans: "Plus Jakarta Sans", "Shabnam", system-ui, -apple-system, sans-serif;
+  --font-sans: "Plus Jakarta Sans", "Vazirmatn", system-ui, -apple-system, sans-serif;
   --font-display: var(--font-sans);
-  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --font-mono: ui-monospace, "SF Mono", Menlo, "Vazirmatn", monospace;
   --fs-xs: 12px;
   --fs-sm: 13px;
   --fs-md: 15px;
@@ -128,7 +128,7 @@
 }
 
 :root:lang(fa) {
-  --font-sans: "Shabnam", "Plus Jakarta Sans", Tahoma, sans-serif;
+  --font-sans: "Vazirmatn", "Plus Jakarta Sans", Tahoma, sans-serif;
   --lh-tight: 1.5;
   --lh-snug: 1.6;
   --lh-body: 1.95;

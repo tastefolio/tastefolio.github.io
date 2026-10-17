@@ -26,10 +26,10 @@ Covers **public sites** (exhibition/program pages, schedules, collections, booki
 ## Fonts
 
 ```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=Vazirmatn:wght@100..900&display=swap">
 ```
-One grotesk family, two or three weights: **Archivo** 400/500/700 with tabular figures. Persian: **Noto Sans Arabic**
-400/500/700 (neutral, rational). Fallbacks: Helvetica Neue / Inter Tight / Arial; Vazirmatn.
+One grotesk family, two or three weights: **Archivo** 400/500/700 with tabular figures. Persian: **Vazirmatn**
+400/500/700 (neutral, rational). Fallbacks: Helvetica Neue / Inter Tight / Arial.
 
 ## Identity rules (non-negotiable)
 
@@ -96,7 +96,7 @@ Keyboard: G toggles the grid; arrows move between tabs.
 
 ## Persian & RTL
 
-- Noto Sans Arabic for everything; display sizes slightly smaller (`clamp(48px, 8.4vw, 140px)`), line-height 1.2, zero tracking.
+- Vazirmatn for everything; display sizes slightly smaller (`clamp(48px, 8.4vw, 140px)`), line-height 1.2, zero tracking.
 - Flush-start becomes flush-right automatically; the grid mirrors; arrows (`.arrow`) flip.
 - Numerals in Persian digits are fine as display type; keep them tabular-like by right-aligning in tables.
 - Dates in Solar Hijri; Latin poster titles (historical) may stay Latin with `lang` set.
@@ -127,4 +127,4 @@ Badge → square flag + text.
 - [ ] Red only for current/primary/attention and key numerals.
 - [ ] Controls square; hover inverts; focus visible.
 - [ ] Mobile: grid → 1 column (posters 2-up); tables scroll.
-- [ ] Persian: Noto Sans Arabic, no tracking, flush-right, Persian digits.
+- [ ] Persian: Vazirmatn, no tracking, flush-right, Persian digits.

@@ -1,6 +1,6 @@
 ---
 name: clay
-description: Tastefolio "Clay" design language — soft, tactile claymorphism for wellness and personal products. Cream ground, pastel clay tiles (peach, sage, lavender, butter, sky, rose), one terracotta brand; surfaces lit from above (inner highlight + inner shade + warm cast shadow), inputs/tab bars as wells pressed into the page with the chosen option popping out, pills, blobs and pebbles instead of boxes, Fraunces soft-axis serif with Nunito Sans (Lemonada + Readex Pro in Persian), slow springy motion, a breathing orb, choice-card wizards and a floating dock on phones. Use when the user asks for the Clay, soft, claymorphism, pastel, calm or wellness style, or builds a meditation/sleep/health/habit/journaling/kids/family site or personal dashboard — English (LTR) and/or Persian (RTL).
+description: Tastefolio "Clay" design language — soft, tactile claymorphism for wellness and personal products. Cream ground, pastel clay tiles (peach, sage, lavender, butter, sky, rose), one terracotta brand; surfaces lit from above (inner highlight + inner shade + warm cast shadow), inputs/tab bars as wells pressed into the page with the chosen option popping out, pills, blobs and pebbles instead of boxes, Fraunces soft-axis serif with Nunito Sans (Vazirmatn in Persian), slow springy motion, a breathing orb, choice-card wizards and a floating dock on phones. Use when the user asks for the Clay, soft, claymorphism, pastel, calm or wellness style, or builds a meditation/sleep/health/habit/journaling/kids/family site or personal dashboard — English (LTR) and/or Persian (RTL).
 ---
 
 # Clay
@@ -17,7 +17,7 @@ dashboards** (today, journal, progress, settings).
 
 | File | Use |
 |---|---|
-| [assets/tokens.css](assets/tokens.css) | **Required.** Cream/pastel/terracotta palette, `--clay`, `--clay-sm`, `--press` shadows, Fraunces SOFT + Nunito Sans / Lemonada + Readex Pro, big radii, springy easing; "evening" dark + Persian. |
+| [assets/tokens.css](assets/tokens.css) | **Required.** Cream/pastel/terracotta palette, `--clay`, `--clay-sm`, `--press` shadows, Fraunces SOFT + Nunito Sans / Vazirmatn, big radii, springy easing; "evening" dark + Persian. |
 | [assets/kit.css](assets/kit.css) | `.clay`, `.well`, `.blob`, `.pebble`, breathing `.orb`, pill header + pressed nav, buttons, tabs/seg wells, chips, wells for inputs, custom checks/radios, `.choice` cards, switch, `.range`, qty, badges, progress, wizard dots, session cards, quotes, carousel, app shell → dock, tiles, week pebbles, mood buttons, activity calendar, dialogs, toasts, charts, footer, tone utilities. |
 | [assets/kit.js](assets/kit.js) | Wizards (`data-steps`), pressed groups (incl. `data-multi`), conditional content, filters, carousel, validation, charts, fa/en. |
 | [references/adapters.md](references/adapters.md) | Tailwind v3/v4 + shadcn/ui mapping. |
@@ -27,11 +27,11 @@ dashboards** (today, journal, progress, settings).
 ## Fonts
 
 ```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..700,100&family=Lemonada:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&family=Readex+Pro:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..700,100&family=Nunito+Sans:wght@400;600;700;800&family=Vazirmatn:wght@100..900&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
 ```
-**Fraunces** with `SOFT=100` (rounded serif) 600 for display; **Nunito Sans** 400–800 for UI. Persian: **Lemonada** 600
-for display, **Readex Pro** for text. Icons: Phosphor regular, sat inside pebbles. Never use thin hairline icons.
+**Fraunces** with `SOFT=100` (rounded serif) 600 for display; **Nunito Sans** 400–800 for UI. Persian: **Vazirmatn** only —
+700 for display, 400–600 for text. Icons: Phosphor regular, sat inside pebbles. Never use thin hairline icons.
 
 ## Identity rules (non-negotiable)
 
@@ -40,7 +40,7 @@ for display, **Readex Pro** for text. Icons: Phosphor regular, sat inside pebble
 3. **Round everything.** Pills for controls (999px), 22–34px radii for tiles, blobs/pebbles (`border-radius` with uneven percentages) for art and icons.
 4. **Pastel tiles code meaning** (mood, category, day); one terracotta `--brand` for primary actions, progress and "on".
 5. **Ink is plum-brown**, never black; the evening theme is warm plum, never blue-black.
-6. **Soft serif headlines** (Fraunces SOFT / Lemonada), generous size, short lines; body 17px.
+6. **Soft serif headlines** (Fraunces SOFT / Vazirmatn 700), generous size, short lines; body 17px.
 7. **Slow & springy.** Hover lifts 2–4px with a spring; presses sink 1px; the orb breathes on a 4–6s rhythm. All of it stops under reduced motion.
 8. **One thing per tile**: a ring, a week, a mood row, a chart. Air between tiles (24px+).
 9. **Wizards over long forms**: choice cards with icons, 3 steps max, dot indicator, Back/Next.
@@ -99,7 +99,7 @@ pill. Toasts are clay pills. Reduced motion: orb static, no lifts.
 
 ## Persian & RTL
 
-- Lemonada for display (line-height ≥ 1.5), Readex Pro for text (≈16px, 1.9); no letter-spacing.
+- Vazirmatn 700 for display (line-height ≥ 1.5), Vazirmatn 400–600 for text (≈16px, 1.9); no letter-spacing.
 - Weekday pebbles use single-letter labels (`ش ی د س چ پ ج`); dates through `data-date` (Jalali).
 - Dock, sidebar and arrows (`.flip-rtl`) mirror; blobs need no mirroring.
 
@@ -132,4 +132,4 @@ Badge → pastel pill; Dialog → clay slab with blurred backdrop; Sidebar → f
 - [ ] Orb and lifts respect reduced motion.
 - [ ] Wizard ≤ 3 steps with Back/Next and validation.
 - [ ] Phones: dock nav, tiles stack, nothing overflows.
-- [ ] Persian: Lemonada/Readex Pro, Jalali dates, mirrored dock.
+- [ ] Persian: Vazirmatn only, Jalali dates, mirrored dock.

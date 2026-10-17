@@ -27,7 +27,7 @@
     "fa": ["شبکهٔ ۱۲ستونه که با کلید G نمایان می‌شود", "تیتر ۵۶ تا ۱۶۸ پیکسل، وزن ۷۰۰، فشرده و از ابتدا چیده‌شده", "ستون برچسب (۳) کنار ستون محتوا (۹) زیر خط سیاه ۲ پیکسلی", "اعداد قرمز عظیم برای تاریخ‌ها و ارقام کلیدی", "پوسترهای هندسی: دایره و نوار در قرمز، سیاه و سفید", "کنترل‌های مربعی و خطی؛ تب با زیرخط قرمز؛ بدون گردی و سایه"]
   },
   "swatches": ["#ffffff", "#f2f2f0", "#0a0a0a", "#7a7a76", "#e4002b"],
-  "fonts": { "latin": "Archivo", "persian": "Noto Sans Arabic", "mono": "Archivo (tabular figures)" },
+  "fonts": { "latin": "Archivo", "persian": "Vazirmatn", "mono": "Archivo (tabular figures)" },
   "icons": "None (typographic arrows)",
   "brandTrials": ["0047bb", "007a3d", "ff6a00", "0a0a0a"],
   "demos": { "site": { "host": "kunsthalle-nord.example" }, "dashboard": { "host": "ops.kunsthalle-nord.example" } }

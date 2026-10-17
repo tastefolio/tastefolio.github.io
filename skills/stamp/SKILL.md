@@ -16,7 +16,7 @@ pricing, FAQ, sign-up) and **apps** (stat blocks, prompt/upload cards, kanban bo
 
 | File | Use |
 |---|---|
-| [assets/tokens.css](assets/tokens.css) | **Required.** Cream/ink, sticker palette (`--pop-*`), 3px border, hard shadows, springy easing; dark + Persian (Lalezar). |
+| [assets/tokens.css](assets/tokens.css) | **Required.** Cream/ink, sticker palette (`--pop-*`), 3px border, hard shadows, springy easing; dark + Persian (Vazirmatn 900). |
 | [assets/kit.css](assets/kit.css) | Pressable buttons, stickers, tape, boxes with colored heads, tiles, folder tabs, FAQ, chunky forms/toggles/checks, progress, app shell, stats, kanban, outlined charts. |
 | [assets/kit.js](assets/kit.js) | Tabs, groups, `data-when`, dialogs, toasts, validation, charts, fa/en. |
 | [references/adapters.md](references/adapters.md) | Tailwind v3/v4 + shadcn/ui mapping. |
@@ -26,10 +26,10 @@ pricing, FAQ, sign-up) and **apps** (stat blocks, prompt/upload cards, kanban bo
 ## Fonts
 
 ```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@700&family=Lalezar&family=Vazirmatn:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@700&family=Vazirmatn:wght@100..900&display=swap">
 ```
 Display: **Bricolage Grotesque 800** (tight, quirky). Text/UI: **Space Grotesk 500–700**. Labels: **Space Mono 700** uppercase.
-Persian: **Lalezar** for display (single heavy weight) and **Vazirmatn 500–800** for text. Fallbacks: Archivo Black / Rubik; Vazirmatn 900.
+Persian: **Vazirmatn** only — 900 (Black) for display and 500–800 for text. Fallbacks: Archivo Black / Rubik.
 
 ## Identity rules (non-negotiable)
 
@@ -102,7 +102,7 @@ Tape scrolls slowly (28s). Everything stops under `prefers-reduced-motion`.
 
 ## Persian & RTL
 
-- Lalezar for Persian display (weight 400 is its heavy cut; never fake-bold it), Vazirmatn 500–800 for text, line-height 1.9.
+- Vazirmatn 900 for Persian display, Vazirmatn 500–800 for text, line-height 1.9.
 - Mono uppercase labels become Vazirmatn bold without uppercase or tracking.
 - Stickers keep their rotation; shadows stay bottom-right; the tape stays LTR when it carries Latin words (switch to RTL for Persian-only tapes).
 - Highlights wrap per line (`box-decoration-break: clone`) and work with joined Persian letters.
@@ -134,4 +134,4 @@ Badge → `.tag`; Progress → striped with ink end cap. Radius 12px controls, 1
 - [ ] At least one sticker, one highlighted word and the tape marquee on marketing pages.
 - [ ] Kanban/stat blocks in the app; charts outlined.
 - [ ] Mobile: nav collapses, collage still readable, no overflow.
-- [ ] Persian: Lalezar + Vazirmatn, no tracking/uppercase, digits in Persian.
+- [ ] Persian: Vazirmatn (900 display), no tracking/uppercase, digits in Persian.

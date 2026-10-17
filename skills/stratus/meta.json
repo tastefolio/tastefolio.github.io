@@ -27,7 +27,7 @@
     "fa": ["تیتر دوخطی: خط اول پررنگ مشکی، خط دوم سبک‌تر به رنگ برند", "برچسب بالای بخش با یک خط کوتاه رنگی", "منوی بزرگ محصولات: سه ستون عنوان‌دار به‌علاوهٔ یک کادر ویژه", "صحنه‌های خاکستری روشن با پنجره‌های رابط به‌جای تصویرسازی", "ریل آیکن تیره + زیرمنوی سفید با نشانگر فعال در لبهٔ شروع", "ویزارد مرحله‌ای با کارت‌های گزینه و خلاصهٔ زندهٔ چسبان"]
   },
   "swatches": ["#ffffff", "#f5f7f8", "#10181b", "#0f6b66", "#0a2f2d"],
-  "fonts": { "latin": "IBM Plex Sans", "persian": "IBM Plex Sans Arabic", "mono": "IBM Plex Mono" },
+  "fonts": { "latin": "IBM Plex Sans", "persian": "Vazirmatn", "mono": "IBM Plex Mono" },
   "icons": "Lucide",
   "brandTrials": ["1d4ed8", "6d28d9", "b45309", "be123c"],
   "demos": { "site": { "host": "rahvar.example" }, "dashboard": { "host": "console.rahvar.example" } }

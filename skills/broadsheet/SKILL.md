@@ -26,10 +26,10 @@ Covers **publication sites** (front pages, section fronts, article pages, newsle
 ## Fonts
 
 ```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Libre+Franklin:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Markazi+Text:wght@500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Libre+Franklin:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Vazirmatn:wght@100..900&display=swap">
 ```
 Three roles: **serif display + text** (Newsreader, optical sizes), **sans for labels/UI** (Libre Franklin), **mono for slugs/data**
-(IBM Plex Mono). Persian: **Markazi Text** headlines, **Noto Naskh Arabic** body, **Vazirmatn** labels.
+(IBM Plex Mono). Persian: **Vazirmatn** only — 800 for headlines, 400 for body, 500–600 for labels.
 Fallbacks: Source Serif 4 / Georgia; Inter / Arial; Amiri for Persian text.
 
 ## Identity rules (non-negotiable)
@@ -101,7 +101,7 @@ fades; nothing moves on scroll. Night mode swaps paper and ink (keep rules visib
 
 ## Persian & RTL
 
-- Headlines in Markazi Text 600 (no tracking, line-height 1.3), body in Noto Naskh Arabic 17px / line-height 2, labels in Vazirmatn.
+- Headlines in Vazirmatn 800 (no tracking, line-height 1.35), body in Vazirmatn 400 at 17px / line-height 2, labels in Vazirmatn 600.
 - Italic decks become upright regular (Persian has no italic); small caps and uppercase become plain bold labels.
 - Drop caps are disabled in Persian (joined letters cannot be dropped).
 - Dates in Solar Hijri, numbers in Persian digits; market tickers stay LTR with Latin symbols.
@@ -132,4 +132,4 @@ underline only. Tabs: underline. Table: heavy header rule, hairline rows, serif 
 - [ ] Column rules visible on desktop; single column with hairlines on phones.
 - [ ] Only ink + one red; market up/down colors excepted.
 - [ ] Desk uses ledgers and figures, not cards.
-- [ ] Persian: Markazi/Naskh/Vazirmatn, no italics/tracking/drop caps, Persian digits, Jalali dates.
+- [ ] Persian: Vazirmatn only, no italics/tracking/drop caps, Persian digits, Jalali dates.

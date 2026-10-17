@@ -27,7 +27,7 @@
     "fa": ["نوار اعلان مشکی با متن مونو و حروف بزرگ", "تیتر دورنگ: بخش اول خاکستری، بخش دوم مشکی", "ردیف تب ویژگی‌ها که فقط کارت فعال با رنگ تأکیدی پر می‌شود", "دکمهٔ اصلی همیشه مشکی است، نه رنگ تأکیدی", "جدول فشرده: نام مونو پررنگ + مالک، برچسب کپسولی، نشانی مونوی قابل‌کپی، نقطهٔ وضعیت", "منوی ⋯ هر ردیف و کشوی کناری به‌جای صفحهٔ جدید"]
   },
   "swatches": ["#f6f4f1", "#ffffff", "#1c1a17", "#8f877e", "#e5533d"],
-  "fonts": { "latin": "Hanken Grotesk", "persian": "Estedad", "mono": "IBM Plex Mono" },
+  "fonts": { "latin": "Hanken Grotesk", "persian": "Vazirmatn", "mono": "IBM Plex Mono" },
   "icons": "Tabler Icons",
   "brandTrials": ["2f6fed", "0f766e", "7c3aed", "d97706"],
   "demos": { "site": { "host": "fieldkit.example" }, "dashboard": { "host": "console.fieldkit.example" } }

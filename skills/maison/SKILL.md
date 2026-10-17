@@ -27,7 +27,7 @@ accounts** (overview, orders, wishlist, appointments, preferences, details).
 ## Fonts
 
 ```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Jost:wght@300;400;500&family=Vazirmatn:wght@100;200;300;400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Jost:wght@300;400;500&family=Vazirmatn:wght@100..900&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/thin/style.css">
 ```
 **Bodoni Moda** 400 (+ italic) for display and product names; **Jost** 300/400 for text and small caps. Persian:

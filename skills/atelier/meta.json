@@ -27,7 +27,7 @@
     "fa": ["تیتر ۹۰ تا ۱۲۴ پیکسل، وزن ۶۰۰ و فشرده، با یک واژهٔ متمایز", "دکمهٔ کپسولی مشکی با نقطهٔ لیمویی و فلشی که هنگام هاور می‌چرخد", "شبکهٔ بنتو از کاشی‌های سفید، مشکی و لیمویی با گوشهٔ ۲۸ پیکسل", "حرکت ظاهرشدن: محوشدن، بالا آمدن ۲۸ پیکسل و تیزشدن از تاری، پلکانی", "ناوبری کپسولی شیشه‌ای شناور؛ نام بزرگ برند در پانویس", "داشبورد استودیویی با داک شیشه‌ای، تیتر خوشامد و پالت ⌘K"]
   },
   "swatches": ["#f3f1ed", "#ffffff", "#0e0e0d", "#96928a", "#d6ff3d"],
-  "fonts": { "latin": "Geist + Instrument Serif", "persian": "Vazirmatn + Markazi Text", "mono": "Geist Mono" },
+  "fonts": { "latin": "Geist + Instrument Serif", "persian": "Vazirmatn", "mono": "Geist Mono" },
   "icons": "Phosphor (light)",
   "brandTrials": ["ff8a5c", "8fd3ff", "ffb3e6", "c9b8ff"],
   "demos": { "site": { "host": "halo.example" }, "dashboard": { "host": "app.halo.example" } }

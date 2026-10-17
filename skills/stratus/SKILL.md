@@ -26,10 +26,10 @@ Covers **marketing sites with many products** (mega menu, product grid, solution
 ## Fonts
 
 ```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Vazirmatn:wght@100..900&display=swap">
 ```
-Persian: **IBM Plex Sans Arabic** (primary). Latin: **IBM Plex Sans**. Mono: **IBM Plex Mono** for codes/IDs.
-One superfamily keeps both scripts on the same rhythm. Fallbacks: Vazirmatn / Noto Sans Arabic; Inter.
+Persian: **Vazirmatn** (primary, variable 100–900). Latin: **IBM Plex Sans**. Mono: **IBM Plex Mono** for codes/IDs.
+Vazirmatn and Plex share an even, technical rhythm; keep Persian in Vazirmatn only. Fallbacks: Inter.
 
 ## Identity rules (non-negotiable)
 
@@ -99,7 +99,7 @@ a 4px start-edge color. No decorative animation.
 ## Persian & RTL specifics
 
 - Persian is the source language: write copy natively, then translate to English. Formal-polite register (شما, «کنید»).
-- IBM Plex Sans Arabic at 14.5px body / line-height 1.95; headlines 1.5; zero letter-spacing.
+- Vazirmatn at 14.5px body / line-height 1.95; headlines 1.5; zero letter-spacing.
 - Persian digits everywhere (`Intl.NumberFormat('fa-IR')`), Solar Hijri dates, Toman currency suffix («تومان»).
 - Codes, phone numbers, emails, postal codes, URLs: `dir="ltr"` inputs and `.ltr` spans (`unicode-bidi: isolate`).
 - Directional icons: use the "forward" glyph (`arrow-right`, `chevron-right`) with `.flip-rtl`; the stepper connector and breadcrumbs then read correctly in both directions.

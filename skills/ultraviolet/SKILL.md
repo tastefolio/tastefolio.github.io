@@ -26,10 +26,10 @@ Covers the **launch/marketing site** (hero with isometric hardware, bento platfo
 ## Fonts
 
 ```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Martian+Mono:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Martian+Mono:wght@400;500;600;700&family=Vazirmatn:wght@100..900&display=swap">
 ```
-Latin: **Sora** (geometric). Numbers, labels, code: **Martian Mono**. Persian: **Noto Kufi Arabic** — geometric Kufi keeps
-the engineered voice (for very long Persian reading, Vazirmatn is the fallback).
+Latin: **Sora** (geometric). Numbers, labels, code: **Martian Mono**. Persian: **Vazirmatn** — its geometric construction keeps
+the engineered voice; use 700–800 for headings and 400 for reading.
 
 ## Identity rules (non-negotiable)
 
@@ -99,7 +99,7 @@ Charts reveal on load only through their gradient fill; no looping animations ex
 
 ## Persian & RTL
 
-- Persian is the default source; English is the alternate. Noto Kufi Arabic at 14px / line-height 2; headings 1.45–1.6.
+- Persian is the default source; English is the alternate. Vazirmatn at 14px / line-height 2; headings 1.45–1.6.
 - Mono labels become Kufi 12.5px, no uppercase, no tracking. Technical IDs, CLI commands and terminals stay LTR (`.ltr`, `.term`).
 - The isometric stack mirrors its X offset in RTL (handled); gradient meters reverse direction in RTL.
 - Persian digits for all UI numbers; Toman for prices; Solar Hijri dates; English model names (HX-80) stay Latin.

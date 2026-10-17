@@ -48,8 +48,8 @@
   --chart-donut: 16;
 
   --font-sans: "Nunito", "Vazirmatn", system-ui, sans-serif;
-  --font-display: "Baloo Bhaijaan 2", "Nunito", sans-serif;
-  --font-mono: ui-monospace, Menlo, monospace;
+  --font-display: "Baloo Bhaijaan 2", "Nunito", "Vazirmatn", sans-serif;
+  --font-mono: ui-monospace, Menlo, "Vazirmatn", monospace;
   --fs-xs: 12px;
   --fs-sm: 13.5px;
   --fs-md: 15px;
@@ -128,7 +128,7 @@
 
 :root:lang(fa) {
   --font-sans: "Vazirmatn", "Nunito", Tahoma, sans-serif;
-  --font-display: "Baloo Bhaijaan 2", "Vazirmatn", sans-serif;
+  --font-display: "Vazirmatn", "Baloo Bhaijaan 2", sans-serif;
   --fw-regular: 400;
   --fw-medium: 500;
   --lh-tight: 1.45;

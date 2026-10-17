@@ -27,7 +27,7 @@ Covers **public sites** (brokerage/bank/exchange marketing, market tables, heatm
 ## Fonts
 
 ```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@500;600;700;800&family=Vazirmatn:wght@100..900&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@0.460.0/font/lucide.css">
 ```
 **Manrope** 500–800 for UI and headings, **DM Mono** for all values (prices, sizes, %, times, IDs), **Vazirmatn** for

@@ -27,7 +27,7 @@
     "fa": ["یک خانوادهٔ تک‌فاصله برای همه‌چیز؛ اندازه‌ها هم‌گام با خانهٔ نویسه", "پنل قاب‌کشیده با عنوان روی خط بالا؛ پنل فعال کهربایی می‌شود", "دکمه [ کروشه‌دار ]، چک‌باکس [x]، رادیو (•)، سوییچ ● روشن / ○ خاموش", "تب‌های شماره‌دار به سبک tmux با میان‌بر عددی", "سنجهٔ خانه‌خانه، نمودار پله‌ای، لاگ شماره‌دار چپ‌به‌راست", "خط فرمان (:) به سبک vim و نوار وضعیت با حالت"]
   },
   "swatches": ["#0f0f0d", "#e8e5d8", "#ffaf38", "#62d8c9", "#93d46b"],
-  "fonts": { "latin": "JetBrains Mono", "persian": "Vazir Code", "mono": "JetBrains Mono" },
+  "fonts": { "latin": "JetBrains Mono", "persian": "Vazirmatn", "mono": "JetBrains Mono" },
   "icons": "None — glyphs and box-drawing characters",
   "brandTrials": ["93d46b", "62d8c9", "d796ff", "ff6e5e"],
   "demos": { "site": { "host": "kiln.example" }, "dashboard": { "host": "console.kiln.example" } }

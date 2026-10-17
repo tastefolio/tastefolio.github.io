@@ -26,12 +26,11 @@ Covers the **storefront** (search-first header, category tree, featured parts, p
 ## Fonts
 
 ```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=Roboto+Mono:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=Roboto+Mono:wght@400;500;600&family=Vazirmatn:wght@100..900&display=swap">
 <!-- kit.css declares the DSEG7 Classic face (OFL) for readouts -->
 ```
 UI: **Barlow**; headings: **Barlow Condensed** (uppercase in Latin); identifiers/specs/prices in tables: **Roboto Mono**;
-readouts: **DSEG7 Classic**. Persian: **Sahel** for UI and headings. Fallbacks: IBM Plex Sans Condensed; Vazirmatn.
+readouts: **DSEG7 Classic** (Latin digits only). Persian: **Vazirmatn** for UI and headings. Fallbacks: IBM Plex Sans Condensed.
 
 ## Identity rules (non-negotiable)
 
@@ -103,7 +102,7 @@ Hover rows tint red-soft; cards lift with a shadow. No decorative animation besi
 
 - Persian source copy; technical tokens (MPNs, units, packages, ohm/µ symbols) remain Latin, mono, LTR-isolated.
 - Prices in Persian digits with Toman; readouts intentionally stay Latin-digit instruments (state this in UI labels).
-- Condensed uppercase headings become Sahel bold (no uppercase in Persian). Mono uppercase table headers become Sahel 12px/700.
+- Condensed uppercase headings become Vazirmatn 700 (no uppercase in Persian). Mono uppercase table headers become Vazirmatn 12px/700.
 - Facet panel stays on the inline-start side (right in RTL); compare bar and steppers mirror automatically.
 
 ## Accessibility
@@ -133,4 +132,4 @@ except LEDs and counts.
 - [ ] Section bars use red index + condensed title + 2px rule.
 - [ ] Readouts labelled; LEDs paired with text; red used only for action/attention.
 - [ ] Mobile: search wraps to full width, facets stack above results, tables scroll inside their frame.
-- [ ] Persian: Sahel, Toman with Persian digits, LTR technical tokens.
+- [ ] Persian: Vazirmatn, Toman with Persian digits, LTR technical tokens.

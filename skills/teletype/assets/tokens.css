@@ -60,9 +60,9 @@
   --chart-gap: 3;
   --chart-dots: 0;
 
-  --font-sans: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;   /* yes: the body face is mono */
-  --font-display: "JetBrains Mono", ui-monospace, Menlo, monospace;
-  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  --font-sans: "JetBrains Mono", "Vazirmatn", ui-monospace, "SF Mono", Menlo, Consolas, monospace;   /* yes: the body face is mono */
+  --font-display: "JetBrains Mono", "Vazirmatn", ui-monospace, Menlo, monospace;
+  --font-mono: "JetBrains Mono", "Vazirmatn", ui-monospace, Menlo, monospace;
   --fs-xs: 11px;
   --fs-sm: 12px;
   --fs-md: 14px;
@@ -142,10 +142,10 @@
 }
 
 :root:lang(fa) {
-  /* Latin and digits in code stay JetBrains Mono; Persian script falls through to Vazir Code (monospace Persian) */
-  --font-sans: "JetBrains Mono", "Vazir Code", ui-monospace, monospace;
-  --font-display: "JetBrains Mono", "Vazir Code", ui-monospace, monospace;
-  --font-mono: "JetBrains Mono", "Vazir Code", ui-monospace, monospace;
+  /* Persian text leads with Vazirmatn (monospace spaces would gape); code, logs and commands keep --font-mono */
+  --font-sans: "Vazirmatn", "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Vazirmatn", "JetBrains Mono", ui-monospace, monospace;
+  --font-mono: "JetBrains Mono", "Vazirmatn", ui-monospace, monospace;
   --fs-md: 15px;
   --fs-display: clamp(30px, 4.6vw, 64px);
   --lh-tight: 1.45;

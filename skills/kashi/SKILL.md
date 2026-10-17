@@ -1,6 +1,6 @@
 ---
 name: kashi
-description: Tastefolio "Kashi" design language — Persian heritage and tilework for the web. Plaster-ivory grounds, lajevard (lapis) structure, firouzeh turquoise as the brand glaze, saffron and pomegranate accents; symmetric layouts on a central axis, pointed-arch image frames, recolorable girih star patterns and tile friezes (CSS masks), double gilded frames with corner stars, cartouche labels, glazed buttons, Nastaliq display (Gulzar) with Vazirmatn, Cormorant Garamond for Latin. Use when the user asks for the Kashi, Persian, Iranian-heritage, tilework or ornamental style, or builds a restaurant/tea house/hotel, museum, festival, handicraft or cultural site or its staff panel — Persian-first (RTL) with English (LTR).
+description: Tastefolio "Kashi" design language — Persian heritage and tilework for the web. Plaster-ivory grounds, lajevard (lapis) structure, firouzeh turquoise as the brand glaze, saffron and pomegranate accents; symmetric layouts on a central axis, pointed-arch image frames, recolorable girih star patterns and tile friezes (CSS masks), double gilded frames with corner stars, cartouche labels, glazed buttons, Cormorant Garamond + Alegreya Sans for Latin and Vazirmatn (light display, regular text) for Persian. Use when the user asks for the Kashi, Persian, Iranian-heritage, tilework or ornamental style, or builds a restaurant/tea house/hotel, museum, festival, handicraft or cultural site or its staff panel — Persian-first (RTL) with English (LTR).
 ---
 
 # Kashi
@@ -17,7 +17,7 @@ plans, reservations, menu & stock, settings).
 
 | File | Use |
 |---|---|
-| [assets/tokens.css](assets/tokens.css) | **Required.** Ivory/lajevard/firouzeh/saffron/anar palette, Cormorant + Alegreya Sans / Gulzar + Vazirmatn, Nastaliq line-heights; dark "lajevard night" + Persian. |
+| [assets/tokens.css](assets/tokens.css) | **Required.** Ivory/lajevard/firouzeh/saffron/anar palette, Cormorant + Alegreya Sans / Vazirmatn; dark "lajevard night" + Persian. |
 | [assets/kit.css](assets/kit.css) | Ornament masks (`--star`, `--girih`, `--girih-fill`, `--arch`), `.girih`, `.frieze`, `.arch`/`.arch-frame`, `.framed`, `.cartouche`, `.ornament`, symmetric header, glazed buttons, diamond tabs, pills, forms, star switch, menu leaders, badges, tables, sidebar shell, KPI tiles, floor plan, meters, feed, dialogs, toasts, charts, footer. |
 | [assets/kit.js](assets/kit.js) | Tabs (incl. vertical sidebar tablist), filters, sorting, dialogs, qty, validation, charts, Jalali dates and Persian digits, fa/en. |
 | [references/adapters.md](references/adapters.md) | Tailwind v3/v4 + shadcn/ui mapping. |
@@ -27,12 +27,12 @@ plans, reservations, menu & stock, settings).
 ## Fonts
 
 ```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Gulzar&family=Vazirmatn:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Vazirmatn:wght@100..900&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/light/style.css">
 ```
-Persian: **Gulzar** (Nastaliq) only for display, h1/h2 and verses — never for UI text, numbers or long paragraphs;
-**Vazirmatn** for everything else. Latin: **Cormorant Garamond** 600 for display (italic for emphasis), **Alegreya Sans**
-for text. Alternative Nastaliq: Noto Nastaliq Urdu. Icons: Phosphor light, sparingly; illustrations are line drawings.
+Persian: **Vazirmatn** only — 300 for display and verses (an inscription-like light voice in lajevard), 600 for
+headings, 400–500 for text. Latin: **Cormorant Garamond** 600 for display (italic for emphasis), **Alegreya Sans**
+for text. Icons: Phosphor light, sparingly; illustrations are line drawings.
 
 ## Identity rules (non-negotiable)
 
@@ -42,7 +42,7 @@ for text. Alternative Nastaliq: Noto Nastaliq Urdu. Icons: Phosphor light, spari
 4. **Double frames.** Content panels are `.framed`: outer gilded rule, inner rule, saffron stars in the corners; titles in a `.cartouche` on the top edge when centered.
 5. **Color roles.** Lajevard = structure & headings; `--brand` firouzeh = primary actions, active/seated; saffron = ornament, highlight, reserved; anar = alerts/full; ivory grounds; one patterned dark band (sidebar, footer).
 6. **Glazed buttons.** Primary buttons are solid glaze with an inner white hairline; secondary are ivory with gilded borders; small radius (4px).
-7. **Nastaliq for voice, Vazirmatn for work.** Nastaliq headings need line-height ≥ 1.8; never set numbers or controls in Nastaliq.
+7. **Light for voice, regular for work.** Persian display and verses in Vazirmatn 300, headings 600, UI 400–500; Latin display in Cormorant. No other Persian faces.
 8. **Diamonds, not underlines.** Active tabs and current nav get a small saffron diamond; lists use star bullets; badges have diamond dots.
 9. **Persian-first.** Design in RTL, Jalali dates and Persian digits; English is the alternate.
 10. **Calm motion.** Slow, soft transitions (280–520ms); no bouncing.
@@ -70,10 +70,10 @@ Spacing 4 → 144; radius 4 / 8 / 14; controls 42 / 52px.
 ## Website patterns
 
 - **Header**: symmetric — three links, emblem (name + small caps descriptor), two links + language/theme + primary; on mobile `menu | emblem | tools` with a drawer.
-- **Hero**: `arch | centered text | arch` (second arch dropped lower); cartouche eyebrow, Nastaliq display, `.ornament`, lead, two centered buttons; faint `.girih` behind.
+- **Hero**: `arch | centered text | arch` (second arch dropped lower); cartouche eyebrow, light display, `.ornament`, lead, two centered buttons; faint `.girih` behind.
 - **Frieze** between major sections.
 - **Menu**: centered section head, diamond tabs, `.framed` panel with two columns of `.menu-list` (name, note, dotted leader, price).
-- **Events**: chip filter; arch cards (5:4) with date, Nastaliq title, note, badge + small action.
+- **Events**: chip filter; arch cards (5:4) with date, display title, note, badge + small action.
 - **Story**: arch + text, a `.verse`, three facts split by rules.
 - **Booking**: framed two-column form (name, phone with pattern, date, time, qty, seating radios, notes, consent), centered submit.
 - **Footer**: lajevard band with saffron girih, emblem, address, hours, links.
@@ -81,7 +81,7 @@ Spacing 4 → 144; radius 4 / 8 / 14; controls 42 / 52px.
 ## Dashboard patterns
 
 - **Shell**: lajevard sidebar (girih at 7%), emblem, vertical tablist with brand icons, counts as saffron pills, shift info + action in the foot; off-canvas on mobile.
-- **Header**: Jalali date eyebrow, Nastaliq greeting, language/theme, primary "new" button.
+- **Header**: Jalali date eyebrow, display greeting, language/theme, primary "new" button.
 - **KPI tiles**: four `.framed.kpi` centered, display numerals, delta line.
 - **Floor plan**: `.floor` of `.takht` buttons (free / reserved saffron / seated glaze / bill anar), round and wide variants, legend; clicking opens a centered framed dialog.
 - **Feed**: star-bulleted arrivals with times. **Charts**: smooth area (today vs. dashed comparison), donut with centered label.
@@ -106,7 +106,7 @@ Tabs move a diamond; hover on links turns lajevard. Respect `prefers-reduced-mot
 ## Persian & RTL
 
 - Persian is the default (`lang="fa" dir="rtl"`); English via `data-alt`. Dates through `data-date` → Jalali; numbers through `data-num` → Persian digits; prices `data-fmt="toman"`.
-- Nastaliq lines need 1.8–2.0 line-height and generous space above; keep Nastaliq headings to one or two lines.
+- Persian display is Vazirmatn 300 at line-height ≈ 1.45, headings 600; keep display headings to one or two lines.
 - Ornaments are symmetric so they need no mirroring; sidebar markers and drawer directions flip automatically.
 - Phone/URL inputs are `dir="ltr"`.
 
@@ -118,14 +118,14 @@ ornament or background only — never text on ivory. Focus ring is lajevard (saf
 
 ## Component library overrides (shadcn/ui etc.)
 
-`--radius: 4px`; Card → `.framed` (double rule + corner stars), CardTitle → cartouche or Nastaliq h2; Button default →
+`--radius: 4px`; Card → `.framed` (double rule + corner stars), CardTitle → cartouche or display h2; Button default →
 glaze with inner hairline; Tabs → centered with diamond indicator; Switch → star knob; Avatar/Image → arch mask;
 Separator → `.ornament`; Sidebar → lajevard with girih; Badge → diamond dot pill.
 
 ## Anti-patterns
 
 - Random "oriental" clichés: lamps, camels, calligraphy as wallpaper, gold gradients everywhere.
-- Nastaliq for body text, buttons, tables or digits.
+- Calligraphic or decorative Persian fonts — Persian is set in Vazirmatn only.
 - Asymmetric heroes; rounded-rectangle photos; heavy drop shadows.
 - More than one patterned band per screen besides the footer; patterns over text.
 - Saffron text on ivory.
@@ -136,6 +136,6 @@ Separator → `.ornament`; Sidebar → lajevard with girih; Badge → diamond do
 - [ ] Every image is an arch; at least one frieze on long pages.
 - [ ] Panels framed with corner stars; cartouche labels where centered.
 - [ ] Brand change recolors glaze, patterns stay tokenized.
-- [ ] Nastaliq only in display/headings/verse with tall line-height.
+- [ ] Persian only in Vazirmatn (300 display/verse, 600 headings, 400 text).
 - [ ] Jalali dates, Persian digits, toman prices in fa; clean English alternates.
 - [ ] Mobile: arches scale, sidebar is a drawer, tables scroll.

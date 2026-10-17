@@ -27,7 +27,7 @@
     "fa": ["کارت مطلب: کاور گرادیانی با نماد، نقطهٔ سبز دسته، عنوان دوخطی و ردیف اطلاعات با آیکن", "نوار سبز در ابتدای هر بلوک و تیتر بخش", "فهرست شماره‌دار پربازدیدها با شماره‌های بزرگ و آیکن اپ", "باکس دانلود: آیکن و امتیاز، جدول اطلاعات چهارخانه، ردیف سرورها، آکاردئون تغییرات", "چیدمان ویژه: یک کاشی بزرگ و دو کاشی کوچک با پوشش گرادیان تیره", "پنل نویسنده با سایدبار سبز تیره و شمارندهٔ کهربایی صف بررسی"]
   },
   "swatches": ["#f2f4f3", "#ffffff", "#14211b", "#12a36b", "#f59e0b"],
-  "fonts": { "latin": "Rubik", "persian": "Samim", "mono": "System monospace" },
+  "fonts": { "latin": "Rubik", "persian": "Vazirmatn", "mono": "System monospace" },
   "icons": "Bootstrap Icons (fill)",
   "brandTrials": ["2563eb", "dc2626", "7c3aed", "0891b2"],
   "demos": { "site": { "host": "toolstand.example" }, "dashboard": { "host": "author.toolstand.example" } }

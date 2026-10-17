@@ -27,7 +27,7 @@
     "fa": ["پس‌زمینهٔ شبکه‌ای محوشونده همراه با هاله‌های بنفش", "کاشی‌هایی با حاشیهٔ گرادیانی که از یک گوشه نور می‌گیرد", "یک کاشی آماری گرادیانی با عدد مونوی بزرگ", "پشتهٔ ایزومتریک سخت‌افزار با تبدیل‌های سه‌بعدی CSS", "دکمهٔ اصلی گرادیانی بنفش با درخشش بیرونی", "نقطه‌های وضعیت، شاخص‌ها و خطوط نمودار درخشان در کنسول"]
   },
   "swatches": ["#07060e", "#141127", "#f4f1ff", "#8b5cf6", "#38bdf8"],
-  "fonts": { "latin": "Sora", "persian": "Noto Kufi Arabic", "mono": "Martian Mono" },
+  "fonts": { "latin": "Sora", "persian": "Vazirmatn", "mono": "Martian Mono" },
   "icons": "Phosphor (duotone)",
   "brandTrials": ["22d3ee", "f43f5e", "10b981", "f59e0b"],
   "demos": { "site": { "host": "hexa.example" }, "dashboard": { "host": "console.hexa.example" } }

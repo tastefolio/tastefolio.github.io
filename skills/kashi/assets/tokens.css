@@ -1,5 +1,5 @@
 /* Kashi — design tokens (Tastefolio). Persian heritage: plaster ivory, lajevard (lapis) structure, firouzeh (turquoise)
-   as the brand glaze, saffron and pomegranate accents, girih star patterns, pointed arches, Nastaliq display. */
+   as the brand glaze, saffron and pomegranate accents, girih star patterns, pointed arches, a classical serif display (Vazirmatn for Persian). */
 :root {
   --canvas: #f5eedf;          /* plaster ivory */
   --surface: #fbf7ee;
@@ -56,9 +56,9 @@
   --chart-dots: 1;
 
   --font-sans: "Alegreya Sans", "Vazirmatn", system-ui, sans-serif;
-  --font-display: "Cormorant Garamond", "Gulzar", Georgia, serif;
-  --font-nastaliq: "Gulzar", "Noto Nastaliq Urdu", "Vazirmatn", serif;
-  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --font-display: "Cormorant Garamond", "Vazirmatn", Georgia, serif;
+  --font-verse: "Vazirmatn", sans-serif;   /* Persian verses: light Vazirmatn */
+  --font-mono: ui-monospace, "SF Mono", Menlo, "Vazirmatn", monospace;
   --fs-xs: 12px;
   --fs-sm: 14px;
   --fs-md: 17px;
@@ -143,10 +143,11 @@
 
 :root:lang(fa) {
   --font-sans: "Vazirmatn", "Alegreya Sans", Tahoma, sans-serif;
-  --font-display: "Gulzar", "Noto Nastaliq Urdu", "Vazirmatn", serif;
+  --font-display: "Vazirmatn", sans-serif;
+  --fw-display: 300;          /* light Vazirmatn in lajevard reads like an inscription */
   --fs-md: 16px;
   --fs-display: clamp(40px, 5.6vw, 80px);
-  --lh-tight: 1.9;             /* Nastaliq needs room for its descending baseline */
+  --lh-tight: 1.45;
   --lh-snug: 1.7;
   --lh-body: 1.95;
   --tracking-display: 0;

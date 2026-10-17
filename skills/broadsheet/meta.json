@@ -27,7 +27,7 @@
     "fa": ["نام‌نشان سریف در وسط با سطر تاریخ خط‌دار", "صفحهٔ اول ۱۲ستونه با خطوط نازک بین ستون‌ها", "روتیتر قرمز ← تیتر سریف ← لید ← نام نویسنده", "تصاویر رستری «چاپی» با الگوی نقطه‌ای CSS", "خط ۳ پیکسلی برای سرتیتر بخش و خط دوتایی برای کادرها", "دفتر تحریریه: شناسهٔ مونو، نشانگر مربعی وضعیت، جدول حروف‌چینی‌شده"]
   },
   "swatches": ["#faf8f3", "#f1eee6", "#121110", "#78736b", "#a3211c"],
-  "fonts": { "latin": "Newsreader + Libre Franklin", "persian": "Markazi Text + Noto Naskh Arabic", "mono": "IBM Plex Mono" },
+  "fonts": { "latin": "Newsreader + Libre Franklin", "persian": "Vazirmatn", "mono": "IBM Plex Mono" },
   "icons": "None (typographic)",
   "brandTrials": ["1f4e79", "2e6b3f", "7a3e9d", "c2410c"],
   "demos": { "site": { "host": "themeridian.example" }, "dashboard": { "host": "desk.themeridian.example" } }

@@ -27,7 +27,7 @@
     "fa": ["آیکن‌های گرد با گرادیان دورنگ و حرکت بالا و کج‌شدن هنگام هاور", "قفسه‌های افقی با «همه» و فلش‌های جابه‌جایی", "بنرهای بزرگ گرد با نماد محو و دکمهٔ کپسولی", "جدول برترین‌ها: عدد بزرگ، آیکن، امتیاز، دکمهٔ نصب", "دکمهٔ نصب که به نوار پیشرفت و سپس «باز کردن» تبدیل می‌شود", "نوار تب پایین در موبایل و حرکت فنری در فشردن و پنجره‌ها"]
   },
   "swatches": ["#0f1115", "#181b22", "#f4f6fb", "#3b82ff", "#ffc53d"],
-  "fonts": { "latin": "Baloo Bhaijaan 2 + Nunito", "persian": "Baloo Bhaijaan 2 + Vazirmatn", "mono": "System monospace" },
+  "fonts": { "latin": "Baloo Bhaijaan 2 + Nunito", "persian": "Vazirmatn", "mono": "System monospace" },
   "icons": "Remix Icon (fill)",
   "brandTrials": ["ff4d6d", "22c55e", "f59e0b", "a855f7"],
   "demos": { "site": { "host": "playbox.example" }, "dashboard": { "host": "console.playbox.example" } }

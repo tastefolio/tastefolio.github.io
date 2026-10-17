@@ -27,7 +27,7 @@
     "fa": ["شبکهٔ نقشه‌کشی و خطوط مدار با یک مسیر قرمز «داغ»", "نوار بخش: شمارهٔ قرمز مونو، تیتر فشرده، خط مشکی ۲ پیکسلی", "شمارهٔ قطعه و مشخصات به خط مونو (10kΩ · 0603 · ±1%)", "نقطه‌های LED موجودی: سبز موجود، کهربایی کم، خاکستری ناموجود", "جدول پارامتری با فیلتر، قیمت پلکانی، شمارنده و مقایسه", "نمایشگر هفت‌قسمتی با بخش‌های کم‌رنگ برای اعداد کلیدی"]
   },
   "swatches": ["#ffffff", "#f6f7f8", "#15171a", "#d7263d", "#1a9f53"],
-  "fonts": { "latin": "Barlow + Barlow Condensed", "persian": "Sahel", "mono": "Roboto Mono · DSEG7" },
+  "fonts": { "latin": "Barlow + Barlow Condensed", "persian": "Vazirmatn", "mono": "Roboto Mono · DSEG7" },
   "icons": "Tabler Icons",
   "brandTrials": ["0b6bcb", "e07a00", "0f766e", "6d28d9"],
   "demos": { "site": { "host": "ohmlab.example" }, "dashboard": { "host": "teams.ohmlab.example" } }

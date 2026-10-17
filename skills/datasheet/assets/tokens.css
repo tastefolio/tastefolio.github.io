@@ -48,10 +48,10 @@
   --chart-donut: 14;
   --chart-dots: 1;
 
-  --font-sans: "Barlow", "Sahel", system-ui, -apple-system, sans-serif;
-  --font-display: "Barlow Condensed", "Barlow", "Sahel", sans-serif;
-  --font-mono: "Roboto Mono", ui-monospace, Menlo, monospace;
-  --font-readout: "DSEG7 Classic", "Roboto Mono", monospace;
+  --font-sans: "Barlow", "Vazirmatn", system-ui, -apple-system, sans-serif;
+  --font-display: "Barlow Condensed", "Barlow", "Vazirmatn", sans-serif;
+  --font-mono: "Roboto Mono", "Vazirmatn", ui-monospace, Menlo, monospace;
+  --font-readout: "DSEG7 Classic", "Roboto Mono", "Vazirmatn", monospace;
   --fs-xs: 11.5px;
   --fs-sm: 13px;
   --fs-md: 14.5px;
@@ -125,8 +125,8 @@
 }
 
 :root:lang(fa) {
-  --font-sans: "Sahel", "Barlow", Tahoma, sans-serif;
-  --font-display: "Sahel", "Barlow Condensed", sans-serif;
+  --font-sans: "Vazirmatn", "Barlow", Tahoma, sans-serif;
+  --font-display: "Vazirmatn", "Barlow Condensed", sans-serif;
   --fs-md: 14px;
   --lh-tight: 1.45;
   --lh-snug: 1.55;

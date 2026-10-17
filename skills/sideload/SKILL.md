@@ -26,10 +26,9 @@ comments, sidebar widgets, newsletter) and the **author panel** (stats, posts, e
 ## Fonts
 
 ```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/samim-font@v4.0.5/dist/font-face.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Vazirmatn:wght@100..900&display=swap">
 ```
-Latin: **Rubik** (soft, friendly). Persian: **Samim** (regular/bold). Fallbacks: Nunito Sans; Vazirmatn / Shabnam.
+Latin: **Rubik** (soft, friendly). Persian: **Vazirmatn** only (400–800). Fallbacks: Nunito Sans.
 
 ## Identity rules (non-negotiable)
 
@@ -98,7 +97,7 @@ Relative dates update with language. Moderation actions remove the row and confi
 ## Persian & RTL
 
 - Persian source copy in a warm, helpful tone ("هر روز منابع رایگان تازه…"); English mirrors it.
-- Samim at 15px / line-height 2. Popular counters use Persian numerals (`counter(p, persian)`).
+- Vazirmatn at 15px / line-height 2. Popular counters use Persian numerals (`counter(p, persian)`).
 - Versions, sizes, URLs, slugs and file names are LTR (`.ltr`/`dir="ltr"`); dates relative via `Intl.RelativeTimeFormat('fa')` ("پریروز").
 - Comment bubbles flip their pointed corner automatically (logical radii).
 
@@ -127,4 +126,4 @@ Sidebar (CMS) in `--brand-deep` with solid active item. Add a block-header patte
 - [ ] Sidebar widgets: popular (numbered), categories with counts, tags, newsletter.
 - [ ] Author panel: KPIs, posts filter, editor with link repeater, moderation queue.
 - [ ] Mobile: sidebar below content, nav scrolls, grid single column, no overflow.
-- [ ] Persian: Samim, Persian numerals, LTR versions/URLs, relative dates in Persian.
+- [ ] Persian: Vazirmatn, Persian numerals, LTR versions/URLs, relative dates in Persian.

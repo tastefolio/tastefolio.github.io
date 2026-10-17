@@ -27,7 +27,7 @@
     "fa": ["خط دور ۳ پیکسلی مشکی روی هر سطح، کنترل و ستون نمودار", "سایهٔ سخت که با فشردن صفر می‌شود", "پالت برچسبی تخت با متن مشکی؛ زرد برای اقدام اصلی", "برچسب‌های کج و نشان گرد؛ نوار چسب مشکی متحرک", "تب‌های پوشه‌ای که تب فعال در پنلش ادغام می‌شود", "هایلایت و زیرخط موج‌دار روی کلمه‌های کلیدی"]
   },
   "swatches": ["#fff5e1", "#ffd23f", "#ff6fb5", "#3ddc97", "#121212"],
-  "fonts": { "latin": "Bricolage Grotesque + Space Grotesk", "persian": "Lalezar + Vazirmatn", "mono": "Space Mono" },
+  "fonts": { "latin": "Bricolage Grotesque + Space Grotesk", "persian": "Vazirmatn", "mono": "Space Mono" },
   "icons": "Phosphor (bold)",
   "brandTrials": ["ff6fb5", "3ddc97", "5b8cff", "ff8a3d"],
   "demos": { "site": { "host": "doodlecamp.example" }, "dashboard": { "host": "my.doodlecamp.example" } }

@@ -49,9 +49,9 @@
   --chart-bar-gap: .45;
 
   /* Type: warm grotesk + technical mono */
-  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: "Hanken Grotesk", "Vazirmatn", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: var(--font-sans);
-  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-mono: "IBM Plex Mono", "Vazirmatn", ui-monospace, "SF Mono", Menlo, monospace;
   --fs-xs: 12px;
   --fs-sm: 13.5px;
   --fs-md: 15px;
@@ -133,8 +133,8 @@
 }
 
 :root:lang(fa) {
-  --font-sans: "Estedad", "Hanken Grotesk", system-ui, Tahoma, sans-serif;
-  --font-mono: "IBM Plex Mono", "Estedad", ui-monospace, monospace;
+  --font-sans: "Vazirmatn", "Hanken Grotesk", system-ui, Tahoma, sans-serif;
+  --font-mono: "IBM Plex Mono", "Vazirmatn", ui-monospace, monospace;
   --lh-tight: 1.4;
   --lh-snug: 1.6;
   --lh-body: 1.9;

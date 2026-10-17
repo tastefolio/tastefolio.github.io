@@ -48,9 +48,9 @@
   --chart-donut: 16;
 
   /* Type: IBM Plex — rational, multilingual; Persian is primary */
-  --font-sans: "IBM Plex Sans", "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: "IBM Plex Sans", "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: var(--font-sans);
-  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --font-mono: "IBM Plex Mono", "Vazirmatn", ui-monospace, Menlo, monospace;
   --fs-xs: 12px;
   --fs-sm: 13px;
   --fs-md: 14px;
@@ -130,7 +130,7 @@
 
 /* Persian is the primary voice of this style. */
 :root:lang(fa) {
-  --font-sans: "IBM Plex Sans Arabic", "IBM Plex Sans", Tahoma, sans-serif;
+  --font-sans: "Vazirmatn", "IBM Plex Sans", Tahoma, sans-serif;
   --lh-tight: 1.5;
   --lh-snug: 1.65;
   --lh-body: 1.95;

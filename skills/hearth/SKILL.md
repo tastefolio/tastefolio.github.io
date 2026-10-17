@@ -26,11 +26,10 @@ Covers the **public site** (hero, capability tabs, diagrams, stats, pricing, con
 ## Fonts
 
 ```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<style>@font-face{font-family:"Estedad";src:url("https://cdn.jsdelivr.net/gh/aminabedi68/Estedad@8.5/fonts/Estedad%5Bwght%5D.woff2") format("woff2");font-weight:100 900;font-display:swap}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Vazirmatn:wght@100..900&display=swap">
 ```
 Latin: Hanken Grotesk (400/500/600). Mono: IBM Plex Mono (labels, identifiers, code, table headers).
-Persian: Estedad (variable) for everything including labels. Fallbacks: Instrument Sans / Inter; JetBrains Mono; Vazirmatn.
+Persian: Vazirmatn (variable 100–900) for everything including labels. Fallbacks: Instrument Sans / Inter; JetBrains Mono.
 
 ## Identity rules (non-negotiable)
 
@@ -106,7 +105,7 @@ Persian copy keeps the same brevity; technical identifiers stay Latin.
 ## Persian & RTL
 
 - `lang="fa" dir="rtl"`; logical properties mirror layout. Mirror arrows with `.flip-rtl`. Drawer enters from the left in RTL (handled).
-- Estedad replaces both Hanken Grotesk *and* the mono labels in Persian text: labels become 13px/600 sentence-case (never uppercase, never tracked).
+- Vazirmatn replaces both Hanken Grotesk *and* the mono labels in Persian text: labels become 13px/600 sentence-case (never uppercase, never tracked).
 - Identifiers (`soil-north-07`, IPs, versions, `tag:pumps`) remain mono LTR inside RTL rows (`direction:ltr` on `.tag`, `.addr`).
 - Persian digits via `Intl.NumberFormat('fa-IR')`; relative times via `Intl.RelativeTimeFormat('fa')`; Jalali dates.
 - Two-tone headings work in Persian too: gray first clause, ink second.
@@ -139,5 +138,5 @@ Tabs = underline variant. Sheet (drawer) from the inline-end, 440px. Badge = mon
 - [ ] Headings are two-tone where long; eyebrows/headers are mono uppercase (Latin only).
 - [ ] Console leads with a dense table: mono identifiers, status dots, copy, `⋯` menus, drawer.
 - [ ] Mobile: mega menu becomes accordion; feature cards scroll; tables scroll inside their card; low-priority columns hide.
-- [ ] Persian: Estedad, no uppercase/tracking, LTR identifiers, Persian digits.
+- [ ] Persian: Vazirmatn, no uppercase/tracking, LTR identifiers, Persian digits.
 - [ ] Dark mode keeps warmth (`#161513` canvas) and ink buttons flip to light.

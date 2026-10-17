@@ -48,9 +48,9 @@
   --chart-gap: 0;
   --chart-dots: 1;
 
-  --font-sans: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-display: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-mono: "Archivo", "Helvetica Neue", Arial, sans-serif;   /* numbers use tabular figures, not a mono face */
+  --font-sans: "Archivo", "Vazirmatn", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: "Archivo", "Vazirmatn", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "Archivo", "Vazirmatn", "Helvetica Neue", Arial, sans-serif;   /* numbers use tabular figures, not a mono face */
   --fs-xs: 11px;
   --fs-sm: 13px;
   --fs-md: 16px;
@@ -121,8 +121,8 @@
 }
 
 :root:lang(fa) {
-  --font-sans: "Noto Sans Arabic", "Archivo", Tahoma, sans-serif;
-  --font-display: "Noto Sans Arabic", "Archivo", sans-serif;
+  --font-sans: "Vazirmatn", "Archivo", Tahoma, sans-serif;
+  --font-display: "Vazirmatn", "Archivo", sans-serif;
   --fs-display: clamp(48px, 8.4vw, 140px);
   --lh-tight: 1.2;
   --lh-snug: 1.4;

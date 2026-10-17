@@ -49,9 +49,9 @@
   --chart-bar-gap: .4;
   --chart-donut: 18;
 
-  --font-sans: "Rubik", "Samim", system-ui, -apple-system, sans-serif;
+  --font-sans: "Rubik", "Vazirmatn", system-ui, -apple-system, sans-serif;
   --font-display: var(--font-sans);
-  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --font-mono: ui-monospace, "SF Mono", Menlo, "Vazirmatn", monospace;
   --fs-xs: 12px;
   --fs-sm: 13px;
   --fs-md: 15px;
@@ -127,7 +127,7 @@
 }
 
 :root:lang(fa) {
-  --font-sans: "Samim", "Rubik", Tahoma, sans-serif;
+  --font-sans: "Vazirmatn", "Rubik", Tahoma, sans-serif;
   --lh-tight: 1.55;
   --lh-snug: 1.65;
   --lh-body: 2;
