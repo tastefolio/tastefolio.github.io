@@ -135,6 +135,15 @@
       ]
     },
     {
+      "name": "ticker",
+      "description": "Tastefolio design language — Market workspace — hairline mosaics, monospace tabular numbers, green/red only for up and down",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/ticker"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -153,7 +162,8 @@
         "./skills/stamp",
         "./skills/raster",
         "./skills/teletype",
-        "./skills/kashi"
+        "./skills/kashi",
+        "./skills/ticker"
       ]
     }
   ]

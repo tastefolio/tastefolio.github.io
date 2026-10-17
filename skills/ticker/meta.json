@@ -1,0 +1,34 @@
+{
+  "name": "Ticker",
+  "order": 15,
+  "category": "devdata",
+  "mode": "dark",
+  "density": "dense",
+  "persianFirst": true,
+  "tags": ["fintech", "trading", "markets", "data-dense", "realtime", "dark"],
+  "tagline": {
+    "en": "Market workspace — hairline mosaics, monospace tabular numbers, green/red only for up and down",
+    "fa": "میز کار بازار — موزاییک پنل‌ها با خط مویی، اعداد تک‌فاصلهٔ جدولی، سبز و قرمز فقط برای بالا و پایین"
+  },
+  "summary": {
+    "en": "A dense, calm language for trading, banking and analytics products. Graphite dark panes tile into hairline mosaics with no gaps; every value that can change is set in a monospace tabular face; green and red are reserved strictly for up/down and buy/sell while one cobalt carries selection and primary actions. Signature parts: a scrolling ticker tape, ▲▼ deltas, flash-on-tick cells, sparklines in rows, depth-bar order books, sector heatmaps sized by value, candlesticks with volume, a buy/sell ticket that computes fees as you type. A light 'statement' theme ships too.",
+    "fa": "زبانی متراکم و آرام برای محصولات معاملاتی، بانکی و تحلیلی. پنل‌های گرافیتی بدون فاصله و با خط مویی کنار هم موزاییک می‌شوند؛ هر عددی که تغییر می‌کند با فونت تک‌فاصلهٔ جدولی نوشته می‌شود؛ سبز و قرمز فقط برای بالا/پایین و خرید/فروش است و یک آبی کبالتی انتخاب و اقدام اصلی را نشان می‌دهد. اجزای امضایی: نوار قیمت متحرک، تغییرهای ▲▼، چشمک خانه با هر تیک، نمودار خطی کوچک در ردیف‌ها، دفتر سفارش با میلهٔ عمق، نقشهٔ حرارتی صنایع به اندازهٔ ارزش، نمودار شمعی با حجم و برگهٔ خرید/فروش که کارمزد را هم‌زمان حساب می‌کند. پوستهٔ روشن «صورت‌حساب» هم دارد."
+  },
+  "bestFor": {
+    "en": ["Brokerages, exchanges and trading apps", "Banking, wallets and treasury tools", "Analytics, monitoring and pricing consoles", "Market data and research sites"],
+    "fa": ["کارگزاری، بورس و اپ معاملاتی", "بانکداری، کیف پول و ابزار خزانه", "کنسول تحلیل، پایش و قیمت‌گذاری", "سایت دادهٔ بازار و پژوهش"]
+  },
+  "avoidFor": {
+    "en": ["Lifestyle, wellness and storytelling brands", "Content-led editorial sites", "Audiences who need large type and few numbers"],
+    "fa": ["برندهای سبک زندگی، سلامت و روایت‌محور", "سایت‌های محتوایی و سردبیری", "مخاطبی که حروف درشت و عدد کم می‌خواهد"]
+  },
+  "signature": {
+    "en": ["Hairline mosaics: panes tiled with 1px gaps, no floating cards", "Monospace tabular numbers for every price, size, time and %", "Green/red only for up/down and buy/sell; cobalt for everything selected", "Ticker tape, flash-on-tick cells, sparklines in table rows", "Order book with depth bars, sector heatmap, candles with volume", "Buy/sell ticket with steppers, % of buying power and live fees"],
+    "fa": ["موزاییک مویی: پنل‌ها با فاصلهٔ ۱ پیکسل، بدون کارت شناور", "اعداد تک‌فاصلهٔ جدولی برای هر قیمت، حجم، زمان و درصد", "سبز/قرمز فقط برای بالا/پایین و خرید/فروش؛ کبالتی برای انتخاب", "نوار قیمت، چشمک خانه با هر تیک، نمودار کوچک در ردیف جدول", "دفتر سفارش با میلهٔ عمق، نقشهٔ حرارتی صنایع، شمع با حجم", "برگهٔ خرید/فروش با گام‌شمار، درصد قدرت خرید و کارمزد زنده"]
+  },
+  "swatches": ["#0a0d12", "#161b24", "#4d7cff", "#22c983", "#ff4d61"],
+  "fonts": { "latin": "Manrope", "persian": "Vazirmatn", "mono": "DM Mono" },
+  "icons": "Lucide (static font)",
+  "brandTrials": ["7c5cff", "00b3a4", "f2b441", "e2e8f0"],
+  "demos": { "site": { "host": "tarazoo.example" }, "dashboard": { "host": "desk.tarazoo.example" } }
+}

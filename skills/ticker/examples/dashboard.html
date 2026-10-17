@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="dashboard" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Trading desk · Tarazoo">میز معامله · ترازو</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@0.460.0/font/lucide.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .desk { grid-template-columns: 290px minmax(0, 1fr) 300px; grid-template-areas: "watch chart ticket" "watch lower ticket"; }
+  .desk > .w { grid-area: watch; } .desk > .c { grid-area: chart; } .desk > .t { grid-area: ticket; } .desk > .l { grid-area: lower; }
+  .lower { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1px; background: var(--line); }
+  @media (max-width: 1240px) { .desk { grid-template-columns: minmax(0, 1fr) 300px; grid-template-areas: "chart ticket" "lower ticket" "watch watch"; } }
+  @media (max-width: 760px) { .desk { grid-template-columns: minmax(0, 1fr); grid-template-areas: "chart" "ticket" "watch" "lower"; } .lower { grid-template-columns: minmax(0, 1fr); } }
+  .watch-list { max-block-size: 640px; }
+  .watch-list tbody tr { cursor: pointer; }
+  .q-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+  .q-head .name { font-size: var(--fs-sm); color: var(--ink-3); }
+  .q-stats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; padding: 10px 12px; border-block-start: 1px solid var(--line); }
+  @media (max-width: 760px) { .q-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .q-stats .v { font-size: var(--fs-md); }
+  .ticket form { display: grid; gap: 12px; }
+  .ticket dl { display: grid; gap: 6px; margin: 0; padding-block: 10px; border-block: 1px dashed var(--line-2); font-size: var(--fs-sm); }
+  .ticket dl > div { display: flex; justify-content: space-between; gap: 8px; }
+  .ticket dt { color: var(--ink-3); }
+  .ticket dd { margin: 0; font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+  .ticket .seg { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .kpis > .pane { padding: 14px 16px; }
+  @media (max-width: 900px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .port { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+  @media (max-width: 900px) { .port { grid-template-columns: minmax(0, 1fr); } }
+  .alerts { grid-template-columns: 340px minmax(0, 1fr); }
+  @media (max-width: 900px) { .alerts { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<header class="app-top">
+  <a class="logo" href="site.html"><span class="logo-mark" aria-hidden="true"></span><span data-alt="Tarazoo">ترازو</span></a>
+  <span class="index-chip hide-sm"><span class="subtle" data-alt="All-share">شاخص کل</span><span class="num" data-num="2309873">۲٬۳۰۹٬۸۷۳</span><span class="chg up" data-num="0.41" data-fmt="pct2">۰٫۴۱٪</span></span>
+  <span class="market-status"><span class="dot-live" aria-hidden="true"></span><span data-alt="Open">باز</span> <span class="num" data-date="2026-10-16T11:42:00" data-fmt="time">۱۱:۴۲</span></span>
+  <div class="tabs" role="tablist" aria-label="بخش‌ها" data-alt-aria-label="Sections">
+    <button role="tab" id="t-desk" aria-controls="p-desk" aria-selected="true" data-alt="Desk">میز معامله</button>
+    <button role="tab" id="t-port" aria-controls="p-port" aria-selected="false" data-alt="Portfolio">سبد</button>
+    <button role="tab" id="t-ord" aria-controls="p-ord" aria-selected="false" data-alt="Orders">سفارش‌ها</button>
+    <button role="tab" id="t-alr" aria-controls="p-alr" aria-selected="false" data-alt="Alerts">هشدارها</button>
+  </div>
+  <div class="end">
+    <span class="stat hide-sm" style="text-align: end"><span class="label" data-alt="Buying power">قدرت خرید</span><span class="num small" data-num="18300000">۱۸٬۳۰۰٬۰۰۰</span></span>
+    <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+    <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-pressed="true" aria-label="تغییر پوسته" data-alt-aria-label="Toggle theme"><i class="icon-sun-moon" aria-hidden="true"></i></button>
+  </div>
+</header>
+
+<main id="main" class="app-main">
+  <!-- ============================================================ desk -->
+  <section role="tabpanel" id="p-desk" aria-labelledby="t-desk">
+    <div class="mosaic desk">
+      <div class="pane w" data-filter-scope>
+        <div class="pane-head"><span class="title" data-alt="Watchlist">دیده‌بان</span><span class="kbd">/</span></div>
+        <div class="pane-body" style="padding-block-end: 8px"><input class="input" type="search" data-filter-search data-hotkey="/" placeholder="فیلتر نماد…" data-alt-placeholder="Filter symbols…" aria-label="فیلتر دیده‌بان" data-alt-aria-label="Filter watchlist"></div>
+        <div class="table-scroll watch-list">
+          <table class="table" id="watch">
+            <thead><tr><th scope="col" data-alt="Symbol">نماد</th><th scope="col" class="end" data-alt="Last">آخرین</th><th scope="col" class="end" data-alt="Chg">تغییر</th></tr></thead>
+            <tbody>
+              <tr data-filter-item aria-selected="true" data-sym="KVR" data-name-fa="کویرسولار" data-name-en="Kavir Solar"><td><div class="sym"><div><b>KVR</b><small data-alt="Kavir Solar">کویرسولار</small></div></div></td><td class="end" data-live data-num="4128">۴٬۱۲۸</td><td class="end"><span class="chg up" data-num="2.10" data-fmt="pct2">۲٫۱۰٪</span></td></tr>
+              <tr data-filter-item data-sym="NLG" data-name-fa="نیلگون" data-name-en="Nilgoon Soft"><td><div class="sym"><div><b>NLG</b><small data-alt="Nilgoon Soft">نیلگون</small></div></div></td><td class="end" data-live data-num="13945">۱۳٬۹۴۵</td><td class="end"><span class="chg up" data-num="2.76" data-fmt="pct2">۲٫۷۶٪</span></td></tr>
+              <tr data-filter-item data-sym="GLB" data-name-fa="گلبرگ‌دارو" data-name-en="Golbarg Pharma"><td><div class="sym"><div><b>GLB</b><small data-alt="Golbarg Pharma">گلبرگ‌دارو</small></div></div></td><td class="end" data-live data-num="17596">۱۷٬۵۹۶</td><td class="end"><span class="chg up" data-num="0.77" data-fmt="pct2">۰٫۷۷٪</span></td></tr>
+              <tr data-filter-item data-sym="SPD" data-name-fa="سپیدشیر" data-name-en="Sepid Shir"><td><div class="sym"><div><b>SPD</b><small data-alt="Sepid Shir">سپیدشیر</small></div></div></td><td class="end" data-live data-num="3367">۳٬۳۶۷</td><td class="end"><span class="chg down" data-num="0.47" data-fmt="pct2">۰٫۴۷٪</span></td></tr>
+              <tr data-filter-item data-sym="AFT" data-name-fa="آفتاب‌مارکت" data-name-en="Aftab Market"><td><div class="sym"><div><b>AFT</b><small data-alt="Aftab Market">آفتاب‌مارکت</small></div></div></td><td class="end" data-live data-num="5588">۵٬۵۸۸</td><td class="end"><span class="chg down" data-num="1.43" data-fmt="pct2">۱٫۴۳٪</span></td></tr>
+              <tr data-filter-item data-sym="DRY" data-name-fa="دریانورد" data-name-en="Daryanavard"><td><div class="sym"><div><b>DRY</b><small data-alt="Daryanavard">دریانورد</small></div></div></td><td class="end" data-live data-num="2900">۲٬۹۰۰</td><td class="end"><span class="chg down" data-num="1.63" data-fmt="pct2">۱٫۶۳٪</span></td></tr>
+              <tr data-filter-item data-sym="TUS" data-name-fa="توس‌نخ" data-name-en="Tous Yarn"><td><div class="sym"><div><b>TUS</b><small data-alt="Tous Yarn">توس‌نخ</small></div></div></td><td class="end" data-live data-num="1107">۱٬۱۰۷</td><td class="end"><span class="chg down" data-num="1.69" data-fmt="pct2">۱٫۶۹٪</span></td></tr>
+              <tr data-filter-item data-sym="KHF" data-name-fa="کوه‌فولاد" data-name-en="Kooh Steel"><td><div class="sym"><div><b>KHF</b><small data-alt="Kooh Steel">کوه‌فولاد</small></div></div></td><td class="end" data-live data-num="7687">۷٬۶۸۷</td><td class="end"><span class="chg down" data-num="4.46" data-fmt="pct2">۴٫۴۶٪</span></td></tr>
+            </tbody>
+          </table>
+          <p class="empty" data-filter-empty hidden data-alt="Not on your watchlist.">در دیده‌بان نیست.</p>
+        </div>
+      </div>
+
+      <div class="pane c">
+        <div class="pane-head">
+          <div class="q-head"><b class="mono" data-q-sym>KVR</b><span class="name" data-q-name>کویرسولار</span><span class="price" data-num="4128">۴٬۱۲۸</span><span class="chg pill up" data-num="2.10" data-fmt="pct2">۲٫۱۰٪</span></div>
+          <span class="spacer"></span>
+          <div class="seg" data-group role="group" aria-label="بازهٔ زمانی" data-alt-aria-label="Timeframe">
+            <button type="button" aria-pressed="false" data-alt="1W">۱ه</button>
+            <button type="button" aria-pressed="false" data-alt="1M">۱م</button>
+            <button type="button" aria-pressed="true" data-alt="2M">۲م</button>
+            <button type="button" aria-pressed="false" data-alt="1Y">۱س</button>
+          </div>
+        </div>
+        <div class="pane-body">
+          <div data-chart="candle" data-height="300" data-fmt="int" data-y-width="44" data-dates="2026-08-23,40,day,short" data-ohlc='[[4520,4545,4493,4504],[4504,4515,4469,4482],[4482,4606,4463,4593],[4593,4633,4570,4621],[4621,4710,4414,4458],[4458,4551,4393,4421],[4421,4479,4389,4460],[4460,4700,4426,4637],[4637,4642,4579,4611],[4611,4685,4592,4645],[4645,4658,4551,4572],[4572,4627,4404,4431],[4431,4471,4406,4430],[4430,4434,4402,4433],[4433,4600,4427,4582],[4582,4612,4390,4460],[4460,4486,4312,4374],[4374,4383,4173,4187],[4187,4303,4004,4020],[4020,4025,3955,3963],[3963,4011,3894,3992],[3992,4055,3948,4054],[4054,4171,3966,4147],[4147,4171,4070,4097],[4097,4170,3963,3987],[3987,3991,3950,3982],[3982,4000,3887,3932],[3932,4040,3889,3942],[3942,3948,3824,3830],[3830,3846,3729,3813],[3813,3839,3708,3755],[3755,3859,3743,3833],[3833,3845,3802,3826],[3826,3840,3819,3834],[3834,3850,3805,3806],[3806,3951,3749,3891],[3891,3901,3786,3803],[3803,3838,3725,3831],[3831,4059,3808,4043],[4043,4140,4031,4128]]' data-volume='[1948128,1902045,1767721,1441647,2661533,1549167,1372776,1683284,2182247,2028610,1475436,2497722,1757358,1872120,2498274,2042879,1848039,2216417,1704982,1827946,1289531,2491703,2407233,1752780,1365472,1865639,1678190,2198599,2537243,2372554,1180841,1342931,1244372,2496418,1669944,2688826,1635070,1341530,1959939,2665172]' data-label='{"en":"KVR daily candles, last 40 sessions","fa":"شمع‌های روزانهٔ KVR، ۴۰ جلسهٔ اخیر"}'></div>
+        </div>
+        <div class="q-stats">
+          <div class="stat"><span class="label" data-alt="Open">باز</span><span class="v" data-num="4043">۴٬۰۴۳</span></div>
+          <div class="stat"><span class="label" data-alt="High">سقف</span><span class="v" data-num="4140">۴٬۱۴۰</span></div>
+          <div class="stat"><span class="label" data-alt="Low">کف</span><span class="v" data-num="4031">۴٬۰۳۱</span></div>
+          <div class="stat"><span class="label" data-alt="Volume">حجم</span><span class="v" data-num="2665172" data-fmt="compact">۲٫۷ میلیون</span></div>
+          <div class="stat hide-sm"><span class="label" data-alt="Mkt value">ارزش بازار</span><span class="v" data-num="8250000000000" data-fmt="compact">۸٫۳ هزار میلیارد</span></div>
+        </div>
+      </div>
+
+      <div class="pane t ticket">
+        <div class="pane-head"><span class="title" data-alt="Order ticket">برگهٔ سفارش</span><span class="mono small" data-q-sym>KVR</span></div>
+        <div class="pane-body">
+          <form id="ticket" data-validate data-keep data-success="سفارش ثبت شد و در صف قرار گرفت" data-success-alt="Order placed and queued">
+            <div class="side-tabs" data-group="side" role="group" aria-label="سمت" data-alt-aria-label="Side">
+              <button type="button" data-value="buy" aria-pressed="true" data-alt="Buy">خرید</button>
+              <button type="button" data-value="sell" aria-pressed="false" data-alt="Sell">فروش</button>
+            </div>
+            <div class="field"><label class="label" for="o-type" data-alt="Order type">نوع سفارش</label>
+              <select class="select" id="o-type" name="type"><option value="limit" data-alt="Limit">محدود</option><option value="market" data-alt="Market">بازار</option><option value="stop" data-alt="Stop">حد ضرر</option></select></div>
+            <div class="field" data-when="type:limit|stop"><label class="label" for="o-price" data-alt="Price">قیمت</label>
+              <div class="affix" data-qty><button type="button" data-step="-1" aria-label="کاهش قیمت" data-alt-aria-label="Lower price">−</button><input id="o-price" name="price" type="number" value="4128" min="3920" max="4336" required><span class="unit" data-alt="Toman">تومان</span><button type="button" data-step="1" aria-label="افزایش قیمت" data-alt-aria-label="Raise price">+</button></div>
+              <span class="hint"><span data-alt="Allowed range">دامنهٔ مجاز</span> <span class="num" data-num="3920">۳٬۹۲۰</span> – <span class="num" data-num="4336">۴٬۳۳۶</span></span></div>
+            <div class="field"><label class="label" for="o-qty" data-alt="Quantity">تعداد</label>
+              <div class="affix" data-qty><button type="button" data-step="-100" aria-label="کمتر" data-alt-aria-label="Fewer">−</button><input id="o-qty" name="qty" type="number" value="1000" min="1" max="200000" required><span class="unit" data-alt="shares">سهم</span><button type="button" data-step="100" aria-label="بیشتر" data-alt-aria-label="More">+</button></div></div>
+            <div class="seg" data-group="pct" role="group" aria-label="درصد قدرت خرید" data-alt-aria-label="Share of buying power">
+              <button type="button" data-value="25" aria-pressed="false" data-alt="25%">۲۵٪</button><button type="button" data-value="50" aria-pressed="false" data-alt="50%">۵۰٪</button><button type="button" data-value="75" aria-pressed="false" data-alt="75%">۷۵٪</button><button type="button" data-value="100" aria-pressed="false" data-alt="Max">همه</button>
+            </div>
+            <dl>
+              <div><dt data-alt="Order value">ارزش سفارش</dt><dd data-t="value" data-num="4128000">۴٬۱۲۸٬۰۰۰</dd></div>
+              <div><dt data-alt="Fee">کارمزد</dt><dd data-t="fee" data-num="15274">۱۵٬۲۷۴</dd></div>
+              <div><dt data-alt="Total">جمع کل</dt><dd data-t="total" data-num="4143274" style="font-weight:700">۴٬۱۴۳٬۲۷۴</dd></div>
+              <div><dt data-alt="Buying power">قدرت خرید</dt><dd data-num="18300000">۱۸٬۳۰۰٬۰۰۰</dd></div>
+            </dl>
+            <button class="btn btn-buy btn-lg btn-block" type="submit" data-when="side:buy" data-alt="Buy KVR">خرید KVR</button>
+            <button class="btn btn-sell btn-lg btn-block" type="submit" data-when="side:sell" hidden data-alt="Sell KVR">فروش KVR</button>
+            <p class="hint" data-alt="Sample desk — no real orders are sent.">میز نمونه — هیچ سفارش واقعی ارسال نمی‌شود.</p>
+          </form>
+        </div>
+      </div>
+
+      <div class="l lower">
+        <div class="pane">
+          <div class="pane-head"><span class="title" data-alt="Order book">دفتر سفارش</span><span class="tiny subtle" data-alt="Depth: 8 levels">عمق: ۸ ردیف</span></div>
+          <div class="book">
+            <div class="bh"><span data-alt="Price">قیمت</span><span data-alt="Volume">حجم</span><span data-alt="Orders">سفارش</span></div>
+            <div class="br ask" style="--d:29%"><span data-num="4136">۴٬۱۳۶</span><span data-num="12400">۱۲٬۴۰۰</span><span data-num="6">۶</span></div>
+            <div class="br ask" style="--d:19%"><span data-num="4135">۴٬۱۳۵</span><span data-num="8200">۸٬۲۰۰</span><span data-num="4">۴</span></div>
+            <div class="br ask" style="--d:51%"><span data-num="4134">۴٬۱۳۴</span><span data-num="21900">۲۱٬۹۰۰</span><span data-num="11">۱۱</span></div>
+            <div class="br ask" style="--d:13%"><span data-num="4133">۴٬۱۳۳</span><span data-num="5600">۵٬۶۰۰</span><span data-num="3">۳</span></div>
+            <div class="br ask" style="--d:33%"><span data-num="4132">۴٬۱۳۲</span><span data-num="14100">۱۴٬۱۰۰</span><span data-num="7">۷</span></div>
+            <div class="br ask" style="--d:23%"><span data-num="4131">۴٬۱۳۱</span><span data-num="9800">۹٬۸۰۰</span><span data-num="5">۵</span></div>
+            <div class="br ask" style="--d:73%"><span data-num="4130">۴٬۱۳۰</span><span data-num="31200">۳۱٬۲۰۰</span><span data-num="19">۱۹</span></div>
+            <div class="br ask" style="--d:44%"><span data-num="4129">۴٬۱۲۹</span><span data-num="18700">۱۸٬۷۰۰</span><span data-num="9">۹</span></div>
+            <div class="spread"><span class="price up" style="font-size: var(--fs-lg)" data-num="4128">۴٬۱۲۸</span><span class="tiny subtle"><span data-alt="spread">فاصله</span> <span class="num" data-num="1">۱</span></span></div>
+            <div class="br bid" style="--d:62%"><span data-num="4128">۴٬۱۲۸</span><span data-num="26500">۲۶٬۵۰۰</span><span data-num="14">۱۴</span></div>
+            <div class="br bid" style="--d:26%"><span data-num="4127">۴٬۱۲۷</span><span data-num="11300">۱۱٬۳۰۰</span><span data-num="6">۶</span></div>
+            <div class="br bid" style="--d:100%"><span data-num="4126">۴٬۱۲۶</span><span data-num="42800">۴۲٬۸۰۰</span><span data-num="23">۲۳</span></div>
+            <div class="br bid" style="--d:18%"><span data-num="4125">۴٬۱۲۵</span><span data-num="7900">۷٬۹۰۰</span><span data-num="4">۴</span></div>
+            <div class="br bid" style="--d:38%"><span data-num="4124">۴٬۱۲۴</span><span data-num="16200">۱۶٬۲۰۰</span><span data-num="8">۸</span></div>
+            <div class="br bid" style="--d:21%"><span data-num="4123">۴٬۱۲۳</span><span data-num="9100">۹٬۱۰۰</span><span data-num="5">۵</span></div>
+            <div class="br bid" style="--d:52%"><span data-num="4122">۴٬۱۲۲</span><span data-num="22400">۲۲٬۴۰۰</span><span data-num="12">۱۲</span></div>
+            <div class="br bid" style="--d:32%"><span data-num="4121">۴٬۱۲۱</span><span data-num="13700">۱۳٬۷۰۰</span><span data-num="7">۷</span></div>
+          </div>
+        </div>
+        <div class="pane">
+          <div class="pane-head"><span class="title" data-alt="Time &amp; sales">معاملات اخیر</span><span class="dot-live" aria-hidden="true"></span></div>
+          <ul class="trades" style="padding-block: 6px">
+            <li class="bh" style="font: 600 var(--fs-xs)/1.3 var(--font-sans); color: var(--ink-3)"><span data-alt="Time">زمان</span><span data-alt="Price">قیمت</span><span data-alt="Volume">حجم</span></li>
+            <li><time data-date="2026-10-16T11:42:08" data-fmt="time">۱۱:۴۲</time><span class="up" data-num="4128">۴٬۱۲۸</span><span data-num="2000">۲٬۰۰۰</span></li>
+            <li><time data-date="2026-10-16T11:42:01" data-fmt="time">۱۱:۴۲</time><span class="up" data-num="4128">۴٬۱۲۸</span><span data-num="650">۶۵۰</span></li>
+            <li><time data-date="2026-10-16T11:41:47" data-fmt="time">۱۱:۴۱</time><span class="down" data-num="4127">۴٬۱۲۷</span><span data-num="1200">۱٬۲۰۰</span></li>
+            <li><time data-date="2026-10-16T11:41:30" data-fmt="time">۱۱:۴۱</time><span class="up" data-num="4129">۴٬۱۲۹</span><span data-num="5000">۵٬۰۰۰</span></li>
+            <li><time data-date="2026-10-16T11:41:12" data-fmt="time">۱۱:۴۱</time><span class="down" data-num="4126">۴٬۱۲۶</span><span data-num="300">۳۰۰</span></li>
+            <li><time data-date="2026-10-16T11:40:55" data-fmt="time">۱۱:۴۰</time><span class="down" data-num="4126">۴٬۱۲۶</span><span data-num="8400">۸٬۴۰۰</span></li>
+            <li><time data-date="2026-10-16T11:40:31" data-fmt="time">۱۱:۴۰</time><span class="up" data-num="4128">۴٬۱۲۸</span><span data-num="1750">۱٬۷۵۰</span></li>
+            <li><time data-date="2026-10-16T11:40:02" data-fmt="time">۱۱:۴۰</time><span class="up" data-num="4130">۴٬۱۳۰</span><span data-num="900">۹۰۰</span></li>
+            <li><time data-date="2026-10-16T11:39:44" data-fmt="time">۱۱:۳۹</time><span class="down" data-num="4125">۴٬۱۲۵</span><span data-num="3300">۳٬۳۰۰</span></li>
+            <li><time data-date="2026-10-16T11:39:20" data-fmt="time">۱۱:۳۹</time><span class="up" data-num="4127">۴٬۱۲۷</span><span data-num="2600">۲٬۶۰۰</span></li>
+            <li><time data-date="2026-10-16T11:39:02" data-fmt="time">۱۱:۳۹</time><span class="down" data-num="4124">۴٬۱۲۴</span><span data-num="12000">۱۲٬۰۰۰</span></li>
+            <li><time data-date="2026-10-16T11:38:41" data-fmt="time">۱۱:۳۸</time><span class="up" data-num="4126">۴٬۱۲۶</span><span data-num="700">۷۰۰</span></li>
+            <li><time data-date="2026-10-16T11:38:17" data-fmt="time">۱۱:۳۸</time><span class="down" data-num="4123">۴٬۱۲۳</span><span data-num="4100">۴٬۱۰۰</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ portfolio -->
+  <section role="tabpanel" id="p-port" aria-labelledby="t-port" class="stack" hidden>
+    <div class="mosaic kpis">
+      <div class="pane stat"><span class="label" data-alt="Portfolio value">ارزش سبد</span><span class="v big" data-num="204690500">۲۰۴٬۶۹۰٬۵۰۰</span><span class="tiny subtle" data-alt="Toman">تومان</span></div>
+      <div class="pane stat"><span class="label" data-alt="Today">امروز</span><span class="v big up" data-num="1184000">۱٬۱۸۴٬۰۰۰</span><span class="chg up tiny" data-num="0.58" data-fmt="pct2">۰٫۵۸٪</span></div>
+      <div class="pane stat"><span class="label" data-alt="Unrealised P&amp;L">سود و زیان باز</span><span class="v big up" data-num="6820500">۶٬۸۲۰٬۵۰۰</span><span class="chg up tiny" data-num="3.80" data-fmt="pct2">۳٫۸۰٪</span></div>
+      <div class="pane stat"><span class="label" data-alt="Cash">نقد</span><span class="v big" data-num="18300000">۱۸٬۳۰۰٬۰۰۰</span><span class="tiny subtle" data-alt="9% of portfolio">۹٪ سبد</span></div>
+    </div>
+    <div class="mosaic port">
+      <div class="pane">
+        <div class="pane-head"><span class="title" data-alt="Performance, 12 months">بازده ۱۲ ماه</span><div class="legend"><span style="--c: var(--chart-1)" data-alt="Portfolio">سبد</span><span style="--c: var(--chart-3)" data-alt="All-share index">شاخص کل</span></div></div>
+        <div class="pane-body"><div data-chart="line" data-height="220" data-fmt="int" data-max="125" data-dash-second data-dates="2025-11-01,12,month" data-series='[{"name":{"en":"Portfolio","fa":"سبد"},"values":[100,102,101,105,108,107,111,114,112,116,119,122]},{"name":{"en":"All-share index","fa":"شاخص کل"},"values":[100,101,99,102,104,103,105,107,104,106,108,109],"color":"var(--chart-3)"}]' data-label='{"en":"Portfolio vs index, rebased to 100","fa":"سبد در برابر شاخص، پایهٔ ۱۰۰"}'></div></div>
+      </div>
+      <div class="pane">
+        <div class="pane-head"><span class="title" data-alt="Allocation">ترکیب سبد</span></div>
+        <div class="pane-body">
+          <div data-chart="donut" data-height="180" data-fmt="pct" data-values="56,20,15,9" data-labels='{"en":["Stocks","Gold","Funds","Cash"],"fa":["سهام","طلا","صندوق","نقد"]}' data-center='{"en":"56% stocks","fa":"۵۶٪ سهام"}' data-label='{"en":"Allocation","fa":"ترکیب سبد"}'></div>
+          <div class="legend" style="justify-content: center; margin-block-start: 12px"><span style="--c: var(--chart-1)" data-alt="Stocks">سهام</span><span style="--c: var(--chart-2)" data-alt="Gold">طلا</span><span style="--c: var(--chart-3)" data-alt="Funds">صندوق</span><span style="--c: var(--chart-4)" data-alt="Cash">نقد</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="panel table-scroll">
+      <table class="table">
+        <thead><tr>
+          <th scope="col" data-alt="Holding">دارایی</th>
+          <th scope="col" class="end" data-alt="Qty">تعداد</th>
+          <th scope="col" class="end" data-alt="Avg cost">میانگین خرید</th>
+          <th scope="col" class="end" data-alt="Last">آخرین</th>
+          <th scope="col" class="end" aria-sort="none"><button type="button" data-sort="num" data-alt="Value">ارزش</button></th>
+          <th scope="col" class="end" aria-sort="descending"><button type="button" data-sort="num" data-alt="P&amp;L">سود/زیان</button></th>
+          <th scope="col" class="end" data-alt="P&amp;L %">درصد</th>
+        </tr></thead>
+        <tbody>
+          <tr><td><div class="sym"><span class="av" style="--c:#4d7cff" aria-hidden="true">KV</span><div><b>KVR</b><small data-alt="Kavir Solar">کویرسولار</small></div></div></td><td class="end" data-num="12000">۱۲٬۰۰۰</td><td class="end" data-num="3910">۳٬۹۱۰</td><td class="end" data-num="4128">۴٬۱۲۸</td><td class="end" data-value="49536000" data-num="49536000">۴۹٬۵۳۶٬۰۰۰</td><td class="end up" data-value="2616000" data-num="2616000">۲٬۶۱۶٬۰۰۰</td><td class="end"><span class="chg up" data-num="5.58" data-fmt="pct2">۵٫۵۸٪</span></td></tr>
+          <tr><td><div class="sym"><span class="av" style="--c:#b07cff" aria-hidden="true">NL</span><div><b>NLG</b><small data-alt="Nilgoon Soft">نیلگون</small></div></div></td><td class="end" data-num="2500">۲٬۵۰۰</td><td class="end" data-num="12900">۱۲٬۹۰۰</td><td class="end" data-num="13945">۱۳٬۹۴۵</td><td class="end" data-value="34862500" data-num="34862500">۳۴٬۸۶۲٬۵۰۰</td><td class="end up" data-value="2612500" data-num="2612500">۲٬۶۱۲٬۵۰۰</td><td class="end"><span class="chg up" data-num="8.10" data-fmt="pct2">۸٫۱۰٪</span></td></tr>
+          <tr><td><div class="sym"><span class="av" style="--c:#c9a227" aria-hidden="true">Au</span><div><b data-alt="GOLD18">طلا۱۸</b><small data-alt="grams">گرم</small></div></div></td><td class="end" data-num="6">۶</td><td class="end" data-num="6540000">۶٬۵۴۰٬۰۰۰</td><td class="end" data-num="6912000">۶٬۹۱۲٬۰۰۰</td><td class="end" data-value="41472000" data-num="41472000">۴۱٬۴۷۲٬۰۰۰</td><td class="end up" data-value="2232000" data-num="2232000">۲٬۲۳۲٬۰۰۰</td><td class="end"><span class="chg up" data-num="5.69" data-fmt="pct2">۵٫۶۹٪</span></td></tr>
+          <tr><td><div class="sym"><span class="av" style="--c:#22c983" aria-hidden="true">AR</span><div><b data-alt="ARAM">آرام</b><small data-alt="Fixed-income fund">صندوق درآمد ثابت</small></div></div></td><td class="end" data-num="1200">۱٬۲۰۰</td><td class="end" data-num="23900">۲۳٬۹۰۰</td><td class="end" data-num="24810">۲۴٬۸۱۰</td><td class="end" data-value="29772000" data-num="29772000">۲۹٬۷۷۲٬۰۰۰</td><td class="end up" data-value="1092000" data-num="1092000">۱٬۰۹۲٬۰۰۰</td><td class="end"><span class="chg up" data-num="3.81" data-fmt="pct2">۳٫۸۱٪</span></td></tr>
+          <tr><td><div class="sym"><span class="av" style="--c:#f2b441" aria-hidden="true">KH</span><div><b>KHF</b><small data-alt="Kooh Steel">کوه‌فولاد</small></div></div></td><td class="end" data-num="4000">۴٬۰۰۰</td><td class="end" data-num="8120">۸٬۱۲۰</td><td class="end" data-num="7687">۷٬۶۸۷</td><td class="end" data-value="30748000" data-num="30748000">۳۰٬۷۴۸٬۰۰۰</td><td class="end down" data-value="-1732000" data-num="1732000">۱٬۷۳۲٬۰۰۰</td><td class="end"><span class="chg down" data-num="5.33" data-fmt="pct2">۵٫۳۳٪</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============================================================ orders -->
+  <section role="tabpanel" id="p-ord" aria-labelledby="t-ord" hidden>
+    <div class="panel" data-filter-scope>
+      <div class="pane-head" style="border-radius: var(--radius-lg) var(--radius-lg) 0 0"><span class="title" data-alt="Orders">سفارش‌ها</span>
+        <div class="seg" data-group role="group" aria-label="وضعیت" data-alt-aria-label="Status">
+          <button type="button" data-filter="st" data-value="all" aria-pressed="true" data-alt="All">همه</button>
+          <button type="button" data-filter="st" data-value="open" aria-pressed="false" data-alt="Open">باز</button>
+          <button type="button" data-filter="st" data-value="filled" aria-pressed="false" data-alt="Filled">انجام‌شده</button>
+          <button type="button" data-filter="st" data-value="cancelled" aria-pressed="false" data-alt="Cancelled">لغوشده</button>
+        </div></div>
+      <div class="table-scroll">
+        <table class="table">
+          <thead><tr><th scope="col" data-alt="Order">سفارش</th><th scope="col" data-alt="Time">زمان</th><th scope="col" data-alt="Side">سمت</th><th scope="col" data-alt="Symbol">نماد</th><th scope="col" data-alt="Type">نوع</th><th scope="col" class="end" data-alt="Filled / qty">انجام / کل</th><th scope="col" class="end" data-alt="Price">قیمت</th><th scope="col" data-alt="Status">وضعیت</th><th scope="col"><span class="sr-only" data-alt="Actions">کارها</span></th></tr></thead>
+          <tbody>
+            <tr data-filter-item data-st="open"><td class="mono">A-2291</td><td class="num" data-date="2026-10-16T11:36:00" data-fmt="time">۱۱:۳۶</td><td><span class="badge up" data-alt="Buy">خرید</span></td><td class="mono">KVR</td><td data-alt="Limit">محدود</td><td class="end"><span data-num="600">۶۰۰</span> / <span data-num="2000">۲٬۰۰۰</span></td><td class="end" data-num="4100">۴٬۱۰۰</td><td><span class="badge info" data-alt="Partly filled">بخشی انجام شد</span></td><td class="end"><button class="btn btn-sm" type="button" data-toast="سفارش A-2291 لغو شد" data-toast-alt="Order A-2291 cancelled" data-tone="danger" data-alt="Cancel">لغو</button></td></tr>
+            <tr data-filter-item data-st="open"><td class="mono">A-2290</td><td class="num" data-date="2026-10-16T11:20:00" data-fmt="time">۱۱:۲۰</td><td><span class="badge down" data-alt="Sell">فروش</span></td><td class="mono">KHF</td><td data-alt="Limit">محدود</td><td class="end"><span data-num="0">۰</span> / <span data-num="1000">۱٬۰۰۰</span></td><td class="end" data-num="7900">۷٬۹۰۰</td><td><span class="badge" data-alt="In queue">در صف</span></td><td class="end"><button class="btn btn-sm" type="button" data-toast="سفارش A-2290 لغو شد" data-toast-alt="Order A-2290 cancelled" data-tone="danger" data-alt="Cancel">لغو</button></td></tr>
+            <tr data-filter-item data-st="open"><td class="mono">A-2279</td><td class="num" data-date="2026-10-16T09:05:00" data-fmt="time">۰۹:۰۵</td><td><span class="badge down" data-alt="Sell">فروش</span></td><td class="mono">KHF</td><td data-alt="Stop">حد ضرر</td><td class="end"><span data-num="0">۰</span> / <span data-num="4000">۴٬۰۰۰</span></td><td class="end" data-num="7400">۷٬۴۰۰</td><td><span class="badge warn" data-alt="Armed">فعال</span></td><td class="end"><button class="btn btn-sm" type="button" data-toast="سفارش A-2279 لغو شد" data-toast-alt="Order A-2279 cancelled" data-tone="danger" data-alt="Cancel">لغو</button></td></tr>
+            <tr data-filter-item data-st="filled"><td class="mono">A-2288</td><td class="num" data-date="2026-10-16T10:48:00" data-fmt="time">۱۰:۴۸</td><td><span class="badge up" data-alt="Buy">خرید</span></td><td class="mono">NLG</td><td data-alt="Limit">محدود</td><td class="end"><span data-num="500">۵۰۰</span> / <span data-num="500">۵۰۰</span></td><td class="end" data-num="13600">۱۳٬۶۰۰</td><td><span class="badge up" data-alt="Filled">انجام شد</span></td><td></td></tr>
+            <tr data-filter-item data-st="filled"><td class="mono">A-2285</td><td class="num" data-date="2026-10-16T10:12:00" data-fmt="time">۱۰:۱۲</td><td><span class="badge up" data-alt="Buy">خرید</span></td><td data-alt="GOLD18">طلا۱۸</td><td data-alt="Market">بازار</td><td class="end"><span data-num="2">۲</span> / <span data-num="2">۲</span></td><td class="end" data-num="6850000">۶٬۸۵۰٬۰۰۰</td><td><span class="badge up" data-alt="Filled">انجام شد</span></td><td></td></tr>
+            <tr data-filter-item data-st="cancelled"><td class="mono">A-2281</td><td class="num" data-date="2026-10-16T09:31:00" data-fmt="time">۰۹:۳۱</td><td><span class="badge down" data-alt="Sell">فروش</span></td><td class="mono">SPD</td><td data-alt="Limit">محدود</td><td class="end"><span data-num="0">۰</span> / <span data-num="3000">۳٬۰۰۰</span></td><td class="end" data-num="3450">۳٬۴۵۰</td><td><span class="badge" data-alt="Cancelled">لغو شد</span></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="empty" data-filter-empty hidden data-alt="No orders here.">سفارشی نیست.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ alerts -->
+  <section role="tabpanel" id="p-alr" aria-labelledby="t-alr" hidden>
+    <div class="mosaic alerts">
+      <div class="pane">
+        <div class="pane-head"><span class="title" data-alt="New alert">هشدار تازه</span></div>
+        <form class="pane-body stack" data-validate data-keep data-success="هشدار ساخته شد" data-success-alt="Alert created">
+          <div class="field"><label class="label" for="a-sym" data-alt="Symbol">نماد</label><select class="select" id="a-sym" name="sym"><option>KVR</option><option>NLG</option><option>KHF</option><option>GLB</option><option data-alt="GOLD18">طلا۱۸</option></select></div>
+          <div class="field"><label class="label" for="a-cond" data-alt="When">وقتی</label><select class="select" id="a-cond" name="cond"><option value="above" data-alt="Price rises above">قیمت بالاتر رود از</option><option value="below" data-alt="Price falls below">قیمت پایین‌تر رود از</option><option value="vol" data-alt="Volume exceeds">حجم بیشتر شود از</option></select></div>
+          <div class="field"><label class="label" for="a-val" data-alt="Value">مقدار</label><div class="affix"><input id="a-val" name="val" type="number" min="1" required value="4200"></div></div>
+          <fieldset class="field" style="border:0; margin:0; padding:0"><legend class="label" style="margin-block-end: 6px" data-alt="Notify by">اطلاع با</legend>
+            <div class="row"><label class="check"><input type="checkbox" name="push" checked><span data-alt="Push">اعلان</span></label><label class="check"><input type="checkbox" name="sms"><span data-alt="SMS">پیامک</span></label><label class="check"><input type="checkbox" name="mail"><span data-alt="Email">ایمیل</span></label></div></fieldset>
+          <button class="btn btn-primary" type="submit" data-alt="Create alert">ساخت هشدار</button>
+        </form>
+      </div>
+      <div class="pane">
+        <div class="pane-head"><span class="title" data-alt="Active alerts">هشدارهای فعال</span><span class="tiny subtle"><span data-num="3">۳</span> <span data-alt="on">روشن</span></span></div>
+        <div class="table-scroll">
+          <table class="table">
+            <thead><tr><th scope="col" data-alt="Symbol">نماد</th><th scope="col" data-alt="Condition">شرط</th><th scope="col" class="end" data-alt="Distance">فاصله</th><th scope="col" data-alt="On">روشن</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">KVR</td><td><span data-alt="above">بالاتر از</span> <span class="num" data-num="4200">۴٬۲۰۰</span></td><td class="end"><span class="chg up" data-num="1.74" data-fmt="pct2">۱٫۷۴٪</span></td><td><button class="switch" type="button" role="switch" aria-checked="true" aria-label="هشدار KVR" data-alt-aria-label="KVR alert"></button></td></tr>
+              <tr><td class="mono">KHF</td><td><span data-alt="below">پایین‌تر از</span> <span class="num" data-num="7500">۷٬۵۰۰</span></td><td class="end"><span class="chg down" data-num="2.43" data-fmt="pct2">۲٫۴۳٪</span></td><td><button class="switch" type="button" role="switch" aria-checked="true" aria-label="هشدار KHF" data-alt-aria-label="KHF alert"></button></td></tr>
+              <tr><td class="mono">NLG</td><td><span data-alt="volume over">حجم بیشتر از</span> <span class="num" data-num="5000000" data-fmt="compact">۵ میلیون</span></td><td class="end subtle">—</td><td><button class="switch" type="button" role="switch" aria-checked="false" aria-label="هشدار NLG" data-alt-aria-label="NLG alert"></button></td></tr>
+              <tr><td data-alt="GOLD18">طلا۱۸</td><td><span data-alt="above">بالاتر از</span> <span class="num" data-num="7000000">۷٬۰۰۰٬۰۰۰</span></td><td class="end"><span class="chg up" data-num="1.27" data-fmt="pct2">۱٫۲۷٪</span></td><td><button class="switch" type="button" role="switch" aria-checked="true" aria-label="هشدار طلا" data-alt-aria-label="Gold alert"></button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  (() => {
+    const $ = (s) => document.querySelector(s);
+    const set = (el, v) => { el.dataset.num = v; el.textContent = tf.fmt(v); };
+    const BP = 18300000, FEE = 0.0037;
+    // ticket maths: value, fee, total; % buttons size the order from buying power
+    const calc = () => {
+      const market = $('#o-type').value === 'market';
+      const price = market ? 4128 : Number($('#o-price').value) || 0, qty = Number($('#o-qty').value) || 0;
+      const v = price * qty, fee = Math.round(v * FEE);
+      set($('[data-t="value"]'), v); set($('[data-t="fee"]'), fee);
+      set($('[data-t="total"]'), $('[data-group="side"] [aria-pressed="true"]').dataset.value === 'sell' ? v - fee : v + fee);
+    };
+    document.addEventListener('input', (e) => { if (e.target.closest('#ticket')) calc(); });
+    document.addEventListener('change', (e) => { if (e.target.closest('#ticket')) calc(); });
+    document.addEventListener('tf:change', (e) => {
+      const g = e.target.closest?.('[data-group="pct"]');
+      if (g) {
+        const pct = Number(g.querySelector('[aria-pressed="true"]')?.dataset.value || 0);
+        const price = Number($('#o-price').value) || 4128;
+        $('#o-qty').value = Math.floor((BP * pct / 100) / (price * (1 + FEE)));
+      }
+      calc();
+    });
+    // picking a watchlist row retitles the quote and the ticket
+    document.addEventListener('click', (e) => {
+      const row = e.target.closest('#watch tbody tr');
+      if (!row) return;
+      document.querySelectorAll('#watch tbody tr').forEach((r) => r.setAttribute('aria-selected', String(r === row)));
+      document.querySelectorAll('[data-q-sym]').forEach((el) => { el.textContent = row.dataset.sym; });
+      $('[data-q-name]').textContent = row.dataset[tf.lang() === 'fa' ? 'nameFa' : 'nameEn'];
+    });
+    document.addEventListener('tf:lang', () => {
+      const row = document.querySelector('#watch tbody tr[aria-selected="true"]');
+      if (row) $('[data-q-name]').textContent = row.dataset[tf.lang() === 'fa' ? 'nameFa' : 'nameEn'];
+      calc();
+    });
+    document.addEventListener('tf:ready', () => {
+      calc();
+      if (tf.reduceMotion) return;
+      const cells = [...document.querySelectorAll('#watch [data-live]')];
+      setInterval(() => {
+        const c = cells[Math.floor(Math.random() * cells.length)];
+        const v = Number(c.dataset.num), nv = Math.max(1, Math.round(v * (1 + (Math.random() - .5) * .004)));
+        if (nv === v) return;
+        set(c, nv);
+        c.classList.remove('flash-up', 'flash-down'); void c.offsetWidth;
+        c.classList.add(nv > v ? 'flash-up' : 'flash-down');
+      }, 1200);
+    });
+  })();
+</script>
+</body>
+</html>

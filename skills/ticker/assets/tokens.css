@@ -1,0 +1,149 @@
+/* Ticker — design tokens (Tastefolio). Market workspace: graphite dark, hairline mosaics, one cobalt brand,
+   green/red reserved strictly for up/down, monospace tabular numbers everywhere a value can change.
+   Default theme is dark (<html data-theme="dark">); a light "statement" theme is provided. */
+:root, [data-theme="dark"] {
+  --canvas: #0a0d12;
+  --surface: #10141b;
+  --surface-2: #161b24;
+  --surface-3: #1f2632;
+  --surface-ink: #e6ebf2;
+  --overlay: rgba(3, 5, 9, .74);
+
+  --ink: #e6ebf2;
+  --ink-2: #9aa6b8;
+  --ink-3: #69758c;
+  --ink-inverse: #0a0d12;
+
+  --line: #1b222d;           /* mosaic gaps and row rules */
+  --line-2: #2a3342;         /* control borders */
+
+  --brand: #4d7cff;          /* cobalt — selection, primary, links; never used for up/down */
+  --brand-ink: #ffffff;
+  --brand-soft: color-mix(in oklab, var(--brand) 17%, transparent);
+  --brand-strong: color-mix(in oklab, var(--brand) 78%, #fff);
+  --focus: var(--brand);
+
+  --up: #22c983;              /* price up, buy */
+  --up-soft: rgba(34, 201, 131, .13);
+  --down: #ff4d61;            /* price down, sell */
+  --down-soft: rgba(255, 77, 97, .13);
+
+  --success: var(--up);
+  --success-soft: var(--up-soft);
+  --warning: #f2b441;
+  --warning-soft: rgba(242, 180, 65, .14);
+  --danger: var(--down);
+  --danger-soft: var(--down-soft);
+  --info: #45b6ff;
+  --info-soft: rgba(69, 182, 255, .14);
+
+  --chart-1: var(--brand);
+  --chart-2: #45b6ff;
+  --chart-3: #f2b441;
+  --chart-4: #b07cff;
+  --chart-5: #22c983;
+  --chart-6: #ff8a4d;
+  --chart-up: var(--up);
+  --chart-down: var(--down);
+  --chart-grid: #171e28;
+  --chart-axis: var(--ink-3);
+  --chart-curve: linear;
+  --chart-stroke: 1.6;
+  --chart-area: .22;
+  --chart-radius: 1;
+  --chart-bar-gap: .32;
+  --chart-donut: 14;
+  --chart-gap: 2;
+  --chart-dots: 0;
+
+  --font-sans: "Manrope", "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Manrope", system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;   /* every price, size, time and % */
+  --fs-xs: 11px;
+  --fs-sm: 12px;
+  --fs-md: 14px;
+  --fs-lg: 16px;
+  --fs-xl: 20px;
+  --fs-2xl: 28px;
+  --fs-3xl: 40px;
+  --fs-display: clamp(38px, 5vw, 68px);
+  --fw-regular: 500;
+  --fw-medium: 600;
+  --fw-bold: 700;
+  --fw-display: 800;
+  --lh-tight: 1.04;
+  --lh-snug: 1.25;
+  --lh-body: 1.55;
+  --tracking-display: -.04em;
+  --tracking-caps: .07em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 28px;
+  --space-7: 40px;
+  --space-8: 56px;
+  --space-9: 80px;
+  --space-10: 120px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-pill: 999px;
+  --border-w: 1px;
+  --shadow-1: none;
+  --shadow-2: 0 10px 30px rgba(0, 0, 0, .35);
+  --shadow-3: 0 30px 80px rgba(0, 0, 0, .6);
+
+  --container: 1280px;
+  --gutter: clamp(16px, 3vw, 32px);
+  --control-h: 34px;
+  --control-h-lg: 42px;
+  --row-h: 30px;
+
+  --ease: cubic-bezier(.2, .8, .2, 1);
+  --dur-1: 90ms;
+  --dur-2: 160ms;
+  --dur-3: 260ms;
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --canvas: #f5f6f8;
+  --surface: #ffffff;
+  --surface-2: #f0f2f5;
+  --surface-3: #e5e9ef;
+  --surface-ink: #0d1420;
+  --overlay: rgba(13, 20, 32, .45);
+  --ink: #0d1420;
+  --ink-2: #4a5568;
+  --ink-3: #747f92;
+  --ink-inverse: #ffffff;
+  --line: #e3e7ed;
+  --line-2: #cfd6e0;
+  --brand: #2f5bea;
+  --up: #0c9a5f;
+  --up-soft: rgba(12, 154, 95, .1);
+  --down: #dc2f46;
+  --down-soft: rgba(220, 47, 70, .09);
+  --warning: #b7790f;
+  --info: #0f7bc4;
+  --chart-grid: #edf0f4;
+  --shadow-2: 0 10px 30px rgba(13, 20, 32, .1);
+  --shadow-3: 0 30px 80px rgba(13, 20, 32, .22);
+  color-scheme: light;
+}
+
+:root:lang(fa) {
+  --font-sans: "Vazirmatn", "Manrope", Tahoma, sans-serif;
+  --font-display: "Vazirmatn", "Manrope", sans-serif;
+  --font-mono: "DM Mono", "Vazirmatn", ui-monospace, monospace;   /* Latin symbols in DM Mono, Persian digits fall through to Vazirmatn */
+  --fw-regular: 400;
+  --fs-display: clamp(32px, 4.2vw, 56px);
+  --lh-tight: 1.35;
+  --lh-snug: 1.5;
+  --lh-body: 1.85;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+}

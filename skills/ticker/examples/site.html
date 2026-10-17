@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="site" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Tarazoo — markets, measured">ترازو — بازار را با عدد ببینید</title>
+<meta name="description" content="ترازو، کارگزاری آنلاین نمونه: سهام، طلا و صندوق‌ها با داده‌های لحظه‌ای، هشدار قیمت و کارمزد شفاف." data-alt-content="Tarazoo, a sample online brokerage: stocks, gold and funds with live data, price alerts and transparent fees.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@0.460.0/font/lucide.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: var(--space-8); align-items: center; padding-block: var(--space-9) var(--space-8); }
+  @media (max-width: 980px) { .hero { grid-template-columns: minmax(0, 1fr); padding-block: var(--space-7); } }
+  .hero-copy { display: grid; gap: var(--space-5); justify-items: start; }
+  .hero-card { box-shadow: var(--shadow-3); }
+  .hero-card .pane-body { display: grid; gap: var(--space-2); }
+  .ix { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-block: 1px solid var(--line); }
+  .stats > div { padding: var(--space-5) var(--space-4); }
+  .stats > div + div { border-inline-start: 1px solid var(--line); }
+  @media (max-width: 800px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stats > div:nth-child(3) { border-inline-start: 0; } .stats > div:nth-child(n+3) { border-block-start: 1px solid var(--line); } }
+  .sec-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: var(--space-4); margin-block-end: var(--space-6); }
+  .sec-head > div { display: grid; gap: var(--space-2); max-inline-size: 60ch; }
+  .feature { padding: var(--space-6); display: grid; gap: var(--space-3); align-content: start; }
+  .feature i { font-size: 22px; color: var(--brand); }
+  .calc { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .calc > div { padding: var(--space-6); display: grid; gap: var(--space-4); align-content: start; }
+  .calc > div + div { border-inline-start: 1px solid var(--line); background: var(--surface-2); }
+  @media (max-width: 760px) { .calc { grid-template-columns: minmax(0, 1fr); } .calc > div + div { border-inline-start: 0; border-block-start: 1px solid var(--line); } }
+  .calc dl { display: grid; gap: 10px; margin: 0; }
+  .calc dl > div { display: flex; justify-content: space-between; gap: 12px; }
+  .calc dt { color: var(--ink-2); }
+  .calc dd { margin: 0; font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+  .calc .total dd { font-size: var(--fs-xl); font-weight: 500; }
+  .signup { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-8); align-items: start; }
+  @media (max-width: 860px) { .signup { grid-template-columns: minmax(0, 1fr); } }
+  .signup form { padding: var(--space-6); display: grid; gap: var(--space-4); }
+  details.faq { border-block-end: 1px solid var(--line); }
+  details.faq summary { cursor: pointer; list-style: none; padding-block: 14px; font-weight: 700; display: flex; justify-content: space-between; gap: 12px; }
+  details.faq summary::-webkit-details-marker { display: none; }
+  details.faq summary::after { content: "+"; font-family: var(--font-mono); color: var(--ink-3); }
+  details.faq[open] summary::after { content: "−"; }
+  details.faq p { padding-block-end: 14px; color: var(--ink-2); font-size: var(--fs-sm); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<div class="tape" role="region" aria-label="نوار قیمت نمونه" data-alt-aria-label="Sample price tape">
+  <div class="tape-track">
+    <span class="tape-item"><b data-alt="All-share">شاخص کل</b><span class="num" data-num="2309873">۲٬۳۰۹٬۸۷۳</span><span class="chg up" data-num="0.41" data-fmt="pct2">۰٫۴۱٪</span></span>
+    <span class="tape-item"><b>KVR</b><span class="num" data-num="4128">۴٬۱۲۸</span><span class="chg up" data-num="2.10" data-fmt="pct2">۲٫۱۰٪</span></span>
+    <span class="tape-item"><b>NLG</b><span class="num" data-num="13945">۱۳٬۹۴۵</span><span class="chg up" data-num="2.76" data-fmt="pct2">۲٫۷۶٪</span></span>
+    <span class="tape-item"><b>KHF</b><span class="num" data-num="7687">۷٬۶۸۷</span><span class="chg down" data-num="4.46" data-fmt="pct2">۴٫۴۶٪</span></span>
+    <span class="tape-item"><b>SPD</b><span class="num" data-num="3367">۳٬۳۶۷</span><span class="chg down" data-num="0.47" data-fmt="pct2">۰٫۴۷٪</span></span>
+    <span class="tape-item"><b data-alt="Gold 18k/g">طلا ۱۸ گرمی</b><span class="num" data-num="6912000">۶٬۹۱۲٬۰۰۰</span><span class="chg up" data-num="0.92" data-fmt="pct2">۰٫۹۲٪</span></span>
+    <span class="tape-item"><b>GLB</b><span class="num" data-num="17596">۱۷٬۵۹۶</span><span class="chg up" data-num="0.77" data-fmt="pct2">۰٫۷۷٪</span></span>
+    <span class="tape-item"><b>DRY</b><span class="num" data-num="2900">۲٬۹۰۰</span><span class="chg down" data-num="1.63" data-fmt="pct2">۱٫۶۳٪</span></span>
+    <span class="tape-item"><b>AFT</b><span class="num" data-num="5588">۵٬۵۸۸</span><span class="chg down" data-num="1.43" data-fmt="pct2">۱٫۴۳٪</span></span>
+    <span class="tape-item"><b>TUS</b><span class="num" data-num="1107">۱٬۱۰۷</span><span class="chg down" data-num="1.69" data-fmt="pct2">۱٫۶۹٪</span></span>
+  </div>
+</div>
+<header class="site-head">
+  <div class="container">
+    <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"></span><span data-alt="Tarazoo">ترازو</span></a>
+    <nav class="nav" id="nav" data-dismissable aria-label="اصلی" data-alt-aria-label="Main">
+      <a href="#markets" aria-current="page" data-alt="Markets">بازارها</a>
+      <a href="#map" data-alt="Market map">نقشهٔ بازار</a>
+      <a href="#fees" data-alt="Fees">کارمزدها</a>
+      <a href="#faq" data-alt="Learn">آموزش</a>
+    </nav>
+    <div class="head-end">
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+      <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-pressed="true" aria-label="تغییر پوسته" data-alt-aria-label="Toggle theme"><i class="icon-sun-moon" aria-hidden="true"></i></button>
+      <a class="btn btn-ghost hide-md" href="dashboard.html" data-alt="Log in">ورود</a>
+      <a class="btn btn-primary hide-sm" href="#signup" data-alt="Open an account">افتتاح حساب</a>
+      <button class="btn btn-ghost btn-icon menu-btn" type="button" data-toggle="#nav" aria-controls="nav" aria-expanded="false" aria-label="منو" data-alt-aria-label="Menu"><i class="icon-menu" aria-hidden="true"></i></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="container hero" id="top">
+    <div class="hero-copy">
+      <span class="eyebrow" data-alt="Stocks · gold · funds">سهام · طلا · صندوق</span>
+      <h1 class="display" data-alt="See the market in numbers, not in noise.">بازار را با عدد ببینید، نه با هیاهو.</h1>
+      <p class="lead" data-alt="Live order books, price alerts that actually fire, and fees you can calculate before you trade — in one quiet workspace.">دفتر سفارش لحظه‌ای، هشدار قیمتی که واقعاً به‌موقع می‌رسد و کارمزدی که پیش از معامله حسابش را می‌دانید — همه در یک میز کار آرام.</p>
+      <div class="row">
+        <a class="btn btn-primary btn-lg" href="#signup" data-alt="Open a free account">افتتاح حساب رایگان</a>
+        <a class="btn btn-lg btn-outline" href="dashboard.html"><span data-alt="Try the demo desk">میز نمونه را ببینید</span><i class="icon-arrow-right flip-rtl" aria-hidden="true"></i></a>
+      </div>
+      <p class="tiny subtle" data-alt="All numbers on this page are sample data, not investment advice.">همهٔ اعداد این صفحه نمونه‌اند و توصیهٔ سرمایه‌گذاری نیستند.</p>
+    </div>
+
+    <div class="mosaic hero-card" aria-label="نمای نمونهٔ بازار" data-alt-aria-label="Sample market view" role="group">
+      <div class="pane">
+        <div class="pane-head"><span class="title" data-alt="All-share index">شاخص کل</span><span class="market-status"><span class="dot-live" aria-hidden="true"></span><span data-alt="Market open">بازار باز</span></span></div>
+        <div class="pane-body">
+          <div class="ix"><span class="price" data-num="2309873">۲٬۳۰۹٬۸۷۳</span><span class="chg pill up" data-num="0.41" data-fmt="pct2">۰٫۴۱٪</span><span class="tiny subtle"><span data-alt="Value traded">ارزش معاملات</span> <span class="num" data-num="48200000000000" data-fmt="compact">۴۸ هزار میلیارد</span></span></div>
+          <div data-chart="area" data-height="150" data-fmt="compact" data-y-width="52" data-dates="2026-09-01,32,day,short" data-values="2372486,2394142,2391203,2343468,2350280,2357399,2380708,2362437,2370181,2345114,2372390,2358151,2344894,2345075,2356089,2340395,2329975,2335785,2304646,2296834,2299153,2332213,2299090,2302304,2338750,2360978,2333426,2351724,2325828,2318794,2300390,2309873" data-name='{"en":"All-share index","fa":"شاخص کل"}' data-min="2280000" data-max="2400000"></div>
+        </div>
+      </div>
+      <div class="pane">
+        <table class="table" id="hero-watch">
+          <caption class="sr-only" data-alt="Watchlist">دیده‌بان</caption>
+          <thead><tr><th scope="col" data-alt="Symbol">نماد</th><th scope="col" class="end" data-alt="Last">آخرین</th><th scope="col" class="end" data-alt="Change">تغییر</th><th scope="col" class="hide-sm"><span class="sr-only" data-alt="14 days">۱۴ روز</span></th></tr></thead>
+          <tbody>
+            <tr><td><div class="sym"><span class="av" style="--c:#4d7cff" aria-hidden="true">KV</span><div><b>KVR</b><small data-alt="Kavir Solar">کویرسولار</small></div></div></td><td class="end" data-live data-num="4128">۴٬۱۲۸</td><td class="end"><span class="chg up" data-num="2.10" data-fmt="pct2">۲٫۱۰٪</span></td><td class="spark-cell hide-sm"><div data-chart="spark" data-values="3813,3755,3833,3826,3834,3806,3891,3803,3831,4043,4042,4128" style="--chart-1: var(--up)"></div></td></tr>
+            <tr><td><div class="sym"><span class="av" style="--c:#b07cff" aria-hidden="true">NL</span><div><b>NLG</b><small data-alt="Nilgoon Soft">نیلگون</small></div></div></td><td class="end" data-live data-num="13945">۱۳٬۹۴۵</td><td class="end"><span class="chg up" data-num="2.76" data-fmt="pct2">۲٫۷۶٪</span></td><td class="spark-cell hide-sm"><div data-chart="spark" data-values="12337,12192,12305,12253,12474,12691,12894,13022,13387,13599,13764,13303,13571,13945" style="--chart-1: var(--up)"></div></td></tr>
+            <tr><td><div class="sym"><span class="av" style="--c:#f2b441" aria-hidden="true">KH</span><div><b>KHF</b><small data-alt="Kooh Steel">کوه‌فولاد</small></div></div></td><td class="end" data-live data-num="7687">۷٬۶۸۷</td><td class="end"><span class="chg down" data-num="4.46" data-fmt="pct2">۴٫۴۶٪</span></td><td class="spark-cell hide-sm"><div data-chart="spark" data-values="7464,7590,7600,7589,7465,7432,7566,7595,7493,7395,7765,7939,8046,7687" style="--chart-1: var(--down)"></div></td></tr>
+            <tr><td><div class="sym"><span class="av" style="--c:#45b6ff" aria-hidden="true">GL</span><div><b>GLB</b><small data-alt="Golbarg Pharma">گلبرگ‌دارو</small></div></div></td><td class="end" data-live data-num="17596">۱۷٬۵۹۶</td><td class="end"><span class="chg up" data-num="0.77" data-fmt="pct2">۰٫۷۷٪</span></td><td class="spark-cell hide-sm"><div data-chart="spark" data-values="15759,15858,15792,15562,16203,16554,16248,15903,16439,16781,17381,17687,17462,17596" style="--chart-1: var(--up)"></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="stats">
+      <div class="stat"><span class="label" data-alt="Active accounts">حساب فعال</span><span class="v big" data-num="186000" data-fmt="compact">۱۸۶ هزار</span></div>
+      <div class="stat"><span class="label" data-alt="Median order latency">میانهٔ تأخیر سفارش</span><span class="v big"><span data-num="38">۳۸</span> <small class="tiny subtle" data-alt="ms">میلی‌ثانیه</small></span></div>
+      <div class="stat"><span class="label" data-alt="Buy fee">کارمزد خرید</span><span class="v big" data-num="0.37" data-fmt="pct2">۰٫۳۷٪</span></div>
+      <div class="stat"><span class="label" data-alt="Alerts delivered / day">هشدار ارسالی در روز</span><span class="v big" data-num="1240000" data-fmt="compact">۱٫۲ میلیون</span></div>
+    </div>
+  </div>
+
+  <section class="container section" id="markets" data-filter-scope>
+    <div class="sec-head">
+      <div><span class="eyebrow" data-alt="Markets">بازارها</span><h2 class="h1" data-alt="Everything you can trade, on one sheet">هرچه می‌شود معامله کرد، در یک برگه</h2></div>
+      <div class="row">
+        <input class="input" style="inline-size: min(100%, 240px)" type="search" data-filter-search data-hotkey="/" placeholder="جست‌وجوی نماد…  /" data-alt-placeholder="Search symbol…  /" aria-label="جست‌وجوی نماد" data-alt-aria-label="Search symbol">
+        <div class="seg" data-group role="group" aria-label="بازار" data-alt-aria-label="Market">
+          <button type="button" data-filter="mkt" data-value="all" aria-pressed="true" data-alt="All">همه</button>
+          <button type="button" data-filter="mkt" data-value="stock" aria-pressed="false" data-alt="Stocks">سهام</button>
+          <button type="button" data-filter="mkt" data-value="gold" aria-pressed="false" data-alt="Gold">طلا</button>
+          <button type="button" data-filter="mkt" data-value="fund" aria-pressed="false" data-alt="Funds">صندوق</button>
+        </div>
+      </div>
+    </div>
+    <div class="panel table-scroll">
+      <table class="table">
+        <thead><tr>
+          <th scope="col" aria-sort="none"><button type="button" data-sort="text" data-alt="Symbol">نماد</button></th>
+          <th scope="col" class="end" aria-sort="none"><button type="button" data-sort="num" data-alt="Last">آخرین</button></th>
+          <th scope="col" class="end" aria-sort="descending"><button type="button" data-sort="num" data-alt="Change">تغییر</button></th>
+          <th scope="col" class="end" aria-sort="none"><button type="button" data-sort="num" data-alt="Volume">حجم</button></th>
+          <th scope="col" class="end" data-alt="Day range">دامنهٔ روز</th>
+          <th scope="col" data-alt="14 days">۱۴ روز</th>
+          <th scope="col"><span class="sr-only" data-alt="Actions">کارها</span></th>
+        </tr></thead>
+        <tbody>
+          <tr data-filter-item data-mkt="stock"><td><div class="sym"><span class="av" style="--c:#b07cff" aria-hidden="true">NL</span><div><b>NLG</b><small data-alt="Nilgoon Soft · tech">نیلگون · فناوری</small></div></div></td><td class="end" data-num="13945">۱۳٬۹۴۵</td><td class="end" data-value="2.76"><span class="chg up" data-num="2.76" data-fmt="pct2">۲٫۷۶٪</span></td><td class="end" data-value="3400000" data-num="3400000" data-fmt="compact">۳٫۴ میلیون</td><td class="end"><span data-num="13510">۱۳٬۵۱۰</span> – <span data-num="14020">۱۴٬۰۲۰</span></td><td class="spark-cell"><div data-chart="spark" data-values="12337,12192,12305,12253,12474,12691,12894,13022,13387,13599,13764,13303,13571,13945" style="--chart-1: var(--up)"></div></td><td class="end"><a class="btn btn-sm" href="dashboard.html" data-alt="Trade">معامله</a></td></tr>
+          <tr data-filter-item data-mkt="stock"><td><div class="sym"><span class="av" style="--c:#4d7cff" aria-hidden="true">KV</span><div><b>KVR</b><small data-alt="Kavir Solar · energy">کویرسولار · انرژی</small></div></div></td><td class="end" data-num="4128">۴٬۱۲۸</td><td class="end" data-value="2.10"><span class="chg up" data-num="2.10" data-fmt="pct2">۲٫۱۰٪</span></td><td class="end" data-value="2670000" data-num="2670000" data-fmt="compact">۲٫۷ میلیون</td><td class="end"><span data-num="4031">۴٬۰۳۱</span> – <span data-num="4140">۴٬۱۴۰</span></td><td class="spark-cell"><div data-chart="spark" data-values="3813,3755,3833,3826,3834,3806,3891,3803,3831,4043,4042,4128" style="--chart-1: var(--up)"></div></td><td class="end"><a class="btn btn-sm" href="dashboard.html" data-alt="Trade">معامله</a></td></tr>
+          <tr data-filter-item data-mkt="gold"><td><div class="sym"><span class="av" style="--c:#c9a227" aria-hidden="true">Au</span><div><b data-alt="GOLD18">طلا۱۸</b><small data-alt="Gold 18k · per gram (Toman)">طلای ۱۸ عیار · هر گرم (تومان)</small></div></div></td><td class="end" data-num="6912000">۶٬۹۱۲٬۰۰۰</td><td class="end" data-value="0.92"><span class="chg up" data-num="0.92" data-fmt="pct2">۰٫۹۲٪</span></td><td class="end" data-value="820000" data-num="820000" data-fmt="compact">۸۲۰ هزار</td><td class="end"><span data-num="6850000">۶٬۸۵۰٬۰۰۰</span> – <span data-num="6930000">۶٬۹۳۰٬۰۰۰</span></td><td class="spark-cell"><div data-chart="spark" data-values="6700,6720,6710,6760,6790,6800,6810,6790,6830,6850,6870,6860,6890,6912" style="--chart-1: var(--up)"></div></td><td class="end"><a class="btn btn-sm" href="dashboard.html" data-alt="Trade">معامله</a></td></tr>
+          <tr data-filter-item data-mkt="stock"><td><div class="sym"><span class="av" style="--c:#45b6ff" aria-hidden="true">GL</span><div><b>GLB</b><small data-alt="Golbarg Pharma · health">گلبرگ‌دارو · سلامت</small></div></div></td><td class="end" data-num="17596">۱۷٬۵۹۶</td><td class="end" data-value="0.77"><span class="chg up" data-num="0.77" data-fmt="pct2">۰٫۷۷٪</span></td><td class="end" data-value="1100000" data-num="1100000" data-fmt="compact">۱٫۱ میلیون</td><td class="end"><span data-num="17320">۱۷٬۳۲۰</span> – <span data-num="17700">۱۷٬۷۰۰</span></td><td class="spark-cell"><div data-chart="spark" data-values="15759,15858,15792,15562,16203,16554,16248,15903,16439,16781,17381,17687,17462,17596" style="--chart-1: var(--up)"></div></td><td class="end"><a class="btn btn-sm" href="dashboard.html" data-alt="Trade">معامله</a></td></tr>
+          <tr data-filter-item data-mkt="fund"><td><div class="sym"><span class="av" style="--c:#22c983" aria-hidden="true">AR</span><div><b data-alt="ARAM">آرام</b><small data-alt="Aram fixed-income fund">صندوق درآمد ثابت آرام</small></div></div></td><td class="end" data-num="24810">۲۴٬۸۱۰</td><td class="end" data-value="0.08"><span class="chg up" data-num="0.08" data-fmt="pct2">۰٫۰۸٪</span></td><td class="end" data-value="9600000" data-num="9600000" data-fmt="compact">۹٫۶ میلیون</td><td class="end"><span data-num="24790">۲۴٬۷۹۰</span> – <span data-num="24812">۲۴٬۸۱۲</span></td><td class="spark-cell"><div data-chart="spark" data-values="24500,24524,24547,24571,24594,24618,24641,24665,24688,24712,24736,24760,24785,24810" style="--chart-1: var(--up)"></div></td><td class="end"><a class="btn btn-sm" href="dashboard.html" data-alt="Trade">معامله</a></td></tr>
+          <tr data-filter-item data-mkt="stock"><td><div class="sym"><span class="av" style="--c:#8a96aa" aria-hidden="true">SP</span><div><b>SPD</b><small data-alt="Sepid Shir · food">سپیدشیر · غذایی</small></div></div></td><td class="end" data-num="3367">۳٬۳۶۷</td><td class="end" data-value="-0.47"><span class="chg down" data-num="0.47" data-fmt="pct2">۰٫۴۷٪</span></td><td class="end" data-value="5200000" data-num="5200000" data-fmt="compact">۵٫۲ میلیون</td><td class="end"><span data-num="3340">۳٬۳۴۰</span> – <span data-num="3412">۳٬۴۱۲</span></td><td class="spark-cell"><div data-chart="spark" data-values="3233,3196,3298,3184,3201,3331,3265,3296,3398,3381,3405,3450,3383,3367" style="--chart-1: var(--down)"></div></td><td class="end"><a class="btn btn-sm" href="dashboard.html" data-alt="Trade">معامله</a></td></tr>
+          <tr data-filter-item data-mkt="stock"><td><div class="sym"><span class="av" style="--c:#ff8a4d" aria-hidden="true">AF</span><div><b>AFT</b><small data-alt="Aftab Market · retail">آفتاب‌مارکت · خرده‌فروشی</small></div></div></td><td class="end" data-num="5588">۵٬۵۸۸</td><td class="end" data-value="-1.43"><span class="chg down" data-num="1.43" data-fmt="pct2">۱٫۴۳٪</span></td><td class="end" data-value="1900000" data-num="1900000" data-fmt="compact">۱٫۹ میلیون</td><td class="end"><span data-num="5560">۵٬۵۶۰</span> – <span data-num="5690">۵٬۶۹۰</span></td><td class="spark-cell"><div data-chart="spark" data-values="5375,5391,5397,5428,5445,5478,5481,5374,5430,5550,5610,5607,5669,5588" style="--chart-1: var(--down)"></div></td><td class="end"><a class="btn btn-sm" href="dashboard.html" data-alt="Trade">معامله</a></td></tr>
+          <tr data-filter-item data-mkt="stock"><td><div class="sym"><span class="av" style="--c:#5b8cff" aria-hidden="true">DR</span><div><b>DRY</b><small data-alt="Daryanavard · shipping">دریانورد · حمل‌ونقل</small></div></div></td><td class="end" data-num="2900">۲٬۹۰۰</td><td class="end" data-value="-1.63"><span class="chg down" data-num="1.63" data-fmt="pct2">۱٫۶۳٪</span></td><td class="end" data-value="4100000" data-num="4100000" data-fmt="compact">۴٫۱ میلیون</td><td class="end"><span data-num="2880">۲٬۸۸۰</span> – <span data-num="2962">۲٬۹۶۲</span></td><td class="spark-cell"><div data-chart="spark" data-values="2911,2924,3001,3012,2997,3013,2895,2938,2943,2894,2952,3036,2947,2900" style="--chart-1: var(--down)"></div></td><td class="end"><a class="btn btn-sm" href="dashboard.html" data-alt="Trade">معامله</a></td></tr>
+          <tr data-filter-item data-mkt="stock"><td><div class="sym"><span class="av" style="--c:#f2b441" aria-hidden="true">KH</span><div><b>KHF</b><small data-alt="Kooh Steel · metals">کوه‌فولاد · فلزات</small></div></div></td><td class="end" data-num="7687">۷٬۶۸۷</td><td class="end" data-value="-4.46"><span class="chg down" data-num="4.46" data-fmt="pct2">۴٫۴۶٪</span></td><td class="end" data-value="7300000" data-num="7300000" data-fmt="compact">۷٫۳ میلیون</td><td class="end"><span data-num="7650">۷٬۶۵۰</span> – <span data-num="8060">۸٬۰۶۰</span></td><td class="spark-cell"><div data-chart="spark" data-values="7464,7590,7600,7589,7465,7432,7566,7595,7493,7395,7765,7939,8046,7687" style="--chart-1: var(--down)"></div></td><td class="end"><a class="btn btn-sm" href="dashboard.html" data-alt="Trade">معامله</a></td></tr>
+        </tbody>
+      </table>
+      <p class="empty" data-filter-empty hidden data-alt="No symbols match.">نمادی پیدا نشد.</p>
+    </div>
+  </section>
+
+  <section class="container section" id="map" style="padding-block-start: 0">
+    <div class="sec-head">
+      <div><span class="eyebrow" data-alt="Market map">نقشهٔ بازار</span><h2 class="h1" data-alt="Today by sector, sized by value">امروز به تفکیک صنعت، به اندازهٔ ارزش</h2></div>
+      <div class="legend"><span style="--c: var(--up)" data-alt="Up">مثبت</span><span style="--c: var(--down)" data-alt="Down">منفی</span><span class="subtle" data-alt="Tile size = market value">اندازهٔ خانه = ارزش بازار</span></div>
+    </div>
+    <div class="heatmap" role="list" aria-label="نقشهٔ صنایع" data-alt-aria-label="Sector map">
+      <div class="t down" style="--w:3; --h:2; --i:.9" role="listitem"><b data-alt="Metals">فلزات اساسی</b><span data-num="2.8" data-fmt="pct1">۲٫۸٪</span></div>
+      <div class="t up" style="--w:2; --h:2; --i:.55" role="listitem"><b data-alt="Energy">انرژی</b><span data-num="1.6" data-fmt="pct1">۱٫۶٪</span></div>
+      <div class="t up" style="--w:2; --h:1; --i:.8" role="listitem"><b data-alt="Tech">فناوری</b><span data-num="2.4" data-fmt="pct1">۲٫۴٪</span></div>
+      <div class="t down" style="--w:1; --h:1; --i:.3" role="listitem"><b data-alt="Banks">بانک</b><span data-num="0.6" data-fmt="pct1">۰٫۶٪</span></div>
+      <div class="t up" style="--w:2; --h:1; --i:.25" role="listitem"><b data-alt="Pharma">دارویی</b><span data-num="0.7" data-fmt="pct1">۰٫۷٪</span></div>
+      <div class="t down" style="--w:1; --h:1; --i:.45" role="listitem"><b data-alt="Food">غذایی</b><span data-num="1.1" data-fmt="pct1">۱٫۱٪</span></div>
+      <div class="t down" style="--w:2; --h:1; --i:.6" role="listitem"><b data-alt="Shipping">حمل‌ونقل</b><span data-num="1.6" data-fmt="pct1">۱٫۶٪</span></div>
+      <div class="t up" style="--w:1; --h:1; --i:.15" role="listitem"><b data-alt="Cement">سیمان</b><span data-num="0.3" data-fmt="pct1">۰٫۳٪</span></div>
+      <div class="t down" style="--w:1; --h:1; --i:.35" role="listitem"><b data-alt="Retail">خرده‌فروشی</b><span data-num="1.4" data-fmt="pct1">۱٫۴٪</span></div>
+      <div class="t up" style="--w:2; --h:1; --i:.4" role="listitem"><b data-alt="Insurance">بیمه</b><span data-num="1.0" data-fmt="pct1">۱٫۰٪</span></div>
+      <div class="t down" style="--w:2; --h:1; --i:.2" role="listitem"><b data-alt="Textile">نساجی</b><span data-num="0.4" data-fmt="pct1">۰٫۴٪</span></div>
+    </div>
+  </section>
+
+  <section class="container section" style="padding-block-start: 0">
+    <div class="mosaic cols" style="--n:3; gap: 1px">
+      <div class="pane feature"><i class="icon-gauge" aria-hidden="true"></i><h3 class="h2" data-alt="Orders in 38 ms">سفارش در ۳۸ میلی‌ثانیه</h3><p class="muted small" data-alt="Limit, market and stop orders go straight to the matching engine, with a live queue position.">سفارش محدود، بازار و حد ضرر مستقیم به هستهٔ معاملات می‌رود؛ جایگاه شما در صف زنده نمایش داده می‌شود.</p></div>
+      <div class="pane feature"><i class="icon-bell-ring" aria-hidden="true"></i><h3 class="h2" data-alt="Alerts that fire on time">هشداری که به‌موقع برسد</h3><p class="muted small" data-alt="Price, volume and queue alerts by push, SMS or e-mail — evaluated on every tick, not every minute.">هشدار قیمت، حجم و صف با اعلان، پیامک یا ایمیل — روی هر تیک بررسی می‌شود، نه هر دقیقه.</p></div>
+      <div class="pane feature"><i class="icon-scale" aria-hidden="true"></i><h3 class="h2" data-alt="Fees, before you click">کارمزد، پیش از کلیک</h3><p class="muted small" data-alt="Every ticket shows the fee, tax and net amount as you type. No surprises on your statement.">هر برگهٔ سفارش در همان لحظه کارمزد، مالیات و مبلغ خالص را نشان می‌دهد. در صورت‌حساب غافلگیر نمی‌شوید.</p></div>
+    </div>
+  </section>
+
+  <section class="container section" id="fees" style="padding-block-start: 0">
+    <div class="sec-head"><div><span class="eyebrow" data-alt="Fees">کارمزدها</span><h2 class="h1" data-alt="Work out the cost of a trade">هزینهٔ یک معامله را حساب کنید</h2></div></div>
+    <div class="panel calc">
+      <div>
+        <div class="field"><label class="label" for="fee-amt" data-alt="Order value">ارزش سفارش</label><div class="affix"><input id="fee-amt" type="number" min="0" step="100000" value="50000000" inputmode="numeric"><span class="unit" data-alt="Toman">تومان</span></div></div>
+        <div class="field"><span class="label" data-alt="Side">سمت معامله</span>
+          <div class="seg" data-group="feeSide" role="group" aria-label="سمت" data-alt-aria-label="Side"><button type="button" data-value="buy" aria-pressed="true" data-alt="Buy">خرید</button><button type="button" data-value="sell" aria-pressed="false" data-alt="Sell">فروش</button></div></div>
+        <p class="tiny subtle" data-alt="Sample rates: buy 0.37%, sell 0.37% + 0.5% transfer tax.">نرخ‌های نمونه: خرید ۰٫۳۷٪، فروش ۰٫۳۷٪ به‌اضافهٔ ۰٫۵٪ مالیات نقل‌وانتقال.</p>
+      </div>
+      <div>
+        <dl id="fee-out">
+          <div><dt data-alt="Broker fee">کارمزد کارگزاری</dt><dd data-fee="fee" data-num="185000">۱۸۵٬۰۰۰</dd></div>
+          <div><dt data-alt="Tax">مالیات</dt><dd data-fee="tax" data-num="0">۰</dd></div>
+          <div class="total"><dt data-alt="You pay">پرداختی شما</dt><dd data-fee="total" data-num="50185000">۵۰٬۱۸۵٬۰۰۰</dd></div>
+        </dl>
+        <a class="btn btn-primary" href="#signup" data-alt="Start trading">شروع معامله</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section" id="signup" style="padding-block-start: 0">
+    <div class="signup">
+      <div class="stack" style="gap: var(--space-4)" id="faq">
+        <span class="eyebrow" data-alt="Open an account">افتتاح حساب</span>
+        <h2 class="h1" data-alt="Ten minutes, fully online">ده دقیقه، کاملاً آنلاین</h2>
+        <details class="faq" open><summary data-alt="What do I need?">چه چیزهایی لازم است؟</summary><p data-alt="A mobile number in your name and a bank card. Identity checks happen inside the app.">یک شمارهٔ همراه به نام خودتان و یک کارت بانکی. احراز هویت داخل اپ انجام می‌شود.</p></details>
+        <details class="faq"><summary data-alt="Is there a minimum deposit?">حداقل واریز دارد؟</summary><p data-alt="No. You can start with any amount; fees are per trade only.">نه. با هر مبلغی شروع کنید؛ کارمزد فقط برای هر معامله است.</p></details>
+        <details class="faq"><summary data-alt="Can I try it first?">اول می‌توانم امتحان کنم؟</summary><p data-alt="Yes — the demo desk uses sample data and fake money.">بله — میز نمونه با دادهٔ نمونه و پول مجازی کار می‌کند.</p></details>
+      </div>
+      <form class="panel" data-validate data-success="درخواست ثبت شد؛ کد تأیید پیامک شد." data-success-alt="Request received — we texted you a code.">
+        <h3 class="h2" data-alt="Create your account">ساخت حساب</h3>
+        <div class="field"><label class="label" for="su-phone" data-alt="Mobile number">شمارهٔ همراه</label><input class="input" id="su-phone" name="phone" type="tel" required pattern="0?9[0-9]{9}" dir="ltr" inputmode="tel" placeholder="09121234567" data-pattern-msg="یک شمارهٔ همراه ۱۱ رقمی" data-pattern-msg-alt="An 11-digit mobile number"></div>
+        <div class="field"><label class="label" for="su-mail" data-alt="Email (optional)">ایمیل (اختیاری)</label><input class="input" id="su-mail" name="email" type="email" dir="ltr" placeholder="you@example.com"></div>
+        <div class="field"><label class="label" for="su-exp" data-alt="Experience">تجربه</label><select class="select" id="su-exp" name="exp"><option value="new" data-alt="New to markets">تازه‌کار</option><option value="some" data-alt="Some trading">کمی معامله کرده‌ام</option><option value="pro" data-alt="Active trader">معامله‌گر فعال</option></select></div>
+        <label class="check"><input type="checkbox" name="risk" required><span data-alt="I understand that prices can fall as well as rise.">می‌دانم قیمت‌ها ممکن است پایین هم بیایند.</span></label>
+        <button class="btn btn-primary btn-lg btn-block" type="submit" data-alt="Send code">ارسال کد</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="container">
+    <div class="cols" style="--n:4">
+      <div class="stack"><a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"></span><span data-alt="Tarazoo">ترازو</span></a><p class="small" data-alt="A sample brokerage for the Tastefolio gallery.">یک کارگزاری نمونه برای گالری تیست‌فولیو.</p></div>
+      <div><h3 data-alt="Products">محصولات</h3><ul><li><a href="#markets" data-alt="Stocks">سهام</a></li><li><a href="#markets" data-alt="Gold">طلا</a></li><li><a href="#markets" data-alt="Funds">صندوق‌ها</a></li></ul></div>
+      <div><h3 data-alt="Tools">ابزارها</h3><ul><li><a href="dashboard.html" data-alt="Trading desk">میز معامله</a></li><li><a href="#map" data-alt="Market map">نقشهٔ بازار</a></li><li><a href="#fees" data-alt="Fee calculator">محاسبهٔ کارمزد</a></li></ul></div>
+      <div><h3 data-alt="Company">شرکت</h3><ul><li><a href="#faq" data-alt="Help center">مرکز راهنما</a></li><li><a href="#top" data-alt="Status">وضعیت سامانه</a></li><li><a href="#top" data-alt="Contact">تماس</a></li></ul></div>
+    </div>
+    <div class="disclaimer"><span data-alt="Sample data. Not investment advice.">داده‌ها نمونه‌اند و توصیهٔ سرمایه‌گذاری نیستند.</span><span data-alt="© 2026 Tarazoo">© ۱۴۰۵ ترازو</span></div>
+  </div>
+</footer>
+
+<script>
+  // fee calculator + gentle live ticks on the hero watchlist (off for reduced motion / screenshots)
+  (() => {
+    // the tape scrolls half its width, so it carries a hidden copy of its items
+    const track = document.querySelector('.tape-track');
+    track.append(...[...track.children].map((n) => { const c = n.cloneNode(true); c.setAttribute('aria-hidden', 'true'); return c; }));
+    const amt = document.getElementById('fee-amt');
+    const out = (k, v) => { const el = document.querySelector(`[data-fee="${k}"]`); el.dataset.num = v; el.textContent = window.tf ? tf.fmt(v) : v; };
+    const calc = () => {
+      const v = Math.max(0, Number(amt.value) || 0);
+      const sell = document.querySelector('[data-group="feeSide"] [aria-pressed="true"]')?.dataset.value === 'sell';
+      const fee = Math.round(v * 0.0037), tax = sell ? Math.round(v * 0.005) : 0;
+      out('fee', fee); out('tax', tax); out('total', sell ? v - fee - tax : v + fee);
+    };
+    amt.addEventListener('input', calc);
+    document.addEventListener('tf:change', calc);
+    document.addEventListener('tf:lang', calc);
+    document.addEventListener('tf:ready', () => {
+      calc();
+      if (tf.reduceMotion) return;
+      const cells = [...document.querySelectorAll('#hero-watch [data-live]')];
+      setInterval(() => {
+        const c = cells[Math.floor(Math.random() * cells.length)];
+        const v = Number(c.dataset.num), nv = Math.max(1, Math.round(v * (1 + (Math.random() - .5) * .004)));
+        if (nv === v) return;
+        c.dataset.num = nv; c.textContent = tf.fmt(nv);
+        c.classList.remove('flash-up', 'flash-down'); void c.offsetWidth;
+        c.classList.add(nv > v ? 'flash-up' : 'flash-down');
+      }, 1400);
+    });
+  })();
+</script>
+</body>
+</html>

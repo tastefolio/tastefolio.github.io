@@ -21,7 +21,7 @@
  *   Steps      [data-steps] > [data-step], [data-next], [data-prev], [data-step-indicator] > *
  *   When       [data-when="fieldName:value"] shown only while that field has that value
  *   Carousel   [data-carousel] > [data-track], [data-prev-slide], [data-next-slide]
- *   Charts     [data-chart="line|area|bar|stacked|spark|donut"] (see tf.chart below)
+ *   Charts     [data-chart="line|area|bar|stacked|spark|donut|candle"] (data-min/data-max fix the y range; candle: data-ohlc + optional data-volume)
  *   Palette    <dialog data-palette> with input + [data-palette-item]; opens with mod+K or [data-palette-open]
  *   Hotkeys    [data-hotkey="/"] focuses/clicks the element
  *   Reveal     [data-reveal] gets .is-in when visible; [data-countup] animates numbers
@@ -79,11 +79,11 @@
     en: { copied: 'Copied to clipboard', saved: 'Saved', required: 'This field is required.', email: 'Enter a valid email address.',
       url: 'Enter a valid URL.', short: 'Too short — at least {n} characters.', long: 'Too long — at most {n} characters.',
       pattern: 'Use the requested format.', min: 'Must be {n} or more.', max: 'Must be {n} or less.', number: 'Enter a number.',
-      sent: 'Done — submitted successfully.', gallery: 'Tastefolio', site: 'Site', dashboard: 'Dashboard', other: 'فارسی' },
+      sent: 'Done — submitted successfully.', o: 'Open', h: 'High', l: 'Low', c: 'Close', v: 'Volume', gallery: 'Tastefolio', site: 'Site', dashboard: 'Dashboard', other: 'فارسی' },
     fa: { copied: 'در کلیپ‌بورد کپی شد', saved: 'ذخیره شد', required: 'پر کردن این فیلد لازم است.', email: 'یک ایمیل معتبر وارد کنید.',
       url: 'یک نشانی معتبر وارد کنید.', short: 'کوتاه است — دست‌کم {n} نویسه.', long: 'بلند است — حداکثر {n} نویسه.',
       pattern: 'قالب خواسته‌شده را رعایت کنید.', min: 'باید {n} یا بیشتر باشد.', max: 'باید {n} یا کمتر باشد.', number: 'یک عدد وارد کنید.',
-      sent: 'انجام شد — با موفقیت ثبت شد.', gallery: 'تیست‌فولیو', site: 'سایت', dashboard: 'داشبورد', other: 'English' },
+      sent: 'انجام شد — با موفقیت ثبت شد.', o: 'باز', h: 'سقف', l: 'کف', c: 'پایانی', v: 'حجم', gallery: 'تیست‌فولیو', site: 'سایت', dashboard: 'داشبورد', other: 'English' },
   };
   tf.lang = () => (root.lang || 'en').slice(0, 2);
   tf.locale = () => LOCALES[tf.lang()] || tf.lang();
@@ -714,28 +714,40 @@
       return;
     }
 
-    const n = Math.max(...series.map((s) => s.values.length));
+    // candlesticks: data-ohlc='[[open,high,low,close],…]' (+ optional data-volume='[…]')
+    const candle = type === 'candle';
+    const ohlc = candle ? parseJSON(el.dataset.ohlc || '[]', []) : [];
+    const vol = candle ? parseJSON(el.dataset.volume || '[]', []) : [];
+    const n = candle ? ohlc.length : Math.max(...series.map((s) => s.values.length));
     const labels = labelsOf(el, n);
     const axis = type !== 'spark' && el.dataset.axis !== 'none';
     const stacked = type === 'stacked';
-    const maxRaw = stacked
-      ? Math.max(...Array.from({ length: n }, (_, i) => series.reduce((a, s) => a + (s.values[i] || 0), 0)))
-      : Math.max(...series.flatMap((s) => s.values));
-    const minRaw = Math.min(0, ...series.flatMap((s) => s.values));
-    const max = Number(el.dataset.max) || (type === 'spark' ? maxRaw : niceMax(maxRaw));
-    const min = type === 'spark' ? Math.min(...series.flatMap((s) => s.values)) : minRaw;
+    let max, min, ticks = Number(el.dataset.ticks || 4);
+    if (candle) {
+      const lo = Math.min(...ohlc.map((c) => c[2])), hi = Math.max(...ohlc.map((c) => c[1]));
+      const st = niceMax((hi - lo) / ticks || 1);
+      min = Math.floor(lo / st) * st;
+      max = Math.ceil(hi / st) * st;
+      ticks = Math.max(1, Math.round((max - min) / st));
+    } else {
+      const maxRaw = stacked
+        ? Math.max(...Array.from({ length: n }, (_, i) => series.reduce((a, s) => a + (s.values[i] || 0), 0)))
+        : Math.max(...series.flatMap((s) => s.values));
+      max = Number(el.dataset.max) || (type === 'spark' ? maxRaw : niceMax(maxRaw));
+      min = el.dataset.min !== undefined ? Number(el.dataset.min) : type === 'spark' ? Math.min(...series.flatMap((s) => s.values)) : Math.min(0, ...series.flatMap((s) => s.values));
+    }
     const pad = axis ? { t: 10, b: 26, s: Number(el.dataset.yWidth || 40), e: 8 } : { t: 3, b: 3, s: 2, e: 2 };
     const iw = W - pad.s - pad.e, ih = H - pad.t - pad.b;
-    const bars = type === 'bar' || stacked;
+    const bars = type === 'bar' || stacked || candle;
     const xAt = (i) => {
       const t = bars ? (i + 0.5) / n : (n === 1 ? 0.5 : i / (n - 1));
       return rtl ? W - pad.s - t * iw : pad.s + t * iw;
     };
-    const yAt = (v) => pad.t + ih - ((v - min) / (max - min || 1)) * ih;
+    const ihP = candle && vol.length ? ih * 0.76 : ih; // candles with volume keep the bottom band for volume bars
+    const yAt = (v) => pad.t + ihP - ((v - min) / (max - min || 1)) * ihP;
     let g = '';
     const left = rtl ? pad.e : pad.s, right = rtl ? W - pad.s : W - pad.e;
     if (axis) {
-      const ticks = Number(el.dataset.ticks || 4);
       for (let k = 0; k <= ticks; k++) {
         const v = min + ((max - min) * k) / ticks;
         const y = yAt(v);
@@ -750,7 +762,17 @@
       });
     }
     let marks = '';
-    if (bars) {
+    if (candle) {
+      const slot = iw / n, bw = Math.max(1, slot * (1 - Number(cssVar(el, '--chart-bar-gap', '0.32'))));
+      const maxV = vol.length ? Math.max(...vol) : 0;
+      ohlc.forEach(([o, h, l, c], i) => {
+        const x = xAt(i), up = c >= o, col = up ? 'var(--chart-up, var(--success))' : 'var(--chart-down, var(--danger))';
+        if (maxV) { const vh = (vol[i] / maxV) * ih * 0.2; marks += `<rect class="c-vol" x="${x - bw / 2}" y="${pad.t + ih - vh}" width="${bw}" height="${vh}" style="fill:${col}"/>`; }
+        marks += `<line class="c-wick" x1="${x}" x2="${x}" y1="${yAt(h)}" y2="${yAt(l)}" style="stroke:${col}"/>`;
+        const y1 = yAt(Math.max(o, c)), y2 = yAt(Math.min(o, c));
+        marks += `<rect class="c-candle ${up ? 'up' : 'down'}" x="${x - bw / 2}" y="${y1}" width="${bw}" height="${Math.max(1, y2 - y1)}" style="fill:${col};stroke:${col}"/>`;
+      });
+    } else if (bars) {
       const slot = iw / n;
       const gapRatio = Number(cssVar(el, '--chart-bar-gap', '0.32'));
       const bw = stacked ? slot * (1 - gapRatio) : (slot * (1 - gapRatio)) / series.length;
@@ -793,8 +815,16 @@
       for (let i = 0; i < n; i++) { const dd = Math.abs(xAt(i) - x); if (dd < bd) { bd = dd; best = i; } }
       const gx = xAt(best);
       gl.setAttribute('x1', gx); gl.setAttribute('x2', gx); gl.setAttribute('visibility', 'visible');
-      const top = Math.min(...series.map((s) => yAt(stacked ? series.reduce((a, ss) => a + (ss.values[best] || 0), 0) : s.values[best] || 0)));
-      tip.innerHTML = `<strong>${esc(labels[best] ?? '')}</strong>` + series.map((s) => `<span><i style="background:${s.color}"></i>${esc(s.name)} ${esc(tf.fmt(s.values[best], el.dataset.tipFmt || (fmt === 'compact' ? 'int' : fmt)))}</span>`).join('');
+      const tfmt = el.dataset.tipFmt || (fmt === 'compact' ? 'int' : fmt);
+      let top;
+      if (candle) {
+        const [o, h, l, c] = ohlc[best];
+        top = yAt(h);
+        tip.innerHTML = `<strong>${esc(labels[best] ?? '')}</strong>` + [['o', o], ['h', h], ['l', l], ['c', c]].map(([k, v]) => `<span>${esc(tf.t(k))} ${esc(tf.fmt(v, tfmt))}</span>`).join('') + (vol.length ? `<span>${esc(tf.t('v'))} ${esc(tf.fmt(vol[best], 'compact'))}</span>` : '');
+      } else {
+        top = Math.min(...series.map((s) => yAt(stacked ? series.reduce((a, ss) => a + (ss.values[best] || 0), 0) : s.values[best] || 0)));
+        tip.innerHTML = `<strong>${esc(labels[best] ?? '')}</strong>` + series.map((s) => `<span><i style="background:${s.color}"></i>${esc(s.name)} ${esc(tf.fmt(s.values[best], tfmt))}</span>`).join('');
+      }
       tip.hidden = false;
       tip.style.left = (gx / W) * 100 + '%';
       tip.style.top = (top / H) * r.height + 'px';
