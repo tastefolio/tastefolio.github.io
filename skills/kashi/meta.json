@@ -1,0 +1,34 @@
+{
+  "name": "Kashi",
+  "order": 14,
+  "category": "brand",
+  "mode": "light",
+  "density": "airy",
+  "persianFirst": true,
+  "tags": ["persian", "heritage", "ornamental", "symmetric", "hospitality", "culture"],
+  "tagline": {
+    "en": "Persian heritage — girih stars, pointed arches, tile friezes and Nastaliq titles on plaster ivory",
+    "fa": "میراث ایرانی — ستارهٔ گره، طاق جناغی، کتیبهٔ کاشی و عنوان نستعلیق روی گچ عاجی"
+  },
+  "summary": {
+    "en": "An ornamental, symmetric language rooted in Persian tilework: plaster-ivory grounds, lajevard (lapis) as the structural blue, firouzeh turquoise as the glaze for actions, saffron and pomegranate accents. Layouts are built on a central axis with a symmetric header, pointed-arch frames for imagery, recolorable girih star patterns and tile friezes between sections, double gilded frames with corner stars, cartouche labels and Nastaliq display type. The staff panel keeps it with a lajevard sidebar, framed KPI tiles, a floor plan of takhts and diamond-marked tabs.",
+    "fa": "زبانی تزئینی و قرینه، برگرفته از کاشی‌کاری ایرانی: زمینهٔ گچی عاجی، لاجوردی برای ساختار، فیروزه‌ای به‌عنوان لعاب اقدام‌ها، و زعفرانی و اناری برای تأکید. چیدمان روی محور مرکزی با سربرگ قرینه، قاب طاق جناغی برای تصویر، نقش گره ستاره‌ای و کتیبهٔ کاشی میان بخش‌ها، قاب دوخطی زرین با ستاره در گوشه‌ها، برچسب کارتوشی و تیتر نستعلیق. پنل کارکنان هم با نوار کناری لاجوردی، کاشی‌های آمار قاب‌دار، نقشهٔ تخت‌ها و تب‌های لوزی‌نشان همین حال را حفظ می‌کند."
+  },
+  "bestFor": {
+    "en": ["Restaurants, tea houses, hotels and hospitality", "Museums, festivals and cultural institutions", "Handicraft, carpet and heritage commerce", "Persian-first brands with a classical voice"],
+    "fa": ["رستوران، چایخانه، هتل و پذیرایی", "موزه، جشنواره و نهادهای فرهنگی", "فروش صنایع‌دستی، فرش و محصولات میراثی", "برندهای فارسی‌محور با لحن کلاسیک"]
+  },
+  "avoidFor": {
+    "en": ["Developer tools and data-dense consoles", "Minimal tech startups", "Content where ornament would feel like costume"],
+    "fa": ["ابزار توسعه‌دهنده و کنسول‌های پرداده", "استارتاپ‌های فناوری مینیمال", "محتوایی که تزئین در آن نمایشی و ساختگی به نظر برسد"]
+  },
+  "signature": {
+    "en": ["Symmetric compositions on a central axis; header nav | emblem | nav", "Pointed-arch masks with gilded frames for every image", "Girih star patterns and tile friezes as recolorable CSS masks", "Double gilded frames with saffron corner stars; cartouche labels", "Nastaliq display (Persian) / Cormorant (Latin) in lajevard", "Glazed buttons with an inner white line; diamond tab markers"],
+    "fa": ["چیدمان قرینه روی محور مرکزی؛ سربرگ ناوبری | نشان | ناوبری", "ماسک طاق جناغی با قاب زرین برای هر تصویر", "نقش گره و کتیبهٔ کاشی به شکل ماسک CSS قابل رنگ‌آمیزی", "قاب دوخطی زرین با ستارهٔ زعفرانی در گوشه‌ها؛ برچسب کارتوشی", "تیتر نستعلیق (فارسی) / کورمورانت (لاتین) به رنگ لاجوردی", "دکمه‌های لعابی با خط سفید درونی؛ نشانگر لوزی زیر تب"]
+  },
+  "swatches": ["#f5eedf", "#1d3f8f", "#0c7c7a", "#dc9a22", "#b3362d"],
+  "fonts": { "latin": "Cormorant Garamond + Alegreya Sans", "persian": "Gulzar (Nastaliq) + Vazirmatn", "mono": "system mono" },
+  "icons": "Phosphor (light) + inline line illustrations",
+  "brandTrials": ["1d3f8f", "8a3b8f", "2e7d4f", "b3362d"],
+  "demos": { "site": { "host": "firouzeh.example" }, "dashboard": { "host": "panel.firouzeh.example" } }
+}

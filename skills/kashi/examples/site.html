@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="site">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Firouzeh — tea house &amp; reading room">چایخانهٔ فیروزه — چای، شعر و کتاب</title>
+<meta name="description" content="چایخانه و کتاب‌خوانی فیروزه: منوی چای و دمنوش، شب‌های شعر و موسیقی، رزرو تخت." data-alt-content="Firouzeh tea house and reading room: teas and infusions, poetry and music nights, takht reservations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Gulzar&family=Vazirmatn:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/light/style.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .hero { position: relative; isolation: isolate; padding-block: var(--space-8) var(--space-9); overflow: hidden; }
+  .hero > .girih { --pattern-o: .055; --tile: 56px; z-index: -1; }
+  .hero-in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr) minmax(0, 1fr); gap: var(--space-7); align-items: center; }
+  .hero-text { display: grid; justify-items: center; text-align: center; gap: var(--space-5); }
+  .hero .arch-frame { aspect-ratio: 3 / 4.6; }
+  @media (max-width: 900px) {
+    .hero-in { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6) var(--space-5); }
+    .hero-text { grid-column: 1 / -1; grid-row: 1; }
+  }
+  .arch-art { position: relative; display: grid; place-items: center; background: var(--bg, var(--lajevard-deep)); color: var(--fg, #f5eedf); }
+  .arch-art .girih { --pattern: var(--pat, var(--saffron)); --pattern-o: .2; --tile: 34px; }
+  .arch-art svg { position: relative; inline-size: 48%; block-size: auto; aspect-ratio: 1; }
+  .menu-wrap { max-inline-size: 980px; margin-inline: auto; display: grid; gap: var(--space-6); }
+  .menu-wrap .framed { padding-block: var(--space-7); }
+  .events { --n: 3; row-gap: var(--space-7); }
+  .event { display: grid; gap: var(--space-3); justify-items: center; text-align: center; }
+  .event .arch-frame { inline-size: 100%; aspect-ratio: 5 / 4; }
+  .event .arch-art svg { inline-size: 34%; }
+  .event .when { font-size: var(--fs-sm); color: var(--gilt); font-weight: 700; }
+  .event p { color: var(--ink-2); font-size: var(--fs-sm); max-inline-size: 34ch; }
+  .story { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-8); align-items: center; }
+  .story .arch-frame { aspect-ratio: 3 / 4; max-inline-size: 420px; justify-self: center; inline-size: 100%; }
+  @media (max-width: 860px) { .story { grid-template-columns: minmax(0, 1fr); gap: var(--space-7); } }
+  .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-block: 1px solid var(--line-2); }
+  .facts > div { padding: var(--space-4) var(--space-2); text-align: center; display: grid; gap: 2px; }
+  .facts > div + div { border-inline-start: 1px solid var(--line); }
+  .facts b { font: 600 34px/1.1 var(--font-display); color: var(--lajevard); font-variant-numeric: lining-nums; }
+  :lang(fa) .facts b { font: 700 28px/1.5 var(--font-sans); }
+  .reserve { max-inline-size: 820px; margin-inline: auto; }
+  .reserve form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); }
+  .reserve .full { grid-column: 1 / -1; }
+  @media (max-width: 620px) { .reserve form { grid-template-columns: minmax(0, 1fr); } }
+  .seating { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-5); }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-estekan" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M23 20h18c0 7-5 9-5 16 0 5 5 7 5 12H23c0-5 5-7 5-12 0-7-5-9-5-16z"/><path d="M28 36h8c0 5 5 7 5 12H23c0-5 5-7 5-12z" fill="currentColor" fill-opacity=".35"/><ellipse cx="32" cy="51" rx="16" ry="3.2"/><path d="M28 15c-2-2 2-4 0-6M33 15c-2-2 2-4 0-6M38 15c-2-2 2-4 0-6"/></g></symbol>
+  <symbol id="i-anar" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M32 18c-11 0-18 8-18 18s8 17 18 17 18-7 18-17-7-18-18-18z"/><path d="M26 19l1-6 3 3 2-4 2 4 3-3 1 6"/><g fill="currentColor" stroke="none"><circle cx="26" cy="36" r="1.7"/><circle cx="32" cy="40" r="1.7"/><circle cx="38" cy="35" r="1.7"/><circle cx="30" cy="31" r="1.7"/><circle cx="36" cy="45" r="1.7"/><circle cx="28" cy="44" r="1.7"/></g></g></symbol>
+  <symbol id="i-setar" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M32 38c-7 0-10 6-10 11 0 6 5 9 10 9s10-3 10-9c0-5-3-11-10-11z"/><path d="M30.5 39V8h3v31"/><path d="M28 10h2.5M28 14h2.5M33.5 12H36M33.5 16H36M29 52h6M31 20h2M31 25h2M31 30h2"/></g></symbol>
+  <symbol id="i-book" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M10 18c8-3 16-3 22 2 6-5 14-5 22-2v30c-8-3-16-3-22 2-6-5-14-5-22-2z"/><path d="M32 20v30M15 25c5-1 9-1 13 1M15 31c5-1 9-1 13 1M36 26c4-2 8-2 13-1M36 32c4-2 8-2 13-1"/></g></symbol>
+  <symbol id="i-ghoori" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 30c0-6 6-10 14-10s14 4 14 10v6c0 8-6 14-14 14s-14-6-14-14z"/><path d="M46 32c5 0 8-4 10-8M18 34c-4 0-6 3-6 6s3 5 6 4M26 20c0-3 3-5 6-5s6 2 6 5M22 54h20M24 34l4 4 4-4 4 4 4-4"/><circle cx="32" cy="13" r="2"/></g></symbol>
+  <symbol id="i-nabat" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M32 6v52M32 18l5 4-5 4-5-4zM32 28l6 5-6 5-6-5zM32 40l5 4-5 4-5-4zM38 22l4 3-4 3M26 22l-4 3 4 3M39 33l4 3-4 3M25 33l-4 3 4 3"/></g></symbol>
+</svg>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<header class="site-head">
+  <div class="container">
+    <nav class="nav a" aria-label="بخش‌ها" data-alt-aria-label="Sections">
+      <a href="#menu" data-alt="Menu">منو</a>
+      <a href="#events" data-alt="Evenings">شب‌ها</a>
+      <a href="#story" data-alt="Our story">داستان ما</a>
+    </nav>
+    <button class="btn btn-ghost btn-icon menu-btn" type="button" data-toggle="#mnav" aria-controls="mnav" aria-expanded="false" aria-label="منو" data-alt-aria-label="Menu"><i class="ph-light ph-list" aria-hidden="true"></i></button>
+    <a class="emblem" href="#top" aria-label="فیروزه — خانه" data-alt-aria-label="Firouzeh — home">
+      <span class="mark" aria-hidden="true"><span class="star"></span><span class="star"></span></span>
+      <b data-alt="Firouzeh">فیروزه</b>
+      <small data-alt="Tea house · reading room">چایخانه · کتاب‌خوانی</small>
+    </a>
+    <div class="head-end">
+      <nav class="nav" aria-label="رزرو" data-alt-aria-label="Booking">
+        <a href="#reserve" aria-current="page" data-alt="Reserve">رزرو</a>
+        <a href="#visit" data-alt="Visit">نشانی</a>
+      </nav>
+      <div class="tools">
+        <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+        <button class="btn btn-ghost btn-icon btn-sm hide-sm" type="button" data-theme-toggle aria-label="تغییر پوسته" data-alt-aria-label="Toggle theme"><i class="ph-light ph-moon-stars" aria-hidden="true"></i></button>
+        <a class="btn btn-primary btn-sm hide-md" href="#reserve" data-alt="Book a takht">رزرو تخت</a>
+      </div>
+    </div>
+  </div>
+  <nav class="mnav" id="mnav" data-dismissable aria-label="منوی موبایل" data-alt-aria-label="Mobile menu">
+    <a href="#menu" data-alt="Menu">منو</a><a href="#events" data-alt="Evenings">شب‌ها</a><a href="#story" data-alt="Our story">داستان ما</a><a href="#reserve" data-alt="Reserve">رزرو</a><a href="#visit" data-alt="Visit">نشانی</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="girih" aria-hidden="true"></div>
+    <div class="container hero-in">
+      <div class="side-arch arch-frame" aria-hidden="true"><div class="arch arch-art" style="--bg: var(--brand)"><div class="girih"></div><svg><use href="#i-estekan"/></svg></div></div>
+      <div class="hero-text">
+        <span class="cartouche" data-alt="Since 2019 · Bagh Alley">از ۱۳۹۸ · کوچهٔ باغ</span>
+        <h1 class="display" data-alt="Tea, poetry &amp; an unhurried evening">چای، شعر و عصری بی‌عجله</h1>
+        <div class="ornament" aria-hidden="true"><span class="star"></span></div>
+        <p class="lead" data-alt="A tea house in an old courtyard: forty-two teas brewed in porcelain pots, a shelf of six hundred books, and poetry or setar every week.">چایخانه‌ای در حیاطی قدیمی: چهل‌ودو نوع چای که در قوری چینی دم می‌کشند، قفسه‌ای با ششصد کتاب، و هر هفته شب شعر یا سه‌تار.</p>
+        <div class="row center">
+          <a class="btn btn-primary btn-lg" href="#reserve" data-alt="Book a takht">رزرو تخت</a>
+          <a class="btn btn-lg" href="#menu" data-alt="See the menu">دیدن منو</a>
+        </div>
+      </div>
+      <div class="side-arch arch-frame" aria-hidden="true"><div class="arch arch-art"><div class="girih"></div><svg><use href="#i-book"/></svg></div></div>
+    </div>
+  </section>
+
+  <div class="frieze" aria-hidden="true"></div>
+
+  <section class="section" id="menu">
+    <div class="container menu-wrap">
+      <div class="section-head">
+        <span class="cartouche glaze" data-alt="Menu">منو</span>
+        <h2 class="h1" data-alt="From samovar to teapot">از سماور تا قوری</h2>
+        <p data-alt="Every tea is brewed to order and served with saffron rock candy. Prices include service.">هر چای به سفارش شما دم می‌کشد و با نبات زعفرانی سرو می‌شود. قیمت‌ها با احتساب خدمات است.</p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="دسته‌های منو" data-alt-aria-label="Menu sections">
+        <button role="tab" id="t-tea" aria-controls="p-tea" aria-selected="true" data-alt="Teas">چای‌ها</button>
+        <button role="tab" id="t-herb" aria-controls="p-herb" aria-selected="false" data-alt="Infusions">دمنوش‌ها</button>
+        <button role="tab" id="t-sweet" aria-controls="p-sweet" aria-selected="false" data-alt="Sweets">شیرینی‌ها</button>
+        <button role="tab" id="t-food" aria-controls="p-food" aria-selected="false" data-alt="Light meals">غذای سبک</button>
+      </div>
+      <div class="framed" role="tabpanel" id="p-tea" aria-labelledby="t-tea">
+        <ul class="menu-list cols" style="--n:2; row-gap: var(--space-5)">
+          <li><span><span data-alt="Lahijan black tea">چای سیاه لاهیجان</span><small data-alt="Porcelain pot, saffron rock candy">در قوری چینی، با نبات زعفرانی</small></span><span data-num="65000" data-fmt="toman">۶۵٬۰۰۰ تومان</span></li>
+          <li><span><span data-alt="Saffron &amp; cardamom">چای زعفران و هل</span><small data-alt="Our house blend since 2019">ترکیب ثابت خانه از ۱۳۹۸</small></span><span data-num="90000" data-fmt="toman">۹۰٬۰۰۰ تومان</span></li>
+          <li><span><span data-alt="Cinnamon &amp; ginger">چای دارچین و زنجبیل</span><small data-alt="Warming, a little spicy">گرم و کمی تند</small></span><span data-num="80000" data-fmt="toman">۸۰٬۰۰۰ تومان</span></li>
+          <li><span><span data-alt="Fuman green tea">چای سبز فومن</span><small data-alt="Brewed at 80°, two minutes">دم در ۸۰ درجه، دو دقیقه</small></span><span data-num="75000" data-fmt="toman">۷۵٬۰۰۰ تومان</span></li>
+        </ul>
+      </div>
+      <div class="framed" role="tabpanel" id="p-herb" aria-labelledby="t-herb" hidden>
+        <ul class="menu-list cols" style="--n:2; row-gap: var(--space-5)">
+          <li><span><span data-alt="Borage &amp; dried lime">گل‌گاوزبان و لیمو عمانی</span><small data-alt="Calming, sour finish">آرام‌بخش، با ته‌مزهٔ ترش</small></span><span data-num="85000" data-fmt="toman">۸۵٬۰۰۰ تومان</span></li>
+          <li><span><span data-alt="Orange blossom">بهارنارنج</span><small data-alt="Spring blossoms from Shiraz">شکوفه‌های بهاری شیراز</small></span><span data-num="80000" data-fmt="toman">۸۰٬۰۰۰ تومان</span></li>
+          <li><span><span data-alt="Lemon verbena &amp; mint">به‌لیمو و نعناع</span><small data-alt="Fresh leaves from our courtyard">برگ تازه از حیاط خودمان</small></span><span data-num="75000" data-fmt="toman">۷۵٬۰۰۰ تومان</span></li>
+          <li><span><span data-alt="Night valerian">دمنوش شب</span><small data-alt="Valerian, chamomile, honey">سنبل‌الطیب، بابونه، عسل</small></span><span data-num="85000" data-fmt="toman">۸۵٬۰۰۰ تومان</span></li>
+        </ul>
+      </div>
+      <div class="framed" role="tabpanel" id="p-sweet" aria-labelledby="t-sweet" hidden>
+        <ul class="menu-list cols" style="--n:2; row-gap: var(--space-5)">
+          <li><span><span data-alt="Yazdi baklava">باقلوای یزدی</span><small data-alt="Almond, cardamom, rose water">بادام، هل، گلاب</small></span><span data-num="110000" data-fmt="toman">۱۱۰٬۰۰۰ تومان</span></li>
+          <li><span><span data-alt="Rice-flour cookies">نان برنجی</span><small data-alt="With poppy seeds, baked daily">با خشخاش، پخت روز</small></span><span data-num="70000" data-fmt="toman">۷۰٬۰۰۰ تومان</span></li>
+          <li><span><span data-alt="Pistachio nougat">گز پسته‌ای</span><small data-alt="Isfahan, angelica-scented">اصفهان، با عطر گلپر</small></span><span data-num="95000" data-fmt="toman">۹۵٬۰۰۰ تومان</span></li>
+          <li><span><span data-alt="Saffron rice pudding">شله‌زرد</span><small data-alt="Cinnamon and slivered almonds">دارچین و خلال بادام</small></span><span data-num="85000" data-fmt="toman">۸۵٬۰۰۰ تومان</span></li>
+        </ul>
+      </div>
+      <div class="framed" role="tabpanel" id="p-food" aria-labelledby="t-food" hidden>
+        <ul class="menu-list cols" style="--n:2; row-gap: var(--space-5)">
+          <li><span><span data-alt="Kashk-e bademjan">کشک بادمجان</span><small data-alt="With fresh sangak bread">با نان سنگک تازه</small></span><span data-num="240000" data-fmt="toman">۲۴۰٬۰۰۰ تومان</span></li>
+          <li><span><span data-alt="Ash reshteh">آش رشته</span><small data-alt="Fried mint, onion and kashk">نعناداغ، پیازداغ، کشک</small></span><span data-num="190000" data-fmt="toman">۱۹۰٬۰۰۰ تومان</span></li>
+          <li><span><span data-alt="Bread, cheese &amp; herbs">نان و پنیر و سبزی</span><small data-alt="With walnuts and grapes in season">با گردو و انگور فصل</small></span><span data-num="140000" data-fmt="toman">۱۴۰٬۰۰۰ تومان</span></li>
+          <li><span><span data-alt="Lentil breakfast soup">عدسی</span><small data-alt="Until noon">تا ظهر</small></span><span data-num="120000" data-fmt="toman">۱۲۰٬۰۰۰ تومان</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="events" style="background: var(--surface); border-block: 1px solid var(--line)" data-filter-scope>
+    <div class="container">
+      <div class="section-head">
+        <span class="cartouche" data-alt="Evenings">شب‌ها</span>
+        <h2 class="h1" data-alt="Evenings at Firouzeh">شب‌های فیروزه</h2>
+        <p data-alt="Seats are limited to the courtyard takhts. Your tea is on us.">ظرفیت به تخت‌های حیاط محدود است. چای مهمان ما هستید.</p>
+        <div class="chips" data-group role="group" aria-label="نوع برنامه" data-alt-aria-label="Event type">
+          <button type="button" data-filter="kind" data-value="all" aria-pressed="true" data-alt="All">همه</button>
+          <button type="button" data-filter="kind" data-value="music" aria-pressed="false" data-alt="Music">موسیقی</button>
+          <button type="button" data-filter="kind" data-value="poetry" aria-pressed="false" data-alt="Poetry">شعر</button>
+          <button type="button" data-filter="kind" data-value="workshop" aria-pressed="false" data-alt="Workshops">کارگاه</button>
+        </div>
+      </div>
+      <div class="cols events">
+        <article class="event" data-filter-item data-kind="music">
+          <div class="arch-frame" aria-hidden="true"><div class="arch arch-art" style="--bg: var(--brand)"><div class="girih"></div><svg><use href="#i-setar"/></svg></div></div>
+          <p class="when" data-date="2026-10-22" data-fmt="long">۳۰ مهر ۱۴۰۵</p>
+          <h3 class="h2" data-alt="A night of setar">شب سه‌تار</h3>
+          <p data-alt="Improvisations in Homayoun and Bayat-e Tork, played by candlelight in the courtyard.">بداهه‌نوازی در همایون و بیات ترک، زیر نور شمع در حیاط.</p>
+          <div class="row center"><span class="badge saffron" data-alt="6 seats left">۶ جای خالی</span><button class="btn btn-sm" type="button" data-toast="جای شما نگه داشته شد" data-toast-alt="Your seat is held" data-alt="Hold a seat">نگه‌داشتن جا</button></div>
+        </article>
+        <article class="event" data-filter-item data-kind="poetry">
+          <div class="arch-frame" aria-hidden="true"><div class="arch arch-art"><div class="girih"></div><svg><use href="#i-book"/></svg></div></div>
+          <p class="when" data-date="2026-10-24" data-fmt="long">۲ آبان ۱۴۰۵</p>
+          <h3 class="h2" data-alt="New poetry night">شب شعر نو</h3>
+          <p data-alt="Open mic for young poets; bring one poem and one question.">تریبون آزاد برای شاعران جوان؛ یک شعر و یک پرسش بیاورید.</p>
+          <div class="row center"><span class="badge glaze" data-alt="Free">رایگان</span><button class="btn btn-sm" type="button" data-toast="جای شما نگه داشته شد" data-toast-alt="Your seat is held" data-alt="Hold a seat">نگه‌داشتن جا</button></div>
+        </article>
+        <article class="event" data-filter-item data-kind="workshop">
+          <div class="arch-frame" aria-hidden="true"><div class="arch arch-art" style="--bg: var(--saffron); --fg: #2a1d05; --pat: var(--lajevard-deep)"><div class="girih"></div><svg><use href="#i-ghoori"/></svg></div></div>
+          <p class="when" data-date="2026-10-29" data-fmt="long">۷ آبان ۱۴۰۵</p>
+          <h3 class="h2" data-alt="The art of brewing">کارگاه دم‌آوری</h3>
+          <p data-alt="Water, heat and time: brew five teas side by side and taste the difference.">آب، حرارت و زمان: پنج چای را کنار هم دم کنید و تفاوت را بچشید.</p>
+          <div class="row center"><span class="badge anar" data-alt="Full">تکمیل</span><button class="btn btn-sm" type="button" data-toast="در فهرست انتظار قرار گرفتید" data-toast-alt="You are on the waitlist" data-alt="Join waitlist">فهرست انتظار</button></div>
+        </article>
+        <article class="event" data-filter-item data-kind="workshop">
+          <div class="arch-frame" aria-hidden="true"><div class="arch arch-art" style="--bg: var(--brand-strong)"><div class="girih"></div><svg><use href="#i-nabat"/></svg></div></div>
+          <p class="when" data-date="2026-11-05" data-fmt="long">۱۴ آبان ۱۴۰۵</p>
+          <h3 class="h2" data-alt="Rock candy workshop">کارگاه نبات‌سازی</h3>
+          <p data-alt="Grow saffron rock candy at home; each guest takes a jar.">نبات زعفرانی را در خانه پرورش دهید؛ هر مهمان یک شیشه می‌برد.</p>
+          <div class="row center"><span class="badge saffron" data-alt="9 seats left">۹ جای خالی</span><button class="btn btn-sm" type="button" data-toast="جای شما نگه داشته شد" data-toast-alt="Your seat is held" data-alt="Hold a seat">نگه‌داشتن جا</button></div>
+        </article>
+        <article class="event" data-filter-item data-kind="music">
+          <div class="arch-frame" aria-hidden="true"><div class="arch arch-art" style="--bg: var(--lajevard)"><div class="girih"></div><svg><use href="#i-estekan"/></svg></div></div>
+          <p class="when" data-date="2026-11-12" data-fmt="long">۲۱ آبان ۱۴۰۵</p>
+          <h3 class="h2" data-alt="Song &amp; daf">آواز و دف</h3>
+          <p data-alt="A small ensemble, old songs from Kurdistan and Khorasan.">گروهی کوچک، با ترانه‌های قدیمی کردستان و خراسان.</p>
+          <div class="row center"><span class="badge saffron" data-alt="14 seats left">۱۴ جای خالی</span><button class="btn btn-sm" type="button" data-toast="جای شما نگه داشته شد" data-toast-alt="Your seat is held" data-alt="Hold a seat">نگه‌داشتن جا</button></div>
+        </article>
+        <article class="event" data-filter-item data-kind="poetry">
+          <div class="arch-frame" aria-hidden="true"><div class="arch arch-art" style="--bg: var(--anar)"><div class="girih"></div><svg><use href="#i-anar"/></svg></div></div>
+          <p class="when" data-date="2026-12-21" data-fmt="long">۳۰ آذر ۱۴۰۵</p>
+          <h3 class="h2" data-alt="Yalda night">شب یلدا</h3>
+          <p data-alt="The longest night: pomegranates, divination by verse and stories until midnight.">بلندترین شب: انار، فال و قصه تا نیمه‌شب.</p>
+          <div class="row center"><span class="badge lajevard" data-alt="Booking opens Nov 1">رزرو از ۱۰ آبان</span><button class="btn btn-sm" type="button" data-toast="یادآوری تنظیم شد" data-toast-alt="Reminder set" data-alt="Remind me">یادآوری</button></div>
+        </article>
+      </div>
+      <p class="empty" data-filter-empty hidden data-alt="No evenings in this category yet.">هنوز برنامه‌ای در این دسته نیست.</p>
+    </div>
+  </section>
+
+  <section class="section" id="story">
+    <div class="container story">
+      <div class="arch-frame" aria-hidden="true"><div class="arch arch-art" style="--bg: var(--lajevard-deep)"><div class="girih"></div><svg><use href="#i-ghoori"/></svg></div></div>
+      <div class="stack" style="gap: var(--space-5)">
+        <span class="eyebrow" data-alt="Our story">داستان ما</span>
+        <h2 class="h1" data-alt="A courtyard that waited thirty years">حیاطی که سی سال منتظر ماند</h2>
+        <p class="muted" data-alt="The house in Bagh Alley was closed for three decades. We kept its tiles, its pool and its old quince tree, and filled the rooms with books and the courtyard with takhts.">خانهٔ کوچهٔ باغ سه دهه بسته بود. کاشی‌ها، حوض و درخت بِهِ پیرش را نگه داشتیم؛ اتاق‌ها را با کتاب پر کردیم و حیاط را با تخت.</p>
+        <blockquote class="verse" data-alt="When the tea is brewing, so is the conversation.">چای که دم بکشد، گفت‌وگو هم دم می‌کشد.</blockquote>
+        <div class="facts">
+          <div><b data-num="42">۴۲</b><span class="small muted" data-alt="kinds of tea">نوع چای</span></div>
+          <div><b data-num="600">۶۰۰</b><span class="small muted" data-alt="books on the shelf">کتاب در قفسه</span></div>
+          <div><b data-num="310">۳۱۰</b><span class="small muted" data-alt="evenings held">شب برگزارشده</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="frieze" aria-hidden="true"></div>
+
+  <section class="section" id="reserve">
+    <div class="container reserve">
+      <div class="section-head">
+        <span class="cartouche glaze" data-alt="Reserve">رزرو</span>
+        <h2 class="h1" data-alt="Book a takht in the courtyard">یک تخت در حیاط رزرو کنید</h2>
+        <p data-alt="We hold your takht for twenty minutes past the booked time. Groups larger than eight, please call.">تخت شما تا بیست دقیقه پس از ساعت رزرو نگه داشته می‌شود. برای گروه‌های بیش از هشت نفر تماس بگیرید.</p>
+      </div>
+      <div class="framed">
+        <form data-validate data-success="رزرو شما ثبت شد؛ پیامک تأیید به‌زودی می‌رسد." data-success-alt="Your takht is booked — a confirmation text is on its way.">
+          <div class="field"><label class="label" for="r-name" data-alt="Full name">نام و نام خانوادگی</label><input class="input" id="r-name" name="name" required minlength="3" autocomplete="name"></div>
+          <div class="field"><label class="label" for="r-phone" data-alt="Mobile number">شمارهٔ همراه</label><input class="input" id="r-phone" name="phone" type="tel" required pattern="0?9[0-9]{9}" inputmode="tel" dir="ltr" placeholder="09121234567" data-pattern-msg="یک شمارهٔ همراه ۱۱ رقمی مثل ۰۹۱۲۱۲۳۴۵۶۷" data-pattern-msg-alt="An 11-digit mobile number, e.g. 09121234567"><span class="hint" data-alt="Only for the confirmation text">فقط برای پیامک تأیید</span></div>
+          <div class="field"><label class="label" for="r-date" data-alt="Date">تاریخ</label><input class="input" id="r-date" name="date" type="date" required min="2026-10-17" value="2026-10-22"></div>
+          <div class="field"><label class="label" for="r-time" data-alt="Time">ساعت</label>
+            <select class="select" id="r-time" name="time"><option value="16" data-alt="16:00">۱۶:۰۰</option><option value="17" data-alt="17:00">۱۷:۰۰</option><option value="18" selected data-alt="18:00">۱۸:۰۰</option><option value="19" data-alt="19:00">۱۹:۰۰</option><option value="20" data-alt="20:00">۲۰:۰۰</option><option value="21" data-alt="21:00">۲۱:۰۰</option></select></div>
+          <div class="field"><span class="label" id="l-guests" data-alt="Guests">تعداد مهمان</span>
+            <div class="qty" data-qty><button type="button" data-step="-1" aria-label="کمتر" data-alt-aria-label="Fewer">−</button><input type="number" name="guests" value="2" min="1" max="8" aria-labelledby="l-guests"><button type="button" data-step="1" aria-label="بیشتر" data-alt-aria-label="More">+</button></div></div>
+          <fieldset class="field" style="border:0; padding:0; margin:0"><legend class="label" style="margin-block-end: 6px" data-alt="Where would you like to sit?">کجا بنشینید؟</legend>
+            <div class="seating">
+              <label class="check"><input type="radio" name="seat" value="yard" checked><span data-alt="Courtyard takht">تخت حیاط</span></label>
+              <label class="check"><input type="radio" name="seat" value="hall"><span data-alt="Book hall">تالار کتاب</span></label>
+              <label class="check"><input type="radio" name="seat" value="roof"><span data-alt="Balcony">بالکن</span></label>
+            </div></fieldset>
+          <div class="field full"><label class="label" for="r-note" data-alt="Notes (optional)">یادداشت (اختیاری)</label><textarea class="textarea" id="r-note" name="note" placeholder="مثلاً تولد، یا صندلی برای سالمند" data-alt-placeholder="A birthday, a chair for an elder, an allergy…"></textarea></div>
+          <label class="check full"><input type="checkbox" name="sms" checked><span data-alt="Text me about Firouzeh evenings">برنامه‌های شب‌های فیروزه را پیامک کنید</span></label>
+          <div class="full row center"><button class="btn btn-primary btn-lg" type="submit" data-alt="Confirm booking">ثبت رزرو</button></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot" id="visit">
+  <div class="girih" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cols" style="--n:4">
+      <div class="stack" style="justify-items: start">
+        <a class="emblem" href="#top"><span class="mark" aria-hidden="true"><span class="star"></span><span class="star"></span></span><b data-alt="Firouzeh">فیروزه</b><small data-alt="Tea house · reading room">چایخانه · کتاب‌خوانی</small></a>
+      </div>
+      <div><h3 data-alt="Address">نشانی</h3><p class="small" data-alt="No. 14, Bagh Alley, Old Quarter">کوچهٔ باغ، پلاک ۱۴، محلهٔ قدیم</p></div>
+      <div><h3 data-alt="Hours">ساعت‌ها</h3><ul><li data-alt="Sat–Wed · 10:00–22:00">شنبه تا چهارشنبه · ۱۰ تا ۲۲</li><li data-alt="Thu–Fri · 10:00–24:00">پنجشنبه و جمعه · ۱۰ تا ۲۴</li></ul></div>
+      <div><h3 data-alt="Elsewhere">جای دیگر</h3><ul><li><a href="dashboard.html" data-alt="Staff panel">پنل کارکنان</a></li><li><a href="#events" data-alt="Event calendar">تقویم برنامه‌ها</a></li><li><a href="#menu" data-alt="Gift boxes">جعبهٔ هدیه</a></li></ul></div>
+    </div>
+    <div class="foot-base"><span data-alt="© 2026 Firouzeh tea house">© ۱۴۰۵ چایخانهٔ فیروزه</span><span data-alt="Tiles kept, tea brewed, books lent.">کاشی‌ها حفظ شد، چای دم کشید، کتاب امانت رفت.</span></div>
+  </div>
+</footer>
+</body>
+</html>

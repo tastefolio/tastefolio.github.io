@@ -126,6 +126,15 @@
       ]
     },
     {
+      "name": "kashi",
+      "description": "Tastefolio design language — Persian heritage — girih stars, pointed arches, tile friezes and Nastaliq titles on plaster ivory",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/kashi"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -143,7 +152,8 @@
         "./skills/broadsheet",
         "./skills/stamp",
         "./skills/raster",
-        "./skills/teletype"
+        "./skills/teletype",
+        "./skills/kashi"
       ]
     }
   ]

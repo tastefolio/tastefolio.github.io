@@ -1,0 +1,154 @@
+/* Kashi — design tokens (Tastefolio). Persian heritage: plaster ivory, lajevard (lapis) structure, firouzeh (turquoise)
+   as the brand glaze, saffron and pomegranate accents, girih star patterns, pointed arches, Nastaliq display. */
+:root {
+  --canvas: #f5eedf;          /* plaster ivory */
+  --surface: #fbf7ee;
+  --surface-2: #efe5d0;
+  --surface-3: #e4d6b9;
+  --surface-ink: #13285c;     /* lajevard night — bands, sidebar, footer */
+  --overlay: rgba(12, 20, 46, .58);
+
+  --ink: #1b1d33;
+  --ink-2: #4a4a5e;
+  --ink-3: #75707c;
+  --ink-inverse: #fbf7ee;
+
+  --line: #dfd1b3;
+  --line-2: #c5ae84;           /* gilded rule */
+
+  --brand: #0c7c7a;            /* firouzeh glaze — primary actions, active states */
+  --brand-ink: #ffffff;
+  --brand-soft: color-mix(in oklab, var(--brand) 13%, #fbf7ee);
+  --brand-strong: color-mix(in oklab, var(--brand) 72%, #000);
+  --lajevard: #1d3f8f;         /* structural blue: headings, bands, frames */
+  --lajevard-deep: #13285c;
+  --saffron: #dc9a22;          /* ornament highlights, stars, "reserved" */
+  --anar: #b3362d;             /* pomegranate — alerts, price emphasis */
+  --gilt: #b8902f;
+  --focus: var(--lajevard);
+
+  --success: #3c7a37;
+  --success-soft: #e3eedb;
+  --warning: #a8670d;
+  --warning-soft: #f8e9cc;
+  --danger: var(--anar);
+  --danger-soft: #f6dfda;
+  --info: var(--lajevard);
+  --info-soft: #e0e6f4;
+
+  --pattern: var(--lajevard);  /* girih line color on light grounds */
+
+  --chart-1: var(--brand);
+  --chart-2: var(--lajevard);
+  --chart-3: var(--saffron);
+  --chart-4: var(--anar);
+  --chart-5: #6c8a35;
+  --chart-6: #7d5a96;
+  --chart-grid: #e6dac1;
+  --chart-axis: var(--ink-3);
+  --chart-curve: smooth;
+  --chart-stroke: 2;
+  --chart-area: .16;
+  --chart-radius: 4;
+  --chart-bar-gap: .32;
+  --chart-donut: 20;
+  --chart-gap: 3;
+  --chart-dots: 1;
+
+  --font-sans: "Alegreya Sans", "Vazirmatn", system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", "Gulzar", Georgia, serif;
+  --font-nastaliq: "Gulzar", "Noto Nastaliq Urdu", "Vazirmatn", serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --fs-xs: 12px;
+  --fs-sm: 14px;
+  --fs-md: 17px;
+  --fs-lg: 20px;
+  --fs-xl: 26px;
+  --fs-2xl: 34px;
+  --fs-3xl: 46px;
+  --fs-display: clamp(46px, 7vw, 100px);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --fw-display: 600;
+  --lh-tight: 1.02;
+  --lh-snug: 1.25;
+  --lh-body: 1.6;
+  --tracking-display: -.01em;
+  --tracking-caps: .16em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 72px;
+  --space-9: 104px;
+  --space-10: 144px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+  --border-w: 1px;
+  --shadow-1: 0 1px 2px rgba(70, 48, 12, .08);
+  --shadow-2: 0 2px 4px rgba(70, 48, 12, .06), 0 14px 30px -14px rgba(70, 48, 12, .28);
+  --shadow-3: 0 30px 70px -20px rgba(19, 40, 92, .45);
+
+  --container: 1200px;
+  --gutter: clamp(18px, 4vw, 40px);
+  --control-h: 42px;
+  --control-h-lg: 52px;
+
+  --ease: cubic-bezier(.3, .7, .2, 1);
+  --dur-1: 160ms;
+  --dur-2: 280ms;
+  --dur-3: 520ms;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  /* "lajevard night": deep lapis ground, glaze stays luminous */
+  --canvas: #0e1631;
+  --surface: #142047;
+  --surface-2: #1a2857;
+  --surface-3: #233369;
+  --surface-ink: #08102a;
+  --overlay: rgba(4, 8, 22, .7);
+  --ink: #f3ead6;
+  --ink-2: #c9c0ad;
+  --ink-3: #9590a0;
+  --ink-inverse: #0e1631;
+  --line: rgba(222, 196, 140, .18);
+  --line-2: rgba(222, 196, 140, .38);
+  --brand: #37bdb6;
+  --brand-ink: #062322;
+  --brand-soft: color-mix(in oklab, var(--brand) 18%, transparent);
+  --lajevard: #8fb0f2;
+  --saffron: #f0b545;
+  --anar: #ef6b5f;
+  --focus: var(--saffron);
+  --success: #8ccf7e;
+  --success-soft: rgba(140, 207, 126, .15);
+  --warning: #f0b545;
+  --warning-soft: rgba(240, 181, 69, .15);
+  --danger-soft: rgba(239, 107, 95, .16);
+  --info-soft: rgba(143, 176, 242, .16);
+  --pattern: var(--saffron);
+  --chart-grid: rgba(222, 196, 140, .14);
+  --shadow-2: 0 18px 40px -18px rgba(0, 0, 0, .6);
+  color-scheme: dark;
+}
+
+:root:lang(fa) {
+  --font-sans: "Vazirmatn", "Alegreya Sans", Tahoma, sans-serif;
+  --font-display: "Gulzar", "Noto Nastaliq Urdu", "Vazirmatn", serif;
+  --fs-md: 16px;
+  --fs-display: clamp(40px, 5.6vw, 80px);
+  --lh-tight: 1.9;             /* Nastaliq needs room for its descending baseline */
+  --lh-snug: 1.7;
+  --lh-body: 1.95;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+}

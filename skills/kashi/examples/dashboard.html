@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="dashboard">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Firouzeh · staff panel">پنل کارکنان · فیروزه</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Gulzar&family=Vazirmatn:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/light/style.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .split { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-6); }
+  .split.charts { grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); }
+  @media (max-width: 1100px) { .split, .split.charts { grid-template-columns: minmax(0, 1fr); } }
+  .framed .h3 { color: var(--lajevard); }
+  .zone { font-size: var(--fs-xs); font-weight: 700; color: var(--ink-3); margin-block: var(--space-4) var(--space-2); }
+  .zone:first-of-type { margin-block-start: 0; }
+  .toolbar { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; margin-block-end: var(--space-4); }
+  .toolbar .input { inline-size: min(100%, 280px); min-block-size: 38px; }
+  .actions { display: flex; gap: 4px; justify-content: flex-end; }
+  .stock { inline-size: 120px; }
+  .set-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); }
+  @media (max-width: 700px) { .set-grid { grid-template-columns: minmax(0, 1fr); } }
+  .set-row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding-block: 10px; border-block-end: 1px solid var(--line); }
+  .set-row:last-child { border: 0; }
+  .set-row small { display: block; color: var(--ink-3); font-size: var(--fs-xs); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<div class="shell">
+  <aside class="side" id="side" data-dismissable aria-label="ناوبری پنل" data-alt-aria-label="Panel navigation">
+    <div class="girih" aria-hidden="true"></div>
+    <a class="emblem" href="site.html"><span class="mark" aria-hidden="true"><span class="star"></span><span class="star"></span></span><b data-alt="Firouzeh">فیروزه</b><small data-alt="Staff panel">پنل کارکنان</small></a>
+    <p class="side-label" data-alt="Today's work">کار امروز</p>
+    <div class="side-nav" role="tablist" aria-orientation="vertical" aria-label="بخش‌ها" data-alt-aria-label="Sections">
+      <button role="tab" id="t-desk" aria-controls="p-desk" aria-selected="true"><i class="ph-light ph-squares-four" aria-hidden="true"></i><span data-alt="Front desk">پیشخوان</span></button>
+      <button role="tab" id="t-res" aria-controls="p-res" aria-selected="false"><i class="ph-light ph-calendar-check" aria-hidden="true"></i><span data-alt="Reservations">رزروها</span><span class="count" data-num="10">۱۰</span></button>
+      <button role="tab" id="t-menu" aria-controls="p-menu" aria-selected="false"><i class="ph-light ph-coffee" aria-hidden="true"></i><span data-alt="Menu &amp; stock">منو و انبار</span></button>
+      <button role="tab" id="t-set" aria-controls="p-set" aria-selected="false"><i class="ph-light ph-gear-six" aria-hidden="true"></i><span data-alt="Settings">تنظیمات</span></button>
+    </div>
+    <div class="side-foot">
+      <div class="ornament" aria-hidden="true"><span class="star"></span></div>
+      <p data-alt="Evening shift · Negar &amp; Sina">شیفت عصر · نگار و سینا</p>
+      <button class="btn btn-sm" type="button" data-toast="صندوق بسته شد؛ گزارش برای مدیر ارسال شد" data-toast-alt="Till closed; report sent to the manager" style="background: transparent; color: #efe6d2; border-color: rgba(222,196,140,.4)" data-alt="Close the till">بستن صندوق</button>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="app-head">
+      <button class="btn btn-ghost btn-icon side-toggle" type="button" data-toggle="#side" aria-controls="side" aria-expanded="false" aria-label="باز کردن منو" data-alt-aria-label="Open menu"><i class="ph-light ph-list" aria-hidden="true"></i></button>
+      <div>
+        <p class="eyebrow" data-date="2026-10-16" data-fmt="long">۲۴ مهر ۱۴۰۵</p>
+        <h1 class="h1" data-alt="Good evening, Negar">عصر بخیر، نگار</h1>
+      </div>
+      <div class="tools">
+        <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+        <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="تغییر پوسته" data-alt-aria-label="Toggle theme"><i class="ph-light ph-moon-stars" aria-hidden="true"></i></button>
+        <button class="btn btn-primary" type="button" data-dialog="#new-res"><i class="ph-light ph-plus" aria-hidden="true"></i><span data-alt="New booking">رزرو تازه</span></button>
+      </div>
+    </header>
+
+    <main id="main" class="app-body">
+      <!-- ============================================================ front desk -->
+      <section role="tabpanel" id="p-desk" aria-labelledby="t-desk" class="stack" style="gap: var(--space-6)">
+        <div class="kpis">
+          <div class="framed kpi"><span class="small muted" data-alt="Guests today">مهمان امروز</span><span class="value" data-num="184">۱۸۴</span><span class="delta up" data-alt="+12% vs last Thursday">۱۲٪+ نسبت به پنجشنبهٔ قبل</span></div>
+          <div class="framed kpi"><span class="small muted" data-alt="Sales today (Toman)">فروش امروز (تومان)</span><span class="value" data-num="24600000" data-fmt="compact">۲۴٫۶ میلیون</span><span class="delta up" data-alt="+8% vs average">۸٪+ نسبت به میانگین</span></div>
+          <div class="framed kpi"><span class="small muted" data-alt="Average stay (min)">میانگین ماندن (دقیقه)</span><span class="value" data-num="74">۷۴</span><span class="delta down" data-alt="−6 min vs last week">۶ دقیقه کمتر از هفتهٔ قبل</span></div>
+          <div class="framed kpi"><span class="small muted" data-alt="Guest rating">امتیاز مهمانان</span><span class="value"><span data-num="4.8" data-fmt="dec1">۴٫۸</span></span><span class="delta subtle" data-alt="from 62 reviews">از ۶۲ نظر</span></div>
+        </div>
+
+        <div class="split">
+          <div class="framed">
+            <div class="panel-head"><h2 class="h3" data-alt="Floor plan">نقشهٔ تخت‌ها</h2>
+              <div class="legend"><span style="--c: var(--surface-3)" data-alt="Free">آزاد</span><span style="--c: var(--saffron)" data-alt="Reserved">رزرو</span><span style="--c: var(--brand)" data-alt="Seated">نشسته</span><span style="--c: var(--anar)" data-alt="Wants the bill">صورت‌حساب</span></div></div>
+            <p class="zone" data-alt="Courtyard">حیاط</p>
+            <div class="floor">
+              <button class="takht seated" type="button" data-dialog="#takht" aria-label="تخت ۱ — نشسته، ۴ نفر از ۱۷:۴۰" data-alt-aria-label="Takht 1 — seated, 4 guests since 17:40"><b data-alt="T1">ت۱</b><small data-alt="4 · 17:40">۴ · ۱۷:۴۰</small></button>
+              <button class="takht seated" type="button" data-dialog="#takht" aria-label="تخت ۲ — نشسته، ۲ نفر از ۱۸:۰۵" data-alt-aria-label="Takht 2 — seated, 2 guests since 18:05"><b data-alt="T2">ت۲</b><small data-alt="2 · 18:05">۲ · ۱۸:۰۵</small></button>
+              <button class="takht bill" type="button" data-dialog="#takht" aria-label="تخت ۳ — درخواست صورت‌حساب، ۶ نفر" data-alt-aria-label="Takht 3 — wants the bill, 6 guests"><b data-alt="T3">ت۳</b><small data-alt="6 · bill">۶ · حساب</small></button>
+              <button class="takht reserved" type="button" data-dialog="#takht" aria-label="تخت ۴ — رزرو برای ساعت ۱۹:۰۰، ۴ نفر" data-alt-aria-label="Takht 4 — reserved for 19:00, 4 guests"><b data-alt="T4">ت۴</b><small data-alt="19:00">۱۹:۰۰</small></button>
+              <button class="takht" type="button" data-dialog="#takht" aria-label="تخت ۵ — آزاد" data-alt-aria-label="Takht 5 — free"><b data-alt="T5">ت۵</b><small data-alt="free">آزاد</small></button>
+              <button class="takht seated" type="button" data-dialog="#takht" aria-label="تخت ۶ — نشسته، ۳ نفر از ۱۸:۲۰" data-alt-aria-label="Takht 6 — seated, 3 guests since 18:20"><b data-alt="T6">ت۶</b><small data-alt="3 · 18:20">۳ · ۱۸:۲۰</small></button>
+              <button class="takht reserved" type="button" data-dialog="#takht" aria-label="تخت ۷ — رزرو برای ساعت ۲۰:۳۰، ۸ نفر" data-alt-aria-label="Takht 7 — reserved for 20:30, 8 guests"><b data-alt="T7">ت۷</b><small data-alt="20:30">۲۰:۳۰</small></button>
+              <button class="takht" type="button" data-dialog="#takht" aria-label="تخت ۸ — آزاد" data-alt-aria-label="Takht 8 — free"><b data-alt="T8">ت۸</b><small data-alt="free">آزاد</small></button>
+              <button class="takht seated wide" type="button" data-dialog="#takht" aria-label="تخت حوض — نشسته، ۸ نفر از ۱۷:۱۵" data-alt-aria-label="Pool takht — seated, 8 guests since 17:15"><b data-alt="Pool takht">تخت حوض</b><small data-alt="8 · 17:15">۸ · ۱۷:۱۵</small></button>
+            </div>
+            <p class="zone" data-alt="Book hall">تالار کتاب</p>
+            <div class="floor">
+              <button class="takht round seated" type="button" data-dialog="#takht" aria-label="میز ک۱ — نشسته، ۲ نفر" data-alt-aria-label="Table H1 — seated, 2 guests"><b data-alt="H1">ک۱</b><small data-alt="2">۲</small></button>
+              <button class="takht round" type="button" data-dialog="#takht" aria-label="میز ک۲ — آزاد" data-alt-aria-label="Table H2 — free"><b data-alt="H2">ک۲</b><small data-alt="free">آزاد</small></button>
+              <button class="takht round reserved" type="button" data-dialog="#takht" aria-label="میز ک۳ — رزرو برای ۱۹:۳۰" data-alt-aria-label="Table H3 — reserved for 19:30"><b data-alt="H3">ک۳</b><small data-alt="19:30">۱۹:۳۰</small></button>
+              <button class="takht round seated" type="button" data-dialog="#takht" aria-label="میز ک۴ — نشسته، ۱ نفر" data-alt-aria-label="Table H4 — seated, 1 guest"><b data-alt="H4">ک۴</b><small data-alt="1">۱</small></button>
+            </div>
+          </div>
+          <div class="framed">
+            <div class="panel-head"><h2 class="h3" data-alt="Arriving next">در راه</h2><button class="btn btn-ghost btn-sm" type="button" data-goto="t-res" data-alt="All bookings">همهٔ رزروها</button></div>
+            <ul class="feed">
+              <li><span class="star" aria-hidden="true"></span><div><b data-alt="Sohrabi family · 4">خانوادهٔ سهرابی · ۴ نفر</b><p class="small muted" data-alt="Takht 4 · birthday, cake at 19:30">تخت ۴ · تولد، کیک ساعت ۱۹:۳۰</p></div><time data-date="2026-10-16T19:00:00" data-fmt="time">۱۹:۰۰</time></li>
+              <li><span class="star" aria-hidden="true"></span><div><b data-alt="Dr. Kamali · 2">دکتر کمالی · ۲ نفر</b><p class="small muted" data-alt="Book hall H3 · quiet corner">تالار کتاب ک۳ · گوشهٔ آرام</p></div><time data-date="2026-10-16T19:30:00" data-fmt="time">۱۹:۳۰</time></li>
+              <li><span class="star" aria-hidden="true"></span><div><b data-alt="Poetry circle · 8">حلقهٔ شعر · ۸ نفر</b><p class="small muted" data-alt="Takht 7 · samovar on the table">تخت ۷ · سماور روی تخت</p></div><time data-date="2026-10-16T20:30:00" data-fmt="time">۲۰:۳۰</time></li>
+              <li><span class="star" aria-hidden="true"></span><div><b data-alt="Ms. Rahimi · 3">خانم رحیمی · ۳ نفر</b><p class="small muted" data-alt="Balcony · nut allergy">بالکن · حساسیت به آجیل</p></div><time data-date="2026-10-16T21:00:00" data-fmt="time">۲۱:۰۰</time></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="split charts">
+          <div class="framed">
+            <div class="panel-head"><h2 class="h3" data-alt="Sales by hour">فروش ساعتی</h2><span class="small muted" data-alt="Toman, today vs. last Thursday">تومان، امروز در برابر پنجشنبهٔ قبل</span></div>
+            <div data-chart="area" data-height="230" data-fmt="compact" data-dates="2026-10-16T10:00,13,hour" data-dash-second data-series='[{"name":{"en":"Today","fa":"امروز"},"values":[420000,880000,1250000,1600000,1900000,2300000,2650000,3100000,3400000,2900000,2200000,1700000,1100000]},{"name":{"en":"Last Thursday","fa":"پنجشنبهٔ قبل"},"values":[380000,700000,1100000,1500000,1650000,2000000,2400000,2700000,3000000,2800000,2300000,1500000,900000],"color":"var(--chart-3)"}]' data-label='{"en":"Sales by hour","fa":"فروش ساعتی"}'></div>
+          </div>
+          <div class="framed">
+            <div class="panel-head"><h2 class="h3" data-alt="What sold">سهم فروش</h2></div>
+            <div data-chart="donut" data-height="190" data-fmt="pct" data-values="46,18,21,15" data-labels='{"en":["Tea","Infusions","Sweets","Meals"],"fa":["چای","دمنوش","شیرینی","غذا"]}' data-center='{"en":"46% tea","fa":"۴۶٪ چای"}' data-label='{"en":"Sales share by category","fa":"سهم فروش هر دسته"}'></div>
+            <div class="legend" style="justify-content: center; margin-block-start: var(--space-4)"><span style="--c: var(--chart-1)" data-alt="Tea">چای</span><span style="--c: var(--chart-2)" data-alt="Infusions">دمنوش</span><span style="--c: var(--chart-3)" data-alt="Sweets">شیرینی</span><span style="--c: var(--chart-4)" data-alt="Meals">غذا</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ reservations -->
+      <section role="tabpanel" id="p-res" aria-labelledby="t-res" hidden>
+        <div class="framed" data-filter-scope>
+          <div class="panel-head"><h2 class="h3" data-alt="Reservations">رزروها</h2><span class="small muted"><span data-filter-count data-num="10">۱۰</span> <span data-alt="shown">مورد</span></span></div>
+          <div class="toolbar">
+            <input class="input" type="search" data-filter-search placeholder="جست‌وجوی نام یا تلفن…" data-alt-placeholder="Search name or phone…" aria-label="جست‌وجو" data-alt-aria-label="Search">
+            <div class="seg" data-group role="group" aria-label="روز" data-alt-aria-label="Day">
+              <button type="button" data-filter="day" data-value="all" aria-pressed="true" data-alt="All">همه</button>
+              <button type="button" data-filter="day" data-value="today" aria-pressed="false" data-alt="Today">امروز</button>
+              <button type="button" data-filter="day" data-value="tomorrow" aria-pressed="false" data-alt="Tomorrow">فردا</button>
+            </div>
+          </div>
+          <div class="table-scroll">
+            <table class="table">
+              <thead><tr>
+                <th scope="col" aria-sort="none"><button type="button" data-sort="text" data-alt="Guest">مهمان</button></th>
+                <th scope="col" aria-sort="ascending"><button type="button" data-sort="date" data-alt="Time">زمان</button></th>
+                <th scope="col" aria-sort="none"><button type="button" data-sort="num" data-alt="Party">نفرات</button></th>
+                <th scope="col" data-alt="Seat">جا</th>
+                <th scope="col" data-alt="Status">وضعیت</th>
+                <th scope="col" class="end"><span class="sr-only" data-alt="Actions">کارها</span></th>
+              </tr></thead>
+              <tbody>
+                <tr data-filter-item data-day="today" data-keywords="0912 445 2210"><td data-alt="Sohrabi family">خانوادهٔ سهرابی</td><td data-value="2026-10-16T19:00" data-date="2026-10-16T19:00:00" data-fmt="datetime">۲۴ مهر، ۱۹:۰۰</td><td data-value="4" data-num="4">۴</td><td data-alt="Takht 4">تخت ۴</td><td><span class="badge saffron" data-alt="Confirmed">تأییدشده</span></td><td class="actions"><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="تماس" data-alt-aria-label="Call" data-toast="در حال تماس با ۰۹۱۲…۲۲۱۰" data-toast-alt="Calling 0912…2210"><i class="ph-light ph-phone" aria-hidden="true"></i></button><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="نشاندن" data-alt-aria-label="Seat now" data-toast="مهمان نشانده شد" data-toast-alt="Guests seated"><i class="ph-light ph-armchair" aria-hidden="true"></i></button></td></tr>
+                <tr data-filter-item data-day="today" data-keywords="0935 120 7781"><td data-alt="Dr. Kamali">دکتر کمالی</td><td data-value="2026-10-16T19:30" data-date="2026-10-16T19:30:00" data-fmt="datetime">۲۴ مهر، ۱۹:۳۰</td><td data-value="2" data-num="2">۲</td><td data-alt="Hall H3">تالار ک۳</td><td><span class="badge saffron" data-alt="Confirmed">تأییدشده</span></td><td class="actions"><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="تماس" data-alt-aria-label="Call" data-toast="در حال تماس…" data-toast-alt="Calling…"><i class="ph-light ph-phone" aria-hidden="true"></i></button><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="نشاندن" data-alt-aria-label="Seat now" data-toast="مهمان نشانده شد" data-toast-alt="Guests seated"><i class="ph-light ph-armchair" aria-hidden="true"></i></button></td></tr>
+                <tr data-filter-item data-day="today"><td data-alt="Poetry circle">حلقهٔ شعر</td><td data-value="2026-10-16T20:30" data-date="2026-10-16T20:30:00" data-fmt="datetime">۲۴ مهر، ۲۰:۳۰</td><td data-value="8" data-num="8">۸</td><td data-alt="Takht 7">تخت ۷</td><td><span class="badge glaze" data-alt="Deposit paid">بیعانه پرداخت شد</span></td><td class="actions"><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="تماس" data-alt-aria-label="Call" data-toast="در حال تماس…" data-toast-alt="Calling…"><i class="ph-light ph-phone" aria-hidden="true"></i></button><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="نشاندن" data-alt-aria-label="Seat now" data-toast="مهمان نشانده شد" data-toast-alt="Guests seated"><i class="ph-light ph-armchair" aria-hidden="true"></i></button></td></tr>
+                <tr data-filter-item data-day="today"><td data-alt="Ms. Rahimi">خانم رحیمی</td><td data-value="2026-10-16T21:00" data-date="2026-10-16T21:00:00" data-fmt="datetime">۲۴ مهر، ۲۱:۰۰</td><td data-value="3" data-num="3">۳</td><td data-alt="Balcony">بالکن</td><td><span class="badge" data-alt="Awaiting reply">در انتظار پاسخ</span></td><td class="actions"><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="تماس" data-alt-aria-label="Call" data-toast="در حال تماس…" data-toast-alt="Calling…"><i class="ph-light ph-phone" aria-hidden="true"></i></button><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="تأیید" data-alt-aria-label="Confirm" data-toast="رزرو تأیید شد" data-toast-alt="Booking confirmed"><i class="ph-light ph-check" aria-hidden="true"></i></button></td></tr>
+                <tr data-filter-item data-day="today"><td data-alt="Mr. Ahmadi">آقای احمدی</td><td data-value="2026-10-16T21:15" data-date="2026-10-16T21:15:00" data-fmt="datetime">۲۴ مهر، ۲۱:۱۵</td><td data-value="2" data-num="2">۲</td><td data-alt="Takht 5">تخت ۵</td><td><span class="badge anar" data-alt="Cancelled">لغو شد</span></td><td class="actions"><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="تماس" data-alt-aria-label="Call" data-toast="در حال تماس…" data-toast-alt="Calling…"><i class="ph-light ph-phone" aria-hidden="true"></i></button></td></tr>
+                <tr data-filter-item data-day="tomorrow"><td data-alt="Tehrani family">خانوادهٔ تهرانی</td><td data-value="2026-10-17T17:00" data-date="2026-10-17T17:00:00" data-fmt="datetime">۲۵ مهر، ۱۷:۰۰</td><td data-value="6" data-num="6">۶</td><td data-alt="Pool takht">تخت حوض</td><td><span class="badge glaze" data-alt="Deposit paid">بیعانه پرداخت شد</span></td><td class="actions"><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="تماس" data-alt-aria-label="Call" data-toast="در حال تماس…" data-toast-alt="Calling…"><i class="ph-light ph-phone" aria-hidden="true"></i></button></td></tr>
+                <tr data-filter-item data-day="tomorrow"><td data-alt="Ms. Navabi">خانم نوابی</td><td data-value="2026-10-17T18:00" data-date="2026-10-17T18:00:00" data-fmt="datetime">۲۵ مهر، ۱۸:۰۰</td><td data-value="2" data-num="2">۲</td><td data-alt="Hall H1">تالار ک۱</td><td><span class="badge saffron" data-alt="Confirmed">تأییدشده</span></td><td class="actions"><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="تماس" data-alt-aria-label="Call" data-toast="در حال تماس…" data-toast-alt="Calling…"><i class="ph-light ph-phone" aria-hidden="true"></i></button></td></tr>
+                <tr data-filter-item data-day="tomorrow"><td data-alt="Calligraphy group">گروه خوشنویسی</td><td data-value="2026-10-17T18:30" data-date="2026-10-17T18:30:00" data-fmt="datetime">۲۵ مهر، ۱۸:۳۰</td><td data-value="7" data-num="7">۷</td><td data-alt="Takht 7">تخت ۷</td><td><span class="badge saffron" data-alt="Confirmed">تأییدشده</span></td><td class="actions"><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="تماس" data-alt-aria-label="Call" data-toast="در حال تماس…" data-toast-alt="Calling…"><i class="ph-light ph-phone" aria-hidden="true"></i></button></td></tr>
+                <tr data-filter-item data-day="tomorrow"><td data-alt="Mr. Farzin">آقای فرزین</td><td data-value="2026-10-17T20:00" data-date="2026-10-17T20:00:00" data-fmt="datetime">۲۵ مهر، ۲۰:۰۰</td><td data-value="4" data-num="4">۴</td><td data-alt="Takht 2">تخت ۲</td><td><span class="badge" data-alt="Awaiting reply">در انتظار پاسخ</span></td><td class="actions"><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="تأیید" data-alt-aria-label="Confirm" data-toast="رزرو تأیید شد" data-toast-alt="Booking confirmed"><i class="ph-light ph-check" aria-hidden="true"></i></button></td></tr>
+                <tr data-filter-item data-day="week"><td data-alt="Students of Hafez">دانشجویان حافظ‌شناسی</td><td data-value="2026-10-21T18:00" data-date="2026-10-21T18:00:00" data-fmt="datetime">۲۹ مهر، ۱۸:۰۰</td><td data-value="8" data-num="8">۸</td><td data-alt="Book hall">تالار کتاب</td><td><span class="badge lajevard" data-alt="Group menu">منوی گروهی</span></td><td class="actions"><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="تماس" data-alt-aria-label="Call" data-toast="در حال تماس…" data-toast-alt="Calling…"><i class="ph-light ph-phone" aria-hidden="true"></i></button></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="empty" data-filter-empty hidden data-alt="No bookings match.">رزروی پیدا نشد.</p>
+        </div>
+      </section>
+
+      <!-- ============================================================ menu & stock -->
+      <section role="tabpanel" id="p-menu" aria-labelledby="t-menu" class="stack" style="gap: var(--space-6)" hidden>
+        <div class="framed" data-filter-scope>
+          <div class="panel-head"><h2 class="h3" data-alt="Menu items">اقلام منو</h2>
+            <div class="chips" data-group role="group" aria-label="دسته" data-alt-aria-label="Category">
+              <button type="button" data-filter="cat" data-value="all" aria-pressed="true" data-alt="All">همه</button>
+              <button type="button" data-filter="cat" data-value="tea" aria-pressed="false" data-alt="Teas">چای</button>
+              <button type="button" data-filter="cat" data-value="herb" aria-pressed="false" data-alt="Infusions">دمنوش</button>
+              <button type="button" data-filter="cat" data-value="sweet" aria-pressed="false" data-alt="Sweets">شیرینی</button>
+            </div></div>
+          <div class="table-scroll">
+            <table class="table">
+              <thead><tr><th scope="col" data-alt="Item">قلم</th><th scope="col" aria-sort="none"><button type="button" data-sort="num" data-alt="Price (Toman)">قیمت (تومان)</button></th><th scope="col" aria-sort="none"><button type="button" data-sort="num" data-alt="Sold today">فروش امروز</button></th><th scope="col" data-alt="Stock">موجودی</th><th scope="col" data-alt="On menu">در منو</th></tr></thead>
+              <tbody>
+                <tr data-filter-item data-cat="tea"><td data-alt="Lahijan black tea">چای سیاه لاهیجان</td><td data-value="65000" data-num="65000">۶۵٬۰۰۰</td><td data-value="74" data-num="74">۷۴</td><td><div class="meter stock"><div class="track"><i style="--v:62%"></i></div></div></td><td><button class="switch" type="button" role="switch" aria-checked="true" aria-label="در منو: چای سیاه لاهیجان" data-alt-aria-label="On menu: Lahijan black tea"></button></td></tr>
+                <tr data-filter-item data-cat="tea"><td data-alt="Saffron &amp; cardamom">چای زعفران و هل</td><td data-value="90000" data-num="90000">۹۰٬۰۰۰</td><td data-value="41" data-num="41">۴۱</td><td><div class="meter stock"><div class="track"><i class="low" style="--v:14%"></i></div></div></td><td><button class="switch" type="button" role="switch" aria-checked="true" aria-label="در منو: چای زعفران و هل" data-alt-aria-label="On menu: saffron &amp; cardamom"></button></td></tr>
+                <tr data-filter-item data-cat="tea"><td data-alt="Fuman green tea">چای سبز فومن</td><td data-value="75000" data-num="75000">۷۵٬۰۰۰</td><td data-value="12" data-num="12">۱۲</td><td><div class="meter stock"><div class="track"><i style="--v:80%"></i></div></div></td><td><button class="switch" type="button" role="switch" aria-checked="true" aria-label="در منو: چای سبز فومن" data-alt-aria-label="On menu: Fuman green tea"></button></td></tr>
+                <tr data-filter-item data-cat="herb"><td data-alt="Borage &amp; dried lime">گل‌گاوزبان و لیمو عمانی</td><td data-value="85000" data-num="85000">۸۵٬۰۰۰</td><td data-value="23" data-num="23">۲۳</td><td><div class="meter stock"><div class="track"><i style="--v:45%"></i></div></div></td><td><button class="switch" type="button" role="switch" aria-checked="true" aria-label="در منو: گل‌گاوزبان" data-alt-aria-label="On menu: borage"></button></td></tr>
+                <tr data-filter-item data-cat="herb"><td data-alt="Orange blossom">بهارنارنج</td><td data-value="80000" data-num="80000">۸۰٬۰۰۰</td><td data-value="0" data-num="0">۰</td><td><div class="meter stock"><div class="track"><i class="low" style="--v:0%"></i></div></div></td><td><button class="switch" type="button" role="switch" aria-checked="false" aria-label="در منو: بهارنارنج" data-alt-aria-label="On menu: orange blossom"></button></td></tr>
+                <tr data-filter-item data-cat="sweet"><td data-alt="Yazdi baklava">باقلوای یزدی</td><td data-value="110000" data-num="110000">۱۱۰٬۰۰۰</td><td data-value="38" data-num="38">۳۸</td><td><div class="meter stock"><div class="track"><i style="--v:35%"></i></div></div></td><td><button class="switch" type="button" role="switch" aria-checked="true" aria-label="در منو: باقلوا" data-alt-aria-label="On menu: baklava"></button></td></tr>
+                <tr data-filter-item data-cat="sweet"><td data-alt="Saffron rice pudding">شله‌زرد</td><td data-value="85000" data-num="85000">۸۵٬۰۰۰</td><td data-value="19" data-num="19">۱۹</td><td><div class="meter stock"><div class="track"><i style="--v:55%"></i></div></div></td><td><button class="switch" type="button" role="switch" aria-checked="true" aria-label="در منو: شله‌زرد" data-alt-aria-label="On menu: rice pudding"></button></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="empty" data-filter-empty hidden data-alt="Nothing in this category.">در این دسته چیزی نیست.</p>
+        </div>
+        <div class="framed">
+          <div class="panel-head"><h2 class="h3" data-alt="Pantry">انبار</h2><button class="btn btn-sm" type="button" data-toast="سفارش خرید برای تأمین‌کننده ارسال شد" data-toast-alt="Purchase order sent to the supplier" data-alt="Order low items">سفارش اقلام کم</button></div>
+          <div class="cols" style="--n:3">
+            <div class="meter"><div class="row"><span data-alt="Saffron (g)">زعفران (گرم)</span><b class="down"><span data-num="42">۴۲</span> / <span data-num="300">۳۰۰</span></b></div><div class="track"><i class="low" style="--v:14%"></i></div></div>
+            <div class="meter"><div class="row"><span data-alt="Lahijan leaves (kg)">برگ لاهیجان (کیلو)</span><b><span data-num="6.2" data-fmt="dec1">۶٫۲</span> / <span data-num="10">۱۰</span></b></div><div class="track"><i style="--v:62%"></i></div></div>
+            <div class="meter"><div class="row"><span data-alt="Rock candy (jars)">نبات (شیشه)</span><b><span data-num="18">۱۸</span> / <span data-num="40">۴۰</span></b></div><div class="track"><i style="--v:45%"></i></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ settings -->
+      <section role="tabpanel" id="p-set" aria-labelledby="t-set" hidden>
+        <form class="framed stack" style="gap: var(--space-5)" data-validate data-keep data-success="تنظیمات ذخیره شد" data-success-alt="Settings saved">
+          <h2 class="h3" data-alt="Bookings &amp; hours">رزرو و ساعت‌ها</h2>
+          <div class="set-grid">
+            <div class="field"><label class="label" for="s-open" data-alt="Opens at">ساعت باز شدن</label><input class="input" id="s-open" name="open" type="time" value="10:00" required></div>
+            <div class="field"><label class="label" for="s-close" data-alt="Closes at">ساعت بسته شدن</label><input class="input" id="s-close" name="close" type="time" value="22:00" required></div>
+            <div class="field"><span class="label" id="l-cap" data-alt="Max guests per slot">حداکثر مهمان در هر نوبت</span><div class="qty" data-qty><button type="button" data-step="-1" aria-label="کمتر" data-alt-aria-label="Fewer">−</button><input type="number" name="cap" value="48" min="10" max="80" aria-labelledby="l-cap"><button type="button" data-step="1" aria-label="بیشتر" data-alt-aria-label="More">+</button></div></div>
+            <div class="field"><label class="label" for="s-hold" data-alt="Hold a takht for">نگه‌داشتن تخت تا</label><select class="select" id="s-hold" name="hold"><option value="10" data-alt="10 minutes">۱۰ دقیقه</option><option value="20" selected data-alt="20 minutes">۲۰ دقیقه</option><option value="30" data-alt="30 minutes">۳۰ دقیقه</option></select></div>
+          </div>
+          <div>
+            <div class="set-row"><span id="l-auto"><span data-alt="Auto-confirm small groups">تأیید خودکار گروه‌های کوچک</span><small data-alt="Parties of up to four, when a takht is free">تا ۴ نفر، اگر تخت آزاد باشد</small></span><button class="switch" type="button" role="switch" aria-checked="true" aria-labelledby="l-auto"></button></div>
+            <div class="set-row"><span id="l-sms"><span data-alt="Reminder text">پیامک یادآوری</span><small data-alt="Two hours before the booking">دو ساعت پیش از رزرو</small></span><button class="switch" type="button" role="switch" aria-checked="true" aria-labelledby="l-sms"></button></div>
+            <div class="set-row"><span id="l-wait"><span data-alt="Waitlist for full evenings">فهرست انتظار برای شب‌های پر</span><small data-alt="Offer freed seats in order">جای آزادشده به ترتیب پیشنهاد شود</small></span><button class="switch" type="button" role="switch" aria-checked="false" aria-labelledby="l-wait"></button></div>
+          </div>
+          <fieldset class="field" style="border:0; padding:0; margin:0"><legend class="label" style="margin-block-end: 6px" data-alt="Deposit for groups">بیعانهٔ گروه‌ها</legend>
+            <div class="row" style="gap: var(--space-5)">
+              <label class="check"><input type="radio" name="deposit" value="none"><span data-alt="None">بدون بیعانه</span></label>
+              <label class="check"><input type="radio" name="deposit" value="6" checked><span data-alt="From 6 guests">از ۶ نفر به بالا</span></label>
+              <label class="check"><input type="radio" name="deposit" value="all"><span data-alt="Every booking">همهٔ رزروها</span></label>
+            </div></fieldset>
+          <div class="field"><label class="label" for="s-msg" data-alt="Confirmation message">متن پیامک تأیید</label><textarea class="textarea" id="s-msg" name="msg" required minlength="20" data-alt="Firouzeh: your takht is held for {time}. If plans change, please reply «cancel».">فیروزه: تخت شما برای ساعت {زمان} نگه داشته شد. اگر برنامه عوض شد، «لغو» را پاسخ دهید.</textarea></div>
+          <div class="row"><button class="btn btn-primary btn-lg" type="submit" data-alt="Save settings">ذخیرهٔ تنظیمات</button><button class="btn btn-ghost btn-lg" type="reset" data-alt="Reset">بازنشانی</button></div>
+        </form>
+      </section>
+    </main>
+  </div>
+</div>
+
+<dialog class="modal" id="takht" aria-labelledby="takht-t">
+  <div class="framed">
+    <span class="cartouche glaze" data-alt="Floor">نقشه</span>
+    <h2 class="h2" id="takht-t" style="text-align:center" data-takht-title>—</h2>
+    <div class="ornament" aria-hidden="true"><span class="star"></span></div>
+    <div class="modal-foot">
+      <button class="btn" type="button" data-close data-toast="سفارش تازه باز شد" data-toast-alt="New order opened" data-alt="Add order">افزودن سفارش</button>
+      <button class="btn btn-lajevard" type="button" data-close data-toast="صورت‌حساب چاپ شد" data-toast-alt="Bill printed" data-alt="Print bill">چاپ صورت‌حساب</button>
+      <button class="btn btn-ghost" type="button" data-close data-alt="Close">بستن</button>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="modal" id="new-res" aria-labelledby="nr-t">
+  <form class="framed" data-validate data-success="رزرو ثبت شد و پیامک تأیید رفت" data-success-alt="Booking saved and confirmation sent">
+    <span class="cartouche glaze" data-alt="New booking">رزرو تازه</span>
+    <h2 class="h2" id="nr-t" style="text-align:center" data-alt="Who is coming?">چه کسی می‌آید؟</h2>
+    <div class="field"><label class="label" for="nr-name" data-alt="Guest name">نام مهمان</label><input class="input" id="nr-name" name="name" required minlength="2"></div>
+    <div class="field"><label class="label" for="nr-phone" data-alt="Mobile">همراه</label><input class="input" id="nr-phone" name="phone" type="tel" required pattern="0?9[0-9]{9}" dir="ltr" placeholder="09121234567" data-pattern-msg="یک شمارهٔ همراه ۱۱ رقمی" data-pattern-msg-alt="An 11-digit mobile number"></div>
+    <div class="set-grid">
+      <div class="field"><label class="label" for="nr-time" data-alt="Time">ساعت</label><input class="input" id="nr-time" name="time" type="time" value="19:30" required></div>
+      <div class="field"><span class="label" id="l-nr-g" data-alt="Guests">نفرات</span><div class="qty" data-qty><button type="button" data-step="-1" aria-label="کمتر" data-alt-aria-label="Fewer">−</button><input type="number" name="guests" value="2" min="1" max="12" aria-labelledby="l-nr-g"><button type="button" data-step="1" aria-label="بیشتر" data-alt-aria-label="More">+</button></div></div>
+    </div>
+    <div class="field"><label class="label" for="nr-seat" data-alt="Seat">جا</label><select class="select" id="nr-seat" name="seat"><option data-alt="Any free takht">هر تخت آزاد</option><option data-alt="Takht 5">تخت ۵</option><option data-alt="Takht 8">تخت ۸</option><option data-alt="Hall H2">تالار ک۲</option></select></div>
+    <div class="modal-foot"><button class="btn btn-ghost" type="button" data-close data-alt="Cancel">انصراف</button><button class="btn btn-primary" type="submit" data-alt="Save booking">ثبت رزرو</button></div>
+  </form>
+</dialog>
+
+<script>
+  // takht buttons describe themselves in the dialog; shortcuts switch tabs; dialogs close after a successful submit
+  document.addEventListener('click', (e) => {
+    const t = e.target.closest('.takht');
+    if (t) document.querySelector('[data-takht-title]').textContent = t.getAttribute('aria-label');
+    const g = e.target.closest('[data-goto]');
+    if (g) document.getElementById(g.dataset.goto)?.click();
+  });
+  document.addEventListener('tf:submit', (e) => e.target.closest('dialog')?.close());
+</script>
+</body>
+</html>
