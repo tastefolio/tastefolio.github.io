@@ -56,7 +56,7 @@ Fallbacks: Source Serif 4 / Georgia; Inter / Arial; Amiri for Persian text.
 | `--brand` | `#a3211c` kicker red | |
 | radius | 0 (2px max) | |
 
-Type 11 / 13 / 17 / 20 / 26 / 34 / 46 / display `clamp(40px, 5.8vw, 82px)`. Gutter 28px. Controls 36/44px.
+Type 11 / 13 / 17 / 20 / 26 / 34 / 46 / display `clamp(38px, 4.9vw, 70px)`. Gutter 28px. Controls 36/44px.
 
 ## Brand adaptation
 
