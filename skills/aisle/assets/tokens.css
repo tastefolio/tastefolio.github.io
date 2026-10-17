@@ -1,0 +1,148 @@
+/* Aisle — design tokens (Tastefolio). Modern store: white shelves and soft grey bands, an indigo brand for navigation
+   and actions, a separate coral reserved for discounts and countdowns, rounded product cards, friendly rounded icons. */
+:root {
+  --canvas: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f3f4f7;       /* section bands, product photo wells, inputs */
+  --surface-3: #e8eaf0;
+  --surface-ink: #171927;
+  --overlay: rgba(17, 18, 30, .5);
+
+  --ink: #1b1d2a;
+  --ink-2: #5c6072;
+  --ink-3: #8b8fa0;
+  --ink-inverse: #ffffff;
+
+  --line: #eceef3;
+  --line-2: #d9dce5;
+
+  --brand: #5b3df5;           /* indigo — navigation, add-to-cart, links, selection */
+  --brand-ink: #ffffff;
+  --brand-soft: #efebff;
+  --brand-strong: color-mix(in oklab, var(--brand) 80%, #000);
+  --focus: color-mix(in oklab, var(--brand) 50%, transparent);
+  --deal: #ff3b5c;            /* coral — discount badges, deal bands, countdowns; never decoration */
+  --deal-ink: #ffffff;
+  --deal-soft: #ffe9ed;
+  --star: #f5a524;
+
+  --success: #12a150;
+  --success-soft: #e3f6ec;
+  --warning: #c27803;
+  --warning-soft: #fdf1dc;
+  --danger: #e5383b;
+  --danger-soft: #fde8e8;
+  --info: #2f7ded;
+  --info-soft: #e5efff;
+
+  --chart-1: var(--brand);
+  --chart-2: var(--deal);
+  --chart-3: #12a150;
+  --chart-4: #f5a524;
+  --chart-5: #2f7ded;
+  --chart-6: #a1a6b8;
+  --chart-grid: #eef0f4;
+  --chart-axis: var(--ink-3);
+  --chart-curve: smooth;
+  --chart-stroke: 2.5;
+  --chart-area: .14;
+  --chart-radius: 6;
+  --chart-bar-gap: .4;
+  --chart-donut: 14;
+  --chart-gap: 3;
+  --chart-dots: 0;
+
+  --font-sans: "DM Sans", "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "DM Sans", "Vazirmatn", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, "Vazirmatn", monospace;
+  --fs-xs: 11.5px;
+  --fs-sm: 13px;
+  --fs-md: 15px;
+  --fs-lg: 17px;
+  --fs-xl: 20px;
+  --fs-2xl: 26px;
+  --fs-3xl: 34px;
+  --fs-display: clamp(28px, 3.4vw, 46px);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --fw-display: 800;
+  --lh-tight: 1.15;
+  --lh-snug: 1.3;
+  --lh-body: 1.6;
+  --tracking-display: -.02em;
+  --tracking-caps: .04em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 88px;
+  --space-10: 120px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --border-w: 1px;
+  --shadow-1: 0 1px 3px rgba(20, 22, 40, .06);
+  --shadow-2: 0 12px 32px -14px rgba(20, 22, 40, .24);
+  --shadow-3: 0 30px 70px -24px rgba(20, 22, 40, .4);
+
+  --container: 1320px;
+  --gutter: clamp(12px, 2.5vw, 28px);
+  --control-h: 44px;
+  --control-h-lg: 52px;
+
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --dur-1: 140ms;
+  --dur-2: 240ms;
+  --dur-3: 420ms;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --canvas: #0f1017;
+  --surface: #171923;
+  --surface-2: #1e2130;
+  --surface-3: #292d3f;
+  --surface-ink: #eef0f7;
+  --overlay: rgba(0, 0, 0, .62);
+  --ink: #eef0f7;
+  --ink-2: #a9adbf;
+  --ink-3: #7a7f94;
+  --ink-inverse: #111219;
+  --line: #242838;
+  --line-2: #33384c;
+  --brand: #8b78ff;
+  --brand-ink: #10091f;
+  --brand-soft: rgba(139, 120, 255, .16);
+  --deal: #ff5c78;
+  --deal-ink: #1f0309;
+  --deal-soft: rgba(255, 92, 120, .15);
+  --success: #3ccf7f;
+  --success-soft: rgba(60, 207, 127, .14);
+  --warning: #f2b14d;
+  --warning-soft: rgba(242, 177, 77, .14);
+  --danger: #ff6b6e;
+  --danger-soft: rgba(255, 107, 110, .14);
+  --info: #6aa5ff;
+  --info-soft: rgba(106, 165, 255, .14);
+  --chart-grid: #232737;
+  --shadow-2: 0 12px 32px -14px rgba(0, 0, 0, .7);
+  color-scheme: dark;
+}
+
+:root:lang(fa) {
+  --font-sans: "Vazirmatn", "DM Sans", Tahoma, sans-serif;
+  --font-display: "Vazirmatn", "DM Sans", sans-serif;
+  --fs-display: clamp(26px, 3vw, 40px);
+  --lh-tight: 1.45;
+  --lh-snug: 1.55;
+  --lh-body: 1.9;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+}

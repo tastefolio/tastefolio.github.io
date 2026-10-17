@@ -171,6 +171,15 @@
       ]
     },
     {
+      "name": "aisle",
+      "description": "Tastefolio design language — Modern store — big search, mega menu, coral deal rails and product cards that turn into steppers",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/aisle"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -193,7 +202,8 @@
         "./skills/ticker",
         "./skills/clay",
         "./skills/maison",
-        "./skills/bento"
+        "./skills/bento",
+        "./skills/aisle"
       ]
     }
   ]

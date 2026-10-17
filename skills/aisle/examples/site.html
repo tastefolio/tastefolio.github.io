@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="site">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Bazarcheh — everything, delivered tomorrow">بازارچه — هرچه بخواهید، فردا دم در</title>
+<meta name="description" content="بازارچه، یک فروشگاه اینترنتی نمونه: پیشنهادهای لحظه‌ای، ارسال سریع و پرداخت اقساطی." data-alt-content="Bazarcheh, a sample online store: flash deals, fast delivery and pay-in-instalments.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..800&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..600,0..1,0&icon_names=account_circle,add,android,apparel,assignment_return,bolt,category,chevron_left,chevron_right,close,credit_card,dark_mode,favorite,history,home,kitchen,local_fire_department,local_shipping,location_on,menu,person,phone_iphone,redeem,remove,search,shopping_bag,shopping_cart,smartphone,spa,star,steps,trending_up,verified&display=block">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .promos { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-3); }
+  @media (max-width: 960px) { .promos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 600px) { .promos { grid-template-columns: minmax(0, 1fr); } .promos .mini-banner { min-block-size: 130px; } .promos .mini-banner .art { inline-size: 34%; } }
+  .app-band { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--space-5); align-items: center; padding: var(--space-6); border-radius: var(--radius-lg); background: var(--brand-soft); }
+  .app-band form { display: flex; gap: 8px; }
+  .app-band .input { flex: 1; min-inline-size: 0; }
+  @media (max-width: 760px) { .app-band { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gPhone" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b3df5"/><stop offset="1" stop-color="#ff5c8a"/></linearGradient>
+    <linearGradient id="gLaptop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2fd4c1"/><stop offset="1" stop-color="#5b3df5"/></linearGradient>
+    <linearGradient id="gPerfume" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb3c7"/><stop offset="1" stop-color="#ff7aa0"/></linearGradient>
+  </defs>
+  <symbol id="p-phone" viewBox="0 0 200 200"><ellipse cx="100" cy="188" rx="42" ry="6" fill="#000" opacity=".08"/><rect x="58" y="12" width="84" height="170" rx="18" fill="#23243a"/><rect x="63" y="18" width="74" height="158" rx="13" fill="url(#gPhone)"/><rect x="88" y="23" width="24" height="6" rx="3" fill="#23243a"/><circle cx="100" cy="96" r="22" fill="#fff" opacity=".18"/><rect x="74" y="140" width="52" height="8" rx="4" fill="#fff" opacity=".35"/></symbol>
+  <symbol id="p-headphones" viewBox="0 0 200 200"><ellipse cx="100" cy="186" rx="56" ry="6" fill="#000" opacity=".08"/><path d="M48 116V96a52 52 0 0 1 104 0v20" fill="none" stroke="#2d2f45" stroke-width="12" stroke-linecap="round"/><rect x="30" y="102" width="36" height="62" rx="16" fill="#5b3df5"/><rect x="134" y="102" width="36" height="62" rx="16" fill="#5b3df5"/><rect x="56" y="110" width="15" height="46" rx="7.5" fill="#2d2f45"/><rect x="129" y="110" width="15" height="46" rx="7.5" fill="#2d2f45"/></symbol>
+  <symbol id="p-watch" viewBox="0 0 200 200"><rect x="76" y="10" width="48" height="180" rx="20" fill="#ffb199"/><rect x="56" y="56" width="88" height="88" rx="26" fill="#23243a"/><rect x="64" y="64" width="72" height="72" rx="20" fill="#0f1020"/><circle cx="100" cy="100" r="22" fill="none" stroke="#3ce0a0" stroke-width="7" stroke-linecap="round" stroke-dasharray="98 140" transform="rotate(-90 100 100)"/><rect x="143" y="86" width="7" height="18" rx="3.5" fill="#23243a"/></symbol>
+  <symbol id="p-sneaker" viewBox="0 0 200 200"><ellipse cx="100" cy="170" rx="80" ry="6" fill="#000" opacity=".08"/><path d="M20 136c0-17 10-31 27-35l30-8c10-3 19-15 25-26l9 4c9 11 27 22 48 26 18 4 29 15 29 31v8H20z" fill="#f6f7fb" stroke="#d9dce5" stroke-width="2"/><path d="M20 144h168v9a9 9 0 0 1-9 9H29a9 9 0 0 1-9-9z" fill="#ff3b5c"/><path d="M70 104l34 26M86 96l32 26" stroke="#5b3df5" stroke-width="8" stroke-linecap="round"/><circle cx="112" cy="78" r="4" fill="#23243a"/><circle cx="124" cy="84" r="4" fill="#23243a"/></symbol>
+  <symbol id="p-kettle" viewBox="0 0 200 200"><ellipse cx="96" cy="184" rx="56" ry="6" fill="#000" opacity=".08"/><path d="M62 70h68l12 100H50z" fill="#12a150"/><rect x="72" y="56" width="48" height="16" rx="8" fill="#0d7a3d"/><path d="M131 88c27 2 35 31 22 52" fill="none" stroke="#0d7a3d" stroke-width="11" stroke-linecap="round"/><path d="M60 94L32 74" stroke="#0d7a3d" stroke-width="11" stroke-linecap="round"/><rect x="44" y="166" width="104" height="13" rx="6.5" fill="#23243a"/><rect x="78" y="100" width="10" height="44" rx="5" fill="#fff" opacity=".3"/></symbol>
+  <symbol id="p-backpack" viewBox="0 0 200 200"><ellipse cx="100" cy="188" rx="48" ry="6" fill="#000" opacity=".08"/><path d="M78 42c0-24 44-24 44 0" fill="none" stroke="#c97a06" stroke-width="10"/><rect x="52" y="40" width="96" height="144" rx="32" fill="#f5a524"/><rect x="66" y="112" width="68" height="56" rx="15" fill="#e08e0b"/><rect x="70" y="130" width="60" height="6" rx="3" fill="#c97a06"/><rect x="66" y="62" width="10" height="34" rx="5" fill="#fff" opacity=".3"/></symbol>
+  <symbol id="p-laptop" viewBox="0 0 200 200"><ellipse cx="100" cy="166" rx="84" ry="6" fill="#000" opacity=".08"/><rect x="36" y="44" width="128" height="90" rx="9" fill="#23243a"/><rect x="43" y="51" width="114" height="76" rx="4" fill="url(#gLaptop)"/><path d="M20 140h160l-11 16H31z" fill="#c9ccd8"/><rect x="86" y="140" width="28" height="5" rx="2.5" fill="#a5a9b8"/></symbol>
+  <symbol id="p-plant" viewBox="0 0 200 200"><ellipse cx="100" cy="186" rx="40" ry="6" fill="#000" opacity=".08"/><path d="M100 124c-32-10-42-52-26-74 15 11 28 43 26 74z" fill="#12a150"/><path d="M100 124c25-15 27-58 6-77-13 17-17 48-6 77z" fill="#21c26b"/><path d="M100 124c-4-31 15-60 40-64 4 27-17 54-40 64z" fill="#0d8f45"/><path d="M64 124h72l-11 58H75z" fill="#ff8a65"/><rect x="58" y="116" width="84" height="15" rx="6" fill="#f4703f"/></symbol>
+  <symbol id="p-speaker" viewBox="0 0 200 200"><ellipse cx="100" cy="188" rx="40" ry="6" fill="#000" opacity=".08"/><rect x="62" y="20" width="76" height="162" rx="38" fill="#2d2f45"/><g fill="#5b5f80"><circle cx="84" cy="56" r="4"/><circle cx="100" cy="56" r="4"/><circle cx="116" cy="56" r="4"/><circle cx="84" cy="72" r="4"/><circle cx="100" cy="72" r="4"/><circle cx="116" cy="72" r="4"/><circle cx="84" cy="88" r="4"/><circle cx="100" cy="88" r="4"/><circle cx="116" cy="88" r="4"/><circle cx="84" cy="104" r="4"/><circle cx="100" cy="104" r="4"/><circle cx="116" cy="104" r="4"/><circle cx="84" cy="120" r="4"/><circle cx="100" cy="120" r="4"/><circle cx="116" cy="120" r="4"/></g><circle cx="100" cy="152" r="9" fill="#5b3df5"/></symbol>
+  <symbol id="p-perfume" viewBox="0 0 200 200"><ellipse cx="100" cy="186" rx="50" ry="6" fill="#000" opacity=".08"/><rect x="82" y="26" width="36" height="28" rx="7" fill="#23243a"/><rect x="91" y="52" width="18" height="14" fill="#c9ccd8"/><rect x="50" y="64" width="100" height="116" rx="24" fill="url(#gPerfume)"/><rect x="70" y="104" width="60" height="34" rx="7" fill="#fff" opacity=".85"/><rect x="60" y="76" width="10" height="44" rx="5" fill="#fff" opacity=".4"/></symbol>
+</svg>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<div class="promo-strip"><div class="container"><span class="ms" aria-hidden="true">local_shipping</span><span data-alt="Free delivery on orders over 500,000 Toman —">ارسال رایگان برای سفارش‌های بالای ۵۰۰ هزار تومان —</span> <b data-alt="until the end of the month">تا پایان ماه</b></div></div>
+<header class="store-head">
+  <div class="container">
+    <div class="top">
+      <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"><span class="ms fill">shopping_bag</span></span><span data-alt="Bazarcheh">بازارچه</span></a>
+      <form class="search" role="search" onsubmit="event.preventDefault(); tf.toast(tf.lang() === 'fa' ? 'جست‌وجو در این نمونه فعال نیست' : 'Search is not wired up in this sample')">
+        <label class="search-box"><span class="ms" aria-hidden="true">search</span><span class="sr-only" data-alt="Search the store">جست‌وجو در فروشگاه</span><input type="search" data-hotkey="/" placeholder="جست‌وجو در بازارچه…" data-alt-placeholder="Search Bazarcheh…" autocomplete="off"><select class="hide-md" aria-label="دسته" data-alt-aria-label="Category"><option data-alt="All">همه</option><option data-alt="Mobile">موبایل</option><option data-alt="Home">خانه</option><option data-alt="Fashion">پوشاک</option></select></label>
+        <div class="suggest">
+          <div><h3><span class="ms" aria-hidden="true">history</span><span data-alt="Recent searches">جست‌وجوهای اخیر</span></h3><div class="row chips"><a href="#best" data-alt="headphones">هدفون</a><a href="#best" data-alt="electric kettle">کتری برقی</a><a href="#best" data-alt="running shoes">کتونی دویدن</a></div></div>
+          <div><h3><span class="ms" aria-hidden="true">local_fire_department</span><span data-alt="Trending now">داغ‌ترین‌ها</span></h3><ol><li><a href="#deals" data-alt="Pixa 12 smartphone">گوشی پیکسا ۱۲</a></li><li><a href="#deals" data-alt="Nava Max headphones">هدفون نوا مکس</a></li><li><a href="#deals" data-alt="Tousheh backpack">کوله‌پشتی توشه</a></li></ol></div>
+        </div>
+      </form>
+      <div class="head-actions">
+        <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="تغییر حالت تیره" data-alt-aria-label="Toggle dark mode"><span class="ms" aria-hidden="true">dark_mode</span></button>
+        <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+        <a class="btn btn-outline hide-md" href="dashboard.html"><span class="ms" aria-hidden="true">person</span><span data-alt="Sign in | Join">ورود | ثبت‌نام</span></a>
+        <button class="btn btn-ghost btn-icon cart-btn" type="button" data-dialog="#cart" aria-label="سبد خرید" data-alt-aria-label="Cart"><span class="ms" aria-hidden="true">shopping_cart</span><span class="count" data-cart-count data-num="2">۲</span></button>
+      </div>
+    </div>
+    <nav class="catbar" aria-label="دسته‌ها" data-alt-aria-label="Categories">
+      <button class="mega-btn" type="button" data-toggle="#mega" aria-controls="mega" aria-expanded="false"><span class="ms" aria-hidden="true">menu</span><span data-alt="All categories">دسته‌بندی کالاها</span></button>
+      <a class="hot" href="#deals"><span class="ms fill" aria-hidden="true">bolt</span><span data-alt="Flash deals">پیشنهاد لحظه‌ای</span></a>
+      <a href="#best"><span class="ms" aria-hidden="true">trending_up</span><span data-alt="Best sellers">پرفروش‌ها</span></a>
+      <a href="#promos"><span class="ms" aria-hidden="true">redeem</span><span data-alt="Gift cards">کارت هدیه</span></a>
+      <a href="#perks"><span class="ms" aria-hidden="true">credit_card</span><span data-alt="Pay in instalments">خرید اقساطی</span></a>
+      <button class="loc" type="button" data-toast="انتخاب شهر در این نمونه فعال نیست" data-toast-alt="City picker is not wired up in this sample"><span class="ms" aria-hidden="true">location_on</span><span data-alt="Deliver to: Tehran">ارسال به: تهران</span></button>
+      <div class="mega" id="mega" data-dismissable>
+        <div class="mega-cats" role="tablist" aria-orientation="vertical" aria-label="دسته‌های اصلی" data-alt-aria-label="Main categories">
+          <button role="tab" id="m-mob" aria-controls="mp-mob" aria-selected="true"><span class="ms" aria-hidden="true">smartphone</span><span data-alt="Mobile &amp; gadgets">موبایل و گجت</span></button>
+          <button role="tab" id="m-home" aria-controls="mp-home" aria-selected="false"><span class="ms" aria-hidden="true">kitchen</span><span data-alt="Home &amp; kitchen">خانه و آشپزخانه</span></button>
+          <button role="tab" id="m-fash" aria-controls="mp-fash" aria-selected="false"><span class="ms" aria-hidden="true">apparel</span><span data-alt="Fashion">مد و پوشاک</span></button>
+          <button role="tab" id="m-beauty" aria-controls="mp-beauty" aria-selected="false"><span class="ms" aria-hidden="true">spa</span><span data-alt="Beauty &amp; health">زیبایی و سلامت</span></button>
+        </div>
+        <div class="mega-cols" role="tabpanel" id="mp-mob" aria-labelledby="m-mob">
+          <div><h4 data-alt="Phones">گوشی موبایل</h4><ul><li><a href="#best" data-alt="Pixa">پیکسا</a></li><li><a href="#best" data-alt="Avand">آوند</a></li><li><a href="#best" data-alt="Tir">تیر</a></li><li><a href="#best" data-alt="Refurbished">کارکرده و تعمیری</a></li></ul></div>
+          <div><h4 data-alt="Audio">صوتی</h4><ul><li><a href="#best" data-alt="Headphones">هدفون</a></li><li><a href="#best" data-alt="Earbuds">هندزفری</a></li><li><a href="#best" data-alt="Speakers">اسپیکر</a></li></ul></div>
+          <div><h4 data-alt="Accessories">لوازم جانبی</h4><ul><li><a href="#best" data-alt="Cases">قاب و کاور</a></li><li><a href="#best" data-alt="Chargers">شارژر</a></li><li><a href="#best" data-alt="Power banks">پاوربانک</a></li><li><a href="#best" data-alt="Smartwatches">ساعت هوشمند</a></li></ul></div>
+        </div>
+        <div class="mega-cols" role="tabpanel" id="mp-home" aria-labelledby="m-home" hidden>
+          <div><h4 data-alt="Small appliances">لوازم برقی کوچک</h4><ul><li><a href="#best" data-alt="Kettles">کتری برقی</a></li><li><a href="#best" data-alt="Coffee makers">قهوه‌ساز</a></li><li><a href="#best" data-alt="Blenders">مخلوط‌کن</a></li></ul></div>
+          <div><h4 data-alt="Cookware">ظروف</h4><ul><li><a href="#best" data-alt="Pans">تابه</a></li><li><a href="#best" data-alt="Pots">قابلمه</a></li><li><a href="#best" data-alt="Tea sets">سرویس چای</a></li></ul></div>
+          <div><h4 data-alt="Garden">گل و گیاه</h4><ul><li><a href="#best" data-alt="House plants">گیاه آپارتمانی</a></li><li><a href="#best" data-alt="Pots">گلدان</a></li></ul></div>
+        </div>
+        <div class="mega-cols" role="tabpanel" id="mp-fash" aria-labelledby="m-fash" hidden>
+          <div><h4 data-alt="Shoes">کفش</h4><ul><li><a href="#best" data-alt="Running">کتونی دویدن</a></li><li><a href="#best" data-alt="Casual">روزمره</a></li></ul></div>
+          <div><h4 data-alt="Bags">کیف و کوله</h4><ul><li><a href="#best" data-alt="Backpacks">کوله‌پشتی</a></li><li><a href="#best" data-alt="Travel">سفری</a></li></ul></div>
+          <div><h4 data-alt="Watches">ساعت</h4><ul><li><a href="#best" data-alt="Smart">هوشمند</a></li><li><a href="#best" data-alt="Classic">عقربه‌ای</a></li></ul></div>
+        </div>
+        <div class="mega-cols" role="tabpanel" id="mp-beauty" aria-labelledby="m-beauty" hidden>
+          <div><h4 data-alt="Fragrance">عطر</h4><ul><li><a href="#best" data-alt="Eau de parfum">ادو پرفیوم</a></li><li><a href="#best" data-alt="Body mist">بادی اسپلش</a></li></ul></div>
+          <div><h4 data-alt="Skincare">مراقبت پوست</h4><ul><li><a href="#best" data-alt="Sunscreen">ضدآفتاب</a></li><li><a href="#best" data-alt="Moisturiser">آبرسان</a></li></ul></div>
+        </div>
+        <a class="mega-promo" href="#deals"><span class="badge deal" style="justify-self: start" data-alt="Up to 30% off">تا ۳۰٪ تخفیف</span><b class="h2" style="color:#fff" data-alt="Audio week">هفتهٔ صوتی</b><span class="small" style="opacity:.85" data-alt="Headphones, earbuds and speakers">هدفون، هندزفری و اسپیکر</span></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="container">
+  <section class="hero" id="top">
+    <div class="slider" data-carousel aria-roledescription="carousel" aria-label="پیشنهادهای ویژه" data-alt-aria-label="Featured offers">
+      <div data-track>
+        <article class="banner" style="--bg: linear-gradient(120deg, #3a22c7, #6d4bff)">
+          <div class="copy"><span class="kicker"><span class="ms fill" aria-hidden="true">bolt</span><span data-alt="Phone week">هفتهٔ گوشی</span></span><h2 data-alt="The new Pixa 12, 15% off with a free case">پیکسا ۱۲ تازه، با ۱۵٪ تخفیف و قاب هدیه</h2><a class="btn btn-lg" href="#deals" data-alt="Shop now">خرید کنید</a></div>
+          <svg class="art" viewBox="0 0 200 200" aria-hidden="true"><use href="#p-phone"/></svg>
+        </article>
+        <article class="banner" style="--bg: linear-gradient(120deg, #0e8a49, #21c26b)">
+          <div class="copy"><span class="kicker"><span class="ms" aria-hidden="true">kitchen</span><span data-alt="New home">خانهٔ تازه</span></span><h2 data-alt="Kitchen essentials from 690,000 Toman">لوازم آشپزخانه از ۶۹۰ هزار تومان</h2><a class="btn btn-lg" href="#best" data-alt="See the range">دیدن همه</a></div>
+          <svg class="art" viewBox="0 0 200 200" aria-hidden="true"><use href="#p-kettle"/></svg>
+        </article>
+        <article class="banner" style="--bg: linear-gradient(120deg, #e8213f, #ff6a5f)">
+          <div class="copy"><span class="kicker"><span class="ms" aria-hidden="true">steps</span><span data-alt="Run season">فصل دویدن</span></span><h2 data-alt="Running shoes, 30% off this week">کتونی‌های دویدن، ۳۰٪ ارزان‌تر این هفته</h2><a class="btn btn-lg" href="#deals" data-alt="Shop now">خرید کنید</a></div>
+          <svg class="art" viewBox="0 0 200 200" aria-hidden="true"><use href="#p-sneaker"/></svg>
+        </article>
+      </div>
+      <div class="nav"><button type="button" data-prev-slide aria-label="قبلی" data-alt-aria-label="Previous"><span class="ms flip-rtl" aria-hidden="true">chevron_left</span></button><button type="button" data-next-slide aria-label="بعدی" data-alt-aria-label="Next"><span class="ms flip-rtl" aria-hidden="true">chevron_right</span></button></div>
+    </div>
+    <div class="side">
+      <a class="mini-banner" href="#deals" style="--bg:#ffe4dc"><span class="badge deal" style="justify-self: start" data-alt="20% off">۲۰٪ تخفیف</span><b data-alt="Smartwatches that last a week">ساعت‌های هوشمند با باتری یک‌هفته‌ای</b><span class="go"><span data-alt="Shop">خرید</span><span class="ms flip-rtl" aria-hidden="true">chevron_right</span></span><svg class="art" viewBox="0 0 200 200" aria-hidden="true"><use href="#p-watch"/></svg></a>
+      <a class="mini-banner" href="#best" style="--bg:#fff1d6"><span class="badge brand" style="justify-self: start" data-alt="New in">تازه رسید</span><b data-alt="Travel bags for the long weekend">کوله‌های سفر برای تعطیلات</b><span class="go"><span data-alt="See all">همه را ببینید</span><span class="ms flip-rtl" aria-hidden="true">chevron_right</span></span><svg class="art" viewBox="0 0 200 200" aria-hidden="true"><use href="#p-backpack"/></svg></a>
+    </div>
+  </section>
+
+  <section class="section" aria-label="دسته‌ها" data-alt-aria-label="Categories">
+    <div class="cats">
+      <a class="cat new" href="#best"><span class="ring" style="--bg:#efebff"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-phone"/></svg></span><span data-alt="Mobile">موبایل</span></a>
+      <a class="cat" href="#best"><span class="ring" style="--bg:#e5f7f5"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-laptop"/></svg></span><span data-alt="Laptops">لپ‌تاپ</span></a>
+      <a class="cat new" href="#best"><span class="ring" style="--bg:#ece9ff"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-headphones"/></svg></span><span data-alt="Audio">صوتی</span></a>
+      <a class="cat" href="#best"><span class="ring" style="--bg:#ffe9e2"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-watch"/></svg></span><span data-alt="Watches">ساعت</span></a>
+      <a class="cat" href="#best"><span class="ring" style="--bg:#ffe8ec"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-sneaker"/></svg></span><span data-alt="Shoes">کفش</span></a>
+      <a class="cat" href="#best"><span class="ring" style="--bg:#e3f6ec"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-kettle"/></svg></span><span data-alt="Kitchen">آشپزخانه</span></a>
+      <a class="cat" href="#best"><span class="ring" style="--bg:#e8f7ee"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-plant"/></svg></span><span data-alt="Plants">گل و گیاه</span></a>
+      <a class="cat" href="#best"><span class="ring" style="--bg:#fff1d6"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-backpack"/></svg></span><span data-alt="Travel">سفر</span></a>
+      <a class="cat" href="#best"><span class="ring" style="--bg:#eceef5"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-speaker"/></svg></span><span data-alt="Speakers">اسپیکر</span></a>
+      <a class="cat" href="#best"><span class="ring" style="--bg:#ffe6ef"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-perfume"/></svg></span><span data-alt="Beauty">زیبایی</span></a>
+    </div>
+  </section>
+
+  <section class="deal-rail" id="deals" aria-labelledby="deals-t">
+    <div class="deal-head">
+      <span class="ms fill" aria-hidden="true">bolt</span>
+      <h2 class="title" id="deals-t" data-alt="Flash deals">پیشنهاد لحظه‌ای</h2>
+      <div class="countdown" id="countdown" aria-label="زمان باقی‌مانده" data-alt-aria-label="Time left"><span data-cd="h">02</span><i>:</i><span data-cd="m">14</span><i>:</i><span data-cd="s">37</span></div>
+      <a href="#best"><span data-alt="See all">مشاهدهٔ همه</span><span class="ms flip-rtl" aria-hidden="true">chevron_right</span></a>
+    </div>
+    <div class="deal-track">
+      <article class="pcard"><div class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-phone"/></svg><span class="badge deal off" data-num="15" data-fmt="pct">۱۵٪</span></div><div class="info"><h3 class="title" data-alt="Pixa 12 smartphone, 256 GB">گوشی پیکسا ۱۲، ۲۵۶ گیگابایت</h3><div class="price"><span class="now"><del data-num="42900000">۴۲٬۹۰۰٬۰۰۰</del><span><b data-num="36490000">۳۶٬۴۹۰٬۰۰۰</b><small data-alt="Toman">تومان</small></span></span><button class="add" type="button" aria-label="افزودن به سبد" data-alt-aria-label="Add to cart"><span class="ms" aria-hidden="true">add</span></button></div><div class="stock"><span><span data-alt="Sold">فروخته‌شده</span> <span data-num="72" data-fmt="pct">۷۲٪</span></span><span class="bar"><i style="--v:72%"></i></span></div></div></article>
+      <article class="pcard"><div class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-headphones"/></svg><span class="badge deal off" data-num="30" data-fmt="pct">۳۰٪</span></div><div class="info"><h3 class="title" data-alt="Nava Max wireless headphones">هدفون بی‌سیم نوا مکس</h3><div class="price"><span class="now"><del data-num="8900000">۸٬۹۰۰٬۰۰۰</del><span><b data-num="6230000">۶٬۲۳۰٬۰۰۰</b><small data-alt="Toman">تومان</small></span></span><button class="add" type="button" aria-label="افزودن به سبد" data-alt-aria-label="Add to cart"><span class="ms" aria-hidden="true">add</span></button></div><div class="stock"><span><span data-alt="Sold">فروخته‌شده</span> <span data-num="54" data-fmt="pct">۵۴٪</span></span><span class="bar"><i style="--v:54%"></i></span></div></div></article>
+      <article class="pcard"><div class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-watch"/></svg><span class="badge deal off" data-num="20" data-fmt="pct">۲۰٪</span></div><div class="info"><h3 class="title" data-alt="Tik 3 smartwatch">ساعت هوشمند تیک ۳</h3><div class="price"><span class="now"><del data-num="5400000">۵٬۴۰۰٬۰۰۰</del><span><b data-num="4320000">۴٬۳۲۰٬۰۰۰</b><small data-alt="Toman">تومان</small></span></span><button class="add" type="button" aria-label="افزودن به سبد" data-alt-aria-label="Add to cart"><span class="ms" aria-hidden="true">add</span></button></div><div class="stock"><span><span data-alt="Sold">فروخته‌شده</span> <span data-num="38" data-fmt="pct">۳۸٪</span></span><span class="bar"><i style="--v:38%"></i></span></div></div></article>
+      <article class="pcard"><div class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-sneaker"/></svg><span class="badge deal off" data-num="30" data-fmt="pct">۳۰٪</span></div><div class="info"><h3 class="title" data-alt="Rahro running shoes">کتونی دویدن رهرو</h3><div class="price"><span class="now"><del data-num="3200000">۳٬۲۰۰٬۰۰۰</del><span><b data-num="2240000">۲٬۲۴۰٬۰۰۰</b><small data-alt="Toman">تومان</small></span></span><button class="add" type="button" aria-label="افزودن به سبد" data-alt-aria-label="Add to cart"><span class="ms" aria-hidden="true">add</span></button></div><div class="stock"><span><span data-alt="Sold">فروخته‌شده</span> <span data-num="86" data-fmt="pct">۸۶٪</span></span><span class="bar"><i style="--v:86%"></i></span></div></div></article>
+      <article class="pcard"><div class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-kettle"/></svg><span class="badge deal off" data-num="20" data-fmt="pct">۲۰٪</span></div><div class="info"><h3 class="title" data-alt="Demi electric kettle, 1.7 L">کتری برقی دمی، ۱٫۷ لیتر</h3><div class="price"><span class="now"><del data-num="2150000">۲٬۱۵۰٬۰۰۰</del><span><b data-num="1720000">۱٬۷۲۰٬۰۰۰</b><small data-alt="Toman">تومان</small></span></span><button class="add" type="button" aria-label="افزودن به سبد" data-alt-aria-label="Add to cart"><span class="ms" aria-hidden="true">add</span></button></div><div class="stock"><span><span data-alt="Sold">فروخته‌شده</span> <span data-num="44" data-fmt="pct">۴۴٪</span></span><span class="bar"><i style="--v:44%"></i></span></div></div></article>
+      <article class="pcard"><div class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-backpack"/></svg><span class="badge deal off" data-num="30" data-fmt="pct">۳۰٪</span></div><div class="info"><h3 class="title" data-alt="Tousheh travel backpack, 35 L">کوله‌پشتی سفری توشه، ۳۵ لیتر</h3><div class="price"><span class="now"><del data-num="1890000">۱٬۸۹۰٬۰۰۰</del><span><b data-num="1320000">۱٬۳۲۰٬۰۰۰</b><small data-alt="Toman">تومان</small></span></span><button class="add" type="button" aria-label="افزودن به سبد" data-alt-aria-label="Add to cart"><span class="ms" aria-hidden="true">add</span></button></div><div class="stock"><span><span data-alt="Sold">فروخته‌شده</span> <span data-num="61" data-fmt="pct">۶۱٪</span></span><span class="bar"><i style="--v:61%"></i></span></div></div></article>
+    </div>
+  </section>
+
+  <section class="section" id="promos">
+    <div class="promos">
+      <a class="mini-banner" href="#best" style="--bg:#e5f7f5"><b data-alt="Laptops for study and work">لپ‌تاپ برای درس و کار</b><span class="go"><span data-alt="From 38M Toman">از ۳۸ میلیون تومان</span><span class="ms flip-rtl" aria-hidden="true">chevron_right</span></span><svg class="art" viewBox="0 0 200 200" aria-hidden="true"><use href="#p-laptop"/></svg></a>
+      <a class="mini-banner" href="#best" style="--bg:#e8f7ee"><b data-alt="Plants that forgive you">گیاهانی که فراموشی را می‌بخشند</b><span class="go"><span data-alt="Shop plants">خرید گیاه</span><span class="ms flip-rtl" aria-hidden="true">chevron_right</span></span><svg class="art" viewBox="0 0 200 200" aria-hidden="true"><use href="#p-plant"/></svg></a>
+      <a class="mini-banner" href="#best" style="--bg:#eceef5"><b data-alt="Sound for the whole room">صدایی برای همهٔ خانه</b><span class="go"><span data-alt="Speakers">اسپیکرها</span><span class="ms flip-rtl" aria-hidden="true">chevron_right</span></span><svg class="art" viewBox="0 0 200 200" aria-hidden="true"><use href="#p-speaker"/></svg></a>
+      <a class="mini-banner" href="#best" style="--bg:#ffe6ef"><b data-alt="Gift cards from 200,000 Toman">کارت هدیه از ۲۰۰ هزار تومان</b><span class="go"><span data-alt="Choose an amount">انتخاب مبلغ</span><span class="ms flip-rtl" aria-hidden="true">chevron_right</span></span><svg class="art" viewBox="0 0 200 200" aria-hidden="true"><use href="#p-perfume"/></svg></a>
+    </div>
+  </section>
+
+  <section class="section" id="best">
+    <div class="sec-head">
+      <h2 data-alt="Best sellers this week">پرفروش‌های این هفته</h2>
+      <div class="tabs" role="tablist" aria-label="دسته" data-alt-aria-label="Category">
+        <button role="tab" id="b-mob" aria-controls="bp-mob" aria-selected="true" data-alt="Gadgets">گجت‌ها</button>
+        <button role="tab" id="b-home" aria-controls="bp-home" aria-selected="false" data-alt="Home &amp; life">خانه و زندگی</button>
+      </div>
+      <a class="more" href="#best"><span data-alt="See all">مشاهدهٔ همه</span><span class="ms flip-rtl" aria-hidden="true">chevron_right</span></a>
+    </div>
+    <div class="pgrid" role="tabpanel" id="bp-mob" aria-labelledby="b-mob">
+      <article class="pcard"><div class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-laptop"/></svg><button class="fav" type="button" aria-pressed="false" aria-label="افزودن به علاقه‌مندی‌ها" data-alt-aria-label="Add to wishlist"><span class="ms" aria-hidden="true">favorite</span></button></div><div class="info"><h3 class="title" data-alt="Arka 14 laptop, 16 GB, 512 GB SSD">لپ‌تاپ آرکا ۱۴، ۱۶ گیگ رم، ۵۱۲ گیگ</h3><div class="meta"><span class="rating"><span class="ms" aria-hidden="true">star</span><span data-num="4.7" data-fmt="dec1">۴٫۷</span></span><span class="dots" aria-hidden="true"><i style="--c:#c9ccd8"></i><i style="--c:#23243a"></i></span></div><div class="price"><span class="now"><span><b data-num="68500000">۶۸٬۵۰۰٬۰۰۰</b><small data-alt="Toman">تومان</small></span></span><button class="add" type="button" aria-label="افزودن به سبد" data-alt-aria-label="Add to cart"><span class="ms" aria-hidden="true">add</span></button></div></div></article>
+      <article class="pcard"><div class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-headphones"/></svg><span class="badge deal off" data-num="30" data-fmt="pct">۳۰٪</span><button class="fav" type="button" aria-pressed="true" aria-label="افزودن به علاقه‌مندی‌ها" data-alt-aria-label="Add to wishlist"><span class="ms" aria-hidden="true">favorite</span></button></div><div class="info"><h3 class="title" data-alt="Nava Max wireless headphones">هدفون بی‌سیم نوا مکس</h3><div class="meta"><span class="rating"><span class="ms" aria-hidden="true">star</span><span data-num="4.6" data-fmt="dec1">۴٫۶</span></span><span class="dots" aria-hidden="true"><i style="--c:#5b3df5"></i><i style="--c:#23243a"></i><i style="--c:#f6f7fb"></i></span></div><div class="price"><span class="now"><del data-num="8900000">۸٬۹۰۰٬۰۰۰</del><span><b data-num="6230000">۶٬۲۳۰٬۰۰۰</b><small data-alt="Toman">تومان</small></span></span><button class="add" type="button" aria-label="افزودن به سبد" data-alt-aria-label="Add to cart"><span class="ms" aria-hidden="true">add</span></button></div></div></article>
+      <article class="pcard"><div class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-speaker"/></svg><button class="fav" type="button" aria-pressed="false" aria-label="افزودن به علاقه‌مندی‌ها" data-alt-aria-label="Add to wishlist"><span class="ms" aria-hidden="true">favorite</span></button></div><div class="info"><h3 class="title" data-alt="Pajvak portable speaker, waterproof">اسپیکر قابل‌حمل پژواک، ضدآب</h3><div class="meta"><span class="rating"><span class="ms" aria-hidden="true">star</span><span data-num="4.4" data-fmt="dec1">۴٫۴</span></span><span class="dots" aria-hidden="true"><i style="--c:#2d2f45"></i><i style="--c:#ff3b5c"></i></span></div><div class="price"><span class="now"><span><b data-num="3750000">۳٬۷۵۰٬۰۰۰</b><small data-alt="Toman">تومان</small></span></span><button class="add" type="button" aria-label="افزودن به سبد" data-alt-aria-label="Add to cart"><span class="ms" aria-hidden="true">add</span></button></div></div></article>
+      <article class="pcard"><div class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-watch"/></svg><span class="badge deal off" data-num="20" data-fmt="pct">۲۰٪</span><button class="fav" type="button" aria-pressed="false" aria-label="افزودن به علاقه‌مندی‌ها" data-alt-aria-label="Add to wishlist"><span class="ms" aria-hidden="true">favorite</span></button></div><div class="info"><h3 class="title" data-alt="Tik 3 smartwatch">ساعت هوشمند تیک ۳</h3><div class="meta"><span class="rating"><span class="ms" aria-hidden="true">star</span><span data-num="4.5" data-fmt="dec1">۴٫۵</span></span><span class="dots" aria-hidden="true"><i style="--c:#ffb199"></i><i style="--c:#23243a"></i></span></div><div class="price"><span class="now"><del data-num="5400000">۵٬۴۰۰٬۰۰۰</del><span><b data-num="4320000">۴٬۳۲۰٬۰۰۰</b><small data-alt="Toman">تومان</small></span></span><button class="add" type="button" aria-label="افزودن به سبد" data-alt-aria-label="Add to cart"><span class="ms" aria-hidden="true">add</span></button></div></div></article>
+      <article class="pcard"><div class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-phone"/></svg><button class="fav" type="button" aria-pressed="false" aria-label="افزودن به علاقه‌مندی‌ها" data-alt-aria-label="Add to wishlist"><span class="ms" aria-hidden="true">favorite</span></button></div><div class="info"><h3 class="title" data-alt="Pixa 12 smartphone, 256 GB">گوشی پیکسا ۱۲، ۲۵۶ گیگابایت</h3><div class="meta"><span class="rating"><span class="ms" aria-hidden="true">star</span><span data-num="4.8" data-fmt="dec1">۴٫۸</span></span><span class="dots" aria-hidden="true"><i style="--c:#5b3df5"></i><i style="--c:#ff5c8a"></i></span></div><div class="price"><span class="now"><del data-num="42900000">۴۲٬۹۰۰٬۰۰۰</del><span><b data-num="36490000">۳۶٬۴۹۰٬۰۰۰</b><small data-alt="Toman">تومان</small></span></span><button class="add" type="button" aria-label="افزودن به سبد" data-alt-aria-label="Add to cart"><span class="ms" aria-hidden="true">add</span></button></div></div></article>
+    </div>
+    <div class="pgrid" role="tabpanel" id="bp-home" aria-labelledby="b-home" hidden>
+      <article class="pcard"><div class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-kettle"/></svg><span class="badge deal off" data-num="20" data-fmt="pct">۲۰٪</span><button class="fav" type="button" aria-pressed="false" aria-label="افزودن به علاقه‌مندی‌ها" data-alt-aria-label="Add to wishlist"><span class="ms" aria-hidden="true">favorite</span></button></div><div class="info"><h3 class="title" data-alt="Demi electric kettle, 1.7 L">کتری برقی دمی، ۱٫۷ لیتر</h3><div class="meta"><span class="rating"><span class="ms" aria-hidden="true">star</span><span data-num="4.3" data-fmt="dec1">۴٫۳</span></span></div><div class="price"><span class="now"><del data-num="2150000">۲٬۱۵۰٬۰۰۰</del><span><b data-num="1720000">۱٬۷۲۰٬۰۰۰</b><small data-alt="Toman">تومان</small></span></span><button class="add" type="button" aria-label="افزودن به سبد" data-alt-aria-label="Add to cart"><span class="ms" aria-hidden="true">add</span></button></div></div></article>
+      <article class="pcard"><div class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-plant"/></svg><button class="fav" type="button" aria-pressed="false" aria-label="افزودن به علاقه‌مندی‌ها" data-alt-aria-label="Add to wishlist"><span class="ms" aria-hidden="true">favorite</span></button></div><div class="info"><h3 class="title" data-alt="Snake plant in a terracotta pot">سانسوریا در گلدان سفالی</h3><div class="meta"><span class="rating"><span class="ms" aria-hidden="true">star</span><span data-num="4.9" data-fmt="dec1">۴٫۹</span></span></div><div class="price"><span class="now"><span><b data-num="690000">۶۹۰٬۰۰۰</b><small data-alt="Toman">تومان</small></span></span><button class="add" type="button" aria-label="افزودن به سبد" data-alt-aria-label="Add to cart"><span class="ms" aria-hidden="true">add</span></button></div></div></article>
+      <article class="pcard"><div class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-backpack"/></svg><span class="badge deal off" data-num="30" data-fmt="pct">۳۰٪</span><button class="fav" type="button" aria-pressed="false" aria-label="افزودن به علاقه‌مندی‌ها" data-alt-aria-label="Add to wishlist"><span class="ms" aria-hidden="true">favorite</span></button></div><div class="info"><h3 class="title" data-alt="Tousheh travel backpack, 35 L">کوله‌پشتی سفری توشه، ۳۵ لیتر</h3><div class="meta"><span class="rating"><span class="ms" aria-hidden="true">star</span><span data-num="4.6" data-fmt="dec1">۴٫۶</span></span></div><div class="price"><span class="now"><del data-num="1890000">۱٬۸۹۰٬۰۰۰</del><span><b data-num="1320000">۱٬۳۲۰٬۰۰۰</b><small data-alt="Toman">تومان</small></span></span><button class="add" type="button" aria-label="افزودن به سبد" data-alt-aria-label="Add to cart"><span class="ms" aria-hidden="true">add</span></button></div></div></article>
+      <article class="pcard"><div class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-perfume"/></svg><button class="fav" type="button" aria-pressed="false" aria-label="افزودن به علاقه‌مندی‌ها" data-alt-aria-label="Add to wishlist"><span class="ms" aria-hidden="true">favorite</span></button></div><div class="info"><h3 class="title" data-alt="Shabbu eau de parfum, 100 ml">ادو پرفیوم شب‌بو، ۱۰۰ میلی‌لیتر</h3><div class="meta"><span class="rating"><span class="ms" aria-hidden="true">star</span><span data-num="4.5" data-fmt="dec1">۴٫۵</span></span></div><div class="price"><span class="now"><span><b data-num="2980000">۲٬۹۸۰٬۰۰۰</b><small data-alt="Toman">تومان</small></span></span><button class="add" type="button" aria-label="افزودن به سبد" data-alt-aria-label="Add to cart"><span class="ms" aria-hidden="true">add</span></button></div></div></article>
+      <article class="pcard"><div class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-sneaker"/></svg><span class="badge deal off" data-num="30" data-fmt="pct">۳۰٪</span><button class="fav" type="button" aria-pressed="false" aria-label="افزودن به علاقه‌مندی‌ها" data-alt-aria-label="Add to wishlist"><span class="ms" aria-hidden="true">favorite</span></button></div><div class="info"><h3 class="title" data-alt="Rahro running shoes">کتونی دویدن رهرو</h3><div class="meta"><span class="rating"><span class="ms" aria-hidden="true">star</span><span data-num="4.4" data-fmt="dec1">۴٫۴</span></span></div><div class="price"><span class="now"><del data-num="3200000">۳٬۲۰۰٬۰۰۰</del><span><b data-num="2240000">۲٬۲۴۰٬۰۰۰</b><small data-alt="Toman">تومان</small></span></span><button class="add" type="button" aria-label="افزودن به سبد" data-alt-aria-label="Add to cart"><span class="ms" aria-hidden="true">add</span></button></div></div></article>
+    </div>
+  </section>
+
+  <section class="section" aria-label="برندها" data-alt-aria-label="Brands">
+    <div class="brands"><span>PIXA</span><span>nava</span><span>TIK</span><span>rahro</span><span>DEMI</span><span>arka</span></div>
+  </section>
+
+  <section class="section" id="perks">
+    <div class="perks">
+      <div><span class="ms" aria-hidden="true">local_shipping</span><div><b data-alt="Next-day delivery">ارسال روز بعد</b><span data-alt="In 40 cities">در ۴۰ شهر</span></div></div>
+      <div><span class="ms" aria-hidden="true">assignment_return</span><div><b data-alt="7-day returns">۷ روز ضمانت بازگشت</b><span data-alt="No questions asked">بدون پرسش</span></div></div>
+      <div><span class="ms" aria-hidden="true">verified</span><div><b data-alt="Original guaranteed">ضمانت اصالت کالا</b><span data-alt="Or your money back">وگرنه پولتان برمی‌گردد</span></div></div>
+      <div><span class="ms" aria-hidden="true">credit_card</span><div><b data-alt="Pay in 4 instalments">پرداخت در ۴ قسط</b><span data-alt="Without a cheque">بدون چک و ضامن</span></div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="app-band">
+      <div class="stack" style="gap: 8px"><h2 class="h1" data-alt="Deals arrive in the app first">پیشنهادها اول در اپ می‌رسند</h2><p class="muted" data-alt="Get flash deals and order tracking on your phone. Or join the newsletter.">پیشنهادهای لحظه‌ای و پیگیری سفارش را روی گوشی داشته باشید. یا در خبرنامه عضو شوید.</p><div class="apps"><a href="#top"><span class="ms" aria-hidden="true">android</span><span data-alt="Android app">اپ اندروید</span></a><a href="#top"><span class="ms" aria-hidden="true">phone_iphone</span><span data-alt="iOS web app">وب‌اپ iOS</span></a></div></div>
+      <form data-validate data-success="عضو خبرنامه شدید" data-success-alt="You're on the newsletter"><label class="sr-only" for="nl" data-alt="Email">ایمیل</label><input class="input" id="nl" type="email" required placeholder="you@example.com" dir="ltr"><button class="btn" type="submit" data-alt="Join">عضویت</button></form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="stack" style="gap: 10px"><a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"><span class="ms fill">shopping_bag</span></span><span data-alt="Bazarcheh">بازارچه</span></a><p class="muted" data-alt="A sample store for the Tastefolio gallery. Support: 7 am – midnight, every day.">یک فروشگاه نمونه برای گالری تیست‌فولیو. پشتیبانی هر روز از ۷ صبح تا نیمه‌شب.</p></div>
+      <div><h3 data-alt="Shopping guide">راهنمای خرید</h3><ul><li><a href="#top" data-alt="How to order">نحوهٔ ثبت سفارش</a></li><li><a href="#perks" data-alt="Delivery">شیوهٔ ارسال</a></li><li><a href="#perks" data-alt="Payment">روش‌های پرداخت</a></li></ul></div>
+      <div><h3 data-alt="Customer care">خدمات مشتریان</h3><ul><li><a href="#top" data-alt="FAQ">پرسش‌های پرتکرار</a></li><li><a href="#perks" data-alt="Returns">بازگرداندن کالا</a></li><li><a href="#top" data-alt="Privacy">حریم خصوصی</a></li></ul></div>
+      <div><h3 data-alt="Bazarcheh">بازارچه</h3><ul><li><a href="#top" data-alt="About">دربارهٔ ما</a></li><li><a href="#top" data-alt="Careers">فرصت‌های شغلی</a></li><li><a href="dashboard.html" data-alt="My account">حساب من</a></li></ul></div>
+      <div><h3 data-alt="Get the app">دریافت اپ</h3><div class="apps"><a href="#top"><span class="ms" aria-hidden="true">android</span><span data-alt="Android">اندروید</span></a><a href="#top"><span class="ms" aria-hidden="true">phone_iphone</span><span>iOS</span></a></div></div>
+    </div>
+    <div class="foot-base"><span data-alt="© 2026 Bazarcheh — sample data">© ۱۴۰۵ بازارچه — داده‌ها نمونه‌اند</span><span data-alt="Prices include VAT">قیمت‌ها با احتساب مالیات بر ارزش افزوده است</span></div>
+  </div>
+</footer>
+
+<nav class="bottom-nav" aria-label="ناوبری پایین" data-alt-aria-label="Bottom navigation">
+  <a href="#top" aria-current="page"><span class="ms fill" aria-hidden="true">home</span><span data-alt="Home">خانه</span></a>
+  <button type="button" data-toggle="#mega" aria-controls="mega"><span class="ms" aria-hidden="true">category</span><span data-alt="Categories">دسته‌ها</span></button>
+  <button type="button" data-dialog="#cart"><span class="ms" aria-hidden="true">shopping_cart</span><span data-alt="Cart">سبد</span><span class="count" data-cart-count data-num="2">۲</span></button>
+  <a href="dashboard.html"><span class="ms" aria-hidden="true">account_circle</span><span data-alt="Account">حساب</span></a>
+</nav>
+
+<dialog class="sheet" id="cart" aria-labelledby="cart-t">
+  <div class="sheet-head"><h2 class="h2" id="cart-t"><span data-alt="Your cart">سبد خرید</span></h2><button class="btn btn-ghost btn-icon btn-sm" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><span class="ms" aria-hidden="true">close</span></button></div>
+  <div class="ship-meter"><span><span data-num="180000">۱۸۰٬۰۰۰</span> <span data-alt="Toman left until free delivery">تومان تا ارسال رایگان</span></span><span class="bar"><i style="--v:64%"></i></span></div>
+  <div class="sheet-body">
+    <div class="line-item"><span class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-headphones"/></svg></span><div class="stack" style="gap: 6px"><b class="small" data-alt="Nava Max wireless headphones">هدفون بی‌سیم نوا مکس</b><div class="qty" data-qty><button type="button" data-step="-1" aria-label="کمتر" data-alt-aria-label="Fewer"><span class="ms" aria-hidden="true">remove</span></button><input type="number" value="1" min="1" max="5" aria-label="تعداد" data-alt-aria-label="Quantity"><button type="button" data-step="1" aria-label="بیشتر" data-alt-aria-label="More"><span class="ms" aria-hidden="true">add</span></button></div></div><b class="small"><span data-num="6230000">۶٬۲۳۰٬۰۰۰</span></b></div>
+    <div class="line-item"><span class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-plant"/></svg></span><div class="stack" style="gap: 6px"><b class="small" data-alt="Snake plant in a terracotta pot">سانسوریا در گلدان سفالی</b><div class="qty" data-qty><button type="button" data-step="-1" aria-label="کمتر" data-alt-aria-label="Fewer"><span class="ms" aria-hidden="true">remove</span></button><input type="number" value="1" min="1" max="5" aria-label="تعداد" data-alt-aria-label="Quantity"><button type="button" data-step="1" aria-label="بیشتر" data-alt-aria-label="More"><span class="ms" aria-hidden="true">add</span></button></div></div><b class="small"><span data-num="690000">۶۹۰٬۰۰۰</span></b></div>
+  </div>
+  <div class="sheet-foot">
+    <div class="row" style="justify-content: space-between"><span class="muted" data-alt="Total">جمع سبد</span><b class="h2"><span data-num="6920000">۶٬۹۲۰٬۰۰۰</span> <small class="small" data-alt="Toman">تومان</small></b></div>
+    <a class="btn btn-lg btn-block" href="dashboard.html" data-alt="Checkout">ادامهٔ فرایند خرید</a>
+    <p class="tiny subtle" style="text-align:center" data-alt="Or pay in 4 instalments of 1,730,000 Toman">یا در ۴ قسط ۱٬۷۳۰٬۰۰۰ تومانی بپردازید</p>
+  </div>
+</dialog>
+
+<script>
+  (() => {
+    // live countdown for the deal rail (static in screenshots / reduced motion)
+    let left = 2 * 3600 + 14 * 60 + 37;
+    const cd = document.getElementById('countdown');
+    const pad = (n) => String(n).padStart(2, '0');
+    const paint = () => {
+      const v = { h: Math.floor(left / 3600), m: Math.floor(left % 3600 / 60), s: left % 60 };
+      cd.querySelectorAll('[data-cd]').forEach((el) => { el.textContent = tf.lang() === 'fa' ? tf.fmt(v[el.dataset.cd]).padStart(2, '۰') : pad(v[el.dataset.cd]); });
+    };
+    document.addEventListener('tf:ready', () => { paint(); if (!tf.reduceMotion) setInterval(() => { left = Math.max(0, left - 1); paint(); }, 1000); });
+    document.addEventListener('tf:lang', paint);
+    // "+" becomes a stepper; the cart badge follows
+    let added = 0;
+    const bump = (d) => {
+      added = Math.max(0, added + d);
+      document.querySelectorAll('[data-cart-count]').forEach((el) => { el.dataset.num = 2 + added; el.textContent = tf.fmt(2 + added); });
+    };
+    const stepper = (btn) => {
+      const q = document.createElement('div');
+      q.className = 'qty';
+      q.innerHTML = '<button type="button" data-d="-1"><span class="ms" aria-hidden="true">remove</span></button><input type="number" value="1" min="0" max="9" readonly><button type="button" data-d="1"><span class="ms" aria-hidden="true">add</span></button>';
+      const [minus, input, plus] = q.children;
+      minus.setAttribute('aria-label', tf.lang() === 'fa' ? 'کمتر' : 'Fewer');
+      plus.setAttribute('aria-label', tf.lang() === 'fa' ? 'بیشتر' : 'More');
+      input.setAttribute('aria-label', tf.lang() === 'fa' ? 'تعداد در سبد' : 'Quantity in cart');
+      q.addEventListener('click', (e) => {
+        const b = e.target.closest('[data-d]');
+        if (!b) return;
+        const v = Math.min(9, Math.max(0, Number(input.value) + Number(b.dataset.d)));
+        bump(v - Number(input.value));
+        input.value = v;
+        if (v === 0) { q.replaceWith(btn); btn.focus(); }
+      });
+      btn.replaceWith(q);
+      plus.focus();
+    };
+    document.addEventListener('click', (e) => {
+      const add = e.target.closest('.add');
+      if (add) { bump(1); stepper(add); tf.toast(tf.lang() === 'fa' ? 'به سبد اضافه شد' : 'Added to cart', { tone: 'success' }); }
+      const fav = e.target.closest('.fav');
+      if (fav) fav.setAttribute('aria-pressed', String(fav.getAttribute('aria-pressed') !== 'true'));
+    });
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="dashboard">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="My account · Bazarcheh">حساب کاربری · بازارچه</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..800&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..600,0..1,0&icon_names=account_balance_wallet,add,add_location_alt,assignment_return,cancel,check,check_circle,close,content_copy,dark_mode,delete,edit,favorite,home,inventory_2,local_shipping,location_on,logout,manage_accounts,receipt_long,redeem,replay,search,shopping_bag,shopping_cart,space_dashboard,star&display=block">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .grid2 { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--space-4); }
+  @media (max-width: 1100px) { .grid2 { grid-template-columns: minmax(0, 1fr); } }
+  .pgrid.compact { --cols: 4; }
+  @media (max-width: 1100px) { .pgrid.compact { --cols: 3; } }
+  @media (max-width: 600px) { .pgrid.compact { --cols: 2; } }
+  .pgrid.compact .title { -webkit-line-clamp: 1; min-block-size: 1.6em; }
+  .club { display: grid; gap: 10px; }
+  .club .bar { block-size: 8px; border-radius: var(--radius-pill); background: var(--surface-2); overflow: hidden; }
+  .club .bar i { display: block; block-size: 100%; inline-size: var(--v); border-radius: inherit; background: linear-gradient(90deg, var(--brand), color-mix(in oklab, var(--brand) 50%, var(--deal))); }
+  .addrs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+  @media (max-width: 700px) { .addrs { grid-template-columns: minmax(0, 1fr); } }
+  .form2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+  .form2 .full { grid-column: 1 / -1; }
+  @media (max-width: 600px) { .form2 { grid-template-columns: minmax(0, 1fr); } }
+  .pos { color: var(--success); font-weight: 700; } .neg { color: var(--ink); font-weight: 700; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gPhone" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b3df5"/><stop offset="1" stop-color="#ff5c8a"/></linearGradient>
+    <linearGradient id="gLaptop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2fd4c1"/><stop offset="1" stop-color="#5b3df5"/></linearGradient>
+    <linearGradient id="gPerfume" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb3c7"/><stop offset="1" stop-color="#ff7aa0"/></linearGradient>
+  </defs>
+  <symbol id="p-phone" viewBox="0 0 200 200"><ellipse cx="100" cy="188" rx="42" ry="6" fill="#000" opacity=".08"/><rect x="58" y="12" width="84" height="170" rx="18" fill="#23243a"/><rect x="63" y="18" width="74" height="158" rx="13" fill="url(#gPhone)"/><rect x="88" y="23" width="24" height="6" rx="3" fill="#23243a"/><circle cx="100" cy="96" r="22" fill="#fff" opacity=".18"/><rect x="74" y="140" width="52" height="8" rx="4" fill="#fff" opacity=".35"/></symbol>
+  <symbol id="p-headphones" viewBox="0 0 200 200"><ellipse cx="100" cy="186" rx="56" ry="6" fill="#000" opacity=".08"/><path d="M48 116V96a52 52 0 0 1 104 0v20" fill="none" stroke="#2d2f45" stroke-width="12" stroke-linecap="round"/><rect x="30" y="102" width="36" height="62" rx="16" fill="#5b3df5"/><rect x="134" y="102" width="36" height="62" rx="16" fill="#5b3df5"/><rect x="56" y="110" width="15" height="46" rx="7.5" fill="#2d2f45"/><rect x="129" y="110" width="15" height="46" rx="7.5" fill="#2d2f45"/></symbol>
+  <symbol id="p-watch" viewBox="0 0 200 200"><rect x="76" y="10" width="48" height="180" rx="20" fill="#ffb199"/><rect x="56" y="56" width="88" height="88" rx="26" fill="#23243a"/><rect x="64" y="64" width="72" height="72" rx="20" fill="#0f1020"/><circle cx="100" cy="100" r="22" fill="none" stroke="#3ce0a0" stroke-width="7" stroke-linecap="round" stroke-dasharray="98 140" transform="rotate(-90 100 100)"/><rect x="143" y="86" width="7" height="18" rx="3.5" fill="#23243a"/></symbol>
+  <symbol id="p-sneaker" viewBox="0 0 200 200"><ellipse cx="100" cy="170" rx="80" ry="6" fill="#000" opacity=".08"/><path d="M20 136c0-17 10-31 27-35l30-8c10-3 19-15 25-26l9 4c9 11 27 22 48 26 18 4 29 15 29 31v8H20z" fill="#f6f7fb" stroke="#d9dce5" stroke-width="2"/><path d="M20 144h168v9a9 9 0 0 1-9 9H29a9 9 0 0 1-9-9z" fill="#ff3b5c"/><path d="M70 104l34 26M86 96l32 26" stroke="#5b3df5" stroke-width="8" stroke-linecap="round"/><circle cx="112" cy="78" r="4" fill="#23243a"/><circle cx="124" cy="84" r="4" fill="#23243a"/></symbol>
+  <symbol id="p-kettle" viewBox="0 0 200 200"><ellipse cx="96" cy="184" rx="56" ry="6" fill="#000" opacity=".08"/><path d="M62 70h68l12 100H50z" fill="#12a150"/><rect x="72" y="56" width="48" height="16" rx="8" fill="#0d7a3d"/><path d="M131 88c27 2 35 31 22 52" fill="none" stroke="#0d7a3d" stroke-width="11" stroke-linecap="round"/><path d="M60 94L32 74" stroke="#0d7a3d" stroke-width="11" stroke-linecap="round"/><rect x="44" y="166" width="104" height="13" rx="6.5" fill="#23243a"/><rect x="78" y="100" width="10" height="44" rx="5" fill="#fff" opacity=".3"/></symbol>
+  <symbol id="p-backpack" viewBox="0 0 200 200"><ellipse cx="100" cy="188" rx="48" ry="6" fill="#000" opacity=".08"/><path d="M78 42c0-24 44-24 44 0" fill="none" stroke="#c97a06" stroke-width="10"/><rect x="52" y="40" width="96" height="144" rx="32" fill="#f5a524"/><rect x="66" y="112" width="68" height="56" rx="15" fill="#e08e0b"/><rect x="70" y="130" width="60" height="6" rx="3" fill="#c97a06"/><rect x="66" y="62" width="10" height="34" rx="5" fill="#fff" opacity=".3"/></symbol>
+  <symbol id="p-laptop" viewBox="0 0 200 200"><ellipse cx="100" cy="166" rx="84" ry="6" fill="#000" opacity=".08"/><rect x="36" y="44" width="128" height="90" rx="9" fill="#23243a"/><rect x="43" y="51" width="114" height="76" rx="4" fill="url(#gLaptop)"/><path d="M20 140h160l-11 16H31z" fill="#c9ccd8"/><rect x="86" y="140" width="28" height="5" rx="2.5" fill="#a5a9b8"/></symbol>
+  <symbol id="p-plant" viewBox="0 0 200 200"><ellipse cx="100" cy="186" rx="40" ry="6" fill="#000" opacity=".08"/><path d="M100 124c-32-10-42-52-26-74 15 11 28 43 26 74z" fill="#12a150"/><path d="M100 124c25-15 27-58 6-77-13 17-17 48-6 77z" fill="#21c26b"/><path d="M100 124c-4-31 15-60 40-64 4 27-17 54-40 64z" fill="#0d8f45"/><path d="M64 124h72l-11 58H75z" fill="#ff8a65"/><rect x="58" y="116" width="84" height="15" rx="6" fill="#f4703f"/></symbol>
+  <symbol id="p-speaker" viewBox="0 0 200 200"><ellipse cx="100" cy="188" rx="40" ry="6" fill="#000" opacity=".08"/><rect x="62" y="20" width="76" height="162" rx="38" fill="#2d2f45"/><g fill="#5b5f80"><circle cx="84" cy="56" r="4"/><circle cx="100" cy="56" r="4"/><circle cx="116" cy="56" r="4"/><circle cx="84" cy="72" r="4"/><circle cx="100" cy="72" r="4"/><circle cx="116" cy="72" r="4"/><circle cx="84" cy="88" r="4"/><circle cx="100" cy="88" r="4"/><circle cx="116" cy="88" r="4"/><circle cx="84" cy="104" r="4"/><circle cx="100" cy="104" r="4"/><circle cx="116" cy="104" r="4"/><circle cx="84" cy="120" r="4"/><circle cx="100" cy="120" r="4"/><circle cx="116" cy="120" r="4"/></g><circle cx="100" cy="152" r="9" fill="#5b3df5"/></symbol>
+  <symbol id="p-perfume" viewBox="0 0 200 200"><ellipse cx="100" cy="186" rx="50" ry="6" fill="#000" opacity=".08"/><rect x="82" y="26" width="36" height="28" rx="7" fill="#23243a"/><rect x="91" y="52" width="18" height="14" fill="#c9ccd8"/><rect x="50" y="64" width="100" height="116" rx="24" fill="url(#gPerfume)"/><rect x="70" y="104" width="60" height="34" rx="7" fill="#fff" opacity=".85"/><rect x="60" y="76" width="10" height="44" rx="5" fill="#fff" opacity=".4"/></symbol>
+</svg>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<header class="store-head">
+  <div class="container">
+    <div class="top">
+      <a class="logo" href="site.html"><span class="logo-mark" aria-hidden="true"><span class="ms fill">shopping_bag</span></span><span data-alt="Bazarcheh">بازارچه</span></a>
+      <form class="search" role="search" onsubmit="event.preventDefault()"><label class="search-box"><span class="ms" aria-hidden="true">search</span><span class="sr-only" data-alt="Search the store">جست‌وجو در فروشگاه</span><input type="search" placeholder="جست‌وجو در بازارچه…" data-alt-placeholder="Search Bazarcheh…" autocomplete="off"></label></form>
+      <div class="head-actions">
+        <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="تغییر حالت تیره" data-alt-aria-label="Toggle dark mode"><span class="ms" aria-hidden="true">dark_mode</span></button>
+        <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+        <a class="btn btn-ghost btn-icon cart-btn" href="site.html" aria-label="سبد خرید" data-alt-aria-label="Cart"><span class="ms" aria-hidden="true">shopping_cart</span><span class="count" data-num="2">۲</span></a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container acct">
+  <aside class="side-card" aria-label="حساب" data-alt-aria-label="Account">
+    <div class="profile">
+      <span class="avatar" aria-hidden="true" data-alt="NR">ن‌ر</span>
+      <div><b data-alt="Negar Rezaei">نگار رضایی</b><p class="tiny subtle ltr">0912 ••• 4567</p></div>
+      <button class="btn btn-ghost btn-icon btn-sm" type="button" data-goto="t-acc" aria-label="ویرایش" data-alt-aria-label="Edit"><span class="ms" aria-hidden="true">edit</span></button>
+    </div>
+    <div class="wallet-mini">
+      <div><span class="tiny subtle" data-alt="Wallet">کیف پول</span><b><span data-num="2350000">۲٬۳۵۰٬۰۰۰</span> <small class="tiny" data-alt="Toman">تومان</small></b></div>
+      <div><span class="tiny subtle" data-alt="Club points">امتیاز باشگاه</span><b data-num="1240">۱٬۲۴۰</b></div>
+    </div>
+    <div class="side-menu" role="tablist" aria-orientation="vertical" aria-label="بخش‌های حساب" data-alt-aria-label="Account sections">
+      <button role="tab" id="t-ov" aria-controls="p-ov" aria-selected="true"><span class="ms" aria-hidden="true">space_dashboard</span><span data-alt="Overview">پیشخوان</span></button>
+      <button role="tab" id="t-ord" aria-controls="p-ord" aria-selected="false"><span class="ms" aria-hidden="true">inventory_2</span><span data-alt="Orders">سفارش‌ها</span><span class="count" data-num="2">۲</span></button>
+      <button role="tab" id="t-fav" aria-controls="p-fav" aria-selected="false"><span class="ms" aria-hidden="true">favorite</span><span data-alt="Wishlist">علاقه‌مندی‌ها</span></button>
+      <button role="tab" id="t-addr" aria-controls="p-addr" aria-selected="false"><span class="ms" aria-hidden="true">location_on</span><span data-alt="Addresses">نشانی‌ها</span></button>
+      <button role="tab" id="t-wal" aria-controls="p-wal" aria-selected="false"><span class="ms" aria-hidden="true">account_balance_wallet</span><span data-alt="Wallet">کیف پول</span></button>
+      <button role="tab" id="t-acc" aria-controls="p-acc" aria-selected="false"><span class="ms" aria-hidden="true">manage_accounts</span><span data-alt="Account details">اطلاعات حساب</span></button>
+    </div>
+  </aside>
+
+  <main id="main" class="stack" style="gap: var(--space-4)">
+    <!-- ============================================================ overview -->
+    <section role="tabpanel" id="p-ov" aria-labelledby="t-ov" class="stack" style="gap: var(--space-4)">
+      <div class="counters">
+        <div class="counter"><span class="ic" style="--bg: var(--info-soft); --c: var(--info)"><span class="ms" aria-hidden="true">local_shipping</span></span><div><b data-num="2">۲</b><span data-alt="In progress">سفارش جاری</span></div></div>
+        <div class="counter"><span class="ic" style="--bg: var(--success-soft); --c: var(--success)"><span class="ms" aria-hidden="true">check_circle</span></span><div><b data-num="18">۱۸</b><span data-alt="Delivered">تحویل‌شده</span></div></div>
+        <div class="counter"><span class="ic" style="--bg: var(--warning-soft); --c: var(--warning)"><span class="ms" aria-hidden="true">assignment_return</span></span><div><b data-num="1">۱</b><span data-alt="Returned">مرجوعی</span></div></div>
+        <div class="counter"><span class="ic" style="--bg: var(--danger-soft); --c: var(--danger)"><span class="ms" aria-hidden="true">cancel</span></span><div><b data-num="3">۳</b><span data-alt="Cancelled">لغوشده</span></div></div>
+      </div>
+      <div class="grid2">
+        <div class="panel">
+          <div class="panel-head"><h2><span data-alt="Order">سفارش</span> <span class="ltr">#482190</span></h2><span class="badge info" data-alt="Handed to courier">تحویل پیک</span></div>
+          <ol class="track" style="--steps:4">
+            <li class="done"><span class="dot"><span class="ms" aria-hidden="true">check</span></span><span data-alt="Placed">ثبت سفارش</span></li>
+            <li class="done"><span class="dot"><span class="ms" aria-hidden="true">check</span></span><span data-alt="Packed">آماده‌سازی</span></li>
+            <li class="now"><span class="dot"><span class="ms" aria-hidden="true">local_shipping</span></span><span data-alt="On the way">در راه</span></li>
+            <li><span class="dot"><span class="ms" aria-hidden="true">home</span></span><span data-alt="Delivered">تحویل</span></li>
+          </ol>
+          <div class="row" style="justify-content: space-between; margin-block-start: var(--space-4)">
+            <p class="small muted"><span data-alt="Arrives">تحویل:</span> <b data-alt="tomorrow, 10:00–14:00">فردا، ۱۰ تا ۱۴</b></p>
+            <div class="row"><button class="btn btn-soft btn-sm" type="button" data-toast="کد رهگیری کپی شد" data-toast-alt="Tracking code copied" data-copy="BZ-482190-TEH"><span class="ms" aria-hidden="true">content_copy</span><span data-alt="Tracking code">کد رهگیری</span></button><button class="btn btn-outline btn-sm" type="button" data-goto="t-ord" data-alt="Details">جزئیات</button></div>
+          </div>
+        </div>
+        <div class="panel club">
+          <div class="panel-head" style="margin:0"><h2 data-alt="Bazarcheh club">باشگاه بازارچه</h2><span class="badge brand" data-alt="Bronze">برنزی</span></div>
+          <p class="small muted"><span data-num="760">۷۶۰</span> <span data-alt="points to Silver: free delivery all year">امتیاز تا سطح نقره‌ای: ارسال رایگان تمام سال</span></p>
+          <div class="bar" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" aria-label="پیشرفت تا سطح نقره‌ای" data-alt-aria-label="Progress to Silver"><i style="--v:62%"></i></div>
+          <button class="btn btn-soft btn-sm" type="button" style="justify-self: start" data-toast="کد تخفیف ۱۰٪ فعال شد" data-toast-alt="10% discount code activated" data-tone="success"><span class="ms" aria-hidden="true">redeem</span><span data-alt="Spend 500 points on 10% off">۵۰۰ امتیاز = ۱۰٪ تخفیف</span></button>
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="panel">
+          <div class="panel-head"><h2 data-alt="Spending, last 6 months">هزینهٔ شش ماه اخیر</h2><span class="tiny subtle" data-alt="Million Toman">میلیون تومان</span></div>
+          <div data-chart="bar" data-height="200" data-fmt="dec1" data-dates="2026-05-01,6,month" data-values="4.2,1.8,6.9,3.1,8.4,6.9" data-name='{"en":"Spending","fa":"هزینه"}'></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2 data-alt="Recently viewed">بازدیدهای اخیر</h2></div>
+          <div class="pgrid compact" style="--cols:2">
+            <article class="pcard"><div class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-speaker"/></svg></div><div class="info"><h3 class="title" data-alt="Pajvak speaker">اسپیکر پژواک</h3><div class="price"><span class="now"><span><b data-num="3750000">۳٬۷۵۰٬۰۰۰</b></span></span></div></div></article>
+            <article class="pcard"><div class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-perfume"/></svg></div><div class="info"><h3 class="title" data-alt="Shabbu perfume">ادو پرفیوم شب‌بو</h3><div class="price"><span class="now"><span><b data-num="2980000">۲٬۹۸۰٬۰۰۰</b></span></span></div></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ orders -->
+    <section role="tabpanel" id="p-ord" aria-labelledby="t-ord" class="panel" data-filter-scope hidden>
+      <div class="panel-head"><h2 data-alt="Orders">سفارش‌ها</h2>
+        <div class="pills" data-group role="group" aria-label="وضعیت" data-alt-aria-label="Status">
+          <button type="button" data-filter="st" data-value="all" aria-pressed="true" data-alt="All">همه</button>
+          <button type="button" data-filter="st" data-value="live" aria-pressed="false" data-alt="In progress">جاری</button>
+          <button type="button" data-filter="st" data-value="done" aria-pressed="false" data-alt="Delivered">تحویل‌شده</button>
+          <button type="button" data-filter="st" data-value="back" aria-pressed="false" data-alt="Returned">مرجوعی</button>
+        </div></div>
+      <div class="stack" style="gap: var(--space-3)">
+        <article class="order-card" data-filter-item data-st="live"><div class="top"><b class="ltr">#482190</b><span class="subtle" data-date="2026-10-14" data-fmt="long">۲۲ مهر ۱۴۰۵</span><span><span data-alt="Total">مبلغ:</span> <b data-num="6920000">۶٬۹۲۰٬۰۰۰</b> <span data-alt="Toman">تومان</span></span><span class="badge info" style="margin-inline-start:auto" data-alt="On the way">در راه</span></div><div class="thumbs"><span><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-headphones"/></svg></span><span><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-plant"/></svg></span></div><div class="row"><button class="btn btn-outline btn-sm" type="button" data-goto="t-ov" data-alt="Track">پیگیری</button><button class="btn btn-ghost btn-sm" type="button" data-toast="فاکتور دانلود شد" data-toast-alt="Invoice downloaded"><span class="ms" aria-hidden="true">receipt_long</span><span data-alt="Invoice">فاکتور</span></button></div></article>
+        <article class="order-card" data-filter-item data-st="live"><div class="top"><b class="ltr">#481877</b><span class="subtle" data-date="2026-10-12" data-fmt="long">۲۰ مهر ۱۴۰۵</span><span><span data-alt="Total">مبلغ:</span> <b data-num="1720000">۱٬۷۲۰٬۰۰۰</b> <span data-alt="Toman">تومان</span></span><span class="badge warn" style="margin-inline-start:auto" data-alt="Packing">آماده‌سازی</span></div><div class="thumbs"><span><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-kettle"/></svg></span></div><div class="row"><button class="btn btn-outline btn-sm" type="button" data-toast="سفارش لغو شد؛ مبلغ به کیف پول برمی‌گردد" data-toast-alt="Order cancelled; refund goes to your wallet" data-tone="danger" data-alt="Cancel order">لغو سفارش</button></div></article>
+        <article class="order-card" data-filter-item data-st="done"><div class="top"><b class="ltr">#476502</b><span class="subtle" data-date="2026-09-28" data-fmt="long">۶ مهر ۱۴۰۵</span><span><span data-alt="Total">مبلغ:</span> <b data-num="2240000">۲٬۲۴۰٬۰۰۰</b> <span data-alt="Toman">تومان</span></span><span class="badge ok" style="margin-inline-start:auto" data-alt="Delivered">تحویل‌شده</span></div><div class="thumbs"><span><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-sneaker"/></svg></span></div><div class="row"><button class="btn btn-soft btn-sm" type="button" data-toast="دوباره به سبد اضافه شد" data-toast-alt="Added to cart again" data-tone="success"><span class="ms" aria-hidden="true">replay</span><span data-alt="Buy again">خرید دوباره</span></button><button class="btn btn-ghost btn-sm" type="button" data-toast="از امتیازتان ممنونیم" data-toast-alt="Thanks for the rating"><span class="ms" aria-hidden="true">star</span><span data-alt="Rate">امتیاز دهید</span></button></div></article>
+        <article class="order-card" data-filter-item data-st="done"><div class="top"><b class="ltr">#471230</b><span class="subtle" data-date="2026-09-03" data-fmt="long">۱۲ شهریور ۱۴۰۵</span><span><span data-alt="Total">مبلغ:</span> <b data-num="36490000">۳۶٬۴۹۰٬۰۰۰</b> <span data-alt="Toman">تومان</span></span><span class="badge ok" style="margin-inline-start:auto" data-alt="Delivered">تحویل‌شده</span></div><div class="thumbs"><span><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-phone"/></svg></span><span><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-watch"/></svg></span></div><div class="row"><button class="btn btn-soft btn-sm" type="button" data-toast="دوباره به سبد اضافه شد" data-toast-alt="Added to cart again" data-tone="success"><span class="ms" aria-hidden="true">replay</span><span data-alt="Buy again">خرید دوباره</span></button></div></article>
+        <article class="order-card" data-filter-item data-st="back"><div class="top"><b class="ltr">#468844</b><span class="subtle" data-date="2026-08-19" data-fmt="long">۲۸ مرداد ۱۴۰۵</span><span><span data-alt="Total">مبلغ:</span> <b data-num="1320000">۱٬۳۲۰٬۰۰۰</b> <span data-alt="Toman">تومان</span></span><span class="badge bad" style="margin-inline-start:auto" data-alt="Returned">مرجوع شد</span></div><div class="thumbs"><span><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-backpack"/></svg></span></div><p class="tiny subtle" data-alt="Refunded to your wallet on 31 Mordad.">مبلغ در ۳۱ مرداد به کیف پول برگشت.</p></article>
+      </div>
+      <p class="empty" data-filter-empty hidden data-alt="No orders here.">سفارشی نیست.</p>
+    </section>
+
+    <!-- ============================================================ wishlist -->
+    <section role="tabpanel" id="p-fav" aria-labelledby="t-fav" class="panel" hidden>
+      <div class="panel-head"><h2 data-alt="Wishlist">علاقه‌مندی‌ها</h2><button class="btn btn-soft btn-sm" type="button" data-copy="https://bazarcheh.example/w/negar" data-alt="Share list">اشتراک فهرست</button></div>
+      <div class="pgrid compact">
+        <article class="pcard"><div class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-laptop"/></svg><button class="fav" type="button" aria-pressed="true" aria-label="حذف از علاقه‌مندی‌ها" data-alt-aria-label="Remove from wishlist"><span class="ms" aria-hidden="true">favorite</span></button></div><div class="info"><h3 class="title" data-alt="Arka 14 laptop">لپ‌تاپ آرکا ۱۴</h3><div class="price"><span class="now"><span><b data-num="68500000">۶۸٬۵۰۰٬۰۰۰</b></span></span><button class="add" type="button" aria-label="افزودن به سبد" data-alt-aria-label="Add to cart" data-toast="به سبد اضافه شد" data-toast-alt="Added to cart" data-tone="success"><span class="ms" aria-hidden="true">add</span></button></div></div></article>
+        <article class="pcard"><div class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-speaker"/></svg><button class="fav" type="button" aria-pressed="true" aria-label="حذف از علاقه‌مندی‌ها" data-alt-aria-label="Remove from wishlist"><span class="ms" aria-hidden="true">favorite</span></button></div><div class="info"><h3 class="title" data-alt="Pajvak speaker">اسپیکر پژواک</h3><div class="price"><span class="now"><span><b data-num="3750000">۳٬۷۵۰٬۰۰۰</b></span></span><button class="add" type="button" aria-label="افزودن به سبد" data-alt-aria-label="Add to cart" data-toast="به سبد اضافه شد" data-toast-alt="Added to cart" data-tone="success"><span class="ms" aria-hidden="true">add</span></button></div></div></article>
+        <article class="pcard"><div class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-perfume"/></svg><button class="fav" type="button" aria-pressed="true" aria-label="حذف از علاقه‌مندی‌ها" data-alt-aria-label="Remove from wishlist"><span class="ms" aria-hidden="true">favorite</span></button></div><div class="info"><h3 class="title" data-alt="Shabbu perfume">ادو پرفیوم شب‌بو</h3><div class="price"><span class="now"><span><b data-num="2980000">۲٬۹۸۰٬۰۰۰</b></span></span><button class="add" type="button" aria-label="افزودن به سبد" data-alt-aria-label="Add to cart" data-toast="به سبد اضافه شد" data-toast-alt="Added to cart" data-tone="success"><span class="ms" aria-hidden="true">add</span></button></div></div></article>
+        <article class="pcard"><div class="media"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#p-watch"/></svg><span class="badge deal off" data-num="20" data-fmt="pct">۲۰٪</span><button class="fav" type="button" aria-pressed="true" aria-label="حذف از علاقه‌مندی‌ها" data-alt-aria-label="Remove from wishlist"><span class="ms" aria-hidden="true">favorite</span></button></div><div class="info"><h3 class="title" data-alt="Tik 3 smartwatch">ساعت هوشمند تیک ۳</h3><div class="price"><span class="now"><del data-num="5400000">۵٬۴۰۰٬۰۰۰</del><span><b data-num="4320000">۴٬۳۲۰٬۰۰۰</b></span></span><button class="add" type="button" aria-label="افزودن به سبد" data-alt-aria-label="Add to cart" data-toast="به سبد اضافه شد" data-toast-alt="Added to cart" data-tone="success"><span class="ms" aria-hidden="true">add</span></button></div></div></article>
+      </div>
+    </section>
+
+    <!-- ============================================================ addresses -->
+    <section role="tabpanel" id="p-addr" aria-labelledby="t-addr" class="panel" hidden>
+      <div class="panel-head"><h2 data-alt="Addresses">نشانی‌ها</h2><button class="btn btn-sm" type="button" data-dialog="#new-addr"><span class="ms" aria-hidden="true">add_location_alt</span><span data-alt="New address">نشانی تازه</span></button></div>
+      <div class="addrs">
+        <div class="addr-card default"><div class="row" style="justify-content: space-between"><b data-alt="Home">خانه</b><span class="badge brand" data-alt="Default">پیش‌فرض</span></div><p class="small muted" data-alt="Tehran, Valiasr St., Nastaran Alley, No. 12, Unit 4">تهران، خیابان ولیعصر، کوچهٔ نسترن، پلاک ۱۲، واحد ۴</p><p class="tiny subtle"><span data-alt="Receiver: Negar Rezaei ·">گیرنده: نگار رضایی ·</span> <span class="ltr">0912 ••• 4567</span></p><div class="row"><button class="btn btn-ghost btn-sm" type="button" data-dialog="#new-addr"><span class="ms" aria-hidden="true">edit</span><span data-alt="Edit">ویرایش</span></button></div></div>
+        <div class="addr-card"><div class="row" style="justify-content: space-between"><b data-alt="Office">محل کار</b></div><p class="small muted" data-alt="Tehran, Beheshti St., Sarv Tower, Floor 7">تهران، خیابان بهشتی، برج سرو، طبقهٔ ۷</p><p class="tiny subtle"><span data-alt="Receiver: Negar Rezaei ·">گیرنده: نگار رضایی ·</span> <span class="ltr">021 ••• 8800</span></p><div class="row"><button class="btn btn-ghost btn-sm" type="button" data-toast="نشانی پیش‌فرض تغییر کرد" data-toast-alt="Default address changed" data-alt="Make default">پیش‌فرض کن</button><button class="btn btn-ghost btn-sm" type="button" data-toast="نشانی حذف شد" data-toast-alt="Address removed" data-tone="danger"><span class="ms" aria-hidden="true">delete</span><span data-alt="Delete">حذف</span></button></div></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ wallet -->
+    <section role="tabpanel" id="p-wal" aria-labelledby="t-wal" class="stack" style="gap: var(--space-4)" hidden>
+      <div class="grid2">
+        <div class="wallet-hero"><span class="small" style="opacity:.8" data-alt="Wallet balance">موجودی کیف پول</span><b><span data-num="2350000">۲٬۳۵۰٬۰۰۰</span> <small style="font-size: 16px" data-alt="Toman">تومان</small></b><span class="small" style="opacity:.8" data-alt="Refunds land here instantly. Pay with it at checkout.">مبلغ مرجوعی‌ها فوراً اینجا می‌نشیند. هنگام پرداخت از آن استفاده کنید.</span></div>
+        <form class="panel stack" style="gap: var(--space-3)" data-validate data-keep data-success="انتقال به درگاه پرداخت (نمونه)" data-success-alt="Redirecting to the payment gateway (sample)">
+          <h2 class="h2" data-alt="Top up">افزایش موجودی</h2>
+          <div class="pills" data-group="amount" role="group" aria-label="مبلغ" data-alt-aria-label="Amount"><button type="button" data-value="500000" aria-pressed="false" data-alt="500K">۵۰۰ هزار</button><button type="button" data-value="1000000" aria-pressed="true" data-alt="1M">۱ میلیون</button><button type="button" data-value="2000000" aria-pressed="false" data-alt="2M">۲ میلیون</button></div>
+          <div class="field"><label class="label" for="amt" data-alt="Or another amount (Toman)">یا مبلغ دلخواه (تومان)</label><input class="input" id="amt" name="amount" type="number" min="10000" step="10000" value="1000000" required dir="ltr"></div>
+          <button class="btn btn-block" type="submit" data-alt="Pay">پرداخت</button>
+        </form>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h2 data-alt="Transactions">تراکنش‌ها</h2></div>
+        <div class="table-scroll">
+          <table class="table">
+            <thead><tr><th scope="col" aria-sort="descending"><button type="button" data-sort="date" data-alt="Date">تاریخ</button></th><th scope="col" data-alt="Description">شرح</th><th scope="col" aria-sort="none"><button type="button" data-sort="num" data-alt="Amount (Toman)">مبلغ (تومان)</button></th><th scope="col" data-alt="Status">وضعیت</th></tr></thead>
+            <tbody>
+              <tr><td data-value="2026-10-12" data-date="2026-10-12" data-fmt="long">۲۰ مهر ۱۴۰۵</td><td data-alt="Paid for order #481877">پرداخت سفارش ‎#481877</td><td data-value="-1720000" class="neg">−<span data-num="1720000">۱٬۷۲۰٬۰۰۰</span></td><td><span class="badge ok" data-alt="Done">موفق</span></td></tr>
+              <tr><td data-value="2026-10-01" data-date="2026-10-01" data-fmt="long">۹ مهر ۱۴۰۵</td><td data-alt="Top-up">افزایش موجودی</td><td data-value="2000000" class="pos">+<span data-num="2000000">۲٬۰۰۰٬۰۰۰</span></td><td><span class="badge ok" data-alt="Done">موفق</span></td></tr>
+              <tr><td data-value="2026-08-22" data-date="2026-08-22" data-fmt="long">۳۱ مرداد ۱۴۰۵</td><td data-alt="Refund for order #468844">بازگشت وجه سفارش ‎#468844</td><td data-value="1320000" class="pos">+<span data-num="1320000">۱٬۳۲۰٬۰۰۰</span></td><td><span class="badge ok" data-alt="Done">موفق</span></td></tr>
+              <tr><td data-value="2026-08-10" data-date="2026-08-10" data-fmt="long">۱۹ مرداد ۱۴۰۵</td><td data-alt="Top-up">افزایش موجودی</td><td data-value="750000" class="pos">+<span data-num="750000">۷۵۰٬۰۰۰</span></td><td><span class="badge bad" data-alt="Failed">ناموفق</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ account details -->
+    <section role="tabpanel" id="p-acc" aria-labelledby="t-acc" class="panel" hidden>
+      <div class="panel-head"><h2 data-alt="Account details">اطلاعات حساب</h2></div>
+      <form class="form2" data-validate data-keep data-success="اطلاعات ذخیره شد" data-success-alt="Details saved">
+        <div class="field"><label class="label" for="a-first" data-alt="First name">نام</label><input class="input" id="a-first" name="first" value="نگار" data-alt-value="Negar" required></div>
+        <div class="field"><label class="label" for="a-last" data-alt="Last name">نام خانوادگی</label><input class="input" id="a-last" name="last" value="رضایی" data-alt-value="Rezaei" required></div>
+        <div class="field"><label class="label" for="a-mob" data-alt="Mobile (login)">موبایل (برای ورود)</label><input class="input" id="a-mob" name="mobile" value="09121234567" readonly dir="ltr"><span class="hint" data-alt="Change it with a one-time code.">تغییر با کد یک‌بارمصرف.</span></div>
+        <div class="field"><label class="label" for="a-mail" data-alt="Email (optional)">ایمیل (اختیاری)</label><input class="input" id="a-mail" name="email" type="email" placeholder="you@example.com" dir="ltr"></div>
+        <div class="field"><label class="label" for="a-bday" data-alt="Birthday — a gift code on the day">تاریخ تولد — روز تولد کد هدیه می‌گیرید</label><input class="input" id="a-bday" name="bday" type="date" value="1995-03-21"></div>
+        <div class="field"><span class="label" data-alt="Notifications">اطلاع‌رسانی</span>
+          <div class="row" style="justify-content: space-between; flex-wrap: nowrap"><span id="l-sms" class="small" data-alt="Flash deals by SMS">پیشنهادهای لحظه‌ای با پیامک</span><button class="switch" type="button" role="switch" aria-checked="true" aria-labelledby="l-sms"></button></div>
+          <div class="row" style="justify-content: space-between; flex-wrap: nowrap"><span id="l-mail" class="small" data-alt="Order emails">ایمیل سفارش‌ها</span><button class="switch" type="button" role="switch" aria-checked="false" aria-labelledby="l-mail"></button></div></div>
+        <div class="full row"><button class="btn btn-lg" type="submit" data-alt="Save">ذخیره</button><button class="btn btn-ghost btn-lg" type="button" data-toast="از حساب خارج شدید (نمونه)" data-toast-alt="Signed out (sample)"><span class="ms" aria-hidden="true">logout</span><span data-alt="Sign out">خروج از حساب</span></button></div>
+      </form>
+    </section>
+  </main>
+</div>
+
+<dialog class="modal" id="new-addr" aria-labelledby="na-t">
+  <form data-validate data-success="نشانی ذخیره شد" data-success-alt="Address saved">
+    <div class="modal-head"><h2 class="h2" id="na-t" data-alt="Delivery address">نشانی تحویل</h2><button class="btn btn-ghost btn-icon btn-sm" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><span class="ms" aria-hidden="true">close</span></button></div>
+    <div class="modal-body form2">
+      <div class="field"><label class="label" for="na-prov" data-alt="Province">استان</label><select class="select" id="na-prov" name="prov"><option data-alt="Tehran">تهران</option><option data-alt="Isfahan">اصفهان</option><option data-alt="Fars">فارس</option><option data-alt="Khorasan Razavi">خراسان رضوی</option></select></div>
+      <div class="field"><label class="label" for="na-city" data-alt="City">شهر</label><select class="select" id="na-city" name="city"><option data-alt="Tehran">تهران</option><option data-alt="Shemiran">شمیران</option><option data-alt="Rey">ری</option></select></div>
+      <div class="field full"><label class="label" for="na-addr" data-alt="Address">نشانی</label><textarea class="textarea" id="na-addr" name="addr" required minlength="10" placeholder="خیابان، کوچه، ساختمان" data-alt-placeholder="Street, alley, building"></textarea></div>
+      <div class="field"><label class="label" for="na-plate" data-alt="Plate">پلاک</label><input class="input" id="na-plate" name="plate" required inputmode="numeric"></div>
+      <div class="field"><label class="label" for="na-zip" data-alt="Postal code (10 digits)">کد پستی (۱۰ رقم)</label><input class="input" id="na-zip" name="zip" required pattern="[0-9]{10}" inputmode="numeric" dir="ltr" data-pattern-msg="کد پستی ۱۰ رقم است" data-pattern-msg-alt="Postal codes have 10 digits"></div>
+      <div class="field"><label class="label" for="na-name" data-alt="Receiver">نام گیرنده</label><input class="input" id="na-name" name="name" required></div>
+      <div class="field"><label class="label" for="na-mob" data-alt="Receiver mobile">موبایل گیرنده</label><input class="input" id="na-mob" name="mob" type="tel" required pattern="0?9[0-9]{9}" dir="ltr" data-pattern-msg="یک شمارهٔ موبایل ۱۱ رقمی" data-pattern-msg-alt="An 11-digit mobile number"></div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" type="button" data-close data-alt="Cancel">انصراف</button><button class="btn" type="submit" data-alt="Save address">ذخیرهٔ نشانی</button></div>
+  </form>
+</dialog>
+
+<script>
+  document.addEventListener('click', (e) => {
+    const g = e.target.closest('[data-goto]');
+    if (g) document.getElementById(g.dataset.goto)?.click();
+    const fav = e.target.closest('.fav');
+    if (fav) fav.setAttribute('aria-pressed', String(fav.getAttribute('aria-pressed') !== 'true'));
+  });
+  // amount chips fill the custom amount field
+  document.addEventListener('tf:change', (e) => {
+    const g = e.target.closest?.('[data-group="amount"]');
+    if (g) document.getElementById('amt').value = g.querySelector('[aria-pressed="true"]').dataset.value;
+  });
+</script>
+</body>
+</html>
