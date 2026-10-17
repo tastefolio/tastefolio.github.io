@@ -9,13 +9,14 @@
 
 **گالری:** https://tastefolio.github.io/fa/ · **English:** https://tastefolio.github.io · **راهنما:** https://tastefolio.github.io/fa/guide/ · [English README](README.md)
 
-- **۱۷ سبک** که در منطق چیدمان، تراکم، تایپوگرافی، ناوبری و تعامل با هم فرق دارند، نه فقط در رنگ.
-- **۳۴ دموی کارکرده** (برای هر سبک یک سایت و یک داشبورد) با منو، تب، فیلتر، فرم، دیالوگ و نمودار واقعی؛ همه قابل جابه‌جایی بین فارسی و انگلیسی، روشن و تیره و هر رنگ برندی.
+- **۲۷ سبک** که در منطق چیدمان، تراکم، تایپوگرافی، ناوبری و تعامل با هم فرق دارند، نه فقط در رنگ.
+- **۵۴ دموی کارکرده** (برای هر سبک یک سایت و یک داشبورد) با منو، تب، فیلتر، فرم، دیالوگ و نمودار واقعی؛ همه قابل جابه‌جایی بین فارسی و انگلیسی، روشن و تیره و هر رنگ برندی.
 - **تصویر واقعی** از همهٔ دموها در گالری که با هر انتشار خودکار گرفته می‌شود.
 - **بدون فریم‌ورک**: HTML و CSS ساده و یک اسکریپت کوچک مشترک، به‌همراه نگاشت Tailwind نسخهٔ ۳ و ۴ و shadcn/ui برای هر سبک.
 
 ## سبک‌ها
 
+<!-- styles:start -->
 | # | سبک | دسته | پیش‌فرض | تراکم | حال‌وهوا | دموها |
 |---|---|---|---|---|---|---|
 | 1 | [**Switchboard**](skills/switchboard/SKILL.md) · [صفحه](https://tastefolio.github.io/fa/skills/switchboard/) | محصول | روشن | متعادل | رابط کاربردی و آرام که هر گزینه در آن یک کلید روشن و ساده است | [سایت](https://tastefolio.github.io/skills/switchboard/examples/site.html?lang=fa) · [داشبورد](https://tastefolio.github.io/skills/switchboard/examples/dashboard.html?lang=fa) |
@@ -35,6 +36,17 @@
 | 15 | [**Ticker**](skills/ticker/SKILL.md) · [صفحه](https://tastefolio.github.io/fa/skills/ticker/) | توسعه و داده | تیره، فارسی‌محور | فشرده | میز کار بازار — موزاییک پنل‌ها با خط مویی، اعداد تک‌فاصلهٔ جدولی، سبز و قرمز فقط برای بالا و پایین | [سایت](https://tastefolio.github.io/skills/ticker/examples/site.html?lang=fa) · [داشبورد](https://tastefolio.github.io/skills/ticker/examples/dashboard.html?lang=fa) |
 | 16 | [**Clay**](skills/clay/SKILL.md) · [صفحه](https://tastefolio.github.io/fa/skills/clay/) | محصول | روشن | باز | سلامت نرم و لمسی — سطح‌های پف‌دار گِلی، کاشی‌های پاستلی، کنترل‌هایی که در صفحه فرو رفته‌اند | [سایت](https://tastefolio.github.io/skills/clay/examples/site.html?lang=fa) · [داشبورد](https://tastefolio.github.io/skills/clay/examples/dashboard.html?lang=fa) |
 | 17 | [**Maison**](skills/maison/SKILL.md) · [صفحه](https://tastefolio.github.io/fa/skills/maison/) | فروش | روشن | باز | لوکس آرام — تیتر دیدون، حروف کوچکِ فاصله‌دار، خطوط مویی و فضای سفید فراوان | [سایت](https://tastefolio.github.io/skills/maison/examples/site.html?lang=fa) · [داشبورد](https://tastefolio.github.io/skills/maison/examples/dashboard.html?lang=fa) |
+| 18 | [**Bento**](skills/bento/SKILL.md) · [صفحه](https://tastefolio.github.io/fa/skills/bento/) | محصول | روشن | متعادل | مدرن و ماژولار — هر ایده در کاشی گرد خودش، روی یک شبکهٔ آرام | [سایت](https://tastefolio.github.io/skills/bento/examples/site.html?lang=fa) · [داشبورد](https://tastefolio.github.io/skills/bento/examples/dashboard.html?lang=fa) |
+| 19 | [**Aisle**](skills/aisle/SKILL.md) · [صفحه](https://tastefolio.github.io/fa/skills/aisle/) | فروش | روشن، فارسی‌محور | فشرده | فروشگاه مدرن — جست‌وجوی بزرگ، مگامنو، ریل پیشنهاد مرجانی و کارت محصولی که به شمارنده تبدیل می‌شود | [سایت](https://tastefolio.github.io/skills/aisle/examples/site.html?lang=fa) · [داشبورد](https://tastefolio.github.io/skills/aisle/examples/dashboard.html?lang=fa) |
+| 20 | [**Syllabus**](skills/syllabus/SKILL.md) · [صفحه](https://tastefolio.github.io/fa/skills/syllabus/) | محتوا و رسانه | روشن، فارسی‌محور | متعادل | آکادمی آنلاین — هیرو سرمه‌ای با کاغذ شطرنجی، اقدام‌های ماژیکی، سرفصل با پیش‌نمایش رایگان و پخش‌کنندهٔ واقعی درس | [سایت](https://tastefolio.github.io/skills/syllabus/examples/site.html?lang=fa) · [داشبورد](https://tastefolio.github.io/skills/syllabus/examples/dashboard.html?lang=fa) |
+| 21 | [**Brief**](skills/brief/SKILL.md) · [صفحه](https://tastefolio.github.io/fa/skills/brief/) | برند و فرهنگ | روشن، فارسی‌محور | متعادل | استودیوی طراحی و ساخت — تیترهای پهن، صحنهٔ جوهری برای نمونه‌کار، قاب‌های مرورگر با پیمایش و پنل مشتری با بازخورد پین‌شده | [سایت](https://tastefolio.github.io/skills/brief/examples/site.html?lang=fa) · [داشبورد](https://tastefolio.github.io/skills/brief/examples/dashboard.html?lang=fa) |
+| 22 | [**Lucent**](skills/lucent/SKILL.md) · [صفحه](https://tastefolio.github.io/fa/skills/lucent/) | محصول | تیره، فارسی‌محور | متعادل | شیشهٔ مایع — کپسول‌های شیشه‌ای شکست‌دهندهٔ نور روی شفقی که رنگش را از آهنگ در حال پخش می‌گیرد | [سایت](https://tastefolio.github.io/skills/lucent/examples/site.html?lang=fa) · [داشبورد](https://tastefolio.github.io/skills/lucent/examples/dashboard.html?lang=fa) |
+| 23 | [**Clinic**](skills/clinic/SKILL.md) · [صفحه](https://tastefolio.github.io/fa/skills/clinic/) | محصول | روشن، فارسی‌محور | متعادل | نوبت‌دهی پزشکی — هیروی جست‌وجومحور، کارت پزشک با زمان خالی، انتخاب‌گر ساعت و پنل بیمار با حروفی بسیار خوانا | [سایت](https://tastefolio.github.io/skills/clinic/examples/site.html?lang=fa) · [داشبورد](https://tastefolio.github.io/skills/clinic/examples/dashboard.html?lang=fa) |
+| 24 | [**Linework**](skills/linework/SKILL.md) · [صفحه](https://tastefolio.github.io/fa/skills/linework/) | توسعه و داده | روشن | فشرده | خط‌کشی فنی — صفحه‌ای با خطوط یک‌پیکسلی و علامت‌های تقاطع، جوهر سیاه به‌عنوان تنها رنگ برند، برچسب‌های تک‌فاصله و کنسول توسعه‌دهنده | [سایت](https://tastefolio.github.io/skills/linework/examples/site.html?lang=fa) · [داشبورد](https://tastefolio.github.io/skills/linework/examples/dashboard.html?lang=fa) |
+| 25 | [**Estate**](skills/estate/SKILL.md) · [صفحه](https://tastefolio.github.io/fa/skills/estate/) | فروش | روشن، فارسی‌محور | متعادل | آگهی ملک — کاغذ سنگی، اقدام‌های سبز خزه‌ای، قیمت با حروف سریف، فهرست کنار نقشه با پین قیمت و پنل مشاور با قیف مشتری | [سایت](https://tastefolio.github.io/skills/estate/examples/site.html?lang=fa) · [داشبورد](https://tastefolio.github.io/skills/estate/examples/dashboard.html?lang=fa) |
+| 26 | [**Margin**](skills/margin/SKILL.md) · [صفحه](https://tastefolio.github.io/fa/skills/margin/) | محتوا و رسانه | روشن، فارسی‌محور | باز | خواندن طولانی — کاغذ گرم، ستون باریک متن، یادداشت‌های شماره‌دار در حاشیهٔ پهن، ماژیک خواننده و میز آرام نویسنده | [سایت](https://tastefolio.github.io/skills/margin/examples/site.html?lang=fa) · [داشبورد](https://tastefolio.github.io/skills/margin/examples/dashboard.html?lang=fa) |
+| 27 | [**Dot**](skills/dot/SKILL.md) · [صفحه](https://tastefolio.github.io/fa/skills/dot/) | برند و فرهنگ | روشن، فارسی‌محور | متعادل | سخت‌افزار نقطه‌ای — کاغذی یا سیاه، یک قرمز LED، حروف نمایشی از نقطه، دستگاه طراحی‌شده با صفحهٔ زندهٔ ۱۵×۱۵ و اپ دستگاه با سازندهٔ نشانه | [سایت](https://tastefolio.github.io/skills/dot/examples/site.html?lang=fa) · [داشبورد](https://tastefolio.github.io/skills/dot/examples/dashboard.html?lang=fa) |
+<!-- styles:end -->
 
 دموها پارامترهای `?lang=en`، `?theme=dark` و `?brand=ff5a36` (هر کد رنگ) را می‌پذیرند تا سبک را با برند خودتان امتحان کنید.
 
@@ -95,6 +107,16 @@ npx skills add tastefolio/tastefolio.github.io --skill kashi
 | معامله، بانکداری و تحلیل | Ticker |
 | سلامت، عادت، کودک و خانواده | Clay |
 | مد، عطر، اشیای لوکس و خدمات بوتیک | Maison |
+| صفحهٔ محصول مدرن یا داشبوردی از ابزارک‌ها | Bento |
+| فروشگاه اینترنتی بزرگ، سوپرمارکت یا بازارگاه | Aisle |
+| دوره‌های آنلاین، آکادمی و پنل دانشجو | Syllabus |
+| استودیوی طراحی، آژانس یا فریلنسر با پنل مشتری | Brief |
+| موسیقی، پادکست، پخش‌کننده و اپ‌های مصرفی لوکس | Lucent |
+| درمانگاه، نوبت‌دهی پزشک و پنل بیمار | Clinic |
+| پلتفرم توسعه‌دهنده، API، مستندات و کنسول | Linework |
+| آگهی ملک، آژانس املاک و پنل مشاور | Estate |
+| جستار، خبرنامه، متن بلند و ابزار نویسنده | Margin |
+| سخت‌افزار، گجت، خانهٔ هوشمند و اپ همراه | Dot |
 
 ## استفاده
 
@@ -145,6 +167,9 @@ skills/kashi/
 
 </div>
 
+سبکی که رفتار مخصوص خودش را لازم دارد، آن را به‌صورت یک فایل اضافه کنار کیت می‌آورد؛ مثلاً `assets/matrix.js` در
+Dot صفحهٔ LED و ویرایشگر نشانه را می‌سازد.
+
 همهٔ فایل‌های `tokens.css` نام‌های معنایی یکسانی دارند (`--canvas`، `--surface`، `--ink`، `--line`، `--brand`،
 `--success`…، `--chart-*`، `--font-*`، `--fs-*`، `--space-*`، `--radius-*`)؛ برای همین کیت‌ها، نگاشت‌ها و نمودارها در همهٔ
 سبک‌ها یکسان کار می‌کنند و هر سبک مقدارها و قوانین خودش را دارد.
@@ -159,7 +184,7 @@ skills/kashi/
 
 ## اسکریپت مشترک
 
-`shared/kit.js` (حدود ۴۹ کیلوبایت، ۱۵ کیلوبایت فشرده، بدون وابستگی) همهٔ دموها را با ویژگی‌های اعلانی راه می‌اندازد:
+`shared/kit.js` (حدود ۵۰ کیلوبایت، ۱۶ کیلوبایت فشرده، بدون وابستگی) همهٔ دموها را با ویژگی‌های اعلانی راه می‌اندازد:
 تغییر زبان و پوسته، تب، گروه دکمه‌ها، سوییچ، دیالوگ و کشو، فیلتر و جست‌وجوی زنده، مرتب‌سازی جدول، اعتبارسنجی فرم،
 ویزارد چندمرحله‌ای، گام‌شمار، فیلدهای شرطی، اسلایدر، اعلان، پالت فرمان و میان‌برها، دکمهٔ کپی، قالب‌بندی عدد و تاریخ با
 `Intl` (رقم فارسی، تاریخ شمسی، مدت زمان) و نمودارهای SVG: خطی، سطحی، میله‌ای، انباشته، کوچک، دونات و شمعی.

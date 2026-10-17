@@ -7,13 +7,14 @@ panels**, in **English (LTR)** and **Persian (RTL)**.
 
 **Gallery:** https://tastefolio.github.io · **فارسی:** https://tastefolio.github.io/fa/ · **Guide:** https://tastefolio.github.io/guide/ · [README به فارسی](README.fa.md)
 
-- **17 styles** that differ in layout logic, density, typography, navigation and interaction — not just in color.
-- **34 working demos** (a site and a dashboard per style) with real menus, tabs, filters, forms, dialogs and charts, all switchable between English and Persian, light and dark, and any brand color.
+- **27 styles** that differ in layout logic, density, typography, navigation and interaction — not just in color.
+- **54 working demos** (a site and a dashboard per style) with real menus, tabs, filters, forms, dialogs and charts, all switchable between English and Persian, light and dark, and any brand color.
 - **Real screenshots** of every demo in the gallery, captured automatically on every deploy.
 - **Framework-free**: plain HTML/CSS plus a tiny shared runtime, with Tailwind v3/v4 and shadcn/ui mappings for each style.
 
 ## The styles
 
+<!-- styles:start -->
 | # | Skill | Category | Default | Density | Look & feel | Demos |
 |---|---|---|---|---|---|---|
 | 1 | [**Switchboard**](skills/switchboard/SKILL.md) · [page](https://tastefolio.github.io/skills/switchboard/) | Product UI | light | balanced | Calm, settings-first utility UI where every option is one clear switch | [site](https://tastefolio.github.io/skills/switchboard/examples/site.html) · [dashboard](https://tastefolio.github.io/skills/switchboard/examples/dashboard.html) |
@@ -33,6 +34,17 @@ panels**, in **English (LTR)** and **Persian (RTL)**.
 | 15 | [**Ticker**](skills/ticker/SKILL.md) · [page](https://tastefolio.github.io/skills/ticker/) | Dev & data | dark, fa-first | dense | Market workspace — hairline mosaics, monospace tabular numbers, green/red only for up and down | [site](https://tastefolio.github.io/skills/ticker/examples/site.html) · [dashboard](https://tastefolio.github.io/skills/ticker/examples/dashboard.html) |
 | 16 | [**Clay**](skills/clay/SKILL.md) · [page](https://tastefolio.github.io/skills/clay/) | Product UI | light | airy | Soft, tactile wellness — puffy clay surfaces, pastel tiles, controls pressed into the page | [site](https://tastefolio.github.io/skills/clay/examples/site.html) · [dashboard](https://tastefolio.github.io/skills/clay/examples/dashboard.html) |
 | 17 | [**Maison**](skills/maison/SKILL.md) · [page](https://tastefolio.github.io/skills/maison/) | Commerce | light | airy | Quiet luxury — Didone display, spaced small caps, hairlines and a great deal of ivory | [site](https://tastefolio.github.io/skills/maison/examples/site.html) · [dashboard](https://tastefolio.github.io/skills/maison/examples/dashboard.html) |
+| 18 | [**Bento**](skills/bento/SKILL.md) · [page](https://tastefolio.github.io/skills/bento/) | Product UI | light | balanced | Modular modern — every idea in its own rounded tile on one calm grid | [site](https://tastefolio.github.io/skills/bento/examples/site.html) · [dashboard](https://tastefolio.github.io/skills/bento/examples/dashboard.html) |
+| 19 | [**Aisle**](skills/aisle/SKILL.md) · [page](https://tastefolio.github.io/skills/aisle/) | Commerce | light, fa-first | dense | Modern store — big search, mega menu, coral deal rails and product cards that turn into steppers | [site](https://tastefolio.github.io/skills/aisle/examples/site.html) · [dashboard](https://tastefolio.github.io/skills/aisle/examples/dashboard.html) |
+| 20 | [**Syllabus**](skills/syllabus/SKILL.md) · [page](https://tastefolio.github.io/skills/syllabus/) | Content & media | light, fa-first | balanced | Online academy — navy graph-paper heroes, highlighter actions, curriculum with free previews and a real lesson player | [site](https://tastefolio.github.io/skills/syllabus/examples/site.html) · [dashboard](https://tastefolio.github.io/skills/syllabus/examples/dashboard.html) |
+| 21 | [**Brief**](skills/brief/SKILL.md) · [page](https://tastefolio.github.io/skills/brief/) | Brand & culture | light, fa-first | balanced | Design & build studio — wide display type, an ink stage for the work, scrolling browser frames and a client portal with pinned feedback | [site](https://tastefolio.github.io/skills/brief/examples/site.html) · [dashboard](https://tastefolio.github.io/skills/brief/examples/dashboard.html) |
+| 22 | [**Lucent**](skills/lucent/SKILL.md) · [page](https://tastefolio.github.io/skills/lucent/) | Product UI | dark, fa-first | balanced | Liquid glass — refracting capsules over an aurora that takes its colours from what is playing | [site](https://tastefolio.github.io/skills/lucent/examples/site.html) · [dashboard](https://tastefolio.github.io/skills/lucent/examples/dashboard.html) |
+| 23 | [**Clinic**](skills/clinic/SKILL.md) · [page](https://tastefolio.github.io/skills/clinic/) | Product UI | light, fa-first | balanced | Healthcare booking — search-first hero, doctor cards with free slots, a time picker and a patient panel set in a hyperlegible face | [site](https://tastefolio.github.io/skills/clinic/examples/site.html) · [dashboard](https://tastefolio.github.io/skills/clinic/examples/dashboard.html) |
+| 24 | [**Linework**](skills/linework/SKILL.md) · [page](https://tastefolio.github.io/skills/linework/) | Dev & data | light | dense | Hairline technical — a page ruled by 1px lines with crosshairs, ink as the only brand, mono labels and a developer console | [site](https://tastefolio.github.io/skills/linework/examples/site.html) · [dashboard](https://tastefolio.github.io/skills/linework/examples/dashboard.html) |
+| 25 | [**Estate**](skills/estate/SKILL.md) · [page](https://tastefolio.github.io/skills/estate/) | Commerce | light, fa-first | balanced | Property listings — stone paper, moss actions, serif prices, a list + map split with price pins and an agent panel with a lead pipeline | [site](https://tastefolio.github.io/skills/estate/examples/site.html) · [dashboard](https://tastefolio.github.io/skills/estate/examples/dashboard.html) |
+| 26 | [**Margin**](skills/margin/SKILL.md) · [page](https://tastefolio.github.io/skills/margin/) | Content & media | light, fa-first | airy | Long-form reading — warm paper, a narrow serif column, numbered sidenotes in a wide margin, a reader's highlighter and a quiet writer studio | [site](https://tastefolio.github.io/skills/margin/examples/site.html) · [dashboard](https://tastefolio.github.io/skills/margin/examples/dashboard.html) |
+| 27 | [**Dot**](skills/dot/SKILL.md) · [page](https://tastefolio.github.io/skills/dot/) | Brand & culture | light, fa-first | balanced | Dot-matrix hardware — paper or black, one LED red, display type made of dots, a drawn device with a live 15×15 face and a device app with a glyph composer | [site](https://tastefolio.github.io/skills/dot/examples/site.html) · [dashboard](https://tastefolio.github.io/skills/dot/examples/dashboard.html) |
+<!-- styles:end -->
 
 Demos accept `?lang=fa`, `?theme=dark` and `?brand=ff5a36` (any hex) so you can check a style against your own brand.
 
@@ -84,6 +96,16 @@ Start from what you are building, not from a color — every style takes your br
 | Trading, banking, analytics | Ticker |
 | Wellness, habits, kids and family | Clay |
 | Luxury fashion, fragrance, objects, boutique services | Maison |
+| A modern product page or a dashboard of widgets | Bento |
+| A big online store, grocery delivery or marketplace | Aisle |
+| Online courses, academies and student panels | Syllabus |
+| A design studio, agency or freelancer with a client portal | Brief |
+| Music, podcasts, media players, premium consumer apps | Lucent |
+| Clinics, doctor booking and patient portals | Clinic |
+| Developer platforms, APIs, docs and consoles | Linework |
+| Property listings, agencies and agent CRMs | Estate |
+| Essays, newsletters, long reads and writing tools | Margin |
+| Hardware, gadgets, smart-home and companion apps | Dot |
 
 ## Use it
 
@@ -126,6 +148,9 @@ skills/raster/
     └── dashboard.html        # dashboard / user panel demo
 ```
 
+A style that needs behaviour of its own ships it as an extra asset next to the kit — Dot's `assets/matrix.js` draws
+its LED matrix and glyph editor.
+
 Every `tokens.css` uses the same semantic names (`--canvas`, `--surface`, `--ink`, `--line`, `--brand`, `--success`…,
 `--chart-*`, `--font-*`, `--fs-*`, `--space-*`, `--radius-*`), so the kits, adapters and charts work identically across
 styles while each style sets its own values and rules.
@@ -140,7 +165,7 @@ styles while each style sets its own values and rules.
 
 ## The shared runtime
 
-`shared/kit.js` (≈49 KB, ≈15 KB gzipped, no dependencies) powers every demo through declarative attributes: language
+`shared/kit.js` (≈50 KB, ≈16 KB gzipped, no dependencies) powers every demo through declarative attributes: language
 and theme switching, tabs, pressed groups, switches, dialogs and drawers, filters and live search, table sorting,
 form validation, multi-step wizards, steppers, conditional fields, carousels, toasts, command palettes and hotkeys,
 copy buttons, `Intl` number/date formatting (Persian digits, Jalali dates, durations) and SVG charts — line, area, bar,

@@ -147,8 +147,51 @@ export async function sync({ quiet = false } = {}) {
     }
   }
   await writeMarketplace(skills);
+  await writeReadmes(skills);
   if (!quiet) console.log(`synced ${skills.length} skills`);
   return skills;
+}
+
+/** README style tables (between <!-- styles:start --> and <!-- styles:end -->) and style/demo counts, from meta.json. */
+const README_LABELS = {
+  en: {
+    head: '| # | Skill | Category | Default | Density | Look & feel | Demos |\n|---|---|---|---|---|---|---|',
+    cat: { product: 'Product UI', infra: 'Infra & cloud', commerce: 'Commerce', content: 'Content & media', brand: 'Brand & culture', devdata: 'Dev & data' },
+    mode: { light: 'light', dark: 'dark' }, faFirst: ', fa-first',
+    density: { airy: 'airy', balanced: 'balanced', dense: 'dense' },
+    page: 'page', pageUrl: (s) => `https://tastefolio.github.io/skills/${s}/`, site: 'site', dashboard: 'dashboard', query: '',
+    counts: [[/\*\*\d+ styles\*\*/, (n) => `**${n} styles**`], [/\*\*\d+ working demos\*\*/, (n) => `**${n * 2} working demos**`]],
+  },
+  fa: {
+    head: '| # | سبک | دسته | پیش‌فرض | تراکم | حال‌وهوا | دموها |\n|---|---|---|---|---|---|---|',
+    cat: { product: 'محصول', infra: 'زیرساخت و ابر', commerce: 'فروش', content: 'محتوا و رسانه', brand: 'برند و فرهنگ', devdata: 'توسعه و داده' },
+    mode: { light: 'روشن', dark: 'تیره' }, faFirst: '، فارسی‌محور',
+    density: { airy: 'باز', balanced: 'متعادل', dense: 'فشرده' },
+    page: 'صفحه', pageUrl: (s) => `https://tastefolio.github.io/fa/skills/${s}/`, site: 'سایت', dashboard: 'داشبورد', query: '?lang=fa',
+    counts: [[/\*\*[۰-۹]+ سبک\*\*/, (n) => `**${n.toLocaleString('fa-IR')} سبک**`], [/\*\*[۰-۹]+ دموی کارکرده\*\*/, (n) => `**${(n * 2).toLocaleString('fa-IR')} دموی کارکرده**`]],
+  },
+};
+
+async function writeReadmes(skills) {
+  const metas = [];
+  for (const s of skills) {
+    const p = join(SKILLS, s, 'meta.json');
+    if (existsSync(p)) metas.push({ slug: s, ...JSON.parse(await readFile(p, 'utf8')) });
+  }
+  metas.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
+  for (const [file, lang] of [['README.md', 'en'], ['README.fa.md', 'fa']]) {
+    const path = join(ROOT, file);
+    if (!existsSync(path)) continue;
+    const L = README_LABELS[lang];
+    let md = await readFile(path, 'utf8');
+    const rows = metas.map((m, i) => {
+      const demo = (d) => `https://tastefolio.github.io/skills/${m.slug}/examples/${d}.html${L.query}`;
+      return `| ${i + 1} | [**${m.name}**](skills/${m.slug}/SKILL.md) · [${L.page}](${L.pageUrl(m.slug)}) | ${L.cat[m.category] || m.category} | ${L.mode[m.mode] || m.mode}${m.persianFirst ? L.faFirst : ''} | ${L.density[m.density] || m.density} | ${m.tagline?.[lang] || ''} | [${L.site}](${demo('site')}) · [${L.dashboard}](${demo('dashboard')}) |`;
+    });
+    md = md.replace(/<!-- styles:start -->[\s\S]*?<!-- styles:end -->/, `<!-- styles:start -->\n${L.head}\n${rows.join('\n')}\n<!-- styles:end -->`);
+    for (const [re, fmt] of L.counts) md = md.replace(re, fmt(metas.length));
+    await writeFile(path, md);
+  }
 }
 
 /** Claude Code plugin marketplace: one installable plugin per skill, plus a bundle of all of them. */
