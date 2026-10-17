@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="site">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Naqsh — design &amp; build studio">نقش — استودیوی طراحی و ساخت وب</title>
+<meta name="description" content="نقش، یک استودیوی نمونهٔ طراحی و ساخت وب: هویت برند، سایت، فروشگاه اینترنتی و پنل‌های سفارشی." data-alt-content="Naqsh, a sample design &amp; build studio: brand identity, websites, online stores and custom dashboards.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@500..800&family=Figtree:wght@400..800&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .hero .display { margin-block-start: var(--space-3); }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-block-start: var(--space-5); }
+  .work-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3); margin-block-end: var(--space-6); }
+  .spot-visual { display: grid; grid-template-columns: minmax(0, 1fr) 190px; gap: var(--space-5); align-items: end; }
+  @media (max-width: 760px) { .spot-visual { grid-template-columns: minmax(0, 1fr); } .spot-visual .mock-phone { display: none; } }
+  .quotes { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-5); align-items: end; }
+  .quote-by { display: flex; align-items: center; gap: 12px; }
+  .contact-card { display: flex; align-items: center; gap: 14px; padding: var(--space-4); border-radius: var(--radius-md); background: var(--surface); border: 1px solid var(--line); }
+  .ticks { display: grid; gap: 10px; color: var(--ink-2); }
+  .ticks li { display: flex; gap: 10px; align-items: center; }
+  .ticks .ic { color: var(--brand); }
+  .wizard-nav { display: flex; justify-content: space-between; gap: 10px; }
+  .faq-wrap { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: var(--space-7); }
+  @media (max-width: 860px) { .faq-wrap { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body>
+<svg class="sprite" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Icons: Iconoir (MIT License) — iconoir.com --><!--ICONS-->
+<symbol id="i-app-window" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M2 19V5C2 3.89543 2.89543 3 4 3H20C21.1046 3 22 3.89543 22 5V19C22 20.1046 21.1046 21 20 21H4C2.89543 21 2 20.1046 2 19Z" stroke="currentColor"/><path d="M2 7L22 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.01L5.01 4.99889" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 5.01L8.01 4.99889" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 5.01L11.01 4.99889" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-arrow-left" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 12L3 12M3 12L11.5 3.5M3 12L11.5 20.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M3 12L21 12M21 12L12.5 3.5M21 12L12.5 20.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-arrow-up-right" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6.00005 19L19 5.99996M19 5.99996V18.48M19 5.99996H6.52005" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-chat-bubble-question" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M9 9C9 5.49997 14.5 5.5 14.5 9C14.5 11.5 12 10.9999 12 13.9999" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 18.01L12.01 17.9989" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.8214 2.48697 15.5291 3.33782 17L2.5 21.5L7 20.6622C8.47087 21.513 10.1786 22 12 22Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-check-circle" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M7 12.5L10 15.5L17 8.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M13.5 6L10 18.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 8.5L3 12L6.5 15.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 8.5L21 12L17.5 15.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-dashboard-speed" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 4L12 8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 8L6.5 10.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 10.5L20 8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 17H6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 17L13 11" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 17H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 20.001H4C2.74418 18.3295 2 16.2516 2 14C2 8.47715 6.47715 4 12 4C17.5228 4 22 8.47715 22 14C22 16.2516 21.2558 18.3295 20 20.001L15.5 20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 23C13.6569 23 15 21.6569 15 20C15 18.3431 13.6569 17 12 17C10.3431 17 9 18.3431 9 20C9 21.6569 10.3431 23 12 23Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-design-pencil" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 21.1679V14L12 7L16 14V21.1679" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 14C8 14 9.12676 15 10 15C10.8732 15 12 14 12 14C12 14 13.1268 15 14 15C14.8732 15 16 14 16 14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M3 13C6.6 5 17.4 5 21 13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 17C10.3431 17 9 15.6569 9 14C9 12.3431 10.3431 11 12 11C13.6569 11 15 12.3431 15 14C15 15.6569 13.6569 17 12 17Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-graph-up" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M20 20H4V4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16.5L12 9L15 12L19.5 7.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-half-moon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M3 11.5066C3 16.7497 7.25034 21 12.4934 21C16.2209 21 19.4466 18.8518 21 15.7259C12.4934 15.7259 8.27411 11.5066 8.27411 3C5.14821 4.55344 3 7.77915 3 11.5066Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-light-bulb-on" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 2L20 3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 2L4 3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 16L20 15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 16L4 15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 18H15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 21H14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M11.9998 3C7.9997 3 5.95186 4.95029 5.99985 8C6.02324 9.48689 6.4997 10.5 7.49985 11.5C8.5 12.5 9 13 8.99985 15H14.9998C15 13.0001 15.5 12.5 16.4997 11.5001L16.4998 11.5C17.4997 10.5 17.9765 9.48689 17.9998 8C18.0478 4.95029 16 3 11.9998 3Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M3 5H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 12H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 19H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-mouse-scroll-wheel" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 5L12.5303 4.46967C12.2374 4.17678 11.7626 4.17678 11.4697 4.46967L12 5ZM12 13L11.4697 13.5303C11.7626 13.8232 12.2374 13.8232 12.5303 13.5303L12 13ZM9.46967 6.46967C9.17678 6.76256 9.17678 7.23744 9.46967 7.53033C9.76256 7.82322 10.2374 7.82322 10.5303 7.53033L9.46967 6.46967ZM13.4697 7.53033C13.7626 7.82322 14.2374 7.82322 14.5303 7.53033C14.8232 7.23744 14.8232 6.76256 14.5303 6.46967L13.4697 7.53033ZM10.5303 10.4697C10.2374 10.1768 9.76256 10.1768 9.46967 10.4697C9.17678 10.7626 9.17678 11.2374 9.46967 11.5303L10.5303 10.4697ZM14.5303 11.5303C14.8232 11.2374 14.8232 10.7626 14.5303 10.4697C14.2374 10.1768 13.7626 10.1768 13.4697 10.4697L14.5303 11.5303ZM3.25 10V14H4.75V10H3.25ZM20.75 14V10H19.25V14H20.75ZM11.25 5V13H12.75V5H11.25ZM11.4697 4.46967L9.46967 6.46967L10.5303 7.53033L12.5303 5.53033L11.4697 4.46967ZM11.4697 5.53033L13.4697 7.53033L14.5303 6.46967L12.5303 4.46967L11.4697 5.53033ZM12.5303 12.4697L10.5303 10.4697L9.46967 11.5303L11.4697 13.5303L12.5303 12.4697ZM12.5303 13.5303L14.5303 11.5303L13.4697 10.4697L11.4697 12.4697L12.5303 13.5303ZM20.75 10C20.75 5.16751 16.8325 1.25 12 1.25V2.75C16.0041 2.75 19.25 5.99594 19.25 10H20.75ZM12 22.75C16.8325 22.75 20.75 18.8325 20.75 14H19.25C19.25 18.0041 16.0041 21.25 12 21.25V22.75ZM3.25 14C3.25 18.8325 7.16751 22.75 12 22.75V21.25C7.99594 21.25 4.75 18.0041 4.75 14H3.25ZM4.75 10C4.75 5.99594 7.99594 2.75 12 2.75V1.25C7.16751 1.25 3.25 5.16751 3.25 10H4.75Z" fill="currentColor"/></symbol>
+<symbol id="i-palette" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M20.5096 9.54C20.4243 9.77932 20.2918 9.99909 20.12 10.1863C19.9483 10.3735 19.7407 10.5244 19.5096 10.63C18.2796 11.1806 17.2346 12.0745 16.5002 13.2045C15.7659 14.3345 15.3733 15.6524 15.3696 17C15.3711 17.4701 15.418 17.9389 15.5096 18.4C15.5707 18.6818 15.5747 18.973 15.5215 19.2564C15.4682 19.5397 15.3588 19.8096 15.1996 20.05C15.0649 20.2604 14.8877 20.4403 14.6793 20.5781C14.4709 20.7158 14.2359 20.8085 13.9896 20.85C13.4554 20.9504 12.9131 21.0006 12.3696 21C11.1638 21.0006 9.97011 20.7588 8.85952 20.2891C7.74893 19.8194 6.74405 19.1314 5.90455 18.2657C5.06506 17.4001 4.40807 16.3747 3.97261 15.2502C3.53714 14.1257 3.33208 12.9252 3.36959 11.72C3.4472 9.47279 4.3586 7.33495 5.92622 5.72296C7.49385 4.11097 9.60542 3.14028 11.8496 3H12.3596C14.0353 3.00042 15.6777 3.46869 17.1017 4.35207C18.5257 5.23544 19.6748 6.49885 20.4196 8C20.6488 8.47498 20.6812 9.02129 20.5096 9.52V9.54Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 16.01L8.01 15.9989" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 12.01L6.01 11.9989" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 8.01L8.01 7.99889" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6.01L12.01 5.99889" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 8.01L16.01 7.99889" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 12H12M18 12H12M12 12V6M12 12V18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M16.0614 10.4037L14 17L10 17L7.93865 10.4037C7.35085 8.52273 7.72417 6.47307 8.93738 4.92015L11.5272 1.6052C11.7674 1.29772 12.2326 1.29772 12.4728 1.6052L15.0626 4.92015C16.2758 6.47307 16.6491 8.52273 16.0614 10.4037Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 20C10 22 12 23 12 23C12 23 14 22 14 20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 12.5C5 15 7 19 7 19L10 17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.9312 12.5C19.4312 15 17.4312 19 17.4312 19L14.4312 17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 11C10.8954 11 10 10.1046 10 9C10 7.89543 10.8954 7 12 7C13.1046 7 14 7.89543 14 9C14 10.1046 13.1046 11 12 11Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-shop" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M3 10V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V10" stroke="currentColor" stroke-width="1.5"/><path d="M14.8333 21V15C14.8333 13.8954 13.9379 13 12.8333 13H10.8333C9.72874 13 8.83331 13.8954 8.83331 15V21" stroke="currentColor" stroke-miterlimit="16"/><path d="M21.8183 9.36418L20.1243 3.43517C20.0507 3.17759 19.8153 3 19.5474 3H15.5L15.9753 8.70377C15.9909 8.89043 16.0923 9.05904 16.2532 9.15495C16.6425 9.38698 17.4052 9.81699 18 10C19.0158 10.3125 20.5008 10.1998 21.3465 10.0958C21.6982 10.0526 21.9157 9.7049 21.8183 9.36418Z" stroke="currentColor" stroke-width="1.5"/><path d="M14 10C14.5675 9.82538 15.2879 9.42589 15.6909 9.18807C15.8828 9.07486 15.9884 8.86103 15.9699 8.63904L15.5 3H8.5L8.03008 8.63904C8.01158 8.86103 8.11723 9.07486 8.30906 9.18807C8.71207 9.42589 9.4325 9.82538 10 10C11.493 10.4594 12.507 10.4594 14 10Z" stroke="currentColor" stroke-width="1.5"/><path d="M3.87567 3.43517L2.18166 9.36418C2.08431 9.7049 2.3018 10.0526 2.6535 10.0958C3.49916 10.1998 4.98424 10.3125 6 10C6.59477 9.81699 7.35751 9.38698 7.74678 9.15495C7.90767 9.05904 8.00913 8.89043 8.02469 8.70377L8.5 3H4.45258C4.18469 3 3.94926 3.17759 3.87567 3.43517Z" stroke="currentColor" stroke-width="1.5"/></symbol>
+<symbol id="i-xmark" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6.75827 17.2426L12.0009 12M17.2435 6.75736L12.0009 12M12.0009 12L6.75827 6.75736M12.0009 12L17.2435 17.2426" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<!--/ICONS--></svg>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+
+<header class="site-head">
+  <div class="container">
+    <a class="wordmark" href="#top" data-alt="naqsh">نقش</a>
+    <nav class="nav" id="nav" data-dismissable aria-label="اصلی" data-alt-aria-label="Main">
+      <a href="#work" data-alt="Work">کارها</a>
+      <a href="#services" data-alt="Services">خدمات</a>
+      <a href="#process" data-alt="Process">روند کار</a>
+      <a href="#faq" data-alt="FAQ">پرسش‌ها</a>
+      <a href="dashboard.html" data-alt="Client portal">پنل مشتری</a>
+    </nav>
+    <div class="head-end">
+      <span class="avail hide-md" data-alt="2 slots open for November">۲ ظرفیت خالی برای آبان</span>
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+      <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="تغییر حالت تیره" data-alt-aria-label="Toggle dark mode"><svg class="ic" aria-hidden="true"><use href="#i-half-moon"/></svg></button>
+      <a class="btn btn-primary hide-sm" href="#brief"><span data-alt="Start a project">شروع پروژه</span><span class="arrow"><svg class="ic flip-rtl" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></a>
+      <button class="btn btn-outline btn-icon btn-sm menu-btn" type="button" data-toggle="#nav" aria-controls="nav" aria-expanded="false" aria-label="منو" data-alt-aria-label="Menu"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="container">
+      <div class="hero-top">
+        <span class="eyebrow" data-alt="Design &amp; build studio · Tehran">استودیوی طراحی و ساخت · تهران</span>
+        <span class="small subtle" data-alt="Since 2015 — 148 projects shipped">از ۱۳۹۴ — ۱۴۸ پروژهٔ تحویل‌شده</span>
+      </div>
+      <h1 class="display"><span data-alt="Websites">سایت‌هایی</span> <span class="ipill shot" aria-hidden="true"></span> <span data-alt="that sell, built by a team">که می‌فروشند، ساختهٔ تیمی</span> <span class="ipill team" aria-hidden="true"><span style="--c:#f0c24a"></span><span style="--c:#8ac46b"></span><span style="--c:#c86bea"></span></span> <span data-alt="that sweats the details.">که به جزئیات وسواس دارد.</span></h1>
+      <div class="hero-foot">
+        <div>
+          <p class="lead" data-alt="From brand identity to online stores and custom dashboards — design, code and care under one roof, with every step visible in your project portal.">از هویت برند تا فروشگاه اینترنتی و پنل‌های سفارشی — طراحی، کدنویسی و پشتیبانی زیر یک سقف، با همهٔ مراحل پیدا در پنل پروژهٔ شما.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary btn-lg" href="#brief"><span data-alt="Start a project">شروع پروژه</span><span class="arrow"><svg class="ic flip-rtl" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></a>
+            <a class="btn btn-outline btn-lg" href="#work" data-alt="See the work">دیدن کارها</a>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div><b data-num="148">۱۴۸</b><span data-alt="projects shipped">پروژهٔ تحویل‌شده</span></div>
+          <div><b data-num="11">۱۱</b><span data-alt="years in business">سال سابقه</span></div>
+          <div><b data-num="96" data-fmt="pct">۹۶٪</b><span data-alt="clients come back">مشتریان برمی‌گردند</span></div>
+        </div>
+      </div>
+      <div class="showcase stage dots" aria-label="نمونه‌کارهای اخیر" data-alt-aria-label="Recent work" role="img">
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><b>varagh.example</b></div><div class="view" style="--ratio: 4/5; --m1:#1f4d3a; --m2:#f3eee3; --m3:#e2a93b"><div class="page"><div class="m-nav"><b></b><i></i><i></i><s></s></div><div class="m-hero"><div><b></b><b></b><i></i><u></u></div><span class="m-img"></span></div><span class="m-title"></span><div class="m-cards" style="--mc:3"><span></span><span></span><span></span></div><div class="m-band"></div><div class="m-foot"></div></div></div></div>
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><b>nahalkadeh.example</b></div><div class="view autoscroll" style="--ratio: 11/10; --m1:#2f6b3a; --m2:#eef5e9; --m3:#f07aa0"><div class="page"><div class="m-nav"><b></b><i></i><i></i><i></i><s></s></div><div class="m-hero"><div><b></b><b></b><i></i><i></i><u></u></div><span class="m-img"></span></div><span class="m-title"></span><div class="m-cards"><span></span><span></span><span></span><span></span></div><div class="m-band"></div><span class="m-title"></span><div class="m-cards"><span></span><span></span><span></span><span></span></div><div class="m-foot"></div></div></div></div>
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><b>felezrooz.example</b></div><div class="view" style="--ratio: 4/5; --m1:#13294b; --m2:#eef2f8; --m3:#2b6ee0"><div class="page"><div class="m-nav"><b></b><i></i><i></i><s></s></div><div class="m-chart"><i style="--h:40%"></i><i style="--h:55%"></i><i style="--h:48%"></i><i style="--h:70%"></i><i style="--h:62%"></i><i style="--h:85%"></i></div><div class="m-table"><span><i></i><b></b></span><span><i></i><b></b></span><span><i></i><b></b></span><span><i></i><b></b></span><span><i></i><b></b></span><span><i></i><b></b></span></div><div class="m-foot"></div></div></div></div>
+        <span class="float" style="inset-block-start: 16%; inset-inline-start: 5%"><svg class="ic" aria-hidden="true"><use href="#i-graph-up"/></svg><b><span class="ltr" data-alt="+38%">+۳۸٪</span></b><span data-alt="online sales">فروش آنلاین</span></span>
+        <span class="float" style="inset-block-start: 40%; inset-inline-end: 4%"><svg class="ic" aria-hidden="true"><use href="#i-eye"/></svg><b data-alt="120K">۱۲۰ هزار</b><span data-alt="daily visits">بازدید روزانه</span></span>
+      </div>
+    </div>
+    <div class="marquee" aria-label="برخی از مشتریان" data-alt-aria-label="Some of our clients">
+      <div class="marquee-track">
+        <span class="logo-word serif" data-alt="Varagh Books">کتاب ورق</span><span class="logo-word caps">FELEZ·ROOZ</span><span class="logo-word fa">نهال‌کده</span><span class="logo-word" data-alt="otagh-e raz">اتاق راز</span><span class="logo-word serif" data-alt="Farda Fund">صندوق فردا</span><span class="logo-word caps">KARUN</span><span class="logo-word fa" data-alt="Divar Café">کافه دیوار</span><span class="logo-word" data-alt="sepid dental">کلینیک سپید</span>
+        <span class="logo-word serif" aria-hidden="true" data-alt="Varagh Books">کتاب ورق</span><span class="logo-word caps" aria-hidden="true">FELEZ·ROOZ</span><span class="logo-word fa" aria-hidden="true">نهال‌کده</span><span class="logo-word" aria-hidden="true" data-alt="otagh-e raz">اتاق راز</span><span class="logo-word serif" aria-hidden="true" data-alt="Farda Fund">صندوق فردا</span><span class="logo-word caps" aria-hidden="true">KARUN</span><span class="logo-word fa" aria-hidden="true" data-alt="Divar Café">کافه دیوار</span><span class="logo-word" aria-hidden="true" data-alt="sepid dental">کلینیک سپید</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services" style="padding-block-start: var(--space-8)">
+    <div class="container">
+      <div class="sec-head">
+        <span class="idx" data-alt="01 — Services">۰۱ — خدمات</span>
+        <h2 class="h1" data-alt="Everything your business needs online.">هرچه کسب‌وکارتان برای حضور آنلاین لازم دارد.</h2>
+        <p class="muted" style="max-inline-size: 34ch" data-alt="Pick one service or let us run the whole thing — one team, one portal, one invoice per milestone.">یک خدمت را انتخاب کنید یا همه را به ما بسپارید — یک تیم، یک پنل، یک فاکتور برای هر مرحله.</p>
+      </div>
+      <div class="services">
+        <details class="svc" open>
+          <summary><span class="n">01</span><span class="t" data-alt="Brand identity">هویت بصری</span><span class="tags" data-alt="Logo · Colour · Type · Guidelines">لوگو · رنگ · تایپوگرافی · راهنما</span><span class="toggle" aria-hidden="true"><svg class="ic"><use href="#i-plus"/></svg></span></summary>
+          <div class="body"><p class="muted" data-alt="A mark that works at 16 pixels and on a shop sign, a colour and type system, and a guide your team can actually follow.">نشانه‌ای که در ۱۶ پیکسل و روی تابلوی مغازه کار کند، سیستم رنگ و حروف، و راهنمایی که تیم شما واقعاً از آن استفاده کند.</p><div class="stack" style="gap: 12px"><div class="deliver"><span data-alt="Logo &amp; variants">لوگو و نسخه‌ها</span><span data-alt="Colour system">سیستم رنگ</span><span data-alt="Type pairing">جفت حروف</span><span data-alt="Brand guide (PDF)">راهنمای برند (PDF)</span></div><b class="small"><span data-alt="From">از</span> <span data-num="40000000" data-fmt="toman">۴۰٬۰۰۰٬۰۰۰ تومان</span></b></div></div>
+        </details>
+        <details class="svc">
+          <summary><span class="n">02</span><span class="t" data-alt="Website design &amp; build">طراحی و ساخت سایت</span><span class="tags" data-alt="UX · UI · CMS · Technical SEO">تجربهٔ کاربری · رابط · مدیریت محتوا · سئو فنی</span><span class="toggle" aria-hidden="true"><svg class="ic"><use href="#i-plus"/></svg></span></summary>
+          <div class="body"><p class="muted" data-alt="Company sites that load fast, rank well and are easy to update — designed in two rounds and built on a CMS you control.">سایت شرکتی سریع، قابل‌جست‌وجو و ساده برای به‌روزرسانی — در دو دور طراحی و ساخته‌شده روی سیستم مدیریت محتوایی که در اختیار خودتان است.</p><div class="stack" style="gap: 12px"><div class="deliver"><span data-alt="Sitemap">نقشهٔ سایت</span><span data-alt="Page designs">طراحی صفحه‌ها</span><span data-alt="Responsive build">ساخت واکنش‌گرا</span><span data-alt="Training">آموزش</span></div><b class="small"><span data-alt="From">از</span> <span data-num="120000000" data-fmt="toman">۱۲۰٬۰۰۰٬۰۰۰ تومان</span></b></div></div>
+        </details>
+        <details class="svc">
+          <summary><span class="n">03</span><span class="t" data-alt="Online store">فروشگاه اینترنتی</span><span class="tags" data-alt="Catalogue · Checkout · Payments · Stock">کاتالوگ · سبد خرید · درگاه · انبار</span><span class="toggle" aria-hidden="true"><svg class="ic"><use href="#i-plus"/></svg></span></summary>
+          <div class="body"><p class="muted" data-alt="Stores built around how you actually sell: product variants, delivery slots, instalments, Persian invoices and a stock panel your team can run.">فروشگاهی که بر اساس روش واقعی فروش شما ساخته می‌شود: تنوع کالا، زمان تحویل، اقساط، فاکتور فارسی و پنل انباری که تیم خودتان اداره کند.</p><div class="stack" style="gap: 12px"><div class="deliver"><span data-alt="Product catalogue">کاتالوگ کالا</span><span data-alt="Checkout &amp; gateway">سبد و درگاه</span><span data-alt="Stock panel">پنل انبار</span><span data-alt="Product import">ورود کالاها</span></div><b class="small"><span data-alt="From">از</span> <span data-num="180000000" data-fmt="toman">۱۸۰٬۰۰۰٬۰۰۰ تومان</span></b></div></div>
+        </details>
+        <details class="svc">
+          <summary><span class="n">04</span><span class="t" data-alt="Web apps &amp; dashboards">پنل و داشبورد</span><span class="tags" data-alt="Customer portals · Reports · Roles">پنل مشتری · گزارش · نقش‌ها</span><span class="toggle" aria-hidden="true"><svg class="ic"><use href="#i-plus"/></svg></span></summary>
+          <div class="body"><p class="muted" data-alt="Members’ portals, booking systems, price boards and internal tools — designed with the people who use them every day.">پرتال اعضا، سامانهٔ رزرو، تابلوی قیمت و ابزارهای داخلی — طراحی‌شده همراه با کسانی که هر روز با آن کار می‌کنند.</p><div class="stack" style="gap: 12px"><div class="deliver"><span data-alt="User research">پژوهش کاربر</span><span data-alt="Prototype">پروتوتایپ</span><span data-alt="Front-end &amp; API">فرانت‌اند و API</span></div><b class="small" data-alt="Quoted after discovery">برآورد پس از مرحلهٔ کشف</b></div></div>
+        </details>
+        <details class="svc">
+          <summary><span class="n">05</span><span class="t" data-alt="SEO &amp; content">سئو و محتوا</span><span class="tags" data-alt="Research · Writing · Monthly report">پژوهش · نگارش · گزارش ماهانه</span><span class="toggle" aria-hidden="true"><svg class="ic"><use href="#i-plus"/></svg></span></summary>
+          <div class="body"><p class="muted" data-alt="Keyword research in Persian, pages written for people first, and a monthly report you can read in five minutes.">پژوهش کلمات فارسی، صفحه‌هایی که اول برای آدم‌ها نوشته شده‌اند، و گزارش ماهانه‌ای که در پنج دقیقه خوانده می‌شود.</p><div class="stack" style="gap: 12px"><div class="deliver"><span data-alt="Keyword map">نقشهٔ کلمات</span><span data-alt="8 articles a month">۸ مقاله در ماه</span><span data-alt="Report">گزارش</span></div><b class="small"><span data-alt="From">از</span> <span data-num="25000000" data-fmt="toman">۲۵٬۰۰۰٬۰۰۰ تومان</span> <span data-alt="/ month">در ماه</span></b></div></div>
+        </details>
+        <details class="svc">
+          <summary><span class="n">06</span><span class="t" data-alt="Care plan">پشتیبانی و نگهداری</span><span class="tags" data-alt="Updates · Backups · Monitoring">به‌روزرسانی · پشتیبان · پایش</span><span class="toggle" aria-hidden="true"><svg class="ic"><use href="#i-plus"/></svg></span></summary>
+          <div class="body"><p class="muted" data-alt="Updates, daily backups, uptime and speed monitoring, and a few hours of changes every month.">به‌روزرسانی، پشتیبان‌گیری روزانه، پایش سرعت و دسترس‌پذیری، و چند ساعت تغییر در هر ماه.</p><div class="stack" style="gap: 12px"><div class="deliver"><span data-alt="Daily backups">پشتیبان روزانه</span><span data-alt="Uptime alerts">هشدار قطعی</span><span data-alt="4 h of changes">۴ ساعت تغییر</span></div><b class="small"><span data-alt="From">از</span> <span data-num="8000000" data-fmt="toman">۸٬۰۰۰٬۰۰۰ تومان</span> <span data-alt="/ month">در ماه</span></b></div></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="work" data-filter-scope style="padding-block-start: 0">
+    <div class="container">
+      <div class="sec-head">
+        <span class="idx" data-alt="02 — Selected work">۰۲ — نمونه‌کارها</span>
+        <h2 class="h1" data-alt="Work that is still selling.">کارهایی که هنوز دارند می‌فروشند.</h2>
+        <span class="small subtle"><span data-filter-count data-num="6">۶</span> <span data-alt="of 148 projects">از ۱۴۸ پروژه</span></span>
+      </div>
+      <div class="work-tools">
+        <div class="chips" data-group role="group" aria-label="نوع پروژه" data-alt-aria-label="Project type">
+          <button type="button" data-filter="type" data-value="all" aria-pressed="true"><span data-alt="All">همه</span><small data-num="6">۶</small></button>
+          <button type="button" data-filter="type" data-value="store" aria-pressed="false"><span data-alt="Stores">فروشگاه</span><small data-num="2">۲</small></button>
+          <button type="button" data-filter="type" data-value="portal" aria-pressed="false"><span data-alt="Portals &amp; dashboards">پرتال و داشبورد</span><small data-num="2">۲</small></button>
+          <button type="button" data-filter="type" data-value="booking" aria-pressed="false"><span data-alt="Booking">رزرو</span><small data-num="1">۱</small></button>
+          <button type="button" data-filter="type" data-value="corporate" aria-pressed="false"><span data-alt="Corporate">شرکتی</span><small data-num="1">۱</small></button>
+        </div>
+        <span class="small subtle"><svg class="ic" aria-hidden="true"><use href="#i-mouse-scroll-wheel"/></svg> <span data-alt="Hover a frame to scroll the page">برای پیمایش صفحه، نشانگر را روی قاب ببرید</span></span>
+      </div>
+      <div class="work-grid">
+        <article class="case" data-filter-item data-type="store">
+          <a class="browser" href="#brief" aria-label="کتاب ورق — مطالعهٔ موردی" data-alt-aria-label="Varagh Books — case study"><div class="bar"><i></i><i></i><i></i><b>varagh.example</b></div><div class="view" style="--m1:#1f4d3a; --m2:#f3eee3; --m3:#e2a93b"><div class="page"><div class="m-nav"><b></b><i></i><i></i><i></i><s></s></div><div class="m-hero"><div><b></b><b></b><i></i><i></i><u></u></div><span class="m-img"></span></div><span class="m-title"></span><div class="m-cards"><span></span><span></span><span></span><span></span></div><div class="m-band"></div><span class="m-title"></span><div class="m-cards"><span></span><span></span><span></span><span></span></div><div class="m-foot"></div></div></div></a>
+          <div class="meta"><div class="stack" style="gap: 6px"><h3 data-alt="Varagh Books">کتاب ورق</h3><span class="small subtle" data-alt="Bookstore · 2025">فروشگاه کتاب · ۱۴۰۴</span><div class="tags"><span class="badge plain" data-alt="Store">فروشگاه</span><span class="badge plain">UI/UX</span><span class="badge plain" data-alt="SEO">سئو</span></div></div><div class="result"><b><span class="ltr" data-alt="+38%">+۳۸٪</span></b><span class="tiny subtle" data-alt="online sales in 6 months">فروش آنلاین در ۶ ماه</span></div></div>
+        </article>
+        <article class="case" data-filter-item data-type="portal">
+          <a class="browser" href="#brief" aria-label="فلزروز — مطالعهٔ موردی" data-alt-aria-label="Felez-Rooz — case study"><div class="bar"><i></i><i></i><i></i><b>felezrooz.example</b></div><div class="view" style="--m1:#13294b; --m2:#eef2f8; --m3:#2b6ee0"><div class="page"><div class="m-nav"><b></b><i></i><i></i><i></i><s></s></div><div class="m-hero"><div><b></b><b></b><i></i><u></u></div><div class="m-chart" style="margin: 0"><i style="--h:40%"></i><i style="--h:55%"></i><i style="--h:48%"></i><i style="--h:70%"></i><i style="--h:62%"></i><i style="--h:85%"></i></div></div><div class="m-table"><span><i></i><b></b></span><span><i></i><b></b></span><span><i></i><b></b></span><span><i></i><b></b></span><span><i></i><b></b></span><span><i></i><b></b></span><span><i></i><b></b></span><span><i></i><b></b></span></div><div class="m-cards" style="--mc:3"><span></span><span></span><span></span></div><div class="m-foot"></div></div></div></a>
+          <div class="meta"><div class="stack" style="gap: 6px"><h3 data-alt="Felez-Rooz">فلزروز</h3><span class="small subtle" data-alt="Daily steel prices · 2024">قیمت روزانهٔ آهن‌آلات · ۱۴۰۳</span><div class="tags"><span class="badge plain" data-alt="Portal">پرتال</span><span class="badge plain" data-alt="Data">داده</span></div></div><div class="result"><b data-alt="120K">۱۲۰ هزار</b><span class="tiny subtle" data-alt="daily price checks">بازدید روزانهٔ قیمت</span></div></div>
+        </article>
+        <article class="case" data-filter-item data-type="store">
+          <a class="browser" href="#brief" aria-label="نهال‌کده — مطالعهٔ موردی" data-alt-aria-label="Nahal-Kadeh — case study"><div class="bar"><i></i><i></i><i></i><b>nahalkadeh.example</b></div><div class="view" style="--m1:#2f6b3a; --m2:#eef5e9; --m3:#f07aa0"><div class="page"><div class="m-nav"><b></b><i></i><i></i><i></i><s></s></div><div class="m-hero"><div><b></b><b></b><i></i><i></i><u></u></div><span class="m-img"></span></div><span class="m-title"></span><div class="m-cards"><span></span><span></span><span></span><span></span></div><div class="m-band"></div><span class="m-title"></span><div class="m-cards"><span></span><span></span><span></span><span></span></div><div class="m-foot"></div></div></div></a>
+          <div class="meta"><div class="stack" style="gap: 6px"><h3 data-alt="Nahal-Kadeh">نهال‌کده</h3><span class="small subtle" data-alt="Plant &amp; seedling shop · 2026">فروشگاه نهال و گیاه · ۱۴۰۵</span><div class="tags"><span class="badge plain" data-alt="Store">فروشگاه</span><span class="badge plain" data-alt="Brand">برند</span></div></div><div class="result"><b data-alt="2.4×">۲٫۴ برابر</b><span class="tiny subtle" data-alt="repeat orders">خرید تکراری</span></div></div>
+        </article>
+        <article class="case" data-filter-item data-type="booking">
+          <a class="browser" href="#brief" aria-label="اتاق راز — مطالعهٔ موردی" data-alt-aria-label="Otagh-e Raz — case study"><div class="bar"><i></i><i></i><i></i><b>otaghraz.example</b></div><div class="view dark" style="--m1:#efe8ff; --m2:#191523; --m3:#ffb547"><div class="page"><div class="m-nav"><b></b><i></i><i></i><i></i><s></s></div><div class="m-hero"><div><b></b><b></b><i></i><u></u></div><span class="m-img"></span></div><span class="m-title"></span><div class="m-cal"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="m-cards" style="--mc:3"><span></span><span></span><span></span></div><div class="m-band"></div><div class="m-foot"></div></div></div></a>
+          <div class="meta"><div class="stack" style="gap: 6px"><h3 data-alt="Otagh-e Raz">اتاق راز</h3><span class="small subtle" data-alt="Escape-room booking · 2025">رزرو اتاق فرار · ۱۴۰۴</span><div class="tags"><span class="badge plain" data-alt="Booking">رزرو</span><span class="badge plain" data-alt="Brand">برند</span></div></div><div class="result"><b data-alt="71%">۷۱٪</b><span class="tiny subtle" data-alt="of bookings now online">رزروها حالا آنلاین</span></div></div>
+        </article>
+        <article class="case" data-filter-item data-type="portal">
+          <a class="browser" href="#brief" aria-label="صندوق فردا — مطالعهٔ موردی" data-alt-aria-label="Farda Fund — case study"><div class="bar"><i></i><i></i><i></i><b>fardafund.example</b></div><div class="view" style="--m1:#234e70; --m2:#f1f5f8; --m3:#1aa38c"><div class="page"><div class="m-nav"><b></b><i></i><i></i><s></s></div><div class="m-split"><i></i><div><div class="m-chart" style="margin: 0"><i style="--h:30%"></i><i style="--h:45%"></i><i style="--h:42%"></i><i style="--h:60%"></i><i style="--h:58%"></i><i style="--h:76%"></i><i style="--h:70%"></i><i style="--h:88%"></i></div><div class="m-table" style="margin: 0"><span><i></i><b></b></span><span><i></i><b></b></span><span><i></i><b></b></span><span><i></i><b></b></span><span><i></i><b></b></span></div></div></div><div class="m-cards" style="--mc:3"><span></span><span></span><span></span></div><div class="m-foot"></div></div></div></a>
+          <div class="meta"><div class="stack" style="gap: 6px"><h3 data-alt="Farda Fund">صندوق فردا</h3><span class="small subtle" data-alt="Members’ portal for a pension fund · 2024">پرتال اعضای صندوق بازنشستگی · ۱۴۰۳</span><div class="tags"><span class="badge plain" data-alt="Dashboard">داشبورد</span><span class="badge plain" data-alt="Portal">پرتال</span></div></div><div class="result"><b data-alt="10×">۱۰ برابر</b><span class="tiny subtle" data-alt="faster member requests">سریع‌تر ثبت درخواست</span></div></div>
+        </article>
+        <article class="case" data-filter-item data-type="corporate">
+          <a class="browser" href="#brief" aria-label="بازرگانی کارون — مطالعهٔ موردی" data-alt-aria-label="Karun Trade — case study"><div class="bar"><i></i><i></i><i></i><b>karuntrade.example</b></div><div class="view" style="--m1:#0e3b43; --m2:#efe7da; --m3:#e0763a"><div class="page"><div class="m-nav"><b></b><i></i><i></i><i></i><s></s></div><div class="m-hero"><div><b></b><b></b><i></i><i></i><u></u></div><span class="m-img"></span></div><span class="m-title"></span><div class="m-cards" style="--mc:3"><span></span><span></span><span></span></div><div class="m-band"></div><span class="m-title"></span><div class="m-cards"><span></span><span></span><span></span><span></span></div><div class="m-foot"></div></div></div></a>
+          <div class="meta"><div class="stack" style="gap: 6px"><h3 data-alt="Karun Trade">بازرگانی کارون</h3><span class="small subtle" data-alt="Three-language corporate site · 2025">سایت شرکتی سه‌زبانه · ۱۴۰۴</span><div class="tags"><span class="badge plain" data-alt="Corporate">شرکتی</span><span class="badge plain" data-alt="Multilingual">چندزبانه</span></div></div><div class="result"><b data-alt="3 languages">۳ زبان</b><span class="tiny subtle" data-alt="one CMS">یک سیستم مدیریت محتوا</span></div></div>
+        </article>
+      </div>
+      <p class="empty" data-filter-empty hidden data-alt="Nothing in this category yet.">هنوز کاری در این دسته نیست.</p>
+    </div>
+  </section>
+
+  <section class="section" id="process" style="padding-block-start: 0">
+    <div class="container">
+      <div class="sec-head">
+        <span class="idx" data-alt="03 — How we work">۰۳ — روند کار</span>
+        <h2 class="h1" data-alt="Four steps, no surprises.">چهار گام، بدون غافلگیری.</h2>
+        <a class="btn btn-outline" href="dashboard.html"><span data-alt="See the client portal">دیدن پنل مشتری</span><svg class="ic flip-rtl" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
+      </div>
+      <ol class="process">
+        <li><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-light-bulb-on"/></svg></span><span class="badge plain when" data-alt="1–2 weeks">۱ تا ۲ هفته</span><b class="h3" data-alt="Brief &amp; discovery">بریف و کشف</b><p class="small muted" data-alt="Kick-off, competitor and user research, a sitemap and a fixed quote.">جلسهٔ شروع، پژوهش رقبا و کاربران، نقشهٔ سایت و برآورد ثابت.</p></li>
+        <li><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-design-pencil"/></svg></span><span class="badge plain when" data-alt="3–4 weeks">۳ تا ۴ هفته</span><b class="h3" data-alt="Design">طراحی</b><p class="small muted" data-alt="Wireframes, page designs in two rounds and pin-point feedback in your portal.">وایرفریم، طراحی صفحه‌ها در دو دور و بازخورد نقطه‌ای با پین در پنل شما.</p></li>
+        <li><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-code"/></svg></span><span class="badge plain when" data-alt="4–6 weeks">۴ تا ۶ هفته</span><b class="h3" data-alt="Build">ساخت</b><p class="small muted" data-alt="Code, payment and stock integrations, product import and testing on real phones.">کدنویسی، اتصال درگاه و انبار، ورود کالاها و تست روی گوشی‌های واقعی.</p></li>
+        <li><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-rocket"/></svg></span><span class="badge plain when" data-alt="Ongoing">مداوم</span><b class="h3" data-alt="Launch &amp; care">انتشار و نگهداری</b><p class="small muted" data-alt="Launch, team training, speed monitoring and a monthly report.">انتشار، آموزش تیم شما، پایش سرعت و گزارش ماهانه.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="container" style="padding-block-end: var(--space-9)">
+    <div class="spotlight stage dots">
+      <div class="stack" style="gap: var(--space-3); max-inline-size: 760px">
+        <span class="eyebrow" data-alt="Case study · Nahal-Kadeh">مطالعهٔ موردی · نهال‌کده</span>
+        <h2 class="h1" data-alt="A family nursery, now with a store that sells on its own.">یک گلخانهٔ خانوادگی، حالا با فروشگاهی که خودش می‌فروشد.</h2>
+      </div>
+      <div class="brief-cols">
+        <div><span class="idx" style="color: var(--brand)">01</span><b class="h3" data-alt="Challenge">چالش</b><p data-alt="Orders came in through direct messages and phone calls, stock lived in a notebook and half of the orders were never followed up.">سفارش‌ها از پیام مستقیم و تلفن می‌آمد، موجودی در یک دفترچه بود و نیمی از سفارش‌ها پیگیری نمی‌شد.</p></div>
+        <div><span class="idx" style="color: var(--brand)">02</span><b class="h3" data-alt="Approach">راه‌حل</b><p data-alt="A catalogue with a care guide for every plant, delivery-slot picking and a stock panel simple enough for the family to run.">کاتالوگی با راهنمای نگهداری برای هر گیاه، انتخاب زمان تحویل و پنل انباری آن‌قدر ساده که خانواده خودشان اداره کنند.</p></div>
+        <div><span class="idx" style="color: var(--brand)">03</span><b class="h3" data-alt="Outcome">نتیجه</b><p data-alt="Launched in eleven weeks. Repeat orders went up 2.4× and checkout time was cut almost in half.">در یازده هفته منتشر شد. خرید تکراری ۲٫۴ برابر شد و زمان ثبت سفارش تقریباً نصف.</p></div>
+      </div>
+      <div class="spot-visual">
+        <div class="browser scroll" style="box-shadow: none"><div class="bar"><i></i><i></i><i></i><b>nahalkadeh.example/plants</b></div><div class="view" style="--ratio: 16/8; --m1:#2f6b3a; --m2:#eef5e9; --m3:#f07aa0"><div class="page"><div class="m-nav"><b></b><i></i><i></i><i></i><s></s></div><span class="m-title"></span><div class="m-cards"><span></span><span></span><span></span><span></span></div><div class="m-cards"><span></span><span></span><span></span><span></span></div><div class="m-band"></div><div class="m-foot"></div></div></div></div>
+        <div class="mock-phone"><div class="view" style="--m1:#2f6b3a; --m2:#eef5e9; --m3:#f07aa0"><div class="page"><div class="m-nav"><b></b><s></s></div><div class="m-hero"><div><b></b><b></b><i></i><u></u></div></div><div class="m-cards"><span></span><span></span><span></span><span></span></div><div class="m-foot"></div></div></div></div>
+      </div>
+      <div class="metrics">
+        <div class="metric"><b data-alt="2.4×">۲٫۴ برابر</b><span data-alt="repeat orders">خرید تکراری</span></div>
+        <div class="metric"><b><span class="ltr" data-alt="−41%">−۴۱٪</span></b><span data-alt="time to check out">زمان ثبت سفارش</span></div>
+        <div class="metric"><b data-alt="11 wks">۱۱ هفته</b><span data-alt="from brief to launch">از بریف تا انتشار</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container" style="padding-block-end: var(--space-9)" data-carousel aria-roledescription="carousel" aria-label="نظر مشتریان" data-alt-aria-label="What clients say">
+    <div class="sec-head" style="margin-block-end: var(--space-5)">
+      <span class="idx" data-alt="Kind words">حرف مشتریان</span>
+      <span></span>
+      <div class="row"><button class="btn btn-outline btn-icon" type="button" data-prev-slide aria-label="قبلی" data-alt-aria-label="Previous"><svg class="ic flip-rtl" aria-hidden="true"><use href="#i-arrow-left"/></svg></button><button class="btn btn-outline btn-icon" type="button" data-next-slide aria-label="بعدی" data-alt-aria-label="Next"><svg class="ic flip-rtl" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></div>
+    </div>
+    <div class="slider" data-track>
+      <figure class="quote-slide"><blockquote data-alt="“They didn’t just build a site; they rebuilt how we sell. The project portal meant we always knew where things stood.”">«فقط سایت نساختند؛ شیوهٔ فروشمان را از نو چیدند. با پنل پروژه همیشه می‌دانستیم کار کجاست.»</blockquote><figcaption class="quote-by"><span class="avatar" style="--c:#cfe8c4" data-alt="MT">م</span><span><b data-alt="Maryam Tavakoli">مریم توکلی</b><br><span class="small subtle" data-alt="Owner, Nahal-Kadeh">مدیر نهال‌کده</span></span></figcaption></figure>
+      <figure class="quote-slide"><blockquote data-alt="“Prices update every morning at nine and the site doesn’t slow down, even at the busiest hour.”">«قیمت‌ها هر روز ساعت ۹ صبح به‌روز می‌شود و سایت حتی در شلوغ‌ترین ساعت هم کند نمی‌شود.»</blockquote><figcaption class="quote-by"><span class="avatar" style="--c:#d6e2f5" data-alt="RA">ر</span><span><b data-alt="Reza Amiri">رضا امیری</b><br><span class="small subtle" data-alt="Founder, Felez-Rooz">بنیان‌گذار فلزروز</span></span></figcaption></figure>
+      <figure class="quote-slide"><blockquote data-alt="“Feedback pins on the designs replaced hours of meetings. We approved the whole site from our phones.”">«پین‌های بازخورد روی طرح‌ها جای ساعت‌ها جلسه را گرفت. کل سایت را از روی گوشی تأیید کردیم.»</blockquote><figcaption class="quote-by"><span class="avatar" style="--c:#f3dcb4" data-alt="NS">ن</span><span><b data-alt="Negar Salehi">نگار صالحی</b><br><span class="small subtle" data-alt="Co-owner, Otagh-e Raz">شریک اتاق راز</span></span></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="section" id="brief" style="padding-block-start: 0">
+    <div class="container brief">
+      <div class="stack" style="gap: var(--space-5)">
+        <span class="idx" data-alt="04 — Start a project">۰۴ — شروع پروژه</span>
+        <h2 class="h1" data-alt="Send us a brief. We reply within one working day.">بریف را بفرستید؛ تا یک روز کاری جواب می‌دهیم.</h2>
+        <ul class="ticks">
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check-circle"/></svg><span data-alt="A free 20-minute call">جلسهٔ ۲۰ دقیقه‌ای رایگان</span></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check-circle"/></svg><span data-alt="A fixed quote before we start">برآورد ثابت پیش از شروع</span></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check-circle"/></svg><span data-alt="Contract and official invoices">قرارداد و فاکتور رسمی</span></li>
+        </ul>
+        <div class="contact-card"><span class="avatar online" style="--c:#f0c24a" data-alt="SR">س</span><div class="stack" style="gap: 0"><b data-alt="Sara Rahimi">سارا رحیمی</b><span class="small subtle" data-alt="Project lead · usually replies within an hour">مدیر پروژه · معمولاً تا یک ساعت پاسخ می‌دهد</span><a class="small ltr" href="mailto:hello@naqsh.example" style="justify-self: start">hello@naqsh.example</a></div></div>
+      </div>
+      <form class="brief-card" id="brief-form" data-validate data-steps data-success-panel="#brief-done">
+        <div class="step-ind" data-step-indicator>
+          <span data-state="current" aria-current="step" data-alt="1 · Needs">۱ · نیاز</span>
+          <span data-state="todo" data-alt="2 · Budget">۲ · بودجه</span>
+          <span data-state="todo" data-alt="3 · You">۳ · شما</span>
+        </div>
+        <fieldset data-step style="border: 0; padding: 0; margin: 0; display: grid; gap: var(--space-4)">
+          <legend class="h2" style="margin-block-end: var(--space-4)" data-alt="What do you need?">به چه چیزی نیاز دارید؟</legend>
+          <div class="picks">
+            <label class="pick"><input type="checkbox" name="need" value="brand"><svg class="ic" aria-hidden="true"><use href="#i-palette"/></svg><span data-alt="Brand identity">هویت بصری</span></label>
+            <label class="pick"><input type="checkbox" name="need" value="site" checked><svg class="ic" aria-hidden="true"><use href="#i-app-window"/></svg><span data-alt="Website">سایت</span></label>
+            <label class="pick"><input type="checkbox" name="need" value="store"><svg class="ic" aria-hidden="true"><use href="#i-shop"/></svg><span data-alt="Online store">فروشگاه</span></label>
+            <label class="pick"><input type="checkbox" name="need" value="app"><svg class="ic" aria-hidden="true"><use href="#i-dashboard-speed"/></svg><span data-alt="Dashboard / app">پنل و داشبورد</span></label>
+            <label class="pick"><input type="checkbox" name="need" value="seo"><svg class="ic" aria-hidden="true"><use href="#i-graph-up"/></svg><span data-alt="SEO &amp; content">سئو و محتوا</span></label>
+            <label class="pick"><input type="checkbox" name="need" value="unsure"><svg class="ic" aria-hidden="true"><use href="#i-chat-bubble-question"/></svg><span data-alt="Not sure yet">هنوز مطمئن نیستم</span></label>
+          </div>
+          <div class="wizard-nav"><span></span><button class="btn" type="button" data-next><span data-alt="Next">بعدی</span><svg class="ic flip-rtl" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></div>
+        </fieldset>
+        <fieldset data-step hidden style="border: 0; padding: 0; margin: 0; display: grid; gap: var(--space-5)">
+          <legend class="h2" style="margin-block-end: var(--space-4)" data-alt="Budget &amp; timing">بودجه و زمان</legend>
+          <div class="field"><span class="label" id="budget-l" data-alt="Budget (Toman)">بودجه (تومان)</span>
+            <div class="radio-chips" role="radiogroup" aria-labelledby="budget-l">
+              <label><input type="radio" name="budget" value="lt100" required><span data-alt="Under 100M">کمتر از ۱۰۰ میلیون</span></label>
+              <label><input type="radio" name="budget" value="100-250"><span data-alt="100–250M">۱۰۰ تا ۲۵۰ میلیون</span></label>
+              <label><input type="radio" name="budget" value="250-500"><span data-alt="250–500M">۲۵۰ تا ۵۰۰ میلیون</span></label>
+              <label><input type="radio" name="budget" value="500+"><span data-alt="500M+">بیش از ۵۰۰ میلیون</span></label>
+            </div>
+          </div>
+          <div class="field"><label class="label" for="start" data-alt="When would you like to start?">کی می‌خواهید شروع کنید؟</label><select class="select" id="start" name="start"><option value="now" data-alt="This month">همین ماه</option><option value="soon" data-alt="In 1–2 months">یک تا دو ماه دیگر</option><option value="later" data-alt="Not sure yet">هنوز مشخص نیست</option></select></div>
+          <div class="split"><span class="label" id="content-l" data-alt="Copy and photos are ready">متن و عکس‌ها آماده است</span><button class="switch" type="button" role="switch" aria-checked="false" aria-labelledby="content-l"></button></div>
+          <div class="wizard-nav"><button class="btn btn-ghost" type="button" data-prev><svg class="ic flip-rtl" aria-hidden="true"><use href="#i-arrow-left"/></svg><span data-alt="Back">قبلی</span></button><button class="btn" type="button" data-next><span data-alt="Next">بعدی</span><svg class="ic flip-rtl" aria-hidden="true"><use href="#i-arrow-right"/></svg></button></div>
+        </fieldset>
+        <fieldset data-step hidden style="border: 0; padding: 0; margin: 0; display: grid; gap: var(--space-4)">
+          <legend class="h2" style="margin-block-end: var(--space-4)" data-alt="About you">دربارهٔ شما</legend>
+          <div class="cols" style="--n:2; gap: var(--space-4)">
+            <div class="field"><label class="label" for="b-name" data-alt="Your name">نام شما</label><input class="input" id="b-name" name="name" required minlength="2" autocomplete="name"></div>
+            <div class="field"><label class="label" for="b-co" data-alt="Company">شرکت یا برند</label><input class="input" id="b-co" name="company" autocomplete="organization"></div>
+            <div class="field"><label class="label" for="b-mail" data-alt="Email">ایمیل</label><input class="input" id="b-mail" name="email" type="email" required dir="ltr" autocomplete="email" placeholder="you@company.example"></div>
+            <div class="field"><label class="label" for="b-tel" data-alt="Mobile (optional)">موبایل (اختیاری)</label><input class="input" id="b-tel" name="tel" type="tel" dir="ltr" pattern="09[0-9]{9}" placeholder="09xx xxx xxxx" autocomplete="tel" data-pattern-msg="یک شمارهٔ ۱۱ رقمی که با ۰۹ شروع شود" data-pattern-msg-alt="An 11-digit number starting with 09"></div>
+          </div>
+          <div class="field"><label class="label" for="b-msg" data-alt="Tell us about the project">دربارهٔ پروژه بگویید</label><textarea class="textarea" id="b-msg" name="message" maxlength="800" placeholder="هدف، مخاطب، سایت‌هایی که دوست دارید…" data-alt-placeholder="Goals, audience, sites you like…"></textarea></div>
+          <label class="check"><input type="checkbox" name="call" checked><span data-alt="You may call me to talk it through">برای گفت‌وگو می‌توانید تماس بگیرید</span></label>
+          <div class="wizard-nav"><button class="btn btn-ghost" type="button" data-prev><svg class="ic flip-rtl" aria-hidden="true"><use href="#i-arrow-left"/></svg><span data-alt="Back">قبلی</span></button><button class="btn btn-primary" type="submit"><span data-alt="Send brief">ارسال بریف</span><span class="arrow"><svg class="ic flip-rtl" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></button></div>
+        </fieldset>
+        <div class="done-panel" id="brief-done" hidden>
+          <svg class="ic" aria-hidden="true" style="font-size: 32px; color: var(--success)"><use href="#i-check-circle"/></svg>
+          <b class="h2" data-alt="Brief received!">بریف شما رسید!</b>
+          <p class="muted"><span data-alt="Reference">کد پیگیری</span> <span class="code">NQ-1405-118</span> <span data-alt="— we’ll reply within one working day.">— تا یک روز کاری با شما تماس می‌گیریم.</span></p>
+          <button class="btn btn-outline btn-sm" type="button" id="brief-again" data-alt="Send another brief">ارسال بریف دیگر</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="section" id="faq" style="padding-block-start: 0">
+    <div class="container faq-wrap">
+      <div class="stack" style="gap: var(--space-3)"><span class="idx" data-alt="05 — Questions">۰۵ — پرسش‌ها</span><h2 class="h1" data-alt="Straight answers.">جواب‌های سرراست.</h2></div>
+      <div>
+        <details class="faq" open><summary data-alt="How much does a website cost?">هزینهٔ یک سایت چقدر است؟</summary><p data-alt="Company sites start at around 120 million Toman and stores at around 180 million. After the brief you get a fixed quote — no hourly surprises.">سایت شرکتی از حدود ۱۲۰ میلیون تومان و فروشگاه از حدود ۱۸۰ میلیون شروع می‌شود. پس از بریف، برآورد ثابت می‌گیرید — بدون غافلگیری ساعتی.</p></details>
+        <details class="faq"><summary data-alt="How do payments work?">پرداخت چطور است؟</summary><p data-alt="Four instalments: kick-off, design sign-off, build complete and launch — each with an official invoice in your project portal.">چهار قسط: شروع، تأیید طرح، پایان ساخت و انتشار — هر کدام با فاکتور رسمی در پنل پروژهٔ شما.</p></details>
+        <details class="faq"><summary data-alt="What happens after launch?">بعد از انتشار چه می‌شود؟</summary><p data-alt="Three months of free support, then an optional monthly care plan.">سه ماه پشتیبانی رایگان و پس از آن طرح نگهداری ماهانهٔ اختیاری.</p></details>
+        <details class="faq"><summary data-alt="Who owns the designs and code?">طرح‌ها و کدها مال کیست؟</summary><p data-alt="Once the last invoice is paid, every file and every line of code is yours.">پس از تسویهٔ آخرین فاکتور، همهٔ فایل‌ها و همهٔ کدها متعلق به شماست.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot stage dots">
+  <div class="container">
+    <span class="eyebrow" data-alt="Have a project in mind?">پروژه‌ای در ذهن دارید؟</span>
+    <p style="margin-block-start: var(--space-4)"><a class="big-cta" href="#brief"><span data-alt="Let’s talk">بیایید حرف بزنیم</span><span class="arrow"><svg class="ic flip-rtl" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span></a></p>
+    <div class="foot-grid">
+      <div class="stack" style="gap: 10px"><span class="wordmark" data-alt="naqsh">نقش</span><p style="color: rgba(255,255,255,.6); max-inline-size: 30ch" data-alt="A sample design &amp; build studio for the Tastefolio gallery.">یک استودیوی نمونهٔ طراحی و ساخت برای گالری تیست‌فولیو.</p></div>
+      <div><h3 data-alt="Contact">تماس</h3><ul><li><a class="ltr" href="mailto:hello@naqsh.example">hello@naqsh.example</a></li><li class="ltr">+98 21 0000 0000</li><li data-alt="Tehran, Valiasr St.">تهران، خیابان ولیعصر</li></ul></div>
+      <div><h3 data-alt="Studio">استودیو</h3><ul><li><a href="#work" data-alt="Work">کارها</a></li><li><a href="#services" data-alt="Services">خدمات</a></li><li><a href="#process" data-alt="Process">روند کار</a></li><li><a href="dashboard.html" data-alt="Client portal">پنل مشتری</a></li></ul></div>
+      <div><h3 data-alt="Elsewhere">شبکه‌ها</h3><ul><li><a href="#top" data-alt="Instagram">اینستاگرام</a></li><li><a href="#top" data-alt="LinkedIn">لینکدین</a></li><li><a href="#top" data-alt="Newsletter">خبرنامه</a></li></ul></div>
+    </div>
+    <div class="foot-base"><span data-alt="© 2026 Naqsh Studio">© ۱۴۰۵ استودیو نقش</span><span data-alt="Sample data — not a real studio">داده‌ها نمونه‌اند — استودیوی واقعی نیست</span></div>
+  </div>
+</footer>
+
+<div class="consult">
+  <div class="consult-panel" id="consult" data-dismissable>
+    <div class="split"><b class="h3" data-alt="Book a quick call">یک تماس کوتاه رزرو کنید</b><button class="btn btn-ghost btn-icon btn-sm" type="button" data-toggle="#consult" aria-label="بستن" data-alt-aria-label="Close"><svg class="ic" aria-hidden="true"><use href="#i-xmark"/></svg></button></div>
+    <p class="small muted" data-alt="20 minutes with Sara, our project lead. Pick a time that suits you.">۲۰ دقیقه با سارا، مدیر پروژه. زمانی را که مناسب شماست انتخاب کنید.</p>
+    <div class="chips" data-group="slot" role="group" aria-label="زمان تماس" data-alt-aria-label="Call time">
+      <button type="button" aria-pressed="true" data-value="sun1030" data-alt="Sun 10:30">یکشنبه ۱۰:۳۰</button>
+      <button type="button" aria-pressed="false" data-value="sun1400" data-alt="Sun 14:00">یکشنبه ۱۴:۰۰</button>
+      <button type="button" aria-pressed="false" data-value="mon1100" data-alt="Mon 11:00">دوشنبه ۱۱:۰۰</button>
+      <button type="button" aria-pressed="false" data-value="tue1600" data-alt="Tue 16:00">سه‌شنبه ۱۶:۰۰</button>
+    </div>
+    <button class="btn btn-primary btn-block" type="button" id="book-call" data-alt="Book the call">رزرو تماس</button>
+  </div>
+  <button type="button" data-toggle="#consult" aria-controls="consult" aria-expanded="false"><span class="avatar sm online" style="--c:#f0c24a" data-alt="SR">س</span><span class="label-long" data-alt="Free 20-min call">مشاورهٔ رایگان ۲۰ دقیقه‌ای</span><span class="label-short" data-alt="Talk to us">گفت‌وگو</span></button>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const fa = () => tf.lang() === 'fa';
+    // brief wizard: on success hide the steps, show the done panel; "send another" starts over
+    const form = document.getElementById('brief-form');
+    const parts = () => form.querySelectorAll('[data-step], [data-step-indicator]');
+    form.addEventListener('tf:submit', () => parts().forEach((el) => { el.hidden = true; }));
+    document.getElementById('brief-again').addEventListener('click', () => {
+      document.getElementById('brief-done').hidden = true;
+      form.querySelector('[data-step-indicator]').hidden = false;
+      tf.showStep(form, 0);
+    });
+    // consult widget
+    document.getElementById('book-call').addEventListener('click', () => {
+      const slot = document.querySelector('[data-group="slot"] [aria-pressed="true"]').textContent;
+      tf.toast((fa() ? 'تماس رزرو شد: ' : 'Call booked: ') + slot, { tone: 'success' });
+      document.querySelector('.consult > [data-toggle]').click();
+    });
+  });
+</script>
+</body>
+</html>

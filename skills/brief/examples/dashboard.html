@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="dashboard">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Client portal · Naqsh">پنل مشتری · نقش</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@500..800&family=Figtree:wght@400..800&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<style>
+  .head-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  @media (max-width: 960px) { .head-tools .lang-theme { display: none; } }
+  .topbar .btn-ghost { color: #f2f1f4; }
+  .topbar .btn-ghost:hover { background: rgba(255, 255, 255, .1); }
+  .kpi .progress { margin-block-start: 4px; }
+  .meet { display: grid; gap: var(--space-3); }
+  .meet .date { display: inline-grid; justify-items: center; inline-size: 64px; padding: 8px 0; border-radius: 14px; background: var(--brand-soft); color: var(--brand-strong); line-height: 1.2; font-size: var(--fs-xs); font-weight: 650; }
+  .meet .date b { font: 700 var(--fs-2xl)/1.1 var(--font-display); color: var(--ink); }
+  .agenda-list { display: grid; gap: 6px; font-size: var(--fs-sm); color: var(--ink-2); }
+  .agenda-list li { display: flex; gap: 8px; align-items: center; }
+  .agenda-list .ic { color: var(--brand); }
+  .review-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px var(--space-3); margin-block-end: var(--space-4); }
+  .review-head h2 { font: 700 var(--fs-lg)/1.3 var(--font-display); margin-inline-end: auto; }
+  :lang(fa) .review-head h2 { font-weight: 800; }
+  .canvas-pins .browser { box-shadow: none; }
+  .pin-hint { display: flex; align-items: center; gap: 8px; margin-block-start: 10px; font-size: var(--fs-xs); color: var(--ink-3); }
+  .decide { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .approved li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; align-items: center; padding-block: 12px; border-block-start: 1px solid var(--line); font-size: var(--fs-sm); }
+  .approved .ft { inline-size: 36px; block-size: 36px; font-size: 18px; }
+  .files-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-block-end: var(--space-4); }
+  .files-tools .search { position: relative; flex: 1; min-inline-size: 180px; max-inline-size: 280px; }
+  .files-tools .search .ic { position: absolute; inset-inline-start: 12px; inset-block-start: 50%; transform: translateY(-50%); color: var(--ink-3); }
+  .files-tools .search .input { min-block-size: 38px; padding-inline-start: 38px; font-size: var(--fs-sm); }
+  .sum { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); }
+  @media (max-width: 900px) { .sum { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .sum .card { display: grid; gap: 6px; }
+  .sum .v { font: 700 var(--fs-xl)/1.2 var(--font-display); }
+  :lang(fa) .sum .v { font-weight: 900; }
+  .thread-card { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: var(--space-4); }
+  .msg .avatar { align-self: end; }
+  .attach .ft { inline-size: 34px; block-size: 34px; font-size: 16px; }
+  .gantt-card .card-head { margin-block-end: var(--space-5); }
+  .gantt .task .ic { color: var(--brand); }
+</style>
+</head>
+<body>
+<svg class="sprite" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><!-- Icons: Iconoir (MIT License) — iconoir.com --><!--ICONS-->
+<symbol id="i-app-window" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M2 19V5C2 3.89543 2.89543 3 4 3H20C21.1046 3 22 3.89543 22 5V19C22 20.1046 21.1046 21 20 21H4C2.89543 21 2 20.1046 2 19Z" stroke="currentColor"/><path d="M2 7L22 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.01L5.01 4.99889" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 5.01L8.01 4.99889" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 5.01L11.01 4.99889" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-archive" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M7 6L17 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 9L17 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 17H15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 12H2.6C2.26863 12 2 12.2686 2 12.6V21.4C2 21.7314 2.26863 22 2.6 22H21.4C21.7314 22 22 21.7314 22 21.4V12.6C22 12.2686 21.7314 12 21.4 12H21M3 12V2.6C3 2.26863 3.26863 2 3.6 2H20.4C20.7314 2 21 2.26863 21 2.6V12M3 12H21" stroke="currentColor" stroke-width="1.5"/></symbol>
+<symbol id="i-attachment" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21.4383 11.6622L12.2483 20.8522C11.1225 21.9781 9.59552 22.6106 8.00334 22.6106C6.41115 22.6106 4.88418 21.9781 3.75834 20.8522C2.63249 19.7264 2 18.1994 2 16.6072C2 15.015 2.63249 13.4881 3.75834 12.3622L12.9483 3.17222C13.6989 2.42166 14.7169 2 15.7783 2C16.8398 2 17.8578 2.42166 18.6083 3.17222C19.3589 3.92279 19.7806 4.94077 19.7806 6.00222C19.7806 7.06368 19.3589 8.08166 18.6083 8.83222L9.40834 18.0222C9.03306 18.3975 8.52406 18.6083 7.99334 18.6083C7.46261 18.6083 6.95362 18.3975 6.57834 18.0222C6.20306 17.6469 5.99222 17.138 5.99222 16.6072C5.99222 16.0765 6.20306 15.5675 6.57834 15.1922L15.0683 6.71222" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M15 4V2M15 4V6M15 4H10.5M3 10V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V10H3Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 10V6C3 4.89543 3.89543 4 5 4H7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 2V6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 10V6C21 4.89543 20.1046 4 19 4H18.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-chat-bubble-check" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M8 12L11 15L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.8214 2.48697 15.5291 3.33782 17L2.5 21.5L7 20.6622C8.47087 21.513 10.1786 22 12 22Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-chat-lines" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M8 10L12 10L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 14L10 14L12 14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.8214 2.48697 15.5291 3.33782 17L2.5 21.5L7 20.6622C8.47087 21.513 10.1786 22 12 22Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M5 13L9 17L19 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-cloud-upload" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 22V13M12 13L15.5 16.5M12 13L8.5 16.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 17.6073C21.4937 17.0221 23 15.6889 23 13C23 9 19.6667 8 18 8C18 6 18 2 12 2C6 2 6 6 6 8C4.33333 8 1 9 1 13C1 15.6889 2.50628 17.0221 4 17.6073" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-dashboard-speed" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 4L12 8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 8L6.5 10.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 10.5L20 8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 17H6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 17L13 11" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 17H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 20.001H4C2.74418 18.3295 2 16.2516 2 14C2 8.47715 6.47715 4 12 4C17.5228 4 22 8.47715 22 14C22 16.2516 21.2558 18.3295 20 20.001L15.5 20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 23C13.6569 23 15 21.6569 15 20C15 18.3431 13.6569 17 12 17C10.3431 17 9 18.3431 9 20C9 21.6569 10.3431 23 12 23Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-design-pencil" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 21.1679V14L12 7L16 14V21.1679" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 14C8 14 9.12676 15 10 15C10.8732 15 12 14 12 14C12 14 13.1268 15 14 15C14.8732 15 16 14 16 14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 20L18 20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 4V16M12 16L15.5 12.5M12 16L8.5 12.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-folder" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M2 11V4.6C2 4.26863 2.26863 4 2.6 4H8.77805C8.92127 4 9.05977 4.05124 9.16852 4.14445L12.3315 6.85555C12.4402 6.94876 12.5787 7 12.722 7H21.4C21.7314 7 22 7.26863 22 7.6V11M2 11V19.4C2 19.7314 2.26863 20 2.6 20H21.4C21.7314 20 22 19.7314 22 19.4V11M2 11H22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-graph-up" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M20 20H4V4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16.5L12 9L15 12L19.5 7.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-half-moon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M3 11.5066C3 16.7497 7.25034 21 12.4934 21C16.2209 21 19.4466 18.8518 21 15.7259C12.4934 15.7259 8.27411 11.5066 8.27411 3C5.14821 4.55344 3 7.77915 3 11.5066Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M8 6L20 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 6.01L4.01 5.99889" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 12.01L4.01 11.9989" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 18.01L4.01 17.9989" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 12L20 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 18L20 18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-media-image" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 3.6V20.4C21 20.7314 20.7314 21 20.4 21H3.6C3.26863 21 3 20.7314 3 20.4V3.6C3 3.26863 3.26863 3 3.6 3H20.4C20.7314 3 21 3.26863 21 3.6Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 16L10 13L21 18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 10C14.8954 10 14 9.10457 14 8C14 6.89543 14.8954 6 16 6C17.1046 6 18 6.89543 18 8C18 9.10457 17.1046 10 16 10Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M3 5H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 12H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 19H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-nav-arrow-right" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-page" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M4 21.4V2.6C4 2.26863 4.26863 2 4.6 2H16.2515C16.4106 2 16.5632 2.06321 16.6757 2.17574L19.8243 5.32426C19.9368 5.43679 20 5.5894 20 5.74853V21.4C20 21.7314 19.7314 22 19.4 22H4.6C4.26863 22 4 21.7314 4 21.4Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 18L16 18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 14L12 14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 2V5.4C16 5.73137 16.2686 6 16.6 6H20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-page-edit" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M20 12V5.74853C20 5.5894 19.9368 5.43679 19.8243 5.32426L16.6757 2.17574C16.5632 2.06321 16.4106 2 16.2515 2H4.6C4.26863 2 4 2.26863 4 2.6V21.4C4 21.7314 4.26863 22 4.6 22H11" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10H16M8 6H12M8 14H11" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.9541 16.9394L18.9541 15.9394C19.392 15.5015 20.102 15.5015 20.5399 15.9394V15.9394C20.9778 16.3773 20.9778 17.0873 20.5399 17.5252L19.5399 18.5252M17.9541 16.9394L14.963 19.9305C14.8131 20.0804 14.7147 20.2741 14.6821 20.4835L14.4394 22.0399L15.9957 21.7973C16.2052 21.7646 16.3988 21.6662 16.5487 21.5163L19.5399 18.5252M17.9541 16.9394L19.5399 18.5252" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 2V5.4C16 5.73137 16.2686 6 16.6 6H20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-palette" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M20.5096 9.54C20.4243 9.77932 20.2918 9.99909 20.12 10.1863C19.9483 10.3735 19.7407 10.5244 19.5096 10.63C18.2796 11.1806 17.2346 12.0745 16.5002 13.2045C15.7659 14.3345 15.3733 15.6524 15.3696 17C15.3711 17.4701 15.418 17.9389 15.5096 18.4C15.5707 18.6818 15.5747 18.973 15.5215 19.2564C15.4682 19.5397 15.3588 19.8096 15.1996 20.05C15.0649 20.2604 14.8877 20.4403 14.6793 20.5781C14.4709 20.7158 14.2359 20.8085 13.9896 20.85C13.4554 20.9504 12.9131 21.0006 12.3696 21C11.1638 21.0006 9.97011 20.7588 8.85952 20.2891C7.74893 19.8194 6.74405 19.1314 5.90455 18.2657C5.06506 17.4001 4.40807 16.3747 3.97261 15.2502C3.53714 14.1257 3.33208 12.9252 3.36959 11.72C3.4472 9.47279 4.3586 7.33495 5.92622 5.72296C7.49385 4.11097 9.60542 3.14028 11.8496 3H12.3596C14.0353 3.00042 15.6777 3.46869 17.1017 4.35207C18.5257 5.23544 19.6748 6.49885 20.4196 8C20.6488 8.47498 20.6812 9.02129 20.5096 9.52V9.54Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 16.01L8.01 15.9989" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 12.01L6.01 11.9989" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 8.01L8.01 7.99889" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6.01L12.01 5.99889" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 8.01L16.01 7.99889" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M18.1182 14.702L14 15.5C11.2183 14.1038 9.5 12.5 8.5 10L9.26995 5.8699L7.81452 2L4.0636 2C2.93605 2 2.04814 2.93178 2.21654 4.04668C2.63695 6.83 3.87653 11.8765 7.5 15.5C11.3052 19.3052 16.7857 20.9564 19.802 21.6127C20.9668 21.8662 22 20.9575 22 19.7655L22 16.1812L18.1182 14.702Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M9.5 14.5L3 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.00007 9.48528L14.1925 18.6777L15.8895 16.9806L15.4974 13.1944L21.0065 8.5211L15.1568 2.67141L10.4834 8.18034L6.69713 7.78823L5.00007 9.48528Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M16.0614 10.4037L14 17L10 17L7.93865 10.4037C7.35085 8.52273 7.72417 6.47307 8.93738 4.92015L11.5272 1.6052C11.7674 1.29772 12.2326 1.29772 12.4728 1.6052L15.0626 4.92015C16.2758 6.47307 16.6491 8.52273 16.0614 10.4037Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 20C10 22 12 23 12 23C12 23 14 22 14 20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 12.5C5 15 7 19 7 19L10 17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.9312 12.5C19.4312 15 17.4312 19 17.4312 19L14.4312 17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 11C10.8954 11 10 10.1046 10 9C10 7.89543 10.8954 7 12 7C13.1046 7 14 7.89543 14 9C14 10.1046 13.1046 11 12 11Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M17 17L21 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 11C3 15.4183 6.58172 19 11 19C13.213 19 15.2161 18.1015 16.6644 16.6493C18.1077 15.2022 19 13.2053 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M22 12L3 20L6.5625 12L3 4L22 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 12L22 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-share-ios" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M20 13V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 15V3M12 3L8.5 6.5M12 3L15.5 6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-sort" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M10 14H2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10H2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 6H2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 18H2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 20V4M19 20L22 17M19 20L16 17M19 4L22 7M19 4L16 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-table-rows" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M3 12H7.5H12H16.5H21M3 12V16.5M3 12V7.5M21 12V16.5M21 12V7.5M3 16.5V20.4C3 20.7314 3.26863 21 3.6 21H7.5H12H16.5H20.4C20.7314 21 21 20.7314 21 20.4V16.5M3 16.5H7.5H12H16.5H21M21 7.5V3.6C21 3.26863 20.7314 3 20.4 3H16.5H12H7.5H3.6C3.26863 3 3 3.26863 3 3.6V7.5M21 7.5H16.5H12H7.5H3" stroke="currentColor" stroke-width="1.5"/></symbol>
+<symbol id="i-triangle-flag" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M8 21L8 16M8 16V3.57709C8 3.10699 8.5161 2.81949 8.91581 3.06693L17.7061 8.50854C18.0775 8.73848 18.0866 9.2756 17.7231 9.51793L8 16Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-view-grid" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M14 20.4V14.6C14 14.2686 14.2686 14 14.6 14H20.4C20.7314 14 21 14.2686 21 14.6V20.4C21 20.7314 20.7314 21 20.4 21H14.6C14.2686 21 14 20.7314 14 20.4Z" stroke="currentColor" stroke-width="1.5"/><path d="M3 20.4V14.6C3 14.2686 3.26863 14 3.6 14H9.4C9.73137 14 10 14.2686 10 14.6V20.4C10 20.7314 9.73137 21 9.4 21H3.6C3.26863 21 3 20.7314 3 20.4Z" stroke="currentColor" stroke-width="1.5"/><path d="M14 9.4V3.6C14 3.26863 14.2686 3 14.6 3H20.4C20.7314 3 21 3.26863 21 3.6V9.4C21 9.73137 20.7314 10 20.4 10H14.6C14.2686 10 14 9.73137 14 9.4Z" stroke="currentColor" stroke-width="1.5"/><path d="M3 9.4V3.6C3 3.26863 3.26863 3 3.6 3H9.4C9.73137 3 10 3.26863 10 3.6V9.4C10 9.73137 9.73137 10 9.4 10H3.6C3.26863 10 3 9.73137 3 9.4Z" stroke="currentColor" stroke-width="1.5"/></symbol>
+<symbol id="i-wallet" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M19 20H5C3.89543 20 3 19.1046 3 18V9C3 7.89543 3.89543 7 5 7H19C20.1046 7 21 7.89543 21 9V18C21 19.1046 20.1046 20 19 20Z" stroke="currentColor" /><path d="M16.5 14C16.2239 14 16 13.7761 16 13.5C16 13.2239 16.2239 13 16.5 13C16.7761 13 17 13.2239 17 13.5C17 13.7761 16.7761 14 16.5 14Z" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 7V5.60322C18 4.28916 16.7544 3.33217 15.4847 3.67075L4.48467 6.60409C3.60917 6.83756 3 7.63046 3 8.53656V9" stroke="currentColor" /></symbol>
+<symbol id="i-xmark" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6.75827 17.2426L12.0009 12M17.2435 6.75736L12.0009 12M12.0009 12L6.75827 6.75736M12.0009 12L17.2435 17.2426" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<!--/ICONS--></svg>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+
+<div class="topbar stage">
+  <button class="btn btn-ghost btn-icon btn-sm" type="button" data-toggle="#side" aria-controls="side" aria-expanded="false" aria-label="منوی پنل" data-alt-aria-label="Portal menu"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg></button>
+  <a class="wordmark" href="site.html" data-alt="naqsh">نقش</a>
+  <span class="spacer"></span>
+  <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+  <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="تغییر حالت تیره" data-alt-aria-label="Toggle dark mode"><svg class="ic" aria-hidden="true"><use href="#i-half-moon"/></svg></button>
+</div>
+
+<div class="portal">
+  <aside class="side stage dots" id="side" data-dismissable aria-label="پنل پروژه" data-alt-aria-label="Project portal">
+   <div class="side-in">
+    <div class="split"><a class="wordmark" href="site.html" data-alt="naqsh">نقش</a><span class="tag" data-alt="Client portal">پنل مشتری</span></div>
+    <label class="proj"><span class="tag" data-alt="Project">پروژه</span>
+      <select id="proj"><option value="store" data-alt="Nahal-Kadeh — online store">نهال‌کده — فروشگاه اینترنتی</option><option value="brand" data-alt="Nahal-Kadeh — brand identity (done)">نهال‌کده — هویت بصری (تمام‌شده)</option></select>
+    </label>
+    <nav class="side-nav" role="tablist" aria-orientation="vertical" aria-label="بخش‌های پروژه" data-alt-aria-label="Project sections">
+      <button type="button" role="tab" id="t-over" aria-controls="p-over" aria-selected="true"><svg class="ic" aria-hidden="true"><use href="#i-dashboard-speed"/></svg><span data-alt="Overview">نمای کلی</span></button>
+      <button type="button" role="tab" id="t-time" aria-controls="p-time" aria-selected="false"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg><span data-alt="Timeline">زمان‌بندی</span></button>
+      <button type="button" role="tab" id="t-appr" aria-controls="p-appr" aria-selected="false"><svg class="ic" aria-hidden="true"><use href="#i-chat-bubble-check"/></svg><span data-alt="Approvals">تأییدها</span><span class="count" id="appr-count" data-num="2">۲</span></button>
+      <button type="button" role="tab" id="t-files" aria-controls="p-files" aria-selected="false"><svg class="ic" aria-hidden="true"><use href="#i-folder"/></svg><span data-alt="Files">فایل‌ها</span></button>
+      <button type="button" role="tab" id="t-inv" aria-controls="p-inv" aria-selected="false"><svg class="ic" aria-hidden="true"><use href="#i-wallet"/></svg><span data-alt="Invoices">صورت‌حساب‌ها</span><span class="count" id="inv-count" data-num="1">۱</span></button>
+      <button type="button" role="tab" id="t-msg" aria-controls="p-msg" aria-selected="false"><svg class="ic" aria-hidden="true"><use href="#i-chat-lines"/></svg><span data-alt="Messages">پیام‌ها</span><span class="count" data-num="3">۳</span></button>
+    </nav>
+    <div class="side-foot">
+      <div class="who"><span class="avatar online" style="--c:#f0c24a" data-alt="SR">س</span><div><b data-alt="Sara Rahimi">سارا رحیمی</b><br><small data-alt="Your project lead">مدیر پروژهٔ شما</small></div></div>
+      <div class="row" style="gap: 6px"><button class="btn btn-light btn-sm" type="button" data-goto="t-msg"><svg class="ic" aria-hidden="true"><use href="#i-chat-lines"/></svg><span data-alt="Message">پیام</span></button><button class="btn btn-outline btn-sm" type="button" data-toast="درخواست تماس برای سارا فرستاده شد" data-toast-alt="Call request sent to Sara"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><span data-alt="Call">تماس</span></button></div>
+    </div>
+   </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="proj-head">
+      <div class="split" style="align-items: flex-start; flex-wrap: wrap">
+        <div class="stack" style="gap: 8px">
+          <div class="crumbs"><span data-alt="Projects">پروژه‌ها</span><svg class="ic flip-rtl" aria-hidden="true"><use href="#i-nav-arrow-right"/></svg><span data-alt="Nahal-Kadeh">نهال‌کده</span></div>
+          <h1 data-alt="Nahal-Kadeh online store">فروشگاه اینترنتی نهال‌کده</h1>
+          <div class="row"><span class="code">NQ-1405-031</span><span class="badge brand" data-alt="In design">مرحلهٔ طراحی</span><span class="small subtle"><span data-alt="Launch">انتشار:</span> <span data-date="2026-11-29" data-fmt="long">۸ آذر ۱۴۰۵</span></span></div>
+        </div>
+        <div class="head-tools">
+          <div class="faces" aria-label="تیم پروژه: سارا، علی، نیلوفر" data-alt-aria-label="Project team: Sara, Ali, Niloufar" role="img"><span class="avatar sm" style="--c:#f0c24a" data-alt="SR">س</span><span class="avatar sm" style="--c:#b9dcf5" data-alt="AK">ع</span><span class="avatar sm" style="--c:#e3c6f2" data-alt="NJ">ن</span></div>
+          <button class="btn btn-outline btn-sm" type="button" data-copy="https://naqsh.example/p/NQ-1405-031"><svg class="ic" aria-hidden="true"><use href="#i-share-ios"/></svg><span data-alt="Share">اشتراک</span></button>
+          <span class="lang-theme row" style="gap: 4px"><button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button><button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="تغییر حالت تیره" data-alt-aria-label="Toggle dark mode"><svg class="ic" aria-hidden="true"><use href="#i-half-moon"/></svg></button></span>
+        </div>
+      </div>
+      <ol class="phases" style="--n:4" aria-label="مراحل پروژه" data-alt-aria-label="Project phases">
+        <li class="done"><b data-alt="Discovery">کشف</b><span><span data-date="2026-08-23" data-fmt="short">۱ شهریور</span> – <span data-date="2026-09-05" data-fmt="short">۱۴ شهریور</span></span></li>
+        <li class="now" style="--v: 62%"><b data-alt="Design · 62%">طراحی · ۶۲٪</b><span><span data-date="2026-09-06" data-fmt="short">۱۵ شهریور</span> – <span data-date="2026-10-21" data-fmt="short">۲۹ مهر</span></span></li>
+        <li class="todo"><b data-alt="Build">ساخت</b><span><span data-date="2026-10-22" data-fmt="short">۳۰ مهر</span> – <span data-date="2026-11-25" data-fmt="short">۴ آذر</span></span></li>
+        <li class="todo"><b data-alt="Launch">انتشار</b><span data-date="2026-11-29" data-fmt="short">۸ آذر</span></li>
+      </ol>
+    </header>
+
+    <!-- ============================================================ overview -->
+    <section class="grid12" role="tabpanel" id="p-over" aria-labelledby="t-over">
+      <div class="card c3 kpi"><span class="k"><svg class="ic" aria-hidden="true"><use href="#i-graph-up"/></svg><span data-alt="Overall progress">پیشرفت کل</span></span><span class="v" data-num="46" data-fmt="pct">۴۶٪</span><div class="progress brand"><i style="--v:46%"></i></div></div>
+      <div class="card c3 kpi"><span class="k"><svg class="ic" aria-hidden="true"><use href="#i-triangle-flag"/></svg><span data-alt="Next milestone">مرحلهٔ بعد</span></span><span class="v" style="font-size: var(--fs-lg)" data-alt="Homepage sign-off">تأیید صفحهٔ اصلی</span><span class="small subtle" data-date="2026-10-15" data-fmt="long">۲۳ مهر ۱۴۰۵</span></div>
+      <div class="card c3 kpi"><span class="k"><svg class="ic" aria-hidden="true"><use href="#i-wallet"/></svg><span data-alt="Payments">پرداخت‌ها</span></span><span class="v"><span data-num="2">۲</span> <span class="small subtle" data-alt="of 4 paid">از ۴ پرداخت‌شده</span></span><span class="small subtle"><span data-num="105000000" data-fmt="toman">۱۰۵٬۰۰۰٬۰۰۰ تومان</span> <span data-alt="due">سررسید</span> <span data-date="2026-10-22" data-fmt="short">۳۰ مهر</span></span></div>
+      <div class="card c3 kpi"><span class="k"><svg class="ic" aria-hidden="true"><use href="#i-rocket"/></svg><span data-alt="Until launch">تا انتشار</span></span><span class="v"><span data-num="46">۴۶</span> <span class="small subtle" data-alt="days">روز</span></span><span class="small subtle" data-date="2026-11-29" data-fmt="long">۸ آذر ۱۴۰۵</span></div>
+
+      <div class="card c5 waiting">
+        <div class="card-head"><h2 data-alt="Waiting on you">منتظر شما</h2><span class="badge brand" data-num="3">۳</span></div>
+        <ul>
+          <li><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-chat-bubble-check"/></svg></span><div><b class="small" data-alt="Approve homepage v3">تأیید صفحهٔ اصلی · نسخهٔ ۳</b><br><small data-alt="3 notes · due Thursday">۳ یادداشت · مهلت پنجشنبه</small></div><button class="btn btn-sm" type="button" data-goto="t-appr" data-alt="Review">بررسی</button></li>
+          <li><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-chat-bubble-check"/></svg></span><div><b class="small" data-alt="Approve product page v2">تأیید صفحهٔ محصول · نسخهٔ ۲</b><br><small data-alt="1 note · due Saturday">۱ یادداشت · مهلت شنبه</small></div><button class="btn btn-sm" type="button" data-goto="t-appr" data-alt="Review">بررسی</button></li>
+          <li><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-wallet"/></svg></span><div><b class="small" data-alt="Pay instalment 3">پرداخت قسط ۳</b><br><small data-alt="105M Toman · due in 8 days">۱۰۵ میلیون تومان · ۸ روز مانده</small></div><button class="btn btn-sm" type="button" data-goto="t-inv" data-alt="Pay">پرداخت</button></li>
+        </ul>
+      </div>
+      <div class="card c7">
+        <div class="card-head"><h2 data-alt="Activity">رویدادها</h2><button class="btn btn-ghost btn-sm" type="button" data-goto="t-msg"><span data-alt="All messages">همهٔ پیام‌ها</span><svg class="ic flip-rtl" aria-hidden="true"><use href="#i-nav-arrow-right"/></svg></button></div>
+        <ul class="feed">
+          <li><span class="avatar sm" style="--c:#f0c24a" data-alt="SR">س</span><div><span><b data-alt="Sara">سارا</b> <span data-alt="uploaded Homepage v3 with your notes applied">نسخهٔ ۳ صفحهٔ اصلی را با اعمال یادداشت‌های شما بارگذاری کرد</span></span><span class="when" data-ago="7200">۲ ساعت پیش</span></div></li>
+          <li><span class="avatar sm" style="--c:#b9dcf5" data-alt="AK">ع</span><div><span><b data-alt="Ali">علی</b> <span data-alt="imported 120 of 480 products to the staging store">۱۲۰ محصول از ۴۸۰ را به فروشگاه آزمایشی وارد کرد</span></span><span class="when" data-ago="18000">۵ ساعت پیش</span></div></li>
+          <li><span class="avatar sm" style="--c:var(--brand-soft)" data-alt="MT">م</span><div><span><b data-alt="You">شما</b> <span data-alt="left a note on Product page v2">روی صفحهٔ محصول نسخهٔ ۲ یادداشت گذاشتید</span></span><span class="when" data-ago="90000">دیروز</span></div></li>
+          <li><span class="avatar sm" style="--c:#e3c6f2" data-alt="NJ">ن</span><div><span><b data-alt="Niloufar">نیلوفر</b> <span data-alt="added 32 greenhouse photos to Content">۳۲ عکس گلخانه را به پوشهٔ محتوا افزود</span></span><span class="when" data-ago="259200">۳ روز پیش</span></div></li>
+        </ul>
+      </div>
+      <div class="card c8">
+        <div class="card-head"><h2 data-alt="Team hours per week">ساعت کار تیم در هفته</h2><div class="legend"><span><i style="--c: var(--chart-1)"></i><span data-alt="Design">طراحی</span></span><span><i style="--c: var(--chart-2)"></i><span data-alt="Build">ساخت</span></span></div></div>
+        <div data-chart="stacked" data-height="210" data-fmt="int" data-dates="2026-08-23,8,week,short" data-series='[{"name":{"en":"Design","fa":"طراحی"},"values":[6,10,14,16,18,20,22,19]},{"name":{"en":"Build","fa":"ساخت"},"values":[0,0,2,3,4,6,8,10]}]' data-label='{"en":"Team hours per week, design and build","fa":"ساعت کار تیم در هفته، طراحی و ساخت"}'></div>
+      </div>
+      <div class="card c4 meet">
+        <div class="card-head" style="margin: 0"><h2 data-alt="Next check-in">جلسهٔ بعدی</h2></div>
+        <div class="row" style="flex-wrap: nowrap; gap: 14px"><span class="date"><span data-date="2026-10-18" data-fmt="day">یکشنبه</span><b data-alt="18">۲۶</b></span><div><b data-alt="Weekly review · 10:30">مرور هفتگی · ۱۰:۳۰</b><br><span class="small subtle" data-alt="Video call · 30 min">تماس تصویری · ۳۰ دقیقه</span></div></div>
+        <ul class="agenda-list">
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span data-alt="Homepage v3 decisions">تصمیم‌های صفحهٔ اصلی نسخهٔ ۳</span></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span data-alt="Delivery slots and zones">بازه‌ها و مناطق ارسال</span></li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span data-alt="Photo shoot plan">برنامهٔ عکاسی</span></li>
+        </ul>
+        <div class="row"><button class="btn btn-sm" type="button" data-toast="به تقویم شما اضافه شد" data-toast-alt="Added to your calendar"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg><span data-alt="Add to calendar">افزودن به تقویم</span></button><button class="btn btn-outline btn-sm" type="button" data-toast="درخواست تغییر زمان فرستاده شد" data-toast-alt="Reschedule request sent" data-alt="Reschedule">تغییر زمان</button></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ timeline -->
+    <section role="tabpanel" id="p-time" aria-labelledby="t-time" hidden>
+      <div class="card gantt-card">
+        <div class="card-head"><h2 data-alt="Timeline">زمان‌بندی</h2><div class="legend"><span><i style="--c: var(--ink)"></i><span data-alt="Done">انجام‌شده</span></span><span><i style="--c: var(--brand)"></i><span data-alt="In progress">در جریان</span></span><span><i style="--c: var(--surface-3)"></i><span data-alt="Planned">برنامه‌ریزی‌شده</span></span></div></div>
+        <div class="gantt-wrap">
+          <div class="gantt" style="--weeks: 15; --rows: 10; min-inline-size: 980px">
+            <span class="wk"></span>
+            <span class="wk" data-date="2026-08-23" data-fmt="short">۱ شهریور</span><span class="wk" data-date="2026-08-30" data-fmt="short">۸ شهریور</span><span class="wk" data-date="2026-09-06" data-fmt="short">۱۵ شهریور</span><span class="wk" data-date="2026-09-13" data-fmt="short">۲۲ شهریور</span><span class="wk" data-date="2026-09-20" data-fmt="short">۲۹ شهریور</span><span class="wk" data-date="2026-09-27" data-fmt="short">۵ مهر</span><span class="wk" data-date="2026-10-04" data-fmt="short">۱۲ مهر</span><span class="wk now" data-date="2026-10-11" data-fmt="short">۱۹ مهر</span><span class="wk" data-date="2026-10-18" data-fmt="short">۲۶ مهر</span><span class="wk" data-date="2026-10-25" data-fmt="short">۳ آبان</span><span class="wk" data-date="2026-11-01" data-fmt="short">۱۰ آبان</span><span class="wk" data-date="2026-11-08" data-fmt="short">۱۷ آبان</span><span class="wk" data-date="2026-11-15" data-fmt="short">۲۴ آبان</span><span class="wk" data-date="2026-11-22" data-fmt="short">۱ آذر</span><span class="wk" data-date="2026-11-29" data-fmt="short">۸ آذر</span>
+            <span class="today" style="--s: 8; --at: 50%" title="امروز" data-alt-title="Today" aria-hidden="true"></span>
+            <span class="task" data-alt="Kick-off &amp; research">شروع و پژوهش</span><span class="bar done" style="--s:1; --d:2" data-alt="Done">انجام شد</span>
+            <span class="task" data-alt="Sitemap &amp; content plan">نقشهٔ سایت و محتوا</span><span class="bar done" style="--s:2; --d:2" data-alt="Done">انجام شد</span>
+            <span class="task"><svg class="ic" aria-hidden="true"><use href="#i-triangle-flag"/></svg><span data-alt="Sitemap approved">تأیید نقشهٔ سایت</span></span><span class="ms done" style="--s:3" aria-hidden="true"></span>
+            <span class="task" data-alt="Wireframes">وایرفریم</span><span class="bar done" style="--s:3; --d:3" data-alt="Done">انجام شد</span>
+            <span class="task" data-alt="Page designs">طراحی صفحه‌ها</span><span class="bar now" style="--s:5; --d:5" data-alt="62% · 2 rounds">۶۲٪ · دو دور</span>
+            <span class="task"><svg class="ic" aria-hidden="true"><use href="#i-triangle-flag"/></svg><span data-alt="Homepage sign-off">تأیید صفحهٔ اصلی</span></span><span class="ms" style="--s:8" aria-hidden="true"></span>
+            <span class="task" data-alt="Front-end build">ساخت فرانت‌اند</span><span class="bar next" style="--s:9; --d:5" data-alt="5 weeks">۵ هفته</span>
+            <span class="task" data-alt="Import 480 products">ورود ۴۸۰ محصول</span><span class="bar next" style="--s:11; --d:3" data-alt="With your team">همراه تیم شما</span>
+            <span class="task" data-alt="Testing &amp; fixes">تست و رفع اشکال</span><span class="bar next" style="--s:13; --d:2" data-alt="Real phones">روی گوشی واقعی</span>
+            <span class="task"><svg class="ic" aria-hidden="true"><use href="#i-rocket"/></svg><span data-alt="Launch">انتشار</span></span><span class="ms" style="--s:15" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ approvals -->
+    <section role="tabpanel" id="p-appr" aria-labelledby="t-appr" hidden class="stack" style="gap: var(--space-5)">
+      <div class="tabs" role="tablist" aria-label="طرح‌های منتظر تأیید" data-alt-aria-label="Designs waiting for approval">
+        <button type="button" role="tab" id="d-home" aria-controls="r-home" aria-selected="true"><span data-alt="Homepage · v3">صفحهٔ اصلی · نسخهٔ ۳</span><span class="badge warn" data-review-badge="home" data-alt="Waiting">منتظر</span></button>
+        <button type="button" role="tab" id="d-prod" aria-controls="r-prod" aria-selected="false"><span data-alt="Product page · v2">صفحهٔ محصول · نسخهٔ ۲</span><span class="badge warn" data-review-badge="prod" data-alt="Waiting">منتظر</span></button>
+      </div>
+
+      <div class="review" role="tabpanel" id="r-home" aria-labelledby="d-home" data-review="home">
+        <div class="card">
+          <div class="review-head">
+            <h2 data-alt="Homepage — desktop">صفحهٔ اصلی — دسکتاپ</h2>
+            <div class="seg" data-group="ver-home" role="group" aria-label="نسخه" data-alt-aria-label="Version"><button type="button" data-value="1" aria-pressed="false">v1</button><button type="button" data-value="2" aria-pressed="false">v2</button><button type="button" data-value="3" aria-pressed="true">v3</button></div>
+            <span class="small subtle"><span data-alt="Due">مهلت</span> <span data-date="2026-10-15" data-fmt="day">پنجشنبه</span></span>
+          </div>
+          <p class="small" data-when="ver-home:1|2" hidden><span class="badge info" data-alt="Older version — read only">نسخهٔ قدیمی — فقط خواندنی</span></p>
+          <div class="canvas-pins" data-canvas tabindex="0" aria-label="طرح صفحهٔ اصلی؛ برای گذاشتن یادداشت کلیک کنید" data-alt-aria-label="Homepage design; click to drop a note">
+            <div class="browser"><div class="bar"><i></i><i></i><i></i><b>nahalkadeh.example</b></div><div class="view" style="--ratio: 16/11; --m1:#2f6b3a; --m2:#eef5e9; --m3:#f07aa0"><div class="page"><div class="m-nav"><b></b><i></i><i></i><i></i><s></s></div><div class="m-hero"><div><b></b><b></b><i></i><i></i><u></u></div><span class="m-img"></span></div><span class="m-title"></span><div class="m-cards"><span></span><span></span><span></span><span></span></div><div class="m-band"></div></div></div></div>
+            <button class="pin" type="button" style="--x: 14%; --y: 30%" data-pin="1" aria-pressed="false" aria-label="یادداشت ۱" data-alt-aria-label="Note 1">1</button>
+            <button class="pin resolved" type="button" style="--x: 30%; --y: 74%" data-pin="2" aria-pressed="false" aria-label="یادداشت ۲ (حل‌شده)" data-alt-aria-label="Note 2 (resolved)">2</button>
+            <button class="pin" type="button" style="--x: 64%; --y: 34%" data-pin="3" aria-pressed="false" aria-label="یادداشت ۳" data-alt-aria-label="Note 3">3</button>
+          </div>
+          <p class="pin-hint"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg><span data-alt="Click anywhere on the design to drop a note.">برای گذاشتن یادداشت، روی هر جای طرح کلیک کنید.</span></p>
+        </div>
+        <div class="card stack" style="gap: var(--space-4)">
+          <div class="card-head" style="margin: 0"><h2 data-alt="Notes">یادداشت‌ها</h2><span class="badge plain"><span data-notes-count data-num="3">۳</span></span></div>
+          <ol class="comments" data-comments>
+            <li class="comment" data-for="1"><span class="no">1</span><div><div class="by"><b data-alt="You">شما</b><span data-ago="90000">دیروز</span></div><p data-alt="Can the headline mention free delivery in Tehran?">می‌شود در تیتر به ارسال رایگان در تهران اشاره کرد؟</p></div></li>
+            <li class="comment resolved" data-for="2"><span class="no">2</span><div><div class="by"><b data-alt="You">شما</b><span class="badge ok" data-alt="Resolved">حل شد</span></div><p data-alt="Prices look too small on mobile.">قیمت‌ها در موبایل خیلی ریزند.</p></div></li>
+            <li class="comment" data-for="3"><span class="no">3</span><div><div class="by"><b data-alt="Sara">سارا</b><span data-ago="7200">۲ ساعت پیش</span></div><p data-alt="We’ll swap this for the greenhouse photo once it arrives.">وقتی عکس گلخانه برسد، این تصویر را عوض می‌کنیم.</p></div></li>
+          </ol>
+          <form class="stack" data-note-form data-validate data-success="یادداشت ثبت شد" data-success-alt="Note added" style="gap: 8px">
+            <label class="label" for="note-home"><span data-alt="Note for pin">یادداشت برای پین</span> <span class="code" data-draft-no>4</span></label>
+            <textarea class="textarea" id="note-home" name="note" required minlength="3" maxlength="400" style="min-block-size: 80px" placeholder="اول روی طرح کلیک کنید، بعد بنویسید…" data-alt-placeholder="Click the design first, then write…"></textarea>
+            <button class="btn btn-sm" type="submit" style="justify-self: start" data-alt="Add note">افزودن یادداشت</button>
+          </form>
+          <div class="decide"><button class="btn btn-primary" type="button" data-approve="home"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span data-alt="Approve v3">تأیید نسخهٔ ۳</span></button><button class="btn btn-outline" type="button" data-dialog="#changes" data-changes="home" data-alt="Request changes">درخواست تغییر</button></div>
+        </div>
+      </div>
+
+      <div class="review" role="tabpanel" id="r-prod" aria-labelledby="d-prod" data-review="prod" hidden>
+        <div class="card">
+          <div class="review-head">
+            <h2 data-alt="Product page — mobile">صفحهٔ محصول — موبایل</h2>
+            <div class="seg" data-group="ver-prod" role="group" aria-label="نسخه" data-alt-aria-label="Version"><button type="button" data-value="1" aria-pressed="false">v1</button><button type="button" data-value="2" aria-pressed="true">v2</button></div>
+            <span class="small subtle"><span data-alt="Due">مهلت</span> <span data-date="2026-10-17" data-fmt="day">شنبه</span></span>
+          </div>
+          <div class="canvas-pins" data-canvas tabindex="0" aria-label="طرح صفحهٔ محصول؛ برای گذاشتن یادداشت کلیک کنید" data-alt-aria-label="Product page design; click to drop a note" style="max-inline-size: 300px; margin-inline: auto">
+            <div class="mock-phone"><div class="view" style="--m1:#2f6b3a; --m2:#eef5e9; --m3:#f07aa0"><div class="page"><div class="m-nav"><b></b><s></s></div><span class="m-img" style="margin-inline: 5cqw"></span><div class="m-hero"><div><b></b><i></i><i></i><u></u></div></div><div class="m-cards"><span></span><span></span></div></div></div></div>
+            <button class="pin" type="button" style="--x: 70%; --y: 62%" data-pin="1" aria-pressed="false" aria-label="یادداشت ۱" data-alt-aria-label="Note 1">1</button>
+          </div>
+          <p class="pin-hint"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg><span data-alt="Click anywhere on the design to drop a note.">برای گذاشتن یادداشت، روی هر جای طرح کلیک کنید.</span></p>
+        </div>
+        <div class="card stack" style="gap: var(--space-4)">
+          <div class="card-head" style="margin: 0"><h2 data-alt="Notes">یادداشت‌ها</h2><span class="badge plain"><span data-notes-count data-num="1">۱</span></span></div>
+          <ol class="comments" data-comments>
+            <li class="comment" data-for="1"><span class="no">1</span><div><div class="by"><b data-alt="You">شما</b><span data-ago="90000">دیروز</span></div><p data-alt="Show the pot size next to the price.">اندازهٔ گلدان را کنار قیمت نشان دهید.</p></div></li>
+          </ol>
+          <form class="stack" data-note-form data-validate data-success="یادداشت ثبت شد" data-success-alt="Note added" style="gap: 8px">
+            <label class="label" for="note-prod"><span data-alt="Note for pin">یادداشت برای پین</span> <span class="code" data-draft-no>2</span></label>
+            <textarea class="textarea" id="note-prod" name="note" required minlength="3" maxlength="400" style="min-block-size: 80px" placeholder="اول روی طرح کلیک کنید، بعد بنویسید…" data-alt-placeholder="Click the design first, then write…"></textarea>
+            <button class="btn btn-sm" type="submit" style="justify-self: start" data-alt="Add note">افزودن یادداشت</button>
+          </form>
+          <div class="decide"><button class="btn btn-primary" type="button" data-approve="prod"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span data-alt="Approve v2">تأیید نسخهٔ ۲</span></button><button class="btn btn-outline" type="button" data-dialog="#changes" data-changes="prod" data-alt="Request changes">درخواست تغییر</button></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head" style="margin-block-end: 4px"><h2 data-alt="Approved">تأییدشده‌ها</h2><span class="badge ok" data-num="3">۳</span></div>
+        <ul class="approved">
+          <li><span class="ft" style="--c:#e3c6f2"><svg class="ic" aria-hidden="true"><use href="#i-palette"/></svg></span><div><b data-alt="Brand guide · v4">راهنمای برند · نسخهٔ ۴</b><br><span class="tiny subtle" data-date="2026-09-02" data-fmt="long">۱۱ شهریور ۱۴۰۵</span></div><span class="badge ok" data-alt="Approved">تأیید شد</span></li>
+          <li><span class="ft" style="--c:#cfe8c4"><svg class="ic" aria-hidden="true"><use href="#i-table-rows"/></svg></span><div><b data-alt="Sitemap · v2">نقشهٔ سایت · نسخهٔ ۲</b><br><span class="tiny subtle" data-date="2026-09-06" data-fmt="long">۱۵ شهریور ۱۴۰۵</span></div><span class="badge ok" data-alt="Approved">تأیید شد</span></li>
+          <li><span class="ft" style="--c:#b9dcf5"><svg class="ic" aria-hidden="true"><use href="#i-app-window"/></svg></span><div><b data-alt="Wireframes · v3">وایرفریم‌ها · نسخهٔ ۳</b><br><span class="tiny subtle" data-date="2026-09-24" data-fmt="long">۲ مهر ۱۴۰۵</span></div><span class="badge ok" data-alt="Approved">تأیید شد</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================ files -->
+    <section role="tabpanel" id="p-files" aria-labelledby="t-files" hidden data-filter-scope class="stack" style="gap: var(--space-4)">
+      <div class="card">
+        <div class="card-head"><h2 data-alt="Files">فایل‌ها</h2>
+          <div class="seg" data-group="fview" role="group" aria-label="نمایش" data-alt-aria-label="View"><button type="button" data-value="list" aria-pressed="true" aria-label="فهرست" data-alt-aria-label="List"><svg class="ic" aria-hidden="true"><use href="#i-list"/></svg></button><button type="button" data-value="grid" aria-pressed="false" aria-label="شبکه" data-alt-aria-label="Grid"><svg class="ic" aria-hidden="true"><use href="#i-view-grid"/></svg></button></div>
+        </div>
+        <div class="files-tools">
+          <div class="chips" data-group role="group" aria-label="پوشه" data-alt-aria-label="Folder">
+            <button type="button" data-filter="folder" data-value="all" aria-pressed="true" data-alt="All">همه</button>
+            <button type="button" data-filter="folder" data-value="brand" aria-pressed="false" data-alt="Brand">برند</button>
+            <button type="button" data-filter="folder" data-value="content" aria-pressed="false" data-alt="Content">محتوا</button>
+            <button type="button" data-filter="folder" data-value="design" aria-pressed="false" data-alt="Design">طراحی</button>
+            <button type="button" data-filter="folder" data-value="contract" aria-pressed="false" data-alt="Contracts">قرارداد</button>
+          </div>
+          <span class="spacer"></span>
+          <div class="search"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg><input class="input" type="search" data-filter-search aria-label="جست‌وجوی فایل" data-alt-aria-label="Search files" placeholder="جست‌وجو…" data-alt-placeholder="Search…"></div>
+        </div>
+        <ul class="files" id="files">
+          <li class="file" data-filter-item data-folder="brand" data-keywords="logo لوگو"><span class="ft" style="--c:#e3c6f2"><svg class="ic" aria-hidden="true"><use href="#i-archive"/></svg></span><div class="stack" style="gap: 0"><span class="name" data-alt="Nahal-Kadeh logo pack.zip">بستهٔ لوگوی نهال‌کده.zip</span><span class="info"><span class="ltr">12.4 MB</span> · <span data-alt="Sara">سارا</span> · <span data-date="2026-09-02" data-fmt="short">۱۱ شهریور</span></span></div><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="دانلود" data-alt-aria-label="Download" data-toast="دانلود شروع شد" data-toast-alt="Download started"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg></button></li>
+          <li class="file" data-filter-item data-folder="brand" data-keywords="guide راهنما pdf"><span class="ft" style="--c:#fce5e5"><svg class="ic" aria-hidden="true"><use href="#i-page"/></svg></span><div class="stack" style="gap: 0"><span class="name" data-alt="Brand guide v4.pdf">راهنمای برند نسخهٔ ۴.pdf</span><span class="info"><span class="ltr">8.1 MB</span> · <span data-alt="Sara">سارا</span> · <span data-date="2026-09-02" data-fmt="short">۱۱ شهریور</span></span></div><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="دانلود" data-alt-aria-label="Download" data-toast="دانلود شروع شد" data-toast-alt="Download started"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg></button></li>
+          <li class="file" data-filter-item data-folder="content" data-keywords="copy text متن"><span class="ft" style="--c:#e3edfd"><svg class="ic" aria-hidden="true"><use href="#i-page-edit"/></svg></span><div class="stack" style="gap: 0"><span class="name" data-alt="Page copy.docx">متن صفحه‌ها.docx</span><span class="info"><span class="ltr">240 KB</span> · <span data-alt="You">شما</span> · <span data-date="2026-09-29" data-fmt="short">۷ مهر</span></span></div><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="دانلود" data-alt-aria-label="Download" data-toast="دانلود شروع شد" data-toast-alt="Download started"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg></button></li>
+          <li class="file" data-filter-item data-folder="content" data-keywords="photos greenhouse عکس گلخانه"><span class="ft" style="--c:#e1f4e8"><svg class="ic" aria-hidden="true"><use href="#i-media-image"/></svg></span><div class="stack" style="gap: 0"><span class="name" data-alt="Greenhouse photos (32).zip">عکس‌های گلخانه (۳۲).zip</span><span class="info"><span class="ltr">214 MB</span> · <span data-alt="Niloufar">نیلوفر</span> · <span data-date="2026-10-11" data-fmt="short">۱۹ مهر</span></span></div><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="دانلود" data-alt-aria-label="Download" data-toast="دانلود شروع شد" data-toast-alt="Download started"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg></button></li>
+          <li class="file" data-filter-item data-folder="design" data-keywords="homepage figma صفحه اصلی"><span class="ft" style="--c:#fbefd9"><svg class="ic" aria-hidden="true"><use href="#i-design-pencil"/></svg></span><div class="stack" style="gap: 0"><span class="name" data-alt="Homepage v3.fig">صفحهٔ اصلی نسخهٔ ۳.fig</span><span class="info"><span class="ltr">18 MB</span> · <span data-alt="Sara">سارا</span> · <span data-date="2026-10-14" data-fmt="short">۲۲ مهر</span></span></div><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="دانلود" data-alt-aria-label="Download" data-toast="دانلود شروع شد" data-toast-alt="Download started"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg></button></li>
+          <li class="file" data-filter-item data-folder="design" data-keywords="product figma محصول"><span class="ft" style="--c:#fbefd9"><svg class="ic" aria-hidden="true"><use href="#i-design-pencil"/></svg></span><div class="stack" style="gap: 0"><span class="name" data-alt="Product page v2.fig">صفحهٔ محصول نسخهٔ ۲.fig</span><span class="info"><span class="ltr">11 MB</span> · <span data-alt="Sara">سارا</span> · <span data-date="2026-10-12" data-fmt="short">۲۰ مهر</span></span></div><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="دانلود" data-alt-aria-label="Download" data-toast="دانلود شروع شد" data-toast-alt="Download started"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg></button></li>
+          <li class="file" data-filter-item data-folder="contract" data-keywords="contract قرارداد pdf"><span class="ft" style="--c:#ebebe7"><svg class="ic" aria-hidden="true"><use href="#i-page"/></svg></span><div class="stack" style="gap: 0"><span class="name" data-alt="Signed contract.pdf">قرارداد امضاشده.pdf</span><span class="info"><span class="ltr">1.2 MB</span> · <span data-alt="Sara">سارا</span> · <span data-date="2026-08-23" data-fmt="short">۱ شهریور</span></span></div><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="دانلود" data-alt-aria-label="Download" data-toast="دانلود شروع شد" data-toast-alt="Download started"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg></button></li>
+          <li class="file" data-filter-item data-folder="contract" data-keywords="products template excel محصولات"><span class="ft" style="--c:#e1f4e8"><svg class="ic" aria-hidden="true"><use href="#i-table-rows"/></svg></span><div class="stack" style="gap: 0"><span class="name" data-alt="Product import template.xlsx">قالب ورود محصولات.xlsx</span><span class="info"><span class="ltr">36 KB</span> · <span data-alt="Ali">علی</span> · <span data-date="2026-10-13" data-fmt="short">۲۱ مهر</span></span></div><button class="btn btn-ghost btn-icon btn-sm" type="button" aria-label="دانلود" data-alt-aria-label="Download" data-toast="دانلود شروع شد" data-toast-alt="Download started"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg></button></li>
+        </ul>
+        <p class="empty" data-filter-empty hidden data-alt="No files here yet.">هنوز فایلی اینجا نیست.</p>
+      </div>
+      <label class="dropzone" id="drop"><input class="sr-only" type="file" id="upload" multiple><svg class="ic" aria-hidden="true"><use href="#i-cloud-upload"/></svg><b data-alt="Drop files here or browse">فایل‌ها را اینجا رها کنید یا انتخاب کنید</b><span class="tiny subtle" data-alt="Up to 500 MB each · they stay private to this project">تا ۵۰۰ مگابایت برای هر فایل · فقط برای همین پروژه</span></label>
+    </section>
+
+    <!-- ============================================================ invoices -->
+    <section role="tabpanel" id="p-inv" aria-labelledby="t-inv" hidden class="stack" style="gap: var(--space-4)">
+      <div class="sum">
+        <div class="card"><span class="small subtle" data-alt="Contract total">مبلغ قرارداد</span><span class="v"><span data-num="420000000" data-fmt="compact">۴۲۰ میلیون</span> <small class="small" data-alt="Toman">تومان</small></span></div>
+        <div class="card"><span class="small subtle" data-alt="Paid">پرداخت‌شده</span><span class="v" style="color: var(--success)"><span data-num="210000000" data-fmt="compact">۲۱۰ میلیون</span> <small class="small" data-alt="Toman">تومان</small></span></div>
+        <div class="card"><span class="small subtle" data-alt="Due now">سررسید فعلی</span><span class="v" style="color: var(--warning)"><span data-num="105000000" data-fmt="compact">۱۰۵ میلیون</span> <small class="small" data-alt="Toman">تومان</small></span></div>
+        <div class="card"><span class="small subtle" data-alt="Later">باقی‌مانده</span><span class="v"><span data-num="105000000" data-fmt="compact">۱۰۵ میلیون</span> <small class="small" data-alt="Toman">تومان</small></span></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2 data-alt="Instalments">اقساط</h2><span class="small subtle" data-alt="An official invoice is issued after every payment.">پس از هر پرداخت، فاکتور رسمی صادر می‌شود.</span></div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th scope="col">#</th><th scope="col" data-alt="Milestone">مرحله</th><th scope="col"><button type="button" data-sort="num"><span data-alt="Amount">مبلغ</span><svg class="ic" aria-hidden="true"><use href="#i-sort"/></svg></button></th><th scope="col"><button type="button" data-sort="date"><span data-alt="Due">سررسید</span><svg class="ic" aria-hidden="true"><use href="#i-sort"/></svg></button></th><th scope="col" data-alt="Status">وضعیت</th><th scope="col"><span class="sr-only" data-alt="Actions">اقدام</span></th></tr></thead>
+            <tbody>
+              <tr><td data-value="1"><span data-num="1">۱</span></td><td data-alt="Kick-off">شروع پروژه</td><td class="amt" data-value="105000000" data-num="105000000" data-fmt="toman">۱۰۵٬۰۰۰٬۰۰۰ تومان</td><td data-value="2026-08-23"><span data-date="2026-08-23" data-fmt="long">۱ شهریور ۱۴۰۵</span></td><td><span class="badge ok" data-alt="Paid">پرداخت شد</span></td><td><button class="btn btn-ghost btn-sm" type="button" data-toast="فاکتور ۱ دانلود شد" data-toast-alt="Invoice 1 downloaded"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg><span data-alt="Invoice">فاکتور</span></button></td></tr>
+              <tr><td data-value="2"><span data-num="2">۲</span></td><td data-alt="Sitemap sign-off">تأیید نقشهٔ سایت</td><td class="amt" data-value="105000000" data-num="105000000" data-fmt="toman">۱۰۵٬۰۰۰٬۰۰۰ تومان</td><td data-value="2026-09-06"><span data-date="2026-09-06" data-fmt="long">۱۵ شهریور ۱۴۰۵</span></td><td><span class="badge ok" data-alt="Paid">پرداخت شد</span></td><td><button class="btn btn-ghost btn-sm" type="button" data-toast="فاکتور ۲ دانلود شد" data-toast-alt="Invoice 2 downloaded"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg><span data-alt="Invoice">فاکتور</span></button></td></tr>
+              <tr><td data-value="3"><span data-num="3">۳</span></td><td data-alt="Design sign-off">تأیید طراحی</td><td class="amt" data-value="105000000" data-num="105000000" data-fmt="toman">۱۰۵٬۰۰۰٬۰۰۰ تومان</td><td data-value="2026-10-22"><span data-date="2026-10-22" data-fmt="long">۳۰ مهر ۱۴۰۵</span></td><td><span class="badge warn" id="inst3" data-alt="Due in 8 days">۸ روز مانده</span></td><td><button class="btn btn-primary btn-sm" type="button" data-dialog="#pay" id="pay-btn" data-alt="Pay">پرداخت</button></td></tr>
+              <tr><td data-value="4"><span data-num="4">۴</span></td><td data-alt="Launch">انتشار</td><td class="amt" data-value="105000000" data-num="105000000" data-fmt="toman">۱۰۵٬۰۰۰٬۰۰۰ تومان</td><td data-value="2026-11-29"><span data-date="2026-11-29" data-fmt="long">۸ آذر ۱۴۰۵</span></td><td><span class="badge" data-alt="Upcoming">آینده</span></td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ messages -->
+    <section role="tabpanel" id="p-msg" aria-labelledby="t-msg" hidden>
+      <div class="card thread-card">
+        <div class="card-head" style="margin: 0"><h2 data-alt="Messages">پیام‌ها</h2><span class="small subtle" data-alt="Sara, Ali and Niloufar are in this thread">سارا، علی و نیلوفر در این گفت‌وگو هستند</span></div>
+        <div class="thread" id="thread">
+          <div class="msg"><span class="avatar sm" style="--c:#f0c24a" data-alt="SR">س</span><div><div class="by"><b data-alt="Sara">سارا</b> · <span data-ago="7200">۲ ساعت پیش</span></div><div class="bubble"><span data-alt="Hi Maryam! Homepage v3 is ready — we applied your notes from last week.">سلام مریم! نسخهٔ ۳ صفحهٔ اصلی آماده است — یادداشت‌های هفتهٔ پیش را اعمال کردیم.</span><button class="attach" type="button" data-goto="t-appr"><span class="ft" style="--c:#fbefd9"><svg class="ic" aria-hidden="true"><use href="#i-design-pencil"/></svg></span><span data-alt="Homepage · v3 — review">صفحهٔ اصلی · نسخهٔ ۳ — بررسی</span></button></div></div></div>
+          <div class="msg me"><div><div class="by"><span data-alt="You">شما</span> · <span data-ago="5400">۱ ساعت پیش</span></div><div class="bubble" data-alt="Looks great! Where should I send the greenhouse photos?">عالی شد! عکس‌های گلخانه را کجا بفرستم؟</div></div></div>
+          <div class="msg"><span class="avatar sm" style="--c:#f0c24a" data-alt="SR">س</span><div><div class="by"><b data-alt="Sara">سارا</b> · <span data-ago="4800">۱ ساعت پیش</span></div><div class="bubble" data-alt="Files → Content. Anything up to 500 MB is fine.">فایل‌ها ← محتوا. تا ۵۰۰ مگابایت مشکلی نیست.</div></div></div>
+          <div class="msg"><span class="avatar sm" style="--c:#b9dcf5" data-alt="AK">ع</span><div><div class="by"><b data-alt="Ali">علی</b> · <span data-ago="3600">۱ ساعت پیش</span></div><div class="bubble"><span data-alt="I’ve added the product import template. One row per plant, sizes in separate columns.">قالب ورود محصولات را گذاشتم. هر گیاه یک ردیف، اندازه‌ها در ستون‌های جدا.</span><button class="attach" type="button" data-goto="t-files"><span class="ft" style="--c:#e1f4e8"><svg class="ic" aria-hidden="true"><use href="#i-table-rows"/></svg></span><span data-alt="Product import template.xlsx">قالب ورود محصولات.xlsx</span></button></div></div></div>
+        </div>
+        <form class="composer" id="composer" data-validate data-success="پیام فرستاده شد" data-success-alt="Message sent">
+          <label class="sr-only" for="reply" data-alt="Write a message">نوشتن پیام</label>
+          <textarea class="textarea" id="reply" name="reply" required maxlength="1000" placeholder="پیامی برای تیم بنویسید…" data-alt-placeholder="Write to the team…"></textarea>
+          <div class="row" style="gap: 6px"><button class="btn btn-ghost btn-icon btn-sm" type="button" data-goto="t-files" aria-label="پیوست فایل" data-alt-aria-label="Attach a file"><svg class="ic" aria-hidden="true"><use href="#i-attachment"/></svg></button><button class="btn btn-primary btn-sm" type="submit"><span data-alt="Send">ارسال</span><svg class="ic flip-rtl" aria-hidden="true"><use href="#i-send"/></svg></button></div>
+        </form>
+      </div>
+    </section>
+  </main>
+</div>
+
+<dialog class="modal" id="changes" aria-labelledby="changes-title">
+  <form data-validate data-success="درخواست تغییر برای تیم فرستاده شد" data-success-alt="Change request sent to the team" id="changes-form">
+    <div class="modal-body">
+      <div class="split"><h2 class="h2" id="changes-title" data-alt="Request changes">درخواست تغییر</h2><button class="btn btn-ghost btn-icon btn-sm" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><svg class="ic" aria-hidden="true"><use href="#i-xmark"/></svg></button></div>
+      <p class="small muted" data-alt="Your pinned notes go with this request. Add anything that is not tied to one spot.">یادداشت‌های پین‌شده همراه این درخواست می‌روند. هر چیزی را که به نقطهٔ خاصی مربوط نیست اینجا بنویسید.</p>
+      <div class="field"><label class="label" for="chg" data-alt="What should change?">چه چیزی باید تغییر کند؟</label><textarea class="textarea" id="chg" name="changes" required minlength="10" maxlength="800"></textarea></div>
+      <div class="field"><span class="label" id="prio-l" data-alt="Priority">اولویت</span><div class="seg" data-group="prio" role="group" aria-labelledby="prio-l"><button type="button" data-value="normal" aria-pressed="true" data-alt="Normal">عادی</button><button type="button" data-value="high" aria-pressed="false" data-alt="Before the next check-in">پیش از جلسهٔ بعد</button></div></div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" type="button" data-close data-alt="Cancel">انصراف</button><button class="btn" type="submit" data-alt="Send request">ارسال درخواست</button></div>
+  </form>
+</dialog>
+
+<dialog class="modal" id="pay" aria-labelledby="pay-title">
+  <form data-validate data-success="نسخهٔ نمایشی: پرداختی انجام نشد — قسط ۳ در انتظار تأیید است" data-success-alt="Demo only: no payment was made — instalment 3 marked as pending" id="pay-form">
+    <div class="modal-body">
+      <div class="split"><h2 class="h2" id="pay-title" data-alt="Pay instalment 3">پرداخت قسط ۳</h2><button class="btn btn-ghost btn-icon btn-sm" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><svg class="ic" aria-hidden="true"><use href="#i-xmark"/></svg></button></div>
+      <div class="split" style="padding: 14px; border-radius: 14px; background: var(--surface-2)"><span data-alt="Design sign-off">تأیید طراحی</span><b data-num="105000000" data-fmt="toman">۱۰۵٬۰۰۰٬۰۰۰ تومان</b></div>
+      <div class="field"><span class="label" id="method-l" data-alt="How would you like to pay?">روش پرداخت</span>
+        <div class="radio-chips" role="radiogroup" aria-labelledby="method-l">
+          <label><input type="radio" name="method" value="gateway" checked><span data-alt="Bank gateway">درگاه بانکی</span></label>
+          <label><input type="radio" name="method" value="transfer"><span data-alt="Bank transfer + receipt">واریز و ارسال رسید</span></label>
+        </div>
+      </div>
+      <div class="field" data-when="method:transfer" hidden><label class="label" for="receipt" data-alt="Upload the receipt">بارگذاری رسید</label><input class="input" id="receipt" name="receipt" type="file" accept="image/*,.pdf" required style="padding-block: 9px"></div>
+      <p class="hint" data-alt="This is a demo: no payment details are collected and nothing is charged.">این یک نسخهٔ نمایشی است: هیچ اطلاعات پرداختی گرفته نمی‌شود و مبلغی کسر نمی‌شود.</p>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" type="button" data-close data-alt="Cancel">انصراف</button><button class="btn btn-primary" type="submit" data-alt="Continue">ادامه</button></div>
+  </form>
+</dialog>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+    const fa = () => tf.lang() === 'fa';
+    const both = (el, faText, enText) => { el.textContent = fa() ? faText : enText; el.dataset.alt = fa() ? enText : faText; };
+    const setNum = (el, n) => { el.dataset.num = n; el.textContent = tf.fmt(n, el.dataset.fmt); };
+    const side = $('#side');
+    const closeSide = () => { side.removeAttribute('data-open'); $$('[data-toggle="#side"]').forEach((b) => b.setAttribute('aria-expanded', 'false')); };
+
+    // jump links and the mobile drawer
+    document.addEventListener('click', (e) => {
+      const g = e.target.closest('[data-goto]');
+      if (!g) return;
+      tf.selectTab(document.getElementById(g.dataset.goto));
+      closeSide();
+      document.getElementById('main').scrollIntoView({ behavior: tf.reduceMotion ? 'auto' : 'smooth' });
+    });
+    side.addEventListener('tf:tab', closeSide);
+    $('#proj').addEventListener('change', (e) => {
+      if (e.target.value === 'brand') {
+        tf.toast(fa() ? 'این پروژه تمام شده؛ بایگانی فقط‌خواندنی است' : 'That project is finished — read-only archive');
+        e.target.value = 'store';
+      }
+    });
+
+    // approvals: pins ↔ notes, drop a new pin, approve, request changes
+    $$('[data-review]').forEach((rev) => {
+      const canvas = $('[data-canvas]', rev), list = $('[data-comments]', rev), form = $('[data-note-form]', rev);
+      let draft = null;
+      const highlight = (n) => {
+        $$('.pin', canvas).forEach((p) => p.setAttribute('aria-pressed', String(p.dataset.pin === n)));
+        $$('.comment', list).forEach((c) => c.classList.toggle('active', c.dataset.for === n));
+      };
+      canvas.addEventListener('click', (e) => {
+        const pin = e.target.closest('.pin');
+        if (pin) { if (!pin.classList.contains('draft')) highlight(pin.dataset.pin); return; }
+        const r = canvas.getBoundingClientRect();
+        const x = ((tf.isRTL() ? r.right - e.clientX : e.clientX - r.left) / r.width) * 100;
+        const y = ((e.clientY - r.top) / r.height) * 100;
+        if (!draft) {
+          draft = document.createElement('button');
+          draft.type = 'button';
+          draft.className = 'pin draft';
+          draft.dataset.pin = String($$('.pin', canvas).length + 1);
+          draft.textContent = draft.dataset.pin;
+          draft.setAttribute('aria-label', (fa() ? 'یادداشت تازه ' : 'New note ') + draft.dataset.pin);
+          canvas.append(draft);
+        }
+        draft.style.setProperty('--x', x.toFixed(1) + '%');
+        draft.style.setProperty('--y', y.toFixed(1) + '%');
+        $('textarea', form).focus();
+      });
+      list.addEventListener('click', (e) => { const c = e.target.closest('.comment'); if (c) highlight(c.dataset.for); });
+      form.addEventListener('tf:submit', (e) => {
+        const n = draft ? draft.dataset.pin : null;
+        if (draft) { draft.classList.remove('draft'); draft.setAttribute('aria-pressed', 'false'); draft = null; }
+        const li = document.createElement('li');
+        li.className = 'comment';
+        li.dataset.for = n || '';
+        li.innerHTML = `<span class="no">${n || '•'}</span><div><div class="by"><b></b><span></span></div><p></p></div>`;
+        both($('b', li), 'شما', 'You');
+        both($('.by span', li), 'همین حالا', 'just now');
+        $('p', li).textContent = e.detail.note;
+        list.append(li);
+        const count = $('[data-notes-count]', rev);
+        setNum(count, $$('.comment', list).length);
+        const next = $('[data-draft-no]', rev);
+        next.textContent = String($$('.pin', canvas).length + 1);
+        if (n) highlight(n);
+      });
+    });
+    const settle = (key, ok) => {
+      const badge = $(`[data-review-badge="${key}"]`);
+      badge.className = 'badge ' + (ok ? 'ok' : 'info');
+      both(badge, ok ? 'تأیید شد' : 'درخواست تغییر', ok ? 'Approved' : 'Changes requested');
+      $$(`[data-approve="${key}"], [data-changes="${key}"]`).forEach((b) => { b.disabled = true; });
+      const left = $$('[data-review-badge].warn').length;
+      setNum($('#appr-count'), left);
+      $('#appr-count').hidden = left === 0;
+    };
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('[data-approve]');
+      if (a) { settle(a.dataset.approve, true); tf.toast(fa() ? 'تأیید شد — تیم برای مرحلهٔ بعد آماده است' : 'Approved — the team can move on', { tone: 'success' }); }
+      const c = e.target.closest('[data-changes]');
+      if (c) $('#changes').dataset.key = c.dataset.changes;
+    });
+    $('#changes-form').addEventListener('tf:submit', () => settle($('#changes').dataset.key, false));
+
+    // files: list/grid view and local "uploads"
+    document.addEventListener('tf:change', (e) => {
+      if (e.target.closest?.('[data-group="fview"]')) $('#files').classList.toggle('grid', e.detail.value === 'grid');
+    });
+    const sizeOf = (b) => b > 1e6 ? (b / 1e6).toFixed(1) + ' MB' : Math.max(1, Math.round(b / 1e3)) + ' KB';
+    const addFiles = (files) => {
+      [...files].forEach((f) => {
+        const li = document.createElement('li');
+        li.className = 'file';
+        li.dataset.filterItem = '';
+        li.dataset.folder = 'content';
+        li.innerHTML = `<span class="ft" style="--c: var(--brand-soft)"><svg class="ic" aria-hidden="true"><use href="#i-page"/></svg></span><div class="stack" style="gap: 0"><span class="name"></span><span class="info"><span class="ltr"></span> · <span></span></span></div><span class="badge brand"></span>`;
+        $('.name', li).textContent = f.name;
+        $('.info .ltr', li).textContent = sizeOf(f.size);
+        both($('.info span:last-child', li), 'شما · همین حالا', 'You · just now');
+        both($('.badge', li), 'تازه', 'New');
+        $('#files').prepend(li);
+      });
+      tf.applyFilter($('#p-files'));
+      if (files.length) tf.toast((fa() ? 'بارگذاری شد: ' : 'Uploaded: ') + tf.fmt(files.length) + (fa() ? ' فایل' : ' file(s)'), { tone: 'success' });
+    };
+    $('#upload').addEventListener('change', (e) => { addFiles(e.target.files); e.target.value = ''; });
+    const drop = $('#drop');
+    ['dragenter', 'dragover'].forEach((t) => drop.addEventListener(t, (e) => { e.preventDefault(); drop.classList.add('over'); }));
+    ['dragleave', 'drop'].forEach((t) => drop.addEventListener(t, () => drop.classList.remove('over')));
+    drop.addEventListener('drop', (e) => { e.preventDefault(); addFiles(e.dataTransfer.files); });
+
+    // invoices: a submitted payment becomes "pending review"
+    $('#pay-form').addEventListener('tf:submit', () => {
+      const b = $('#inst3');
+      b.className = 'badge info';
+      both(b, 'در انتظار تأیید', 'Pending review');
+      $('#pay-btn').disabled = true;
+      $('#inv-count').hidden = true;
+    });
+
+    // messages
+    $('#composer').addEventListener('tf:submit', (e) => {
+      const m = document.createElement('div');
+      m.className = 'msg me';
+      m.innerHTML = '<div><div class="by"><span></span></div><div class="bubble"></div></div>';
+      both($('.by span', m), 'شما · همین حالا', 'You · just now');
+      $('.bubble', m).textContent = e.detail.reply;
+      $('#thread').append(m);
+    });
+  });
+</script>
+</body>
+</html>

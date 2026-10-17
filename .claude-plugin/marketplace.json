@@ -189,6 +189,15 @@
       ]
     },
     {
+      "name": "brief",
+      "description": "Tastefolio design language — Design & build studio — wide display type, an ink stage for the work, scrolling browser frames and a client portal with pinned feedback",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/brief"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -213,7 +222,8 @@
         "./skills/maison",
         "./skills/bento",
         "./skills/aisle",
-        "./skills/syllabus"
+        "./skills/syllabus",
+        "./skills/brief"
       ]
     }
   ]

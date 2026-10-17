@@ -1,0 +1,149 @@
+/* Brief — design tokens (Tastefolio). Design & build studio: soft paper, an ink "stage" for the work, one orchid
+   accent for the next step and for feedback pins, Syne for wide confident display type, Figtree for reading. */
+:root {
+  --canvas: #f2f2ef;
+  --surface: #ffffff;
+  --surface-2: #ebebe7;
+  --surface-3: #deded9;
+  --surface-ink: #141316;     /* ink stage: hero showcase, case spotlight, portal sidebar, footer */
+  --stage: #141316;
+  --stage-2: #1f1e22;
+  --stage-line: rgba(255, 255, 255, .1);
+  --overlay: rgba(12, 11, 14, .55);
+
+  --ink: #141316;
+  --ink-2: #55545a;
+  --ink-3: #8b8a90;
+  --ink-inverse: #ffffff;
+
+  --line: #e1e1dc;
+  --line-2: #cdcdc7;
+
+  --brand: #b13cdb;           /* orchid — primary actions, feedback pins, selection */
+  --brand-ink: #ffffff;
+  --brand-soft: color-mix(in oklab, var(--brand) 11%, #fff);
+  --brand-strong: color-mix(in oklab, var(--brand) 78%, #000);
+  --focus: color-mix(in oklab, var(--brand) 55%, transparent);
+
+  --success: #1d9a56;
+  --success-soft: #e1f4e8;
+  --warning: #b26b00;
+  --warning-soft: #fbefd9;
+  --danger: #df3b3b;
+  --danger-soft: #fce5e5;
+  --info: #2b6ee0;
+  --info-soft: #e3edfd;
+
+  --chart-1: var(--brand);
+  --chart-2: var(--ink);
+  --chart-3: #2b6ee0;
+  --chart-4: #1d9a56;
+  --chart-5: #e8a31c;
+  --chart-6: #a9a8ae;
+  --chart-grid: #e6e6e1;
+  --chart-axis: var(--ink-3);
+  --chart-curve: smooth;
+  --chart-stroke: 2;
+  --chart-area: .1;
+  --chart-radius: 5;
+  --chart-bar-gap: .5;
+  --chart-donut: 14;
+  --chart-gap: 2;
+  --chart-dots: 0;
+
+  --font-sans: "Figtree", "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Syne", "Vazirmatn", "Figtree", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Vazirmatn", monospace;
+  --fs-xs: 12px;
+  --fs-sm: 13.5px;
+  --fs-md: 15.5px;
+  --fs-lg: 18px;
+  --fs-xl: 23px;
+  --fs-2xl: 32px;
+  --fs-3xl: 46px;
+  --fs-display: clamp(44px, 7.2vw, 112px);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 650;
+  --fw-display: 700;
+  --lh-tight: .98;
+  --lh-snug: 1.2;
+  --lh-body: 1.6;
+  --tracking-display: -.035em;
+  --tracking-caps: .08em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 80px;
+  --space-9: 120px;
+  --space-10: 168px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+  --border-w: 1px;
+  --shadow-1: 0 1px 2px rgba(20, 19, 22, .06);
+  --shadow-2: 0 18px 40px -22px rgba(20, 19, 22, .35);
+  --shadow-3: 0 40px 80px -30px rgba(20, 19, 22, .5);
+
+  --container: 1320px;
+  --gutter: clamp(16px, 3.4vw, 40px);
+  --control-h: 46px;
+  --control-h-lg: 56px;
+
+  --ease: cubic-bezier(.22, .8, .2, 1);
+  --dur-1: 160ms;
+  --dur-2: 280ms;
+  --dur-3: 520ms;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --canvas: #0f0e11;
+  --surface: #18171b;
+  --surface-2: #212024;
+  --surface-3: #2c2b30;
+  --surface-ink: #08080a;
+  --stage: #08080a;
+  --stage-2: #141317;
+  --overlay: rgba(0, 0, 0, .66);
+  --ink: #f2f1f4;
+  --ink-2: #afaeb4;
+  --ink-3: #7d7c83;
+  --line: #2a292e;
+  --line-2: #3a393f;
+  --brand: #c86bea;
+  --brand-ink: #160a1b;
+  --brand-soft: color-mix(in oklab, var(--brand) 16%, transparent);
+  --brand-strong: color-mix(in oklab, var(--brand) 75%, #fff);
+  --success: #45cf85;
+  --success-soft: rgba(69, 207, 133, .14);
+  --warning: #f0b24a;
+  --warning-soft: rgba(240, 178, 74, .14);
+  --danger: #ff6b6b;
+  --danger-soft: rgba(255, 107, 107, .14);
+  --info: #6fa1ff;
+  --info-soft: rgba(111, 161, 255, .14);
+  --chart-2: #f2f1f4;
+  --chart-grid: #26252a;
+  --shadow-2: 0 18px 40px -22px rgba(0, 0, 0, .8);
+  --shadow-3: 0 40px 80px -30px rgba(0, 0, 0, .9);
+  color-scheme: dark;
+}
+
+:root:lang(fa) {
+  --font-sans: "Vazirmatn", "Figtree", Tahoma, sans-serif;
+  --font-display: "Vazirmatn", "Syne", sans-serif;
+  --fs-display: clamp(38px, 6vw, 92px);
+  --fw-display: 900;
+  --lh-tight: 1.3;
+  --lh-snug: 1.5;
+  --lh-body: 1.95;
+  --tracking-display: -.01em;
+  --tracking-caps: 0;
+}

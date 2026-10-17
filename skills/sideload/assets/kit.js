@@ -887,6 +887,7 @@
     renderValues();
     initTabs();
     $$('[data-steps]').forEach((w) => showStep(w, 0));
+    $$('form[data-validate]').forEach((f) => { f.noValidate = true; }); // kit messages instead of native bubbles
     updateWhen();
     $$('[data-filter-scope]').forEach(applyFilter);
     initReveal();

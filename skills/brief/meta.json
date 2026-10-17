@@ -1,0 +1,34 @@
+{
+  "name": "Brief",
+  "order": 21,
+  "category": "brand",
+  "mode": "light",
+  "density": "balanced",
+  "persianFirst": true,
+  "tags": ["agency", "studio", "portfolio", "case study", "client portal", "approvals", "persian"],
+  "tagline": {
+    "en": "Design & build studio — wide display type, an ink stage for the work, scrolling browser frames and a client portal with pinned feedback",
+    "fa": "استودیوی طراحی و ساخت — تیترهای پهن، صحنهٔ جوهری برای نمونه‌کار، قاب‌های مرورگر با پیمایش و پنل مشتری با بازخورد پین‌شده"
+  },
+  "summary": {
+    "en": "A confident, work-first language for design and web studios, freelancers and other businesses that sell projects, Persian-first. Soft paper pages, an ink stage that holds the work, and one orchid accent for the next step and for feedback pins. Wide Syne headlines with small inline pills (a tiny site, the team’s faces), numbered services that open like a brief, case cards whose tall pages scroll inside browser frames on hover, a challenge–approach–outcome spotlight with big metrics, a three-step project-brief wizard and a floating consult widget. The client portal follows the same project from kick-off to launch: phases, a Gantt timeline with a today line, approvals with click-to-pin notes and versions, files with upload, instalment invoices and a message thread.",
+    "fa": "زبانی مطمئن و نمونه‌کارمحور برای استودیوهای طراحی و وب، فریلنسرها و هر کسب‌وکاری که پروژه می‌فروشد، فارسی‌محور. صفحه‌های کاغذی ملایم، صحنه‌ای جوهری که نمونه‌کارها را در خود نگه می‌دارد و یک رنگ ارکیده برای گام بعدی و پین‌های بازخورد. تیترهای پهن با قرص‌های کوچک درون‌خطی (یک سایت کوچک، چهرهٔ تیم)، خدمات شماره‌داری که مثل یک بریف باز می‌شوند، کارت‌های نمونه‌کار که صفحهٔ بلندشان درون قاب مرورگر با نشانگر پیمایش می‌شود، بخش ویژهٔ چالش–راه‌حل–نتیجه با عددهای بزرگ، فرم سه‌مرحله‌ای بریف و ویجت شناور مشاوره. پنل مشتری همان پروژه را از شروع تا انتشار دنبال می‌کند: مراحل، گانت با خط امروز، تأیید طرح‌ها با یادداشت پین‌شده و نسخه‌ها، فایل‌ها با بارگذاری، اقساط و گفت‌وگو با تیم."
+  },
+  "bestFor": {
+    "en": ["Design, web and branding studios", "Freelancers and small agencies with case studies", "Client portals with approvals, files and invoices", "Project-based services: architecture, video, consulting"],
+    "fa": ["استودیوهای طراحی، وب و برندینگ", "فریلنسرها و آژانس‌های کوچک با نمونه‌کار", "پنل مشتری با تأیید طرح، فایل و صورت‌حساب", "خدمات پروژه‌ای: معماری، ویدیو، مشاوره"]
+  },
+  "avoidFor": {
+    "en": ["Stores with large catalogues", "Dense admin and data tools", "Playful products for children"],
+    "fa": ["فروشگاه‌های با کاتالوگ بزرگ", "ابزارهای مدیریتی و دادهٔ پرتراکم", "محصولات بازیگوش برای کودکان"]
+  },
+  "signature": {
+    "en": ["Wide display type with inline image pills", "An ink stage holding the work on soft paper", "Browser frames whose tall pages scroll on hover", "Numbered services and challenge–approach–outcome case studies", "Three-step brief wizard and a floating consult widget", "Client portal: phases, Gantt with a today line, approvals with pinned notes"],
+    "fa": ["تیتر پهن با قرص‌های تصویری درون‌خطی", "صحنهٔ جوهری برای نمونه‌کار روی کاغذ ملایم", "قاب مرورگر که صفحهٔ بلندش با نشانگر پیمایش می‌شود", "خدمات شماره‌دار و مطالعهٔ موردی چالش–راه‌حل–نتیجه", "فرم سه‌مرحله‌ای بریف و ویجت شناور مشاوره", "پنل مشتری: مراحل، گانت با خط امروز، تأیید با یادداشت پین‌شده"]
+  },
+  "swatches": ["#f2f2ef", "#ffffff", "#141316", "#b13cdb", "#cdcdc7"],
+  "fonts": { "latin": "Syne + Figtree", "persian": "Vazirmatn", "mono": "system mono" },
+  "icons": "Iconoir (inline SVG sprite, MIT)",
+  "brandTrials": ["ff5a1f", "1f6feb", "0f9d76", "e11d74"],
+  "demos": { "site": { "host": "naqsh.example" }, "dashboard": { "host": "naqsh.example/portal" } }
+}
