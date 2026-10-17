@@ -50,7 +50,7 @@ ${codeBlock(`با سبک ${first} یک صفحهٔ فرود برای اپ رزر�
 <h2 id="rtl">۵. فارسی و راست‌به‌چپ</h2>
 <ul>
 <li><code>&lt;html lang="fa" dir="rtl"&gt;</code> را تنظیم کنید؛ همهٔ کیت‌ها با ویژگی‌های منطقی CSS (مثل <code>margin-inline-start</code>) نوشته شده‌اند و خودبه‌خود آینه می‌شوند.</li>
-<li>هر سبک فونت فارسی مخصوص خودش را دارد و ارتفاع خط و اندازه را برای فارسی تنظیم می‌کند.</li>
+<li>فارسی در همهٔ سبک‌ها فقط با <strong>وزیرمتن</strong> نوشته می‌شود؛ هر سبک وزن، اندازه و ارتفاع خط را برای فارسی تنظیم می‌کند.</li>
 <li>روی متن فارسی هیچ‌وقت <code>letter-spacing</code> نگذارید؛ اتصال حروف را می‌شکند. ایتالیک هم نداریم؛ برای تأکید از وزن یا رنگ استفاده کنید.</li>
 <li>اعداد را با <code>Intl.NumberFormat('fa-IR')</code> به رقم فارسی نمایش دهید و تاریخ را با تقویم شمسی (<code>Intl.DateTimeFormat('fa-IR')</code>).</li>
 <li>آیکن‌های جهت‌دار (فلش، شِورون) را آینه کنید؛ آیکن‌های غیرجهت‌دار (جست‌وجو، ساعت) را نه.</li>
@@ -108,7 +108,7 @@ ${codeBlock(`Using the ${first} style, build a landing page for a class-booking 
 <h2 id="rtl">5. Persian &amp; right-to-left</h2>
 <ul>
 <li>Set <code>&lt;html lang="fa" dir="rtl"&gt;</code>. Every kit uses CSS logical properties (<code>margin-inline-start</code>, <code>inset-inline-end</code>…) and mirrors automatically.</li>
-<li>Each style ships its own Persian typeface pairing and adjusts size and line height for Persian.</li>
+<li>Persian is set in <strong>Vazirmatn</strong> in every style; each style tunes weight, size and line height for Persian.</li>
 <li>Never apply <code>letter-spacing</code> to Persian text — it breaks letter joining. There is no italic; emphasize with weight or color.</li>
 <li>Show numbers with Persian digits via <code>Intl.NumberFormat('fa-IR')</code> and dates in the Solar Hijri calendar via <code>Intl.DateTimeFormat('fa-IR')</code>.</li>
 <li>Mirror directional icons (arrows, chevrons); never mirror non-directional ones (search, clock).</li>
