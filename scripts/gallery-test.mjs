@@ -247,6 +247,8 @@ const votedSuite = (lang) => suite('votes', `home with votes ${lang} 1440px`, (l
   const now = await card(last);
   eq([now.count, now.votes, now.label.includes(lang === 'fa' ? `${num(9)} رأی` : '9 votes')], [num(9), '9', true], `${label}: card count after giscus reports 9 (another origin is ignored)`);
   await page.keyboard.press('Escape');
+  // the dialog's close event (which re-sorts) fires a task after it closes
+  await page.waitForFunction((slug) => document.querySelector('[data-item]')?.dataset.slug === slug, last, { timeout: 3000 }).catch(() => {});
   eq([(await dialog()).open, (await order())[0], await page.evaluate(() => document.activeElement?.closest('[data-item]')?.dataset.slug)], [false, last, last],
     `${label}: after Escape (dialog open, first card, focus)`);
   await page.click(button(top[1]));
