@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="site" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Rakhsh — cloud servers and domains">رخش — سرور مجازی و دامنه</title>
+<meta name="description" content="رخش، یک سرویس نمونهٔ سرور ابری: سرورت را با فیدر بساز، دیتاسنتر را با پینگ انتخاب کن و دامنه بگیر." data-alt-content="Rakhsh, a sample cloud host: build your server with faders, pick a datacenter by ping and register a domain.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@75..125,300..800&family=Onest:wght@400..700&family=Spline+Sans+Mono:wght@400..600&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<script src="../assets/rack.js" defer></script>
+<style>
+  .hero-art { position: relative; }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; }
+  .legend span { display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-xs); color: var(--ink-2); }
+  .steps-led { display: grid; gap: 10px; }
+  .steps-led li { display: flex; align-items: center; gap: 10px; font-size: var(--fs-sm); }
+  .steps-led li .mono { margin-inline-start: auto; color: var(--ink-3); font-size: var(--fs-xs); }
+  .final { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: var(--space-5); }
+  @media (max-width: 720px) { .final { grid-template-columns: minmax(0, 1fr); justify-items: start; } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<header class="site-head">
+  <div class="container">
+    <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"><i></i><i></i><i></i></span><span data-alt="Rakhsh">رخش</span></a>
+    <nav class="nav" id="nav" data-dismissable aria-label="اصلی" data-alt-aria-label="Main">
+      <a href="#builder" data-alt="Cloud servers">سرور ابری</a>
+      <a href="#presets" data-alt="Ready units">پیکربندی‌های آماده</a>
+      <a href="#dc" data-alt="Datacenters">دیتاسنترها</a>
+      <a href="#domains" data-alt="Domains">دامنه</a>
+      <a href="#status" data-alt="Status">وضعیت</a>
+    </nav>
+    <div class="head-end">
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+      <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="تغییر حالت روشن" data-alt-aria-label="Toggle light mode"><i class="bx bx-moon" aria-hidden="true"></i></button>
+      <a class="btn btn-key btn-sm hide-sm" href="dashboard.html"><i class="bx bx-user" aria-hidden="true"></i><span data-alt="Control panel">پنل کاربری</span></a>
+      <a class="btn btn-sm" href="#builder"><i class="bx bx-power-off" aria-hidden="true"></i><span data-alt="Build a server">ساخت سرور</span></a>
+      <button class="btn btn-key btn-icon btn-sm menu-btn" type="button" data-toggle="#nav" aria-controls="nav" aria-expanded="false" aria-label="منو" data-alt-aria-label="Menu"><i class="bx bx-menu" aria-hidden="true"></i></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="container">
+      <div class="hero-copy">
+        <span class="kicker"><span class="led pulse" aria-hidden="true"></span><span data-alt="Cloud servers · NVMe · hourly billing">سرور ابری · NVMe · پرداخت ساعتی</span></span>
+        <h1 class="display"><span data-alt="Power on">سرورت را</span> <span class="on" data-alt="your server.">روشن کن.</span></h1>
+        <p class="lead" data-alt="Slide the faders, pick a datacenter by its ping, press the button. Your server boots in under a minute — billed by the hour, in Toman, with no contract.">فیدرها را بالا ببر، دیتاسنتر را با پینگش انتخاب کن و دکمه را بزن. سرور در کمتر از یک دقیقه بالا می‌آید؛ پرداخت ساعتی و تومانی، بدون قرارداد.</p>
+        <div class="hero-cta">
+          <a class="power" href="#builder" aria-label="ساخت سرور" data-alt-aria-label="Build a server"><i class="bx bx-power-off" aria-hidden="true"></i></a>
+          <div><span class="plate" data-alt="Time to first SSH">زمان تا اولین SSH</span><span class="vfd"><span data-num="47">۴۷</span> <small data-alt="sec">ثانیه</small></span></div>
+        </div>
+        <div class="specs-row">
+          <div><span class="plate" data-alt="Uptime · 12 mo">آپتایم · ۱۲ ماه</span><span class="vfd">99.98%</span></div>
+          <div><span class="plate" data-alt="Disks">دیسک</span><span class="vfd">NVMe Gen4</span></div>
+          <div><span class="plate" data-alt="Network">شبکه</span><span class="vfd">10 Gbps</span></div>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="rack" role="img" aria-label="یک رک با هفت سرور روشن" data-alt-aria-label="A rack with seven servers running">
+          <div class="srv"><span class="led pulse"></span><span class="led blue blink"></span><span class="name">EDGE-01</span><span class="bays"></span><span class="u-tag">U12</span></div>
+          <div class="srv"><span class="led pulse"></span><span class="led blue blink" style="animation-delay:.3s"></span><span class="name">EDGE-02</span><span class="bays"></span><span class="u-tag">U11</span></div>
+          <div class="srv u2"><span class="led pulse"></span><span class="led blue blink" style="animation-delay:.6s"></span><span class="name">NVME-POOL</span><span class="bays"></span><span class="u-tag">U9</span></div>
+          <div class="srv blank"></div>
+          <div class="srv"><span class="led amber blink"></span><span class="led off"></span><span class="name">VPS-1042</span><span class="bays"></span><span class="u-tag">U7</span></div>
+          <div class="srv"><span class="led pulse"></span><span class="led blue blink" style="animation-delay:.15s"></span><span class="name">DB-PRIMARY</span><span class="bays"></span><span class="u-tag">U6</span></div>
+          <div class="srv"><span class="led pulse"></span><span class="led blue blink" style="animation-delay:.45s"></span><span class="name">DB-REPLICA</span><span class="bays"></span><span class="u-tag">U5</span></div>
+          <div class="srv blank"></div>
+          <div class="srv"><span class="led pulse"></span><span class="led off"></span><span class="name">BACKUP-01</span><span class="bays"></span><span class="u-tag">U2</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="builder">
+    <div class="container">
+      <div class="sec-head"><div><span class="kicker" data-alt="Build · ch. 01–04">ساخت · کانال ۱ تا ۴</span><h2 class="h1" data-alt="Mix your own server">سرورت را خودت میکس کن</h2><p class="lead" data-alt="Four faders, one price. Change anything later without reinstalling.">چهار فیدر، یک قیمت. هر چیزی را بعداً بدون نصب دوباره تغییر بده.</p></div></div>
+      <div class="builder" data-builder>
+        <div class="stack">
+          <div class="unit">
+            <div class="unit-head"><span class="plate" data-alt="Resources">منابع</span><span class="u-tag">CH 01–04</span></div>
+            <div class="mixer">
+              <div class="channel"><span class="plate">CPU</span><span class="vfd" data-out="cpu">4 vCPU</span>
+                <div class="fader-wrap"><input class="fader" type="range" min="0" max="6" value="2" data-key="cpu" data-values="1,2,4,6,8,12,16" data-prices="90000,180000,360000,540000,720000,1080000,1440000" data-unit-fa="هسته" data-unit-en="vCPU" aria-label="پردازنده" data-alt-aria-label="Processor"><span class="meter-led" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></div>
+              <div class="channel"><span class="plate">RAM</span><span class="vfd" data-out="ram">8 GB</span>
+                <div class="fader-wrap"><input class="fader" type="range" min="0" max="5" value="3" data-key="ram" data-values="1,2,4,8,16,32" data-prices="60000,120000,240000,480000,960000,1920000" data-unit-fa="گیگ" data-unit-en="GB" aria-label="حافظه" data-alt-aria-label="Memory"><span class="meter-led" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></div>
+              <div class="channel"><span class="plate">NVMe</span><span class="vfd" data-out="disk">160 GB</span>
+                <div class="fader-wrap"><input class="fader" type="range" min="0" max="5" value="3" data-key="disk" data-values="20,40,80,160,320,640" data-prices="20000,40000,80000,160000,320000,640000" data-unit-fa="گیگ" data-unit-en="GB" aria-label="دیسک" data-alt-aria-label="Disk"><span class="meter-led" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></div>
+              <div class="channel"><span class="plate" data-alt="Traffic">ترافیک</span><span class="vfd" data-out="net">5 TB</span>
+                <div class="fader-wrap"><input class="fader" type="range" min="0" max="4" value="2" data-key="net" data-values="1,2,5,10,20" data-prices="0,30000,90000,180000,360000" data-unit-fa="ترابایت" data-unit-en="TB" aria-label="ترافیک ماهانه" data-alt-aria-label="Monthly traffic"><span class="meter-led" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></div>
+            </div>
+          </div>
+          <div class="unit">
+            <div class="unit-head"><span class="plate" data-alt="Operating system">سیستم‌عامل</span><span class="u-tag">OS</span></div>
+            <div class="os-grid" data-group="os" role="group" aria-label="سیستم‌عامل" data-alt-aria-label="Operating system">
+              <button type="button" aria-pressed="true" data-price="0"><i class="bx bxl-tux" aria-hidden="true"></i><span data-label>Ubuntu</span><small>24.04</small></button>
+              <button type="button" aria-pressed="false" data-price="0"><i class="bx bxl-tux" aria-hidden="true"></i><span data-label>Debian</span><small>12</small></button>
+              <button type="button" aria-pressed="false" data-price="0"><i class="bx bxl-tux" aria-hidden="true"></i><span data-label>AlmaLinux</span><small>9</small></button>
+              <button type="button" aria-pressed="false" data-price="250000"><i class="bx bxl-windows" aria-hidden="true"></i><span data-label>Windows</span><small>2022</small></button>
+            </div>
+          </div>
+          <div class="unit">
+            <div class="unit-head"><span class="plate" data-alt="Location">محل سرور</span><span class="u-tag">DC</span></div>
+            <div class="keys" data-group="loc" role="group" aria-label="محل سرور" data-alt-aria-label="Location">
+              <button type="button" aria-pressed="true" data-price="0"><span data-label data-alt="Tehran">تهران</span></button>
+              <button type="button" aria-pressed="false" data-price="60000"><span data-label data-alt="Istanbul">استانبول</span></button>
+              <button type="button" aria-pressed="false" data-price="120000"><span data-label data-alt="Frankfurt">فرانکفورت</span></button>
+              <button type="button" aria-pressed="false" data-price="120000"><span data-label data-alt="Amsterdam">آمستردام</span></button>
+            </div>
+          </div>
+        </div>
+        <aside class="unit order" aria-label="سفارش" data-alt-aria-label="Order">
+          <div class="unit-head"><span class="plate" data-alt="Your server">سرور شما</span><span class="led pulse" aria-hidden="true"></span></div>
+          <div class="keys" data-group="bill" role="group" aria-label="دورهٔ پرداخت" data-alt-aria-label="Billing">
+            <button type="button" aria-pressed="true" data-value="month" data-alt="Monthly">ماهانه</button>
+            <button type="button" aria-pressed="false" data-value="hour" data-alt="Hourly">ساعتی</button>
+          </div>
+          <div class="price-display" aria-live="polite">
+            <span class="vfd big"><span data-total>۱٬۰۹۰٬۰۰۰</span> <small data-total-unit data-month-fa="تومان/ماه" data-month-en="T/mo" data-hour-fa="تومان/ساعت" data-hour-en="T/hr">تومان/ماه</small></span>
+          </div>
+          <dl>
+            <div><dt class="plate">CPU</dt><dd data-sum="cpu">4 vCPU</dd></div>
+            <div><dt class="plate">RAM</dt><dd data-sum="ram">8 GB</dd></div>
+            <div><dt class="plate">NVMe</dt><dd data-sum="disk">160 GB</dd></div>
+            <div><dt class="plate" data-alt="Traffic">ترافیک</dt><dd data-sum="net">5 TB</dd></div>
+            <div><dt class="plate" data-alt="OS">سیستم‌عامل</dt><dd data-sum="os">Ubuntu</dd></div>
+            <div><dt class="plate" data-alt="Location">محل</dt><dd data-sum="loc">تهران</dd></div>
+          </dl>
+          <button class="btn btn-lg btn-block" type="button" data-dialog="#deploy"><i class="bx bx-power-off" aria-hidden="true"></i><span data-alt="Deploy now">همین حالا روشن کن</span></button>
+          <p class="tiny subtle" data-alt="Charged from your wallet by the hour. Stop or delete anytime; a stopped server only pays for its disk.">از کیف پول به‌صورت ساعتی کم می‌شود. هر وقت خواستی خاموش یا حذفش کن؛ سرور خاموش فقط هزینهٔ دیسک دارد.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="presets" style="padding-block-start: 0">
+    <div class="container">
+      <div class="sec-head"><div><span class="kicker" data-alt="Ready units">پیکربندی‌های آماده</span><h2 class="h1" data-alt="Or slide a ready unit into the rack">یا یک یونیت آماده را داخل رک بگذار</h2></div></div>
+      <div class="presets">
+        <article class="unit preset"><span class="u-tag">1U</span><div><h3 class="h3" data-alt="Starter">شروع</h3><p class="small subtle" data-alt="Blogs, bots and side projects">وبلاگ، ربات و پروژهٔ شخصی</p></div><div class="specs"><span>1 vCPU</span><span>2 GB</span><span>40 GB NVMe</span><span>1 TB</span></div><span class="vfd"><span data-num="230000">۲۳۰٬۰۰۰</span> <small data-alt="T/mo">ت/ماه</small></span></article>
+        <article class="unit preset"><span class="u-tag">2U</span><div><h3 class="h3" data-alt="Standard">استاندارد</h3><p class="small subtle" data-alt="Online shops and company sites">فروشگاه آنلاین و سایت شرکتی</p></div><div class="specs"><span>4 vCPU</span><span>8 GB</span><span>160 GB NVMe</span><span>5 TB</span></div><span class="vfd"><span data-num="1090000">۱٬۰۹۰٬۰۰۰</span> <small data-alt="T/mo">ت/ماه</small></span></article>
+        <article class="unit preset"><span class="u-tag">4U</span><div><h3 class="h3" data-alt="Performance">پرقدرت</h3><p class="small subtle" data-alt="Databases, CI runners, game servers">پایگاه داده، CI و سرور بازی</p></div><div class="specs"><span>8 vCPU</span><span>32 GB</span><span>320 GB NVMe</span><span>10 TB</span></div><span class="vfd"><span data-num="3140000">۳٬۱۴۰٬۰۰۰</span> <small data-alt="T/mo">ت/ماه</small></span></article>
+        <article class="unit preset"><span class="u-tag">2U</span><div><h3 class="h3" data-alt="Storage">ذخیره‌سازی</h3><p class="small subtle" data-alt="Backups, media and archives">پشتیبان، رسانه و آرشیو</p></div><div class="specs"><span>2 vCPU</span><span>4 GB</span><span>2 TB HDD</span><span>20 TB</span></div><span class="vfd"><span data-num="980000">۹۸۰٬۰۰۰</span> <small data-alt="T/mo">ت/ماه</small></span></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="dc" style="padding-block-start: 0">
+    <div class="container">
+      <div class="sec-head"><div><span class="kicker" data-alt="Datacenters">دیتاسنترها</span><h2 class="h1" data-alt="Pick the one closest to your users">نزدیک‌ترین را به کاربرانت انتخاب کن</h2></div><span class="small subtle" data-alt="Ping estimated from your browser, refreshed every few seconds.">پینگ از مرورگر شما تخمین زده می‌شود و هر چند ثانیه تازه می‌شود.</span></div>
+      <div class="dcs" data-group="dcpick" role="group" aria-label="دیتاسنتر" data-alt-aria-label="Datacenter">
+        <button class="dc" type="button" aria-pressed="true" data-ping-row><span class="led" aria-hidden="true"></span><span><b data-alt="Tehran">تهران</b><span class="tiny subtle" data-alt="2 zones · IPv4 + IPv6">۲ منطقه · IPv4 و IPv6</span></span><span class="vfd"><span data-ping="9">9</span> <small>ms</small></span></button>
+        <button class="dc" type="button" aria-pressed="false" data-ping-row><span class="led" aria-hidden="true"></span><span><b data-alt="Tabriz">تبریز</b><span class="tiny subtle" data-alt="1 zone · new">۱ منطقه · تازه</span></span><span class="vfd"><span data-ping="18">18</span> <small>ms</small></span></button>
+        <button class="dc" type="button" aria-pressed="false" data-ping-row><span class="led" aria-hidden="true"></span><span><b data-alt="Istanbul">استانبول</b><span class="tiny subtle" data-alt="1 zone">۱ منطقه</span></span><span class="vfd"><span data-ping="62">62</span> <small>ms</small></span></button>
+        <button class="dc" type="button" aria-pressed="false" data-ping-row><span class="led" aria-hidden="true"></span><span><b data-alt="Frankfurt">فرانکفورت</b><span class="tiny subtle" data-alt="2 zones">۲ منطقه</span></span><span class="vfd"><span data-ping="98">98</span> <small>ms</small></span></button>
+        <button class="dc" type="button" aria-pressed="false" data-ping-row><span class="led" aria-hidden="true"></span><span><b data-alt="Amsterdam">آمستردام</b><span class="tiny subtle" data-alt="1 zone">۱ منطقه</span></span><span class="vfd"><span data-ping="104">104</span> <small>ms</small></span></button>
+        <button class="dc" type="button" aria-pressed="false" data-ping-row><span class="led" aria-hidden="true"></span><span><b data-alt="Helsinki">هلسینکی</b><span class="tiny subtle" data-alt="1 zone · green power">۱ منطقه · برق تجدیدپذیر</span></span><span class="vfd"><span data-ping="142">142</span> <small>ms</small></span></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="domains" style="padding-block-start: 0">
+    <div class="container">
+      <div class="sec-head"><div><span class="kicker" data-alt="Domains">دامنه</span><h2 class="h1" data-alt="Find a name — green means it’s yours">یک نام پیدا کن؛ چراغ سبز یعنی مال توست</h2></div></div>
+      <div class="unit domain-box">
+        <form class="domain-form" data-domain="#tlds" role="search">
+          <label class="sr-only" for="dq" data-alt="Domain name">نام دامنه</label>
+          <input class="input" id="dq" value="myshop" autocomplete="off" spellcheck="false" placeholder="yourname" data-alt-placeholder="yourname">
+          <button class="btn btn-lg" type="submit"><i class="bx bx-search" aria-hidden="true"></i><span data-alt="Check">بررسی</span></button>
+        </form>
+        <p class="small subtle"><span data-domain-count>۴</span> <span data-alt="extensions are free right now.">پسوند همین الان آزاد است.</span></p>
+        <ul class="tld-list" id="tlds" aria-live="polite" data-tlds='[{"tld":".ir","price":120000},{"tld":".com","price":2900000},{"tld":".net","price":3300000},{"tld":".co","price":3900000},{"tld":".io","price":6800000},{"tld":".dev","price":2600000}]' data-add-fa="افزودن" data-add-en="Add" data-taken-fa="ثبت شده" data-taken-en="Taken" data-added-fa="به سبد اضافه شد" data-added-en="added to cart"></ul>
+        <div class="tld-prices" aria-label="قیمت پسوندها" data-alt-aria-label="Extension prices">
+          <div><b>.ir</b><span class="tiny subtle"><span data-num="120000" data-fmt="toman">۱۲۰٬۰۰۰ تومان</span></span></div>
+          <div><b>.com</b><span class="tiny subtle"><span data-num="2900000" data-fmt="toman">۲٬۹۰۰٬۰۰۰ تومان</span></span></div>
+          <div><b>.net</b><span class="tiny subtle"><span data-num="3300000" data-fmt="toman">۳٬۳۰۰٬۰۰۰ تومان</span></span></div>
+          <div><b>.co</b><span class="tiny subtle"><span data-num="3900000" data-fmt="toman">۳٬۹۰۰٬۰۰۰ تومان</span></span></div>
+          <div><b>.io</b><span class="tiny subtle"><span data-num="6800000" data-fmt="toman">۶٬۸۰۰٬۰۰۰ تومان</span></span></div>
+          <div><b>.dev</b><span class="tiny subtle"><span data-num="2600000" data-fmt="toman">۲٬۶۰۰٬۰۰۰ تومان</span></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-block-start: 0">
+    <div class="container">
+      <div class="sec-head"><div><span class="kicker" data-alt="Inside every unit">داخل هر یونیت</span><h2 class="h1" data-alt="Hardware you would choose yourself">سخت‌افزاری که خودت هم همین را انتخاب می‌کردی</h2></div></div>
+      <div class="feature-grid">
+        <article class="unit"><i class="bx bx-hdd" aria-hidden="true"></i><h3 class="h3" data-alt="NVMe Gen4, mirrored">NVMe نسل ۴، آینه‌شده</h3><p class="small muted" data-alt="Every disk is mirrored across two hosts; reads above 3 GB/s.">هر دیسک روی دو میزبان آینه می‌شود؛ خواندن بالای ۳ گیگابایت بر ثانیه.</p></article>
+        <article class="unit"><i class="bx bx-shield-quarter" aria-hidden="true"></i><h3 class="h3" data-alt="DDoS shield included">محافظ DDoS رایگان</h3><p class="small muted" data-alt="Filtering at the edge, on by default, no extra fee.">فیلتر در لبهٔ شبکه، پیش‌فرض روشن و بدون هزینهٔ اضافه.</p></article>
+        <article class="unit"><i class="bx bx-time-five" aria-hidden="true"></i><h3 class="h3" data-alt="Billed by the hour">پرداخت ساعتی</h3><p class="small muted" data-alt="Top up your wallet in Toman; we charge for the hours you run.">کیف پول را تومانی شارژ کن؛ فقط ساعت‌های روشن بودن را می‌پردازی.</p></article>
+        <article class="unit"><i class="bx bx-camera" aria-hidden="true"></i><h3 class="h3" data-alt="Snapshots &amp; backups">اسنپ‌شات و پشتیبان</h3><p class="small muted" data-alt="One-click snapshots and nightly backups kept for 7 days.">اسنپ‌شات با یک کلیک و پشتیبان شبانه که ۷ روز می‌ماند.</p></article>
+        <article class="unit"><i class="bx bx-network-chart" aria-hidden="true"></i><h3 class="h3" data-alt="Private networks">شبکهٔ خصوصی</h3><p class="small muted" data-alt="Connect servers in a zone over a private 10 Gbps network.">سرورهای یک منطقه را با شبکهٔ خصوصی ۱۰ گیگابیت به هم وصل کن.</p></article>
+        <article class="unit"><i class="bx bx-terminal" aria-hidden="true"></i><h3 class="h3" data-alt="API, CLI and web console">API، CLI و کنسول وب</h3><p class="small muted" data-alt="Everything in the panel is also one command away.">هرچه در پنل هست با یک دستور هم در دسترس است.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="status" style="padding-block-start: 0">
+    <div class="container">
+      <div class="unit">
+        <div class="unit-head"><div class="row"><span class="led pulse" aria-hidden="true"></span><h2 class="h2" data-alt="All systems normal">همه‌چیز عادی است</h2></div><span class="vfd">99.98% · 90d</span></div>
+        <div class="uptime" data-uptime data-incidents="23:amber,61:red,62:amber" role="img" aria-label="آپتایم ۹۰ روز گذشته: دو رخداد کوتاه" data-alt-aria-label="Uptime over the last 90 days: two short incidents"></div>
+        <div class="split small subtle"><span data-alt="90 days ago">۹۰ روز پیش</span><div class="legend"><span><span class="led" aria-hidden="true"></span><span data-alt="Normal">عادی</span></span><span><span class="led amber" aria-hidden="true"></span><span data-alt="Degraded">کندی</span></span><span><span class="led red" aria-hidden="true"></span><span data-alt="Outage">قطعی</span></span></div><span data-alt="Today">امروز</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" style="padding-block-start: 0">
+    <div class="container">
+      <div class="sec-head"><div><span class="kicker" data-alt="Questions">پرسش‌ها</span><h2 class="h1" data-alt="Before you power on">پیش از روشن کردن</h2></div></div>
+      <div class="faq">
+        <details open><summary data-alt="How does hourly billing work?">پرداخت ساعتی چطور است؟</summary><p data-alt="You top up a wallet in Toman. Every running hour is charged at the price on the display; at the end of the month you never pay more than the monthly price.">کیف پول را تومانی شارژ می‌کنی. هر ساعت روشن بودن با قیمت روی نمایشگر کم می‌شود و آخر ماه هیچ‌وقت بیشتر از قیمت ماهانه نمی‌پردازی.</p></details>
+        <details><summary data-alt="Can I resize later?">بعداً می‌توانم منابع را تغییر دهم؟</summary><p data-alt="Yes — move a fader up or down in the panel and reboot. Disks can only grow.">بله؛ در پنل فیدر را بالا یا پایین ببر و سرور را ری‌استارت کن. دیسک فقط بزرگ می‌شود.</p></details>
+        <details><summary data-alt="Do I get root access?">دسترسی روت دارم؟</summary><p data-alt="Full root over SSH with your key, plus a web console when SSH is not an option.">دسترسی کامل روت با کلید SSH، به‌علاوهٔ کنسول وب وقتی SSH در دسترس نیست.</p></details>
+        <details><summary data-alt="Can I move my domain here?">دامنه‌ام را می‌توانم منتقل کنم؟</summary><p data-alt="Yes. Transfers keep the remaining time, and DNS can be managed in the same panel as your servers.">بله. انتقال، زمان باقی‌مانده را حفظ می‌کند و DNS را کنار سرورها در همان پنل مدیریت می‌کنی.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-block-start: 0">
+    <div class="container">
+      <div class="unit final">
+        <a class="power" href="#builder" aria-label="ساخت سرور" data-alt-aria-label="Build a server"><i class="bx bx-power-off" aria-hidden="true"></i></a>
+        <div class="stack" style="gap: 6px"><h2 class="h1" data-alt="First hour on us.">ساعت اول مهمان ما.</h2><p class="muted" data-alt="New accounts get 50,000 Toman in the wallet — enough to try any unit.">حساب‌های تازه ۵۰٬۰۰۰ تومان شارژ هدیه می‌گیرند؛ برای امتحان هر یونیتی کافی است.</p></div>
+        <a class="btn btn-lg" href="dashboard.html"><span data-alt="Open the panel">ورود به پنل</span><i class="bx bx-right-arrow-alt flip-rtl" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="stack" style="gap: 12px"><a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"><i></i><i></i><i></i></span><span data-alt="Rakhsh">رخش</span></a><p class="small muted" data-alt="A sample cloud host for the Tastefolio Rack skill. Prices and datacenters are illustrative.">میزبان نمونه برای اسکیل Rack تیست‌فولیو. قیمت‌ها و دیتاسنترها نمایشی‌اند.</p></div>
+      <div><h3 class="plate" data-alt="Products">محصولات</h3><ul><li><a href="#builder" data-alt="Cloud servers">سرور ابری</a></li><li><a href="#presets" data-alt="Ready units">پیکربندی آماده</a></li><li><a href="#domains" data-alt="Domains">دامنه</a></li></ul></div>
+      <div><h3 class="plate" data-alt="Help">راهنما</h3><ul><li><a href="#status" data-alt="Status">وضعیت</a></li><li><a href="#faq" data-alt="Questions">پرسش‌ها</a></li><li><a href="dashboard.html" data-alt="Control panel">پنل کاربری</a></li></ul></div>
+      <div><h3 class="plate" data-alt="Contact">تماس</h3><ul><li class="ltr">021 9100 7700</li><li class="ltr">noc@rakhsh.example</li><li data-alt="Support 24/7">پشتیبانی ۲۴ ساعته</li></ul></div>
+    </div>
+  </div>
+</footer>
+
+<dialog class="modal" id="deploy" aria-labelledby="dp-t">
+  <div class="modal-head"><h2 class="h3" id="dp-t"><span class="led pulse" aria-hidden="true"></span><span data-alt="Your server is up">سرور شما روشن شد</span></h2><button class="btn btn-ghost btn-icon btn-sm" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><i class="bx bx-x" aria-hidden="true"></i></button></div>
+  <div class="modal-body">
+    <ul class="steps-led">
+      <li><span class="led" aria-hidden="true"></span><span data-alt="NVMe volume allocated">دیسک NVMe آماده شد</span><span class="mono">4.1s</span></li>
+      <li><span class="led" aria-hidden="true"></span><span data-alt="Operating system installed">سیستم‌عامل نصب شد</span><span class="mono">22.6s</span></li>
+      <li><span class="led" aria-hidden="true"></span><span data-alt="IPv4 and IPv6 attached">IPv4 و IPv6 وصل شد</span><span class="mono">31.0s</span></li>
+      <li><span class="led" aria-hidden="true"></span><span data-alt="SSH key added — ready">کلید SSH اضافه شد؛ آماده</span><span class="mono">46.8s</span></li>
+    </ul>
+    <div class="split"><span class="plate" data-alt="Connect">اتصال</span><span class="vfd">ssh root@203.0.113.41</span></div>
+    <button class="btn btn-key btn-sm" type="button" data-copy="ssh root@203.0.113.41"><i class="bx bx-copy" aria-hidden="true"></i><span data-alt="Copy command">کپی دستور</span></button>
+  </div>
+  <div class="modal-foot"><a class="btn" href="dashboard.html"><span data-alt="Open control panel">باز کردن پنل</span></a></div>
+</dialog>
+</body>
+</html>

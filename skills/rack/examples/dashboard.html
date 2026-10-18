@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="dashboard" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Control panel — Rakhsh">پنل کاربری — رخش</title>
+<meta name="description" content="پنل رخش: سرورها با کلید روشن و خاموش، نمودار زنده، کنسول وب، اسنپ‌شات، فایروال، DNS و کیف پول." data-alt-content="Rakhsh panel: servers with power keys, live graphs, web console, snapshots, firewall, DNS and wallet.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@75..125,300..800&family=Onest:wght@400..700&family=Spline+Sans+Mono:wght@400..600&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<script src="../assets/rack.js" defer></script>
+<style>
+  .detail-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+  .detail-head .h2 { font-family: var(--font-mono); direction: ltr; overflow-wrap: anywhere; min-inline-size: 0; }
+  @media (max-width: 560px) { .detail-head .h2 { font-size: var(--fs-lg); } }
+  .chart-box { min-block-size: 200px; }
+  .wallet-big { display: grid; gap: 10px; }
+  .wallet-big .vfd.big { justify-content: center; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<div class="panel-app">
+  <header class="panel-top">
+    <a class="logo" href="site.html"><span class="logo-mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="hide-sm" data-alt="Rakhsh">رخش</span></a>
+    <nav class="tabs" role="tablist" aria-label="پنل" data-alt-aria-label="Panel">
+      <button type="button" role="tab" id="t-srv" aria-controls="p-srv" aria-selected="true"><i class="bx bx-server" aria-hidden="true"></i><span data-alt="Servers">سرورها</span></button>
+      <button type="button" role="tab" id="t-dns" aria-controls="p-dns" aria-selected="false"><i class="bx bx-globe" aria-hidden="true"></i><span data-alt="Domains &amp; DNS">دامنه و DNS</span></button>
+      <button type="button" role="tab" id="t-bill" aria-controls="p-bill" aria-selected="false"><i class="bx bx-wallet" aria-hidden="true"></i><span data-alt="Billing">مالی</span></button>
+    </nav>
+    <span class="spacer"></span>
+    <span class="wallet hide-md"><span class="plate" data-alt="Wallet">کیف پول</span><span class="vfd"><span data-num="4180000">۴٬۱۸۰٬۰۰۰</span> <small>T</small></span></span>
+    <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+    <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="تغییر حالت روشن" data-alt-aria-label="Toggle light mode"><i class="bx bx-moon" aria-hidden="true"></i></button>
+    <a class="btn btn-sm hide-sm" href="site.html#builder"><i class="bx bx-plus" aria-hidden="true"></i><span data-alt="New server">سرور تازه</span></a>
+  </header>
+
+  <main id="main">
+    <!-- ============================================================ servers -->
+    <section class="page" id="p-srv" role="tabpanel" aria-labelledby="t-srv">
+      <div class="servers" aria-label="سرورها" data-alt-aria-label="Servers">
+        <article class="unit srv-row" data-server data-state="running" data-host="web-01.rakhsh.cloud" data-ip="203.0.113.41" data-plan="4 vCPU · 8 GB · 160 GB" aria-current="true">
+          <div class="leds"><span class="led pulse" data-led aria-hidden="true"></span><span class="plate">PWR</span></div>
+          <div class="host"><b>web-01.rakhsh.cloud</b><span class="tiny subtle"><span data-alt="Tehran · Ubuntu 24.04">تهران · Ubuntu 24.04</span></span></div>
+          <span class="vfd hide-row">203.0.113.41</span>
+          <span class="badge ok hide-row" data-state-label data-running-fa="روشن" data-running-en="Running" data-stopped-fa="خاموش" data-stopped-en="Stopped" data-busy-fa="در حال تغییر" data-busy-en="Working…" data-alt="Running">روشن</span>
+          <div class="power-keys">
+            <button class="btn btn-key btn-icon btn-sm" type="button" data-power="start" data-toast-fa="در حال روشن کردن web-01…" data-toast-en="Starting web-01…" aria-label="روشن کردن" data-alt-aria-label="Start"><i class="bx bx-play-circle" aria-hidden="true"></i></button>
+            <button class="btn btn-key btn-icon btn-sm" type="button" data-power="reboot" data-toast-fa="ری‌استارت web-01…" data-toast-en="Rebooting web-01…" aria-label="ری‌استارت" data-alt-aria-label="Reboot"><i class="bx bx-refresh" aria-hidden="true"></i></button>
+            <button class="btn btn-key btn-icon btn-sm" type="button" data-power="stop" data-toast-fa="در حال خاموش کردن web-01…" data-toast-en="Stopping web-01…" aria-label="خاموش کردن" data-alt-aria-label="Stop"><i class="bx bx-power-off" aria-hidden="true"></i></button>
+          </div>
+        </article>
+        <article class="unit srv-row" data-server data-state="running" data-host="db-01.rakhsh.cloud" data-ip="203.0.113.57" data-plan="8 vCPU · 32 GB · 320 GB">
+          <div class="leds"><span class="led pulse" data-led aria-hidden="true"></span><span class="plate">PWR</span></div>
+          <div class="host"><b>db-01.rakhsh.cloud</b><span class="tiny subtle"><span data-alt="Tehran · Debian 12">تهران · Debian 12</span></span></div>
+          <span class="vfd hide-row">203.0.113.57</span>
+          <span class="badge ok hide-row" data-state-label data-running-fa="روشن" data-running-en="Running" data-stopped-fa="خاموش" data-stopped-en="Stopped" data-busy-fa="در حال تغییر" data-busy-en="Working…" data-alt="Running">روشن</span>
+          <div class="power-keys">
+            <button class="btn btn-key btn-icon btn-sm" type="button" data-power="start" data-toast-fa="در حال روشن کردن db-01…" data-toast-en="Starting db-01…" aria-label="روشن کردن" data-alt-aria-label="Start"><i class="bx bx-play-circle" aria-hidden="true"></i></button>
+            <button class="btn btn-key btn-icon btn-sm" type="button" data-power="reboot" data-toast-fa="ری‌استارت db-01…" data-toast-en="Rebooting db-01…" aria-label="ری‌استارت" data-alt-aria-label="Reboot"><i class="bx bx-refresh" aria-hidden="true"></i></button>
+            <button class="btn btn-key btn-icon btn-sm" type="button" data-power="stop" data-toast-fa="در حال خاموش کردن db-01…" data-toast-en="Stopping db-01…" aria-label="خاموش کردن" data-alt-aria-label="Stop"><i class="bx bx-power-off" aria-hidden="true"></i></button>
+          </div>
+        </article>
+        <article class="unit srv-row" data-server data-state="stopped" data-host="staging.rakhsh.cloud" data-ip="203.0.113.88" data-plan="2 vCPU · 4 GB · 80 GB">
+          <div class="leds"><span class="led red" data-led aria-hidden="true"></span><span class="plate">PWR</span></div>
+          <div class="host"><b>staging.rakhsh.cloud</b><span class="tiny subtle"><span data-alt="Frankfurt · AlmaLinux 9">فرانکفورت · AlmaLinux 9</span></span></div>
+          <span class="vfd hide-row">203.0.113.88</span>
+          <span class="badge bad hide-row" data-state-label data-running-fa="روشن" data-running-en="Running" data-stopped-fa="خاموش" data-stopped-en="Stopped" data-busy-fa="در حال تغییر" data-busy-en="Working…" data-alt="Stopped">خاموش</span>
+          <div class="power-keys">
+            <button class="btn btn-key btn-icon btn-sm" type="button" data-power="start" data-toast-fa="در حال روشن کردن staging…" data-toast-en="Starting staging…" aria-label="روشن کردن" data-alt-aria-label="Start"><i class="bx bx-play-circle" aria-hidden="true"></i></button>
+            <button class="btn btn-key btn-icon btn-sm" type="button" data-power="reboot" data-toast-fa="ری‌استارت staging…" data-toast-en="Rebooting staging…" aria-label="ری‌استارت" data-alt-aria-label="Reboot"><i class="bx bx-refresh" aria-hidden="true"></i></button>
+            <button class="btn btn-key btn-icon btn-sm" type="button" data-power="stop" data-toast-fa="در حال خاموش کردن staging…" data-toast-en="Stopping staging…" aria-label="خاموش کردن" data-alt-aria-label="Stop"><i class="bx bx-power-off" aria-hidden="true"></i></button>
+          </div>
+        </article>
+      </div>
+
+      <div class="unit">
+        <div class="detail-head"><span class="led pulse" aria-hidden="true"></span><h2 class="h2" data-current="host">web-01.rakhsh.cloud</h2><span class="vfd" data-current="ip">203.0.113.41</span><span class="small subtle mono ltr" data-current="plan">4 vCPU · 8 GB · 160 GB</span></div>
+        <div class="stat-cells">
+          <div><span class="plate">CPU</span><span class="vfd">23%</span><span class="tiny subtle" data-alt="avg 24 h">میانگین ۲۴ ساعت</span></div>
+          <div><span class="plate">RAM</span><span class="vfd">2.1/8 GB</span><span class="tiny subtle" data-alt="26% used">۲۶٪ در استفاده</span></div>
+          <div><span class="plate" data-alt="Disk">دیسک</span><span class="vfd">38/160 GB</span><span class="tiny subtle" data-alt="24% used">۲۴٪ پر</span></div>
+          <div><span class="plate" data-alt="Traffic">ترافیک</span><span class="vfd">1.2/5 TB</span><span class="tiny subtle" data-alt="resets in 12 days">۱۲ روز تا صفر شدن</span></div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="unit">
+          <div class="unit-head"><h3 class="h3" data-alt="CPU · last 24 hours">پردازنده · ۲۴ ساعت گذشته</h3><span class="u-tag">%</span></div>
+          <div class="chart-box" data-chart="area" data-height="200" data-fmt="pct" data-min="0" data-max="100" data-dates="2026-10-17T15:00,24,hour" data-values="18,16,15,14,12,11,10,12,19,28,34,38,41,36,33,31,29,35,44,52,47,31,24,23" data-name='{"en":"CPU","fa":"پردازنده"}' data-label='{"en":"CPU over the last 24 hours, peak 52%","fa":"پردازنده در ۲۴ ساعت گذشته، بیشینه ۵۲٪"}'></div>
+        </div>
+        <div class="unit">
+          <div class="unit-head"><h3 class="h3" data-alt="Network · Mbps">شبکه · مگابیت</h3><span class="row tiny subtle"><span class="led" style="--c: var(--chart-1)" aria-hidden="true"></span><span data-alt="in">ورودی</span><span class="led blue" aria-hidden="true"></span><span data-alt="out">خروجی</span></span></div>
+          <div class="chart-box" data-chart="line" data-height="200" data-fmt="int" data-dates="2026-10-17T15:00,24,hour" data-series='[{"name":{"en":"In","fa":"ورودی"},"values":[40,36,30,26,22,20,19,24,48,90,120,135,150,128,110,104,98,126,170,210,188,120,84,70]},{"name":{"en":"Out","fa":"خروجی"},"values":[120,104,90,82,70,64,60,74,150,260,340,380,420,360,320,300,290,350,470,590,520,330,240,210]}]' data-label='{"en":"Network traffic over the last 24 hours","fa":"ترافیک شبکه در ۲۴ ساعت گذشته"}'></div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="unit">
+          <div class="unit-head"><h3 class="h3" data-alt="Web console">کنسول وب</h3><span class="badge info" data-alt="Type help">help را بزنید</span></div>
+          <div class="console" data-console data-host="web-01">
+            <div class="console-bar"><span class="led" aria-hidden="true"></span><span>root@web-01 — tty1</span></div>
+            <pre class="console-out" aria-live="polite"><span class="dim">Ubuntu 24.04.1 LTS web-01 tty1</span>
+<span class="p">root@web-01:~#</span> uptime
+ 14:02:11 up 41 days,  3:12,  1 user,  load average: 0.21, 0.18, 0.15
+</pre>
+            <label class="console-in"><span>#</span><span class="sr-only" data-alt="Command">دستور</span><input type="text" autocomplete="off" spellcheck="false" placeholder="help"></label>
+          </div>
+        </div>
+        <div class="stack">
+          <div class="unit">
+            <div class="unit-head"><h3 class="h3" data-alt="Snapshots">اسنپ‌شات‌ها</h3><button class="btn btn-key btn-sm" type="button" data-snapshot="#snaps" data-toast-fa="اسنپ‌شات گرفته شد." data-toast-en="Snapshot taken."><i class="bx bx-camera" aria-hidden="true"></i><span data-alt="Take snapshot">گرفتن اسنپ‌شات</span></button></div>
+            <ul class="stack" id="snaps" style="gap: 6px">
+              <li class="snap"><span class="led" aria-hidden="true"></span><div><b class="mono small ltr" data-snap-name>snap-2026-10-16-nightly</b><div class="tiny subtle" data-snap-when data-alt="yesterday · 38 GB">دیروز · ۳۸ گیگ</div></div><button class="btn btn-ghost btn-sm" type="button" data-toast="بازگردانی در صف قرار گرفت." data-toast-alt="Restore queued." data-alt="Restore">بازگردانی</button></li>
+              <li class="snap"><span class="led" aria-hidden="true"></span><div><b class="mono small ltr">snap-2026-10-15-nightly</b><div class="tiny subtle" data-alt="2 days ago · 37 GB">۲ روز پیش · ۳۷ گیگ</div></div><button class="btn btn-ghost btn-sm" type="button" data-toast="بازگردانی در صف قرار گرفت." data-toast-alt="Restore queued." data-alt="Restore">بازگردانی</button></li>
+              <li class="snap"><span class="led amber" aria-hidden="true"></span><div><b class="mono small ltr">snap-2026-10-02-before-upgrade</b><div class="tiny subtle" data-alt="kept manually · 35 GB">نگه‌داشته‌شده · ۳۵ گیگ</div></div><button class="btn btn-ghost btn-sm" type="button" data-toast="بازگردانی در صف قرار گرفت." data-toast-alt="Restore queued." data-alt="Restore">بازگردانی</button></li>
+            </ul>
+          </div>
+          <div class="unit">
+            <div class="unit-head"><h3 class="h3" data-alt="Firewall">فایروال</h3><span class="badge ok" data-alt="Active">فعال</span></div>
+            <div class="table-wrap">
+              <table class="table">
+                <thead><tr><th data-alt="Port">پورت</th><th data-alt="Protocol">پروتکل</th><th data-alt="Source">مبدأ</th><th data-alt="Rule">قاعده</th></tr></thead>
+                <tbody>
+                  <tr><td class="mono">22</td><td class="mono">TCP</td><td class="mono">203.0.113.0/24</td><td><span class="badge ok" data-alt="Allow">مجاز</span></td></tr>
+                  <tr><td class="mono">80, 443</td><td class="mono">TCP</td><td class="mono">0.0.0.0/0</td><td><span class="badge ok" data-alt="Allow">مجاز</span></td></tr>
+                  <tr><td class="mono">5432</td><td class="mono">TCP</td><td class="mono">10.10.0.0/16</td><td><span class="badge info" data-alt="Private only">فقط خصوصی</span></td></tr>
+                  <tr><td class="mono">*</td><td class="mono">ANY</td><td class="mono">0.0.0.0/0</td><td><span class="badge bad" data-alt="Deny">مسدود</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ domains & dns -->
+    <section class="page" id="p-dns" role="tabpanel" aria-labelledby="t-dns" hidden>
+      <div class="unit flat">
+        <div class="unit-head"><h2 class="h2" data-alt="Domains">دامنه‌ها</h2><a class="btn btn-key btn-sm" href="site.html#domains"><i class="bx bx-search" aria-hidden="true"></i><span data-alt="Register a domain">ثبت دامنه</span></a></div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th><button type="button" data-sort="text"><span data-alt="Domain">دامنه</span></button></th><th><button type="button" data-sort="date"><span data-alt="Expires">انقضا</span></button></th><th data-alt="Auto-renew">تمدید خودکار</th><th data-alt="Status">وضعیت</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">rakhsh-shop.ir</td><td data-value="2027-03-02"><span data-date="2027-03-02" data-fmt="long">۱۱ اسفند ۱۴۰۵</span></td><td><button class="switch" type="button" role="switch" aria-checked="true" aria-label="تمدید خودکار rakhsh-shop.ir" data-alt-aria-label="Auto-renew rakhsh-shop.ir"></button></td><td><span class="badge ok" data-alt="Active">فعال</span></td></tr>
+              <tr><td class="mono">nima.dev</td><td data-value="2026-11-09"><span data-date="2026-11-09" data-fmt="long">۱۸ آبان ۱۴۰۵</span></td><td><button class="switch" type="button" role="switch" aria-checked="false" aria-label="تمدید خودکار nima.dev" data-alt-aria-label="Auto-renew nima.dev"></button></td><td><span class="badge warn" data-alt="Expires in 23 days">۲۳ روز تا انقضا</span></td></tr>
+              <tr><td class="mono">rakhsh.co</td><td data-value="2028-01-14"><span data-date="2028-01-14" data-fmt="long">۲۴ دی ۱۴۰۶</span></td><td><button class="switch" type="button" role="switch" aria-checked="true" aria-label="تمدید خودکار rakhsh.co" data-alt-aria-label="Auto-renew rakhsh.co"></button></td><td><span class="badge info" data-alt="Transfer in progress">در حال انتقال</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="unit flat">
+        <div class="unit-head"><div class="row"><h2 class="h2" data-alt="DNS zone">ناحیهٔ DNS</h2><span class="vfd">rakhsh-shop.ir</span></div><button class="btn btn-sm" type="button" data-dialog="#add-record"><i class="bx bx-plus" aria-hidden="true"></i><span data-alt="Add record">افزودن رکورد</span></button></div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th data-alt="Type">نوع</th><th data-alt="Name">نام</th><th data-alt="Value">مقدار</th><th>TTL</th><th><span class="sr-only" data-alt="Proxy">پراکسی</span></th></tr></thead>
+            <tbody id="records">
+              <tr><td class="mono">A</td><td class="mono">@</td><td class="mono">203.0.113.41</td><td class="mono">300</td><td><span class="led" title="proxied" aria-hidden="true"></span></td></tr>
+              <tr><td class="mono">AAAA</td><td class="mono">@</td><td class="mono">2001:db8::41</td><td class="mono">300</td><td><span class="led" aria-hidden="true"></span></td></tr>
+              <tr><td class="mono">CNAME</td><td class="mono">www</td><td class="mono">rakhsh-shop.ir.</td><td class="mono">3600</td><td><span class="led off" aria-hidden="true"></span></td></tr>
+              <tr><td class="mono">MX</td><td class="mono">@</td><td class="mono">10 mail.rakhsh-shop.ir.</td><td class="mono">3600</td><td><span class="led off" aria-hidden="true"></span></td></tr>
+              <tr><td class="mono">TXT</td><td class="mono">@</td><td class="mono">"v=spf1 mx -all"</td><td class="mono">3600</td><td><span class="led off" aria-hidden="true"></span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="tiny subtle" data-alt="A green light means the record goes through the DDoS shield.">چراغ سبز یعنی ترافیک این رکورد از محافظ DDoS عبور می‌کند.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================ billing -->
+    <section class="page" id="p-bill" role="tabpanel" aria-labelledby="t-bill" hidden>
+      <div class="grid-2">
+        <div class="unit">
+          <div class="unit-head"><h2 class="h2" data-alt="Usage this month">مصرف این ماه</h2><span class="vfd"><span data-num="2318000">۲٬۳۱۸٬۰۰۰</span> <small>T</small></span></div>
+          <div class="chart-box" data-chart="bar" data-height="210" data-fmt="compact" data-dates="2026-10-01,17,day" data-values="132000,131000,134000,140000,138000,129000,128000,136000,142000,139000,141000,137000,133000,135000,144000,151000,128000" data-name='{"en":"Toman per day","fa":"تومان در روز"}' data-label='{"en":"Daily spend this month","fa":"هزینهٔ روزانهٔ این ماه"}'></div>
+        </div>
+        <div class="unit wallet-big">
+          <div class="unit-head"><h2 class="h2" data-alt="Wallet">کیف پول</h2><span class="led pulse" aria-hidden="true"></span></div>
+          <span class="vfd big"><span data-num="4180000">۴٬۱۸۰٬۰۰۰</span> <small data-alt="Toman">تومان</small></span>
+          <span class="tiny subtle" data-alt="About 54 days at today’s usage.">با مصرف امروز حدود ۵۴ روز کافی است.</span>
+          <span class="plate" data-alt="Top up">شارژ</span>
+          <div class="keys" data-group role="group" aria-label="مبلغ شارژ" data-alt-aria-label="Top-up amount">
+            <button type="button" aria-pressed="false"><span data-num="500000">۵۰۰٬۰۰۰</span></button>
+            <button type="button" aria-pressed="true"><span data-num="1000000">۱٬۰۰۰٬۰۰۰</span></button>
+            <button type="button" aria-pressed="false"><span data-num="5000000">۵٬۰۰۰٬۰۰۰</span></button>
+          </div>
+          <button class="btn btn-block" type="button" data-toast="به درگاه بانک منتقل می‌شوید…" data-toast-alt="Taking you to the bank gateway…"><i class="bx bx-credit-card" aria-hidden="true"></i><span data-alt="Top up the wallet">شارژ کیف پول</span></button>
+        </div>
+      </div>
+      <div class="unit flat">
+        <div class="unit-head"><h2 class="h2" data-alt="Invoices">فاکتورها</h2><button class="btn btn-key btn-sm" type="button" data-toast="فاکتورها دانلود شد." data-toast-alt="Invoices downloaded."><i class="bx bx-download" aria-hidden="true"></i><span data-alt="Download all">دانلود همه</span></button></div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th data-alt="Invoice">فاکتور</th><th data-alt="Date">تاریخ</th><th data-alt="For">بابت</th><th><button type="button" data-sort="num"><span data-alt="Amount">مبلغ</span></button></th><th data-alt="Status">وضعیت</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">RK-2026-1017</td><td><span data-date="2026-10-01" data-fmt="short">۹ مهر</span></td><td data-alt="Servers, September">سرورها، شهریور</td><td data-value="3920000"><span data-num="3920000" data-fmt="toman">۳٬۹۲۰٬۰۰۰ تومان</span></td><td><span class="badge ok" data-alt="Paid">پرداخت‌شده</span></td></tr>
+              <tr><td class="mono">RK-2026-0988</td><td><span data-date="2026-09-14" data-fmt="short">۲۳ شهریور</span></td><td data-alt="nima.dev renewal">تمدید nima.dev</td><td data-value="2600000"><span data-num="2600000" data-fmt="toman">۲٬۶۰۰٬۰۰۰ تومان</span></td><td><span class="badge ok" data-alt="Paid">پرداخت‌شده</span></td></tr>
+              <tr><td class="mono">RK-2026-0931</td><td><span data-date="2026-09-01" data-fmt="short">۱۰ شهریور</span></td><td data-alt="Servers, August">سرورها، مرداد</td><td data-value="3610000"><span data-num="3610000" data-fmt="toman">۳٬۶۱۰٬۰۰۰ تومان</span></td><td><span class="badge ok" data-alt="Paid">پرداخت‌شده</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<dialog class="modal" id="add-record" aria-labelledby="ar-t">
+  <form data-add-record="#records">
+    <div class="modal-head"><h2 class="h3" id="ar-t"><i class="bx bx-plus" aria-hidden="true"></i><span data-alt="Add a DNS record">افزودن رکورد DNS</span></h2><button class="btn btn-ghost btn-icon btn-sm" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><i class="bx bx-x" aria-hidden="true"></i></button></div>
+    <div class="modal-body">
+      <div class="field"><label class="label" for="ar-type" data-alt="Type">نوع</label><select class="select ltr" id="ar-type" name="type"><option>A</option><option>AAAA</option><option>CNAME</option><option>MX</option><option>TXT</option></select></div>
+      <div class="field"><label class="label" for="ar-name" data-alt="Name">نام</label><input class="input ltr" id="ar-name" name="name" placeholder="@" autocomplete="off"></div>
+      <div class="field"><label class="label" for="ar-value" data-alt="Value">مقدار</label><input class="input ltr" id="ar-value" name="value" required placeholder="203.0.113.41" autocomplete="off"></div>
+      <div class="field"><label class="label" for="ar-ttl">TTL</label><select class="select ltr" id="ar-ttl" name="ttl"><option>300</option><option selected>3600</option><option>86400</option></select></div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" type="button" data-close data-alt="Cancel">انصراف</button><button class="btn" type="submit" data-alt="Add record">افزودن رکورد</button></div>
+  </form>
+</dialog>
+</body>
+</html>

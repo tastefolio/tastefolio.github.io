@@ -261,6 +261,15 @@
       ]
     },
     {
+      "name": "rack",
+      "description": "Tastefolio design language — Servers you can almost touch — graphite rack-unit faceplates, status LEDs, glowing VFD readouts, one power-button orange and faders that build a VPS like a mixing desk",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/rack"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -293,7 +302,8 @@
         "./skills/estate",
         "./skills/margin",
         "./skills/dot",
-        "./skills/passage"
+        "./skills/passage",
+        "./skills/rack"
       ]
     }
   ]

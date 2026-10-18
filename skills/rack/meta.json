@@ -1,0 +1,34 @@
+{
+  "name": "Rack",
+  "order": 29,
+  "category": "infra",
+  "mode": "dark",
+  "density": "balanced",
+  "persianFirst": true,
+  "tags": ["vps", "cloud", "hosting", "domains", "dns", "servers", "control-panel", "persian"],
+  "tagline": {
+    "en": "Servers you can almost touch — graphite rack-unit faceplates, status LEDs, glowing VFD readouts, one power-button orange and faders that build a VPS like a mixing desk",
+    "fa": "سرورهایی که تقریباً لمسشان می‌کنی — نمای فلزی یونیت‌های رک، چراغ‌های وضعیت، نمایشگرهای فلورسنت، یک نارنجی دکمهٔ پاور و فیدرهایی که سرور مجازی را مثل میز صدا می‌سازند"
+  },
+  "summary": {
+    "en": "A dark-first, Persian-first language for cloud and VPS providers, domain registrars, CDN and DNS services and their control panels. Everything is hardware: cards are rack units with ears and screws, state is an LED (green running, amber working, red stopped, blue traffic), prices, IPs and hostnames glow in recessed VFD windows, and the one action is an orange power button. The signature is a server builder with four vertical faders (CPU, RAM, NVMe, traffic) with LED meters, OS and location keys, monthly or hourly billing and a live Toman price. Sites get a rack-elevation hero, ready units, datacenters with live-ish ping, domain search with availability lights, feature units, a 90-day uptime strip and a deploy dialog. The panel has server rows with power keys, live CPU and network graphs, a web console, snapshots, firewall rules, domains with auto-renew switches, a DNS zone editor and a wallet with daily spend and invoices.",
+    "fa": "زبانی تیره‌محور و فارسی‌محور برای ارائه‌دهندگان سرور ابری و مجازی، ثبت دامنه، CDN و DNS و پنل‌هایشان. همه‌چیز سخت‌افزار است: کارت‌ها یونیت رک‌اند با گوشه‌های پیچ‌خورده، وضعیت یک چراغ LED است (سبز روشن، کهربایی در حال کار، قرمز خاموش، آبی ترافیک)، قیمت و IP و نام میزبان در پنجره‌های فلورسنت فرورفته می‌درخشند و تنها اقدام صفحه یک دکمهٔ پاور نارنجی است. امضای این سبک سازندهٔ سرور با چهار فیدر عمودی (پردازنده، حافظه، NVMe، ترافیک) با نشانگر LED، کلیدهای سیستم‌عامل و محل، پرداخت ماهانه یا ساعتی و قیمت زندهٔ تومانی است. سایت‌ها هیرو با نمای رک، یونیت‌های آماده، دیتاسنترها با پینگ زنده، جست‌وجوی دامنه با چراغ آزاد یا گرفته، یونیت‌های ویژگی، نوار آپتایم ۹۰ روزه و پنجرهٔ راه‌اندازی دارند. پنل ردیف سرورها با کلیدهای پاور، نمودار زندهٔ پردازنده و شبکه، کنسول وب، اسنپ‌شات، قواعد فایروال، دامنه‌ها با کلید تمدید خودکار، ویرایشگر ناحیهٔ DNS و کیف پول با هزینهٔ روزانه و فاکتورها دارد."
+  },
+  "bestFor": {
+    "en": ["Cloud, VPS and dedicated-server providers", "Domain registrars, DNS and CDN services", "Infrastructure control panels and status pages", "Developer tools that want a physical, trustworthy feel"],
+    "fa": ["ارائه‌دهندگان سرور ابری، مجازی و اختصاصی", "ثبت دامنه، DNS و CDN", "پنل‌های مدیریت زیرساخت و صفحه‌های وضعیت", "ابزارهای توسعه‌دهنده که حس فیزیکی و مطمئن می‌خواهند"]
+  },
+  "avoidFor": {
+    "en": ["Editorial and long reading", "Soft consumer brands, fashion and food", "Healthcare and children’s products"],
+    "fa": ["محتوای سردبیری و خواندن طولانی", "برندهای نرم مصرفی، مد و غذا", "سلامت و محصولات کودک"]
+  },
+  "signature": {
+    "en": ["Rack-unit faceplates with ears, screws and U tags", "One meaning per LED: green, amber, red, blue", "Recessed VFD windows for prices, IPs and hostnames", "Mixing-desk faders that build a server with a live price", "A rack-elevation hero and a 90-day uptime strip", "A panel of power keys, live graphs, console and DNS zone"],
+    "fa": ["نمای یونیت رک با گوشه، پیچ و برچسب U", "هر چراغ یک معنی: سبز، کهربایی، قرمز، آبی", "پنجره‌های فلورسنت فرورفته برای قیمت، IP و نام میزبان", "فیدرهای میز صدا که سرور را با قیمت زنده می‌سازند", "هیرو با نمای رک و نوار آپتایم ۹۰ روزه", "پنلی با کلید پاور، نمودار زنده، کنسول و ناحیهٔ DNS"]
+  },
+  "swatches": ["#121417", "#1a1d21", "#ff6a1a", "#6ff5d2", "#3ddc84", "#e7eaee"],
+  "fonts": { "latin": "Saira + Onest", "persian": "Vazirmatn", "mono": "Spline Sans Mono" },
+  "icons": "Boxicons (webfont, MIT)",
+  "brandTrials": ["ff4f6d", "3d8bff", "2bd4a0", "ffc23d"],
+  "demos": { "site": { "host": "rakhsh.example" }, "dashboard": { "host": "panel.rakhsh.example" } }
+}
