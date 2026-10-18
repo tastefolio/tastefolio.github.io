@@ -109,24 +109,31 @@
     }));
   }
 
-  // Votes and comments: giscus (GitHub Discussions) loads as its section comes near, in the gallery's theme.
-  // Back from GitHub sign-in the URL carries ?giscus=…, which giscus has to read right away.
+  // Votes and comments: giscus (GitHub Discussions) in the gallery's theme. Skill pages load their box as it
+  // comes near; on the home page each card's vote button fills one dialog (further down).
   function giscusTheme() { return `${location.origin}/assets/giscus-${root.dataset.theme === 'dark' ? 'dark' : 'light'}.css`; }
-  const giscusBox = $('[data-giscus]');
-  if (giscusBox) {
-    const load = () => {
-      const s = d.createElement('script');
-      const { giscus, ...thread } = giscusBox.dataset; // the box's data-* (repo, category, term, lang) minus its own marker
-      Object.assign(s.dataset, thread, { mapping: 'specific', strict: '1', reactionsEnabled: '1', emitMetadata: '0', inputPosition: 'top', theme: giscusTheme(), loading: 'lazy' });
-      s.src = 'https://giscus.app/client.js';
-      s.crossOrigin = 'anonymous';
-      s.async = true;
-      giscusBox.after(s);
-    };
-    if (/[?&]giscus=/.test(location.search) || !('IntersectionObserver' in window)) load();
+  function loadGiscus(box, extra = {}) {
+    $$('script[src="https://giscus.app/client.js"]').forEach((s) => s.remove());
+    const s = d.createElement('script');
+    const { giscus, ...thread } = box.dataset; // the box's data-* (repo, category, term, lang) minus its own marker
+    Object.assign(s.dataset, thread, { mapping: 'specific', strict: '1', reactionsEnabled: '1', emitMetadata: '0', inputPosition: 'top', theme: giscusTheme(), loading: 'lazy' }, extra);
+    s.src = 'https://giscus.app/client.js';
+    s.crossOrigin = 'anonymous';
+    s.async = true;
+    box.after(s);
+  }
+  // Back from GitHub sign-in the URL carries ?giscus=<session>. Keep it where giscus looks for it, since the
+  // home page rewrites its URL before giscus loads.
+  const giscusSession = new URLSearchParams(location.search).get('giscus');
+  if (giscusSession) {
+    try { localStorage.setItem('giscus-session', JSON.stringify(giscusSession)); } catch { /* ignore */ }
+  }
+  const pageBox = $('[data-giscus="page"]');
+  if (pageBox) {
+    if (giscusSession || !('IntersectionObserver' in window)) loadGiscus(pageBox);
     else {
-      const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { io.disconnect(); load(); } }, { rootMargin: '600px 0px' });
-      io.observe(giscusBox);
+      const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { io.disconnect(); loadGiscus(pageBox); } }, { rootMargin: '600px 0px' });
+      io.observe(pageBox);
     }
   }
 
@@ -215,6 +222,53 @@
   }
   readUrl();
   apply();
+
+  // Voting from the gallery: a card's 👍 opens that skill's giscus box in a dialog. The card's count follows
+  // what giscus reports, and Top rated re-sorts when the dialog closes.
+  const dialog = $('[data-vote-dialog]');
+  if (dialog) {
+    const box = $('[data-giscus="dialog"]', dialog);
+    const tpl = dialog.dataset;
+    let voting = null; // the card whose vote box is open
+    const meta = (attr, key, value) => {
+      let m = $(`meta[${attr}="${key}"]`);
+      if (!m) { m = d.createElement('meta'); m.setAttribute(attr, key); d.head.append(m); }
+      m.content = value;
+    };
+    const setVotes = (card, n) => {
+      const b = $('[data-vote]', card);
+      card.dataset.votes = n;
+      $('[data-vote-count]', b).textContent = nf.format(n);
+      b.setAttribute('aria-label', tpl.tplLabel.replace('{s}', card.dataset.name).replace('{v}', (n === 1 ? tpl.tplVoteOne : tpl.tplVotes).replace('{n}', nf.format(n))));
+    };
+    const open = (card) => {
+      voting = card;
+      const page = $('.card-title a', card).href;
+      $('[data-vote-title]', dialog).textContent = tpl.tplTitle.replace('{s}', card.dataset.name);
+      $('[data-vote-page]', dialog).href = page;
+      // a thread first opened from here still describes and links to its skill page
+      meta('name', 'giscus:backlink', page);
+      meta('property', 'og:description', `${card.dataset.name}: ${$('.card-tag', card).textContent}`);
+      box.id = `vote-${card.dataset.slug}`; // giscus comes back to this anchor after sign-in, and the dialog reopens
+      loadGiscus(box, { term: `skills/${card.dataset.slug}`, emitMetadata: '1', loading: 'eager' });
+      if (!dialog.open) dialog.showModal();
+    };
+    cardsEl.addEventListener('click', (e) => { const b = e.target.closest('[data-vote]'); if (b) open(b.closest('[data-item]')); });
+    $('[data-vote-close]', dialog).addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); }); // the backdrop
+    dialog.addEventListener('close', () => {
+      if (location.hash.startsWith('#vote-')) history.replaceState(null, '', location.pathname + location.search);
+      if (sort.value === 'top') apply();
+      $('[data-vote]', voting)?.focus();
+    });
+    addEventListener('message', (e) => {
+      const n = e.origin === 'https://giscus.app' && e.data?.giscus?.discussion?.reactions?.THUMBS_UP?.count;
+      if (voting && typeof n === 'number') setVotes(voting, n);
+    });
+    const back = location.hash.match(/^#vote-([a-z0-9-]+)$/);
+    const card = back && cards.find((c) => c.dataset.slug === back[1]);
+    if (card) open(card);
+  }
   search.addEventListener('input', apply);
   persian.addEventListener('change', apply);
   sort.addEventListener('change', apply);

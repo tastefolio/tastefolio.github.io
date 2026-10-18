@@ -195,7 +195,7 @@ npm run dev
 | `npm run serve` | serves `dist/` at http://localhost:4174 |
 
 Every push to `main` runs that pipeline and deploys the gallery to GitHub Pages
-(`.github/workflows/pages.yml`). It also runs every six hours to pick up new votes: each skill page has a
+(`.github/workflows/pages.yml`). It also runs every hour to pick up new votes: every card and skill page has a
 👍 vote and comments box (GitHub Discussions through giscus), and the gallery's Top rated order counts the 👍.
 
 **Adding a style:** create `skills/<name>/` with the files above (copy an existing skill as a starting point), give it

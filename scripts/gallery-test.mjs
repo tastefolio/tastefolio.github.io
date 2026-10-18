@@ -8,7 +8,9 @@
 //             buttons; install tabs switch their panels by click and keyboard; the giscus vote box loads
 //             for the right thread and theme (giscus.app itself is blocked, so no test depends on it)
 //   votes     en + fa: the home page rendered with known 👍 counts defaults to Top rated, is served in
-//             that order, shows the counts, and keeps the sort in the URL only when it is not the default
+//             that order, and keeps the sort in the URL only when it is not the default; every card's
+//             vote button opens that skill's giscus box in a dialog, its count follows what giscus reports,
+//             Top rated re-sorts on close, and the dialog reopens after GitHub sign-in
 //   menu      the phone menu opens, closes on Escape and on an outside click, and is gone on desktop
 //   overflow  no page (home, guide, 404, every skill page, both languages) is wider than a 320px or
 //             390px phone, and each starts with one screenshot pane and one panel per tab list
@@ -211,21 +213,52 @@ const votedSuite = (lang) => suite('votes', `home with votes ${lang} 1440px`, (l
   const votes = Object.fromEntries(skills.map((s, i) => [s.slug, (i * 7) % 4]));
   const html = tpl.home({ skills, shots: new Set(), votes, version: 'test' }, lang);
   await page.route((url) => url.pathname === `${PREFIX[lang]}/`, (r) => r.fulfill({ contentType: 'text/html; charset=utf-8', body: html }));
+  await page.route('https://giscus.app/**', (r) => r.abort());
   const order = () => page.$$eval('[data-item]', (cs) => cs.map((c) => c.dataset.slug));
   const top = [...skills].sort((a, b) => votes[b.slug] - votes[a.slug] || a.meta.order - b.meta.order).map((s) => s.slug);
   const curated = skills.map((s) => s.slug);
+  const name = (slug) => skills.find((s) => s.slug === slug).meta.name;
+  const num = (x) => (lang === 'fa' ? faNum.format(x) : String(x));
+  const button = (slug) => `[data-item][data-slug="${slug}"] [data-vote]`;
+  const card = (slug) => page.$eval(button(slug), (b) => ({ count: b.querySelector('[data-vote-count]').textContent, label: b.getAttribute('aria-label'), votes: b.closest('[data-item]').dataset.votes }));
+  const dialog = () => page.$eval('[data-vote-dialog]', (dl) => ({ open: dl.open, title: dl.querySelector('[data-vote-title]').textContent, page: dl.querySelector('[data-vote-page]').getAttribute('href'), thread: dl.querySelector('.giscus').id }));
 
   await visit(page, `${PREFIX[lang]}/`);
   eq(await page.$eval('[data-sort]', (el) => el.value), 'top', `${label}: default sort`);
   eq([htmlOrder(html), await order()], [top, top], `${label}: card order in the HTML and on load`);
-  eq(await page.$$eval('[data-item] .votes', (vs) => vs.map((v) => v.getAttribute('aria-label'))).then((l) => [l.length, l[0]]),
-    [skills.filter((s) => votes[s.slug]).length, lang === 'fa' ? '۳ رأی' : '3 votes'], `${label}: vote counts on cards (how many, the first)`);
+  eq(await page.$$eval('[data-item]', (cs) => cs.map((c) => c.querySelector('[data-vote] [data-vote-count]')?.textContent)), top.map((s) => num(votes[s])), `${label}: vote buttons and counts on every card, zero included`);
+  const first = await card(top[0]);
+  check(first.label.includes(name(top[0])) && first.label.includes(lang === 'fa' ? `${num(3)} رأی` : '3 votes'), `${label}: vote button label "${first.label}"`);
   await page.selectOption('[data-sort]', 'curated');
   eq([await order(), (await readHome(page)).params], [curated, { sort: 'curated' }], `${label}: curated order and URL`);
   await page.selectOption('[data-sort]', 'top');
   eq([await order(), (await readHome(page)).params], [top, {}], `${label}: Top rated order and URL`);
+
+  // a card's 👍 opens that skill's vote box right here; the count follows giscus; Top rated re-sorts on close
+  const last = top[top.length - 1];
+  await page.click(button(last));
+  eq(await dialog(), { open: true, title: lang === 'fa' ? `به ${name(last)} امتیاز بدهید` : `Rate ${name(last)}`, page: `${base}${PREFIX[lang]}/skills/${last}/`, thread: `vote-${last}` }, `${label}: vote dialog`);
+  const giscus = await page.waitForSelector('script[src="https://giscus.app/client.js"]', { state: 'attached' }).then((el) => el.evaluate((x) => ({ ...x.dataset })));
+  eq({ term: giscus.term, lang: giscus.lang, emitMetadata: giscus.emitMetadata, backlink: await page.$eval('meta[name="giscus:backlink"]', (m) => m.content) },
+    { term: `skills/${last}`, lang, emitMetadata: '1', backlink: `${base}${PREFIX[lang]}/skills/${last}/` }, `${label}: giscus in the vote dialog`);
+  const report = (origin, count) => page.evaluate(([o, c]) => dispatchEvent(new MessageEvent('message', { origin: o, data: { giscus: { discussion: { reactions: { THUMBS_UP: { count: c, viewerHasReacted: true } } } } } })), [origin, count]);
+  await report('https://giscus.app', 9);
+  await report('https://example.com', 1);
+  const now = await card(last);
+  eq([now.count, now.votes, now.label.includes(lang === 'fa' ? `${num(9)} رأی` : '9 votes')], [num(9), '9', true], `${label}: card count after giscus reports 9 (another origin is ignored)`);
+  await page.keyboard.press('Escape');
+  eq([(await dialog()).open, (await order())[0], await page.evaluate(() => document.activeElement?.closest('[data-item]')?.dataset.slug)], [false, last, last],
+    `${label}: after Escape (dialog open, first card, focus)`);
+  await page.click(button(top[1]));
+  await page.mouse.click(5, 5);
+  eq((await dialog()).open, false, `${label}: a click outside the dialog closes it`);
+
   await visit(page, `${PREFIX[lang]}/?sort=curated`);
   eq([await page.$eval('[data-sort]', (el) => el.value), await order()], ['curated', curated], `${label}: loaded with ?sort=curated`);
+  // back from GitHub sign-in: giscus gets the session, the URL is cleaned up, and the same vote box reopens
+  await visit(page, `${PREFIX[lang]}/?giscus=test-session#vote-${top[2]}`);
+  eq([await page.evaluate(() => localStorage.getItem('giscus-session')), await page.evaluate(() => location.search + location.hash), (await dialog()).thread, (await dialog()).open],
+    ['"test-session"', `#vote-${top[2]}`, `vote-${top[2]}`, true], `${label}: back from sign-in (session, URL, thread, open)`);
 }));
 
 // ------------------------------------------------------------------ skill page: screenshot viewer, install tabs

@@ -6,7 +6,7 @@ on:
   pull_request:
   workflow_dispatch:
   schedule:
-    - cron: '17 */6 * * *' # re-read the 👍 counts that order the gallery
+    - cron: '17 * * * *' # re-read the 👍 counts that order the gallery
 
 permissions:
   contents: read

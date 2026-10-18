@@ -26,6 +26,7 @@ const ICON = {
   github: '<svg viewBox="0 0 24 24" aria-hidden="true" class="fill"><path d="M12 2.5a9.7 9.7 0 0 0-3.07 18.9c.49.09.66-.21.66-.47v-1.7c-2.7.59-3.27-1.15-3.27-1.15-.44-1.12-1.08-1.42-1.08-1.42-.88-.6.07-.59.07-.59.97.07 1.48 1 1.48 1 .87 1.48 2.28 1.05 2.83.8.09-.63.34-1.05.62-1.29-2.15-.25-4.42-1.08-4.42-4.8 0-1.06.38-1.93 1-2.6-.1-.25-.43-1.24.1-2.58 0 0 .82-.26 2.67 1a9.2 9.2 0 0 1 4.86 0c1.85-1.26 2.67-1 2.67-1 .53 1.34.2 2.33.1 2.58.62.67 1 1.54 1 2.6 0 3.73-2.27 4.55-4.43 4.79.35.3.66.89.66 1.8v2.66c0 .26.17.57.67.47A9.7 9.7 0 0 0 12 2.5Z"/></svg>',
   download: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0 4.5-4.5M12 15l-4.5-4.5M5 19h14"/></svg>',
   menu: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>',
+  close: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>',
   thumb: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 10.5v9h-3v-9h3Z"/><path d="M7.5 10.5 11 4a1.8 1.8 0 0 1 3 1.4V9h4.6a2 2 0 0 1 2 2.4l-1.3 6.4a2 2 0 0 1-2 1.7H7.5"/></svg>',
 };
 
@@ -40,6 +41,8 @@ function shotUrl(ctx, slug, demo, lang, vp) {
   return ctx.shots.has(key) ? `/shots/${key}.webp` : null;
 }
 const voteLabel = (lang, n) => fill(n === 1 ? T[lang].voteOne : T[lang].votes, { n: digits(lang, n) });
+// a giscus box: "page" loads as it scrolls near on skill pages; "dialog" is the home page's vote dialog, filled per skill
+const giscusBox = (lang, kind, { id = '', term = '' } = {}) => `<div class="giscus"${id ? ` id="${id}"` : ''} data-giscus="${kind}" data-repo="${GISCUS.repo}" data-repo-id="${GISCUS.repoId}" data-category="${GISCUS.category}" data-category-id="${GISCUS.categoryId}"${term ? ` data-term="${term}"` : ''} data-lang="${lang}"></div>`;
 export const demoUrl = (slug, demo, lang, extra = '') => `/skills/${slug}/examples/${demo}.html?lang=${lang}${extra}`;
 
 function swatches(meta, cls = 'swatches') {
@@ -142,7 +145,7 @@ function card(ctx, s, lang, i) {
     <div class="card-head">
       <span class="card-no">${pad2(lang, m.order)}</span>
       <h3 class="card-title"><a href="${detail}">${esc(m.name)}</a></h3>
-      ${votes ? `<span class="votes" role="img" aria-label="${esc(voteLabel(lang, votes))}">${ICON.thumb}${digits(lang, votes)}</span>` : ''}
+      <button type="button" class="vote" data-vote aria-haspopup="dialog" aria-label="${esc(fill(t.voteOpen, { s: m.name, v: voteLabel(lang, votes) }))}">${ICON.thumb}<span data-vote-count>${digits(lang, votes)}</span></button>
       ${swatches(m)}
     </div>
     <p class="card-tag">${esc(m.tagline[lang])}</p>
@@ -240,6 +243,15 @@ export function home(ctx, lang) {
       ${ordered.map((s, i) => card(ctx, s, lang, i)).join('\n')}
     </div>
     <div class="empty" data-empty hidden><p>${t.empty}</p><button type="button" class="btn btn-line" data-clear>${t.clear}</button></div>
+    <dialog class="vote-dialog" data-vote-dialog aria-labelledby="vote-title" data-tpl-title="${esc(t.voteTitle)}" data-tpl-label="${esc(t.voteOpen)}" data-tpl-votes="${esc(t.votes)}" data-tpl-vote-one="${esc(t.voteOne)}"><div class="vote-in">
+      <div class="vote-head">
+        <h2 id="vote-title" class="h3" data-vote-title></h2>
+        <button type="button" class="icon-btn" data-vote-close aria-label="${t.close}">${ICON.close}</button>
+      </div>
+      <p class="muted">${esc(t.voteLead)}</p>
+      ${giscusBox(lang, 'dialog')}
+      <a class="vote-page" data-vote-page href="${href(lang, '/')}">${t.votePage}${ICON.arrow}</a>
+    </div></dialog>
   </div>
 </section>
 
@@ -350,7 +362,7 @@ export function detail(ctx, s, lang) {
     <section class="rate" id="rate" aria-labelledby="rate-h">
       <h2 id="rate-h" class="h3">${t.rateTitle}</h2>
       <p class="muted">${esc(t.rateLead)}</p>
-      <div class="giscus" id="rate-thread" data-giscus data-repo="${GISCUS.repo}" data-repo-id="${GISCUS.repoId}" data-category="${GISCUS.category}" data-category-id="${GISCUS.categoryId}" data-term="skills/${s.slug}" data-lang="${lang}"></div>
+      ${giscusBox(lang, 'page', { id: 'rate-thread', term: `skills/${s.slug}` })}
     </section>
 
     <nav class="pager" aria-label="Skills">

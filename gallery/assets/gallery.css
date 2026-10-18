@@ -188,8 +188,10 @@ svg.fill { fill: currentColor; stroke: none; }
 .swatches { margin-inline-start: auto; display: inline-flex; align-self: center; }
 .swatches i { width: 16px; height: 16px; border-radius: 50%; box-shadow: 0 0 0 2px var(--paper); }
 .swatches i + i { margin-inline-start: -5px; }
-.votes { display: inline-flex; align-items: center; gap: 4px; align-self: center; font: 600 13px/1 var(--f-ui); font-variant-numeric: tabular-nums; color: var(--ink-2); }
-.votes svg { width: 15px; height: 15px; }
+/* the vote button sits above the title link that covers the card head */
+.vote { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 5px; align-self: center; padding-block: 4px; padding-inline: 8px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--ink-2); font: 600 13px/1 var(--f-ui); font-variant-numeric: tabular-nums; cursor: pointer; }
+.vote:hover { border-color: var(--ink-3); color: var(--ink); }
+.vote svg { width: 15px; height: 15px; }
 .card-tag { margin: -4px 0 0; color: var(--ink-2); font-size: 15px; line-height: 1.5; }
 .chips-static { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; }
 .chips-static li { font: 500 11.5px/1 var(--f-mono); color: var(--ink-2); border: 1px solid var(--line); border-radius: 6px; padding: 5px 7px; }
@@ -325,6 +327,20 @@ svg.fill { fill: currentColor; stroke: none; }
 .rate { margin-bottom: 56px; }
 .rate .muted { margin-top: 0; max-width: 72ch; }
 .giscus { min-height: 140px; }
+.vote-dialog { width: min(680px, calc(100vw - 32px)); max-height: calc(100dvh - 48px); padding: 0; border: 1px solid var(--line); border-radius: var(--r); background: var(--paper); color: var(--ink); box-shadow: 0 30px 80px -30px rgba(0, 0, 0, .55); overflow: auto; }
+.vote-dialog::backdrop { background: rgba(21, 20, 18, .5); }
+.vote-in { padding: 20px 24px 24px; }
+.vote-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.vote-head .h3 { margin: 0; }
+.vote-in > .muted { margin: 8px 0 16px; }
+.vote-dialog .giscus { min-height: 220px; }
+.vote-page { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--line-2); }
+.vote-page:hover { border-color: var(--ink); }
+html:has(.vote-dialog[open]) { overflow: hidden; }
+@media (max-width: 640px) {
+  .vote-dialog { width: 100vw; max-width: 100vw; margin: auto 0 0; border-radius: var(--r) var(--r) 0 0; max-height: 90dvh; }
+  .vote-in { padding: 18px 16px 22px; }
+}
 
 .pager { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; border-top: 1px solid var(--line); padding-top: 24px; }
 .pager a { text-decoration: none; display: grid; gap: 2px; padding: 16px 20px; border-radius: var(--r); border: 1px solid var(--line); }
