@@ -26,10 +26,10 @@ Covers the **storefront** (banners, chips, shelves, charts, collections, item sh
 ## Fonts
 
 ```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Nunito:wght@500;600;700;800&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&family=Vazirmatn:wght@100..900&display=swap">
 ```
-Headings: **Baloo Bhaijaan 2** (rounded) for Latin. Body: **Nunito**. Persian: **Vazirmatn** for everything.
-Weights lean bold (600–800). Persian headings use **Vazirmatn 800** (Vazirmatn only for Persian). Fallbacks: Fredoka / Quicksand.
+Latin: **Nunito** (rounded) for everything; display headings at 900, section titles at 800. Persian: **Vazirmatn** for everything.
+Weights lean bold (600–900). Persian headings use **Vazirmatn 800–900** (Vazirmatn only for Persian, no other Persian font). Latin fallbacks: Fredoka / Quicksand.
 
 ## Identity rules (non-negotiable)
 
@@ -91,7 +91,7 @@ Type 12 / 13.5 / 15 / 18 / 22 / 28 / 38; display `clamp(30px, 4.4vw, 52px)`. Con
 ## Persian & RTL
 
 - Persian source copy, casual and warm ("همین حالا بازی کن"); English mirrors.
-- Baloo Bhaijaan 2 for Persian headings (rounded Naskh-Kufi feel) + Vazirmatn body at 15px / 1.9.
+- Vazirmatn for all Persian text: headings at 800–900 for the chunky, playful feel; body at 15px / 1.9.
 - Shelves scroll from the right in RTL; prev/next and "See all" chevrons use `.flip-rtl` (handled by kit.js direction logic).
 - Package ids, versions and sizes stay LTR; ratings and counts use Persian digits.
 
