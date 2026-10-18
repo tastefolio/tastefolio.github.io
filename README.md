@@ -7,8 +7,8 @@ panels**, in **English (LTR)** and **Persian (RTL)**.
 
 **Gallery:** https://tastefolio.github.io · **فارسی:** https://tastefolio.github.io/fa/ · **Guide:** https://tastefolio.github.io/guide/ · [README به فارسی](README.fa.md)
 
-- **29 styles** that differ in layout logic, density, typography, navigation and interaction — not just in color.
-- **58 working demos** (a site and a dashboard per style) with real menus, tabs, filters, forms, dialogs and charts, all switchable between English and Persian, light and dark, and any brand color.
+- **30 styles** that differ in layout logic, density, typography, navigation and interaction — not just in color.
+- **60 working demos** (a site and a dashboard per style) with real menus, tabs, filters, forms, dialogs and charts, all switchable between English and Persian, light and dark, and any brand color.
 - **Real screenshots** of every demo in the gallery, captured automatically on every deploy.
 - **Framework-free**: plain HTML/CSS plus a tiny shared runtime, with Tailwind v3/v4 and shadcn/ui mappings for each style.
 
@@ -46,6 +46,7 @@ panels**, in **English (LTR)** and **Persian (RTL)**.
 | 27 | [**Dot**](skills/dot/SKILL.md) · [page](https://tastefolio.github.io/skills/dot/) | Brand & culture | light, fa-first | balanced | Dot-matrix hardware — paper or black, one LED red, display type made of dots, a drawn device with a live 15×15 face and a device app with a glyph composer | [site](https://tastefolio.github.io/skills/dot/examples/site.html) · [dashboard](https://tastefolio.github.io/skills/dot/examples/dashboard.html) |
 | 28 | [**Passage**](skills/passage/SKILL.md) · [page](https://tastefolio.github.io/skills/passage/) | Product UI | light, fa-first | balanced | Travel documents as an interface — guilloche security paper, boarding-pass program cards, rubber stamps for milestones, a points check and a client portal built like a passport | [site](https://tastefolio.github.io/skills/passage/examples/site.html) · [dashboard](https://tastefolio.github.io/skills/passage/examples/dashboard.html) |
 | 29 | [**Rack**](skills/rack/SKILL.md) · [page](https://tastefolio.github.io/skills/rack/) | Infra & cloud | dark, fa-first | balanced | Servers you can almost touch — graphite rack-unit faceplates, status LEDs, glowing VFD readouts, one power-button orange and faders that build a VPS like a mixing desk | [site](https://tastefolio.github.io/skills/rack/examples/site.html) · [dashboard](https://tastefolio.github.io/skills/rack/examples/dashboard.html) |
+| 30 | [**Sprocket**](skills/sprocket/SKILL.md) · [page](https://tastefolio.github.io/skills/sprocket/) | Content & media | light, fa-first | balanced | A social photo network made of analog film — posts as photo prints with a date imprint, reels on a sprocket strip, profiles as contact sheets with grease-pencil picks and a red-safelight darkroom mode | [site](https://tastefolio.github.io/skills/sprocket/examples/site.html) · [dashboard](https://tastefolio.github.io/skills/sprocket/examples/dashboard.html) |
 <!-- styles:end -->
 
 Demos accept `?lang=fa`, `?theme=dark` and `?brand=ff5a36` (any hex) so you can check a style against your own brand.

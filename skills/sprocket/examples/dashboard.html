@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="dashboard">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Creator studio — Ghab">استودیوی سازنده — قاب</title>
+<meta name="description" content="استودیوی سازندهٔ قاب: آمار، بهترین زمان انتشار، پست‌های برتر، مخاطبان، پیام‌ها و برنامهٔ انتشار." data-alt-content="Ghab creator studio: insights, best time to post, top posts, audience, messages and schedule.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300..800&family=Urbanist:wght@400..800&family=Overpass+Mono:wght@400..600&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<script src="../assets/sprocket.js" defer></script>
+<style>
+  .rail [role="tab"][aria-selected="true"] { font-weight: 800; background: var(--surface-2); }
+  .studio-tabs-m { display: none; }
+  @media (max-width: 900px) { .studio-tabs-m { display: flex; gap: 6px; inline-size: 100%; overflow-x: auto; padding-block-end: 4px; scrollbar-width: none; } .studio-tabs-m button { flex: none; min-block-size: 36px; padding: 0 12px; border: 0; border-radius: 999px; background: var(--surface-2); font: 700 13px/1 var(--font-sans); cursor: pointer; } .studio-tabs-m button[aria-pressed="true"] { background: var(--ink); color: var(--canvas); } }
+  .kpi [data-chart] { margin-block-start: 4px; }
+  .legend-row { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: var(--fs-xs); color: var(--ink-2); }
+  .legend-row span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend-row i { inline-size: 10px; block-size: 10px; border-radius: 3px; background: var(--c); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<div class="studio">
+  <aside class="rail" aria-label="استودیو" data-alt-aria-label="Studio">
+    <a class="wordmark" href="site.html"><span class="mark-logo" aria-hidden="true"></span><span data-alt="Ghab">قاب</span></a>
+    <div role="tablist" aria-orientation="vertical" aria-label="بخش‌ها" data-alt-aria-label="Sections" style="display: grid; gap: 4px">
+      <button class="nav-item" type="button" role="tab" id="t-ov" aria-controls="p-ov" aria-selected="true"><i class="ph ph-chart-line-up" aria-hidden="true"></i><span data-alt="Overview">نمای کلی</span></button>
+      <button class="nav-item" type="button" role="tab" id="t-ct" aria-controls="p-ct" aria-selected="false"><i class="ph ph-squares-four" aria-hidden="true"></i><span data-alt="Content">محتوا</span></button>
+      <button class="nav-item" type="button" role="tab" id="t-au" aria-controls="p-au" aria-selected="false"><i class="ph ph-users" aria-hidden="true"></i><span data-alt="Audience">مخاطبان</span></button>
+      <button class="nav-item" type="button" role="tab" id="t-dm" aria-controls="p-dm" aria-selected="false"><i class="ph ph-paper-plane-tilt" aria-hidden="true"></i><span data-alt="Messages">پیام‌ها</span><span class="count" data-num="3">۳</span></button>
+      <button class="nav-item" type="button" role="tab" id="t-sc" aria-controls="p-sc" aria-selected="false"><i class="ph ph-calendar-blank" aria-hidden="true"></i><span data-alt="Schedule">برنامهٔ انتشار</span></button>
+    </div>
+    <span class="spacer"></span>
+    <a class="nav-item" href="site.html"><i class="ph ph-house" aria-hidden="true"></i><span data-alt="Back to the feed">بازگشت به فید</span></a>
+  </aside>
+
+  <div class="studio-main" id="main">
+    <header class="studio-top">
+      <h1 class="h2" data-alt="Creator studio">استودیوی سازنده</h1>
+      <span class="spacer"></span>
+      <div class="chips" data-group role="group" aria-label="بازه" data-alt-aria-label="Period"><button type="button" aria-pressed="false" data-alt="7 days">۷ روز</button><button type="button" aria-pressed="true" data-alt="28 days">۲۸ روز</button><button type="button" aria-pressed="false" data-alt="90 days">۹۰ روز</button></div>
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+      <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="اتاق تاریک" data-alt-aria-label="Darkroom mode"><i class="ph ph-moon" aria-hidden="true"></i></button>
+      <div class="studio-tabs-m" role="group" aria-label="بخش‌ها" data-alt-aria-label="Sections">
+        <button type="button" data-go="t-ov" aria-pressed="true" data-alt="Overview">نمای کلی</button><button type="button" data-go="t-ct" aria-pressed="false" data-alt="Content">محتوا</button><button type="button" data-go="t-au" aria-pressed="false" data-alt="Audience">مخاطبان</button><button type="button" data-go="t-dm" aria-pressed="false" data-alt="Messages">پیام‌ها</button><button type="button" data-go="t-sc" aria-pressed="false" data-alt="Schedule">برنامه</button>
+      </div>
+    </header>
+
+    <!-- ============================================================ overview -->
+    <section class="page" id="p-ov" role="tabpanel" aria-labelledby="t-ov">
+      <div class="kpis">
+        <div class="kpi"><span class="edge" data-alt="Reach">دسترسی</span><b data-num="184000" data-fmt="compact">۱۸۴ هزار</b><span class="delta">+12.4%</span><div data-chart="spark" data-height="36" data-values="40,44,41,52,58,55,63,70,66,74,80,78" data-label='{"en":"Reach, rising","fa":"دسترسی، رو به افزایش"}'></div></div>
+        <div class="kpi"><span class="edge" data-alt="Profile visits">بازدید پروفایل</span><b data-num="12800" data-fmt="compact">۱۲٫۸ هزار</b><span class="delta">+6.1%</span><div data-chart="spark" data-height="36" data-values="20,22,21,24,23,27,26,28,30,29,31,33" data-label='{"en":"Profile visits, rising","fa":"بازدید پروفایل، رو به افزایش"}'></div></div>
+        <div class="kpi"><span class="edge" data-alt="New followers">دنبال‌کنندهٔ تازه</span><b data-num="2140">۲٬۱۴۰</b><span class="delta">+18.0%</span><div data-chart="spark" data-height="36" data-values="5,8,6,9,12,10,14,13,18,16,21,24" data-label='{"en":"New followers, rising","fa":"دنبال‌کنندهٔ تازه، رو به افزایش"}'></div></div>
+        <div class="kpi"><span class="edge" data-alt="Engagement">تعامل</span><b data-num="7.2" data-fmt="pct1">۷٫۲٪</b><span class="delta down">−0.4%</span><div data-chart="spark" data-height="36" data-values="8,7.8,7.9,7.6,7.7,7.5,7.6,7.3,7.4,7.2,7.3,7.2" data-label='{"en":"Engagement, slightly down","fa":"تعامل، کمی کاهش"}'></div></div>
+      </div>
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-head"><h2 class="h3" data-alt="Followers">دنبال‌کنندگان</h2><span class="badge ok" data-alt="38.4k · +2,140">۳۸٫۴ هزار · ۲٬۱۴۰+</span></div>
+          <div data-chart="area" data-height="230" data-fmt="compact" data-min="36000" data-max="38600" data-dates="2026-09-20,28,day" data-values="36260,36310,36380,36420,36500,36570,36600,36690,36760,36800,36920,37010,37050,37140,37230,37300,37390,37460,37540,37630,37700,37810,37900,38000,38090,38180,38290,38400" data-name='{"en":"Followers","fa":"دنبال‌کننده"}' data-label='{"en":"Followers over 28 days, from 36.3k to 38.4k","fa":"دنبال‌کنندگان در ۲۸ روز، از ۳۶٫۳ تا ۳۸٫۴ هزار"}'></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2 class="h3" data-alt="Top posts — circled by reach">پست‌های برتر؛ دور بهترین‌ها خط کشیده شده</h2></div>
+          <div class="contact" data-edge="TOP 6  ▸ 28D" style="--cols: 3">
+            <div class="cell" data-pick="circle"><span class="scene" data-scene="sea" data-tone="3"></span><span class="stat"><i class="ph ph-eye" aria-hidden="true"></i>41k</span><span class="no">1</span></div>
+            <div class="cell" data-pick="circle"><span class="scene" data-scene="peaks" data-tone="0"></span><span class="stat"><i class="ph ph-eye" aria-hidden="true"></i>33k</span><span class="no">2</span></div>
+            <div class="cell"><span class="scene" data-scene="tea" data-tone="3"></span><span class="stat"><i class="ph ph-eye" aria-hidden="true"></i>21k</span><span class="no">3</span></div>
+            <div class="cell"><span class="scene" data-scene="city" data-tone="2"></span><span class="stat"><i class="ph ph-eye" aria-hidden="true"></i>18k</span><span class="no">4</span></div>
+            <div class="cell"><span class="scene" data-scene="forest" data-tone="1"></span><span class="stat"><i class="ph ph-eye" aria-hidden="true"></i>12k</span><span class="no">5</span></div>
+            <div class="cell" data-pick="cross"><span class="scene" data-scene="desert" data-tone="2"></span><span class="stat"><i class="ph ph-eye" aria-hidden="true"></i>3k</span><span class="no">6</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-head"><h2 class="h3" data-alt="Best time to post">بهترین زمان انتشار</h2><span class="badge brand" data-alt="Thu &amp; Fri, 21:00">پنجشنبه و جمعه، ساعت ۲۱</span></div>
+          <div class="heat" role="img" aria-label="بیشترین حضور مخاطبان پنجشنبه و جمعه ساعت ۲۱ است" data-alt-aria-label="Your audience is most active Thursday and Friday at 21:00">
+            <span></span><span class="h">6</span><span class="h">9</span><span class="h">12</span><span class="h">15</span><span class="h">18</span><span class="h">21</span><span class="h">23</span><span class="h">2</span>
+            <span data-alt="Sat">شنبه</span><i style="--v:8"></i><i style="--v:22"></i><i style="--v:30"></i><i style="--v:26"></i><i style="--v:44"></i><i style="--v:70"></i><i style="--v:52"></i><i style="--v:10"></i>
+            <span data-alt="Sun">یکشنبه</span><i style="--v:6"></i><i style="--v:20"></i><i style="--v:28"></i><i style="--v:24"></i><i style="--v:40"></i><i style="--v:66"></i><i style="--v:48"></i><i style="--v:8"></i>
+            <span data-alt="Mon">دوشنبه</span><i style="--v:7"></i><i style="--v:18"></i><i style="--v:32"></i><i style="--v:25"></i><i style="--v:42"></i><i style="--v:68"></i><i style="--v:50"></i><i style="--v:9"></i>
+            <span data-alt="Tue">سه‌شنبه</span><i style="--v:6"></i><i style="--v:21"></i><i style="--v:29"></i><i style="--v:27"></i><i style="--v:45"></i><i style="--v:72"></i><i style="--v:55"></i><i style="--v:11"></i>
+            <span data-alt="Wed">چهارشنبه</span><i style="--v:9"></i><i style="--v:24"></i><i style="--v:33"></i><i style="--v:30"></i><i style="--v:52"></i><i style="--v:80"></i><i style="--v:66"></i><i style="--v:18"></i>
+            <span data-alt="Thu">پنجشنبه</span><i style="--v:12"></i><i style="--v:34"></i><i style="--v:46"></i><i style="--v:44"></i><i style="--v:64"></i><i style="--v:96"></i><i style="--v:82"></i><i style="--v:30"></i>
+            <span data-alt="Fri">جمعه</span><i style="--v:10"></i><i style="--v:40"></i><i style="--v:58"></i><i style="--v:52"></i><i style="--v:62"></i><i style="--v:92"></i><i style="--v:76"></i><i style="--v:26"></i>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2 class="h3" data-alt="Reach by format">دسترسی بر اساس قالب</h2></div>
+          <div data-chart="donut" data-height="170" data-fmt="pct" data-values="54,31,15" data-labels='{"en":["Reels","Posts","Stories"],"fa":["ریلز","پست","استوری"]}' data-center='{"en":"184k","fa":"۱۸۴ هزار"}' data-label='{"en":"Reels bring 54% of reach","fa":"ریلز ۵۴٪ دسترسی را می‌آورد"}'></div>
+          <div class="legend-row"><span><i style="--c: var(--chart-1)"></i><span data-alt="Reels 54%">ریلز ۵۴٪</span></span><span><i style="--c: var(--chart-2)"></i><span data-alt="Posts 31%">پست ۳۱٪</span></span><span><i style="--c: var(--chart-3)"></i><span data-alt="Stories 15%">استوری ۱۵٪</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ content -->
+    <section class="page" id="p-ct" role="tabpanel" aria-labelledby="t-ct" hidden>
+      <div class="panel">
+        <div class="panel-head"><h2 class="h3" data-alt="Your posts">پست‌های شما</h2><button class="btn btn-sm" type="button" data-dialog="#plan"><i class="ph ph-plus" aria-hidden="true"></i><span data-alt="Plan a post">برنامه‌ریزی پست</span></button></div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th><span class="sr-only" data-alt="Photo">عکس</span></th><th data-alt="Post">پست</th><th data-alt="Format">قالب</th><th><button type="button" data-sort="num"><span data-alt="Reach">دسترسی</span></button></th><th><button type="button" data-sort="num"><span data-alt="Likes">پسند</span></button></th><th><button type="button" data-sort="num"><span data-alt="Saves">ذخیره</span></button></th></tr></thead>
+            <tbody>
+              <tr><td><span class="thumb scene" data-scene="sea" data-tone="3"></span></td><td data-alt="The tide went out with the sun">جزر با خورشید رفت</td><td><span class="badge" data-alt="Post">پست</span></td><td data-value="41000"><span data-num="41000" data-fmt="compact">۴۱ هزار</span></td><td data-value="12406"><span data-num="12406">۱۲٬۴۰۶</span></td><td data-value="1840"><span data-num="1840">۱٬۸۴۰</span></td></tr>
+              <tr><td><span class="thumb scene" data-scene="peaks" data-tone="0"></span></td><td data-alt="Damavand, 5 a.m.">دماوند، ساعت پنج صبح</td><td><span class="badge" data-alt="Post">پست</span></td><td data-value="33000"><span data-num="33000" data-fmt="compact">۳۳ هزار</span></td><td data-value="2840"><span data-num="2840">۲٬۸۴۰</span></td><td data-value="610"><span data-num="610">۶۱۰</span></td></tr>
+              <tr><td><span class="thumb scene" data-scene="tea" data-tone="3"></span></td><td data-alt="How we brew tea at home">چای دم کردن به سبک خانه</td><td><span class="badge brand" data-alt="Reel">ریلز</span></td><td data-value="21000"><span data-num="21000" data-fmt="compact">۲۱ هزار</span></td><td data-value="4120"><span data-num="4120">۴٬۱۲۰</span></td><td data-value="980"><span data-num="980">۹۸۰</span></td></tr>
+              <tr><td><span class="thumb scene" data-scene="city" data-tone="2"></span></td><td data-alt="Night bazaar in four seconds">بازار شب در چهار ثانیه</td><td><span class="badge brand" data-alt="Reel">ریلز</span></td><td data-value="18000"><span data-num="18000" data-fmt="compact">۱۸ هزار</span></td><td data-value="2210"><span data-num="2210">۲٬۲۱۰</span></td><td data-value="340"><span data-num="340">۳۴۰</span></td></tr>
+              <tr><td><span class="thumb scene" data-scene="forest" data-tone="1"></span></td><td data-alt="Masuleh in mist">ماسوله در مه</td><td><span class="badge" data-alt="Post">پست</span></td><td data-value="12000"><span data-num="12000" data-fmt="compact">۱۲ هزار</span></td><td data-value="2210"><span data-num="2210">۲٬۲۱۰</span></td><td data-value="420"><span data-num="420">۴۲۰</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ audience -->
+    <section class="page" id="p-au" role="tabpanel" aria-labelledby="t-au" hidden>
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-head"><h2 class="h3" data-alt="Age">سن</h2></div>
+          <div data-chart="bar" data-height="230" data-fmt="pct" data-values="9,38,31,14,8" data-labels='{"en":["13–17","18–24","25–34","35–44","45+"],"fa":["۱۳–۱۷","۱۸–۲۴","۲۵–۳۴","۳۵–۴۴","۴۵+"]}' data-name='{"en":"Share","fa":"سهم"}' data-label='{"en":"Most followers are 18–34","fa":"بیشتر دنبال‌کنندگان ۱۸ تا ۳۴ ساله‌اند"}'></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2 class="h3" data-alt="Top cities">شهرهای برتر</h2></div>
+          <div data-chart="donut" data-height="170" data-fmt="pct" data-values="41,14,11,9,7,18" data-labels='{"en":["Tehran","Mashhad","Isfahan","Shiraz","Tabriz","Other"],"fa":["تهران","مشهد","اصفهان","شیراز","تبریز","سایر"]}' data-center='{"en":"6 cities","fa":"۶ شهر"}' data-label='{"en":"Tehran is 41% of followers","fa":"تهران ۴۱٪ دنبال‌کنندگان است"}'></div>
+          <div class="legend-row"><span><i style="--c: var(--chart-1)"></i><span data-alt="Tehran 41%">تهران ۴۱٪</span></span><span><i style="--c: var(--chart-2)"></i><span data-alt="Mashhad 14%">مشهد ۱۴٪</span></span><span><i style="--c: var(--chart-3)"></i><span data-alt="Isfahan 11%">اصفهان ۱۱٪</span></span><span><i style="--c: var(--chart-4)"></i><span data-alt="Shiraz 9%">شیراز ۹٪</span></span><span><i style="--c: var(--chart-5)"></i><span data-alt="Tabriz 7%">تبریز ۷٪</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ messages -->
+    <section class="page" id="p-dm" role="tabpanel" aria-labelledby="t-dm" hidden>
+      <div class="inbox">
+        <div class="convos" role="tablist" aria-orientation="vertical" aria-label="گفت‌وگوها" data-alt-aria-label="Conversations">
+          <button type="button" role="tab" id="cv-1" aria-controls="ch-1" aria-selected="true"><span class="avatar" style="--c:#ffd9c7"><span>D</span></span><span><b>darkroom.teh</b><small data-alt="Your scans are ready ✨">اسکن‌هایتان آماده است ✨</small></span><span class="unread" aria-hidden="true"></span></button>
+          <button type="button" role="tab" id="cv-2" aria-controls="ch-2" aria-selected="false"><span class="avatar" style="--c:#c9e4ca"><span>S</span></span><span><b>sahel.lens</b><small data-alt="Collab next month?">همکاری ماه بعد؟</small></span><span class="unread" aria-hidden="true"></span></button>
+          <button type="button" role="tab" id="cv-3" aria-controls="ch-3" aria-selected="false"><span class="avatar" style="--c:#f7c6cf"><span>K</span></span><span><b>kooche.food</b><small data-alt="Thanks for the shout-out!">ممنون از معرفی!</small></span><span class="unread" aria-hidden="true"></span></button>
+        </div>
+        <div class="chat" id="ch-1" role="tabpanel" aria-labelledby="cv-1">
+          <div class="chat-head"><span class="avatar" style="--c:#ffd9c7"><span>D</span></span><b>darkroom.teh</b><span class="badge ok" data-alt="Active now">آنلاین</span></div>
+          <div class="bubbles" id="bb-1">
+            <div class="bubble" data-alt="Hi Nima! The 400 roll pushed to 800 came out great.">سلام نیما! رول ۴۰۰ که پوش شده بود عالی درآمد.</div>
+            <div class="bubble photo"><span class="scene" data-scene="night" data-tone="2" style="--ar: 4/5"></span></div>
+            <div class="bubble" data-alt="Your scans are ready ✨ want them in high-res TIFF?">اسکن‌هایتان آماده است ✨ با کیفیت بالا و TIFF بفرستم؟</div>
+            <div class="bubble me" data-alt="Yes please! And print #3 at 30×40.">بله لطفاً! و شمارهٔ ۳ را ۳۰×۴۰ چاپ کنید.</div>
+          </div>
+          <div class="quick"><button type="button" data-quick data-alt="Thank you! 🙏">ممنون! 🙏</button><button type="button" data-quick data-alt="When can I pick them up?">کی می‌توانم بگیرم؟</button><button type="button" data-quick data-alt="Send the invoice">فاکتور را بفرستید</button></div>
+          <form class="composer" data-chat="#bb-1"><label class="sr-only" for="msg" data-alt="Message">پیام</label><input id="msg" placeholder="پیام…" data-alt-placeholder="Message…" autocomplete="off"><button class="btn btn-icon btn-sm" type="submit" aria-label="ارسال" data-alt-aria-label="Send"><i class="ph ph-paper-plane-tilt flip-rtl" aria-hidden="true"></i></button></form>
+        </div>
+        <div class="chat" id="ch-2" role="tabpanel" aria-labelledby="cv-2" hidden>
+          <div class="chat-head"><span class="avatar" style="--c:#c9e4ca"><span>S</span></span><b>sahel.lens</b></div>
+          <div class="bubbles"><div class="bubble" data-alt="Collab next month? Mountains meet the sea.">همکاری ماه بعد؟ کوه به دریا می‌رسد.</div></div>
+        </div>
+        <div class="chat" id="ch-3" role="tabpanel" aria-labelledby="cv-3" hidden>
+          <div class="chat-head"><span class="avatar" style="--c:#f7c6cf"><span>K</span></span><b>kooche.food</b></div>
+          <div class="bubbles"><div class="bubble" data-alt="Thanks for the shout-out! Pomegranates on us next time.">ممنون از معرفی! دفعهٔ بعد انار مهمان ما.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ schedule -->
+    <section class="page" id="p-sc" role="tabpanel" aria-labelledby="t-sc" hidden>
+      <div class="panel">
+        <div class="panel-head"><h2 class="h3" data-alt="This week">این هفته</h2><button class="btn btn-sm" type="button" data-dialog="#plan"><i class="ph ph-plus" aria-hidden="true"></i><span data-alt="Plan a post">برنامه‌ریزی پست</span></button></div>
+        <div class="week">
+          <div class="day"><span class="d"><span data-alt="Sat">شنبه</span><span data-date="2026-10-17" data-fmt="short">۲۵ مهر</span></span><div class="slot"><span class="scene" data-scene="forest" data-tone="0" style="--ar: 4/3"></span><span data-alt="Masuleh, part 2">ماسوله، قسمت ۲</span><time>21:00</time></div></div>
+          <div class="day today"><span class="d"><span data-alt="Sun">یکشنبه</span><span data-date="2026-10-18" data-fmt="short">۲۶ مهر</span></span><div class="slot"><span class="scene" data-scene="night" data-tone="2" style="--ar: 4/3"></span><span data-alt="Reel: ten minutes of stars">ریلز: ده دقیقه ستاره</span><time>21:30</time></div></div>
+          <div class="day"><span class="d"><span data-alt="Mon">دوشنبه</span><span data-date="2026-10-19" data-fmt="short">۲۷ مهر</span></span></div>
+          <div class="day"><span class="d"><span data-alt="Tue">سه‌شنبه</span><span data-date="2026-10-20" data-fmt="short">۲۸ مهر</span></span><div class="slot"><span class="scene" data-scene="city" data-tone="1" style="--ar: 4/3"></span><span data-alt="Tehran rooftops">پشت‌بام‌های تهران</span><time>19:00</time></div></div>
+          <div class="day"><span class="d"><span data-alt="Wed">چهارشنبه</span><span data-date="2026-10-21" data-fmt="short">۲۹ مهر</span></span></div>
+          <div class="day"><span class="d"><span data-alt="Thu">پنجشنبه</span><span data-date="2026-10-22" data-fmt="short">۳۰ مهر</span></span><div class="slot"><span class="scene" data-scene="peaks" data-tone="3" style="--ar: 4/3"></span><span data-alt="The climb in forty seconds">صعود در چهل ثانیه</span><time>21:00</time></div></div>
+          <div class="day"><span class="d"><span data-alt="Fri">جمعه</span><span data-date="2026-10-23" data-fmt="short">۱ آبان</span></span><div class="slot"><span class="scene" data-scene="tea" data-tone="0" style="--ar: 4/3"></span><span data-alt="Darkroom Q&amp;A">پرسش و پاسخ تاریکخانه</span><time>20:00</time></div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<dialog class="modal" id="plan" aria-labelledby="pl-t">
+  <form data-validate data-success="برای ساعت انتخابی برنامه‌ریزی شد." data-success-alt="Scheduled for the time you picked.">
+    <div class="modal-head"><h2 class="h3" id="pl-t" data-alt="Plan a post">برنامه‌ریزی پست</h2><button class="btn btn-ghost btn-icon btn-sm" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><i class="ph ph-x" aria-hidden="true"></i></button></div>
+    <div class="modal-body">
+      <div class="field"><label class="label" for="pl-c" data-alt="Caption">توضیح</label><textarea class="textarea" id="pl-c" name="caption" required minlength="2"></textarea></div>
+      <span class="label" data-alt="When">زمان</span>
+      <div class="chips" data-group role="group" aria-label="زمان" data-alt-aria-label="When"><button type="button" aria-pressed="true" data-alt="Thu 21:00 · best">پنجشنبه ۲۱:۰۰ · بهترین</button><button type="button" aria-pressed="false" data-alt="Fri 21:00">جمعه ۲۱:۰۰</button><button type="button" aria-pressed="false" data-alt="Now">همین حالا</button></div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" type="button" data-close data-alt="Cancel">انصراف</button><button class="btn" type="submit"><i class="ph ph-clock" aria-hidden="true"></i><span data-alt="Schedule">زمان‌بندی</span></button></div>
+  </form>
+</dialog>
+
+<script>
+  // Phone section chips drive the rail tabs; #messages opens Messages; quick replies and the composer add bubbles.
+  const go = (id) => { tf.selectTab(document.getElementById(id)); document.querySelectorAll('[data-go]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.go === id))); };
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-go]');
+    if (b) go(b.dataset.go);
+    const q = e.target.closest('[data-quick]');
+    if (q) { const input = document.getElementById('msg'); input.value = q.textContent; input.focus(); }
+  });
+  document.addEventListener('tf:tab', (e) => document.querySelectorAll('[data-go]').forEach((b) => b.setAttribute('aria-pressed', String(document.getElementById(b.dataset.go)?.getAttribute('aria-controls') === e.detail.id))));
+  if (location.hash === '#messages') document.addEventListener('tf:ready', () => go('t-dm'), { once: true });
+  document.querySelector('form[data-chat]').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const input = e.target.querySelector('input');
+    if (!input.value.trim()) return;
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble me';
+    bubble.textContent = input.value.trim();
+    document.querySelector(e.target.dataset.chat).append(bubble);
+    input.value = '';
+  });
+</script>
+</body>
+</html>

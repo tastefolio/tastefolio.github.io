@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="site">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Ghab — photos and short films">قاب — عکس و فیلم کوتاه</title>
+<meta name="description" content="قاب، یک شبکهٔ نمونهٔ اشتراک عکس و فیلم کوتاه: پست‌ها مثل عکس چاپی، فیلم‌ها روی نوار فیلم و پروفایل مثل برگهٔ کنتاکت." data-alt-content="Ghab, a sample photo and short-film network: posts as photo prints, films on a film strip and profiles as contact sheets.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300..800&family=Urbanist:wght@400..800&family=Overpass+Mono:wght@400..600&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<script src="../assets/sprocket.js" defer></script>
+<style>
+  .sec-title { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+  .bio { display: grid; gap: 4px; font-size: var(--fs-sm); }
+  .profile { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-5); }
+  .viewer .viewer-side { min-block-size: 360px; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<div class="app">
+  <aside class="rail" aria-label="ناوبری" data-alt-aria-label="Navigation">
+    <a class="wordmark" href="#top"><span class="mark-logo" aria-hidden="true"></span><span data-alt="Ghab">قاب</span></a>
+    <a class="nav-item" href="#top" aria-current="page"><i class="ph-fill ph-house" aria-hidden="true"></i><span data-alt="Home">خانه</span></a>
+    <a class="nav-item" href="#explore"><i class="ph ph-magnifying-glass" aria-hidden="true"></i><span data-alt="Explore">جست‌وجو</span></a>
+    <a class="nav-item" href="#reels"><i class="ph ph-film-strip" aria-hidden="true"></i><span data-alt="Reels">ریلز</span></a>
+    <a class="nav-item" href="dashboard.html#messages"><i class="ph ph-paper-plane-tilt" aria-hidden="true"></i><span data-alt="Messages">پیام‌ها</span><span class="count" data-num="3">۳</span></a>
+    <button class="nav-item" type="button" data-toast="۱۲ پسند تازه روی «دماوند، پنج صبح»" data-toast-alt="12 new likes on “Damavand, 5 a.m.”"><i class="ph ph-heart" aria-hidden="true"></i><span class="dot" aria-hidden="true"></span><span data-alt="Notifications">اعلان‌ها</span></button>
+    <button class="nav-item" type="button" data-dialog="#create"><i class="ph ph-plus-square" aria-hidden="true"></i><span data-alt="Create">ساختن</span></button>
+    <a class="nav-item" href="#profile"><span class="avatar" style="--s:26px; --c:#f6c7a9" aria-hidden="true"><span data-alt="N">ن</span></span><span data-alt="Profile">پروفایل</span></a>
+    <span class="spacer"></span>
+    <a class="nav-item" href="dashboard.html"><i class="ph ph-chart-line-up" aria-hidden="true"></i><span data-alt="Creator studio">استودیوی سازنده</span></a>
+    <div class="row" style="padding-inline: 4px"><button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button><button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="اتاق تاریک" data-alt-aria-label="Darkroom mode"><i class="ph ph-moon" aria-hidden="true"></i></button></div>
+  </aside>
+
+  <div>
+    <header class="topbar-m">
+      <a class="wordmark" href="#top"><span class="mark-logo" aria-hidden="true"></span><span data-alt="Ghab">قاب</span></a>
+      <span class="spacer"></span>
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+      <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="اتاق تاریک" data-alt-aria-label="Darkroom mode"><i class="ph ph-moon" aria-hidden="true"></i></button>
+      <a class="btn btn-ghost btn-icon btn-sm" href="dashboard.html#messages" aria-label="پیام‌ها" data-alt-aria-label="Messages"><i class="ph ph-paper-plane-tilt" aria-hidden="true"></i></a>
+    </header>
+
+    <main class="main" id="main">
+      <div class="feed" id="top">
+        <div class="stories" aria-label="استوری‌ها" data-alt-aria-label="Stories">
+          <button class="story" type="button" data-scenes="peaks,forest" data-tone="0" data-say-fa="صعود سوم؛ هوا صاف بود." data-say-en="Third climb — clear sky."><span class="ring" style="--n:2"><span class="avatar" style="--s:62px; --c:#f6c7a9"><span data-alt="N">ن</span></span></span><span data-label data-alt="you">شما</span></button>
+          <button class="story" type="button" data-scenes="sea,sea,night" data-tone="3" data-say-fa="بندر، قبل از باران" data-say-en="The harbour, before the rain"><span class="ring" style="--n:3"><span class="avatar" style="--s:62px; --c:#c9e4ca"><span>S</span></span></span><span data-label>sahel.lens</span></button>
+          <button class="story" type="button" data-scenes="city" data-tone="1" data-say-fa="بادگیرهای یزد از پشت‌بام" data-say-en="Yazd windcatchers from a rooftop"><span class="ring live" data-n="1"><span class="avatar" style="--s:62px; --c:#ffe1a8"><span>Y</span></span></span><span data-label>yazd.walks</span></button>
+          <button class="story" type="button" data-scenes="tea,pomegranate" data-tone="0" data-say-fa="چای عصر، انار تازه" data-say-en="Afternoon tea, fresh pomegranate"><span class="ring" style="--n:2"><span class="avatar" style="--s:62px; --c:#f7c6cf"><span>K</span></span></span><span data-label>kooche.food</span></button>
+          <button class="story" type="button" data-scenes="desert" data-tone="3" data-say-fa="ورزنه، تپه‌های صورتی" data-say-en="Varzaneh, the pink dunes"><span class="ring" data-n="1"><span class="avatar" style="--s:62px; --c:#e4d7f7"><span>M</span></span></span><span data-label>mahtab.film</span></button>
+          <button class="story" type="button" data-scenes="forest,forest" data-tone="1" data-say-fa="جنگل‌های شمال، مه صبح" data-say-en="Northern forests, morning mist"><span class="ring seen" style="--n:2"><span class="avatar" style="--s:62px; --c:#d4ecf7"><span>A</span></span></span><span data-label>abr.o.bad</span></button>
+          <button class="story" type="button" data-scenes="night" data-tone="2" data-say-fa="شب کویر، بدون نور شهر" data-say-en="Desert night, no city light"><span class="ring seen" data-n="1"><span class="avatar" style="--s:62px; --c:#ffd9c7"><span>D</span></span></span><span data-label>darkroom.teh</span></button>
+        </div>
+
+        <article class="post">
+          <div class="post-head"><span class="ring" style="--n:2; --s:34px"><span class="avatar" style="--s:34px; --c:#f6c7a9"><span data-alt="N">ن</span></span></span><div class="who"><b>nima.frames</b><span data-alt="Damavand, Mazandaran · 2 h">دماوند، مازندران · ۲ ساعت</span></div><span class="spacer"></span><button class="act" type="button" aria-label="بیشتر" data-alt-aria-label="More"><i class="ph ph-dots-three" aria-hidden="true"></i></button></div>
+          <figure class="print" style="--tilt:-.6deg">
+            <span class="scene" data-scene="peaks" data-tone="0" style="--ar: 4/5"><span class="datestamp">'26 10 14</span></span>
+            <span class="heart-pop" aria-hidden="true"><i class="ph-fill ph-heart"></i></span>
+            <figcaption class="print-foot"><span class="caption"><span data-alt="Damavand, 5 a.m.">دماوند، ساعت پنج صبح</span> <em>·</em> <span data-alt="the first light">اولین نور</span></span><span class="where">ƒ/8 · 1/250 · ISO 400</span></figcaption>
+          </figure>
+          <div class="actions">
+            <button class="act like" type="button" aria-pressed="false" aria-label="پسندیدن" data-alt-aria-label="Like"><i class="ph ph-heart" aria-hidden="true"></i><i class="ph-fill ph-heart" aria-hidden="true"></i></button>
+            <button class="act" type="button" aria-label="نظر" data-alt-aria-label="Comment"><i class="ph ph-chat-circle" aria-hidden="true"></i></button>
+            <button class="act" type="button" data-toast="پیوند پست کپی شد." data-toast-alt="Post link copied." aria-label="فرستادن" data-alt-aria-label="Send"><i class="ph ph-paper-plane-tilt flip-rtl" aria-hidden="true"></i></button>
+            <span class="spacer"></span>
+            <button class="act" type="button" aria-pressed="false" data-toast-on-fa="در «آلبوم کوه» ذخیره شد." data-toast-on-en="Saved to “Mountains”." aria-label="ذخیره" data-alt-aria-label="Save"><i class="ph ph-bookmark-simple" aria-hidden="true"></i><i class="ph-fill ph-bookmark-simple" aria-hidden="true"></i></button>
+          </div>
+          <div class="post-meta">
+            <span><span class="likes" data-likes="2840" data-num="2840">۲٬۸۴۰</span> <span data-alt="likes">پسند</span></span>
+            <p class="comment"><b>nima.frames</b><span data-alt="Third try. The mountain finally stood still for me.">بار سوم. بالاخره کوه برایم ثابت ایستاد.</span></p>
+            <button class="more" type="button" data-alt="View all 86 comments">دیدن هر ۸۶ نظر</button>
+            <p class="comment"><b>sahel.lens</b><span data-alt="That edge light 🔥">این نور لبه 🔥</span></p>
+          </div>
+          <form class="add-comment" data-me="you"><label class="sr-only" for="c1" data-alt="Add a comment">افزودن نظر</label><input id="c1" placeholder="نظری بنویسید…" data-alt-placeholder="Add a comment…" autocomplete="off"><button type="submit" data-alt="Post">ارسال</button></form>
+        </article>
+
+        <section class="stack bleed" id="reels" aria-labelledby="reels-h" style="gap: 10px">
+          <div class="strip-head" style="padding-inline: var(--gutter)"><h2 class="h2" id="reels-h" data-alt="Reels">ریلز</h2><span class="edge ltr">SPROCKET 400 ▸ 12–17</span></div>
+          <div class="strip">
+            <button class="frame" type="button"><span class="scene" data-scene="sea" data-tone="0"></span><span class="no">▸12</span><b data-alt="Harbour at golden hour">بندر در ساعت طلایی</b><small><i class="ph-fill ph-play" aria-hidden="true"></i><span data-num="184000" data-fmt="compact">۱۸۴ هزار</span></small></button>
+            <button class="frame" type="button"><span class="scene" data-scene="city" data-tone="2"></span><span class="no">12A</span><b data-alt="Night bazaar in four seconds">بازار شب در چهار ثانیه</b><small><i class="ph-fill ph-play" aria-hidden="true"></i><span data-num="96000" data-fmt="compact">۹۶ هزار</span></small></button>
+            <button class="frame" type="button"><span class="scene" data-scene="tea" data-tone="3"></span><span class="no">13</span><b data-alt="How we brew tea at home">چای دم کردن به سبک خانه</b><small><i class="ph-fill ph-play" aria-hidden="true"></i><span data-num="412000" data-fmt="compact">۴۱۲ هزار</span></small></button>
+            <button class="frame" type="button"><span class="scene" data-scene="desert" data-tone="0"></span><span class="no">13A</span><b data-alt="Sand, wind, silence">شن، باد، سکوت</b><small><i class="ph-fill ph-play" aria-hidden="true"></i><span data-num="58000" data-fmt="compact">۵۸ هزار</span></small></button>
+            <button class="frame" type="button"><span class="scene" data-scene="forest" data-tone="1"></span><span class="no">14</span><b data-alt="Mist rolling over the forest">مه روی جنگل</b><small><i class="ph-fill ph-play" aria-hidden="true"></i><span data-num="230000" data-fmt="compact">۲۳۰ هزار</span></small></button>
+            <button class="frame" type="button"><span class="scene" data-scene="night" data-tone="2"></span><span class="no">14A</span><b data-alt="Ten minutes of stars">ده دقیقه ستاره</b><small><i class="ph-fill ph-play" aria-hidden="true"></i><span data-num="71000" data-fmt="compact">۷۱ هزار</span></small></button>
+          </div>
+        </section>
+
+        <article class="post">
+          <div class="post-head"><span class="ring" style="--n:3; --s:34px"><span class="avatar" style="--s:34px; --c:#c9e4ca"><span>S</span></span></span><div class="who"><b>sahel.lens <i class="ph-fill ph-seal-check verified" aria-label="تأییدشده" data-alt-aria-label="Verified"></i></b><span data-alt="Bandar Abbas · 6 h">بندرعباس · ۶ ساعت</span></div><span class="spacer"></span><button class="follow btn btn-sm btn-soft" type="button" aria-pressed="false" data-on-fa="دنبال می‌کنید" data-on-en="Following" data-off-fa="دنبال کردن" data-off-en="Follow">دنبال کردن</button></div>
+          <figure class="print" style="--tilt:.5deg">
+            <span class="scene" data-scene="sea" data-tone="3" style="--ar: 1"><span class="datestamp">'26 10 13</span></span>
+            <span class="heart-pop" aria-hidden="true"><i class="ph-fill ph-heart"></i></span>
+            <figcaption class="print-foot"><span class="caption" data-alt="The tide went out with the sun.">جزر با خورشید رفت.</span><span class="where">ƒ/4 · 1/500 · ISO 200</span></figcaption>
+          </figure>
+          <div class="actions">
+            <button class="act like" type="button" aria-pressed="true" aria-label="پسندیدن" data-alt-aria-label="Like"><i class="ph ph-heart" aria-hidden="true"></i><i class="ph-fill ph-heart" aria-hidden="true"></i></button>
+            <button class="act" type="button" aria-label="نظر" data-alt-aria-label="Comment"><i class="ph ph-chat-circle" aria-hidden="true"></i></button>
+            <button class="act" type="button" data-toast="پیوند پست کپی شد." data-toast-alt="Post link copied." aria-label="فرستادن" data-alt-aria-label="Send"><i class="ph ph-paper-plane-tilt flip-rtl" aria-hidden="true"></i></button>
+            <span class="spacer"></span>
+            <button class="act" type="button" aria-pressed="true" aria-label="ذخیره" data-alt-aria-label="Save"><i class="ph ph-bookmark-simple" aria-hidden="true"></i><i class="ph-fill ph-bookmark-simple" aria-hidden="true"></i></button>
+          </div>
+          <div class="post-meta">
+            <span><span class="likes" data-likes="12406" data-num="12406">۱۲٬۴۰۶</span> <span data-alt="likes">پسند</span></span>
+            <p class="comment"><b>yazd.walks</b><span data-alt="Print this one. Big.">این یکی را چاپ کن. بزرگ.</span></p>
+          </div>
+          <form class="add-comment" data-me="you"><label class="sr-only" for="c2" data-alt="Add a comment">افزودن نظر</label><input id="c2" placeholder="نظری بنویسید…" data-alt-placeholder="Add a comment…" autocomplete="off"><button type="submit" data-alt="Post">ارسال</button></form>
+        </article>
+
+        <article class="post">
+          <div class="post-head"><span class="ring" style="--n:2; --s:34px"><span class="avatar" style="--s:34px; --c:#f7c6cf"><span>K</span></span></span><div class="who"><b>kooche.food</b><span data-alt="Tabriz · yesterday">تبریز · دیروز</span></div><span class="spacer"></span><span class="badge brand" data-alt="Sponsored">تبلیغ</span></div>
+          <figure class="print" style="--tilt:-.4deg">
+            <span class="scene" data-scene="pomegranate" data-tone="0" style="--ar: 1"><span class="datestamp">'26 10 12</span></span>
+            <span class="heart-pop" aria-hidden="true"><i class="ph-fill ph-heart"></i></span>
+            <figcaption class="print-foot"><span class="caption" data-alt="First pomegranates of the season — Saveh, picked this morning.">اولین انارهای فصل؛ ساوه، صبح امروز چیده شده.</span><span class="where">ƒ/2 · 1/125 · ISO 160</span></figcaption>
+          </figure>
+          <div class="actions">
+            <button class="act like" type="button" aria-pressed="false" aria-label="پسندیدن" data-alt-aria-label="Like"><i class="ph ph-heart" aria-hidden="true"></i><i class="ph-fill ph-heart" aria-hidden="true"></i></button>
+            <button class="act" type="button" aria-label="نظر" data-alt-aria-label="Comment"><i class="ph ph-chat-circle" aria-hidden="true"></i></button>
+            <span class="spacer"></span>
+            <a class="btn btn-sm" href="#top" data-alt="Order">سفارش</a>
+          </div>
+          <div class="post-meta"><span><span class="likes" data-likes="934" data-num="934">۹۳۴</span> <span data-alt="likes">پسند</span></span></div>
+        </article>
+
+        <section class="stack" id="explore" aria-labelledby="ex-h">
+          <div class="sec-title"><h2 class="h2" id="ex-h" data-alt="Explore">کاوش</h2><span class="edge" data-alt="Contact sheet · 9 frames">برگهٔ کنتاکت · ۹ قاب</span></div>
+          <div class="chips" data-group role="group" aria-label="موضوع" data-alt-aria-label="Topic"><button type="button" aria-pressed="true" data-alt="For you">برای شما</button><button type="button" aria-pressed="false" data-alt="Travel">سفر</button><button type="button" aria-pressed="false" data-alt="Food">غذا</button><button type="button" aria-pressed="false" data-alt="Film photos">عکس آنالوگ</button><button type="button" aria-pressed="false" data-alt="Architecture">معماری</button></div>
+          <div class="contact" data-edge="SPROCKET 400  ▸ 21  ▸ 22  ▸ 23">
+            <button class="cell" type="button" data-view data-likes="5200" data-caption-fa="بادگیرهای یزد" data-caption-en="Yazd windcatchers" data-pick="circle"><span class="scene" data-scene="city" data-tone="3"></span><span class="stat"><i class="ph-fill ph-heart" aria-hidden="true"></i>5.2k</span><span class="no">21</span><span class="sr-only" data-alt="Yazd windcatchers">بادگیرهای یزد</span></button>
+            <button class="cell" type="button" data-view data-likes="1800" data-caption-fa="شب کویر" data-caption-en="Desert night"><span class="scene" data-scene="night" data-tone="2"></span><span class="kind"><i class="ph-fill ph-film-strip" aria-hidden="true"></i></span><span class="no">21A</span><span class="sr-only" data-alt="Desert night">شب کویر</span></button>
+            <button class="cell" type="button" data-view data-likes="3400" data-caption-fa="جنگل مه‌آلود" data-caption-en="Misty forest"><span class="scene" data-scene="forest" data-tone="1"></span><span class="no">22</span><span class="sr-only" data-alt="Misty forest">جنگل مه‌آلود</span></button>
+            <button class="cell" type="button" data-view data-likes="960" data-caption-fa="چای عصر" data-caption-en="Afternoon tea" data-pick="cross"><span class="scene" data-scene="tea" data-tone="1"></span><span class="no">22A</span><span class="sr-only" data-alt="Afternoon tea">چای عصر</span></button>
+            <button class="cell" type="button" data-view data-likes="7100" data-caption-fa="ساحل جنوب" data-caption-en="Southern shore"><span class="scene" data-scene="sea" data-tone="1"></span><span class="stat"><i class="ph-fill ph-heart" aria-hidden="true"></i>7.1k</span><span class="no">23</span><span class="sr-only" data-alt="Southern shore">ساحل جنوب</span></button>
+            <button class="cell" type="button" data-view data-likes="2300" data-caption-fa="تپه‌های صورتی" data-caption-en="Pink dunes"><span class="scene" data-scene="desert" data-tone="3"></span><span class="no">23A</span><span class="sr-only" data-alt="Pink dunes">تپه‌های صورتی</span></button>
+            <button class="cell" type="button" data-view data-likes="4100" data-caption-fa="قلهٔ برفی" data-caption-en="Snowy peak"><span class="scene" data-scene="peaks" data-tone="1"></span><span class="kind"><i class="ph-fill ph-film-strip" aria-hidden="true"></i></span><span class="no">24</span><span class="sr-only" data-alt="Snowy peak">قلهٔ برفی</span></button>
+            <button class="cell" type="button" data-view data-likes="1200" data-caption-fa="انار ساوه" data-caption-en="Saveh pomegranate"><span class="scene" data-scene="pomegranate" data-tone="3"></span><span class="no">24A</span><span class="sr-only" data-alt="Saveh pomegranate">انار ساوه</span></button>
+            <button class="cell" type="button" data-view data-likes="2900" data-caption-fa="شهر در شب" data-caption-en="City by night"><span class="scene" data-scene="city" data-tone="2"></span><span class="no">25</span><span class="sr-only" data-alt="City by night">شهر در شب</span></button>
+          </div>
+        </section>
+
+        <section class="profile" id="profile" aria-labelledby="pf-h">
+          <div class="profile-head">
+            <span class="ring" style="--n:2"><span class="avatar" style="--s:132px; --c:#f6c7a9"><span data-alt="N">ن</span></span></span>
+            <div class="stack" style="gap: 12px">
+              <div class="row"><h2 class="h2 ltr" id="pf-h">nima.frames</h2><button class="btn btn-sm btn-soft" type="button" data-dialog="#create" data-alt="New post">پست تازه</button><a class="btn btn-sm btn-soft" href="dashboard.html" data-alt="Studio">استودیو</a></div>
+              <div class="stats"><span><b data-num="214">۲۱۴</b><span data-alt="posts">پست</span></span><span><b data-num="38400" data-fmt="compact">۳۸٫۴ هزار</b><span data-alt="followers">دنبال‌کننده</span></span><span><b data-num="310">۳۱۰</b><span data-alt="following">دنبال‌شونده</span></span></div>
+              <div class="bio"><b data-alt="Nima Rahbar">نیما رهبر</b><span data-alt="Mountains on 35 mm, cities on my phone. Tehran.">کوه با فیلم ۳۵ میلی‌متری، شهر با موبایل. تهران.</span><a class="link ltr" href="#top">nima-frames.example</a></div>
+            </div>
+          </div>
+          <div class="highlights" aria-label="هایلایت‌ها" data-alt-aria-label="Highlights">
+            <button class="canister" type="button"><span class="can" data-iso="400" style="--c:#e2402f"><i></i></span><span data-alt="Peaks">قله‌ها</span></button>
+            <button class="canister" type="button"><span class="can" data-iso="200" style="--c:#2f6fb3"><i></i></span><span data-alt="Sea">دریا</span></button>
+            <button class="canister" type="button"><span class="can" data-iso="800" style="--c:#1b1a17"><i></i></span><span data-alt="Nights">شب‌ها</span></button>
+            <button class="canister" type="button"><span class="can" data-iso="100" style="--c:#2f8a57"><i></i></span><span data-alt="North">شمال</span></button>
+            <button class="canister" type="button"><span class="can" data-iso="160" style="--c:#f2b13d"><i></i></span><span data-alt="Gear">تجهیزات</span></button>
+          </div>
+          <div>
+            <div class="grid-tabs" role="tablist" aria-label="محتوای پروفایل" data-alt-aria-label="Profile content">
+              <button type="button" role="tab" id="pt-1" aria-controls="pp-1" aria-selected="true"><i class="ph ph-squares-four" aria-hidden="true"></i><span data-alt="Posts">پست‌ها</span></button>
+              <button type="button" role="tab" id="pt-2" aria-controls="pp-2" aria-selected="false"><i class="ph ph-film-strip" aria-hidden="true"></i><span data-alt="Reels">ریلز</span></button>
+              <button type="button" role="tab" id="pt-3" aria-controls="pp-3" aria-selected="false"><i class="ph ph-tag" aria-hidden="true"></i><span data-alt="Tagged">برچسب‌ها</span></button>
+            </div>
+            <div id="pp-1" role="tabpanel" aria-labelledby="pt-1" class="contact" data-edge="NIMA 214  ▸ 1  ▸ 2  ▸ 3">
+              <button class="cell" type="button" data-view data-likes="2840" data-caption-fa="دماوند، ساعت پنج صبح" data-caption-en="Damavand, 5 a.m." data-pick="circle"><span class="scene" data-scene="peaks" data-tone="0"></span><span class="no">1</span><span class="sr-only" data-alt="Damavand, 5 a.m.">دماوند، ساعت پنج صبح</span></button>
+              <button class="cell" type="button" data-view data-likes="1610" data-caption-fa="خیابان ولیعصر، باران" data-caption-en="Valiasr street, rain"><span class="scene" data-scene="city" data-tone="1"></span><span class="no">1A</span><span class="sr-only" data-alt="Valiasr street, rain">خیابان ولیعصر، باران</span></button>
+              <button class="cell" type="button" data-view data-likes="980" data-caption-fa="توچال، زمستان" data-caption-en="Tochal, winter"><span class="scene" data-scene="peaks" data-tone="1"></span><span class="no">2</span><span class="sr-only" data-alt="Tochal, winter">توچال، زمستان</span></button>
+              <button class="cell" type="button" data-view data-likes="2210" data-caption-fa="ماسوله در مه" data-caption-en="Masuleh in mist"><span class="scene" data-scene="forest" data-tone="0"></span><span class="no">2A</span><span class="sr-only" data-alt="Masuleh in mist">ماسوله در مه</span></button>
+              <button class="cell" type="button" data-view data-likes="740" data-caption-fa="آزمایش فیلم منقضی" data-caption-en="Expired film test" data-pick="cross"><span class="scene" data-scene="desert" data-tone="2"></span><span class="no">3</span><span class="sr-only" data-alt="Expired film test">آزمایش فیلم منقضی</span></button>
+              <button class="cell" type="button" data-view data-likes="3120" data-caption-fa="آسمان الموت" data-caption-en="Alamut sky" data-pick="circle"><span class="scene" data-scene="night" data-tone="2"></span><span class="no">3A</span><span class="sr-only" data-alt="Alamut sky">آسمان الموت</span></button>
+            </div>
+            <div id="pp-2" role="tabpanel" aria-labelledby="pt-2" class="contact" data-edge="NIMA REELS" hidden>
+              <button class="cell" type="button" data-view data-likes="9100" data-caption-fa="شب‌مانی در کوه" data-caption-en="A night on the mountain"><span class="scene" data-scene="night" data-tone="0" style="--ar: 9/16"></span><span class="kind"><i class="ph-fill ph-film-strip" aria-hidden="true"></i></span><span class="no">R1</span><span class="sr-only" data-alt="A night on the mountain">شب‌مانی در کوه</span></button>
+              <button class="cell" type="button" data-view data-likes="4300" data-caption-fa="صعود در چهل ثانیه" data-caption-en="The climb in forty seconds"><span class="scene" data-scene="peaks" data-tone="3" style="--ar: 9/16"></span><span class="kind"><i class="ph-fill ph-film-strip" aria-hidden="true"></i></span><span class="no">R2</span><span class="sr-only" data-alt="The climb in forty seconds">صعود در چهل ثانیه</span></button>
+              <button class="cell" type="button" data-view data-likes="2600" data-caption-fa="ظهور فیلم در خانه" data-caption-en="Developing film at home"><span class="scene" data-scene="tea" data-tone="2" style="--ar: 9/16"></span><span class="kind"><i class="ph-fill ph-film-strip" aria-hidden="true"></i></span><span class="no">R3</span><span class="sr-only" data-alt="Developing film at home">ظهور فیلم در خانه</span></button>
+            </div>
+            <div id="pp-3" role="tabpanel" aria-labelledby="pt-3" hidden><p class="subtle small" style="padding: 24px; text-align: center" data-alt="Photos you are tagged in appear here.">عکس‌هایی که در آن‌ها برچسب خورده‌اید اینجا می‌آیند.</p></div>
+          </div>
+        </section>
+      </div>
+
+      <aside class="side" aria-label="پیشنهادها" data-alt-aria-label="Suggestions">
+        <div class="me-card"><span class="avatar" style="--s:46px; --c:#f6c7a9"><span data-alt="N">ن</span></span><div style="display: grid; line-height: 1.3"><b class="ltr" style="justify-self: start">nima.frames</b><span class="small subtle" data-alt="Nima Rahbar">نیما رهبر</span></div><span class="spacer"></span><a class="link small" href="dashboard.html" data-alt="Studio">استودیو</a></div>
+        <div class="stack" style="gap: 12px">
+          <div class="split"><span class="small subtle" style="font-weight: 700" data-alt="Suggested for you">پیشنهاد برای شما</span><button class="btn btn-ghost btn-sm" type="button" data-alt="See all">همه</button></div>
+          <ul class="suggest">
+            <li><span class="avatar" style="--c:#ffe1a8"><span>Y</span></span><div><b>yazd.walks</b><span data-alt="Followed by sahel.lens">دنبال‌شده توسط sahel.lens</span></div><button class="follow" type="button" aria-pressed="false" data-on-fa="دنبال می‌کنید" data-on-en="Following" data-off-fa="دنبال کردن" data-off-en="Follow">دنبال کردن</button></li>
+            <li><span class="avatar" style="--c:#e4d7f7"><span>M</span></span><div><b>mahtab.film</b><span data-alt="New on Ghab">تازه در قاب</span></div><button class="follow" type="button" aria-pressed="false" data-on-fa="دنبال می‌کنید" data-on-en="Following" data-off-fa="دنبال کردن" data-off-en="Follow">دنبال کردن</button></li>
+            <li><span class="avatar" style="--c:#d4ecf7"><span>A</span></span><div><b>abr.o.bad</b><span data-alt="Popular in Gilan">محبوب در گیلان</span></div><button class="follow" type="button" aria-pressed="false" data-on-fa="دنبال می‌کنید" data-on-en="Following" data-off-fa="دنبال کردن" data-off-en="Follow">دنبال کردن</button></li>
+            <li><span class="avatar" style="--c:#ffd9c7"><span>D</span></span><div><b>darkroom.teh</b><span data-alt="Film lab · Tehran">لابراتوار فیلم · تهران</span></div><button class="follow" type="button" aria-pressed="false" data-on-fa="دنبال می‌کنید" data-on-en="Following" data-off-fa="دنبال کردن" data-off-en="Follow">دنبال کردن</button></li>
+          </ul>
+        </div>
+        <p class="fine" data-alt="A sample network for the Tastefolio Sprocket skill. All accounts and photos are illustrative.">شبکهٔ نمونه برای اسکیل Sprocket تیست‌فولیو. همهٔ حساب‌ها و عکس‌ها نمایشی‌اند.</p>
+      </aside>
+    </main>
+  </div>
+
+  <nav class="tabbar" aria-label="ناوبری" data-alt-aria-label="Navigation">
+    <a href="#top" aria-label="خانه" data-alt-aria-label="Home"><i class="ph-fill ph-house" aria-hidden="true"></i></a>
+    <a href="#explore" aria-label="کاوش" data-alt-aria-label="Explore"><i class="ph ph-magnifying-glass" aria-hidden="true"></i></a>
+    <button type="button" data-dialog="#create" aria-label="ساختن" data-alt-aria-label="Create"><i class="ph ph-plus-square" aria-hidden="true"></i></button>
+    <a href="#reels" aria-label="ریلز" data-alt-aria-label="Reels"><i class="ph ph-film-strip" aria-hidden="true"></i></a>
+    <a href="#profile" aria-label="پروفایل" data-alt-aria-label="Profile"><span class="avatar" style="--s:28px; --c:#f6c7a9"><span data-alt="N">ن</span></span></a>
+  </nav>
+</div>
+
+<dialog class="story-dlg" id="story" aria-label="استوری" data-alt-aria-label="Story">
+  <div class="story-stage">
+    <span class="scene" data-scene="peaks" data-tone="0"></span>
+    <div class="story-bars" aria-hidden="true"></div>
+    <div class="story-top"><span class="avatar" data-story-avatar></span><b data-story-name></b><span class="spacer"></span><button class="btn btn-ghost btn-icon btn-sm" type="button" data-close style="color: #fff" aria-label="بستن" data-alt-aria-label="Close"><i class="ph ph-x" aria-hidden="true"></i></button></div>
+    <button class="story-tap prev" type="button" aria-label="قبلی" data-alt-aria-label="Previous"></button>
+    <button class="story-tap next" type="button" aria-label="بعدی" data-alt-aria-label="Next"></button>
+    <div class="story-caption"><b data-story-say></b><span class="say" data-alt="Reply to the story…">پاسخ به استوری…</span></div>
+  </div>
+</dialog>
+
+<dialog class="modal wide" id="viewer" aria-labelledby="vw-t">
+  <div class="viewer">
+    <span class="scene" data-scene="peaks" data-tone="0"></span>
+    <div class="viewer-side">
+      <div class="modal-head"><div class="row"><span class="avatar" style="--s:32px; --c:#f6c7a9"><span data-alt="N">ن</span></span><b id="vw-t" data-viewer-caption></b></div><button class="btn btn-ghost btn-icon btn-sm" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><i class="ph ph-x" aria-hidden="true"></i></button></div>
+      <div class="thread">
+        <p><b>sahel.lens</b> <span data-alt="The grain on this one is perfect.">دانه‌دانگی این یکی بی‌نقص است.</span></p>
+        <p><b>darkroom.teh</b> <span data-alt="Which stock? Looks like 400 pushed a stop.">کدام فیلم؟ شبیه ۴۰۰ است که یک استاپ پوش شده.</span></p>
+        <p><b>nima.frames</b> <span data-alt="400, pushed to 800 — developed at your lab!">۴۰۰، پوش به ۸۰۰؛ در لابراتوار خودتان ظاهر شد!</span></p>
+      </div>
+      <div><div class="exif"><span>ƒ/8</span><span>1/250 s</span><span>ISO 400</span><span>35 mm</span></div><div class="row" style="padding: 10px 18px"><i class="ph-fill ph-heart" style="color: var(--brand)" aria-hidden="true"></i><b data-viewer-likes>0</b><span class="small subtle" data-alt="likes">پسند</span></div></div>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="modal" id="create" aria-labelledby="cr-t">
+  <form data-validate data-success="پست منتشر شد." data-success-alt="Post shared.">
+    <div class="modal-head"><h2 class="h3" id="cr-t" data-alt="New post">پست تازه</h2><button class="btn btn-ghost btn-icon btn-sm" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><i class="ph ph-x" aria-hidden="true"></i></button></div>
+    <div class="modal-body">
+      <div class="preview-scene"><span class="scene" data-scene="forest" data-tone="0" data-filter-target style="--ar: 4/5"><span class="datestamp">'26 10 17</span></span></div>
+      <span class="label" data-alt="Film">فیلم</span>
+      <div class="filters" data-filters role="group" aria-label="فیلم" data-alt-aria-label="Film">
+        <button type="button" aria-pressed="true" data-css="none"><span class="scene" data-scene="forest" data-tone="0"></span><span data-alt="Natural">طبیعی</span></button>
+        <button type="button" aria-pressed="false" data-css="sepia(.35) saturate(1.3) contrast(1.05)"><span class="scene" data-scene="forest" data-tone="0" style="filter: sepia(.35) saturate(1.3) contrast(1.05)"></span><span data-alt="Warm 400">گرم ۴۰۰</span></button>
+        <button type="button" aria-pressed="false" data-css="hue-rotate(-18deg) saturate(.85) brightness(1.05)"><span class="scene" data-scene="forest" data-tone="0" style="filter: hue-rotate(-18deg) saturate(.85) brightness(1.05)"></span><span data-alt="Cool 160">سرد ۱۶۰</span></button>
+        <button type="button" aria-pressed="false" data-css="grayscale(1) contrast(1.25)"><span class="scene" data-scene="forest" data-tone="0" style="filter: grayscale(1) contrast(1.25)"></span><span data-alt="Mono 3200">سیاه‌سفید ۳۲۰۰</span></button>
+        <button type="button" aria-pressed="false" data-css="saturate(1.6) contrast(1.15)"><span class="scene" data-scene="forest" data-tone="0" style="filter: saturate(1.6) contrast(1.15)"></span><span data-alt="Slide 50">اسلاید ۵۰</span></button>
+      </div>
+      <div class="field"><label class="label" for="cap" data-alt="Caption">توضیح</label><textarea class="textarea" id="cap" name="caption" required minlength="2" placeholder="یک جمله، کوتاه مثل حاشیهٔ عکس…" data-alt-placeholder="One line, short like the edge of a print…"></textarea></div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" type="button" data-close data-alt="Cancel">انصراف</button><button class="btn" type="submit"><i class="ph ph-paper-plane-tilt flip-rtl" aria-hidden="true"></i><span data-alt="Share">انتشار</span></button></div>
+  </form>
+</dialog>
+</body>
+</html>

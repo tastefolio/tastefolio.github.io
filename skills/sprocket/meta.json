@@ -1,0 +1,34 @@
+{
+  "name": "Sprocket",
+  "order": 30,
+  "category": "content",
+  "mode": "light",
+  "density": "balanced",
+  "persianFirst": true,
+  "tags": ["social", "photo", "video", "feed", "stories", "creator", "film", "persian"],
+  "tagline": {
+    "en": "A social photo network made of analog film — posts as photo prints with a date imprint, reels on a sprocket strip, profiles as contact sheets with grease-pencil picks and a red-safelight darkroom mode",
+    "fa": "شبکهٔ اجتماعی عکس از جنس فیلم آنالوگ — پست‌ها مثل عکس چاپی با تاریخ نارنجی دوربین، ریلز روی نوار فیلم سوراخ‌دار، پروفایل مثل برگهٔ کنتاکت با علامت مداد شمعی و حالت تاریکخانه با نور قرمز"
+  },
+  "summary": {
+    "en": "A Persian-first language for social photo and short-video apps, creator tools, photo communities and film labs. Everything comes from analog photography: a post is a photo print with a thick white edge for the caption and an orange date imprint on the photo; story avatars wear an exposure ring with one dash per unseen story; short videos run along a film strip with sprocket holes and edge numbers; profiles, explore and top posts are contact sheets on black film base where the best frames are circled in grease pencil and rejects crossed out; highlights are film canisters. One safelight red is love and the action; the dark theme is a darkroom under that light. The app has a rail (bottom tab bar on phones), stories with a timed viewer, double-tap likes with a heart, comments, a post viewer with exposure data and a create dialog with film-stock filters. The creator studio has KPI tiles with sparklines, followers growth, top posts on a contact sheet, a best-time heatmap, reach by format, audience age and cities, messages with quick replies and a weekly schedule.",
+    "fa": "زبانی فارسی‌محور برای اپ‌های اجتماعی عکس و ویدئوی کوتاه، ابزارهای سازندگان محتوا، انجمن‌های عکاسی و لابراتوارهای فیلم. همه‌چیز از عکاسی آنالوگ می‌آید: هر پست یک عکس چاپی است با حاشیهٔ سفید پهن برای توضیح و تاریخ نارنجی دوربین روی عکس؛ دور آواتار استوری‌ها حلقهٔ نوردهی است با یک خط برای هر استوری دیده‌نشده؛ ویدئوهای کوتاه روی نوار فیلم با سوراخ‌ها و شمارهٔ لبه می‌گذرند؛ پروفایل، کاوش و پست‌های برتر برگهٔ کنتاکت روی فیلم سیاه‌اند که دور بهترین قاب‌ها با مداد شمعی خط کشیده و ردی‌ها ضربدر خورده‌اند؛ هایلایت‌ها قوطی فیلم‌اند. یک قرمز نور ایمنی یعنی پسند و اقدام؛ حالت تیره تاریکخانه‌ای زیر همان نور است. اپ نوار ناوبری کناری (و نوار پایین در موبایل)، نمایشگر زمان‌دار استوری، پسند با دو ضربه و قلب، نظر، نمایشگر پست با اطلاعات نوردهی و پنجرهٔ ساخت پست با فیلترهای فیلم دارد. استودیوی سازنده کاشی‌های آمار با نمودار کوچک، رشد دنبال‌کننده، پست‌های برتر روی برگهٔ کنتاکت، نقشهٔ حرارتی بهترین زمان، دسترسی بر اساس قالب، سن و شهر مخاطبان، پیام‌ها با پاسخ سریع و برنامهٔ هفتگی دارد."
+  },
+  "bestFor": {
+    "en": ["Social photo and short-video apps", "Creator studios and analytics for influencers", "Photo communities, film labs and camera shops", "Portfolio sites for photographers"],
+    "fa": ["اپ‌های اجتماعی عکس و ویدئوی کوتاه", "استودیو و آمار برای سازندگان محتوا", "انجمن‌های عکاسی، لابراتوار فیلم و فروشگاه دوربین", "سایت نمونه‌کار عکاسان"]
+  },
+  "avoidFor": {
+    "en": ["Enterprise and financial tools", "Dense data or developer consoles", "Brands that must feel neutral and formal"],
+    "fa": ["ابزارهای سازمانی و مالی", "کنسول‌های داده یا توسعه‌دهنده با تراکم بالا", "برندهایی که باید خنثی و رسمی باشند"]
+  },
+  "signature": {
+    "en": ["Posts as photo prints with an orange date imprint", "Story avatars with an exposure ring, one dash per story", "Reels on a sprocket film strip with edge numbers", "Contact sheets with grease-pencil circles and crosses", "Highlights as film canisters; filters named like film stocks", "A darkroom theme under one safelight red"],
+    "fa": ["پست مثل عکس چاپی با تاریخ نارنجی دوربین", "حلقهٔ نوردهی دور آواتار، یک خط برای هر استوری", "ریلز روی نوار فیلم سوراخ‌دار با شمارهٔ لبه", "برگهٔ کنتاکت با دایره و ضربدر مداد شمعی", "هایلایت مثل قوطی فیلم؛ فیلترهایی با نام فیلم عکاسی", "حالت تاریکخانه زیر یک قرمز نور ایمنی"]
+  },
+  "swatches": ["#f4f2ed", "#ffffff", "#1b1a17", "#e2402f", "#f2b13d", "#171513"],
+  "fonts": { "latin": "Unbounded + Urbanist", "persian": "Vazirmatn", "mono": "Overpass Mono" },
+  "icons": "Phosphor (regular + fill, webfont, MIT)",
+  "brandTrials": ["2f6fb3", "2f8a57", "8a3ffc", "f2b13d"],
+  "demos": { "site": { "host": "ghab.example" }, "dashboard": { "host": "ghab.example/studio" } }
+}

@@ -9,8 +9,8 @@
 
 **گالری:** https://tastefolio.github.io/fa/ · **English:** https://tastefolio.github.io · **راهنما:** https://tastefolio.github.io/fa/guide/ · [English README](README.md)
 
-- **۲۹ سبک** که در منطق چیدمان، تراکم، تایپوگرافی، ناوبری و تعامل با هم فرق دارند، نه فقط در رنگ.
-- **۵۸ دموی کارکرده** (برای هر سبک یک سایت و یک داشبورد) با منو، تب، فیلتر، فرم، دیالوگ و نمودار واقعی؛ همه قابل جابه‌جایی بین فارسی و انگلیسی، روشن و تیره و هر رنگ برندی.
+- **۳۰ سبک** که در منطق چیدمان، تراکم، تایپوگرافی، ناوبری و تعامل با هم فرق دارند، نه فقط در رنگ.
+- **۶۰ دموی کارکرده** (برای هر سبک یک سایت و یک داشبورد) با منو، تب، فیلتر، فرم، دیالوگ و نمودار واقعی؛ همه قابل جابه‌جایی بین فارسی و انگلیسی، روشن و تیره و هر رنگ برندی.
 - **تصویر واقعی** از همهٔ دموها در گالری که با هر انتشار خودکار گرفته می‌شود.
 - **بدون فریم‌ورک**: HTML و CSS ساده و یک اسکریپت کوچک مشترک، به‌همراه نگاشت Tailwind نسخهٔ ۳ و ۴ و shadcn/ui برای هر سبک.
 
@@ -48,6 +48,7 @@
 | 27 | [**Dot**](skills/dot/SKILL.md) · [صفحه](https://tastefolio.github.io/fa/skills/dot/) | برند و فرهنگ | روشن، فارسی‌محور | متعادل | سخت‌افزار نقطه‌ای — کاغذی یا سیاه، یک قرمز LED، حروف نمایشی از نقطه، دستگاه طراحی‌شده با صفحهٔ زندهٔ ۱۵×۱۵ و اپ دستگاه با سازندهٔ نشانه | [سایت](https://tastefolio.github.io/skills/dot/examples/site.html?lang=fa) · [داشبورد](https://tastefolio.github.io/skills/dot/examples/dashboard.html?lang=fa) |
 | 28 | [**Passage**](skills/passage/SKILL.md) · [صفحه](https://tastefolio.github.io/fa/skills/passage/) | محصول | روشن، فارسی‌محور | متعادل | اسناد سفر در قالب رابط کاربری — کاغذ امنیتی با نقش گیوشه، کارت پرواز برای برنامه‌ها، مهر لاستیکی برای هر مرحله، سنجش امتیاز و پنلی که مثل گذرنامه ساخته شده | [سایت](https://tastefolio.github.io/skills/passage/examples/site.html?lang=fa) · [داشبورد](https://tastefolio.github.io/skills/passage/examples/dashboard.html?lang=fa) |
 | 29 | [**Rack**](skills/rack/SKILL.md) · [صفحه](https://tastefolio.github.io/fa/skills/rack/) | زیرساخت و ابر | تیره، فارسی‌محور | متعادل | سرورهایی که تقریباً لمسشان می‌کنی — نمای فلزی یونیت‌های رک، چراغ‌های وضعیت، نمایشگرهای فلورسنت، یک نارنجی دکمهٔ پاور و فیدرهایی که سرور مجازی را مثل میز صدا می‌سازند | [سایت](https://tastefolio.github.io/skills/rack/examples/site.html?lang=fa) · [داشبورد](https://tastefolio.github.io/skills/rack/examples/dashboard.html?lang=fa) |
+| 30 | [**Sprocket**](skills/sprocket/SKILL.md) · [صفحه](https://tastefolio.github.io/fa/skills/sprocket/) | محتوا و رسانه | روشن، فارسی‌محور | متعادل | شبکهٔ اجتماعی عکس از جنس فیلم آنالوگ — پست‌ها مثل عکس چاپی با تاریخ نارنجی دوربین، ریلز روی نوار فیلم سوراخ‌دار، پروفایل مثل برگهٔ کنتاکت با علامت مداد شمعی و حالت تاریکخانه با نور قرمز | [سایت](https://tastefolio.github.io/skills/sprocket/examples/site.html?lang=fa) · [داشبورد](https://tastefolio.github.io/skills/sprocket/examples/dashboard.html?lang=fa) |
 <!-- styles:end -->
 
 دموها پارامترهای `?lang=en`، `?theme=dark` و `?brand=ff5a36` (هر کد رنگ) را می‌پذیرند تا سبک را با برند خودتان امتحان کنید.

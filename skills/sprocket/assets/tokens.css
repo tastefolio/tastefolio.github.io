@@ -1,0 +1,154 @@
+/* Sprocket — design tokens (Tastefolio). A social photo and short-video language built from analog film: posts in
+   photo-print frames with the caption on the thick white edge, short videos on a film strip with sprocket holes and
+   edge numbers, profiles as contact sheets with grease-pencil marks, stories with an exposure ring, and a darkroom
+   theme under a red safelight. One safelight red for love and the action; ink for everything else. */
+:root {
+  --canvas: #f4f2ed;          /* photo paper */
+  --surface: #ffffff;         /* photo-print frame */
+  --surface-2: #ebe8e1;
+  --surface-3: #ddd9d0;
+  --surface-ink: #171513;     /* film base: strips, contact sheets */
+  --overlay: rgba(18, 16, 14, .72);
+
+  --ink: #1b1a17;
+  --ink-2: #57534b;
+  --ink-3: #6f6a61;
+  --ink-inverse: #f7f4ee;
+
+  --line: #e2ded5;
+  --line-2: #cdc8bd;
+
+  --brand: #e2402f;           /* safelight red — love, the action, unseen stories */
+  --brand-ink: #ffffff;
+  --brand-soft: color-mix(in oklab, var(--brand) 11%, #fff);
+  --brand-strong: color-mix(in oklab, var(--brand) 80%, #000);
+  --focus: color-mix(in oklab, var(--brand) 55%, transparent);
+
+  --grease: #f0561d;          /* grease pencil marks on contact sheets */
+  --edge: #f2b13d;            /* film-edge printing on dark film */
+  --frame-shadow: 0 1px 1px rgba(27, 26, 23, .06), 0 10px 24px -14px rgba(27, 26, 23, .35);
+
+  --success: #2f8a57;
+  --success-soft: #e2f1e8;
+  --warning: #a8650a;
+  --warning-soft: #f7ecd9;
+  --danger: #c63223;
+  --danger-soft: #f9e2de;
+  --info: #2f6fb3;
+  --info-soft: #e1ecf7;
+
+  --chart-1: var(--brand);
+  --chart-2: var(--ink);
+  --chart-3: #f2b13d;
+  --chart-4: #2f6fb3;
+  --chart-5: #2f8a57;
+  --chart-6: #b9b3a7;
+  --chart-grid: #e7e3db;
+  --chart-axis: var(--ink-3);
+  --chart-curve: smooth;
+  --chart-stroke: 2.5;
+  --chart-area: .12;
+  --chart-radius: 6;
+  --chart-bar-gap: .4;
+  --chart-donut: 16;
+  --chart-gap: 2;
+  --chart-dots: 0;
+
+  --font-sans: "Urbanist", "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Unbounded", "Vazirmatn", system-ui, sans-serif;
+  --font-mono: "Overpass Mono", ui-monospace, "SF Mono", Menlo, "Vazirmatn", monospace;
+  --fs-xs: 12px;
+  --fs-sm: 14px;
+  --fs-md: 15.5px;
+  --fs-lg: 18px;
+  --fs-xl: 22px;
+  --fs-2xl: 28px;
+  --fs-3xl: 38px;
+  --fs-display: clamp(34px, 4.6vw, 64px);
+  --fw-regular: 500;
+  --fw-medium: 600;
+  --fw-bold: 700;
+  --fw-display: 700;
+  --lh-tight: 1.05;
+  --lh-snug: 1.3;
+  --lh-body: 1.55;
+  --tracking-display: -.02em;
+  --tracking-caps: .14em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 72px;
+  --space-9: 104px;
+  --space-10: 144px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+  --border-w: 1px;
+  --shadow-1: 0 1px 2px rgba(27, 26, 23, .07);
+  --shadow-2: var(--frame-shadow);
+  --shadow-3: 0 34px 80px -30px rgba(27, 26, 23, .5);
+
+  --container: 1180px;
+  --gutter: clamp(14px, 3vw, 28px);
+  --control-h: 44px;
+  --control-h-lg: 52px;
+
+  --ease: cubic-bezier(.2, .9, .3, 1.2);
+  --dur-1: 140ms;
+  --dur-2: 260ms;
+  --dur-3: 460ms;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {             /* the darkroom: red safelight on black */
+  --canvas: #120c0b;
+  --surface: #1c1412;
+  --surface-2: #261b18;
+  --surface-3: #33241f;
+  --surface-ink: #070504;
+  --overlay: rgba(0, 0, 0, .8);
+  --ink: #f4e8e3;
+  --ink-2: #c2aca4;
+  --ink-3: #9d867d;
+  --ink-inverse: #120c0b;
+  --line: #2e211d;
+  --line-2: #47332c;
+  --brand: #ff6a55;
+  --brand-ink: #1a0806;
+  --brand-soft: color-mix(in oklab, var(--brand) 16%, transparent);
+  --brand-strong: color-mix(in oklab, var(--brand) 75%, #fff);
+  --grease: #ff8a4c;
+  --frame-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset, 0 12px 28px -14px rgba(0, 0, 0, .8);
+  --success: #6fd39a;
+  --success-soft: rgba(111, 211, 154, .14);
+  --warning: #f2b85a;
+  --warning-soft: rgba(242, 184, 90, .14);
+  --danger: #ff7a6a;
+  --danger-soft: rgba(255, 122, 106, .14);
+  --info: #7fb2ea;
+  --info-soft: rgba(127, 178, 234, .14);
+  --chart-2: #f4e8e3;
+  --chart-grid: #2a1e1a;
+  --chart-6: #6d5850;
+  --shadow-3: 0 34px 80px -30px rgba(0, 0, 0, .9);
+  color-scheme: dark;
+}
+
+:root:lang(fa) {
+  --font-sans: "Vazirmatn", "Urbanist", Tahoma, sans-serif;
+  --font-display: "Vazirmatn", "Unbounded", sans-serif;
+  --fs-display: clamp(30px, 4vw, 54px);
+  --fw-regular: 400;
+  --fw-display: 900;
+  --lh-tight: 1.45;
+  --lh-snug: 1.6;
+  --lh-body: 1.9;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+}

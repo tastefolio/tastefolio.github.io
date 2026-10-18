@@ -270,6 +270,15 @@
       ]
     },
     {
+      "name": "sprocket",
+      "description": "Tastefolio design language — A social photo network made of analog film — posts as photo prints with a date imprint, reels on a sprocket strip, profiles as contact sheets with grease-pencil picks and a red-safelight darkroom mode",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/sprocket"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -303,7 +312,8 @@
         "./skills/margin",
         "./skills/dot",
         "./skills/passage",
-        "./skills/rack"
+        "./skills/rack",
+        "./skills/sprocket"
       ]
     }
   ]
