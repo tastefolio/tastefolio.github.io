@@ -7,6 +7,8 @@ main {
   font-family: "Figtree", "Vazirmatn", system-ui, sans-serif;
   --color-canvas-default: #1b1a18;
   --color-canvas-subtle: #1a1917;
+  --color-canvas-inset: #121110;
+  --color-canvas-overlay: #1b1a18;
   --color-border-default: #3d3a35;
   --color-border-muted: #2d2b28;
 }
