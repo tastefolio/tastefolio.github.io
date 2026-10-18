@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="site">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="Kooch — immigration, visa and residency advice">کوچ — مشاورهٔ مهاجرت، ویزا و اقامت</title>
+<meta name="description" content="کوچ، یک دفتر نمونهٔ مشاورهٔ مهاجرت: سنجش امتیاز، انتخاب مسیر، نوبت مشاوره و پیگیری پرونده." data-alt-content="Kooch, a sample immigration advisory: check your points, choose a route, book a consultation and follow your file.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Red+Hat+Text:wght@400..700&family=Share+Tech+Mono&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..500,0..1,0&icon_names=account_balance,add,arrow_forward,badge,calendar_month,call,chat,check,check_circle,chevron_right,close,confirmation_number,contract,credit_card,dark_mode,description,download,edit,error,event,family_restroom,flight,flight_land,flight_takeoff,folder_open,gavel,home,hourglass_top,how_to_reg,id_card,info,language,lock,logout,luggage,mail,menu,notifications,payments,pending,person,play_arrow,public,quiz,receipt_long,rocket_launch,schedule,school,search,send,sms,star,support_agent,task_alt,translate,travel_explore,tune,upload,verified,work,workspace_premium&display=block">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<script src="../assets/passage.js" defer></script>
+<style>
+  .hero .stamp.s1 { inset-inline-start: -4px; inset-block-end: -18px; --r: -9deg; }
+  .hero .stamp.s2 { inset-inline-start: 34%; inset-block-start: -8px; --r: 6deg; }
+  @media (max-width: 560px) { .hero .stamp.s1 { inset-block-end: -58px; inset-inline-start: auto; inset-inline-end: 18px; } }
+  .board-sec { background: var(--surface-ink); }
+  .board-sec .sec-head, .board-sec .kicker { color: #f6f3ea; }
+  .board-sec .lead { color: #b9c2d3; }
+  .board-sec .kicker { color: var(--board-amber); }
+  .video-poster { position: relative; isolation: isolate; display: grid; place-items: center; aspect-ratio: 16 / 9; border-radius: var(--radius-md); background: linear-gradient(160deg, #1f3c73, #0e1a33); color: #fff; overflow: hidden; }
+  .video-poster .play { display: grid; place-items: center; inline-size: 72px; block-size: 72px; border-radius: 50%; background: rgba(255, 255, 255, .18); }
+  .video-poster .play .ms { font-size: 40px; }
+  .done-panel { display: grid; justify-items: center; gap: var(--space-4); padding: var(--space-5); text-align: center; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<header class="site-head">
+  <div class="container">
+    <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"><span class="ms">flight</span></span><span class="logo-word" data-alt="Kooch">کوچ</span></a>
+    <nav class="nav" id="nav" data-dismissable aria-label="اصلی" data-alt-aria-label="Main">
+      <a href="#destinations" data-alt="Destinations">مقصدها</a>
+      <a href="#programs" data-alt="Programs">برنامه‌ها</a>
+      <a href="#points" data-alt="Points">سنجش امتیاز</a>
+      <a href="#journey" data-alt="Journey">مسیر کار</a>
+      <a href="#advisors" data-alt="Advisors">مشاوران</a>
+      <a href="#videos" data-alt="Videos">ویدئوها</a>
+    </nav>
+    <div class="head-end">
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+      <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="تغییر حالت تیره" data-alt-aria-label="Toggle dark mode"><span class="ms" aria-hidden="true">dark_mode</span></button>
+      <button class="btn btn-outline btn-sm hide-sm" type="button" data-dialog="#login"><span class="ms" aria-hidden="true">sms</span><span data-alt="Sign in">ورود</span></button>
+      <a class="btn btn-soft btn-sm hide-md" href="dashboard.html"><span class="ms" aria-hidden="true">folder_open</span><span data-alt="My file">پروندهٔ من</span></a>
+      <button class="btn btn-sm" type="button" data-dialog="#book"><span data-alt="Book a consultation">نوبت مشاوره</span></button>
+      <button class="btn btn-outline btn-icon btn-sm menu-btn" type="button" data-toggle="#nav" aria-controls="nav" aria-expanded="false" aria-label="منو" data-alt-aria-label="Menu"><span class="ms" aria-hidden="true">menu</span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" data-guilloche="rosette">
+    <div class="container">
+      <div class="hero-copy">
+        <span class="kicker" data-alt="Immigration · visas · residency">مشاورهٔ مهاجرت · ویزا · اقامت</span>
+        <h1 class="display"><span data-alt="Your next address,">نشانی بعدی شما،</span> <em data-alt="step by step.">قدم‌به‌قدم.</em></h1>
+        <p class="lead" data-alt="Check your points in two minutes, see which routes fit you, and plan the file with a licensed advisor — from the first document to the day you land.">در دو دقیقه امتیازتان را بسنجید، ببینید کدام مسیر به شما می‌خورد و پرونده را با مشاور دارای مجوز برنامه‌ریزی کنید؛ از اولین مدرک تا روز فرود.</p>
+        <form class="planner" id="planner" aria-label="مسیریاب" data-alt-aria-label="Route finder">
+          <div class="field"><label class="dual" for="pg"><span data-alt="Goal">هدف</span><span data-alt="هدف">Goal</span></label>
+            <select class="select" id="pg" name="goal"><option value="work" data-alt="Work">کار</option><option value="study" data-alt="Study">تحصیل</option><option value="family" data-alt="Family">خانواده</option><option value="invest" data-alt="Invest">سرمایه‌گذاری</option></select></div>
+          <div class="field"><label class="dual" for="pf"><span data-alt="From">مبدأ</span><span data-alt="مبدأ">From</span></label>
+            <select class="select" id="pf"><option data-alt="Iran">ایران</option><option data-alt="Türkiye">ترکیه</option><option data-alt="UAE">امارات</option></select></div>
+          <div class="field"><label class="dual" for="pl"><span data-alt="Language">زبان</span><span data-alt="زبان">Language</span></label>
+            <select class="select" id="pl"><option data-alt="IELTS 6">آیلتس ۶</option><option selected data-alt="IELTS 7">آیلتس ۷</option><option data-alt="IELTS 8+">آیلتس ۸+</option><option data-alt="Not yet">هنوز نه</option></select></div>
+          <button class="btn" type="submit"><span class="ms" aria-hidden="true">travel_explore</span><span data-alt="Show my routes">مسیرهای من</span></button>
+        </form>
+        <div class="trust">
+          <div><b data-alt="12 yrs">۱۲ سال</b><span class="small subtle" data-alt="of files and landings">پرونده و فرود</span></div>
+          <div><b data-alt="3,800">۳٬۸۰۰</b><span class="small subtle" data-alt="approved files">پروندهٔ پذیرفته‌شده</span></div>
+          <div><b data-alt="4.9">۴٫۹</b><span class="small subtle" data-alt="client rating">رضایت مراجعان</span></div>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="نمونهٔ کارت مسیر" data-alt-aria-label="Sample route passes">
+        <svg class="route" viewBox="0 0 400 120" aria-hidden="true"><path class="path" d="M12 108 Q 200 -30 388 70"/><circle class="end" cx="12" cy="108" r="6"/><circle class="end" cx="388" cy="70" r="6"/></svg>
+        <article class="pass">
+          <div class="pass-main">
+            <div class="pass-head"><span class="kicker" data-alt="Skilled worker · points">مهارت‌محور · امتیازی</span><span class="badge ok" data-alt="Open">باز</span></div>
+            <div class="pass-route"><div><span class="code">IKA</span><span class="city" data-alt="Tehran">تهران</span></div><div class="line"><span class="ms" aria-hidden="true">flight</span></div><div><span class="code">YYZ</span><span class="city" data-alt="Toronto">تورنتو</span></div></div>
+            <div class="pass-fields">
+              <div><span class="dual"><span data-alt="Processing">رسیدگی</span><span data-alt="رسیدگی">Processing</span></span><b data-alt="6–8 mo">۶ تا ۸ ماه</b></div>
+              <div><span class="dual"><span data-alt="From">از</span><span data-alt="از">From</span></span><b data-alt="450 pts">۴۵۰ امتیاز</b></div>
+              <div><span class="dual"><span data-alt="Success">موفقیت</span><span data-alt="موفقیت">Success</span></span><b data-alt="92%">۹۲٪</b></div>
+            </div>
+          </div>
+          <div class="pass-stub"><span class="dual"><span data-alt="Program">برنامه</span><span data-alt="برنامه">Program</span></span><b>CA-SW</b><span class="barcode" aria-hidden="true"></span></div>
+        </article>
+        <article class="pass">
+          <div class="pass-main">
+            <div class="pass-head"><span class="kicker" data-alt="Job-seeker card">کارت جست‌وجوی کار</span><span class="badge warn" data-alt="Closing soon">رو به بسته‌شدن</span></div>
+            <div class="pass-route"><div><span class="code">IKA</span><span class="city" data-alt="Tehran">تهران</span></div><div class="line"><span class="ms" aria-hidden="true">flight</span></div><div><span class="code">BER</span><span class="city" data-alt="Berlin">برلین</span></div></div>
+            <div class="pass-fields">
+              <div><span class="dual"><span data-alt="Processing">رسیدگی</span><span data-alt="رسیدگی">Processing</span></span><b data-alt="2–4 mo">۲ تا ۴ ماه</b></div>
+              <div><span class="dual"><span data-alt="From">از</span><span data-alt="از">From</span></span><b data-alt="240 pts">۲۴۰ امتیاز</b></div>
+              <div><span class="dual"><span data-alt="Success">موفقیت</span><span data-alt="موفقیت">Success</span></span><b data-alt="88%">۸۸٪</b></div>
+            </div>
+          </div>
+          <div class="pass-stub"><span class="dual"><span data-alt="Program">برنامه</span><span data-alt="برنامه">Program</span></span><b>DE-JS</b><span class="barcode" aria-hidden="true"></span></div>
+        </article>
+        <span class="stamp green round s1"><small data-alt="Kooch">کوچ</small><b data-alt="Approved">پذیرفته</b><small data-num="2026" data-fmt="plain">۲۰۲۶</small></span>
+        <span class="stamp violet s2"><b data-alt="Entry">ورود</b><small>YYZ · 14 OCT</small></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="destinations" data-filter-scope>
+    <div class="container">
+      <div class="sec-head">
+        <div><span class="kicker" data-alt="Destinations">مقصدها</span><h2 class="h1" data-alt="Where do you want to wake up?">دوست دارید کجا از خواب بیدار شوید؟</h2></div>
+        <div class="chips" data-group role="group" aria-label="هدف" data-alt-aria-label="Goal">
+          <button type="button" data-filter="goal" data-value="all" aria-pressed="true" data-alt="All">همه</button>
+          <button type="button" data-filter="goal" data-value="work" aria-pressed="false" data-alt="Work">کار</button>
+          <button type="button" data-filter="goal" data-value="study" aria-pressed="false" data-alt="Study">تحصیل</button>
+          <button type="button" data-filter="goal" data-value="family" aria-pressed="false" data-alt="Family">خانواده</button>
+          <button type="button" data-filter="goal" data-value="invest" aria-pressed="false" data-alt="Invest">سرمایه‌گذاری</button>
+        </div>
+      </div>
+      <div class="dests">
+        <a class="dest" href="#programs" data-filter-item data-goal="work study family" style="--c:#b3392d"><span class="iso">CA</span><h3 class="h3" data-alt="Canada">کانادا</h3><div class="tags"><span data-alt="Skilled worker">نیروی ماهر</span><span data-alt="Study + work">تحصیل و کار</span><span data-alt="Family">خانواده</span></div><div class="meta"><span data-alt="Typical">معمولاً</span><b data-alt="6–10 months">۶ تا ۱۰ ماه</b></div></a>
+        <a class="dest" href="#programs" data-filter-item data-goal="work study" style="--c:#14203a"><span class="iso">DE</span><h3 class="h3" data-alt="Germany">آلمان</h3><div class="tags"><span data-alt="Job-seeker card">جست‌وجوی کار</span><span data-alt="Blue card">کارت آبی</span><span data-alt="Tuition-free study">تحصیل رایگان</span></div><div class="meta"><span data-alt="Typical">معمولاً</span><b data-alt="2–5 months">۲ تا ۵ ماه</b></div></a>
+        <a class="dest" href="#programs" data-filter-item data-goal="work study" style="--c:#1f6c8f"><span class="iso">AU</span><h3 class="h3" data-alt="Australia">استرالیا</h3><div class="tags"><span data-alt="Skilled independent">مستقل ماهر</span><span data-alt="Regional">منطقه‌ای</span></div><div class="meta"><span data-alt="Typical">معمولاً</span><b data-alt="8–12 months">۸ تا ۱۲ ماه</b></div></a>
+        <a class="dest" href="#programs" data-filter-item data-goal="work invest" style="--c:#c27a1a"><span class="iso">NL</span><h3 class="h3" data-alt="Netherlands">هلند</h3><div class="tags"><span data-alt="Highly skilled">متخصص</span><span data-alt="Startup">استارتاپ</span></div><div class="meta"><span data-alt="Typical">معمولاً</span><b data-alt="1–3 months">۱ تا ۳ ماه</b></div></a>
+        <a class="dest" href="#programs" data-filter-item data-goal="work study" style="--c:#5a4aa8"><span class="iso">GB</span><h3 class="h3" data-alt="United Kingdom">بریتانیا</h3><div class="tags"><span data-alt="Global talent">استعداد جهانی</span><span data-alt="Graduate">فارغ‌التحصیلی</span></div><div class="meta"><span data-alt="Typical">معمولاً</span><b data-alt="3–6 months">۳ تا ۶ ماه</b></div></a>
+        <a class="dest" href="#programs" data-filter-item data-goal="work invest" style="--c:#b3392d"><span class="iso">ES</span><h3 class="h3" data-alt="Spain">اسپانیا</h3><div class="tags"><span data-alt="Digital nomad">دورکاری</span><span data-alt="Non-lucrative">اقامت تمکنی</span></div><div class="meta"><span data-alt="Typical">معمولاً</span><b data-alt="2–4 months">۲ تا ۴ ماه</b></div></a>
+        <a class="dest" href="#programs" data-filter-item data-goal="invest family" style="--c:#2a7448"><span class="iso">TR</span><h3 class="h3" data-alt="Türkiye">ترکیه</h3><div class="tags"><span data-alt="Residence by property">اقامت با ملک</span><span data-alt="Family">خانواده</span></div><div class="meta"><span data-alt="Typical">معمولاً</span><b data-alt="1–2 months">۱ تا ۲ ماه</b></div></a>
+        <a class="dest" href="#programs" data-filter-item data-goal="invest work" style="--c:#1f3c73"><span class="iso">AE</span><h3 class="h3" data-alt="UAE">امارات</h3><div class="tags"><span data-alt="Golden visa">ویزای طلایی</span><span data-alt="Company">ثبت شرکت</span></div><div class="meta"><span data-alt="Typical">معمولاً</span><b data-alt="3–6 weeks">۳ تا ۶ هفته</b></div></a>
+      </div>
+      <p class="empty" data-filter-empty hidden data-alt="No destination for this goal yet.">برای این هدف هنوز مقصدی نداریم.</p>
+    </div>
+  </section>
+
+  <section class="section" id="programs" style="padding-block-start: 0">
+    <div class="container">
+      <div class="sec-head"><div><span class="kicker" data-alt="Programs">برنامه‌ها</span><h2 class="h1" data-alt="Pick a route — read it like a boarding pass">مسیر را انتخاب کنید؛ مثل کارت پرواز بخوانیدش</h2></div><a class="btn btn-outline" href="#points"><span data-alt="Which ones fit me?">کدام‌ها به من می‌خورد؟</span><span class="ms flip-rtl" aria-hidden="true">arrow_forward</span></a></div>
+      <div class="passes">
+        <article class="pass">
+          <div class="pass-main">
+            <div class="pass-head"><h3 class="h3" data-alt="Canada · skilled worker (points)">کانادا · نیروی ماهر (امتیازی)</h3><span class="badge ok" data-alt="Open">باز</span></div>
+            <div class="pass-route"><div><span class="code">IKA</span><span class="city" data-alt="Tehran">تهران</span></div><div class="line"><span class="ms" aria-hidden="true">flight</span></div><div><span class="code">YYZ</span><span class="city" data-alt="Toronto">تورنتو</span></div></div>
+            <div class="pass-fields">
+              <div><span class="dual"><span data-alt="Processing">رسیدگی</span><span data-alt="رسیدگی">Processing</span></span><b data-alt="6–8 mo">۶ تا ۸ ماه</b></div>
+              <div><span class="dual"><span data-alt="Needs">لازم</span><span data-alt="لازم">Needs</span></span><b data-alt="450 pts">۴۵۰ امتیاز</b></div>
+              <div><span class="dual"><span data-alt="Family">خانواده</span><span data-alt="خانواده">Family</span></span><b data-alt="Included">شامل است</b></div>
+            </div>
+          </div>
+          <div class="pass-stub"><span class="dual"><span data-alt="Program">برنامه</span><span data-alt="برنامه">Program</span></span><b>CA-SW</b><span class="barcode" aria-hidden="true"></span><button class="btn btn-sm btn-block" type="button" data-dialog="#book" data-alt="Plan">برنامه‌ریزی</button></div>
+        </article>
+        <article class="pass">
+          <div class="pass-main">
+            <div class="pass-head"><h3 class="h3" data-alt="Germany · job-seeker card">آلمان · کارت جست‌وجوی کار</h3><span class="badge warn" data-alt="Closing soon">رو به بسته‌شدن</span></div>
+            <div class="pass-route"><div><span class="code">IKA</span><span class="city" data-alt="Tehran">تهران</span></div><div class="line"><span class="ms" aria-hidden="true">flight</span></div><div><span class="code">BER</span><span class="city" data-alt="Berlin">برلین</span></div></div>
+            <div class="pass-fields">
+              <div><span class="dual"><span data-alt="Processing">رسیدگی</span><span data-alt="رسیدگی">Processing</span></span><b data-alt="2–4 mo">۲ تا ۴ ماه</b></div>
+              <div><span class="dual"><span data-alt="Needs">لازم</span><span data-alt="لازم">Needs</span></span><b data-alt="240 pts">۲۴۰ امتیاز</b></div>
+              <div><span class="dual"><span data-alt="Valid">اعتبار</span><span data-alt="اعتبار">Valid</span></span><b data-alt="12 months">۱۲ ماه</b></div>
+            </div>
+          </div>
+          <div class="pass-stub"><span class="dual"><span data-alt="Program">برنامه</span><span data-alt="برنامه">Program</span></span><b>DE-JS</b><span class="barcode" aria-hidden="true"></span><button class="btn btn-sm btn-block" type="button" data-dialog="#book" data-alt="Plan">برنامه‌ریزی</button></div>
+        </article>
+        <article class="pass">
+          <div class="pass-main">
+            <div class="pass-head"><h3 class="h3" data-alt="Australia · skilled independent">استرالیا · مستقل ماهر</h3><span class="badge ok" data-alt="Open">باز</span></div>
+            <div class="pass-route"><div><span class="code">IKA</span><span class="city" data-alt="Tehran">تهران</span></div><div class="line"><span class="ms" aria-hidden="true">flight</span></div><div><span class="code">MEL</span><span class="city" data-alt="Melbourne">ملبورن</span></div></div>
+            <div class="pass-fields">
+              <div><span class="dual"><span data-alt="Processing">رسیدگی</span><span data-alt="رسیدگی">Processing</span></span><b data-alt="8–12 mo">۸ تا ۱۲ ماه</b></div>
+              <div><span class="dual"><span data-alt="Needs">لازم</span><span data-alt="لازم">Needs</span></span><b data-alt="380 pts">۳۸۰ امتیاز</b></div>
+              <div><span class="dual"><span data-alt="Status">نوع</span><span data-alt="نوع">Status</span></span><b data-alt="Permanent">دائم</b></div>
+            </div>
+          </div>
+          <div class="pass-stub"><span class="dual"><span data-alt="Program">برنامه</span><span data-alt="برنامه">Program</span></span><b>AU-SI</b><span class="barcode" aria-hidden="true"></span><button class="btn btn-sm btn-block" type="button" data-dialog="#book" data-alt="Plan">برنامه‌ریزی</button></div>
+        </article>
+        <article class="pass">
+          <div class="pass-main">
+            <div class="pass-head"><h3 class="h3" data-alt="Netherlands · highly skilled">هلند · نیروی متخصص</h3><span class="badge info" data-alt="Needs a job offer">پیشنهاد کار لازم</span></div>
+            <div class="pass-route"><div><span class="code">IKA</span><span class="city" data-alt="Tehran">تهران</span></div><div class="line"><span class="ms" aria-hidden="true">flight</span></div><div><span class="code">AMS</span><span class="city" data-alt="Amsterdam">آمستردام</span></div></div>
+            <div class="pass-fields">
+              <div><span class="dual"><span data-alt="Processing">رسیدگی</span><span data-alt="رسیدگی">Processing</span></span><b data-alt="4–8 wk">۴ تا ۸ هفته</b></div>
+              <div><span class="dual"><span data-alt="Needs">لازم</span><span data-alt="لازم">Needs</span></span><b data-alt="300 pts">۳۰۰ امتیاز</b></div>
+              <div><span class="dual"><span data-alt="Family">خانواده</span><span data-alt="خانواده">Family</span></span><b data-alt="Included">شامل است</b></div>
+            </div>
+          </div>
+          <div class="pass-stub"><span class="dual"><span data-alt="Program">برنامه</span><span data-alt="برنامه">Program</span></span><b>NL-HS</b><span class="barcode" aria-hidden="true"></span><button class="btn btn-sm btn-block" type="button" data-dialog="#book" data-alt="Plan">برنامه‌ریزی</button></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="points" style="padding-block-start: 0">
+    <div class="container">
+      <div class="calc" data-points data-max="600" data-guilloche>
+        <div class="calc-form">
+          <div class="stack" style="gap: 8px"><span class="kicker" data-alt="Points check · 2 minutes">سنجش امتیاز · دو دقیقه</span><h2 class="h1" data-alt="How far can your points take you?">امتیازتان تا کجا می‌بردتان؟</h2></div>
+          <div class="calc-q"><span class="dual"><span data-alt="Age">سن</span><span data-alt="سن">Age</span></span>
+            <div class="seg" data-group="age" role="group" aria-label="سن" data-alt-aria-label="Age">
+              <button type="button" aria-pressed="false" data-pts="110" data-alt="18–29">۱۸ تا ۲۹</button><button type="button" aria-pressed="true" data-pts="90" data-alt="30–34">۳۰ تا ۳۴</button><button type="button" aria-pressed="false" data-pts="65" data-alt="35–39">۳۵ تا ۳۹</button><button type="button" aria-pressed="false" data-pts="35" data-alt="40–44">۴۰ تا ۴۴</button><button type="button" aria-pressed="false" data-pts="0" data-alt="45+">۴۵+</button>
+            </div></div>
+          <div class="calc-q"><span class="dual"><span data-alt="Language (IELTS)">زبان (آیلتس)</span><span data-alt="زبان (آیلتس)">Language (IELTS)</span></span>
+            <div class="seg" data-group="lang" role="group" aria-label="زبان" data-alt-aria-label="Language">
+              <button type="button" aria-pressed="false" data-pts="0" data-alt="Not yet">هنوز نه</button><button type="button" aria-pressed="false" data-pts="40" data-alt="6">۶</button><button type="button" aria-pressed="true" data-pts="90" data-alt="7">۷</button><button type="button" aria-pressed="false" data-pts="130" data-alt="8+">۸+</button>
+            </div></div>
+          <div class="calc-q"><span class="dual"><span data-alt="Education">تحصیلات</span><span data-alt="تحصیلات">Education</span></span>
+            <div class="seg" data-group="edu" role="group" aria-label="تحصیلات" data-alt-aria-label="Education">
+              <button type="button" aria-pressed="false" data-pts="30" data-alt="Diploma">دیپلم</button><button type="button" aria-pressed="false" data-pts="90" data-alt="Bachelor">کارشناسی</button><button type="button" aria-pressed="true" data-pts="120" data-alt="Master">ارشد</button><button type="button" aria-pressed="false" data-pts="140" data-alt="PhD">دکتری</button>
+            </div></div>
+          <div class="calc-q"><span class="dual"><span data-alt="Work experience">سابقهٔ کار</span><span data-alt="سابقهٔ کار">Work experience</span></span>
+            <div class="seg" data-group="work" role="group" aria-label="سابقهٔ کار" data-alt-aria-label="Work experience">
+              <button type="button" aria-pressed="false" data-pts="0" data-alt="Under 1 yr">کمتر از ۱ سال</button><button type="button" aria-pressed="false" data-pts="30" data-alt="1–2 yrs">۱ تا ۲ سال</button><button type="button" aria-pressed="true" data-pts="60" data-alt="3–5 yrs">۳ تا ۵ سال</button><button type="button" aria-pressed="false" data-pts="80" data-alt="6+ yrs">۶ سال و بیشتر</button>
+            </div></div>
+          <div class="calc-q"><span class="dual"><span data-alt="Extras">امتیاز اضافه</span><span data-alt="امتیاز اضافه">Extras</span></span>
+            <div class="seg" data-group="extra" data-multi role="group" aria-label="امتیاز اضافه" data-alt-aria-label="Extras">
+              <button type="button" aria-pressed="false" data-pts="50" data-alt="Job offer">پیشنهاد کار</button><button type="button" aria-pressed="false" data-pts="20" data-alt="Partner’s language">زبان همسر</button><button type="button" aria-pressed="false" data-pts="30" data-alt="Studied abroad">تحصیل در خارج</button>
+            </div></div>
+        </div>
+        <div class="calc-result" aria-live="polite">
+          <span class="dual"><span data-alt="Your points">امتیاز شما</span><span data-alt="امتیاز شما">Your points</span></span>
+          <div class="gauge">
+            <svg viewBox="0 0 240 132" aria-hidden="true"><path class="track" d="M20 120 A100 100 0 0 1 220 120"/><path class="fill" d="M20 120 A100 100 0 0 1 220 120"/></svg>
+            <output><span data-points-out>۳۶۰</span><small><span data-alt="of 600">از ۶۰۰</span></small></output>
+          </div>
+          <p class="small"><span data-points-count>۲</span> <span data-alt="routes fit today:">مسیر همین امروز به شما می‌خورد:</span></p>
+          <ul class="routes">
+            <li data-need="240"><span class="ms" aria-hidden="true">check_circle</span><span data-alt="Germany · job-seeker card">آلمان · جست‌وجوی کار</span><span class="need" data-num="240">240</span></li>
+            <li data-need="300"><span class="ms" aria-hidden="true">check_circle</span><span data-alt="Netherlands · highly skilled">هلند · متخصص</span><span class="need" data-num="300">300</span></li>
+            <li data-need="380"><span class="ms" aria-hidden="true">check_circle</span><span data-alt="Australia · skilled independent">استرالیا · مستقل ماهر</span><span class="need" data-num="380">380</span></li>
+            <li data-need="450"><span class="ms" aria-hidden="true">check_circle</span><span data-alt="Canada · skilled worker">کانادا · نیروی ماهر</span><span class="need" data-num="450">450</span></li>
+            <li data-need="500"><span class="ms" aria-hidden="true">check_circle</span><span data-alt="UK · global talent">بریتانیا · استعداد جهانی</span><span class="need" data-num="500">500</span></li>
+          </ul>
+          <button class="btn btn-block" type="button" data-dialog="#book" style="--b: var(--board-amber); --bi: #13213b; background: var(--board-amber); color: #13213b; border-color: var(--board-amber)"><span data-alt="Review my result with an advisor">بررسی نتیجه با مشاور</span></button>
+          <p class="tiny" style="opacity: .7" data-alt="A guide only — every program has its own rules. Your advisor checks the real numbers.">فقط یک راهنماست؛ هر برنامه قواعد خودش را دارد و مشاور عدد واقعی را بررسی می‌کند.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="journey" style="padding-block-start: 0">
+    <div class="container">
+      <div class="sec-head"><div><span class="kicker" data-alt="How it works">مسیر کار</span><h2 class="h1" data-alt="Five stops, one file, no surprises">پنج ایستگاه، یک پرونده، بدون غافلگیری</h2></div></div>
+      <ol class="journey">
+        <li><span class="dot"><span class="ms" aria-hidden="true">quiz</span></span><span class="mono" data-alt="STOP 01">ایستگاه ۱</span><h3 class="h3" data-alt="Assessment">ارزیابی</h3><p data-alt="Points, budget and timing — in one free call.">امتیاز، بودجه و زمان؛ در یک تماس رایگان.</p></li>
+        <li><span class="dot"><span class="ms" aria-hidden="true">contract</span></span><span class="mono" data-alt="STOP 02">ایستگاه ۲</span><h3 class="h3" data-alt="Plan &amp; contract">برنامه و قرارداد</h3><p data-alt="A written route, fees in Toman and a fixed timeline.">مسیر مکتوب، هزینه به تومان و جدول زمانی ثابت.</p></li>
+        <li><span class="dot"><span class="ms" aria-hidden="true">description</span></span><span class="mono" data-alt="STOP 03">ایستگاه ۳</span><h3 class="h3" data-alt="Documents">مدارک</h3><p data-alt="A live checklist; we check every page and translation.">چک‌لیست زنده؛ تک‌تک صفحه‌ها و ترجمه‌ها را بررسی می‌کنیم.</p></li>
+        <li><span class="dot"><span class="ms" aria-hidden="true">send</span></span><span class="mono" data-alt="STOP 04">ایستگاه ۴</span><h3 class="h3" data-alt="Filing">ثبت پرونده</h3><p data-alt="Filed, tracked and answered — you see each step in your file.">ثبت، پیگیری و پاسخ؛ هر قدم را در پرونده‌تان می‌بینید.</p></li>
+        <li><span class="dot"><span class="ms" aria-hidden="true">flight_land</span></span><span class="mono" data-alt="STOP 05">ایستگاه ۵</span><h3 class="h3" data-alt="Landing">فرود</h3><p data-alt="Housing, bank and first-month checklist for arrival.">مسکن، حساب بانکی و چک‌لیست ماه اول پس از رسیدن.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section board-sec" id="board">
+    <div class="container">
+      <div class="sec-head"><div><span class="kicker" data-alt="Program board">تابلوی برنامه‌ها</span><h2 class="h1" data-alt="What’s open this season">این فصل چه چیزهایی باز است</h2><p class="lead" data-alt="Intakes and average processing times our files saw in the last quarter.">نوبت‌های پذیرش و میانگین زمان رسیدگی پرونده‌های ما در فصل گذشته.</p></div></div>
+      <div class="board">
+        <div class="board-head"><span data-alt="Departures · intakes">حرکت‌ها · نوبت‌های پذیرش</span><span><span data-alt="Updated">به‌روز</span> <span class="clock" data-clock>۰۹:۴۰</span></span></div>
+        <div class="board-scroll">
+          <table data-reveal>
+            <thead><tr><th data-alt="To">مقصد</th><th data-alt="Program">برنامه</th><th data-alt="Avg. processing">میانگین رسیدگی</th><th data-alt="Next intake">پذیرش بعدی</th><th data-alt="Status">وضعیت</th></tr></thead>
+            <tbody>
+              <tr><td><span class="flap"><span>Y</span><span>Y</span><span>Z</span></span></td><td data-alt="Canada · skilled worker">کانادا · نیروی ماهر</td><td data-alt="7 months">۷ ماه</td><td data-alt="Every 2 weeks">هر ۲ هفته</td><td><span class="st open" data-alt="Open">باز</span></td></tr>
+              <tr><td><span class="flap"><span>B</span><span>E</span><span>R</span></span></td><td data-alt="Germany · job-seeker card">آلمان · جست‌وجوی کار</td><td data-alt="3 months">۳ ماه</td><td data-alt="Rolling">مستمر</td><td><span class="st soon" data-alt="Closing soon">رو به بسته‌شدن</span></td></tr>
+              <tr><td><span class="flap"><span>M</span><span>E</span><span>L</span></span></td><td data-alt="Australia · skilled independent">استرالیا · مستقل ماهر</td><td data-alt="10 months">۱۰ ماه</td><td data-alt="Monthly rounds">دورهای ماهانه</td><td><span class="st open" data-alt="Open">باز</span></td></tr>
+              <tr><td><span class="flap"><span>L</span><span>H</span><span>R</span></span></td><td data-alt="UK · global talent">بریتانیا · استعداد جهانی</td><td data-alt="8 weeks">۸ هفته</td><td data-alt="Rolling">مستمر</td><td><span class="st open" data-alt="Open">باز</span></td></tr>
+              <tr><td><span class="flap"><span>M</span><span>A</span><span>D</span></span></td><td data-alt="Spain · digital nomad">اسپانیا · دورکاری</td><td data-alt="6 weeks">۶ هفته</td><td data-alt="Paused">متوقف</td><td><span class="st wait" data-alt="Waitlist">فهرست انتظار</span></td></tr>
+              <tr><td><span class="flap"><span>D</span><span>X</span><span>B</span></span></td><td data-alt="UAE · golden visa">امارات · ویزای طلایی</td><td data-alt="4 weeks">۴ هفته</td><td data-alt="Rolling">مستمر</td><td><span class="st open" data-alt="Open">باز</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="advisors">
+    <div class="container">
+      <div class="sec-head"><div><span class="kicker" data-alt="Advisors">مشاوران</span><h2 class="h1" data-alt="Licensed advisors who have walked the route">مشاورانی با مجوز که خودشان این مسیر را رفته‌اند</h2></div></div>
+      <div class="advisors">
+        <article class="advisor">
+          <div class="advisor-head"><span class="avatar lg" style="--c:#dfe7f4"><span data-alt="M">م</span></span><div><b data-alt="Maryam Tavakoli">مریم توکلی</b><span class="small subtle" data-alt="Canada &amp; Australia · 11 yrs">کانادا و استرالیا · ۱۱ سال</span></div><span class="badge brand plain" style="margin-inline-start: auto"><span class="ms" aria-hidden="true">verified</span><span data-alt="Licensed">دارای مجوز</span></span></div>
+          <div class="langs" aria-label="زبان‌ها" data-alt-aria-label="Languages"><span>FA</span><span>EN</span><span>FR</span></div>
+          <p class="small muted" data-alt="Skilled-worker and provincial files; she reviews every language result herself.">پرونده‌های نیروی ماهر و استانی؛ نتیجهٔ زبان را خودش بررسی می‌کند.</p>
+          <div class="next"><span class="ms" aria-hidden="true">schedule</span><span data-alt="Free today at 17:30">امروز ساعت ۱۷:۳۰ خالی است</span></div>
+          <button class="btn btn-outline btn-block" type="button" data-dialog="#book"><span data-alt="Book with Maryam">نوبت با مریم</span></button>
+        </article>
+        <article class="advisor">
+          <div class="advisor-head"><span class="avatar lg" style="--c:#f3e3d6"><span data-alt="A">آ</span></span><div><b data-alt="Arash Niknam">آرش نیک‌نام</b><span class="small subtle" data-alt="Germany &amp; Netherlands · 8 yrs">آلمان و هلند · ۸ سال</span></div><span class="badge brand plain" style="margin-inline-start: auto"><span class="ms" aria-hidden="true">verified</span><span data-alt="Licensed">دارای مجوز</span></span></div>
+          <div class="langs" aria-label="زبان‌ها" data-alt-aria-label="Languages"><span>FA</span><span>EN</span><span>DE</span></div>
+          <p class="small muted" data-alt="Job-seeker cards, blue cards and the recognition of degrees.">کارت جست‌وجوی کار، کارت آبی و ارزیابی مدرک تحصیلی.</p>
+          <div class="next"><span class="ms" aria-hidden="true">schedule</span><span data-alt="Free tomorrow at 10:00">فردا ساعت ۱۰:۰۰ خالی است</span></div>
+          <button class="btn btn-outline btn-block" type="button" data-dialog="#book"><span data-alt="Book with Arash">نوبت با آرش</span></button>
+        </article>
+        <article class="advisor">
+          <div class="advisor-head"><span class="avatar lg" style="--c:#e3efe4"><span data-alt="S">س</span></span><div><b data-alt="Sara Amini">سارا امینی</b><span class="small subtle" data-alt="Study &amp; family · 9 yrs">تحصیل و خانواده · ۹ سال</span></div><span class="badge brand plain" style="margin-inline-start: auto"><span class="ms" aria-hidden="true">verified</span><span data-alt="Licensed">دارای مجوز</span></span></div>
+          <div class="langs" aria-label="زبان‌ها" data-alt-aria-label="Languages"><span>FA</span><span>EN</span><span>TR</span></div>
+          <p class="small muted" data-alt="Admissions, study permits and joining a partner or parents.">پذیرش تحصیلی، ویزای تحصیلی و پیوستن به همسر یا والدین.</p>
+          <div class="next"><span class="ms" aria-hidden="true">schedule</span><span data-alt="Free Saturday at 12:30">شنبه ساعت ۱۲:۳۰ خالی است</span></div>
+          <button class="btn btn-outline btn-block" type="button" data-dialog="#book"><span data-alt="Book with Sara">نوبت با سارا</span></button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="videos" style="padding-block-start: 0">
+    <div class="container">
+      <div class="sec-head"><div><span class="kicker" data-alt="Short videos">ویدئوهای کوتاه</span><h2 class="h1" data-alt="One question, one minute">یک سؤال، یک دقیقه</h2></div></div>
+      <div class="shorts">
+        <button class="short" type="button" data-dialog="#video" style="--a:#1f3c73; --b:#0e1a33"><span class="play"><span class="ms fill" aria-hidden="true">play_arrow</span></span><span class="big">7.0</span><b data-alt="IELTS 7 in eight weeks">آیلتس ۷ در هشت هفته</b><small data-alt="1:12 · Language">۱:۱۲ · زبان</small></button>
+        <button class="short" type="button" data-dialog="#video" style="--a:#7a2f27; --b:#2b1210"><span class="play"><span class="ms fill" aria-hidden="true">play_arrow</span></span><span class="big">DE</span><b data-alt="The job-seeker card, explained">کارت جست‌وجوی کار به زبان ساده</b><small data-alt="0:58 · Germany">۰:۵۸ · آلمان</small></button>
+        <button class="short" type="button" data-dialog="#video" style="--a:#2a5d45; --b:#0f2219"><span class="play"><span class="ms fill" aria-hidden="true">play_arrow</span></span><span class="big">$</span><b data-alt="First month in Toronto: the budget">ماه اول در تورنتو: بودجه</b><small data-alt="1:30 · Landing">۱:۳۰ · فرود</small></button>
+        <button class="short" type="button" data-dialog="#video" style="--a:#4b3f8f; --b:#1a1536"><span class="play"><span class="ms fill" aria-hidden="true">play_arrow</span></span><span class="big">A→B</span><b data-alt="Translating documents the right way">ترجمهٔ درست مدارک</b><small data-alt="0:46 · Documents">۰:۴۶ · مدارک</small></button>
+        <button class="short" type="button" data-dialog="#video" style="--a:#7a5513; --b:#2a1c06"><span class="play"><span class="ms fill" aria-hidden="true">play_arrow</span></span><span class="big">✓</span><b data-alt="Interview day checklist">چک‌لیست روز مصاحبه</b><small data-alt="1:05 · Embassy">۱:۰۵ · سفارت</small></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-block-start: 0">
+    <div class="container">
+      <div class="sec-head"><div><span class="kicker" data-alt="Postcards">کارت‌پستال‌ها</span><h2 class="h1" data-alt="They wrote back after landing">بعد از رسیدن برایمان نوشتند</h2></div></div>
+      <div class="postcards">
+        <article class="postcard"><div><blockquote data-alt="“The checklist knew what the embassy would ask before they did. Eight months, zero surprises.”">«چک‌لیست قبل از سفارت می‌دانست چه می‌خواهند. هشت ماه، بدون هیچ غافلگیری.»</blockquote><p class="from" data-alt="Niloufar · software engineer, Toronto">نیلوفر · مهندس نرم‌افزار، تورنتو</p></div><aside aria-hidden="true"><span class="postage" style="--c:#b3392d">CA</span><span class="postmark"></span></aside></article>
+        <article class="postcard"><div><blockquote data-alt="“I booked at night, paid the deposit and had a plan in my file the next morning.”">«شب نوبت گرفتم، پیش‌پرداخت را زدم و صبح برنامه در پرونده‌ام بود.»</blockquote><p class="from" data-alt="Kaveh · nurse, Munich">کاوه · پرستار، مونیخ</p></div><aside aria-hidden="true"><span class="postage" style="--c:#14203a">DE</span><span class="postmark"></span></aside></article>
+        <article class="postcard"><div><blockquote data-alt="“Sara answered every ticket within a day — even the silly questions at midnight.”">«سارا همهٔ تیکت‌ها را ظرف یک روز جواب داد؛ حتی سؤال‌های نصف‌شب را.»</blockquote><p class="from" data-alt="Shirin · master’s student, Melbourne">شیرین · دانشجوی ارشد، ملبورن</p></div><aside aria-hidden="true"><span class="postage" style="--c:#1f6c8f">AU</span><span class="postmark"></span></aside></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" style="padding-block-start: 0">
+    <div class="container">
+      <div class="sec-head"><div><span class="kicker" data-alt="Questions">پرسش‌ها</span><h2 class="h1" data-alt="Before you book">پیش از نوبت گرفتن</h2></div></div>
+      <div class="faq">
+        <details open><summary data-alt="Is the first call really free?">تماس اول واقعاً رایگان است؟</summary><p data-alt="Yes — fifteen minutes to check your points and the two best routes. The full consultation is paid and the deposit counts towards your contract.">بله؛ پانزده دقیقه برای سنجش امتیاز و دو مسیر بهتر. مشاورهٔ کامل پولی است و پیش‌پرداخت از مبلغ قرارداد کم می‌شود.</p></details>
+        <details><summary data-alt="Can you guarantee a visa?">ویزا را تضمین می‌کنید؟</summary><p data-alt="No honest advisor can. We guarantee a complete, checked file and a written refund policy for our own fees.">هیچ مشاور صادقی نمی‌تواند. ما پروندهٔ کامل و بررسی‌شده و سیاست بازپرداخت مکتوب برای هزینهٔ خودمان را تضمین می‌کنیم.</p></details>
+        <details><summary data-alt="How do I follow my file?">پرونده‌ام را چطور پیگیری کنم؟</summary><p data-alt="Sign in with your phone number. Your file shows each stage as a stamp, the documents still missing, appointments and tickets.">با شمارهٔ موبایل وارد شوید. پرونده هر مرحله را مثل یک مهر نشان می‌دهد، به‌علاوهٔ مدارک باقی‌مانده، نوبت‌ها و تیکت‌ها.</p></details>
+        <details><summary data-alt="Can I pay in instalments?">می‌توانم قسطی پرداخت کنم؟</summary><p data-alt="Yes — the contract fee splits into three or four instalments tied to the stages of your file.">بله؛ مبلغ قرارداد به سه یا چهار قسط تقسیم می‌شود که هرکدام به یک مرحلهٔ پرونده گره خورده است.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-block-start: 0">
+    <div class="container">
+      <div class="cta-band" data-guilloche>
+        <div class="stack" style="gap: 8px"><h2 class="h1" data-alt="Fifteen minutes, free, with a licensed advisor.">پانزده دقیقه، رایگان، با مشاور دارای مجوز.</h2><p data-alt="We call you back within one working day.">ظرف یک روز کاری با شما تماس می‌گیریم.</p></div>
+        <button class="btn btn-lg" type="button" data-dialog="#book"><span class="ms" aria-hidden="true">call</span><span data-alt="Request a call">درخواست تماس</span></button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="stack" style="gap: 12px"><a class="logo" href="#top"><span class="logo-mark" aria-hidden="true"><span class="ms">flight</span></span><span data-alt="Kooch">کوچ</span></a><p class="small" data-alt="A sample advisory for the Tastefolio Passage skill. Names, numbers and programs are illustrative — not legal advice.">دفتر نمونه برای اسکیل Passage تیست‌فولیو. نام‌ها، عددها و برنامه‌ها نمایشی‌اند و مشاورهٔ حقوقی نیستند.</p></div>
+      <div><h3 data-alt="Routes">مسیرها</h3><ul><li><a href="#programs" data-alt="Work">کار</a></li><li><a href="#programs" data-alt="Study">تحصیل</a></li><li><a href="#programs" data-alt="Family">خانواده</a></li><li><a href="#programs" data-alt="Investment">سرمایه‌گذاری</a></li></ul></div>
+      <div><h3 data-alt="Kooch">کوچ</h3><ul><li><a href="#advisors" data-alt="Advisors">مشاوران</a></li><li><a href="#videos" data-alt="Videos">ویدئوها</a></li><li><a href="#faq" data-alt="Questions">پرسش‌ها</a></li><li><a href="#board" data-alt="Program board">تابلوی برنامه‌ها</a></li><li><a href="dashboard.html" data-alt="My file">پروندهٔ من</a></li></ul></div>
+      <div><h3 data-alt="Contact">تماس</h3><ul><li class="ltr">021 9100 4400</li><li class="ltr">hello@kooch.example</li><li data-alt="Sat–Wed, 9:00–18:00">شنبه تا چهارشنبه، ۹ تا ۱۸</li></ul></div>
+    </div>
+    <p class="mrz" aria-hidden="true">P&lt;IRNKOOCH&lt;&lt;MIGRATION&lt;ADVISORY&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+K00CH2026&lt;7IRN9001014M2610173&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;06</p>
+  </div>
+</footer>
+
+<dialog class="modal" id="book" aria-labelledby="book-t">
+  <form data-validate data-steps data-keep data-stay>
+    <div class="modal-head"><h2 class="h3" id="book-t"><span class="ms" aria-hidden="true">event</span><span data-alt="Book a consultation">نوبت مشاوره</span></h2><button class="btn btn-ghost btn-icon btn-sm" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><span class="ms" aria-hidden="true">close</span></button></div>
+    <div class="modal-body">
+      <div class="steps-ind" data-step-indicator style="--n: 4"><span data-alt="Topic">موضوع</span><span data-alt="Time">زمان</span><span data-alt="Contact">تماس</span><span data-alt="Pay">پرداخت</span></div>
+      <div data-step class="stack">
+        <span class="label" data-alt="What is the call about?">موضوع گفت‌وگو چیست؟</span>
+        <div class="seg" data-group="topic" role="group" aria-label="موضوع" data-alt-aria-label="Topic">
+          <button type="button" aria-pressed="true" data-alt="Work">کار</button><button type="button" aria-pressed="false" data-alt="Study">تحصیل</button><button type="button" aria-pressed="false" data-alt="Family">خانواده</button><button type="button" aria-pressed="false" data-alt="Investment">سرمایه‌گذاری</button>
+        </div>
+        <span class="label" data-alt="Advisor">مشاور</span>
+        <div class="seg" data-group="advisor" role="group" aria-label="مشاور" data-alt-aria-label="Advisor">
+          <button type="button" aria-pressed="true" data-alt="Maryam">مریم</button><button type="button" aria-pressed="false" data-alt="Arash">آرش</button><button type="button" aria-pressed="false" data-alt="Sara">سارا</button><button type="button" aria-pressed="false" data-alt="Any advisor">فرقی نمی‌کند</button>
+        </div>
+      </div>
+      <div data-step class="stack" hidden>
+        <span class="label" data-alt="Day">روز</span>
+        <div class="seg" data-group="day" role="group" aria-label="روز" data-alt-aria-label="Day">
+          <button type="button" aria-pressed="true" data-alt="Today">امروز</button><button type="button" aria-pressed="false" data-alt="Tomorrow">فردا</button><button type="button" aria-pressed="false" data-alt="Saturday">شنبه</button><button type="button" aria-pressed="false" data-alt="Sunday">یکشنبه</button>
+        </div>
+        <span class="label" data-alt="Time (Tehran)">ساعت (به وقت تهران)</span>
+        <div class="slots" data-group="slot" role="group" aria-label="ساعت" data-alt-aria-label="Time">
+          <button type="button" disabled data-alt="10:00">۱۰:۰۰</button><button type="button" aria-pressed="false" data-alt="11:30">۱۱:۳۰</button><button type="button" disabled data-alt="13:00">۱۳:۰۰</button><button type="button" aria-pressed="false" data-alt="15:00">۱۵:۰۰</button>
+          <button type="button" aria-pressed="false" data-alt="16:00">۱۶:۰۰</button><button type="button" aria-pressed="true" data-alt="17:30">۱۷:۳۰</button><button type="button" disabled data-alt="18:30">۱۸:۳۰</button><button type="button" aria-pressed="false" data-alt="19:30">۱۹:۳۰</button>
+        </div>
+        <div class="seg" data-group="mode" role="group" aria-label="نوع" data-alt-aria-label="Kind">
+          <button type="button" aria-pressed="true" data-alt="Video call">تماس تصویری</button><button type="button" aria-pressed="false" data-alt="At the office">حضوری</button>
+        </div>
+      </div>
+      <div data-step class="stack" hidden>
+        <div class="field"><label class="label" for="bn" data-alt="Full name">نام و نام خانوادگی</label><input class="input" id="bn" name="name" required minlength="3" autocomplete="name"></div>
+        <div class="field"><label class="label" for="bp" data-alt="Mobile">موبایل</label><input class="input ltr" id="bp" name="phone" required inputmode="tel" pattern="0?9[0-9]{9}" placeholder="0912 345 6789" data-pattern-msg="یک شمارهٔ موبایل ایرانی وارد کنید." data-pattern-msg-alt="Enter an Iranian mobile number." autocomplete="tel"><span class="hint" data-alt="We send the confirmation and a reminder by SMS.">تأیید و یادآوری را پیامک می‌کنیم.</span></div>
+        <div class="field"><label class="label" for="bq" data-alt="Anything we should know? (optional)">نکته‌ای که باید بدانیم؟ (اختیاری)</label><textarea class="textarea" id="bq" name="note" data-alt-placeholder="Degree, language score, family…" placeholder="مدرک، نمرهٔ زبان، خانواده…"></textarea></div>
+      </div>
+      <div data-step class="stack" hidden>
+        <div class="summary-pass">
+          <div class="split"><span class="dual"><span data-alt="Topic">موضوع</span><span data-alt="موضوع">Topic</span></span><b data-show="topic">کار</b></div>
+          <div class="split"><span class="dual"><span data-alt="Advisor">مشاور</span><span data-alt="مشاور">Advisor</span></span><b data-show="advisor">مریم</b></div>
+          <div class="split"><span class="dual"><span data-alt="When">زمان</span><span data-alt="زمان">When</span></span><b><span data-show="day">امروز</span> · <span data-show="slot">۱۷:۳۰</span></b></div>
+          <div class="split"><span class="dual"><span data-alt="Deposit">پیش‌پرداخت</span><span data-alt="پیش‌پرداخت">Deposit</span></span><b data-num="450000" data-fmt="toman">۴۵۰٬۰۰۰ تومان</b></div>
+        </div>
+        <p class="tiny subtle" data-alt="The deposit is deducted from your contract. Free cancellation up to 24 hours before.">پیش‌پرداخت از مبلغ قرارداد کم می‌شود. لغو رایگان تا ۲۴ ساعت قبل.</p>
+        <div class="done-panel" data-success-panel hidden><span class="stamp green press"><b data-alt="Booked">ثبت شد</b><small data-alt="See you soon">به زودی می‌بینیمتان</small></span><p data-alt="Confirmation sent by SMS. Your file is open in your portal.">تأیید پیامک شد. پرونده‌تان در پنل باز است.</p><a class="btn btn-soft" href="dashboard.html"><span data-alt="Open my file">باز کردن پرونده</span></a></div>
+      </div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" type="button" data-prev data-alt="Back">قبلی</button><span class="spacer"></span><button class="btn" type="button" data-next data-alt="Next">بعدی</button><button class="btn" type="submit"><span class="ms" aria-hidden="true">lock</span><span data-alt="Pay deposit">پرداخت پیش‌پرداخت</span></button></div>
+  </form>
+</dialog>
+
+<dialog class="modal" id="login" aria-labelledby="login-t" style="inline-size: min(440px, calc(100vw - 24px))">
+  <form data-steps data-validate data-success="خوش آمدید — وارد شدید." data-success-alt="Welcome — you are signed in.">
+    <div class="modal-head"><h2 class="h3" id="login-t"><span class="ms" aria-hidden="true">sms</span><span data-alt="Sign in with your mobile">ورود با موبایل</span></h2><button class="btn btn-ghost btn-icon btn-sm" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><span class="ms" aria-hidden="true">close</span></button></div>
+    <div class="modal-body">
+      <div data-step class="stack">
+        <div class="field"><label class="label" for="lp" data-alt="Mobile number">شمارهٔ موبایل</label><input class="input ltr" id="lp" name="phone" required inputmode="tel" pattern="0?9[0-9]{9}" placeholder="0912 345 6789" data-pattern-msg="یک شمارهٔ موبایل ایرانی وارد کنید." data-pattern-msg-alt="Enter an Iranian mobile number." autocomplete="tel"></div>
+        <button class="btn btn-block" type="button" data-next><span data-alt="Send the code">ارسال کد</span></button>
+      </div>
+      <div data-step class="stack" hidden>
+        <p class="small muted" data-alt="Enter the 5-digit code we sent by SMS.">کد ۵ رقمی پیامک‌شده را وارد کنید.</p>
+        <div class="otp" data-otp><input inputmode="numeric" maxlength="1" aria-label="رقم ۱" data-alt-aria-label="Digit 1" autocomplete="one-time-code"><input inputmode="numeric" maxlength="1" aria-label="رقم ۲" data-alt-aria-label="Digit 2"><input inputmode="numeric" maxlength="1" aria-label="رقم ۳" data-alt-aria-label="Digit 3"><input inputmode="numeric" maxlength="1" aria-label="رقم ۴" data-alt-aria-label="Digit 4"><input inputmode="numeric" maxlength="1" aria-label="رقم ۵" data-alt-aria-label="Digit 5"></div>
+        <input type="hidden" name="code" data-otp-value>
+        <button class="btn btn-block" type="submit" data-otp-submit disabled><span data-alt="Verify and sign in">تأیید و ورود</span></button>
+        <button class="btn btn-ghost btn-sm" type="button" data-prev data-alt="Change number">تغییر شماره</button>
+      </div>
+    </div>
+  </form>
+</dialog>
+
+<dialog class="modal" id="video" aria-labelledby="video-t">
+  <div class="modal-head"><h2 class="h3" id="video-t" data-video-title data-alt="Short video">ویدئوی کوتاه</h2><button class="btn btn-ghost btn-icon btn-sm" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><span class="ms" aria-hidden="true">close</span></button></div>
+  <div class="modal-body"><div class="video-poster" data-guilloche><span class="play"><span class="ms fill" aria-hidden="true">play_arrow</span></span></div><p class="small muted" data-alt="In a real site the player loads here, with Persian subtitles.">در سایت واقعی پخش‌کننده با زیرنویس فارسی اینجا باز می‌شود.</p></div>
+</dialog>
+
+<script>
+  // Route finder: filter destinations by the chosen goal and go there. Shorts: name the video dialog after its card.
+  document.getElementById('planner').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const goal = e.target.goal.value;
+    document.querySelector(`#destinations [data-filter="goal"][data-value="${goal}"]`)?.click();
+    document.getElementById('destinations').scrollIntoView({ behavior: tf.reduceMotion ? 'auto' : 'smooth' });
+  });
+  document.getElementById('video').addEventListener('tf:dialog', (e) => {
+    const title = e.detail.trigger.querySelector('b');
+    if (title) document.querySelector('[data-video-title]').textContent = title.textContent;
+  });
+</script>
+</body>
+</html>

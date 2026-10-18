@@ -9,8 +9,8 @@
 
 **گالری:** https://tastefolio.github.io/fa/ · **English:** https://tastefolio.github.io · **راهنما:** https://tastefolio.github.io/fa/guide/ · [English README](README.md)
 
-- **۲۷ سبک** که در منطق چیدمان، تراکم، تایپوگرافی، ناوبری و تعامل با هم فرق دارند، نه فقط در رنگ.
-- **۵۴ دموی کارکرده** (برای هر سبک یک سایت و یک داشبورد) با منو، تب، فیلتر، فرم، دیالوگ و نمودار واقعی؛ همه قابل جابه‌جایی بین فارسی و انگلیسی، روشن و تیره و هر رنگ برندی.
+- **۲۸ سبک** که در منطق چیدمان، تراکم، تایپوگرافی، ناوبری و تعامل با هم فرق دارند، نه فقط در رنگ.
+- **۵۶ دموی کارکرده** (برای هر سبک یک سایت و یک داشبورد) با منو، تب، فیلتر، فرم، دیالوگ و نمودار واقعی؛ همه قابل جابه‌جایی بین فارسی و انگلیسی، روشن و تیره و هر رنگ برندی.
 - **تصویر واقعی** از همهٔ دموها در گالری که با هر انتشار خودکار گرفته می‌شود.
 - **بدون فریم‌ورک**: HTML و CSS ساده و یک اسکریپت کوچک مشترک، به‌همراه نگاشت Tailwind نسخهٔ ۳ و ۴ و shadcn/ui برای هر سبک.
 
@@ -46,6 +46,7 @@
 | 25 | [**Estate**](skills/estate/SKILL.md) · [صفحه](https://tastefolio.github.io/fa/skills/estate/) | فروش | روشن، فارسی‌محور | متعادل | آگهی ملک — کاغذ سنگی، اقدام‌های سبز خزه‌ای، قیمت با حروف سریف، فهرست کنار نقشه با پین قیمت و پنل مشاور با قیف مشتری | [سایت](https://tastefolio.github.io/skills/estate/examples/site.html?lang=fa) · [داشبورد](https://tastefolio.github.io/skills/estate/examples/dashboard.html?lang=fa) |
 | 26 | [**Margin**](skills/margin/SKILL.md) · [صفحه](https://tastefolio.github.io/fa/skills/margin/) | محتوا و رسانه | روشن، فارسی‌محور | باز | خواندن طولانی — کاغذ گرم، ستون باریک متن، یادداشت‌های شماره‌دار در حاشیهٔ پهن، ماژیک خواننده و میز آرام نویسنده | [سایت](https://tastefolio.github.io/skills/margin/examples/site.html?lang=fa) · [داشبورد](https://tastefolio.github.io/skills/margin/examples/dashboard.html?lang=fa) |
 | 27 | [**Dot**](skills/dot/SKILL.md) · [صفحه](https://tastefolio.github.io/fa/skills/dot/) | برند و فرهنگ | روشن، فارسی‌محور | متعادل | سخت‌افزار نقطه‌ای — کاغذی یا سیاه، یک قرمز LED، حروف نمایشی از نقطه، دستگاه طراحی‌شده با صفحهٔ زندهٔ ۱۵×۱۵ و اپ دستگاه با سازندهٔ نشانه | [سایت](https://tastefolio.github.io/skills/dot/examples/site.html?lang=fa) · [داشبورد](https://tastefolio.github.io/skills/dot/examples/dashboard.html?lang=fa) |
+| 28 | [**Passage**](skills/passage/SKILL.md) · [صفحه](https://tastefolio.github.io/fa/skills/passage/) | محصول | روشن، فارسی‌محور | متعادل | اسناد سفر در قالب رابط کاربری — کاغذ امنیتی با نقش گیوشه، کارت پرواز برای برنامه‌ها، مهر لاستیکی برای هر مرحله، سنجش امتیاز و پنلی که مثل گذرنامه ساخته شده | [سایت](https://tastefolio.github.io/skills/passage/examples/site.html?lang=fa) · [داشبورد](https://tastefolio.github.io/skills/passage/examples/dashboard.html?lang=fa) |
 <!-- styles:end -->
 
 دموها پارامترهای `?lang=en`، `?theme=dark` و `?brand=ff5a36` (هر کد رنگ) را می‌پذیرند تا سبک را با برند خودتان امتحان کنید.

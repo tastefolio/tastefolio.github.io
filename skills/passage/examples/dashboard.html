@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="fa" dir="rtl" data-alt-lang="en" data-demo="dashboard">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-alt="My file — Kooch">پروندهٔ من — کوچ</title>
+<meta name="description" content="پنل مراجع کوچ: مراحل پرونده، مدارک، نوبت‌ها، تیکت‌ها و پرداخت‌ها." data-alt-content="Kooch client portal: file stages, documents, appointments, tickets and payments.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Red+Hat+Text:wght@400..700&family=Share+Tech+Mono&family=Vazirmatn:wght@100..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..500,0..1,0&icon_names=account_balance,add,arrow_forward,badge,calendar_month,call,chat,check,check_circle,chevron_right,close,confirmation_number,contract,credit_card,dark_mode,description,download,edit,error,event,family_restroom,flight,flight_land,flight_takeoff,folder_open,gavel,home,hourglass_top,how_to_reg,id_card,info,language,lock,logout,luggage,mail,menu,notifications,payments,pending,person,play_arrow,public,quiz,receipt_long,rocket_launch,schedule,school,search,send,sms,star,support_agent,task_alt,translate,travel_explore,tune,upload,verified,work,workspace_premium&display=block">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script src="../assets/kit.js" defer></script>
+<script src="../assets/passage.js" defer></script>
+<style>
+  .visa-pages .stamp.round { inline-size: 96px; block-size: 96px; }
+  .visa-pages small.mono { font-size: 11px; color: var(--ink-3); }
+  .appt { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; align-items: center; gap: 14px; padding: 14px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); }
+  .appt .day { display: grid; place-items: center; inline-size: 56px; block-size: 56px; border-radius: var(--radius-sm); background: var(--brand-soft); color: var(--brand); font: 800 var(--fs-sm)/1.2 var(--font-sans); text-align: center; }
+  .appt.past { opacity: .7; }
+  @media (max-width: 560px) { .appt { grid-template-columns: 48px minmax(0, 1fr); } .appt > :last-child { grid-column: 1 / -1; } }
+  .thread-box { display: grid; gap: var(--space-4); align-content: start; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-alt="Skip to content">رفتن به محتوا</a>
+<div class="app">
+  <aside class="side">
+    <a class="logo" href="site.html"><span class="logo-mark" aria-hidden="true"><span class="ms">flight</span></span><span data-alt="Kooch">کوچ</span></a>
+    <nav class="side-nav" role="tablist" aria-orientation="vertical" aria-label="پرونده" data-alt-aria-label="File">
+      <button type="button" role="tab" id="t-ov" aria-controls="p-ov" aria-selected="true"><span class="ms" aria-hidden="true">id_card</span><span data-alt="Overview">نمای کلی</span></button>
+      <button type="button" role="tab" id="t-docs" aria-controls="p-docs" aria-selected="false"><span class="ms" aria-hidden="true">description</span><span data-alt="Documents">مدارک</span><span class="count" data-docs-left data-num="4">۴</span></button>
+      <button type="button" role="tab" id="t-appt" aria-controls="p-appt" aria-selected="false"><span class="ms" aria-hidden="true">event</span><span data-alt="Appointments">نوبت‌ها</span></button>
+      <button type="button" role="tab" id="t-tix" aria-controls="p-tix" aria-selected="false"><span class="ms" aria-hidden="true">support_agent</span><span data-alt="Tickets">تیکت‌ها</span><span class="count" data-num="1">۱</span></button>
+      <button type="button" role="tab" id="t-pay" aria-controls="p-pay" aria-selected="false"><span class="ms" aria-hidden="true">payments</span><span data-alt="Payments">پرداخت‌ها</span></button>
+    </nav>
+    <div class="side-card">
+      <b data-alt="Your advisor: Maryam Tavakoli">مشاور شما: مریم توکلی</b>
+      <span data-alt="Answers tickets within one working day.">تیکت‌ها را ظرف یک روز کاری جواب می‌دهد.</span>
+      <button class="btn btn-sm" type="button" data-dialog="#new-ticket"><span class="ms" aria-hidden="true">add</span><span data-alt="New ticket">تیکت جدید</span></button>
+    </div>
+  </aside>
+
+  <div class="main" id="main">
+    <header class="topbar">
+      <div class="stack" style="gap: 0"><h1 class="h2" data-alt="My file">پروندهٔ من</h1><span class="tiny subtle mono">KCH-26-0417</span></div>
+      <span class="spacer"></span>
+      <button class="btn btn-ghost btn-sm" type="button" data-lang-toggle data-alt="فا">EN</button>
+      <button class="btn btn-ghost btn-icon btn-sm" type="button" data-theme-toggle aria-label="تغییر حالت تیره" data-alt-aria-label="Toggle dark mode"><span class="ms" aria-hidden="true">dark_mode</span></button>
+      <button class="btn btn-ghost btn-icon btn-sm" type="button" data-toast="۲ پیام تازه از مشاور" data-toast-alt="2 new messages from your advisor" aria-label="اعلان‌ها" data-alt-aria-label="Notifications"><span class="ms" aria-hidden="true">notifications</span></button>
+      <span class="avatar" style="--c:#dfe7f4" aria-hidden="true"><span data-alt="N">ن</span></span>
+    </header>
+
+    <!-- ============================================================ overview -->
+    <section class="page" id="p-ov" role="tabpanel" aria-labelledby="t-ov">
+      <article class="datapage" data-guilloche="rosette" aria-label="صفحهٔ مشخصات" data-alt-aria-label="Data page">
+        <span class="photo" aria-hidden="true"><span data-alt="NR">ن‌ر</span></span>
+        <dl>
+          <div><dt class="dual"><span data-alt="Surname">نام خانوادگی</span><span data-alt="نام خانوادگی">Surname</span></dt><dd data-alt="Rezaei">رضایی</dd></div>
+          <div><dt class="dual"><span data-alt="Given names">نام</span><span data-alt="نام">Given names</span></dt><dd data-alt="Nima">نیما</dd></div>
+          <div><dt class="dual"><span data-alt="Nationality">ملیت</span><span data-alt="ملیت">Nationality</span></dt><dd data-alt="Iranian · IRN">ایرانی · IRN</dd></div>
+          <div><dt class="dual"><span data-alt="Case no.">شمارهٔ پرونده</span><span data-alt="شمارهٔ پرونده">Case no.</span></dt><dd class="mono ltr">KCH-26-0417</dd></div>
+          <div><dt class="dual"><span data-alt="Program">برنامه</span><span data-alt="برنامه">Program</span></dt><dd data-alt="Canada · skilled worker">کانادا · نیروی ماهر</dd></div>
+          <div><dt class="dual"><span data-alt="Advisor">مشاور</span><span data-alt="مشاور">Advisor</span></dt><dd data-alt="Maryam Tavakoli">مریم توکلی</dd></div>
+          <div><dt class="dual"><span data-alt="Opened">تاریخ گشایش</span><span data-alt="تاریخ گشایش">Opened</span></dt><dd data-date="2026-03-12" data-fmt="long">۲۱ اسفند ۱۴۰۴</dd></div>
+          <div><dt class="dual"><span data-alt="Points">امتیاز</span><span data-alt="امتیاز">Points</span></dt><dd class="mono" data-num="472">۴۷۲</dd></div>
+          <div><dt class="dual"><span data-alt="Family">خانواده</span><span data-alt="خانواده">Family</span></dt><dd data-alt="Spouse + 1 child">همسر و ۱ فرزند</dd></div>
+        </dl>
+        <p class="mrz" aria-hidden="true">P&lt;IRNREZAEI&lt;&lt;NIMA&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+KCH260417&lt;7IRN9104123M2703121&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;04</p>
+        <span class="stamp violet" style="--r: 8deg"><b data-alt="In progress">در جریان</b><small data-alt="Stage 5 of 8">مرحلهٔ ۵ از ۸</small></span>
+      </article>
+
+      <div class="panel">
+        <div class="panel-head"><h2 class="h3" data-alt="Stages — one stamp each">مراحل؛ هرکدام یک مهر</h2><span class="badge brand" data-alt="4 of 8 stamped">۴ از ۸ مهر خورده</span></div>
+        <ol class="visa-pages">
+          <li data-state="done"><span class="stamp green round" style="--r: -10deg"><small data-alt="Kooch">کوچ</small><b data-alt="Call">مشاوره</b><small data-date="2026-03-12" data-fmt="short">۲۱ اسفند</small></span><span class="stage" data-alt="1 · Consultation">۱ · مشاوره</span></li>
+          <li data-state="done"><span class="stamp blue" style="--r: 6deg"><b data-alt="Signed">امضا شد</b><small data-date="2026-03-20" data-fmt="short">۲۹ اسفند</small></span><span class="stage" data-alt="2 · Contract">۲ · قرارداد</span></li>
+          <li data-state="done"><span class="stamp violet round" style="--r: 12deg"><small>IELTS</small><b>7.5</b><small data-date="2026-05-28" data-fmt="short">۷ خرداد</small></span><span class="stage" data-alt="3 · Language test">۳ · آزمون زبان</span></li>
+          <li data-state="done"><span class="stamp" style="--r: -5deg"><b data-alt="Assessed">ارزیابی شد</b><small data-alt="Master’s = M.Sc.">ارشد معادل شد</small></span><span class="stage" data-alt="4 · Degree assessment">۴ · ارزیابی مدرک</span></li>
+          <li data-state="current"><span class="stamp pending"><b data-docs-done data-num="10">۱۰</b><small data-alt="of 14 documents">از ۱۴ مدرک</small></span><span class="stage" data-alt="5 · Documents — now">۵ · مدارک؛ الان</span></li>
+          <li data-state="todo"><span class="stamp pending"><small data-alt="next">بعدی</small><b>·</b></span><span class="stage" data-alt="6 · Profile filed">۶ · ثبت پروفایل</span></li>
+          <li data-state="todo"><span class="stamp pending"><small data-alt="next">بعدی</small><b>·</b></span><span class="stage" data-alt="7 · Invitation">۷ · دعوت‌نامه</span></li>
+          <li data-state="todo"><span class="stamp pending"><small data-alt="next">بعدی</small><b>·</b></span><span class="stage" data-alt="8 · Decision">۸ · رأی نهایی</span></li>
+        </ol>
+      </div>
+
+      <div class="grid-3">
+        <div class="panel">
+          <div class="panel-head"><h2 class="h3" data-alt="Next appointment">نوبت بعدی</h2><span class="badge info" data-alt="Video call">تماس تصویری</span></div>
+          <p class="small muted" data-alt="Document review with Maryam — bring the employment letter.">بررسی مدارک با مریم؛ نامهٔ اشتغال را آماده کنید.</p>
+          <div class="countdown" data-countdown-in="263400" aria-label="زمان باقی‌مانده" data-alt-aria-label="Time left">
+            <div><b data-cd="d">۳</b><small data-alt="days">روز</small></div><div><b data-cd="h">۱</b><small data-alt="hours">ساعت</small></div><div><b data-cd="m">۱۰</b><small data-alt="min">دقیقه</small></div><div><b data-cd="s">۰</b><small data-alt="sec">ثانیه</small></div>
+          </div>
+          <button class="btn btn-outline btn-sm" type="button" data-toast="به تقویم اضافه شد." data-toast-alt="Added to your calendar."><span class="ms" aria-hidden="true">calendar_month</span><span data-alt="Add to calendar">افزودن به تقویم</span></button>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2 class="h3" data-alt="Documents">مدارک</h2><span class="small subtle"><span data-docs-done data-num="10">۱۰</span> <span data-alt="of 14">از ۱۴</span></span></div>
+          <div class="meter"><div class="bar"><span data-docs-bar style="--v: 71%"></span></div><span class="tiny subtle" data-alt="4 need action — the employment letter is the one that blocks filing.">۴ مدرک اقدام می‌خواهد؛ نامهٔ اشتغال جلوی ثبت را گرفته است.</span></div>
+          <button class="btn btn-sm" type="button" data-goto-tab="t-docs"><span data-alt="Open the checklist">باز کردن چک‌لیست</span><span class="ms flip-rtl" aria-hidden="true">arrow_forward</span></button>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2 class="h3" data-alt="Next instalment">قسط بعدی</h2><span class="badge warn" data-alt="Due in 6 days">۶ روز مانده</span></div>
+          <b class="h2" data-num="12000000" data-fmt="toman">۱۲٬۰۰۰٬۰۰۰ تومان</b>
+          <span class="tiny subtle" data-alt="Instalment 3 of 4 — due when your profile is filed.">قسط ۳ از ۴؛ با ثبت پروفایل سررسید می‌شود.</span>
+          <button class="btn btn-sm" type="button" data-goto-tab="t-pay"><span class="ms" aria-hidden="true">credit_card</span><span data-alt="Pay now">پرداخت</span></button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2 class="h3" data-alt="Activity">رویدادها</h2></div>
+        <ul class="feed">
+          <li><span class="ic"><span class="ms" aria-hidden="true">chat</span></span><div><b data-alt="Maryam replied to your ticket">مریم به تیکت شما جواب داد</b><div class="tiny subtle" data-ago="2400">۴۰ دقیقه پیش</div></div></li>
+          <li><span class="ic"><span class="ms" aria-hidden="true">error</span></span><div><b data-alt="Bank statements were rejected — the scan is blurry">صورت‌حساب بانکی رد شد؛ اسکن واضح نیست</b><div class="tiny subtle" data-ago="18000">۵ ساعت پیش</div></div></li>
+          <li><span class="ic"><span class="ms" aria-hidden="true">task_alt</span></span><div><b data-alt="IELTS report received and checked">کارنامهٔ آیلتس دریافت و بررسی شد</b><div class="tiny subtle" data-ago="172800">۲ روز پیش</div></div></li>
+          <li><span class="ic"><span class="ms" aria-hidden="true">workspace_premium</span></span><div><b data-alt="Degree assessment stamped: Master’s = M.Sc.">ارزیابی مدرک مهر خورد: ارشد معادل M.Sc.</b><div class="tiny subtle" data-ago="604800">۷ روز پیش</div></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================ documents -->
+    <section class="page" id="p-docs" role="tabpanel" aria-labelledby="t-docs" data-filter-scope hidden>
+      <div class="panel-head">
+        <div class="chips" data-group role="group" aria-label="وضعیت" data-alt-aria-label="Status">
+          <button type="button" data-filter="status" data-value="all" aria-pressed="true" data-alt="All">همه</button>
+          <button type="button" data-filter="status" data-value="action" aria-pressed="false" data-alt="Needs action">نیاز به اقدام</button>
+          <button type="button" data-filter="status" data-value="done" aria-pressed="false" data-alt="Done">انجام‌شده</button>
+        </div>
+        <span class="small subtle"><span data-filter-count data-num="9">۹</span> <span data-alt="shown">مدرک</span></span>
+      </div>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th><button type="button" data-sort="text"><span data-alt="Document">مدرک</span></button></th><th data-alt="Translation">ترجمه</th><th data-alt="Certified">تأیید</th><th data-alt="Status">وضعیت</th><th><span class="sr-only" data-alt="Action">اقدام</span></th></tr></thead>
+          <tbody>
+            <tr data-filter-item data-status="done"><td><span class="doc-name"><span class="ms" aria-hidden="true">id_card</span><span data-alt="Passport — all pages">گذرنامه؛ همهٔ صفحه‌ها</span></span></td><td>—</td><td>—</td><td><span class="badge ok" data-alt="Received">دریافت شد</span></td><td></td></tr>
+            <tr data-filter-item data-status="done"><td><span class="doc-name"><span class="ms" aria-hidden="true">family_restroom</span><span data-alt="Birth certificates">شناسنامه‌ها</span></span></td><td><span class="ms" aria-hidden="true">check</span><span class="sr-only" data-alt="Yes">بله</span></td><td><span class="ms" aria-hidden="true">check</span><span class="sr-only" data-alt="Yes">بله</span></td><td><span class="badge ok" data-alt="Received">دریافت شد</span></td><td></td></tr>
+            <tr data-filter-item data-status="done"><td><span class="doc-name"><span class="ms" aria-hidden="true">school</span><span data-alt="Bachelor’s degree">مدرک کارشناسی</span></span></td><td><span class="ms" aria-hidden="true">check</span><span class="sr-only" data-alt="Yes">بله</span></td><td><span class="ms" aria-hidden="true">check</span><span class="sr-only" data-alt="Yes">بله</span></td><td><span class="badge ok" data-alt="Received">دریافت شد</span></td><td></td></tr>
+            <tr data-filter-item data-status="action"><td><span class="doc-name"><span class="ms" aria-hidden="true">school</span><span data-alt="Master’s transcript">ریزنمرات ارشد</span></span></td><td><span class="ms" aria-hidden="true">check</span><span class="sr-only" data-alt="Yes">بله</span></td><td><span class="badge warn plain" data-alt="Missing">ندارد</span></td><td><span class="badge warn" data-upload-status data-done-fa="دریافت شد" data-done-en="Received" data-alt="Needs certification">تأیید لازم است</span></td><td><span class="upload"><button class="btn btn-sm btn-outline" type="button" data-upload><span class="ms" aria-hidden="true">upload</span><span data-alt="Upload">بارگذاری</span></button><span class="prog"><span></span></span></span></td></tr>
+            <tr data-filter-item data-status="action"><td><span class="doc-name"><span class="ms" aria-hidden="true">work</span><span data-alt="Employment letter">نامهٔ اشتغال</span></span></td><td><span class="badge plain" data-alt="Not yet">هنوز نه</span></td><td>—</td><td><span class="badge bad" data-upload-status data-done-fa="دریافت شد" data-done-en="Received" data-alt="Missing — blocks filing">ندارد؛ مانع ثبت</span></td><td><span class="upload"><button class="btn btn-sm" type="button" data-upload><span class="ms" aria-hidden="true">upload</span><span data-alt="Upload">بارگذاری</span></button><span class="prog"><span></span></span></span></td></tr>
+            <tr data-filter-item data-status="action"><td><span class="doc-name"><span class="ms" aria-hidden="true">account_balance</span><span data-alt="Bank statements — 6 months">صورت‌حساب بانکی؛ ۶ ماه</span></span></td><td>—</td><td>—</td><td><span class="badge bad" data-upload-status data-done-fa="دریافت شد" data-done-en="Received" data-alt="Rejected — blurry scan">رد شد؛ اسکن ناواضح</span></td><td><span class="upload"><button class="btn btn-sm btn-outline" type="button" data-upload><span class="ms" aria-hidden="true">upload</span><span data-alt="Upload again">بارگذاری دوباره</span></button><span class="prog"><span></span></span></span></td></tr>
+            <tr data-filter-item data-status="done"><td><span class="doc-name"><span class="ms" aria-hidden="true">translate</span><span data-alt="IELTS report">کارنامهٔ آیلتس</span></span></td><td>—</td><td>—</td><td><span class="badge ok" data-alt="Received">دریافت شد</span></td><td></td></tr>
+            <tr data-filter-item data-status="done"><td><span class="doc-name"><span class="ms" aria-hidden="true">gavel</span><span data-alt="Police certificate">گواهی عدم سوءپیشینه</span></span></td><td><span class="ms" aria-hidden="true">check</span><span class="sr-only" data-alt="Yes">بله</span></td><td><span class="badge info plain" data-alt="In review">در بررسی</span></td><td><span class="badge info" data-alt="In review">در بررسی</span></td><td></td></tr>
+            <tr data-filter-item data-status="action"><td><span class="doc-name"><span class="ms" aria-hidden="true">person</span><span data-alt="Photos 35×45, white">عکس ۳۵×۴۵ با زمینهٔ سفید</span></span></td><td>—</td><td>—</td><td><span class="badge warn" data-upload-status data-done-fa="دریافت شد" data-done-en="Received" data-alt="Missing">ندارد</span></td><td><span class="upload"><button class="btn btn-sm btn-outline" type="button" data-upload><span class="ms" aria-hidden="true">upload</span><span data-alt="Upload">بارگذاری</span></button><span class="prog"><span></span></span></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="empty" data-filter-empty hidden data-alt="Nothing here — everything in this group is done.">چیزی نمانده؛ همهٔ این گروه انجام شده.</p>
+      <p class="tiny subtle" data-alt="Translations must be certified by a sworn translator. Scans: colour, 300 dpi, every page.">ترجمه‌ها باید مهر مترجم رسمی داشته باشند. اسکن: رنگی، ۳۰۰ dpi، همهٔ صفحه‌ها.</p>
+    </section>
+
+    <!-- ============================================================ appointments -->
+    <section class="page" id="p-appt" role="tabpanel" aria-labelledby="t-appt" hidden>
+      <div class="panel-head"><h2 class="h3" data-alt="Appointments">نوبت‌ها</h2><button class="btn btn-sm btn-outline" type="button" data-dialog="#move"><span class="ms" aria-hidden="true">edit</span><span data-alt="Ask to move one">درخواست جابه‌جایی</span></button></div>
+      <div class="stack">
+        <div class="appt"><span class="day"><span data-date="2026-10-21" data-fmt="short">۲۹ مهر</span></span><div><b data-alt="Document review · Maryam">بررسی مدارک · مریم</b><div class="small subtle" data-alt="Video call · 11:30 Tehran time · 30 min">تماس تصویری · ۱۱:۳۰ به وقت تهران · ۳۰ دقیقه</div></div><span class="badge info" data-alt="In 3 days">۳ روز دیگر</span></div>
+        <div class="appt"><span class="day"><span data-alt="TBC">به‌زودی</span></span><div><b data-alt="Biometrics · visa centre">انگشت‌نگاری · مرکز ویزا</b><div class="small subtle" data-alt="Booked after the invitation — we will pick the earliest slot.">پس از دعوت‌نامه رزرو می‌شود؛ زودترین زمان را می‌گیریم.</div></div><span class="badge plain" data-alt="Not yet">هنوز نه</span></div>
+        <div class="appt past"><span class="day"><span data-date="2026-05-28" data-fmt="short">۷ خرداد</span></span><div><b data-alt="IELTS exam · Tehran">آزمون آیلتس · تهران</b><div class="small subtle" data-alt="Result 7.5 — stamped in your file.">نتیجه ۷٫۵؛ در پرونده مهر خورد.</div></div><span class="badge ok" data-alt="Done">انجام شد</span></div>
+        <div class="appt past"><span class="day"><span data-date="2026-03-12" data-fmt="short">۲۱ اسفند</span></span><div><b data-alt="First consultation · Maryam">مشاورهٔ اول · مریم</b><div class="small subtle" data-alt="At the office · 60 min">حضوری · ۶۰ دقیقه</div></div><span class="badge ok" data-alt="Done">انجام شد</span></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ tickets -->
+    <section class="page" id="p-tix" role="tabpanel" aria-labelledby="t-tix" hidden>
+      <div class="panel-head"><h2 class="h3" data-alt="Tickets">تیکت‌ها</h2><button class="btn btn-sm" type="button" data-dialog="#new-ticket"><span class="ms" aria-hidden="true">add</span><span data-alt="New ticket">تیکت جدید</span></button></div>
+      <div class="tickets">
+        <div class="ticket-list" role="tablist" aria-orientation="vertical" aria-label="تیکت‌ها" data-alt-aria-label="Tickets">
+          <button type="button" role="tab" id="tk-1" aria-controls="th-1" aria-selected="true"><span class="split"><b data-alt="Which bank statements count?">کدام صورت‌حساب‌ها قبول است؟</b><span class="badge info" data-alt="Answered">پاسخ داده شد</span></span><span class="mono">#2041 · <span data-ago="2400">۴۰ دقیقه پیش</span></span></button>
+          <button type="button" role="tab" id="tk-2" aria-controls="th-2" aria-selected="false"><span class="split"><b data-alt="Translating the transcript">ترجمهٔ ریزنمرات</b><span class="badge ok" data-alt="Closed">بسته</span></span><span class="mono">#1988 · <span data-ago="432000">۵ روز پیش</span></span></button>
+          <button type="button" role="tab" id="tk-3" aria-controls="th-3" aria-selected="false"><span class="split"><b data-alt="Adding my daughter to the file">افزودن دخترم به پرونده</b><span class="badge ok" data-alt="Closed">بسته</span></span><span class="mono">#1902 · <span data-ago="1728000">۲۰ روز پیش</span></span></button>
+        </div>
+        <div class="panel thread-box" id="th-1" role="tabpanel" aria-labelledby="tk-1">
+          <div class="thread" id="thread-1">
+            <div class="msg me"><p data-alt="My bank says it can only print 3 months at a time. Is that OK?">بانک می‌گوید هر بار فقط ۳ ماه چاپ می‌کند. اشکالی ندارد؟</p><small data-alt="You · 09:12">شما · ۰۹:۱۲</small></div>
+            <div class="msg them"><p data-alt="Yes — two prints of 3 months each are fine, as long as both carry the bank’s stamp and the balance on the last day.">بله؛ دو برگهٔ سه‌ماهه کافی است، به شرط مهر بانک و نمایش موجودی روز آخر.</p><small data-alt="Maryam · 09:40">مریم · ۰۹:۴۰</small></div>
+            <div class="msg them"><p data-alt="Please scan in colour at 300 dpi; the last upload was too blurry to read.">لطفاً رنگی و با ۳۰۰ dpi اسکن کنید؛ نسخهٔ قبلی خوانا نبود.</p><small data-alt="Maryam · 09:41">مریم · ۰۹:۴۱</small></div>
+          </div>
+          <form class="composer" data-reply="#thread-1"><label class="sr-only" for="reply" data-alt="Reply">پاسخ</label><textarea class="textarea" id="reply" rows="1" placeholder="پاسخ خود را بنویسید…" data-alt-placeholder="Write a reply…"></textarea><button class="btn btn-icon" type="submit" aria-label="ارسال" data-alt-aria-label="Send"><span class="ms flip-rtl" aria-hidden="true">send</span></button></form>
+        </div>
+        <div class="panel thread-box" id="th-2" role="tabpanel" aria-labelledby="tk-2" hidden>
+          <div class="thread"><div class="msg me"><p data-alt="Does the transcript need a sworn translator too?">ریزنمرات هم مترجم رسمی می‌خواهد؟</p><small data-alt="You">شما</small></div><div class="msg them"><p data-alt="Yes, with the university’s and the ministry’s stamps. We sent you a list of translators.">بله، با مهر دانشگاه و وزارت. فهرست مترجم‌ها را فرستادیم.</p><small data-alt="Maryam">مریم</small></div></div>
+        </div>
+        <div class="panel thread-box" id="th-3" role="tabpanel" aria-labelledby="tk-3" hidden>
+          <div class="thread"><div class="msg me"><p data-alt="We had a baby girl last month — how do we add her?">ماه پیش صاحب دختر شدیم؛ چطور اضافه‌اش کنیم؟</p><small data-alt="You">شما</small></div><div class="msg them"><p data-alt="Congratulations! Upload her birth certificate and passport photo; we update the file and the fees stay the same.">تبریک! شناسنامه و عکس گذرنامه‌اش را بارگذاری کنید؛ پرونده به‌روز می‌شود و هزینه تغییری نمی‌کند.</p><small data-alt="Maryam">مریم</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ payments -->
+    <section class="page" id="p-pay" role="tabpanel" aria-labelledby="t-pay" hidden>
+      <div class="kpis">
+        <div class="kpi"><span class="dual"><span data-alt="Contract">قرارداد</span><span data-alt="قرارداد">Contract</span></span><b data-num="48000000" data-fmt="compact">۴۸ میلیون</b><span class="tiny subtle" data-alt="Toman, 4 instalments">تومان، ۴ قسط</span></div>
+        <div class="kpi"><span class="dual"><span data-alt="Paid">پرداخت‌شده</span><span data-alt="پرداخت‌شده">Paid</span></span><b data-num="24000000" data-fmt="compact">۲۴ میلیون</b><span class="tiny subtle" data-alt="2 instalments">۲ قسط</span></div>
+        <div class="kpi"><span class="dual"><span data-alt="Remaining">باقی‌مانده</span><span data-alt="باقی‌مانده">Remaining</span></span><b data-num="24000000" data-fmt="compact">۲۴ میلیون</b><span class="tiny subtle" data-alt="Tied to stages 6 and 8">به مراحل ۶ و ۸ گره خورده</span></div>
+        <div class="kpi"><span class="dual"><span data-alt="Next due">سررسید بعدی</span><span data-alt="سررسید بعدی">Next due</span></span><b data-date="2026-10-24" data-fmt="short">۲ آبان</b><span class="tiny subtle" data-alt="When the profile is filed">با ثبت پروفایل</span></div>
+      </div>
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-head"><h2 class="h3" data-alt="Instalments">اقساط</h2><span class="badge plain mono" data-alt="Toman">تومان</span></div>
+          <ul class="installments">
+            <li data-paid><span class="no" data-num="1">1</span><div><b data-alt="On signing">هنگام امضا</b><div class="tiny subtle" data-date="2026-03-20" data-fmt="long">۲۹ اسفند ۱۴۰۴</div></div><span class="stamp green" style="--r: -6deg"><b data-num="12000000" data-fmt="int">۱۲٬۰۰۰٬۰۰۰</b><small data-alt="Paid">پرداخت شد</small></span></li>
+            <li data-paid><span class="no" data-num="2">2</span><div><b data-alt="Degree assessed">ارزیابی مدرک</b><div class="tiny subtle" data-date="2026-07-02" data-fmt="long">۱۱ تیر ۱۴۰۵</div></div><span class="stamp green" style="--r: 5deg"><b data-num="12000000" data-fmt="int">۱۲٬۰۰۰٬۰۰۰</b><small data-alt="Paid">پرداخت شد</small></span></li>
+            <li><span class="no" data-num="3">3</span><div><b data-alt="Profile filed">ثبت پروفایل</b><div class="tiny subtle" data-alt="Due in 6 days">۶ روز دیگر</div></div><button class="btn btn-sm" type="button" data-toast="به درگاه بانک منتقل می‌شوید…" data-toast-alt="Taking you to the bank gateway…"><span class="ms" aria-hidden="true">lock</span><span data-alt="Pay 12,000,000">پرداخت ۱۲٬۰۰۰٬۰۰۰</span></button></li>
+            <li><span class="no" data-num="4">4</span><div><b data-alt="Decision">رأی نهایی</b><div class="tiny subtle" data-alt="After the decision">پس از رأی</div></div><b class="small" data-num="12000000" data-fmt="toman">۱۲٬۰۰۰٬۰۰۰ تومان</b></li>
+          </ul>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2 class="h3" data-alt="Paid so far">پرداخت تا امروز</h2></div>
+          <div data-chart="donut" data-height="170" data-fmt="pct" data-values="50,50" data-labels='{"en":["Paid","Remaining"],"fa":["پرداخت‌شده","باقی‌مانده"]}' data-center='{"en":"24 of 48 M","fa":"۲۴ از ۴۸ میلیون"}' data-label='{"en":"Half of the contract is paid","fa":"نیمی از قرارداد پرداخت شده"}' style="--chart-2: var(--surface-2)"></div>
+          <button class="btn btn-outline btn-sm" type="button" data-toast="فاکتورها دانلود شد." data-toast-alt="Invoices downloaded."><span class="ms" aria-hidden="true">receipt_long</span><span data-alt="Download invoices">دانلود فاکتورها</span></button>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<dialog class="modal" id="new-ticket" aria-labelledby="nt-t">
+  <form data-validate data-success="تیکت ثبت شد؛ ظرف یک روز کاری پاسخ می‌دهیم." data-success-alt="Ticket sent — we answer within one working day.">
+    <div class="modal-head"><h2 class="h3" id="nt-t"><span class="ms" aria-hidden="true">support_agent</span><span data-alt="New ticket">تیکت جدید</span></h2><button class="btn btn-ghost btn-icon btn-sm" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><span class="ms" aria-hidden="true">close</span></button></div>
+    <div class="modal-body">
+      <div class="field"><label class="label" for="nt-d" data-alt="About">موضوع</label><select class="select" id="nt-d" name="dept"><option data-alt="Documents">مدارک</option><option data-alt="Payments">پرداخت</option><option data-alt="Appointments">نوبت</option><option data-alt="Something else">سایر</option></select></div>
+      <div class="field"><label class="label" for="nt-s" data-alt="Subject">عنوان</label><input class="input" id="nt-s" name="subject" required minlength="4"></div>
+      <div class="field"><label class="label" for="nt-m" data-alt="Message">پیام</label><textarea class="textarea" id="nt-m" name="message" required minlength="10"></textarea></div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" type="button" data-close data-alt="Cancel">انصراف</button><button class="btn" type="submit"><span class="ms" aria-hidden="true">send</span><span data-alt="Send">ارسال</span></button></div>
+  </form>
+</dialog>
+
+<dialog class="modal" id="move" aria-labelledby="mv-t">
+  <form data-validate data-success="درخواست ثبت شد؛ زمان تازه را پیامک می‌کنیم." data-success-alt="Request sent — we will text you the new time.">
+    <div class="modal-head"><h2 class="h3" id="mv-t"><span class="ms" aria-hidden="true">event</span><span data-alt="Move an appointment">جابه‌جایی نوبت</span></h2><button class="btn btn-ghost btn-icon btn-sm" type="button" data-close aria-label="بستن" data-alt-aria-label="Close"><span class="ms" aria-hidden="true">close</span></button></div>
+    <div class="modal-body">
+      <span class="label" data-alt="Better days">روزهای مناسب‌تر</span>
+      <div class="seg" data-group data-multi role="group" aria-label="روزها" data-alt-aria-label="Days"><button type="button" aria-pressed="true" data-alt="Sat">شنبه</button><button type="button" aria-pressed="false" data-alt="Sun">یکشنبه</button><button type="button" aria-pressed="true" data-alt="Mon">دوشنبه</button><button type="button" aria-pressed="false" data-alt="Tue">سه‌شنبه</button><button type="button" aria-pressed="false" data-alt="Wed">چهارشنبه</button></div>
+      <div class="field"><label class="label" for="mv-r" data-alt="Reason">دلیل</label><textarea class="textarea" id="mv-r" name="reason" required minlength="5"></textarea></div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" type="button" data-close data-alt="Cancel">انصراف</button><button class="btn" type="submit" data-alt="Send request">ارسال درخواست</button></div>
+  </form>
+</dialog>
+
+<script>
+  // Overview shortcuts open their tab; an upload moves its row to "done" and updates the counts.
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-goto-tab]');
+    if (b) tf.selectTab(document.getElementById(b.dataset.gotoTab), true);
+  });
+  document.addEventListener('passage:uploaded', (e) => {
+    e.target.dataset.status = 'done';
+    const left = document.querySelectorAll('#p-docs [data-status="action"]').length, done = 14 - left;
+    document.querySelectorAll('[data-docs-left]').forEach((el) => { el.dataset.num = left; el.textContent = tf.fmt(left); el.hidden = !left; });
+    document.querySelectorAll('[data-docs-done]').forEach((el) => { el.dataset.num = done; el.textContent = tf.fmt(done); });
+    document.querySelector('[data-docs-bar]').style.setProperty('--v', Math.round((done / 14) * 100) + '%');
+    tf.applyFilter(document.getElementById('p-docs'));
+  });
+</script>
+</body>
+</html>

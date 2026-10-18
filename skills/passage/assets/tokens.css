@@ -1,0 +1,167 @@
+/* Passage — design tokens (Tastefolio). Immigration, visa and residency services dressed as travel documents:
+   warm security paper with guilloche, one passport navy for every action, rubber-stamp inks that only mark
+   milestones, boarding-pass cards, OCR mono for codes and a machine-readable line, bilingual micro-labels. */
+:root {
+  --canvas: #f5f2ea;          /* security paper */
+  --surface: #fffdf8;
+  --surface-2: #ede8db;
+  --surface-3: #e2dccb;
+  --surface-ink: #13213b;     /* night band: program board, footer */
+  --overlay: rgba(14, 22, 38, .52);
+
+  --ink: #14203a;
+  --ink-2: #4a5468;
+  --ink-3: #646c7d;
+  --ink-inverse: #f6f3ea;
+
+  --line: #e0d9c8;
+  --line-2: #cbc2ad;
+  --line-dash: #b9af97;       /* perforations and dotted routes */
+
+  --brand: #1f3c73;           /* passport navy — the only action colour */
+  --brand-ink: #ffffff;
+  --brand-soft: color-mix(in oklab, var(--brand) 10%, #fffdf8);
+  --brand-strong: color-mix(in oklab, var(--brand) 78%, #000);
+  --focus: color-mix(in oklab, var(--brand) 50%, transparent);
+
+  /* rubber-stamp inks: milestones only, never actions */
+  --stamp-red: #b3392d;
+  --stamp-green: #2a7448;
+  --stamp-violet: #5a4aa8;
+  --stamp-blue: #1f6c8f;
+  --guilloche: color-mix(in oklab, var(--brand) 16%, transparent);
+  --guilloche-2: color-mix(in oklab, #b3392d 12%, transparent);
+
+  --success: #2a7448;
+  --success-soft: #e3efe4;
+  --warning: #9a5b07;
+  --warning-soft: #f6ead2;
+  --danger: #b3392d;
+  --danger-soft: #f6e1dc;
+  --info: #1f6c8f;
+  --info-soft: #dfedf3;
+
+  --board: #13213b;           /* departures board */
+  --board-ink: #f4e9c8;
+  --board-amber: #f2b33d;
+
+  --chart-1: var(--brand);
+  --chart-2: #2a7448;
+  --chart-3: #c27a1a;
+  --chart-4: #5a4aa8;
+  --chart-5: #b3392d;
+  --chart-6: #a39a86;
+  --chart-grid: #e7e1d2;
+  --chart-axis: var(--ink-3);
+  --chart-curve: smooth;
+  --chart-stroke: 2.5;
+  --chart-area: .1;
+  --chart-radius: 4;
+  --chart-bar-gap: .45;
+  --chart-donut: 14;
+  --chart-gap: 2;
+  --chart-dots: 1;
+
+  --font-sans: "Red Hat Text", "Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "DM Serif Display", "Vazirmatn", Georgia, serif;
+  --font-mono: "Share Tech Mono", ui-monospace, "SF Mono", Menlo, "Vazirmatn", monospace;
+  --fs-xs: 12px;
+  --fs-sm: 14px;
+  --fs-md: 16px;
+  --fs-lg: 18.5px;
+  --fs-xl: 23px;
+  --fs-2xl: 30px;
+  --fs-3xl: 42px;
+  --fs-display: clamp(40px, 5.6vw, 76px);
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --fw-display: 400;
+  --lh-tight: 1.04;
+  --lh-snug: 1.3;
+  --lh-body: 1.6;
+  --tracking-display: -.01em;
+  --tracking-caps: .14em;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 76px;
+  --space-9: 108px;
+  --space-10: 148px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+  --border-w: 1px;
+  --shadow-1: 0 1px 2px rgba(20, 32, 58, .07);
+  --shadow-2: 0 14px 34px -18px rgba(20, 32, 58, .32);
+  --shadow-3: 0 34px 80px -34px rgba(20, 32, 58, .45);
+
+  --container: 1240px;
+  --gutter: clamp(16px, 3vw, 32px);
+  --control-h: 46px;
+  --control-h-lg: 54px;
+
+  --ease: cubic-bezier(.3, .7, .2, 1);
+  --dur-1: 140ms;
+  --dur-2: 260ms;
+  --dur-3: 520ms;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --canvas: #0b1322;          /* night flight */
+  --surface: #111b2e;
+  --surface-2: #17243a;
+  --surface-3: #203049;
+  --surface-ink: #070d18;
+  --overlay: rgba(0, 0, 0, .62);
+  --ink: #e9edf5;
+  --ink-2: #aab3c5;
+  --ink-3: #8790a4;
+  --ink-inverse: #0b1322;
+  --line: #1f2c43;
+  --line-2: #2c3c58;
+  --line-dash: #3a4c6c;
+  --brand: #93b4ff;
+  --brand-ink: #0b1322;
+  --brand-soft: color-mix(in oklab, var(--brand) 14%, transparent);
+  --brand-strong: color-mix(in oklab, var(--brand) 72%, #fff);
+  --stamp-red: #f08a7c;
+  --stamp-green: #7dd3a0;
+  --stamp-violet: #b3a6ff;
+  --stamp-blue: #7cc7e8;
+  --guilloche: color-mix(in oklab, var(--brand) 14%, transparent);
+  --guilloche-2: color-mix(in oklab, #f08a7c 10%, transparent);
+  --success: #7dd3a0;
+  --success-soft: rgba(125, 211, 160, .14);
+  --warning: #f2b85a;
+  --warning-soft: rgba(242, 184, 90, .14);
+  --danger: #f08a7c;
+  --danger-soft: rgba(240, 138, 124, .14);
+  --info: #7cc7e8;
+  --info-soft: rgba(124, 199, 232, .14);
+  --board: #070d18;
+  --chart-grid: #1c2940;
+  --chart-6: #56627a;
+  --shadow-2: 0 14px 34px -18px rgba(0, 0, 0, .75);
+  --shadow-3: 0 34px 80px -34px rgba(0, 0, 0, .85);
+  color-scheme: dark;
+}
+
+:root:lang(fa) {
+  --font-sans: "Vazirmatn", "Red Hat Text", Tahoma, sans-serif;
+  --font-display: "Vazirmatn", "DM Serif Display", sans-serif;
+  --fs-display: clamp(34px, 4.6vw, 62px);
+  --fw-display: 900;
+  --lh-tight: 1.42;
+  --lh-snug: 1.6;
+  --lh-body: 1.95;
+  --tracking-display: 0;
+  --tracking-caps: 0;
+}

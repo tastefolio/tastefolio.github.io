@@ -1,0 +1,34 @@
+{
+  "name": "Passage",
+  "order": 28,
+  "category": "product",
+  "mode": "light",
+  "density": "balanced",
+  "persianFirst": true,
+  "tags": ["immigration", "visa", "residency", "travel", "consultancy", "booking", "client-portal", "persian"],
+  "tagline": {
+    "en": "Travel documents as an interface — guilloche security paper, boarding-pass program cards, rubber stamps for milestones, a points check and a client portal built like a passport",
+    "fa": "اسناد سفر در قالب رابط کاربری — کاغذ امنیتی با نقش گیوشه، کارت پرواز برای برنامه‌ها، مهر لاستیکی برای هر مرحله، سنجش امتیاز و پنلی که مثل گذرنامه ساخته شده"
+  },
+  "summary": {
+    "en": "A Persian-first language for immigration, visa, residency and study-abroad advisories, travel agencies and relocation services. Warm security paper with fine guilloche drawn in code, passport navy as the only action colour, and rubber-stamp inks (red, green, violet, blue) that only ever mark milestones. Programs are boarding passes with a perforated stub, route codes in OCR mono and a barcode; labels are bilingual like a passport (Persian / English); a machine-readable line closes the page. Sites get a route finder hero, destinations filtered by goal, a points check with a live gauge and the routes it opens, a five-stop journey, a departures board of intakes, licensed advisors, short videos, postcard testimonials, a booking wizard with a deposit in Toman and SMS sign-in with code boxes. The client portal is a passport: a data page with the case and MRZ, visa pages where every finished stage is stamped, a document checklist with uploads, an appointment countdown, support tickets and instalments.",
+    "fa": "زبانی فارسی‌محور برای دفترهای مشاورهٔ مهاجرت، ویزا، اقامت و تحصیل در خارج، آژانس‌های سفر و خدمات جابه‌جایی. کاغذ امنیتی گرم با نقش گیوشهٔ ظریفی که با کد کشیده می‌شود، سرمه‌ای گذرنامه به‌عنوان تنها رنگ اقدام، و جوهرهای مهر لاستیکی (قرمز، سبز، بنفش، آبی) که فقط مراحل را علامت می‌زنند. برنامه‌ها کارت پروازند با ته‌برگ سوراخ‌دار، کد مسیر با فونت OCR و بارکد؛ برچسب‌ها مثل گذرنامه دوزبانه‌اند و یک خط ماشین‌خوان صفحه را می‌بندد. سایت مسیریاب، مقصدها با فیلتر هدف، سنجش امتیاز با نشانگر زنده و مسیرهایی که باز می‌کند، مسیر پنج‌ایستگاهی، تابلوی حرکت نوبت‌های پذیرش، مشاوران دارای مجوز، ویدئوی کوتاه، کارت‌پستال مراجعان، نوبت‌دهی چندمرحله‌ای با پیش‌پرداخت تومانی و ورود پیامکی با خانه‌های کد دارد. پنل مراجع یک گذرنامه است: صفحهٔ مشخصات با پرونده و خط ماشین‌خوان، صفحه‌های ویزا که هر مرحلهٔ تمام‌شده را مهر می‌زند، چک‌لیست مدارک با بارگذاری، شمارش معکوس نوبت، تیکت پشتیبانی و اقساط."
+  },
+  "bestFor": {
+    "en": ["Immigration, visa and residency advisories", "Study-abroad and admissions agencies", "Travel agencies and relocation services", "Any service sold as a journey with stages and documents"],
+    "fa": ["دفترهای مشاورهٔ مهاجرت، ویزا و اقامت", "مؤسسه‌های پذیرش و تحصیل در خارج", "آژانس‌های سفر و خدمات جابه‌جایی", "هر خدمتی که مثل یک سفر مرحله و مدرک دارد"]
+  },
+  "avoidFor": {
+    "en": ["Dense data tools and analytics", "Playful consumer apps and games", "Brands that must feel minimal and silent"],
+    "fa": ["ابزارهای داده و تحلیل پرتراکم", "اپ‌های سرگرمی و بازی", "برندهایی که باید کاملاً مینیمال و ساکت باشند"]
+  },
+  "signature": {
+    "en": ["Guilloche security paper drawn in code", "Boarding-pass cards with a perforated stub and barcode", "Rubber stamps only for milestones", "Bilingual passport micro-labels and an OCR machine-readable line", "A points check with a live gauge and the routes it opens", "A portal built as a passport: data page and stamped visa pages"],
+    "fa": ["کاغذ امنیتی با نقش گیوشه که با کد کشیده می‌شود", "کارت پرواز با ته‌برگ سوراخ‌دار و بارکد", "مهر لاستیکی فقط برای مراحل", "برچسب‌های دوزبانهٔ گذرنامه و خط ماشین‌خوان OCR", "سنجش امتیاز با نشانگر زنده و مسیرهای باز", "پنلی مثل گذرنامه: صفحهٔ مشخصات و صفحه‌های ویزای مهرخورده"]
+  },
+  "swatches": ["#f5f2ea", "#fffdf8", "#1f3c73", "#b3392d", "#2a7448", "#13213b"],
+  "fonts": { "latin": "DM Serif Display + Red Hat Text", "persian": "Vazirmatn", "mono": "Share Tech Mono" },
+  "icons": "Material Symbols Outlined (Google Fonts, Apache 2.0)",
+  "brandTrials": ["7a2f27", "1f6c8f", "2a5d45", "4b3f8f"],
+  "demos": { "site": { "host": "kooch.example" }, "dashboard": { "host": "kooch.example/file" } }
+}

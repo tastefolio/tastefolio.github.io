@@ -252,6 +252,15 @@
       ]
     },
     {
+      "name": "passage",
+      "description": "Tastefolio design language — Travel documents as an interface — guilloche security paper, boarding-pass program cards, rubber stamps for milestones, a points check and a client portal built like a passport",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/passage"
+      ]
+    },
+    {
       "name": "tastefolio-all",
       "description": "Every Tastefolio design-language skill in one install. Pick one style per project.",
       "source": "./",
@@ -283,7 +292,8 @@
         "./skills/linework",
         "./skills/estate",
         "./skills/margin",
-        "./skills/dot"
+        "./skills/dot",
+        "./skills/passage"
       ]
     }
   ]

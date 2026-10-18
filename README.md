@@ -7,8 +7,8 @@ panels**, in **English (LTR)** and **Persian (RTL)**.
 
 **Gallery:** https://tastefolio.github.io · **فارسی:** https://tastefolio.github.io/fa/ · **Guide:** https://tastefolio.github.io/guide/ · [README به فارسی](README.fa.md)
 
-- **27 styles** that differ in layout logic, density, typography, navigation and interaction — not just in color.
-- **54 working demos** (a site and a dashboard per style) with real menus, tabs, filters, forms, dialogs and charts, all switchable between English and Persian, light and dark, and any brand color.
+- **28 styles** that differ in layout logic, density, typography, navigation and interaction — not just in color.
+- **56 working demos** (a site and a dashboard per style) with real menus, tabs, filters, forms, dialogs and charts, all switchable between English and Persian, light and dark, and any brand color.
 - **Real screenshots** of every demo in the gallery, captured automatically on every deploy.
 - **Framework-free**: plain HTML/CSS plus a tiny shared runtime, with Tailwind v3/v4 and shadcn/ui mappings for each style.
 
@@ -44,6 +44,7 @@ panels**, in **English (LTR)** and **Persian (RTL)**.
 | 25 | [**Estate**](skills/estate/SKILL.md) · [page](https://tastefolio.github.io/skills/estate/) | Commerce | light, fa-first | balanced | Property listings — stone paper, moss actions, serif prices, a list + map split with price pins and an agent panel with a lead pipeline | [site](https://tastefolio.github.io/skills/estate/examples/site.html) · [dashboard](https://tastefolio.github.io/skills/estate/examples/dashboard.html) |
 | 26 | [**Margin**](skills/margin/SKILL.md) · [page](https://tastefolio.github.io/skills/margin/) | Content & media | light, fa-first | airy | Long-form reading — warm paper, a narrow serif column, numbered sidenotes in a wide margin, a reader's highlighter and a quiet writer studio | [site](https://tastefolio.github.io/skills/margin/examples/site.html) · [dashboard](https://tastefolio.github.io/skills/margin/examples/dashboard.html) |
 | 27 | [**Dot**](skills/dot/SKILL.md) · [page](https://tastefolio.github.io/skills/dot/) | Brand & culture | light, fa-first | balanced | Dot-matrix hardware — paper or black, one LED red, display type made of dots, a drawn device with a live 15×15 face and a device app with a glyph composer | [site](https://tastefolio.github.io/skills/dot/examples/site.html) · [dashboard](https://tastefolio.github.io/skills/dot/examples/dashboard.html) |
+| 28 | [**Passage**](skills/passage/SKILL.md) · [page](https://tastefolio.github.io/skills/passage/) | Product UI | light, fa-first | balanced | Travel documents as an interface — guilloche security paper, boarding-pass program cards, rubber stamps for milestones, a points check and a client portal built like a passport | [site](https://tastefolio.github.io/skills/passage/examples/site.html) · [dashboard](https://tastefolio.github.io/skills/passage/examples/dashboard.html) |
 <!-- styles:end -->
 
 Demos accept `?lang=fa`, `?theme=dark` and `?brand=ff5a36` (any hex) so you can check a style against your own brand.
